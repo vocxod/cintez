@@ -1,4 +1,7 @@
 # Config and Htaccess Files
+
+/storage/cache/*
+
 /upload/.htaccess
 /upload/config.php
 /upload/admin/config.php
