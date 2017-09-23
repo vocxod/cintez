@@ -92,11 +92,12 @@ div.required .control-label:before {
 #top #form-currency .currency-select,
 #top #form-language .language-select {
 	text-align: left;
+	color: #888;
 }
 #top #form-currency .currency-select:hover,
 #top #form-language .language-select:hover {
 	text-shadow: none;
-	color: #ffffff;
+	color: orange;
 	background-color: #229ac8;
 	background-image: linear-gradient(to bottom, #23a1d1, #1f90bb);
 	background-repeat: repeat-x;

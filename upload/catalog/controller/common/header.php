@@ -76,6 +76,8 @@ class ControllerCommonHeader extends Controller {
 		
 		// scard
 		$data['zone'] = $this->load->controller('common/zone');
+		$data['vacancy'] = $this->url->link('information/information&information_id=7');
+		//$data['vacancy'] = $this->url->link('information/information&information_id=7');
 		
 		$data['search'] = $this->load->controller('common/search');
 		$data['cart'] = $this->load->controller('common/cart');
