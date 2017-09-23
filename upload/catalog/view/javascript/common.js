@@ -50,6 +50,15 @@ $(document).ready(function() {
 		$('#form-language').submit();
 	});
 
+	// Zone
+	$('#form-zone .zone-select').on('click', function(e) {
+		e.preventDefault();
+
+		$('#form-zone input[name=\'code\']').val($(this).attr('name'));
+		//console.log( "FORM-ZONE: ", val($(this).attr('name')) );
+		$('#form-zone').submit();
+	});
+
 	/* Search */
 	$('#search input[name=\'search\']').parent().find('button').on('click', function() {
 		var url = $('base').attr('href') + 'index.php?route=product/search';

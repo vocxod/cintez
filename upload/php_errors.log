@@ -1,0 +1,32 @@
+[23-Sep-2017 11:48:53 UTC] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/oc3demo/opencart/upload/catalog/controller/common/zone.php on line 22
+[23-Sep-2017 11:48:53 UTC] PHP Stack trace:
+[23-Sep-2017 11:48:53 UTC] PHP   1. {main}() /var/www/html/oc3demo/opencart/upload/index.php:0
+[23-Sep-2017 11:48:53 UTC] PHP   2. start() /var/www/html/oc3demo/opencart/upload/index.php:19
+[23-Sep-2017 11:48:53 UTC] PHP   3. require_once() /var/www/html/oc3demo/opencart/upload/system/startup.php:104
+[23-Sep-2017 11:48:53 UTC] PHP   4. Router->dispatch() /var/www/html/oc3demo/opencart/upload/system/framework.php:170
+[23-Sep-2017 11:48:53 UTC] PHP   5. Router->execute() /var/www/html/oc3demo/opencart/upload/system/engine/router.php:56
+[23-Sep-2017 11:48:53 UTC] PHP   6. Action->execute() /var/www/html/oc3demo/opencart/upload/system/engine/router.php:67
+[23-Sep-2017 11:48:53 UTC] PHP   7. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP   9. Action->execute() /var/www/html/oc3demo/opencart/upload/catalog/controller/startup/router.php:25
+[23-Sep-2017 11:48:53 UTC] PHP  10. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP  11. ControllerCommonHome->index() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP  12. Loader->controller() /var/www/html/oc3demo/opencart/upload/catalog/controller/common/home.php:17
+[23-Sep-2017 11:48:53 UTC] PHP  13. Action->execute() /var/www/html/oc3demo/opencart/upload/system/engine/loader.php:48
+[23-Sep-2017 11:48:53 UTC] PHP  14. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP  15. ControllerCommonHeader->index() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 11:48:53 UTC] PHP  16. Loader->controller() /var/www/html/oc3demo/opencart/upload/catalog/controller/common/header.php:78
+[23-Sep-2017 11:48:53 UTC] PHP  17. Action->execute() /var/www/html/oc3demo/opencart/upload/system/engine/loader.php:48
+[23-Sep-2017 13:53:38 UTC] PHP Fatal error:  Call to a member function getZone() on null in /var/www/html/oc3demo/opencart/upload/catalog/controller/common/zone.php on line 62
+[23-Sep-2017 13:53:38 UTC] PHP Stack trace:
+[23-Sep-2017 13:53:38 UTC] PHP   1. {main}() /var/www/html/oc3demo/opencart/upload/index.php:0
+[23-Sep-2017 13:53:38 UTC] PHP   2. start() /var/www/html/oc3demo/opencart/upload/index.php:19
+[23-Sep-2017 13:53:38 UTC] PHP   3. require_once() /var/www/html/oc3demo/opencart/upload/system/startup.php:104
+[23-Sep-2017 13:53:38 UTC] PHP   4. Router->dispatch() /var/www/html/oc3demo/opencart/upload/system/framework.php:170
+[23-Sep-2017 13:53:38 UTC] PHP   5. Router->execute() /var/www/html/oc3demo/opencart/upload/system/engine/router.php:56
+[23-Sep-2017 13:53:38 UTC] PHP   6. Action->execute() /var/www/html/oc3demo/opencart/upload/system/engine/router.php:67
+[23-Sep-2017 13:53:38 UTC] PHP   7. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 13:53:38 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 13:53:38 UTC] PHP   9. Action->execute() /var/www/html/oc3demo/opencart/upload/catalog/controller/startup/router.php:25
+[23-Sep-2017 13:53:38 UTC] PHP  10. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[23-Sep-2017 13:53:38 UTC] PHP  11. ControllerCommonZone->zone() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
