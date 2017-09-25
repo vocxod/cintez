@@ -5,6 +5,7 @@ body {
 	font-size: 12px;
 	line-height: 20px;
 	width: 100%;
+	background: url('/catalog/view/theme/default/image/bg-body-25.png');
 }
 h1, h2, h3, h4, h5, h6 {
 	color: #444;
@@ -197,6 +198,7 @@ div.required .control-label:before {
 	background-repeat: repeat-x;
 	border-color: #1f90bb #1f90bb #145e7a;
 	min-height: 40px;
+	background: url('/catalog/view/theme/default/image/bg-menu-01.png');
 }
 #menu .nav > li > a {
 	color: #fff;
