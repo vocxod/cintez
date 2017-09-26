@@ -30,3 +30,11 @@
 [23-Sep-2017 13:53:38 UTC] PHP   9. Action->execute() /var/www/html/oc3demo/opencart/upload/catalog/controller/startup/router.php:25
 [23-Sep-2017 13:53:38 UTC] PHP  10. call_user_func_array:{/var/www/html/oc3demo/opencart/upload/system/engine/action.php:79}() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
 [23-Sep-2017 13:53:38 UTC] PHP  11. ControllerCommonZone->zone() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
+[25-Sep-2017 11:32:28 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unknown "dump" function in "cintez/template/common/header.twig" at line 92.' in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php:574
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php(351): Twig_ExpressionParser->getFunctionNodeClass('dump', 92)
+#1 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php(144): Twig_ExpressionParser->getFunctionNode('dump', 92)
+#2 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php(84): Twig_ExpressionParser->parsePrimaryExpression()
+#3 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php(41): Twig_ExpressionParser->getPrimary()
+#4 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Parser.php(144): Twig_ExpressionParser->parseExpression()
+#5 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Par in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php on line 574

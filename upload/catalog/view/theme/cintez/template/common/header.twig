@@ -37,65 +37,145 @@
 {% for analytic in analytics %}
 {{ analytic }}
 {% endfor %}
+
+
+<style type="text/css">
+  .navbar-inverse.nav-upper {
+    height: 50px;
+  }
+  .navbar-inverse.nav-upper ul {
+    float: right;
+    display: table;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li {
+    display: table-cell;
+    font-size: 14px;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li > a {
+    color: #777;
+  }
+  @media (min-width: 768px) {
+    .navbar.navbar-lower .navbar-nav {
+      margin-left: 100px;
+    }
+  }
+  .navbar-logo {
+    background-image: url('https://lh3.googleusercontent.com/-tw5LsU4Fg28/Umo6BBcoCnI/AAAAAAAAmjE/1iqULsem06E/w896-h896/heisencat.png');
+    width: 90px;
+    height: 90px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    left: 15px;
+    z-index: 1051;
+  }
+</style>
+
 </head>
 <body>
+
+{#
 <nav id="top" style="outline:1px dashed red;">
   <div class="container" style="outline:1px dashed blue;">
     {{ zone }}
-    {#{ currency }#}
     <div id="top-links" class="nav pull-right"  style="z-order:10000;">
       <ul class="list-inline">
-        
-        {#
-        <li><a href="{{ contact }}"><i class="fa fa-phone"></i></a> <span class="hidden-xs hidden-sm hidden-md">{{ telephone }}</span></li>
-        #}
-
-        {#
-        <li class="dropdown"><a href="{{ account }}" title="{{ text_account }}" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_account }}</span> <span class="caret"></span></a>
-          <ul class="dropdown-menu dropdown-menu-right">
-            {% if logged %}
-            <li><a href="{{ account }}">{{ text_account }}</a></li>
-            <li><a href="{{ order }}">{{ text_order }}</a></li>
-            <li><a href="{{ transaction }}">{{ text_transaction }}</a></li>
-            <li><a href="{{ download }}">{{ text_download }}</a></li>
-            <li><a href="{{ logout }}">{{ text_logout }}</a></li>
-            {% else %}
-            <li><a href="{{ register }}">{{ text_register }}</a></li>
-            <li><a href="{{ login }}">{{ text_login }}</a></li>
-            {% endif %}
-          </ul>
-        </li>
-        #}
-        {#
-        <li><a href="{{ wishlist }}" id="wishlist-total" title="{{ text_wishlist }}"><i class="fa fa-heart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_wishlist }}</span></a></li>
-        
-        <li><a href="{{ shopping_cart }}" title="{{ text_shopping_cart }}"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_shopping_cart }}</span></a></li>
-        
-        <li><a href="{{ checkout }}" title="{{ text_checkout }}"><i class="fa fa-share"></i> <span class="hidden-xs hidden-sm hidden-md">{{ text_checkout }}</span></a>
-        </li>
-#}
-<li ><a href="{{ vacancy }}"><span class="hidden-xs hidden-sm hidden-md">Вакансии</span></a></li>
-<li ><a href="{{ contact }}"><span class="hidden-xs hidden-sm hidden-md">Контакты</span></a></li>
-
+        <li ><a href="{{ vacancy }}"><span class="hidden-xs hidden-sm hidden-md">Вакансии</span></a></li>
+        <li ><a href="{{ contact }}"><span class="hidden-xs hidden-sm hidden-md">Контакты</span></a></li>
       </ul>     
-
     </div>
-
     {{ language }}
-
   </div>
 </nav>
-<header>
+#}
+
+
+<nav class="navbar-inverse nav-upper">
+  <div class="container-fluid">
+    <ul class="nav navbar-upper">
+      <li><a href="#">NAV-A-1</a>
+      </li>
+      <li><a href="#">NAV-A-2</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+
+<nav class="navbar navbar-inverse navbar-static-top navbar-lower">
+  <div class="container-fluid">
+
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+
+    <div class="collapse navbar-collapse" id="navbar">
+      <ul class="nav navbar-nav">
+        <li><a href="#">NAV-B-1</a>
+        </li>
+        <li><a href="#">NAV-B-2</a>
+        </li>
+        <li><a href="#">NAV-B-3</a>
+        </li>
+        <li><a href="#">NAV-B-4</a>
+        </li>
+      </ul>
+      <form class="navbar-form navbar-right" role="search">
+        <div class="form-group">
+          <div class="input-group">
+            <input type="text" class="form-control" placeholder="Search">
+            <span class="input-group-btn">
+              <button type="submit" class="btn btn-default">Submit</button>
+            </span>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</nav>
+
+<header style="background: rgb(240,244,245);">
   <div class="container">
+    
+    <div class="row">
+    <div class="col-sm-12">
+          <ul class="nav nav-pills">
+            <li><a href="#">8 - 800 - 200 - 30 35</a></li>
+            <li><a href="#">подбор продукта</a></li>
+            <li><a href="#">дезкалькулятор</a></li>
+          </ul>
+      </div>
+    </div>
+
     <div class="row">
       <div class="col-sm-4">
+
         <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
           <h1><a href="{{ home }}">{{ name }}</a></h1>
           {% endif %}</div>
+        
       </div>
+      <div class="col-sm-8">
+          <ul class="nav nav-pills">
+            <li class="active"><a href="#">ПРОДУКЦИЯ</a></li>
+            <li><a href="#">О КОМПАНИИ</a></li>
+            <li class="disabled"><a href="#">ДИЛЕРАМ</a></li>
+            <li class="disabled"><a href="#">ПУБЛИКАЦИИ</a></li>
+            <li class="disabled"><a href="#">НОВОСТИ</a></li>
+            <li class="disabled"><a href="#">ОБРАТНАЯ СВЯЗЬ</a></li>
+          </ul>
+      </div>
+      {#
       <div class="col-sm-5">{{ search }}</div>
       <div class="col-sm-3">{{ cart }}</div>
+      #}
     </div>
+
   </div>
 </header>
 {{ menu }}
