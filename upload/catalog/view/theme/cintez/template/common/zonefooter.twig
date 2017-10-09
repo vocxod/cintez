@@ -1,0 +1,31 @@
+{% if zones|length > 1 %}
+<div class="pull-left footer">
+  <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
+    <div class="btn-group">
+      
+      <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+{#
+      {% for currency in currencies %}
+
+      {% if currency.symbol_left and currency.code == code %} <strong>{{ currency.symbol_left }}</strong> {% elseif currency.symbol_right and currency.code == code %} <strong>{{ currency.symbol_right }}</strong> {% endif %}
+      
+      {% endfor %} 
+#}
+    {# внести локализацию для ГОРОДА(ов) #}
+    <span class="glyphicon glyphicon-map-marker" style="color:#232323;"></span>
+      <span class="hidden-xs hidden-sm hidden-md">{{ current_zone.name }}</span>&nbsp;<i class="fa fa-caret-down" style="color:#232323;"></i></button>
+
+      <ul class="dropdown-menu">
+        {% for zone in zones %}
+              <li>
+                <button  style="color:#888;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">{{ zone.name }}</button>
+              </li>
+        {% endfor %}
+      </ul>
+
+    </div>
+    <input type="hidden" name="code" value="" />
+    <input type="hidden" name="redirect" value="{{ redirect }}" />
+  </form>
+</div>
+{% endif %} 
