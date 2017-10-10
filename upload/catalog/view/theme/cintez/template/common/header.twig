@@ -24,6 +24,7 @@
 <link href="catalog/view/javascript/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
 <link href="//fonts.googleapis.com/css?family=Open+Sans:400,400i,300,700" rel="stylesheet" type="text/css" />
 <link href="catalog/view/theme/cintez/stylesheet/stylesheet.css" rel="stylesheet">
+<link href="catalog/view/theme/cintez/stylesheet/syntezfont.css" rel="stylesheet">
 {% for style in styles %}
 <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
@@ -107,9 +108,13 @@
   padding-left:0px !important;
  }
 .row .well{
-  height: 145px;
+    /* height: 145px; */
     margin: 0;
+    padding: 0;
     text-align: center;
+    background: rgb(240,244,245);
+    border: none;
+    /*border-top: 0px dashed rgb(240,244,245);*/
 }
 .top_link{
   padding: 15px;
@@ -120,188 +125,33 @@
 </head>
 <body>
 
-{#
-<nav id="top" style="outline:1px dashed red;">
-  <div class="container" style="outline:1px dashed blue;">
-    {{ zone }}
-    <div id="top-links" class="nav pull-right"  style="z-order:10000;">
-      <ul class="list-inline">
-        <li ><a href="{{ vacancy }}"><span class="hidden-xs hidden-sm hidden-md">Вакансии</span></a></li>
-        <li ><a href="{{ contact }}"><span class="hidden-xs hidden-sm hidden-md">Контакты</span></a></li>
-      </ul>     
-    </div>
-    {{ language }}
-  </div>
-</nav>
-#}
-
-{# 1 #}
-{#
-<nav class="navbar-inverse nav-upper">
-  <div class="container-fluid">
-    <ul class="nav navbar-upper">
-      <li><a href="#">NAV-A-1</a>
-      </li>
-      <li><a href="#">NAV-A-2</a>
-      </li>
-    </ul>
-  </div>
-</nav>
-
-<nav class="navbar navbar-inverse navbar-static-top navbar-lower">
-  <div class="container-fluid">
-
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-    </div>
-
-    <div class="collapse navbar-collapse" id="navbar">
-      <ul class="nav navbar-nav">
-        <li><a href="#">NAV-B-1</a>
-        </li>
-        <li><a href="#">NAV-B-2</a>
-        </li>
-        <li><a href="#">NAV-B-3</a>
-        </li>
-        <li><a href="#">NAV-B-4</a>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-right" role="search">
-        <div class="form-group">
-          <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search">
-            <span class="input-group-btn">
-              <button type="submit" class="btn btn-default">Submit</button>
-            </span>
-          </div>
-        </div>
-      </form>
-    </div>
-  </div>
-</nav>
-#}
-
-{# 2 #}
-{#
-<nav class="navbar-default nav-top">
-  <div class="container-fluid">
-    <ul class="nav navbar-top" >
-      <li><a href="#">Nav-A-1</a>
-
-      </li>
-      <li><a href="#">Nav-A-2</a>
-
-      </li>
-      <li><a href="#">.....</a>
-
-      </li>
-    </ul>
-  </div>
-</nav>
-<nav class="navbar navbar-default">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false"> <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-
-      </button>
-      <a class="navbar-brand" href="#">
-        <img src="http://placehold.it/100x50/f00/f00">
-      </a>
-
-    </div>
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav " style="margin-left:150px;">
-        <li class="active"><a href="#">Nav-B-1<span class="sr-only">(current)</span></a>
-
-        </li>
-        <li><a href="#">Nav-B-2</a>
-
-        </li>
-        <li><a href="#">Nav-B-3</a>
-
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-#}
-
-<div class="row menu">
-    <div class="col-sm-2 col-xs-2"> 
-    
-    <div class="well">
-        {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
-        <h1><a href="{{ home }}">{{ name }}</a></h1>
-        {% endif %}
-    </div>
-    
-    </div>
-    <div class="col-sm-10 col-xs-10">   
-      <div class="row">
-        <div class="col-sm-12 col-xs-12">   
-          <a href="#" class="pull-right top_link">Nav-A-1</a>
-          <a href="#" class="pull-right top_link">Nav-A-2</a>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-12 col-xs-12"> 
-          <nav class="navbar navbar-default">
-              <div class="container-fluid">
-              <!-- Brand and toggle get grouped for better mobile display -->
-              <div class="navbar-header ">
-                <button type="button" class="navbar-toggle collapsed pull-left" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-                </button>      
-              </div>
-              <!-- Collect the nav links, forms, and other content for toggling -->
-              <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav">
-              <li class="active"><a href="#">Nav-B-1<span class="sr-only">(current)</span></a></li>
-              <li><a href="#">Nav-B-2</a></li>
-              <li><a href="#">Nav-B-3</a></li>
-              <li><a href="#">Nav-B-4</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-              <li><a href="#">Form-Right</a></li>   
-                </ul>
-              </div><!-- /.navbar-collapse -->
-            </div><!-- /.container-fluid -->
-          </nav>    
-        </div>
-      </div>  
-    </div>
-</div> 
-
 <header style="background: rgb(240,244,245);">
   <div class="container">
-    {# #}
+    
+    {# верхняя строка #}   
     <div class="row menu">
-        <div class="col-sm-2 col-xs-2"> 
-        
-        <div class="well">
-            {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
-            <h1><a href="{{ home }}">{{ name }}</a></h1>
-            {% endif %}
+      {{ zone }}
+      <div class="col-sm-5">{{ search }}</div>
+      {{ language }}
+    </div>
+
+    {# строка пониже с пунктами меню #}
+    <div class="row menu">
+
+        <div class="col-sm-4 col-xs-4" style="outline: none; border: none;">   
+            <div class="well">
+                {% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
+                <h1><a href="{{ home }}">{{ name }}</a></h1>
+                {% endif %}
+            </div>
         </div>
-        
-        </div>
-        <div class="col-sm-10 col-xs-10">   
+
+        <div class="col-sm-8 col-xs-8">   
           <div class="row">
             <div class="col-sm-12 col-xs-12">   
-              <a href="#" class="pull-right top_link">Nav-A-1</a>
-              <a href="#" class="pull-right top_link">Nav-A-2</a>
+              <a href="#" class="pull-right top_link">дезкалькулятор</a>
+              <a href="#" class="pull-right top_link">подбор продукта</a>
+              <a href="#" class="pull-right top_link">8 - 800 - 200 - 30 35</a>
             </div>
           </div>
           <div class="row">
@@ -319,14 +169,20 @@
                   </div>
                   <!-- Collect the nav links, forms, and other content for toggling -->
                   <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    {# меню слева  #}
+                    {#
                     <ul class="nav navbar-nav">
-                  <li class="active"><a href="#">Nav-B-1<span class="sr-only">(current)</span></a></li>
-                  <li><a href="#">Nav-B-2</a></li>
-                  <li><a href="#">Nav-B-3</a></li>
-                  <li><a href="#">Nav-B-4</a></li>
+                        <li><a href="#">новости</a></li>
+                        <li><a href="#">обратная связь</a></li>
                     </ul>
+                    #}
                     <ul class="nav navbar-nav navbar-right">
-                  <li><a href="#">Form-Right</a></li>   
+                      <li class="active"><a href="#">ПРОДУКЦИЯ<span class="sr-only">(current)</span></a></li>
+                        <li><a href="#">О КОМПАНИИ</a></li>
+                        <li><a href="#">ДИЛЕРАМ</a></li>
+                        <li><a href="#">ПУБЛИКАЦИИ</a></li>
+                        <li><a href="#">НОВОСТИ</a></li> 
+                        <li><a href="#">ОБРАТНАЯ СВЯЗЬ</a></li>                          
                     </ul>
                   </div><!-- /.navbar-collapse -->
                 </div><!-- /.container-fluid -->
@@ -335,42 +191,8 @@
           </div>  
         </div>
     </div> 
-    {# #}
-    
-    <div class="row">
-    <div class="col-sm-12">
-          <ul class="nav nav-pills">
-            <li><a href="#">8 - 800 - 200 - 30 35</a></li>
-            <li><a href="#">подбор продукта</a></li>
-            <li><a href="#">дезкалькулятор</a></li>
-          </ul>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-sm-4">
-
-        <div id="logo">{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
-          <h1><a href="{{ home }}">{{ name }}</a></h1>
-          {% endif %}</div>
-        
-      </div>
-      <div class="col-sm-8">
-          <ul class="nav nav-pills">
-            <li class="active"><a href="#">ПРОДУКЦИЯ</a></li>
-            <li><a href="#">О КОМПАНИИ</a></li>
-            <li class="disabled"><a href="#">ДИЛЕРАМ</a></li>
-            <li class="disabled"><a href="#">ПУБЛИКАЦИИ</a></li>
-            <li class="disabled"><a href="#">НОВОСТИ</a></li>
-            <li class="disabled"><a href="#">ОБРАТНАЯ СВЯЗЬ</a></li>
-          </ul>
-      </div>
-      {#
-      <div class="col-sm-5">{{ search }}</div>
-      <div class="col-sm-3">{{ cart }}</div>
-      #}
-    </div>
-
-  </div>
+  </div> {# container #}
 </header>
-{{ menu }}
+
+{# меню товарное не выводим #}
+{#{ menu }#}
