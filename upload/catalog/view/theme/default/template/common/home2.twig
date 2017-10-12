@@ -1,0 +1,38 @@
+{{ header2 }}
+
+
+<div id="common-home" class="container">
+    <div class="row">
+        <div class="col-xs-9 col-md-7">.col-xs-9 .col-md-7</div>
+        <div class="col-xs-3 col-md-5">.col-xs-3 .col-md-5</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6 col-md-10">.col-xs-6 .col-md-10</div>
+        <div class="col-xs-6 col-md-2">.col-xs-6 .col-md-2</div>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-6">.col-xs-6</div>
+        <div class="col-xs-6">.col-xs-6</div>
+    </div> 
+    {#
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}{{ content_bottom }}</div>
+    {{ column_right }}</div>
+    #}
+</div>
+
+<div>
+<p>asd</p>    
+</div>
+
+
+{{ footer2 }}

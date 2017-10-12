@@ -2,15 +2,35 @@
 
 
 <div id="common-home" class="container">
-  <div class="row">{{ column_left }}
+    {#
+    <button class="btn">123</button>
+    <button class="btn btn-info">123</button>
+    <button class="btn btn-success">123</button>
+    <button class="btn btn-warning">123</button>
+    <button class="btn btn-primary">123</button>
+    <button class="btn btn-inverse">123</button>
+    #}
+
+  <div class="row">
+
+    {{ column_left }}
+    
     {% if column_left and column_right %}
-    {% set class = 'col-sm-6' %}
+        {% set class = 'col-sm-6' %}
     {% elseif column_left or column_right %}
-    {% set class = 'col-sm-9' %}
+        {% set class = 'col-sm-9' %}
     {% else %}
-    {% set class = 'col-sm-12' %}
+        {% set class = 'col-sm-12' %}
     {% endif %}
-    <div id="content" class="{{ class }}">{{ content_top }}{{ content_bottom }}</div>
+    
+    <div id="content" class="{{ class }}">
+
+        {{ content_top }}
+
+        {{ panel_menu }}
+       
+        {{ content_bottom }}
+    </div>
     {{ column_right }}</div>
 </div>
 

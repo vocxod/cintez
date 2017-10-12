@@ -1,5 +1,5 @@
 <?php
-class ControllerCommonHome extends Controller {
+class ControllerCommonHome2 extends Controller {
 	public function index() {
 		$this->document->setTitle($this->config->get('config_meta_title'));
 		$this->document->setDescription($this->config->get('config_meta_description'));
@@ -13,9 +13,10 @@ class ControllerCommonHome extends Controller {
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
-		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header');
-		$data['panel_menu'] = $this->load->controller('common/panel_menu');
-		$this->response->setOutput($this->load->view('common/home', $data));
+
+		$data['footer2'] = $this->load->controller('common/footer2');
+		$data['header2'] = $this->load->controller('common/header2');
+
+		$this->response->setOutput($this->load->view('common/home2', $data));
 	}
 }
