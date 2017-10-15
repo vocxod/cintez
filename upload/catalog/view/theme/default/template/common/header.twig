@@ -79,12 +79,19 @@
       </ul>
     </div>
   </div>
+
+  {{ menu_top }}
+
 </nav>
+
+
+
 <header>
+
+{#
   <div class="container">
     <div class="row">
       <div class="col-sm-4">
-        {# скрываем ЛОГО на айфоне #}
         <div id="logo" class="hidden-xs" >{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
           <h1><a href="{{ home }}">{{ name }}</a></h1>
           {% endif %}</div>
@@ -93,7 +100,11 @@
       <div class="col-sm-3">{{ cart }}</div>
     </div>
   </div>
+#}
 </header>
-{{ menu }}
-{{ menu_top }}
+
+
+
+{#{ menu }#}
+
 {#{ menu_top2 }#}
