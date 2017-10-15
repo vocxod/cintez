@@ -1,60 +1,83 @@
 <div class="container">
+
+
+    {% for item in categories %}
+
+      {% if loop.index == 1 or loop.index == 6 %}
+          <div class="row">
+      {% endif %}
+
+          {% if loop.index < 11 %}
+            <div class="col-md-1-5">
+                <div class="panel panel-primary">
+                    {{  item.category_id }} : {{  item.name }}
+                </div>
+            </div>
+          {% endif %}
+
+      {% if loop.index % 5 == 0 %}
+          </div>
+      {% endif %}
+
+    {% endfor %}
+
+  <hr/>
+
   <div class="row">
-    <div class="col-md-2">
+    
+    <div class="col-md-1-5">
       <div class="panel panel-primary">
         Учреждения здравохранения
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-success">
         Салоны красоты и SPA
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-info">
         Пищевая промышленность
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-warning">
         Сельское хозяйство
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-danger">
         HoReGa
       </div>
     </div>
-    <div class="col-md-2">
-      <div class="panel panel-primary">Школы и детские сады</div>
-    </div>
+
   </div>
 
     <div class="row">
-    <div class="col-md-2">
+
+    <div class="col-md-1-5">
+      <div class="panel panel-danger">Школы и детские сады</div>
+    </div>
+
+    <div class="col-md-1-5">
       <div class="panel panel-primary">
         Клининг
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-success">
         Машиностроение и металлургия
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-info">
         Транспорт
       </div>
     </div>
-    <div class="col-md-2">
+    <div class="col-md-1-5">
       <div class="panel panel-warning">Обслуживание теплообменного оборудования</div>
     </div>
-    <div class="col-md-2">
-      <div class="panel panel-danger">...</div>
-    </div>
-    <div class="col-md-2">
-      <div class="panel panel-primary">...</div>
-    </div>
+
   </div>
 </div>
 

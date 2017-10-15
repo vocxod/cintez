@@ -1,5 +1,5 @@
 <?php
-class ControllerCommonMenuTop extends Controller {
+class ControllerCommonMenuTop2 extends Controller {
 	public function index() {
 		$this->load->language('common/menu');
 
@@ -19,6 +19,6 @@ class ControllerCommonMenuTop extends Controller {
 			['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 		];
 
-		return $this->load->view('common/menu_top', $data);
+		return $this->load->view('common/menu_top2', $data);
 	}
 }
