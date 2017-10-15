@@ -10,12 +10,12 @@ class ControllerCommonMenuTop extends Controller {
 		];
 
 		$data['down_line']= [ 
-			['title'=>'ПРОДУКЦИЯ', 'href' => '#1', 'target'=>'_self', 'active' => true],
-			['title'=>'О КОМПАНИИ', 'href' => '#2', 'target'=>'_self', 'active' => true],
-			['title'=>'ДИЛЕРАМ', 'href' => '#3', 'target'=>'_blank', 'active' => true],
-			['title'=>'ПУБЛИКАЦИИ', 'href' => '#3', 'target'=>'_blank', 'active' => true],
-			['title'=>'НОВОСТИ', 'href' => '#3', 'target'=>'_blank', 'active' => true], 			
-			['title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => '#3', 'target'=>'_blank', 'active' => true],
+			['title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=59', 'target'=>'_self', 'active' => true],
+			['title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/information&information_id=4', 'target'=>'_self', 'active' => true],
+			['title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true],
+			['title'=>'ПУБЛИКАЦИИ', 'href' => '#', 'target'=>'_blank', 'active' => true],
+			['title'=>'НОВОСТИ', 'href' => '#', 'target'=>'_blank', 'active' => true], 			
+			['title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
 			['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 		];
 

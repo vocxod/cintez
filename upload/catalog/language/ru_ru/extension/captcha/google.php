@@ -1,9 +1,9 @@
 <?php
 // Text
-$_['text_captcha']  = 'Captcha';
+$_['text_captcha']  = 'Защита от роботов';
 
 // Entry
-$_['entry_captcha'] = 'Please complete the captcha validation below';
+$_['entry_captcha'] = 'Пройдите проверку на то, что вы не робот';
 
 // Error
-$_['error_captcha'] = 'Verification is not correct!';
+$_['error_captcha'] = 'Проверка не пройдена!';

@@ -1,9 +1,9 @@
 <?php
 // Text
-$_['text_captcha']  = 'Captcha';
+$_['text_captcha']  = 'Защита от роботов';
 
 // Entry
-$_['entry_captcha'] = 'Enter the code in the box below';
+$_['entry_captcha'] = 'Укажите код ';
 
 // Error
-$_['error_captcha'] = 'Verification code does not match the image!';
+$_['error_captcha'] = 'Проверочный код не соответствует изображенному на картинке!';
