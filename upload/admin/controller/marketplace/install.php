@@ -209,7 +209,9 @@ class ControllerMarketplaceInstall extends Controller {
 						}
 	
 						if (is_dir($file) && !is_dir($path)) {
-							if (mkdir($path, 0777)) {
+							//var_dump( $path ); die();
+                            if (mkdir($path, 0777)) {
+
 								$this->model_setting_extension->addExtensionPath($extension_install_id, $destination);
 							}
 						}
