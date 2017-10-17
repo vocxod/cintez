@@ -2,13 +2,13 @@
 class ControllerCommonPanelMenu extends Controller {
 	public function index() {
 		$this->load->language('common/menu');
+		
+		$data['categories'] = array();
 
 		// Menu
 		$this->load->model('catalog/category');
 
 		$this->load->model('catalog/product');
-
-		$data['categories'] = array();
 
 		$categories = $this->model_catalog_category->getCategories(0);
 
@@ -40,6 +40,7 @@ class ControllerCommonPanelMenu extends Controller {
 				);
 			}
 		}
+		//var_dump( $categories ); die();
 		// рендеринг хтмл и возврат его наверх для вставки куда надо
 		return $this->load->view('common/panel_menu', $data);
 	}
