@@ -16,46 +16,85 @@
     font-size: 14px;
   }
   .navbar-inverse.nav-upper .navbar-upper > li > a {
-    color: #777;
+    color: #111;
   }
+  .navbar-inverse.nav-upper .navbar-upper > li > a:hover {
+    color: rgb(54,154,56);
+  }
+
+  .navbar-inverse .navbar-nav > li > a:hover, 
+  .navbar-inverse .navbar-nav > li > a:focus {
+      color: rgb(54,154,56);
+      /*font-weight: bold;*/
+      background-color: transparent;
+  }
+
   @media (min-width: 768px) {
     .navbar.navbar-lower .navbar-nav {
-      margin-left: 100px;
+      margin-left: 330px;
     }
   }
   .navbar-logo {
-    background-image: url('https://lh3.googleusercontent.com/-tw5LsU4Fg28/Umo6BBcoCnI/AAAAAAAAmjE/1iqULsem06E/w896-h896/heisencat.png');
-    width: 90px;
-    height: 90px;
+    /*background-image: url('https://lh3.googleusercontent.com/-tw5LsU4Fg28/Umo6BBcoCnI/AAAAAAAAmjE/1iqULsem06E/w896-h896/heisencat.png');*/
+    outline: 0px dashed red;
+    background-image: url('http://ocart3.dev/image/catalog/logo-325x160.png');
+    width: 325px;
+    height: 120px;
     background-size: cover;
-    background-position: center center;
+    background-position: 0px -20px;
     background-repeat: no-repeat;
     position: absolute;
     top: 5px;
     left: 15px;
     z-index: 1051;
   }
+  
+  .navbar-inverse {
+      background-color: rgb(240,244,245);
+      background-image: linear-gradient(to bottom, rgb(240,244,245) 0%, rgb(240,244,245) 100%);
+      color: #111;
+      border: 0px solid green;
+      font-size: 18px;
+  }
+
+  .up_line {
+    color: #111;
+  }
+  .navhover:hover {
+    color: rgb(54,154,56);
+  }
+
 </style>
 
-<div class="container">
-  <div class="row">
+<div class="container" style="outline:0px dashed red;margin-bottom:20px;">
+  <div class="row" >
     <div class="col-md-12">
 
       <a class="navbar-logo" href="#"></a>
 
-      <nav class="navbar-inverse nav-upper">
+      <nav id="id1" class="navbar-inverse nav-upper">
         <div class="container-fluid">
           <ul class="nav navbar-upper">
+            {#
             {% for item in up_line %}
             <li>
               <a href="{{ item.href }}">{{ item.title }}</a>
             </li>
             {% endfor %}
+            #}
+            <li>
+              <a class="up_line" href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;8 800 200 30 35</a>
+            <li>
+              <a class="up_line" href="#"> <i fa class="fa-binoculars"></i>&nbsp;ПОДБОР ПРОДУКТА</a>
+            </li>
+            <li>
+              <a class="up_line" href="#"> <i class="fa fa-calculator"></i>&nbsp;ДЕЗКАЛЬКУЛЯТОР</a>
+            </li>
           </ul>
         </div>
       </nav>
 
-      <nav class="navbar navbar-inverse navbar-static-top navbar-lower">
+      <nav id="id2" class="navbar navbar-inverse navbar-static-top navbar-lower" >
         <div class="container-fluid">
 
           <div class="navbar-header">
@@ -66,13 +105,13 @@
             </button>
           </div>
 
-          <div class="collapse navbar-collapse" id="navbar">
+          <div class="collapse navbar-collapse" id="navbar" style="margin-top:20px; outline:0px dashed red;">
             <ul class="nav navbar-nav">
               
               {% for item in down_line %}
                 {% if item.active %}
               <li>
-                <a href="{{ item.href }}">{{ item.title }}</a>
+                <a class="navhover" href="{{ item.href }}">{{ item.title }}</a>
               </li>
                 {% endif %}
               {% endfor %}

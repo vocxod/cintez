@@ -26,6 +26,7 @@ class ControllerCommonZone extends Controller {
 		foreach ($results as $result) {
 			if ($result['status']) {
 				$data['zones'][] = array(
+					'layout' => 1,
 					'name'        => $result['name'],
 					'code'         => $result['code'],
 					//'symbol_left'  => $result['symbol_left'],
