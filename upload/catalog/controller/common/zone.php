@@ -63,6 +63,7 @@ class ControllerCommonZone extends Controller {
 		if (isset($this->request->post['code'])) {
 			$aResult = $this->model_localisation_zone->getZone( $this->request->post['code'] ); 
 			
+			echo $this->request->post['code'] . "\n\n";
 			//var_dump($aResult); die();
 			
 			if($aResult){

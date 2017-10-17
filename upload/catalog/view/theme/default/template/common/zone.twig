@@ -4,7 +4,7 @@
         <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_zone.name }}<span class="caret"></span></a>
         <ul class="dropdown-menu" role="menu">
         {% for zone in zones %}
-        <li><a href="#">{{ zone.name }}</a></li>
+        <li><a href="#" name="{{zone.code}}">{{zone.code}} : {{ zone.name }}</a></li>
         {% endfor %}
         <li class="divider"></li>
         <li><a href="#">Выберите город</a></li>

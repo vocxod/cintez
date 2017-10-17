@@ -44,10 +44,14 @@ $(document).ready(function() {
 	// Language
 	$('#form-language .language-select').on('click', function(e) {
 		e.preventDefault();
-
+		console.log(1);
+		console.log( $('#form-language input[name=\'code\']').val($(this).attr('name')) );
+		
 		$('#form-language input[name=\'code\']').val($(this).attr('name'));
 
-		$('#form-language').submit();
+		return false;
+
+		//$('#form-language').submit();
 	});
 
 	// Zone
