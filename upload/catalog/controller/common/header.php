@@ -87,7 +87,7 @@ class ControllerCommonHeader extends Controller {
 
 		$data['menu_top'] = $this->load->controller('common/menu_top');
 		//$data['menu_top'] = $this->load->controller('common/menu_top2');
-
+		// var_dump( $data['zone']); die();
 		return $this->load->view('common/header', $data);
 	}
 }

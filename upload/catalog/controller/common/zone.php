@@ -53,15 +53,18 @@ class ControllerCommonZone extends Controller {
 
 			$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
 		}
-
 		return $this->load->view('common/zone', $data);
+		// var_dump( $data ); die();
+		// return "<li>123</li>";
 	}
 
 	public function zone() {
 		$this->load->model('localisation/zone');
 		if (isset($this->request->post['code'])) {
 			$aResult = $this->model_localisation_zone->getZone( $this->request->post['code'] ); 
+			
 			//var_dump($aResult); die();
+			
 			if($aResult){
 				$this->session->data['current_zone'] = $aResult;
 			} else {

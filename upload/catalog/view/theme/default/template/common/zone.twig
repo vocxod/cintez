@@ -1,27 +1,16 @@
-{% if zones|length > 1 %}
-<div class="pull-left">
-  <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
-    <div class="btn-group">
-  
-      <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
-        <span class="glyphicon glyphicon-map-marker" style="color:#FAFAFA; font-size:14px;"></span>
-        <span class="hidden-xs hidden-sm hidden-md zone_font" style="">
-          {{ current_zone.name }}
-        </span>&nbsp;
-        <i class="fa fa-caret-down" style="color:#FAFAFA; font-size:14px;"></i>
-      </button>
-
-      <ul class="dropdown-menu">
+<form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
+  <ul class="nav navbar-nav navbar-left">
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_zone.name }}<span class="caret"></span></a>
+        <ul class="dropdown-menu" role="menu">
         {% for zone in zones %}
-              <li>
-                <button  style="color:#888;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">&#x20bd; - {{ zone.name }}</button>
-              </li>
+        <li><a href="#">{{ zone.name }}</a></li>
         {% endfor %}
-      </ul>
-
-    </div>
-    <input type="hidden" name="code" value="" />
-    <input type="hidden" name="redirect" value="{{ redirect }}" />
-  </form>
-</div>
-{% endif %} 
+        <li class="divider"></li>
+        <li><a href="#">Выберите город</a></li>
+        </ul>
+    </li>
+  </ul>
+  <input type="hidden" name="code" value="" />
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
+</form>
