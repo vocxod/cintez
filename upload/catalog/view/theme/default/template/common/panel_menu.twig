@@ -1,52 +1,33 @@
 <div class="container">
+  <div class="row">
+      {% for item in categories %}
 
+        {% if loop.index == 1 or loop.index == 6 %}
+            <div class="row">
+        {% endif %}
 
-    {% for item in categories %}
-{#
-      'category_id' => {{ item[0].category_id }} 
-      'image' => {{ item[0].image }}
-      'parent_id' =>{{ item.parent_id }}
-      'top' => {{ item.top }}
-      'column' => {{ item.column }}
-      'sort_order' => {{ item.sort_order }}
-      'status' => {{ item.status }}
-      'date_added' => {{ item.date_added }}
-      'date_modified' => {{ item.date_modified }}
-      'language_id' => {{ item.language_id }}
-      'name' => {{ item.name }}
-      'description' => {{ item.description }}
-      'meta_title' => {{ item.meta_title }}
-      'meta_description' => {{ item.meta_description }}
-      'meta_keyword' => {{ item.meta_keyword }}
-      'store_id' {{ item.store_id }}
-#}
-      {% if loop.index == 1 or loop.index == 6 %}
-          <div class="row">
-      {% endif %}
+            {% if loop.index < 11 %}
+              <div class="col-md-1-5 " style="text-align:center;">
+                  <div class="panel_menu">
+                    <a href="{{ item.href }}">
+                      <img src="/image/{{ item.image }}" alt="" title=""/> <br/> 
+                      {{ item.name }}
+                    </a>
+                  </div>
+              </div>
+            {% endif %}
 
-          {% if loop.index < 11 %}
-            <div class="col-md-1-5 " style="text-align:center;">
-                <div class="panel_menu">
-                  <a href="{{ item.href }}">
-                    <img src="/image/{{ item.image }}" alt="" title=""/> <br/> 
-                    {{ item.name }}
-                  </a>
-                </div>
+        {% if loop.index % 5 == 0 %}
             </div>
-          {% endif %}
+        {% endif %}
 
-      {% if loop.index % 5 == 0 %}
-          </div>
-      {% endif %}
-
-    {% endfor %}
-
-<h3>Производитель профессиональной химии</h3>
-  <div class="col-md-8">
-    lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor 
+      {% endfor %}
   </div>
-  <div class="col-md-4 hidden-xs hidden-sm">
-    <img class="col-md-6" src="/image/catalog/demo/banners/iPhone6.jpg" alt="alt" title="title"/>
+  <div class="row" id="information">
+    
+    {{ information_description | raw }}
+  
   </div>  
+
 </div>
 

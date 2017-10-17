@@ -6,10 +6,11 @@ class ControllerCommonPanelMenu extends Controller {
 		$data['categories'] = array();
 
 		// Menu
+
 		$this->load->model('catalog/category');
+		$this->load->model('catalog/information');
 
-		$this->load->model('catalog/product');
-
+		$info_page = $this->model_catalog_information->getInformation(11);
 		$categories = $this->model_catalog_category->getCategories(0);
 
 		foreach ($categories as $category) {
@@ -40,12 +41,21 @@ class ControllerCommonPanelMenu extends Controller {
 					'image'	=> $category['image'],
 					'category_id' => $category['category_id'],
 					'status'	=> $category['status'],
+
 				);
 			}
 		}
-		// var_dump( $data['categories'] ); die(); 
-		$data['categories'] = $categories;
+		 
+		//
+		$data['information_description'] =  html_entity_decode( $info_page['description'] );
+		//var_dump( $data['information_description']); die(); 
+		// $data['categories'] = $categories;
+		
+		//var_dump( $data['categories'] ); die();
+
 		// рендеринг хтмл и возврат его наверх для вставки куда надо
 		return $this->load->view('common/panel_menu', $data);
 	}
 }
+
+

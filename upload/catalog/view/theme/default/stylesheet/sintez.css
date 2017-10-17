@@ -73,3 +73,16 @@ a.zone-select {
 .panel_menu>a:hover{
   color: #FEFAEA;
 }
+
+#information {
+  font-size: 16px;
+}
+
+#information>h3 {
+  font-size: 24px;
+  font-weight: bold;
+}
+#information>h5 {
+  font-size: 18px;
+  font-weight: bold;
+}
