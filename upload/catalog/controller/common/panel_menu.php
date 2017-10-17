@@ -36,11 +36,15 @@ class ControllerCommonPanelMenu extends Controller {
 					'name'     => $category['name'],
 					'children' => $children_data,
 					'column'   => $category['column'] ? $category['column'] : 1,
-					'href'     => $this->url->link('product/category', 'path=' . $category['category_id'])
+					'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
+					'image'	=> $category['image'],
+					'category_id' => $category['category_id'],
+					'status'	=> $category['status'],
 				);
 			}
 		}
-		//var_dump( $categories ); die();
+		// var_dump( $data['categories'] ); die(); 
+		$data['categories'] = $categories;
 		// рендеринг хтмл и возврат его наверх для вставки куда надо
 		return $this->load->view('common/panel_menu', $data);
 	}
