@@ -1,27 +1,61 @@
-<h3>news2 {{ heading_title }}</h3>
+<h3>{{ heading_title }}</h3>
 <div class="row"> {% for product in products %}
-  <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-    <div class="product-thumb transition">
+
+  <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="product-thumb transition" >
       <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+      
       <div class="caption">
         <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
-        <p>{{ product.description }}</p>
-        {% if product.rating %}
+        <p>{{ product.date_added|date("m/d/Y") }}</p>
+        {% if product.show_newslatest %}
+          <p style="min-height:120px; max-height:120px; overflow:hidden;">{{ product.newslatest }}</p>
+        {% endif %}
+
+        {% if product.rating and product.name == '123' %}
         <div class="rating">{% for i in 1..5 %}
           {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
           {% endfor %}</div>
         {% endif %}
-        {% if product.price %}
+        
+        {% if product.price and product.name == '123' %}
         <p class="price"> {% if not product.special %}
           {{ product.price }}
           {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
           {% if product.tax %} <span class="price-tax">{{ text_tax }} {{ product.tax }}</span> {% endif %} </p>
-        {% endif %} </div>
-      <div class="button-group">
-        <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
-        <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
-        <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+        {% endif %}
+
       </div>
+      
+      {% if product.name == '123' %}
+        <div class="button-group">
+          <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+        </div>
+      {% endif %}
+
+        <div class="button-group" style="border:none; background:none;">
+          <button style="width:50%; color: #ffffff; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#229ac8; background-color: rgb(85, 131, 203); background-image: linear-gradient(to bottom, #23a1d1, #1f90bb); background-image: linear-gradient(to bottom, rgb(85, 131, 203), rgb(85, 131, 203) ); background-repeat: repeat-x;" type="button">
+            {#<i class="fa fa-shopping-cart"></i>#} 
+            <span class="hidden-xs hidden-sm hidden-md" style="color:#FEFAEA">ПОДРОБНЕЕ</span>
+          </button>
+
+          <button style="width:15%; margin-left:15px;" type="button" title="{{ button_wishlist }}">
+            <i class="fa fa-vk"></i>
+          </button>
+
+          <button style="width:15%;" type="button"  title="{{ button_wishlist }}">
+            <i class="fa fa-twitter"></i>
+          </button>
+          
+          <button style="width:15%;" type="button"  title="{{ button_compare }}">
+            <i class="fa fa-facebook"></i>
+          </button>
+
+        </div>
+
     </div>
   </div>
+  
   {% endfor %} </div>
