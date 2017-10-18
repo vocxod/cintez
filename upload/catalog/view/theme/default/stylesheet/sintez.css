@@ -88,3 +88,20 @@ a.zone-select {
   font-size: 18px;
   font-weight: bold;
 }
+
+
+.footer-list {
+  list-style-type: none;
+  padding-left: 0px;
+}
+.footer-list > li {
+  color: #111;
+}
+.footer-list > li > a {
+  color: #111;
+  text-decoration: none;
+}
+
+.footer-list > li > a:hover {
+  color: rgb(54,154,56);
+}

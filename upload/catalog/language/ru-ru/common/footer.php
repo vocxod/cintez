@@ -14,4 +14,4 @@ $_['text_account']      = 'Личный Кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Рассылка';
-$_['text_powered']      = 'Работает на <a href="http://opencart3x.ru">русской версии OpenCart</a><br /> %s &copy; %s';
+$_['text_powered']      = '2013 - %s &copy; OOO СпецСинтез %s';

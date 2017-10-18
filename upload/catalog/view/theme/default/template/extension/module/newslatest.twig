@@ -1,15 +1,15 @@
-<h3>{{ heading_title }}</h3>
+<h3 style="font=size:24px; font-weight: bold; border-bottom: 2px solid rgb(54,154,56);">{{ heading_title }}</h3>
 <div class="row">
  {% for product in products %}
   <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
     <div class="product-thumb transition">
       <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
-      <div class="caption">
+      <div class="caption" style="height:220px; overflow:hidden;">
         <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
 
         <p>{{ product.date_added|date("m/d/Y") }}</p>
         {% if product.show_newslatest %}
-          <p style="height:120px; overflow:hidden;">{{ product.newslatest }}</p>
+          {{ product.newslatest }}
         {% endif %}
 
         {#<p>{{ product.description }}</p>#}
@@ -43,9 +43,9 @@
         #}
 
       </div>
-        <div class="button-group" style="border:none; background:none;">
+        <div class="button-group" style="margin-top:5px; border:none; background:none;">
 
-          <button style="width:33%;color:#111;" type="button">
+          <button style="width:45%;color:#111;" type="button">
             <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
           </button>
 

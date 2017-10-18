@@ -1,6 +1,51 @@
-<footer style="background:rgb(54,154,56);color:#FEFAEA; margin-top:20px;">
+<footer style="background:rgb(240,244,245);color:#111; margin-top:20px;">
   <div class="container">
     <div class="row">
+      <div class="col-md-6">
+        <img src="/image/catalog/logo-325x160.png" alt="" title="" style="width:325px; height:160px;"/>
+      </div>
+
+      <div class="col-md-2">
+        <h3>МЕНЮ</h3>
+        <ul class="footer-list">
+          <li><a href="#">Продукция</a></li>
+          <li><a href="#">О компании</a></li>
+          <li><a href="#">Дилерам</a></li>
+          <li><a href="#">Прайс-лист</a></li>
+          <li><a href="#">Новости</a></li>
+          <li><a href="#">Контакты</a></li>
+          <li><a href="#">Подбор продукта</a></li>
+          <li><a href="#">Дезкалькулятор</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>КОНТАКТ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:sales@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;sales@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a href="#"><i class="fa fa-vk"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>195279, Санкт-Петербург </li>
+          <li>Индустриальный пр-т, д. 49 литера "К"</li>
+        </ul>
+      </div>
+
+      {#
       {% if informations %}
       <div class="col-sm-3">
         <h5>{{ text_information }}</h5>
@@ -37,16 +82,13 @@
           <li><a href="{{ newsletter }}">{{ text_newsletter }}</a></li>
         </ul>
       </div>
+      #}
     </div>
-    <hr>
     <p>{{ powered }}</p>
   </div>
 </footer>
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
-<!--
-OpenCart is open source software and you are free to remove the powered by OpenCart if you want, but its generally accepted practise to make a small donation.
-Please donate via PayPal to donate@opencart.com
-//-->
+
 </body></html>
