@@ -949,3 +949,69 @@
 2017-10-18 15:20:44 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
 2017-10-18 15:20:44 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
 2017-10-18 15:20:44 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:38:31 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:38:31 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:38:31 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:38:31 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:38:31 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:38:31 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:08 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:08 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:08 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:08 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:08 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:08 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:17 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:17 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:17 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:17 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:17 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:17 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:19 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:19 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:19 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:19 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:19 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:19 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:21 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:21 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:21 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:21 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:21 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:21 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:24 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:24 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:24 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:24 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:24 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:24 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:24 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:24 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:24 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:24 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:24 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:24 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:38 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:38 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:38 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:38 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:38 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:38 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:42 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:42 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:42 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:42 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:42 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:45 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:45 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:45 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:45 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:45 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:45 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 16:39:45 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 16:39:45 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 16:39:45 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 16:39:45 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 16:39:45 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 16:39:45 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
