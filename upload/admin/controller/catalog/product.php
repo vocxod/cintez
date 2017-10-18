@@ -589,10 +589,16 @@ class ControllerCatalogProduct extends Controller {
 
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
+// $data['product_description'] содержит кроме описания, метатегов, еще и новостной пост
+
 		if (isset($this->request->post['product_description'])) {
 			$data['product_description'] = $this->request->post['product_description'];
 		} elseif (isset($this->request->get['product_id'])) {
+			
 			$data['product_description'] = $this->model_catalog_product->getProductDescriptions($this->request->get['product_id']);
+			//var_dump( $data['product_description'] ); die();
+			
+			
 		} else {
 			$data['product_description'] = array();
 		}
