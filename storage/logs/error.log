@@ -1015,3 +1015,21 @@
 2017-10-18 16:39:45 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
 2017-10-18 16:39:45 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
 2017-10-18 16:39:45 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 17:26:07 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 17:26:07 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 17:26:07 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 17:26:07 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 17:26:07 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 17:26:07 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 19:25:46 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 19:25:46 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 19:25:46 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 19:25:46 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 19:25:46 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 19:25:46 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
+2017-10-18 21:11:33 - PHP Warning:  fopen(/var/www/html/vkartel.ru/opencart/upload/admin/view/stylesheet/bootstrap.css): failed to open stream: Permission denied in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 12
+2017-10-18 21:11:33 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 14
+2017-10-18 21:11:33 - PHP Warning:  fwrite() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 16
+2017-10-18 21:11:33 - PHP Warning:  fflush() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 18
+2017-10-18 21:11:33 - PHP Warning:  flock() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 20
+2017-10-18 21:11:33 - PHP Warning:  fclose() expects parameter 1 to be resource, boolean given in /var/www/html/vkartel.ru/opencart/upload/admin/controller/startup/sass.php on line 22
