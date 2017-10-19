@@ -75,21 +75,24 @@
       <nav id="id1" class="navbar-inverse nav-upper">
         <div class="container-fluid">
           <ul class="nav navbar-upper">
-            {#
             {% for item in up_line %}
-            <li>
-              <a href="{{ item.href }}">{{ item.title }}</a>
-            </li>
+              <li>
+                <a class="up_line" href="{{item.href}}"> 
+                  <i class="{{item.awesome}}"></i>
+                  &nbsp;{{ item.title }}
+                </a>
+              <li>
             {% endfor %}
-            #}
+{#}
             <li>
               <a class="up_line" href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;8 800 200 30 35</a>
             <li>
-              <a class="up_line" href="#"> <i fa class="fa-binoculars"></i>&nbsp;ПОДБОР ПРОДУКТА</a>
+              <a class="up_line" href="#"> <i fa class="fa fa-binoculars"></i>&nbsp;ПОДБОР ПРОДУКТА</a>
             </li>
             <li>
               <a class="up_line" href="#"> <i class="fa fa-calculator"></i>&nbsp;ДЕЗКАЛЬКУЛЯТОР</a>
             </li>
+#}
           </ul>
         </div>
       </nav>
