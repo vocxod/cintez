@@ -5,6 +5,8 @@
         <img src="/image/catalog/logo-325x160.png" alt="" title="" style="width:325px; height:160px;"/>
       </div>
 
+{% if lang == 'ru' %}
+
       <div class="col-md-2">
         <h3>МЕНЮ</h3>
         <ul class="footer-list">
@@ -27,7 +29,7 @@
           <li>с 9:00 до 18:00</li>
           <li>&nbsp;</li>
           <li>Электронная почта</li>
-          <li><a href="mailto:sales@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;sales@specsintez.com</li>
+          <li><a href="mailto:mail@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;mail@specsintez.com</li>
           <li>&nbsp;</li>
           <li>Мы в соцсетях</li>
           <li>
@@ -44,6 +46,61 @@
           <li>Индустриальный пр-т, д. 49 литера "К"</li>
         </ul>
       </div>
+{% endif %}
+
+{% if lang == 'en' %}
+
+      <div class="col-md-2">
+        <h3>MENU</h3>
+        <ul class="footer-list">
+          <li><a href="#">Products</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Dealers</a></li>
+          <li><a href="#">Price list</a></li>
+          <li><a href="#">News</a></li>
+          <li><a href="#">Contacts</a></li>
+          <li><a href="#">Select product</a></li>
+          <li><a href="#">Dez calculator</a></li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>CONTACT</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li>&nbsp;</li>
+          <li>Every day </li>
+          <li>From 9:00 to 18:00</li>
+          <li>&nbsp;</li>
+          <li>Email</li>
+          <li><a href="mailto:mail@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;mail@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Social</li>
+          <li>
+            <a href="#"><i class="fa fa-vk"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>49, Liter "K", Industrialnij prospekt </li>
+          <li>St. Peterburg,  Russia, 195279</li>
+        </ul>
+      </div>
+{% endif %}
+
+
+    </div>
+    <p>{{ powered }}</p>
+  </div>
+</footer>
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+
+</body></html>
 
       {#
       {% if informations %}
@@ -83,12 +140,3 @@
         </ul>
       </div>
       #}
-    </div>
-    <p>{{ powered }}</p>
-  </div>
-</footer>
-{% for script in scripts %}
-<script src="{{ script }}" type="text/javascript"></script>
-{% endfor %}
-
-</body></html>

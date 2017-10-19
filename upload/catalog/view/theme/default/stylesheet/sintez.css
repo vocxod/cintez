@@ -112,3 +112,32 @@ a.zone-select {
   font-weight: bold; 
   border-bottom: 2px solid rgb(54,154,56);"
 }
+
+/* featured image */
+.feature-image {
+  background: rgb (240,244,245);
+}
+
+/* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */
+@media (min-width: 768px) {
+    #column-left  .product-layout .col-md-3 {
+       width: 100%;
+    }
+
+  #column-left + #content .product-layout .col-md-3 {
+       width: 50%;
+    }
+
+  #column-left + #content + #column-right .product-layout .col-md-3 {
+       width: 100%;
+    }
+
+    #content + #column-right .product-layout .col-md-3 {
+       width: 100%;
+    }
+}
+
+/* fixed product layouts used in left and right columns */
+#column-left .product-layout, #column-right .product-layout {
+  width: 100%;
+}
