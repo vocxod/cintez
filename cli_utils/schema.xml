@@ -1,0 +1,1648 @@
+<?xml version="1.0" encoding="utf-8"?>
+<database name="default" defaultIdMethod="native" defaultPhpNamingMethod="underscore">
+  <table name="modx_site_content" idMethod="native" phpName="ModxSiteContent">
+    <column name="id" phpName="Id" type="INTEGER" size="10" sqlType="int(10) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="20" required="true" defaultValue="document"/>
+    <column name="ontent_type" phpName="OntentType" type="VARCHAR" size="50"/>
+    <column name="pagetitle" phpName="Pagetitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="longtitle" phpName="Longtitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="alias" phpName="Alias" type="VARCHAR" size="255" defaultValue=""/>
+    <column name="link_attributes" phpName="LinkAttributes" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="published" phpName="Published" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="pub_date" phpName="PubDate" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="unpub_date" phpName="UnpubDate" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="parent" phpName="Parent" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="isfolder" phpName="Isfolder" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="introtext" phpName="Introtext" type="LONGVARCHAR"/>
+    <column name="content" phpName="Content" type="LONGVARCHAR"/>
+    <column name="richtext" phpName="Richtext" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="true"/>
+    <column name="template" phpName="Template" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="menuindex" phpName="Menuindex" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="searchable" phpName="Searchable" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="true"/>
+    <column name="cacheable" phpName="Cacheable" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="true"/>
+    <column name="createdby" phpName="Createdby" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="createdon" phpName="Createdon" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="editedby" phpName="Editedby" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="editedon" phpName="Editedon" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="ddeleted" phpName="Ddeleted" type="INTEGER"/>
+    <column name="deletedon" phpName="Deletedon" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="deletedby" phpName="Deletedby" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="publishedon" phpName="Publishedon" type="INTEGER" size="20" required="true" defaultValue="0"/>
+    <column name="publishedby" phpName="Publishedby" type="INTEGER" size="10" required="true" defaultValue="0"/>
+    <column name="menutitle" phpName="Menutitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="donthit" phpName="Donthit" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="privateweb" phpName="Privateweb" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="privatemgr" phpName="Privatemgr" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="content_dispo" phpName="ContentDispo" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="hidemenu" phpName="Hidemenu" type="BOOLEAN" size="1" sqlType="tinyint(1) unsigned" required="true" defaultValue="false"/>
+    <column name="class_key" phpName="ClassKey" type="VARCHAR" size="100" required="true" defaultValue="modDocument"/>
+    <column name="context_key" phpName="ContextKey" type="VARCHAR" size="100" required="true" defaultValue="web"/>
+    <column name="content_type" phpName="ContentType" type="INTEGER" sqlType="int(11) unsigned" required="true" defaultValue="1"/>
+    <column name="uri" phpName="Uri" type="LONGVARCHAR"/>
+    <column name="uri_override" phpName="UriOverride" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="hide_children_in_tree" phpName="HideChildrenInTree" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="show_in_tree" phpName="ShowInTree" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <column name="properties" phpName="Properties" type="LONGVARCHAR"/>
+    <index name="alias">
+      <index-column name="alias"/>
+    </index>
+    <index name="published">
+      <index-column name="published"/>
+    </index>
+    <index name="pub_date">
+      <index-column name="pub_date"/>
+    </index>
+    <index name="unpub_date">
+      <index-column name="unpub_date"/>
+    </index>
+    <index name="parent">
+      <index-column name="parent"/>
+    </index>
+    <index name="isfolder">
+      <index-column name="isfolder"/>
+    </index>
+    <index name="template">
+      <index-column name="template"/>
+    </index>
+    <index name="menuindex">
+      <index-column name="menuindex"/>
+    </index>
+    <index name="searchable">
+      <index-column name="searchable"/>
+    </index>
+    <index name="cacheable">
+      <index-column name="cacheable"/>
+    </index>
+    <index name="hidemenu">
+      <index-column name="hidemenu"/>
+    </index>
+    <index name="class_key">
+      <index-column name="class_key"/>
+    </index>
+    <index name="context_key">
+      <index-column name="context_key"/>
+    </index>
+    <index name="uri">
+      <index-column name="uri" size="333"/>
+    </index>
+    <index name="uri_override">
+      <index-column name="uri_override"/>
+    </index>
+    <index name="hide_children_in_tree">
+      <index-column name="hide_children_in_tree"/>
+    </index>
+    <index name="show_in_tree">
+      <index-column name="show_in_tree"/>
+    </index>
+    <index name="cache_refresh_idx">
+      <index-column name="parent"/>
+      <index-column name="menuindex"/>
+      <index-column name="id"/>
+    </index>
+    <index name="content_ft_idx">
+      <index-column name="pagetitle"/>
+      <index-column name="longtitle"/>
+      <index-column name="description"/>
+      <index-column name="introtext"/>
+      <index-column name="content"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_address" idMethod="native" phpName="OcAddress">
+    <column name="address_id" phpName="AddressId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="firstname" phpName="Firstname" type="VARCHAR" size="32" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="32" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="40" required="true"/>
+    <column name="address_1" phpName="Address1" type="VARCHAR" size="128" required="true"/>
+    <column name="address_2" phpName="Address2" type="VARCHAR" size="128" required="true"/>
+    <column name="city" phpName="City" type="VARCHAR" size="128" required="true"/>
+    <column name="postcode" phpName="Postcode" type="VARCHAR" size="10" required="true"/>
+    <column name="country_id" phpName="CountryId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="zone_id" phpName="ZoneId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="custom_field" phpName="CustomField" type="LONGVARCHAR" required="true"/>
+    <index name="customer_id">
+      <index-column name="customer_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_api" idMethod="native" phpName="OcApi">
+    <column name="api_id" phpName="ApiId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="64" required="true"/>
+    <column name="key" phpName="Key" type="LONGVARCHAR" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_api_ip" idMethod="native" phpName="OcApiIp">
+    <column name="api_ip_id" phpName="ApiIpId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="api_id" phpName="ApiId" type="INTEGER" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_api_session" idMethod="native" phpName="OcApiSession">
+    <column name="api_session_id" phpName="ApiSessionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="api_id" phpName="ApiId" type="INTEGER" required="true"/>
+    <column name="session_id" phpName="SessionId" type="VARCHAR" size="32" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_attribute" idMethod="native" phpName="OcAttribute">
+    <column name="attribute_id" phpName="AttributeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="attribute_group_id" phpName="AttributeGroupId" type="INTEGER" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_attribute_description" idMethod="native" phpName="OcAttributeDescription">
+    <column name="attribute_id" phpName="AttributeId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_attribute_group" idMethod="native" phpName="OcAttributeGroup">
+    <column name="attribute_group_id" phpName="AttributeGroupId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_attribute_group_description" idMethod="native" phpName="OcAttributeGroupDescription">
+    <column name="attribute_group_id" phpName="AttributeGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_banner" idMethod="native" phpName="OcBanner">
+    <column name="banner_id" phpName="BannerId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_banner_image" idMethod="native" phpName="OcBannerImage">
+    <column name="banner_image_id" phpName="BannerImageId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="banner_id" phpName="BannerId" type="INTEGER" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="64" required="true"/>
+    <column name="link" phpName="Link" type="VARCHAR" size="255" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_cart" idMethod="native" phpName="OcCart">
+    <column name="cart_id" phpName="CartId" type="INTEGER" sqlType="int(11) unsigned" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="api_id" phpName="ApiId" type="INTEGER" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="session_id" phpName="SessionId" type="VARCHAR" size="32" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="recurring_id" phpName="RecurringId" type="INTEGER" required="true"/>
+    <column name="option" phpName="Option" type="LONGVARCHAR" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="5" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <index name="cart_id">
+      <index-column name="api_id"/>
+      <index-column name="customer_id"/>
+      <index-column name="session_id"/>
+      <index-column name="product_id"/>
+      <index-column name="recurring_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="oc_category" idMethod="native" phpName="OcCategory">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255"/>
+    <column name="parent_id" phpName="ParentId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="top" phpName="Top" type="BOOLEAN" size="1" required="true"/>
+    <column name="column" phpName="Column" type="INTEGER" defaultValue="1"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <column name="status" phpName="Status" type="INTEGER" defaultValue="0"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="category_site_id" phpName="CategorySiteId" type="INTEGER"/>
+    <index name="parent_id">
+      <index-column name="parent_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_category_description" idMethod="native" phpName="OcCategoryDescription">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <index name="name">
+      <index-column name="name"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_category_filter" idMethod="native" phpName="OcCategoryFilter">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="filter_id" phpName="FilterId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_category_path" idMethod="native" phpName="OcCategoryPath">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="path_id" phpName="PathId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="level" phpName="Level" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_category_to_layout" idMethod="native" phpName="OcCategoryToLayout">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_category_to_store" idMethod="native" phpName="OcCategoryToStore">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_country" idMethod="native" phpName="OcCountry">
+    <column name="country_id" phpName="CountryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <column name="iso_code_2" phpName="IsoCode2" type="VARCHAR" size="2" required="true"/>
+    <column name="iso_code_3" phpName="IsoCode3" type="VARCHAR" size="3" required="true"/>
+    <column name="address_format" phpName="AddressFormat" type="LONGVARCHAR" required="true"/>
+    <column name="postcode_required" phpName="PostcodeRequired" type="BOOLEAN" size="1" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_coupon" idMethod="native" phpName="OcCoupon">
+    <column name="coupon_id" phpName="CouponId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="20" required="true"/>
+    <column name="type" phpName="Type" type="CHAR" required="true"/>
+    <column name="discount" phpName="Discount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="logged" phpName="Logged" type="BOOLEAN" size="1" required="true"/>
+    <column name="shipping" phpName="Shipping" type="BOOLEAN" size="1" required="true"/>
+    <column name="total" phpName="Total" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="date_start" phpName="DateStart" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="date_end" phpName="DateEnd" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="uses_total" phpName="UsesTotal" type="INTEGER" required="true"/>
+    <column name="uses_customer" phpName="UsesCustomer" type="VARCHAR" size="11" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_coupon_category" idMethod="native" phpName="OcCouponCategory">
+    <column name="coupon_id" phpName="CouponId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_coupon_history" idMethod="native" phpName="OcCouponHistory">
+    <column name="coupon_history_id" phpName="CouponHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="coupon_id" phpName="CouponId" type="INTEGER" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_coupon_product" idMethod="native" phpName="OcCouponProduct">
+    <column name="coupon_product_id" phpName="CouponProductId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="coupon_id" phpName="CouponId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_cron" idMethod="native" phpName="OcCron">
+    <column name="cron_id" phpName="CronId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="cycle" phpName="Cycle" type="VARCHAR" size="12" required="true"/>
+    <column name="action" phpName="Action" type="LONGVARCHAR" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_currency" idMethod="native" phpName="OcCurrency">
+    <column name="currency_id" phpName="CurrencyId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="32" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="3" required="true"/>
+    <column name="symbol_left" phpName="SymbolLeft" type="VARCHAR" size="12" required="true"/>
+    <column name="symbol_right" phpName="SymbolRight" type="VARCHAR" size="12" required="true"/>
+    <column name="decimal_place" phpName="DecimalPlace" type="CHAR" required="true"/>
+    <column name="value" phpName="Value" type="DOUBLE" size="15" scale="8" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_custom_field" idMethod="native" phpName="OcCustomField">
+    <column name="custom_field_id" phpName="CustomFieldId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="32" required="true"/>
+    <column name="value" phpName="Value" type="LONGVARCHAR" required="true"/>
+    <column name="validation" phpName="Validation" type="VARCHAR" size="255" required="true"/>
+    <column name="location" phpName="Location" type="VARCHAR" size="10" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_custom_field_customer_group" idMethod="native" phpName="OcCustomFieldCustomerGroup">
+    <column name="custom_field_id" phpName="CustomFieldId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="required" phpName="Required" type="BOOLEAN" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_custom_field_description" idMethod="native" phpName="OcCustomFieldDescription">
+    <column name="custom_field_id" phpName="CustomFieldId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_custom_field_value" idMethod="native" phpName="OcCustomFieldValue">
+    <column name="custom_field_value_id" phpName="CustomFieldValueId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="custom_field_id" phpName="CustomFieldId" type="INTEGER" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_custom_field_value_description" idMethod="native" phpName="OcCustomFieldValueDescription">
+    <column name="custom_field_value_id" phpName="CustomFieldValueId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="custom_field_id" phpName="CustomFieldId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer" idMethod="native" phpName="OcCustomer">
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="firstname" phpName="Firstname" type="VARCHAR" size="32" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="32" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="96" required="true"/>
+    <column name="telephone" phpName="Telephone" type="VARCHAR" size="32" required="true"/>
+    <column name="fax" phpName="Fax" type="VARCHAR" size="32" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="255" required="true"/>
+    <column name="salt" phpName="Salt" type="VARCHAR" size="9" required="true"/>
+    <column name="cart" phpName="Cart" type="LONGVARCHAR"/>
+    <column name="wishlist" phpName="Wishlist" type="LONGVARCHAR"/>
+    <column name="newsletter" phpName="Newsletter" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="address_id" phpName="AddressId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="custom_field" phpName="CustomField" type="LONGVARCHAR" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="safe" phpName="Safe" type="BOOLEAN" size="1" required="true"/>
+    <column name="token" phpName="Token" type="LONGVARCHAR" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="40" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_activity" idMethod="native" phpName="OcCustomerActivity">
+    <column name="customer_activity_id" phpName="CustomerActivityId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="key" phpName="Key" type="VARCHAR" size="64" required="true"/>
+    <column name="data" phpName="Data" type="LONGVARCHAR" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_affiliate" idMethod="native" phpName="OcCustomerAffiliate">
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="company" phpName="Company" type="VARCHAR" size="40" required="true"/>
+    <column name="website" phpName="Website" type="VARCHAR" size="255" required="true"/>
+    <column name="tracking" phpName="Tracking" type="VARCHAR" size="64" required="true"/>
+    <column name="commission" phpName="Commission" type="DECIMAL" size="4" scale="2" required="true" defaultValue="0.00"/>
+    <column name="tax" phpName="Tax" type="VARCHAR" size="64" required="true"/>
+    <column name="payment" phpName="Payment" type="VARCHAR" size="6" required="true"/>
+    <column name="cheque" phpName="Cheque" type="VARCHAR" size="100" required="true"/>
+    <column name="paypal" phpName="Paypal" type="VARCHAR" size="64" required="true"/>
+    <column name="bank_name" phpName="BankName" type="VARCHAR" size="64" required="true"/>
+    <column name="bank_branch_number" phpName="BankBranchNumber" type="VARCHAR" size="64" required="true"/>
+    <column name="bank_swift_code" phpName="BankSwiftCode" type="VARCHAR" size="64" required="true"/>
+    <column name="bank_account_name" phpName="BankAccountName" type="VARCHAR" size="64" required="true"/>
+    <column name="bank_account_number" phpName="BankAccountNumber" type="VARCHAR" size="64" required="true"/>
+    <column name="custom_field" phpName="CustomField" type="LONGVARCHAR" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_approval" idMethod="native" phpName="OcCustomerApproval">
+    <column name="customer_approval_id" phpName="CustomerApprovalId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="9" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_group" idMethod="native" phpName="OcCustomerGroup">
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="approval" phpName="Approval" type="INTEGER" size="1" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_group_description" idMethod="native" phpName="OcCustomerGroupDescription">
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_history" idMethod="native" phpName="OcCustomerHistory">
+    <column name="customer_history_id" phpName="CustomerHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_ip" idMethod="native" phpName="OcCustomerIp">
+    <column name="customer_ip_id" phpName="CustomerIpId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <index name="ip">
+      <index-column name="ip"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_login" idMethod="native" phpName="OcCustomerLogin">
+    <column name="customer_login_id" phpName="CustomerLoginId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="96" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="total" phpName="Total" type="INTEGER" size="4" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <index name="email">
+      <index-column name="email"/>
+    </index>
+    <index name="ip">
+      <index-column name="ip"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_online" idMethod="native" phpName="OcCustomerOnline">
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" primaryKey="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="url" phpName="Url" type="LONGVARCHAR" required="true"/>
+    <column name="referer" phpName="Referer" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_reward" idMethod="native" phpName="OcCustomerReward">
+    <column name="customer_reward_id" phpName="CustomerRewardId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="points" phpName="Points" type="INTEGER" size="8" required="true" defaultValue="0"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_search" idMethod="native" phpName="OcCustomerSearch">
+    <column name="customer_search_id" phpName="CustomerSearchId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="keyword" phpName="Keyword" type="VARCHAR" size="255" required="true"/>
+    <column name="category_id" phpName="CategoryId" type="INTEGER"/>
+    <column name="sub_category" phpName="SubCategory" type="BOOLEAN" size="1" required="true"/>
+    <column name="description" phpName="Description" type="BOOLEAN" size="1" required="true"/>
+    <column name="products" phpName="Products" type="INTEGER" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_transaction" idMethod="native" phpName="OcCustomerTransaction">
+    <column name="customer_transaction_id" phpName="CustomerTransactionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_customer_wishlist" idMethod="native" phpName="OcCustomerWishlist">
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_download" idMethod="native" phpName="OcDownload">
+    <column name="download_id" phpName="DownloadId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="filename" phpName="Filename" type="VARCHAR" size="160" required="true"/>
+    <column name="mask" phpName="Mask" type="VARCHAR" size="128" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_download_description" idMethod="native" phpName="OcDownloadDescription">
+    <column name="download_id" phpName="DownloadId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_event" idMethod="native" phpName="OcEvent">
+    <column name="event_id" phpName="EventId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="trigger" phpName="Trigger" type="LONGVARCHAR" required="true"/>
+    <column name="action" phpName="Action" type="LONGVARCHAR" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_extension" idMethod="native" phpName="OcExtension">
+    <column name="extension_id" phpName="ExtensionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="32" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_extension_install" idMethod="native" phpName="OcExtensionInstall">
+    <column name="extension_install_id" phpName="ExtensionInstallId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="extension_id" phpName="ExtensionId" type="INTEGER" required="true"/>
+    <column name="extension_download_id" phpName="ExtensionDownloadId" type="INTEGER" required="true"/>
+    <column name="filename" phpName="Filename" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_extension_path" idMethod="native" phpName="OcExtensionPath">
+    <column name="extension_path_id" phpName="ExtensionPathId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="extension_install_id" phpName="ExtensionInstallId" type="INTEGER" required="true"/>
+    <column name="path" phpName="Path" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_filter" idMethod="native" phpName="OcFilter">
+    <column name="filter_id" phpName="FilterId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="filter_group_id" phpName="FilterGroupId" type="INTEGER" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_filter_description" idMethod="native" phpName="OcFilterDescription">
+    <column name="filter_id" phpName="FilterId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="filter_group_id" phpName="FilterGroupId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_filter_group" idMethod="native" phpName="OcFilterGroup">
+    <column name="filter_group_id" phpName="FilterGroupId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_filter_group_description" idMethod="native" phpName="OcFilterGroupDescription">
+    <column name="filter_group_id" phpName="FilterGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_geo_zone" idMethod="native" phpName="OcGeoZone">
+    <column name="geo_zone_id" phpName="GeoZoneId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_information" idMethod="native" phpName="OcInformation">
+    <column name="information_id" phpName="InformationId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="bottom" phpName="Bottom" type="INTEGER" size="1" required="true" defaultValue="0"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_information_description" idMethod="native" phpName="OcInformationDescription">
+    <column name="information_id" phpName="InformationId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="64" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_information_to_layout" idMethod="native" phpName="OcInformationToLayout">
+    <column name="information_id" phpName="InformationId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_information_to_store" idMethod="native" phpName="OcInformationToStore">
+    <column name="information_id" phpName="InformationId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_language" idMethod="native" phpName="OcLanguage">
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="5" required="true"/>
+    <column name="locale" phpName="Locale" type="VARCHAR" size="255" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="64" required="true"/>
+    <column name="directory" phpName="Directory" type="VARCHAR" size="32" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <index name="name">
+      <index-column name="name"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_layout" idMethod="native" phpName="OcLayout">
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_layout_module" idMethod="native" phpName="OcLayoutModule">
+    <column name="layout_module_id" phpName="LayoutModuleId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="position" phpName="Position" type="VARCHAR" size="14" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_layout_route" idMethod="native" phpName="OcLayoutRoute">
+    <column name="layout_route_id" phpName="LayoutRouteId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true"/>
+    <column name="route" phpName="Route" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_length_class" idMethod="native" phpName="OcLengthClass">
+    <column name="length_class_id" phpName="LengthClassId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="value" phpName="Value" type="DECIMAL" size="15" scale="8" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_length_class_description" idMethod="native" phpName="OcLengthClassDescription">
+    <column name="length_class_id" phpName="LengthClassId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="32" required="true"/>
+    <column name="unit" phpName="Unit" type="VARCHAR" size="4" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_location" idMethod="native" phpName="OcLocation">
+    <column name="location_id" phpName="LocationId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="address" phpName="Address" type="LONGVARCHAR" required="true"/>
+    <column name="telephone" phpName="Telephone" type="VARCHAR" size="32" required="true"/>
+    <column name="fax" phpName="Fax" type="VARCHAR" size="32" required="true"/>
+    <column name="geocode" phpName="Geocode" type="VARCHAR" size="32" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255"/>
+    <column name="open" phpName="Open" type="LONGVARCHAR" required="true"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR" required="true"/>
+    <index name="name">
+      <index-column name="name"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_manufacturer" idMethod="native" phpName="OcManufacturer">
+    <column name="manufacturer_id" phpName="ManufacturerId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_manufacturer_to_store" idMethod="native" phpName="OcManufacturerToStore">
+    <column name="manufacturer_id" phpName="ManufacturerId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_marketing" idMethod="native" phpName="OcMarketing">
+    <column name="marketing_id" phpName="MarketingId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="clicks" phpName="Clicks" type="INTEGER" size="5" required="true" defaultValue="0"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_marketing_report" idMethod="native" phpName="OcMarketingReport">
+    <column name="marketing_history_id" phpName="MarketingHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="marketing_id" phpName="MarketingId" type="INTEGER" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="country" phpName="Country" type="VARCHAR" size="2" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_modification" idMethod="native" phpName="OcModification">
+    <column name="modification_id" phpName="ModificationId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="extension_install_id" phpName="ExtensionInstallId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="author" phpName="Author" type="VARCHAR" size="64" required="true"/>
+    <column name="version" phpName="Version" type="VARCHAR" size="32" required="true"/>
+    <column name="link" phpName="Link" type="VARCHAR" size="255" required="true"/>
+    <column name="xml" phpName="Xml" type="LONGVARCHAR" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_module" idMethod="native" phpName="OcModule">
+    <column name="module_id" phpName="ModuleId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="32" required="true"/>
+    <column name="setting" phpName="Setting" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_option" idMethod="native" phpName="OcOption">
+    <column name="option_id" phpName="OptionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="32" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_option_description" idMethod="native" phpName="OcOptionDescription">
+    <column name="option_id" phpName="OptionId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_option_value" idMethod="native" phpName="OcOptionValue">
+    <column name="option_value_id" phpName="OptionValueId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="option_id" phpName="OptionId" type="INTEGER" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_option_value_description" idMethod="native" phpName="OcOptionValueDescription">
+    <column name="option_value_id" phpName="OptionValueId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="option_id" phpName="OptionId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order" idMethod="native" phpName="OcOrder">
+    <column name="order_id" phpName="OrderId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="invoice_no" phpName="InvoiceNo" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="invoice_prefix" phpName="InvoicePrefix" type="VARCHAR" size="26" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="store_name" phpName="StoreName" type="VARCHAR" size="64" required="true"/>
+    <column name="store_url" phpName="StoreUrl" type="VARCHAR" size="255" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="firstname" phpName="Firstname" type="VARCHAR" size="32" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="32" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="96" required="true"/>
+    <column name="telephone" phpName="Telephone" type="VARCHAR" size="32" required="true"/>
+    <column name="fax" phpName="Fax" type="VARCHAR" size="32" required="true"/>
+    <column name="custom_field" phpName="CustomField" type="LONGVARCHAR" required="true"/>
+    <column name="payment_firstname" phpName="PaymentFirstname" type="VARCHAR" size="32" required="true"/>
+    <column name="payment_lastname" phpName="PaymentLastname" type="VARCHAR" size="32" required="true"/>
+    <column name="payment_company" phpName="PaymentCompany" type="VARCHAR" size="60" required="true"/>
+    <column name="payment_address_1" phpName="PaymentAddress1" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_address_2" phpName="PaymentAddress2" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_city" phpName="PaymentCity" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_postcode" phpName="PaymentPostcode" type="VARCHAR" size="10" required="true"/>
+    <column name="payment_country" phpName="PaymentCountry" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_country_id" phpName="PaymentCountryId" type="INTEGER" required="true"/>
+    <column name="payment_zone" phpName="PaymentZone" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_zone_id" phpName="PaymentZoneId" type="INTEGER" required="true"/>
+    <column name="payment_address_format" phpName="PaymentAddressFormat" type="LONGVARCHAR" required="true"/>
+    <column name="payment_custom_field" phpName="PaymentCustomField" type="LONGVARCHAR" required="true"/>
+    <column name="payment_method" phpName="PaymentMethod" type="VARCHAR" size="128" required="true"/>
+    <column name="payment_code" phpName="PaymentCode" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_firstname" phpName="ShippingFirstname" type="VARCHAR" size="32" required="true"/>
+    <column name="shipping_lastname" phpName="ShippingLastname" type="VARCHAR" size="32" required="true"/>
+    <column name="shipping_company" phpName="ShippingCompany" type="VARCHAR" size="40" required="true"/>
+    <column name="shipping_address_1" phpName="ShippingAddress1" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_address_2" phpName="ShippingAddress2" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_city" phpName="ShippingCity" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_postcode" phpName="ShippingPostcode" type="VARCHAR" size="10" required="true"/>
+    <column name="shipping_country" phpName="ShippingCountry" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_country_id" phpName="ShippingCountryId" type="INTEGER" required="true"/>
+    <column name="shipping_zone" phpName="ShippingZone" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_zone_id" phpName="ShippingZoneId" type="INTEGER" required="true"/>
+    <column name="shipping_address_format" phpName="ShippingAddressFormat" type="LONGVARCHAR" required="true"/>
+    <column name="shipping_custom_field" phpName="ShippingCustomField" type="LONGVARCHAR" required="true"/>
+    <column name="shipping_method" phpName="ShippingMethod" type="VARCHAR" size="128" required="true"/>
+    <column name="shipping_code" phpName="ShippingCode" type="VARCHAR" size="128" required="true"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR" required="true"/>
+    <column name="total" phpName="Total" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="order_status_id" phpName="OrderStatusId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="affiliate_id" phpName="AffiliateId" type="INTEGER" required="true"/>
+    <column name="commission" phpName="Commission" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="marketing_id" phpName="MarketingId" type="INTEGER" required="true"/>
+    <column name="tracking" phpName="Tracking" type="VARCHAR" size="64" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="currency_id" phpName="CurrencyId" type="INTEGER" required="true"/>
+    <column name="currency_code" phpName="CurrencyCode" type="VARCHAR" size="3" required="true"/>
+    <column name="currency_value" phpName="CurrencyValue" type="DECIMAL" size="15" scale="8" required="true" defaultValue="1.00000000"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="forwarded_ip" phpName="ForwardedIp" type="VARCHAR" size="40" required="true"/>
+    <column name="user_agent" phpName="UserAgent" type="VARCHAR" size="255" required="true"/>
+    <column name="accept_language" phpName="AcceptLanguage" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_history" idMethod="native" phpName="OcOrderHistory">
+    <column name="order_history_id" phpName="OrderHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="order_status_id" phpName="OrderStatusId" type="INTEGER" required="true"/>
+    <column name="notify" phpName="Notify" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_option" idMethod="native" phpName="OcOrderOption">
+    <column name="order_option_id" phpName="OrderOptionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="order_product_id" phpName="OrderProductId" type="INTEGER" required="true"/>
+    <column name="product_option_id" phpName="ProductOptionId" type="INTEGER" required="true"/>
+    <column name="product_option_value_id" phpName="ProductOptionValueId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="value" phpName="Value" type="LONGVARCHAR" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_product" idMethod="native" phpName="OcOrderProduct">
+    <column name="order_product_id" phpName="OrderProductId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="model" phpName="Model" type="VARCHAR" size="64" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="4" required="true"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="total" phpName="Total" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="tax" phpName="Tax" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="reward" phpName="Reward" type="INTEGER" size="8" required="true"/>
+    <index name="order_id">
+      <index-column name="order_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_recurring" idMethod="native" phpName="OcOrderRecurring">
+    <column name="order_recurring_id" phpName="OrderRecurringId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="reference" phpName="Reference" type="VARCHAR" size="255" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="product_name" phpName="ProductName" type="VARCHAR" size="255" required="true"/>
+    <column name="product_quantity" phpName="ProductQuantity" type="INTEGER" required="true"/>
+    <column name="recurring_id" phpName="RecurringId" type="INTEGER" required="true"/>
+    <column name="recurring_name" phpName="RecurringName" type="VARCHAR" size="255" required="true"/>
+    <column name="recurring_description" phpName="RecurringDescription" type="VARCHAR" size="255" required="true"/>
+    <column name="recurring_frequency" phpName="RecurringFrequency" type="VARCHAR" size="25" required="true"/>
+    <column name="recurring_cycle" phpName="RecurringCycle" type="SMALLINT" required="true"/>
+    <column name="recurring_duration" phpName="RecurringDuration" type="SMALLINT" required="true"/>
+    <column name="recurring_price" phpName="RecurringPrice" type="DECIMAL" size="10" scale="4" required="true"/>
+    <column name="trial" phpName="Trial" type="BOOLEAN" size="1" required="true"/>
+    <column name="trial_frequency" phpName="TrialFrequency" type="VARCHAR" size="25" required="true"/>
+    <column name="trial_cycle" phpName="TrialCycle" type="SMALLINT" required="true"/>
+    <column name="trial_duration" phpName="TrialDuration" type="SMALLINT" required="true"/>
+    <column name="trial_price" phpName="TrialPrice" type="DECIMAL" size="10" scale="4" required="true"/>
+    <column name="status" phpName="Status" type="TINYINT" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_recurring_transaction" idMethod="native" phpName="OcOrderRecurringTransaction">
+    <column name="order_recurring_transaction_id" phpName="OrderRecurringTransactionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_recurring_id" phpName="OrderRecurringId" type="INTEGER" required="true"/>
+    <column name="reference" phpName="Reference" type="VARCHAR" size="255" required="true"/>
+    <column name="type" phpName="Type" type="VARCHAR" size="255" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="10" scale="4" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_shipment" idMethod="native" phpName="OcOrderShipment">
+    <column name="order_shipment_id" phpName="OrderShipmentId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="shipping_courier_id" phpName="ShippingCourierId" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="tracking_number" phpName="TrackingNumber" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_status" idMethod="native" phpName="OcOrderStatus">
+    <column name="order_status_id" phpName="OrderStatusId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_total" idMethod="native" phpName="OcOrderTotal">
+    <column name="order_total_id" phpName="OrderTotalId" type="INTEGER" size="10" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="32" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="255" required="true"/>
+    <column name="value" phpName="Value" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true"/>
+    <index name="order_id">
+      <index-column name="order_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_order_voucher" idMethod="native" phpName="OcOrderVoucher">
+    <column name="order_voucher_id" phpName="OrderVoucherId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="voucher_id" phpName="VoucherId" type="INTEGER" required="true"/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="10" required="true"/>
+    <column name="from_name" phpName="FromName" type="VARCHAR" size="64" required="true"/>
+    <column name="from_email" phpName="FromEmail" type="VARCHAR" size="96" required="true"/>
+    <column name="to_name" phpName="ToName" type="VARCHAR" size="64" required="true"/>
+    <column name="to_email" phpName="ToEmail" type="VARCHAR" size="96" required="true"/>
+    <column name="voucher_theme_id" phpName="VoucherThemeId" type="INTEGER" required="true"/>
+    <column name="message" phpName="Message" type="LONGVARCHAR" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product" idMethod="native" phpName="OcProduct">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="model" phpName="Model" type="VARCHAR" size="64" required="true"/>
+    <column name="sku" phpName="Sku" type="VARCHAR" size="64" required="true"/>
+    <column name="upc" phpName="Upc" type="VARCHAR" size="12" required="true"/>
+    <column name="ean" phpName="Ean" type="VARCHAR" size="14" required="true"/>
+    <column name="jan" phpName="Jan" type="VARCHAR" size="13" required="true"/>
+    <column name="isbn" phpName="Isbn" type="VARCHAR" size="17" required="true"/>
+    <column name="mpn" phpName="Mpn" type="VARCHAR" size="64" required="true"/>
+    <column name="location" phpName="Location" type="VARCHAR" size="128" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="4" required="true" defaultValue="0"/>
+    <column name="stock_status_id" phpName="StockStatusId" type="INTEGER" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255"/>
+    <column name="manufacturer_id" phpName="ManufacturerId" type="INTEGER" required="true"/>
+    <column name="shipping" phpName="Shipping" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="points" phpName="Points" type="INTEGER" size="8" required="true" defaultValue="0"/>
+    <column name="tax_class_id" phpName="TaxClassId" type="INTEGER" required="true"/>
+    <column name="date_available" phpName="DateAvailable" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="weight" phpName="Weight" type="DECIMAL" size="15" scale="8" required="true" defaultValue="0.00000000"/>
+    <column name="weight_class_id" phpName="WeightClassId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="length" phpName="Length" type="DECIMAL" size="15" scale="8" required="true" defaultValue="0.00000000"/>
+    <column name="width" phpName="Width" type="DECIMAL" size="15" scale="8" required="true" defaultValue="0.00000000"/>
+    <column name="height" phpName="Height" type="DECIMAL" size="15" scale="8" required="true" defaultValue="0.00000000"/>
+    <column name="length_class_id" phpName="LengthClassId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="subtract" phpName="Subtract" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <column name="minimum" phpName="Minimum" type="INTEGER" required="true" defaultValue="1"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="viewed" phpName="Viewed" type="INTEGER" size="5" required="true" defaultValue="0"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <column name="status2" phpName="Status2" type="INTEGER" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_attribute" idMethod="native" phpName="OcProductAttribute">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="attribute_id" phpName="AttributeId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="text" phpName="Text" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_description" idMethod="native" phpName="OcProductDescription">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
+    <column name="tag" phpName="Tag" type="LONGVARCHAR" required="true"/>
+    <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
+    <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <column name="newslatest" phpName="Newslatest" type="LONGVARCHAR"/>
+    <column name="show_newslatest" phpName="ShowNewslatest" type="INTEGER"/>
+    <index name="name">
+      <index-column name="name"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_discount" idMethod="native" phpName="OcProductDiscount">
+    <column name="product_discount_id" phpName="ProductDiscountId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="4" required="true" defaultValue="0"/>
+    <column name="priority" phpName="Priority" type="INTEGER" size="5" required="true" defaultValue="1"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="date_start" phpName="DateStart" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="date_end" phpName="DateEnd" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_filter" idMethod="native" phpName="OcProductFilter">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="filter_id" phpName="FilterId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_image" idMethod="native" phpName="OcProductImage">
+    <column name="product_image_id" phpName="ProductImageId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_option" idMethod="native" phpName="OcProductOption">
+    <column name="product_option_id" phpName="ProductOptionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="option_id" phpName="OptionId" type="INTEGER" required="true"/>
+    <column name="value" phpName="Value" type="LONGVARCHAR" required="true"/>
+    <column name="required" phpName="Required" type="BOOLEAN" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_option_value" idMethod="native" phpName="OcProductOptionValue">
+    <column name="product_option_value_id" phpName="ProductOptionValueId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_option_id" phpName="ProductOptionId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="option_id" phpName="OptionId" type="INTEGER" required="true"/>
+    <column name="option_value_id" phpName="OptionValueId" type="INTEGER" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="3" required="true"/>
+    <column name="subtract" phpName="Subtract" type="BOOLEAN" size="1" required="true"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="price_prefix" phpName="PricePrefix" type="VARCHAR" size="1" required="true"/>
+    <column name="points" phpName="Points" type="INTEGER" size="8" required="true"/>
+    <column name="points_prefix" phpName="PointsPrefix" type="VARCHAR" size="1" required="true"/>
+    <column name="weight" phpName="Weight" type="DECIMAL" size="15" scale="8" required="true"/>
+    <column name="weight_prefix" phpName="WeightPrefix" type="VARCHAR" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_recurring" idMethod="native" phpName="OcProductRecurring">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="recurring_id" phpName="RecurringId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_related" idMethod="native" phpName="OcProductRelated">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="related_id" phpName="RelatedId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_reward" idMethod="native" phpName="OcProductReward">
+    <column name="product_reward_id" phpName="ProductRewardId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="points" phpName="Points" type="INTEGER" size="8" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_special" idMethod="native" phpName="OcProductSpecial">
+    <column name="product_special_id" phpName="ProductSpecialId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" required="true"/>
+    <column name="priority" phpName="Priority" type="INTEGER" size="5" required="true" defaultValue="1"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="date_start" phpName="DateStart" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="date_end" phpName="DateEnd" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_to_category" idMethod="native" phpName="OcProductToCategory">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" required="true"/>
+    <index name="category_id">
+      <index-column name="category_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_to_download" idMethod="native" phpName="OcProductToDownload">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="download_id" phpName="DownloadId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_to_layout" idMethod="native" phpName="OcProductToLayout">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="layout_id" phpName="LayoutId" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_product_to_store" idMethod="native" phpName="OcProductToStore">
+    <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_recurring" idMethod="native" phpName="OcRecurring">
+    <column name="recurring_id" phpName="RecurringId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="price" phpName="Price" type="DECIMAL" size="10" scale="4" required="true"/>
+    <column name="frequency" phpName="Frequency" type="CHAR" sqlType="enum('day','week','semi_month','month','year')" required="true"/>
+    <column name="duration" phpName="Duration" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
+    <column name="cycle" phpName="Cycle" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
+    <column name="trial_status" phpName="TrialStatus" type="TINYINT" required="true"/>
+    <column name="trial_price" phpName="TrialPrice" type="DECIMAL" size="10" scale="4" required="true"/>
+    <column name="trial_frequency" phpName="TrialFrequency" type="CHAR" sqlType="enum('day','week','semi_month','month','year')" required="true"/>
+    <column name="trial_duration" phpName="TrialDuration" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
+    <column name="trial_cycle" phpName="TrialCycle" type="INTEGER" size="10" sqlType="int(10) unsigned" required="true"/>
+    <column name="status" phpName="Status" type="TINYINT" required="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_recurring_description" idMethod="native" phpName="OcRecurringDescription">
+    <column name="recurring_id" phpName="RecurringId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_return" idMethod="native" phpName="OcReturn">
+    <column name="return_id" phpName="ReturnId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="firstname" phpName="Firstname" type="VARCHAR" size="32" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="32" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="96" required="true"/>
+    <column name="telephone" phpName="Telephone" type="VARCHAR" size="32" required="true"/>
+    <column name="product" phpName="Product" type="VARCHAR" size="255" required="true"/>
+    <column name="model" phpName="Model" type="VARCHAR" size="64" required="true"/>
+    <column name="quantity" phpName="Quantity" type="INTEGER" size="4" required="true"/>
+    <column name="opened" phpName="Opened" type="BOOLEAN" size="1" required="true"/>
+    <column name="return_reason_id" phpName="ReturnReasonId" type="INTEGER" required="true"/>
+    <column name="return_action_id" phpName="ReturnActionId" type="INTEGER" required="true"/>
+    <column name="return_status_id" phpName="ReturnStatusId" type="INTEGER" required="true"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR"/>
+    <column name="date_ordered" phpName="DateOrdered" type="DATE" required="true" defaultValue="0000-00-00"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_return_action" idMethod="native" phpName="OcReturnAction">
+    <column name="return_action_id" phpName="ReturnActionId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_return_history" idMethod="native" phpName="OcReturnHistory">
+    <column name="return_history_id" phpName="ReturnHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="return_id" phpName="ReturnId" type="INTEGER" required="true"/>
+    <column name="return_status_id" phpName="ReturnStatusId" type="INTEGER" required="true"/>
+    <column name="notify" phpName="Notify" type="BOOLEAN" size="1" required="true"/>
+    <column name="comment" phpName="Comment" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_return_reason" idMethod="native" phpName="OcReturnReason">
+    <column name="return_reason_id" phpName="ReturnReasonId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_return_status" idMethod="native" phpName="OcReturnStatus">
+    <column name="return_status_id" phpName="ReturnStatusId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true" defaultValue="0"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_review" idMethod="native" phpName="OcReview">
+    <column name="review_id" phpName="ReviewId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="product_id" phpName="ProductId" type="INTEGER" required="true"/>
+    <column name="customer_id" phpName="CustomerId" type="INTEGER" required="true"/>
+    <column name="author" phpName="Author" type="VARCHAR" size="64" required="true"/>
+    <column name="text" phpName="Text" type="LONGVARCHAR" required="true"/>
+    <column name="rating" phpName="Rating" type="INTEGER" size="1" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="false"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <index name="product_id">
+      <index-column name="product_id"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_seo_url" idMethod="native" phpName="OcSeoUrl">
+    <column name="seo_url_id" phpName="SeoUrlId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="query" phpName="Query" type="VARCHAR" size="255" required="true"/>
+    <column name="keyword" phpName="Keyword" type="VARCHAR" size="255" required="true"/>
+    <index name="query">
+      <index-column name="query"/>
+    </index>
+    <index name="keyword">
+      <index-column name="keyword"/>
+    </index>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_session" idMethod="native" phpName="OcSession">
+    <column name="session_id" phpName="SessionId" type="VARCHAR" size="32" primaryKey="true" required="true"/>
+    <column name="data" phpName="Data" type="LONGVARCHAR" required="true"/>
+    <column name="expire" phpName="Expire" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="InnoDB"/>
+    </vendor>
+  </table>
+  <table name="oc_setting" idMethod="native" phpName="OcSetting">
+    <column name="setting_id" phpName="SettingId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="128" required="true"/>
+    <column name="key" phpName="Key" type="VARCHAR" size="128" required="true"/>
+    <column name="value" phpName="Value" type="LONGVARCHAR" required="true"/>
+    <column name="serialized" phpName="Serialized" type="BOOLEAN" size="1" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_shipping_courier" idMethod="native" phpName="OcShippingCourier">
+    <column name="shipping_courier_id" phpName="ShippingCourierId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="shipping_courier_code" phpName="ShippingCourierCode" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <column name="shipping_courier_name" phpName="ShippingCourierName" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_statistics" idMethod="native" phpName="OcStatistics">
+    <column name="statistics_id" phpName="StatisticsId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="64" required="true"/>
+    <column name="value" phpName="Value" type="DECIMAL" size="15" scale="4" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_stock_status" idMethod="native" phpName="OcStockStatus">
+    <column name="stock_status_id" phpName="StockStatusId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_store" idMethod="native" phpName="OcStore">
+    <column name="store_id" phpName="StoreId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="url" phpName="Url" type="VARCHAR" size="255" required="true"/>
+    <column name="ssl" phpName="Ssl" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_tax_class" idMethod="native" phpName="OcTaxClass">
+    <column name="tax_class_id" phpName="TaxClassId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="32" required="true"/>
+    <column name="description" phpName="Description" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_tax_rate" idMethod="native" phpName="OcTaxRate">
+    <column name="tax_rate_id" phpName="TaxRateId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="geo_zone_id" phpName="GeoZoneId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <column name="rate" phpName="Rate" type="DECIMAL" size="15" scale="4" required="true" defaultValue="0.0000"/>
+    <column name="type" phpName="Type" type="CHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_tax_rate_to_customer_group" idMethod="native" phpName="OcTaxRateToCustomerGroup">
+    <column name="tax_rate_id" phpName="TaxRateId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="customer_group_id" phpName="CustomerGroupId" type="INTEGER" primaryKey="true" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_tax_rule" idMethod="native" phpName="OcTaxRule">
+    <column name="tax_rule_id" phpName="TaxRuleId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="tax_class_id" phpName="TaxClassId" type="INTEGER" required="true"/>
+    <column name="tax_rate_id" phpName="TaxRateId" type="INTEGER" required="true"/>
+    <column name="based" phpName="Based" type="VARCHAR" size="10" required="true"/>
+    <column name="priority" phpName="Priority" type="INTEGER" size="5" required="true" defaultValue="1"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_theme" idMethod="native" phpName="OcTheme">
+    <column name="theme_id" phpName="ThemeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true"/>
+    <column name="theme" phpName="Theme" type="VARCHAR" size="64" required="true"/>
+    <column name="route" phpName="Route" type="VARCHAR" size="64" required="true"/>
+    <column name="code" phpName="Code" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_translation" idMethod="native" phpName="OcTranslation">
+    <column name="translation_id" phpName="TranslationId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="store_id" phpName="StoreId" type="INTEGER" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" required="true"/>
+    <column name="route" phpName="Route" type="VARCHAR" size="64" required="true"/>
+    <column name="key" phpName="Key" type="VARCHAR" size="64" required="true"/>
+    <column name="value" phpName="Value" type="LONGVARCHAR" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_upload" idMethod="native" phpName="OcUpload">
+    <column name="upload_id" phpName="UploadId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="255" required="true"/>
+    <column name="filename" phpName="Filename" type="VARCHAR" size="255" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="255" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_user" idMethod="native" phpName="OcUser">
+    <column name="user_id" phpName="UserId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="user_group_id" phpName="UserGroupId" type="INTEGER" required="true"/>
+    <column name="username" phpName="Username" type="VARCHAR" size="20" required="true"/>
+    <column name="password" phpName="Password" type="VARCHAR" size="255" required="true"/>
+    <column name="salt" phpName="Salt" type="VARCHAR" size="9" required="true"/>
+    <column name="firstname" phpName="Firstname" type="VARCHAR" size="32" required="true"/>
+    <column name="lastname" phpName="Lastname" type="VARCHAR" size="32" required="true"/>
+    <column name="email" phpName="Email" type="VARCHAR" size="96" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="40" required="true"/>
+    <column name="ip" phpName="Ip" type="VARCHAR" size="40" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_user_group" idMethod="native" phpName="OcUserGroup">
+    <column name="user_group_id" phpName="UserGroupId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="64" required="true"/>
+    <column name="permission" phpName="Permission" type="LONGVARCHAR" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_voucher" idMethod="native" phpName="OcVoucher">
+    <column name="voucher_id" phpName="VoucherId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="10" required="true"/>
+    <column name="from_name" phpName="FromName" type="VARCHAR" size="64" required="true"/>
+    <column name="from_email" phpName="FromEmail" type="VARCHAR" size="96" required="true"/>
+    <column name="to_name" phpName="ToName" type="VARCHAR" size="64" required="true"/>
+    <column name="to_email" phpName="ToEmail" type="VARCHAR" size="96" required="true"/>
+    <column name="voucher_theme_id" phpName="VoucherThemeId" type="INTEGER" required="true"/>
+    <column name="message" phpName="Message" type="LONGVARCHAR" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_voucher_history" idMethod="native" phpName="OcVoucherHistory">
+    <column name="voucher_history_id" phpName="VoucherHistoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="voucher_id" phpName="VoucherId" type="INTEGER" required="true"/>
+    <column name="order_id" phpName="OrderId" type="INTEGER" required="true"/>
+    <column name="amount" phpName="Amount" type="DECIMAL" size="15" scale="4" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_voucher_theme" idMethod="native" phpName="OcVoucherTheme">
+    <column name="voucher_theme_id" phpName="VoucherThemeId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="image" phpName="Image" type="VARCHAR" size="255" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_voucher_theme_description" idMethod="native" phpName="OcVoucherThemeDescription">
+    <column name="voucher_theme_id" phpName="VoucherThemeId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="32" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_weight_class" idMethod="native" phpName="OcWeightClass">
+    <column name="weight_class_id" phpName="WeightClassId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="value" phpName="Value" type="DECIMAL" size="15" scale="8" required="true" defaultValue="0.00000000"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_weight_class_description" idMethod="native" phpName="OcWeightClassDescription">
+    <column name="weight_class_id" phpName="WeightClassId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="32" required="true"/>
+    <column name="unit" phpName="Unit" type="VARCHAR" size="4" required="true"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_zone" idMethod="native" phpName="OcZone">
+    <column name="zone_id" phpName="ZoneId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="country_id" phpName="CountryId" type="INTEGER" required="true"/>
+    <column name="name" phpName="Name" type="VARCHAR" size="128" required="true"/>
+    <column name="code" phpName="Code" type="VARCHAR" size="32" required="true"/>
+    <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
+    <column name="sort_order" phpName="SortOrder" type="INTEGER" defaultValue="0"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+  <table name="oc_zone_to_geo_zone" idMethod="native" phpName="OcZoneToGeoZone">
+    <column name="zone_to_geo_zone_id" phpName="ZoneToGeoZoneId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
+    <column name="country_id" phpName="CountryId" type="INTEGER" required="true"/>
+    <column name="zone_id" phpName="ZoneId" type="INTEGER" required="true" defaultValue="0"/>
+    <column name="geo_zone_id" phpName="GeoZoneId" type="INTEGER" required="true"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
+    <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
+    <vendor type="mysql">
+      <parameter name="Engine" value="MyISAM"/>
+    </vendor>
+  </table>
+</database>

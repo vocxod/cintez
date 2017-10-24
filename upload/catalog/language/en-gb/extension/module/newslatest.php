@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title'] = 'News2 Latest';
+$_['heading_title'] = 'Latest news';
 
 // Text
 $_['text_tax']      = 'Ex Tax:';
