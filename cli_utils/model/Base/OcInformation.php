@@ -91,6 +91,22 @@ abstract class OcInformation implements ActiveRecordInterface
     protected $status;
 
     /**
+     * The value for the isnews field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $isnews;
+
+    /**
+     * The value for the onhome field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $onhome;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -109,6 +125,8 @@ abstract class OcInformation implements ActiveRecordInterface
         $this->bottom = 0;
         $this->sort_order = 0;
         $this->status = true;
+        $this->isnews = 0;
+        $this->onhome = 0;
     }
 
     /**
@@ -389,6 +407,26 @@ abstract class OcInformation implements ActiveRecordInterface
     }
 
     /**
+     * Get the [isnews] column value.
+     *
+     * @return int
+     */
+    public function getIsnews()
+    {
+        return $this->isnews;
+    }
+
+    /**
+     * Get the [onhome] column value.
+     *
+     * @return int
+     */
+    public function getOnhome()
+    {
+        return $this->onhome;
+    }
+
+    /**
      * Set the value of [information_id] column.
      *
      * @param int $v new value
@@ -477,6 +515,46 @@ abstract class OcInformation implements ActiveRecordInterface
     } // setStatus()
 
     /**
+     * Set the value of [isnews] column.
+     *
+     * @param int $v new value
+     * @return $this|\OcInformation The current object (for fluent API support)
+     */
+    public function setIsnews($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->isnews !== $v) {
+            $this->isnews = $v;
+            $this->modifiedColumns[OcInformationTableMap::COL_ISNEWS] = true;
+        }
+
+        return $this;
+    } // setIsnews()
+
+    /**
+     * Set the value of [onhome] column.
+     *
+     * @param int $v new value
+     * @return $this|\OcInformation The current object (for fluent API support)
+     */
+    public function setOnhome($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->onhome !== $v) {
+            $this->onhome = $v;
+            $this->modifiedColumns[OcInformationTableMap::COL_ONHOME] = true;
+        }
+
+        return $this;
+    } // setOnhome()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -495,6 +573,14 @@ abstract class OcInformation implements ActiveRecordInterface
             }
 
             if ($this->status !== true) {
+                return false;
+            }
+
+            if ($this->isnews !== 0) {
+                return false;
+            }
+
+            if ($this->onhome !== 0) {
                 return false;
             }
 
@@ -535,6 +621,12 @@ abstract class OcInformation implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 3 + $startcol : OcInformationTableMap::translateFieldName('Status', TableMap::TYPE_PHPNAME, $indexType)];
             $this->status = (null !== $col) ? (boolean) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 4 + $startcol : OcInformationTableMap::translateFieldName('Isnews', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->isnews = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : OcInformationTableMap::translateFieldName('Onhome', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->onhome = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -543,7 +635,7 @@ abstract class OcInformation implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 4; // 4 = OcInformationTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 6; // 6 = OcInformationTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcInformation'), 0, $e);
@@ -756,6 +848,12 @@ abstract class OcInformation implements ActiveRecordInterface
         if ($this->isColumnModified(OcInformationTableMap::COL_STATUS)) {
             $modifiedColumns[':p' . $index++]  = 'status';
         }
+        if ($this->isColumnModified(OcInformationTableMap::COL_ISNEWS)) {
+            $modifiedColumns[':p' . $index++]  = 'isnews';
+        }
+        if ($this->isColumnModified(OcInformationTableMap::COL_ONHOME)) {
+            $modifiedColumns[':p' . $index++]  = 'onhome';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_information (%s) VALUES (%s)',
@@ -778,6 +876,12 @@ abstract class OcInformation implements ActiveRecordInterface
                         break;
                     case 'status':
                         $stmt->bindValue($identifier, (int) $this->status, PDO::PARAM_INT);
+                        break;
+                    case 'isnews':
+                        $stmt->bindValue($identifier, $this->isnews, PDO::PARAM_INT);
+                        break;
+                    case 'onhome':
+                        $stmt->bindValue($identifier, $this->onhome, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -853,6 +957,12 @@ abstract class OcInformation implements ActiveRecordInterface
             case 3:
                 return $this->getStatus();
                 break;
+            case 4:
+                return $this->getIsnews();
+                break;
+            case 5:
+                return $this->getOnhome();
+                break;
             default:
                 return null;
                 break;
@@ -886,6 +996,8 @@ abstract class OcInformation implements ActiveRecordInterface
             $keys[1] => $this->getBottom(),
             $keys[2] => $this->getSortOrder(),
             $keys[3] => $this->getStatus(),
+            $keys[4] => $this->getIsnews(),
+            $keys[5] => $this->getOnhome(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -937,6 +1049,12 @@ abstract class OcInformation implements ActiveRecordInterface
             case 3:
                 $this->setStatus($value);
                 break;
+            case 4:
+                $this->setIsnews($value);
+                break;
+            case 5:
+                $this->setOnhome($value);
+                break;
         } // switch()
 
         return $this;
@@ -974,6 +1092,12 @@ abstract class OcInformation implements ActiveRecordInterface
         }
         if (array_key_exists($keys[3], $arr)) {
             $this->setStatus($arr[$keys[3]]);
+        }
+        if (array_key_exists($keys[4], $arr)) {
+            $this->setIsnews($arr[$keys[4]]);
+        }
+        if (array_key_exists($keys[5], $arr)) {
+            $this->setOnhome($arr[$keys[5]]);
         }
     }
 
@@ -1027,6 +1151,12 @@ abstract class OcInformation implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcInformationTableMap::COL_STATUS)) {
             $criteria->add(OcInformationTableMap::COL_STATUS, $this->status);
+        }
+        if ($this->isColumnModified(OcInformationTableMap::COL_ISNEWS)) {
+            $criteria->add(OcInformationTableMap::COL_ISNEWS, $this->isnews);
+        }
+        if ($this->isColumnModified(OcInformationTableMap::COL_ONHOME)) {
+            $criteria->add(OcInformationTableMap::COL_ONHOME, $this->onhome);
         }
 
         return $criteria;
@@ -1117,6 +1247,8 @@ abstract class OcInformation implements ActiveRecordInterface
         $copyObj->setBottom($this->getBottom());
         $copyObj->setSortOrder($this->getSortOrder());
         $copyObj->setStatus($this->getStatus());
+        $copyObj->setIsnews($this->getIsnews());
+        $copyObj->setOnhome($this->getOnhome());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setInformationId(NULL); // this is a auto-increment column, so set to default value
@@ -1156,6 +1288,8 @@ abstract class OcInformation implements ActiveRecordInterface
         $this->bottom = null;
         $this->sort_order = null;
         $this->status = null;
+        $this->isnews = null;
+        $this->onhome = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
