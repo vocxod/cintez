@@ -108,6 +108,39 @@
                   </div>
                 </div>
               </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-isnews">is news</label>
+                <div class="col-sm-10">
+                  <select name="isnews" id="input-isnews" class="form-control">
+                    {% if isnews %}
+                      <option value="1" selected="selected">Is news</option>
+                      <option value="0">article</option>
+                    {% else %}
+                      <option value="1">is news</option>
+                      <option value="0" selected="selected">Article</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-onhome">На главной</label>
+                <div class="col-sm-10">
+                  <select name="onhome" id="input-onhome" class="form-control">
+                    {% if onhome %}
+                      <option value="1" selected="selected">На главной</option>
+                      <option value="0">нет</option>
+                    {% else %}
+                      <option value="1">На главной</option>
+                      <option value="0" selected="selected">нет</option>
+                    {% endif %}
+                  </select>
+                </div>
+              </div>
+
+
+
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-status">{{ entry_status }}</label>
                 <div class="col-sm-10">

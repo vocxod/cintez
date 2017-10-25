@@ -38,6 +38,10 @@ class ControllerCatalogInformation extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
+			if (isset($this->request->get['isnews'])) {
+				$url .= '&isnews=' . $this->request->get['isnews'];
+			}
+
 			$this->response->redirect($this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
@@ -176,6 +180,8 @@ class ControllerCatalogInformation extends Controller {
 				'information_id' => $result['information_id'],
 				'title'          => $result['title'],
 				'sort_order'     => $result['sort_order'],
+				'isnews'         => $result['isnews'],
+				'onhome'     	 => $result['onhome'],
 				'edit'           => $this->url->link('catalog/information/edit', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $result['information_id'] . $url, true)
 			);
 		}

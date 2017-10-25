@@ -3,12 +3,76 @@
 require('vendor/autoload.php');
 require('generated-conf/config.php');
 
+echo "Usage: parsintez ACTION\n\n";
+echo "Where ACTION is one from is:
+\t--dcat=75 \t;delete old categories from start ID=75
+\t--articles\t;import articles from old site
+\t--news	\t;import NEWS from site
+\t--cats	\t;import CATEGORIes from site
+\t--delinfo=12\t;delete information srom start ID=12
+***************************************************************
+";
+
+//$aData = explode("=", string)
+foreach ($argv as $key => $value) {
+	$aAction = explode("=", $value);
+	switch ($aAction[0]) {
+		case '--dcat':
+			$iStartId = 76;
+			if( array_key_exists(1, $aAction) ){
+				$iStartId = (int)$aAction[1];
+			}
+			echo "--dcat from CATEGORY_ID:$iStartId\n";
+			break;
+		case '--articles':
+			echo "--articles\n";
+			break;
+		case '--news':
+			echo "--news\n";
+			break;
+		case '--cats':
+			echo "--cats\n";
+			break;
+		case '--delinfo':
+			$iStartId = 12;
+			if( array_key_exists(1, $aAction) ){
+				$iStartId = (int)$aAction[1];
+			}
+			echo "--delinfo from INFORMATION_ID:$iStartId\n";
+			deleteInformation( $iStartId );
+			break;
+		default:
+			echo "\n";
+			break;
+	}
+}
+die();
+
+// Remove categories
+deleteCategories(); die();
+
 $iCount = 0;
 getCategoryData();
 echo "iCount $iCount \n";
 
+function deleteInformation($iStartId=12){
+	/*
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information` WHERE information_id = '" . (int)$information_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information_description` WHERE information_id = '" . (int)$information_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information_to_store` WHERE information_id = '" . (int)$information_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "information_to_layout` WHERE information_id = '" . (int)$information_id . "'");
+		$this->db->query("DELETE FROM `" . DB_PREFIX . "seo_url` WHERE query = 'information_id=" . (int)$information_id . "'");
+	*/
+	$o = OcInformationQuery::create()->filterByInformationId(["min"=>$iStartId])->delete();
+	$o = OcInformationDescriptionQuery::create()->filterByInformationId(["min"=>$iStartId])->delete();
+	$o = OcInformationToStoreQuery::create()->filterByInformationId(["min"=>$iStartId])->delete();
+	$o = OcInformationToLayoutQuery::create()->filterByInformationId(["min"=>$iStartId])->delete();
+	$o = OcSeoUrlQuery::create()->filterByQuery( "information_id=" . $iStartId )->delete();
+}
+
 function getCategoryData( $iParentCategoryId = 182 ){
 	// Вытаскиваем КАТЕГОРИИ из таблицы СТАРОГО САЙТА
+	// Get CATEGORIes from old database table
 	$q = ModxSiteContentQuery::create()
 		->filterByIsFolder(1)
 		->filterByPublished(1)
@@ -19,6 +83,7 @@ function getCategoryData( $iParentCategoryId = 182 ){
 	foreach ($q as $key => $value) {
 		echo "Store data in database\n";
 		// категория на старом сайте
+		// Get ID of the category on old site for link with new category
 		$iCategorySiteId = $value->getId();
 		$aDescription = [ "1" => $value->getContent(), "4" => $value->getContent() ];
 		$aLanguages = ["1" => $value->getPagetitle(), "4" =>$value->getPagetitle() ];
@@ -27,6 +92,7 @@ function getCategoryData( $iParentCategoryId = 182 ){
 		}
 		// Сохранимся (новая или обновление существующей)
 		// Пишем сформированную категорию в НОВУЮ ТАБЛИтЦУ 
+		// Create new or update exist category
 		$iCurrentCategoryId = addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop );
 		getCategoryData( $value->getId() ); 	
 	}
@@ -44,13 +110,16 @@ function getCategoryData( $iParentCategoryId = 182 ){
 	*/
 }
 
+// Вытаскиваем ТОВАРЫ
+// Get PRODUCT data
 function getProductData(){
 	echo "\n";	
-	// Вытаскиваем ТОВАРЫ
+
 }
 
-// Получить данные по категории
+// Get ARTICLES 
 
+// Get NEWS
 
 // записать данные по категории в БД
 function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop = 0 ){
@@ -270,4 +339,20 @@ function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iPa
 	$oCategoryToStore->setStoreId( 0 );
 	$oCategoryToStore->save();	
 	return $iCategoryId;
+}
+
+// delete old categories
+function deleteCategories( $iStartCategoryId = 76){
+/*
+	DELETE FROM oc_category WHERE category_id>75; 
+	DELETE FROM oc_category_description WHERE category_id>75; 
+	DELETE FROM oc_category_to_store WHERE category_id>75; 
+	DELETE FROM oc_category_to_layout WHERE category_id>75; 
+	DELETE FROM oc_category_path WHERE category_id>75;
+*/
+	$o = OcCategoryQuery::create()->filterByCategoryId( [ "min"=>76] )->delete();
+	$o = OcCategoryDescription::create()->filterByCategoryId( [ "min"=>76] )->delete();
+	$o = OcCategoryToStore::create()->filterByCategoryId( [ "min"=>76] )->delete();
+	$o = OcCategoryToLayout::create()->filterByCategoryId( [ "min"=>76] )->delete();
+	$o = OcCategoryPath::create()->filterByCategoryId( [ "min"=>76] )->delete();
 }

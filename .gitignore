@@ -1,4 +1,6 @@
 # Config and Htaccess Files
+storage/logs/error.log
+/storage/logs/error.log
 
 /storage/cache/*
 
