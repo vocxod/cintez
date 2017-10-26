@@ -84,7 +84,7 @@ function importNews(){
 	echo "Founded " . count($q) . " article  news \n";
 
 	foreach ($q as $key => $article) {
-		setImagePath( $article->getContent() );
+		//setImagePath( $article->getContent() );
 		/*
 		mysql> DESCRIBE oc_information;
 		+----------------+------------+------+-----+---------+----------------+
@@ -122,15 +122,36 @@ function importNews(){
 		+------------------+--------------+------+-----+---------+-------+
 		7 rows in set (0.00 sec)
 		*/
-		$aDescription = ["1" => $article->getContent(), "4" => $article->getContent() ];
+
+		// лидирующая картинка впереди
+		$sImage = getAttributeValue( $article->getId(), 1 );
+		echo "Try load image: " . $sImage . "\n";
+		$aPathinfo = pathinfo( $sImage );
+		if( array_key_exists('extension', $aPathinfo)){
+			$sImageFilename = 'article_news_' . $article->getId() . "." . $aPathinfo['extension'];	
+			$sImageDiv = "<div class='col-md-12'><img src='/image/catalog/news/" . $sImageFilename . "' alt='' title=''></div>";
+		} 
+		if( $sImage != "" ){
+			if( !file_exists('../upload/image/catalog/news/' . $sImageFilename) ){
+				$sLoadedImage = file_get_contents( 'http://specsintez.com/' . $sImage );
+				if( $sLoadedImage ){
+					// картинка новости физически существует
+					file_put_contents('../upload/image/catalog/news/' . $sImageFilename, $sLoadedImage);			
+				}
+			}
+		}
+
+		$aDescription = ["1" => $sImageDiv . $article->getContent(), "4" => $sImageDiv . $article->getContent() ];
+		
 		$aTitle = ["1"=>$article->getPagetitle(), "4"=>$article->getPagetitle() ];
+		
 		foreach ($aTitle as $key => $value) {
 			$od = new OcInformationDescription();
 			$od->setInformationId( $iInformationId );
 			$od->setLanguageId( $key );
 			$od->setTitle( $value );
 			$od->setDescription( $aDescription[$key]);
-			$od->setMetaTitle( $value );
+			$od->setMetaTitle( $article->getId() );
 			$od->save();
 		}
 
@@ -184,6 +205,9 @@ function importNews(){
 			$oSeo->setQuery( $value );
 			$oSeo->save();
 		}
+
+		//var_dump( $iInformationId ); die();
+
 	}
 }
 
@@ -266,18 +290,15 @@ function getProductImage( $iProductId ){
 		$aPathinfo = pathinfo($value->getValue() );
 		if( array_key_exists('extension', $aPathinfo) ){
 			$sImageFilename = "image_" . $iProductId . "." . $aPathinfo['extension'];
+			$sResult = "catalog/tproducts/no_image.jpg";
 			if( file_exists("../upload/image/catalog/tproducts/" . $sImageFilename) ){
 				// файл уже существует и повторно можно его не скачивать
 			} else {
 				// картинки нет - скачиваем с сервера
-				try {
-					$sImageContent = file_get_contents( $sImageUrl );
+				$sImageContent = file_get_contents( $sImageUrl );
+				if( $sImageContent ) {
 					file_put_contents("../upload/image/catalog/tproducts/" . $sImageFilename, $sImageContent);
 					$sResult = "catalog/tproducts/" . $sImageFilename;
-				}
-				catch (Exception $e) {
-					// скачивание произошло с ошибкой
-					$sResult = "catalog/tproducts/no_image.jpg";
 				}						
 			}
 			return $sResult;
@@ -337,6 +358,7 @@ function getProductData( $iParentId = 1144 ){
 		$pd->setLanguageId(1);
 		$pd->setName( $value->getPagetitle() );
 		$pd->setDescription( $value->getContent() );
+		$pd->setMetaTitle( $value->getPagetitle() );
 		$pd->save();
 
 		$pd = new OcProductDescription();
@@ -344,6 +366,7 @@ function getProductData( $iParentId = 1144 ){
 		$pd->setLanguageId(4);
 		$pd->setName( $value->getPagetitle() );
 		$pd->setDescription( $value->getContent() );
+		$pd->setMetaTitle( $value->getPagetitle() );
 		$pd->save();
 
 		$pc = new OcProductToCategory();
