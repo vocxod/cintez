@@ -35,7 +35,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
-			echo $key;
+
 			$aData = [];
 			if(is_array($value)){
 				foreach ($value as $key2 => $value2) {
