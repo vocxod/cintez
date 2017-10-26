@@ -108,3 +108,11 @@ Stack trace:
 #4 [internal function]: Loader->{closure}(Array, Array)
 #5 /var/www/html/oc3demo/opencart/upload/system/engine/proxy.php(47): call_user_func_array(Object(Closure), Array)
 #6 /var/www/html/oc3demo/opencart/upload/catalog/controller/extension/module/featured.php(19) in /var/www/html/oc3demo/opencart/upload/system/library/db/mysqli.php on line 40
+[26-Oct-2017 20:17:26 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected character ";" in "default/template/extension/module/slideshow.twig" at line 250.' in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Lexer.php:284
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Lexer.php(205): Twig_Lexer->lexExpression()
+#1 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Lexer.php(111): Twig_Lexer->lexBlock()
+#2 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(581): Twig_Lexer->tokenize('{% if banner_ty...', 'default/templat...')
+#3 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(671): Twig_Environment->tokenize('{% if banner_ty...', 'default/templat...')
+#4 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(396): Twig_Environment->compileSource('{% if banner_ty...', 'default/templat...')
+#5 /var/www/html/oc3demo/opencart/upload/system/library/template/twig.php(26): Twi in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Lexer.php on line 284

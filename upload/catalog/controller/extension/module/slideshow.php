@@ -19,11 +19,12 @@ class ControllerExtensionModuleSlideshow extends Controller {
 				$data['banners'][] = array(
 					'title' => $result['title'],
 					'link'  => $result['link'],
-					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height'])
+					'image' => $this->model_tool_image->resize($result['image'], $setting['width'], $setting['height']),
+					'description'	=> $result['description'],
 				);
 			}
 		}
-
+		$data['banner_type'] = 2; // выставляем тут разный тип слайдера для выбора его заказчиком
 		$data['module'] = $module++;
 
 		return $this->load->view('extension/module/slideshow', $data);
