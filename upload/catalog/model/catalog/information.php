@@ -7,7 +7,7 @@ class ModelCatalogInformation extends Model {
 	}
 
 	public function getTopNews( $iLanguageId=1 ){
-		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT 3";
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT 3";
 		// echo $sSqlSelect . "\n";
 		$query = $this->db->query( $sSqlSelect );
 		return $query->rows;
