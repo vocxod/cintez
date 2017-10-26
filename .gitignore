@@ -2,6 +2,12 @@
 storage/logs/error.log
 /storage/logs/error.log
 
+storage/logs/index.html
+/storage/logs/index.html
+
+storage/logs/openbay.log
+/storage/logs/openbay.log
+
 /storage/cache/*
 
 /upload/.htaccess
