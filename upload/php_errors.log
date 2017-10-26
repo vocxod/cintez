@@ -38,3 +38,27 @@ Stack trace:
 #3 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php(41): Twig_ExpressionParser->getPrimary()
 #4 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Parser.php(144): Twig_ExpressionParser->parseExpression()
 #5 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Par in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php on line 574
+[26-Oct-2017 23:34:27 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Loader' with message 'Unable to find template "default/template/common/zone.twig" (looked into: /var/www/html/oc3demo/opencart/upload/catalog/view/theme).' in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:215
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(139): Twig_Loader_Filesystem->findTemplate('default/templat...')
+#1 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(312): Twig_Loader_Filesystem->getCacheKey('default/templat...')
+#2 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(378): Twig_Environment->getTemplateClass('default/templat...', NULL)
+#3 /var/www/html/oc3demo/opencart/upload/system/library/template/twig.php(26): Twig_Environment->loadTemplate('default/templat...')
+#4 /var/www/html/oc3demo/opencart/upload/system/library/template.php(51): Template\Twig->render('default/templat...', '0')
+#5 /var/www/html/oc in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 215
+[26-Oct-2017 23:34:55 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Loader' with message 'Unable to find template "default/template/common/zonefooter.twig" (looked into: /var/www/html/oc3demo/opencart/upload/catalog/view/theme).' in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:215
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(139): Twig_Loader_Filesystem->findTemplate('default/templat...')
+#1 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(312): Twig_Loader_Filesystem->getCacheKey('default/templat...')
+#2 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(378): Twig_Environment->getTemplateClass('default/templat...', NULL)
+#3 /var/www/html/oc3demo/opencart/upload/system/library/template/twig.php(26): Twig_Environment->loadTemplate('default/templat...')
+#4 /var/www/html/oc3demo/opencart/upload/system/library/template.php(51): Template\Twig->render('default/templat...', '0')
+#5 /var/www/h in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 215
+[26-Oct-2017 23:35:08 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Loader' with message 'Unable to find template "default/template/common/zonefooter.twig" (looked into: /var/www/html/oc3demo/opencart/upload/catalog/view/theme).' in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php:215
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php(139): Twig_Loader_Filesystem->findTemplate('default/templat...')
+#1 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(312): Twig_Loader_Filesystem->getCacheKey('default/templat...')
+#2 /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Environment.php(378): Twig_Environment->getTemplateClass('default/templat...', NULL)
+#3 /var/www/html/oc3demo/opencart/upload/system/library/template/twig.php(26): Twig_Environment->loadTemplate('default/templat...')
+#4 /var/www/html/oc3demo/opencart/upload/system/library/template.php(51): Template\Twig->render('default/templat...', '0')
+#5 /var/www/h in /var/www/html/oc3demo/opencart/storage/vendor/twig/twig/lib/Twig/Loader/Filesystem.php on line 215
