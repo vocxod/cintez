@@ -10,6 +10,33 @@
       <div class="news_anonce">
         {{ article.description }}
       </div>
+      
+      <div class="button-group" style="margin-top:5px; border:none; background:none;">
+          
+          {% if loop.index == 1 %}
+          <button class="btn newsbuttondetail" style="width:45%;" type="button">
+            <span class="hidden-xs hidden-sm hidden-md" style="">ПОДРОБНЕЕ ></span>
+          </button>
+          {% else %}
+          <button class="" style="width:45%;color:#111;" type="button">
+            <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+          </button>  
+          {% endif %}
+
+          <button style="width:15%; margin-left:15px;" type="button" title="{{ button_wishlist }}">
+            <i class="fa fa-vk"></i>
+          </button>
+
+          <button style="width:15%;" type="button"  title="{{ button_wishlist }}">
+            <i class="fa fa-twitter"></i>
+          </button>
+          
+          <button style="width:15%;" type="button"  title="{{ button_compare }}">
+            <i class="fa fa-facebook"></i>
+          </button>
+
+        </div>
+
     </div>
   {% endfor %}
 
