@@ -99,3 +99,12 @@ Stack trace:
 [26-Oct-2017 02:22:22 UTC] PHP  15. ControllerCommonContentBottom->index() /var/www/html/oc3demo/opencart/upload/system/engine/action.php:79
 [26-Oct-2017 02:22:22 UTC] PHP  16. Loader->controller() /var/www/html/oc3demo/opencart/upload/catalog/controller/common/content_bottom.php:63
 [26-Oct-2017 02:22:22 UTC] PHP  17. Action->execute() /var/www/html/oc3demo/opencart/upload/system/engine/loader.php:48
+[26-Oct-2017 09:13:19 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '' at line 1<br />Error No: 1064<br />SELECT p.product_id FROM oc_product WHERE p.sku=1 LIMIT ' in /var/www/html/oc3demo/opencart/upload/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/oc3demo/opencart/upload/system/library/db.php(45): DB\MySQLi->query('SELECT p.produc...')
+#1 /var/www/html/oc3demo/opencart/upload/catalog/model/catalog/product.php(82): DB->query('SELECT p.produc...')
+#2 [internal function]: ModelCatalogProduct->getFeaturedProduct()
+#3 /var/www/html/oc3demo/opencart/upload/system/engine/loader.php(248): call_user_func_array(Array, Array)
+#4 [internal function]: Loader->{closure}(Array, Array)
+#5 /var/www/html/oc3demo/opencart/upload/system/engine/proxy.php(47): call_user_func_array(Object(Closure), Array)
+#6 /var/www/html/oc3demo/opencart/upload/catalog/controller/extension/module/featured.php(19) in /var/www/html/oc3demo/opencart/upload/system/library/db/mysqli.php on line 40

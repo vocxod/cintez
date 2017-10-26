@@ -60,22 +60,22 @@ a.zone-select {
   margin-bottom: 10px;
   padding-top: 10px;
   outline: 0px dashed red;
-  color: #FEFAEA;
+  color: #111;
   cursor: pointer;
 }
 
 .panel_menu:hover {
   background: rgb(54,154,56);
-  color: #FEFAEA;
+  color: #111;
 }
 
 .panel_menu>a{
-  color: #FEFAEA;
+  color: #111;
   font-size: 16px;
   text-decoration: none;
 }
 .panel_menu>a:hover{
-  color: #FEFAEA;
+  color: #111;
 }
 
 #information {
@@ -143,3 +143,15 @@ a.zone-select {
 #column-left .product-layout, #column-right .product-layout {
   width: 100%;
 }
+
+/* newslatest */
+.news_anonce {
+  max-height: 600px;
+  overflow: hidden;
+}
+
+
+
+
+
+

@@ -2,10 +2,12 @@
 <div class="row">
   {% for article in top_news %}
     <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      {#}
       <div>
         {{ article.title }}
       </div>
-      <div>
+      #}
+      <div class="news_anonce">
         {{ article.description }}
       </div>
     </div>
