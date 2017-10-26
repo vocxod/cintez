@@ -48,10 +48,6 @@ class ControllerCommonPanelMenu extends Controller {
 		 
 		//
 		$data['information_description'] =  html_entity_decode( $info_page['description'] );
-		//var_dump( $data['information_description']); die(); 
-		// $data['categories'] = $categories;
-		
-		//var_dump( $data['categories'] ); die();
 
 		// рендеринг хтмл и возврат его наверх для вставки куда надо
 		return $this->load->view('common/panel_menu', $data);
