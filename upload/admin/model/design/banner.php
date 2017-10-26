@@ -88,7 +88,13 @@ class ModelDesignBanner extends Model {
 				'title'      => $banner_image['title'],
 				'link'       => $banner_image['link'],
 				'image'      => $banner_image['image'],
-				'sort_order' => $banner_image['sort_order']
+				'sort_order' => $banner_image['sort_order'],
+				// новые добавленные поля к баннеру
+				'description'=> $banner_image['description'],
+				'background_color' => $banner_image['background_color'],
+				'effect_image' => $banner_image['effect_image'],
+				'effect_title' => $banner_image['effect_title'],
+				'effect_description' => $banner_image['effect_description'],
 			);
 		}
 

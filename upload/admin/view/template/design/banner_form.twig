@@ -73,41 +73,64 @@
                     {% for banner_image in banner_images[language.language_id] %}
 
                       <tr id="image-row{{ image_row }}">
-                        <td class="text-left"><input type="text" name="banner_image[{{ language.language_id }}][{{ image_row }}][title]" value="{{ banner_image.title }}" placeholder="{{ entry_title }}" class="form-control"/>
+                        <td class="text-left">
+{# поле ввода заголовка #}
+<input type="text" 
+name="banner_image[{{ language.language_id }}][{{ image_row }}][title]" 
+value="{{ banner_image.title }}" 
+placeholder="{{ entry_title }}" class="form-control"/>
+
                           {% if error_banner_image[language.language_id][image_row] %}
                             <div class="text-danger">{{ error_banner_image[language.language_id][image_row] }}</div>
                           {% endif %}</td>
-                        <td class="text-left" style="width: 30%;"><input type="text" name="banner_image[{{ language.language_id }}][{{ image_row }}][link]" value="{{ banner_image.link }}" placeholder="{{ entry_link }}" class="form-control"/></td>
+
+                        <td class="text-left" style="width: 30%;">
+{# поле ввода ссылки #}
+<input type="text" 
+name="banner_image[{{ language.language_id }}][{{ image_row }}][link]" 
+value="{{ banner_image.link }}" 
+placeholder="{{ entry_link }}" 
+class="form-control"/>
+
+</td>
                         <td class="text-center"><a href="" id="thumb-image{{ image_row }}" data-toggle="image" class="img-thumbnail"><img src="{{ banner_image.thumb }}" alt="" title="" data-placeholder="{{ placeholder }}"/></a> <input type="hidden" name="banner_image[{{ language.language_id }}][{{ image_row }}][image]" value="{{ banner_image.image }}" id="input-image{{ image_row }}"/></td>
                         <td class="text-right" style="width: 10%;"><input type="text" name="banner_image[{{ language.language_id }}][{{ image_row }}][sort_order]" value="{{ banner_image.sort_order }}" placeholder="{{ entry_sort_order }}" class="form-control"/></td>
                         <td class="text-left"><button type="button" onclick="$('#image-row{{ image_row }}, .tooltip').remove();" data-toggle="tooltip" title="{{ button_remove }}" class="btn btn-danger"><i class="fa fa-minus-circle"></i></button></td>
                       </tr>
                       <tr>
                         <td>1 Всплывающее описание к слайдеру
-<textarea name="name_dd_{{loop.index}}" id="name_dd_{{loop.index}}" cols="30" rows="10"></textarea>
+
+<textarea rows="3" cols="50" 
+name="banner_image[{{ language.language_id }}][{{ image_row }}][description]" 
+cols="30" rows="10">{{ banner_image.description }}</textarea>
+
                         </td>
                         <td>2 Выбор фона на этом кадре слайрера 
-<input type="text">
+<input type="text" 
+name="banner_image[{{ language.language_id }}][{{ image_row }}][background_color]" 
+value="{{ banner_image.background_color}}">
                         </td>
-                        <td>3 Выбор эффекта к картинке
-<select name="sopt_1_{{loop.index}}" id="sopt_1_{{loop.index}}">
-  <option value="0">Проявление</option>
-  <option value="1">Быстро</option>
-  <option value="2">Медленно</option>
+
+{# очень не гибко, так как новые эффекты вводятся исключительно в коде #}                        
+                        <td>3 Выбор эффекта к картинке {{ banner_image.effect_image }}
+<select name="banner_image[{{ language.language_id }}][{{ image_row }}][effect_image]">
+  <option value="0" {% if banner_image.effect_image == 0  %}selected="selected"{% endif %}>Проявление</option>
+  <option value="1" {% if banner_image.effect_image == 1  %}selected="selected"{% endif %}>Быстро</option>
+  <option value="2" {% if banner_image.effect_image == 2  %}selected="selected"{% endif %}>Медленно</option>
 </select>
                         </td>
-                        <td>4 Выбор эффекта к заголовку
-<select name="sopt_2_{{loop.index}}" id="sopt_1_{{loop.index}}">
-  <option value="0">Проявление</option>
-  <option value="1">Быстро</option>
-  <option value="2">Медленно</option>
+                        <td>4 Выбор эффекта к заголовку {{ banner_image.effect_title }}
+<select name="banner_image[{{ language.language_id }}][{{ image_row }}][effect_title]">
+  <option value="0" {% if banner_image.effect_title == 0  %}selected="selected"{% endif %}>Проявление</option>
+  <option value="1" {% if banner_image.effect_title == 1  %}selected="selected"{% endif %}>Быстро</option>
+  <option value="2" {% if banner_image.effect_title == 2  %}selected="selected"{% endif %}>Медленно</option>
 </select>
                         </td>
-                        <td>5 Выбор эффекта к описанию
-<select name="sopt_3_{{loop.index}}" id="sopt_1_{{loop.index}}">
-  <option value="0">Проявление</option>
-  <option value="1">Быстро</option>
-  <option value="2">Медленно</option>
+                        <td>5 Выбор эффекта к описанию {{ banner_image.effect_description }}
+<select name="banner_image[{{ language.language_id }}][{{ image_row }}][effect_description]">
+  <option value="0" {% if banner_image.effect_description == 0  %}selected="selected"{% endif %}>Проявление</option>
+  <option value="1" {% if banner_image.effect_description == 1  %}selected="selected"{% endif %}>Быстро</option>
+  <option value="2" {% if banner_image.effect_description == 2  %}selected="selected"{% endif %}>Медленно</option>
 </select>
                         </td>
                       </tr>
