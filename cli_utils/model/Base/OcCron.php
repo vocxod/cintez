@@ -1056,11 +1056,11 @@ abstract class OcCron implements ActiveRecordInterface
             $keys[5] => $this->getDateAdded(),
             $keys[6] => $this->getDateModified(),
         );
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 
-        if ($result[$keys[6]] instanceof \DateTimeInterface) {
+        if ($result[$keys[6]] instanceof \DateTime) {
             $result[$keys[6]] = $result[$keys[6]]->format('c');
         }
 

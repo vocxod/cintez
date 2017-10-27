@@ -226,10 +226,14 @@ function getCategoryData( $iParentCategoryId ){
 		// echo "Store data in database\n";
 		// категория на старом сайте
 		// Get ID of the category on old site for link with new category
-		$iCategorySiteId = $value->getId();
+		$iParentIdOnSite = $value->getParent(); // ID родителя на СТАРОМ сайте
+		$iCategorySiteId = $value->getId(); // ID самой категории на СТАРОМ сайте
 		$aDescription = [ "1" => $value->getContent(), "4" => $value->getContent() ];
 		$aTitles = ["1" => $value->getPagetitle(), "4" =>$value->getPagetitle() ];
+		$iTop = 0;
+		
 		if( $iParentCategoryId == 182 ){
+			$iParentIdOnSite = 0;
 			$iTop = 1;
 		}
 		// Сохранимся (новая или обновление существующей)
@@ -238,9 +242,8 @@ function getCategoryData( $iParentCategoryId ){
 		$iCurrentCategoryId = addOrUpdateCategory( 
 			$aDescription,  	// название категории
 			$aTitles,  			// заголовки
-			$iCategorySiteId, 	// ID категории на сайте 
-			$iParentOnSite,		// ID родительской категории на САЙТЕ
-			// $iParentId = 0, 	// вот тут надо установить правильный парент - мы его сразу не знаем
+			$iParentIdOnSite,		// ID родительской категории на САЙТЕ
+			$iCategorySiteId,	// ID самой кати н астраном сайте
 			$iTop );			// только для топовых категорий.
 		// echo "Parent:" .$iParentCategoryId . " child:" . $value->getId() . " ";
 		getCategoryData( $value->getId() ); 	
@@ -483,17 +486,9 @@ function getAttributeValue( $iProductId, $iSiteAttributeId ){
 // Get NEWS
 
 // записать данные по категории в БД
-function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop = 0 ){
+function addOrUpdateCategory( $aDescription, $aTitles, $iParentIdOnSite, $iCategorySiteId, $iTop = 0 ){
 	// встаим новую категорию
 	/*
-	| oc_category                       |
-	| oc_category_description           |
-	| oc_category_filter                |
-	| oc_category_path                  |
-	| oc_category_to_layout             |
-	| oc_category_to_store              |
-
-
 	+------------------+--------------+------+-----+---------------------+-----------------------------+
 	| Field            | Type         | Null | Key | Default             | Extra                       |
 	+------------------+--------------+------+-----+---------------------+-----------------------------+
@@ -510,56 +505,39 @@ function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iPa
 	+------------------+--------------+------+-----+---------------------+-----------------------------+
 	*/
 
-	// Пытаемся найти в базе категорию, связанную со старым сайтом
-	// Trying find the category in the database, linked with old site
-	$aCat = OcCategoryQuery::create()->filterByCategorySiteId( $iCategorySiteId )->limit(1)->find();
-	var_dump( $iCategorySiteId );
-	foreach ($aCat as $key => $value) {
-		// категория в таблице есть - проводим обновление
-		// category exist in table - execute UPDATE data
-		echo "FIND\n";
-		var_dump($value->getId() ); die();
+// ищем вставляемую категорию (это может быть повторный запуск)
+	$po = OcCategoryQuery::create()->findOneByCategoryId( $iCategorySiteId );
+	
+	if( $po != null){
+		// эдитим существующую
+		//echo 'category exist: ' . $po->getCategoryId() . "\n";
+		$oCat = $po;
+	} else {
+		// это новая категория
+		//echo('new category');
+		$oCat = new OcCategory();
+		$oCat->setCategoryId( $iCategorySiteId );
 	}
-	//var_dump($oCat->getPagetitle() ); 
-	die();
 
-	$oCat = new OcCategory();
 	$oCat->setImage(null);
-	$oCat->setParentId( $iParentId );
+	$oCat->setParentId( $iParentIdOnSite );
 	$oCat->setTop( $iTop );
 	//$oCat->setColumn(1); // устанавливается в 1 по умолчанию
 	$oCat->setSortOrder(1);
 	$oCat->setStatus(1);
 	$oCat->setDateAdded( date('Y-m-d H:i:s', time() ) );
 	$oCat->setDateModified( date('Y-m-d H:i:s', time() ) );
-	$oCat->setCategorySiteId($iCategorySiteId);
+	//$oCat->setCategorySiteId($iCategorySiteId);
 	$oCat->save();
 	$iCategoryId = $oCat->getCategoryId();
-	echo  "Category ID: " . $iCategoryId . "\n";
+	echo  "Category ID: " . $iCategoryId . "\t";
 
 	// укажем описания на эти категории
 	/*
 	oc_category_description;
-	+------------------+--------------+------+-----+---------+-------+
-	| Field            | Type         | Null | Key | Default | Extra |
-	+------------------+--------------+------+-----+---------+-------+
-	| category_id      | int(11)      | NO   | PRI | NULL    |       |
-	| language_id      | int(11)      | NO   | PRI | NULL    |       |
-	| name             | varchar(255) | NO   | MUL | NULL    |       |
-	| description      | text         | NO   |     | NULL    |       |
-	| meta_title       | varchar(255) | NO   |     | NULL    |       |
-	| meta_description | varchar(255) | NO   |     | NULL    |       |
-	| meta_keyword     | varchar(255) | NO   |     | NULL    |       |
-	+------------------+--------------+------+-----+---------+-------+
-	mysql> SELECT name FROM oc_category_description WHERE category_id=75;
-	+----------------------------------------------------------------+
-	| name                                                           |
-	+----------------------------------------------------------------+
-	| Автоматическая мойка  Чайна-базед                              |
-	| Автоматическая мойка  Чайна-базед                              |
-	+----------------------------------------------------------------+
 	*/
-	foreach ($aLanguages as $iLanguageId => $sName ) {
+	OcCategoryDescriptionQuery::create()->filterByCategoryId( $iCategoryId )->delete();
+	foreach ($aTitles as $iLanguageId => $sName ) {
 		$oCategoryDescription = new OcCategoryDescription();
 		$oCategoryDescription->setCategoryId( $iCategoryId );
 		$oCategoryDescription->setLanguageId( $iLanguageId );
@@ -572,52 +550,10 @@ function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iPa
 	}
 
 	/*
-
-	oc_category_path;
-	+-------------+---------+------+-----+---------+-------+
-	| Field       | Type    | Null | Key | Default | Extra |
-	+-------------+---------+------+-----+---------+-------+
-	| category_id | int(11) | NO   | PRI | NULL    |       |
-	| path_id     | int(11) | NO   | PRI | NULL    |       |
-	| level       | int(11) | NO   |     | NULL    |       |
-	+-------------+---------+------+-----+---------+-------+
-
-	+-------------+---------+-------+
-	| category_id | path_id | level |
-	+-------------+---------+-------+
-	|          62 |      62 |     0 |
-	|          61 |      61 |     0 |
-	|          75 |      75 |     3 |
-	|          75 |      73 |     2 |
-	|          75 |      70 |     1 |
-	|          75 |      63 |     0 |
-	|          74 |      74 |     3 |
-	|          74 |      63 |     0 |
-	|          74 |      70 |     1 |
-	|          74 |      73 |     2 |
-	|          73 |      73 |     2 |
-	|          73 |      70 |     1 |
-	|          73 |      63 |     0 |
-	|          72 |      72 |     2 |
-	|          72 |      70 |     1 |
-	|          72 |      63 |     0 |
-	|          71 |      71 |     1 |
-	|          71 |      63 |     0 |
-	|          70 |      70 |     1 |
-	|          70 |      63 |     0 |
-	|          69 |      69 |     0 |
-	|          68 |      68 |     0 |
-	|          67 |      67 |     0 |
-	|          66 |      66 |     0 |
-	|          65 |      65 |     0 |
-	|          64 |      64 |     0 |
-	|          63 |      63 |     0 |
-	|          60 |      60 |     0 |
-	|          59 |      59 |     0 |
-	+-------------+---------+-------+
+	oc_category_path
 	*/
 	// для категории и всех более старших категорий для данной, построить пач
-
+	OcCategoryPathQuery::create()->filterByCategoryId( $iCategoryId )->delete();
 	$oCategoryPath = new OcCategoryPath();
 	$oCategoryPath->setCategoryId( $iCategoryId );
 	$oCategoryPath->setPathId( $iCategoryId );
@@ -625,76 +561,18 @@ function addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iPa
 	$oCategoryPath->save();
 
 	/*
-
 	oc_category_to_layout;
-	+-------------+---------+------+-----+---------+-------+
-	| Field       | Type    | Null | Key | Default | Extra |
-	+-------------+---------+------+-----+---------+-------+
-	| category_id | int(11) | NO   | PRI | NULL    |       |
-	| store_id    | int(11) | NO   | PRI | NULL    |       |
-	| layout_id   | int(11) | NO   |     | NULL    |       |
-	+-------------+---------+------+-----+---------+-------+
-	+-------------+----------+-----------+
-	| category_id | store_id | layout_id |
-	+-------------+----------+-----------+
-	|          59 |        0 |         0 |
-	|          60 |        0 |         0 |
-	|          61 |        0 |         0 |
-	|          62 |        0 |         0 |
-	|          63 |        0 |         0 |
-	|          64 |        0 |         0 |
-	|          65 |        0 |         0 |
-	|          66 |        0 |         0 |
-	|          67 |        0 |         0 |
-	|          68 |        0 |         0 |
-	|          69 |        0 |         0 |
-	|          70 |        0 |         0 |
-	|          71 |        0 |         0 |
-	|          72 |        0 |         0 |
-	|          73 |        0 |         0 |
-	|          74 |        0 |         0 |
-	|          75 |        0 |         0 |
-	+-------------+----------+-----------+
 	*/
-	$oCategoryLayout = new OcCategoryToLayout();
-	$oCategoryLayout->setCategoryId( $iCategoryId );
-	$oCategoryLayout->setStoreId( 0 );
-	$oCategoryLayout->setLayoutId( 0 );
-	$oCategoryLayout->save();
+	OcCategoryToLayoutQuery::create()->filterByCategoryId( $iCategoryId )->delete();
+	$oCategoryToLayout = new OcCategoryToLayout();
+	$oCategoryToLayout->setCategoryId( $iCategoryId );
+	$oCategoryToLayout->setStoreId( 0 );
+	$oCategoryToLayout->setLayoutId( 0 );
+	$oCategoryToLayout->save();
 	/*
-
 	category_to_store;
-	+-------------+---------+------+-----+---------+-------+
-	| Field       | Type    | Null | Key | Default | Extra |
-	+-------------+---------+------+-----+---------+-------+
-	| category_id | int(11) | NO   | PRI | NULL    |       |
-	| store_id    | int(11) | NO   | PRI | NULL    |       |
-	+-------------+---------+------+-----+---------+-------+
-	2 rows in set (0.00 sec)
-
-	mysql> SELECT * FROM oc_category_to_store;
-	+-------------+----------+
-	| category_id | store_id |
-	+-------------+----------+
-	|          59 |        0 |
-	|          60 |        0 |
-	|          61 |        0 |
-	|          62 |        0 |
-	|          63 |        0 |
-	|          64 |        0 |
-	|          65 |        0 |
-	|          66 |        0 |
-	|          67 |        0 |
-	|          68 |        0 |
-	|          69 |        0 |
-	|          70 |        0 |
-	|          71 |        0 |
-	|          72 |        0 |
-	|          73 |        0 |
-	|          74 |        0 |
-	|          75 |        0 |
-	+-------------+----------+
 	*/
+	OcCategoryToStoreQuery::create()->filterByCategoryId( $iCategoryId )->delete();
 	$oCategoryToStore = new OcCategoryToStore();
 	$oCategoryToStore->setCategoryId( $iCategoryId );
 	$oCategoryToStore->setStoreId( 0 );

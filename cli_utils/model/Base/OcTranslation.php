@@ -1017,7 +1017,7 @@ abstract class OcTranslation implements ActiveRecordInterface
             $keys[5] => $this->getValue(),
             $keys[6] => $this->getDateAdded(),
         );
-        if ($result[$keys[6]] instanceof \DateTimeInterface) {
+        if ($result[$keys[6]] instanceof \DateTime) {
             $result[$keys[6]] = $result[$keys[6]]->format('c');
         }
 

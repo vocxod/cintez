@@ -1022,9 +1022,6 @@ abstract class OcCategory implements ActiveRecordInterface
         $index = 0;
 
         $this->modifiedColumns[OcCategoryTableMap::COL_CATEGORY_ID] = true;
-        if (null !== $this->category_id) {
-            throw new PropelException('Cannot insert a value for auto-increment primary key (' . OcCategoryTableMap::COL_CATEGORY_ID . ')');
-        }
 
          // check the columns in natural order for more readable SQL queries
         if ($this->isColumnModified(OcCategoryTableMap::COL_CATEGORY_ID)) {
@@ -1111,7 +1108,9 @@ abstract class OcCategory implements ActiveRecordInterface
         } catch (Exception $e) {
             throw new PropelException('Unable to get autoincrement id.', 0, $e);
         }
-        $this->setCategoryId($pk);
+        if ($pk !== null) {
+            $this->setCategoryId($pk);
+        }
 
         $this->setNew(false);
     }
@@ -1230,11 +1229,11 @@ abstract class OcCategory implements ActiveRecordInterface
             $keys[8] => $this->getDateModified(),
             $keys[9] => $this->getCategorySiteId(),
         );
-        if ($result[$keys[7]] instanceof \DateTimeInterface) {
+        if ($result[$keys[7]] instanceof \DateTime) {
             $result[$keys[7]] = $result[$keys[7]]->format('c');
         }
 
-        if ($result[$keys[8]] instanceof \DateTimeInterface) {
+        if ($result[$keys[8]] instanceof \DateTime) {
             $result[$keys[8]] = $result[$keys[8]]->format('c');
         }
 

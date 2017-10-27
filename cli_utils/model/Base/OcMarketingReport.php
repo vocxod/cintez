@@ -917,7 +917,7 @@ abstract class OcMarketingReport implements ActiveRecordInterface
             $keys[3] => $this->getCountry(),
             $keys[4] => $this->getDateAdded(),
         );
-        if ($result[$keys[4]] instanceof \DateTimeInterface) {
+        if ($result[$keys[4]] instanceof \DateTime) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
         }
 

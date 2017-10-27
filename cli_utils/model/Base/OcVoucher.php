@@ -1285,7 +1285,7 @@ abstract class OcVoucher implements ActiveRecordInterface
             $keys[10] => $this->getStatus(),
             $keys[11] => $this->getDateAdded(),
         );
-        if ($result[$keys[11]] instanceof \DateTimeInterface) {
+        if ($result[$keys[11]] instanceof \DateTime) {
             $result[$keys[11]] = $result[$keys[11]]->format('c');
         }
 

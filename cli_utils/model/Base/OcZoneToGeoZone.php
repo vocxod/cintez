@@ -994,11 +994,11 @@ abstract class OcZoneToGeoZone implements ActiveRecordInterface
             $keys[4] => $this->getDateAdded(),
             $keys[5] => $this->getDateModified(),
         );
-        if ($result[$keys[4]] instanceof \DateTimeInterface) {
+        if ($result[$keys[4]] instanceof \DateTime) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
         }
 
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 

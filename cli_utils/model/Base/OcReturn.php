@@ -1677,15 +1677,15 @@ abstract class OcReturn implements ActiveRecordInterface
             $keys[17] => $this->getDateAdded(),
             $keys[18] => $this->getDateModified(),
         );
-        if ($result[$keys[16]] instanceof \DateTimeInterface) {
+        if ($result[$keys[16]] instanceof \DateTime) {
             $result[$keys[16]] = $result[$keys[16]]->format('c');
         }
 
-        if ($result[$keys[17]] instanceof \DateTimeInterface) {
+        if ($result[$keys[17]] instanceof \DateTime) {
             $result[$keys[17]] = $result[$keys[17]]->format('c');
         }
 
-        if ($result[$keys[18]] instanceof \DateTimeInterface) {
+        if ($result[$keys[18]] instanceof \DateTime) {
             $result[$keys[18]] = $result[$keys[18]]->format('c');
         }
 

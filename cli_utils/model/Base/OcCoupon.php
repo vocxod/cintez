@@ -1463,15 +1463,15 @@ abstract class OcCoupon implements ActiveRecordInterface
             $keys[12] => $this->getStatus(),
             $keys[13] => $this->getDateAdded(),
         );
-        if ($result[$keys[8]] instanceof \DateTimeInterface) {
+        if ($result[$keys[8]] instanceof \DateTime) {
             $result[$keys[8]] = $result[$keys[8]]->format('c');
         }
 
-        if ($result[$keys[9]] instanceof \DateTimeInterface) {
+        if ($result[$keys[9]] instanceof \DateTime) {
             $result[$keys[9]] = $result[$keys[9]]->format('c');
         }
 
-        if ($result[$keys[13]] instanceof \DateTimeInterface) {
+        if ($result[$keys[13]] instanceof \DateTime) {
             $result[$keys[13]] = $result[$keys[13]]->format('c');
         }
 

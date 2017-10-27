@@ -1113,11 +1113,11 @@ abstract class OcProductDiscount implements ActiveRecordInterface
             $keys[6] => $this->getDateStart(),
             $keys[7] => $this->getDateEnd(),
         );
-        if ($result[$keys[6]] instanceof \DateTimeInterface) {
+        if ($result[$keys[6]] instanceof \DateTime) {
             $result[$keys[6]] = $result[$keys[6]]->format('c');
         }
 
-        if ($result[$keys[7]] instanceof \DateTimeInterface) {
+        if ($result[$keys[7]] instanceof \DateTime) {
             $result[$keys[7]] = $result[$keys[7]]->format('c');
         }
 

@@ -867,7 +867,7 @@ abstract class OcExtensionPath implements ActiveRecordInterface
             $keys[2] => $this->getPath(),
             $keys[3] => $this->getDateAdded(),
         );
-        if ($result[$keys[3]] instanceof \DateTimeInterface) {
+        if ($result[$keys[3]] instanceof \DateTime) {
             $result[$keys[3]] = $result[$keys[3]]->format('c');
         }
 

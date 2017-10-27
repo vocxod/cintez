@@ -1530,7 +1530,7 @@ abstract class OcCustomerAffiliate implements ActiveRecordInterface
             $keys[15] => $this->getStatus(),
             $keys[16] => $this->getDateAdded(),
         );
-        if ($result[$keys[16]] instanceof \DateTimeInterface) {
+        if ($result[$keys[16]] instanceof \DateTime) {
             $result[$keys[16]] = $result[$keys[16]]->format('c');
         }
 

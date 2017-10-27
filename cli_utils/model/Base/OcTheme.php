@@ -967,7 +967,7 @@ abstract class OcTheme implements ActiveRecordInterface
             $keys[4] => $this->getCode(),
             $keys[5] => $this->getDateAdded(),
         );
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 
