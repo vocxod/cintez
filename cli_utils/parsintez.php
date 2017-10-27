@@ -220,7 +220,7 @@ function getCategoryData( $iParentCategoryId ){
 		->filterByPublished(1)
 		->filterByParent( $iParentCategoryId)
 		->find();
-		echo "Count " . count($q) . " children categoies\n";
+		// echo "Count " . count($q) . " children categoies\n";
 
 	foreach ($q as $key => $value) {
 		// echo "Store data in database\n";
@@ -228,15 +228,21 @@ function getCategoryData( $iParentCategoryId ){
 		// Get ID of the category on old site for link with new category
 		$iCategorySiteId = $value->getId();
 		$aDescription = [ "1" => $value->getContent(), "4" => $value->getContent() ];
-		$aLanguages = ["1" => $value->getPagetitle(), "4" =>$value->getPagetitle() ];
+		$aTitles = ["1" => $value->getPagetitle(), "4" =>$value->getPagetitle() ];
 		if( $iParentCategoryId == 182 ){
 			$iTop = 1;
 		}
 		// Сохранимся (новая или обновление существующей)
 		// Пишем сформированную категорию в НОВУЮ ТАБЛИтЦУ 
 		// Create new or update exist category
-		// $iCurrentCategoryId = addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop );
-		echo $value->getId() . " : ";
+		$iCurrentCategoryId = addOrUpdateCategory( 
+			$aDescription,  	// название категории
+			$aTitles,  			// заголовки
+			$iCategorySiteId, 	// ID категории на сайте 
+			$iParentOnSite,		// ID родительской категории на САЙТЕ
+			// $iParentId = 0, 	// вот тут надо установить правильный парент - мы его сразу не знаем
+			$iTop );			// только для топовых категорий.
+		// echo "Parent:" .$iParentCategoryId . " child:" . $value->getId() . " ";
 		getCategoryData( $value->getId() ); 	
 	}
 	//return $iCount;
