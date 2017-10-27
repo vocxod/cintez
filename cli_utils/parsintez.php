@@ -35,6 +35,7 @@ foreach ($argv as $key => $value) {
 			break;
 		case '--cats':
 			echo "--cats\n";
+			getCategoryData( 182 ); //забрать категории с башки=182
 			break;
 		case '--translite':
 			echo "--translite\n";
@@ -211,18 +212,18 @@ function importNews(){
 	}
 }
 
-function getCategoryData( $iParentCategoryId = 182 ){
+function getCategoryData( $iParentCategoryId ){
 	// Вытаскиваем КАТЕГОРИИ из таблицы СТАРОГО САЙТА
 	// Get CATEGORIes from old database table
 	$q = ModxSiteContentQuery::create()
-		->filterByIsFolder(1)
+		//->filterByIsFolder(1)
 		->filterByPublished(1)
 		->filterByParent( $iParentCategoryId)
 		->find();
 		echo "Count " . count($q) . " children categoies\n";
 
 	foreach ($q as $key => $value) {
-		echo "Store data in database\n";
+		// echo "Store data in database\n";
 		// категория на старом сайте
 		// Get ID of the category on old site for link with new category
 		$iCategorySiteId = $value->getId();
@@ -234,7 +235,8 @@ function getCategoryData( $iParentCategoryId = 182 ){
 		// Сохранимся (новая или обновление существующей)
 		// Пишем сформированную категорию в НОВУЮ ТАБЛИтЦУ 
 		// Create new or update exist category
-		$iCurrentCategoryId = addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop );
+		// $iCurrentCategoryId = addOrUpdateCategory( $aDescription, $aLanguages, $iCategorySiteId, $iParentId = 0, $iTop );
+		echo $value->getId() . " : ";
 		getCategoryData( $value->getId() ); 	
 	}
 	//return $iCount;
