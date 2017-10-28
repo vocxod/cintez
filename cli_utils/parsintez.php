@@ -3,8 +3,11 @@
 require('vendor/autoload.php');
 require('generated-conf/config.php');
 
+$uuResult = [];
+
 echo "Usage: parsintez ACTION\n\n";
 echo "Where ACTION is one from is:
+\t--p2c\t;set category to each PRODUCT
 \t--dcat=75 \t;delete old categories from start ID=75
 \t--product\t;import PRODUCT from site
 \t--articles\t;import articles from old site
@@ -25,6 +28,10 @@ foreach ($argv as $key => $value) {
 				$iStartId = (int)$aAction[1];
 			}
 			echo "--dcat from CATEGORY_ID:$iStartId\n";
+			break;
+		case '--p2c':
+			echo "--p2c\n";
+			p2c(); // set category for products
 			break;
 		case '--articles':
 			echo "--articles\n";
@@ -59,6 +66,91 @@ foreach ($argv as $key => $value) {
 	}
 }
 die();
+
+function fact($n) {
+  if ($n === 0) { // our base case
+     return 1;
+  }
+  else {
+     return $n * fact($n-1); // <--calling itself.
+  }
+}
+
+
+function getCategoryList( $iCategoryId, $uuResult = array() ){
+	//var_dump( $GLOBALS['uuResult'] ); die();
+	array_push($GLOBALS['uuResult'], $iCategoryId); 
+	//$uuResult = [];
+	//array_push($uuResult, $iCategoryId);
+	$c = OcCategoryQuery::create()->filterByCategoryId( $iCategoryId )->findOne();
+	if( $c->getParentId() != 0 ){
+		getCategoryList( $c->getParentId(), $GLOBALS['uuResult'] );
+	} else {
+		//var_dump($GLOBALS['uuResult']);
+	}
+	return $GLOBALS['uuResult'];
+}
+
+function p2c(){
+	OcProductToCategoryQuery::create()->deleteAll();
+	OcCategoryPathQuery::create()->deleteAll();
+	echo "Set category to product\n";
+	//$aCategories = getAllParents();
+	$c = OcCategoryQuery::create()->filterByStatus(1)->find();
+	foreach ($c as $key => $oCategory) {
+		// находим список товаров данной категории на старом сайте
+		$oTmp = ModxSiteTmplvarContentvaluesQuery::create()
+		->filterByTmplvarid(12)
+		->filterByContentid( $oCategory->getCategoryId() )
+		->findOne();
+		
+		if( $oTmp != null){
+			// получить список товаров
+			$aModelIds = explode( '||', $oTmp->getValue() );
+			$aProducts = OcProductQuery::create()->filterByModel( $aModelIds )->find();
+				
+			// получить все категории этого товара на нашем сайте
+			// первый уровень
+			$aCategories = []; 
+
+			$aaa = getCategoryList( $oCategory->getCategoryId() );
+			$aCategories = array_reverse($GLOBALS['uuResult']);
+			$GLOBALS['uuResult'] = [];
+
+			foreach ($aCategories as $iCategoryId ) {
+				foreach ($aProducts as $aProduct) {
+					//echo($iCategoryId . "\t" . $aProduct->getProductId() . "\n" ); 
+					$p2cat = OcProductToCategoryQuery::create()
+					->filterByProductId( $aProduct->getProductId() )
+					->filterByCategoryId( $iCategoryId )
+					->findOne();
+					if( $p2cat == null ){
+						$o = new OcProductToCategory();
+						$o->setProductId( $aProduct->getProductId() );
+						$o->setCategoryId( $iCategoryId );
+						$o->save();
+					}
+				}
+			}
+
+			// прописать путь категорий
+			// только если его еще нет
+			foreach ($aCategories as $iKey => $iPath) {
+				$cp = OcCategoryPathQuery::create()
+				->filterByCategoryId( $oCategory->getCategoryId() )
+				->filterByPathId( $iPath )
+				->findOne();
+				if($cp==null){
+					$oCatPath = new OcCategoryPath();
+					$oCatPath->setCategoryId( $oCategory->getCategoryId() );
+					$oCatPath->setPathId( $iPath );
+					$oCatPath->setLevel( $iKey );
+					$oCatPath->save();
+				}
+			}
+		}
+	}
+}
 
 function setImagePath( $sContent ){
 	$sPattern = '|<img(.*)src="(.*)"(.*)>|Uis';
