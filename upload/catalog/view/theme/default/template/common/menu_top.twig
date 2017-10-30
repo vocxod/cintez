@@ -127,17 +127,33 @@ style="background:rgb(240,244,245);border:0px dashed red;">
 
         <li class="col-sm-3">
           <ul>
-            <li class="dropdown-header">ПРОДУКЦИЯ</li>
+            <li class="dropdown-header">АКЦИИ</li>
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <div class="item active" style="height:300px;">
-                  <a href="#">
-<img src="http://placehold.it/254x150/3498db/f5f5f5/&text=НовыйТовар" class="img-responsive" alt="product 1"></a>
-                  <h4><small>Малый подзаголовок к товару 1</small></h4>
-                  <button class="btn btn-success" type="button">100500 Руб</button>
-                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                </div>
+
+<div class="item active" style="height:400px; outline:0px dashed blue;">
+<a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
+<h4><small>Скидки и распродажи этого продукта</small></h4>
+<button class="btn btn-success" type="button">100 Руб</button>
+<button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
+</div>
+                
+{% for banner in banners %}
+<div class="item {% if loop.ibdex == 1 %}active{% endif %}" style="height:400px; outline:0px dashed blue;">
+<a href="{{ banner.link }}">
+<img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
+
+</a>
+<h4><small>{{ banner.title }}</small></h4>
+<button class="btn btn-success" type="button">123 Руб</button>
+<button href="{{ banner.link }}" class="btn btn-default" type="button">
+  <span class="glyphicon glyphicon-earphone"></span> Узнать больше</button>  
+</div>
+{% endfor %}
+
+
                 <!-- End Item -->
+{#
                 <div class="item">
                   <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
                   <h4><small>Скидки и распродажи этого продукта</small></h4>
@@ -145,6 +161,7 @@ style="background:rgb(240,244,245);border:0px dashed red;">
                   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
                 </div>
                 <!-- End Item -->
+
                 <div class="item">
                   <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=ТоварИзРекламы" class="img-responsive" alt="product 3"></a>
                   <h4><small>Акции и распродажи</small></h4>
@@ -152,19 +169,21 @@ style="background:rgb(240,244,245);border:0px dashed red;">
                   <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
                 </div>
                 <!-- End Item -->
+                #}
               </div>
               <!-- End Carousel Inner -->
             </div>
             <!-- /.carousel -->
-                                         <!-- Controls -->
-                          <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
-                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                            <span class="sr-only">Пред</span>
-                          </a>
-                          <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
-                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                            <span class="sr-only">След</span>
-                          </a>
+
+            <!-- Controls -->
+            <a class="left carousel-control" href="#" role="button" data-slide="prev">
+            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+            <span class="sr-only">Пред</span>
+            </a>
+            <a class="right carousel-control" href="#" role="button" data-slide="next">
+            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+            <span class="sr-only">След</span>
+            </a>
                        
             <li class="divider"></li>
             <li><a href="index.php?route=product/category&path=113">Перейти в каталог <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
