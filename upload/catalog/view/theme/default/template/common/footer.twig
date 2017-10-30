@@ -99,7 +99,12 @@
 {% for script in scripts %}
 <script src="{{ script }}" type="text/javascript"></script>
 {% endfor %}
-
+<script type="text/javascript">
+/* for mega menu */
+  jQuery(document).on('click', '.mega-dropdown', function(e) {
+    e.stopPropagation()
+  })  
+</script>
 </body></html>
 
       {#

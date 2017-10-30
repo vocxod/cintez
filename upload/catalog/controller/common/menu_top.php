@@ -18,7 +18,12 @@ class ControllerCommonMenuTop extends Controller {
 				['title'=>'ПУБЛИКАЦИИ', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['title'=>'НОВОСТИ', 'href' => '#', 'target'=>'_blank', 'active' => true], 			
 				['title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
-				['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+			];
+			$data['apply_menu_list'] = [ 
+				["name"=>"товарная группа 1", "href"=>"index.php"],
+				["name"=>"товарная группа 12", "href"=>"index.php?bla=2"],
+				["name"=>"товарная группа 13", "href"=>"index.php?bla=3"], 
 			];
 		endif;
 
@@ -36,15 +41,16 @@ class ControllerCommonMenuTop extends Controller {
 				['title'=>'ARTICLES', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['title'=>'NEWS', 'href' => '#', 'target'=>'_blank', 'active' => true], 			
 				['title'=>'FEEDBACK', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
-				['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+			];
+			$data['apply_menu_list'] = [ 
+				["name"=>"NAME 1", "href"=>"index.php"],
+				["name"=>"NAME 2", "href"=>"index.php?bla=2"],
+				["name"=>"NAME 3", "href"=>"index.php?bla=3"], 
 			];
 		endif;
 
-		$data['apply_menu_list'] = [ 
-			["name"=>"NAME 1", "href"=>"index.php"],
-			["name"=>"NAME 2", "href"=>"index.php?bla=2"],
-			["name"=>"NAME 3", "href"=>"index.php?bla=3"], 
-		];
+
 		//var_dump( $data['apply_menu_list'] ); die();
 		return $this->load->view('common/menu_top', $data);
 	}
