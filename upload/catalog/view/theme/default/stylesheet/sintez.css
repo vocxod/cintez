@@ -184,3 +184,9 @@ width:auto;
   color: #FEFAEA;
   background: rgb(85,131,203);
 } 
+
+
+/* стриница товара */
+#button-cart {
+  background: rgb(54,154,56);
+}
