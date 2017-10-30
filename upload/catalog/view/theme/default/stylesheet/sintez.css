@@ -203,6 +203,10 @@ https://bootsnipp.com/snippets/g07VM
 .navbar-default
 {
     border-radius:0px;
+    box-shadow: none;
+    border:0px;
+    outline: 0px dashed red;
+    margin-top: 30px;
 }
 .navbar-default .navbar-nav>li>a {
  /* width: 200px;*/
@@ -270,7 +274,7 @@ https://bootsnipp.com/snippets/g07VM
 }
 
 .mega-dropdown-menu .dropdown-header {
-  color: #428bca;
+  color: rgb(54,154,56);
   font-size: 18px;
   font-weight: bold;
 }
@@ -281,6 +285,11 @@ https://bootsnipp.com/snippets/g07VM
 
 .mega-dropdown-menu .form-group {
   margin-bottom: 3px;
+}
+
+.open {
+  outline: 2px solid green;
+  background-color: rgb(54,154,56) !important;
 }
 
 .carousel-control {

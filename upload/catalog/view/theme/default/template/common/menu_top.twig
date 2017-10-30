@@ -101,103 +101,79 @@
                 {#<a class="navbar-brand" href="#">Главная</a>#}
               </div>
 
-              <div class="collapse navbar-collapse js-navbar-collapse">
+<div class="collapse navbar-collapse js-navbar-collapse" 
+style="background:rgb(240,244,245);border:0px dashed red;">
                 <ul class="nav navbar-nav">
                   {% for item in down_line %}
-                  {% if loop.index == 1 %}
-                      <li class="dropdown mega-dropdown">
-                        <a href="{{item.href}}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title}} <span class="glyphicon glyphicon-chevron-down pull-right"></span></a>
-                        <ul class="dropdown-menu mega-dropdown-menu row">
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header">New in Stores</li>
-                              <div id="myCarousel" class="carousel slide" data-ride="carousel">
-                                <div class="carousel-inner">
-                                  <div class="item active">
-                                    <a href="#"><img src="http://placehold.it/254x150/3498db/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 1"></a>
-                                    <h4><small>Summer dress floral prints</small></h4>
-                                    <button class="btn btn-primary" type="button">49,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                                  </div>
-                                  <!-- End Item -->
-                                  <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 2"></a>
-                                    <h4><small>Gold sandals with shiny touch</small></h4>
-                                    <button class="btn btn-primary" type="button">9,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                                  </div>
-                                  <!-- End Item -->
-                                  <div class="item">
-                                    <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=New+Collection" class="img-responsive" alt="product 3"></a>
-                                    <h4><small>Denin jacket stamped</small></h4>
-                                    <button class="btn btn-primary" type="button">49,99 €</button>
-                                    <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                                  </div>
-                                  <!-- End Item -->
-                                </div>
-                                <!-- End Carousel Inner -->
-                              </div>
-                              <!-- /.carousel -->
-                                                           <!-- Controls -->
-                                            <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
-                                              <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-                                              <span class="sr-only">Previous</span>
-                                            </a>
-                                            <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
-                                              <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-                                              <span class="sr-only">Next</span>
-                                            </a>
-                                         
-                              <li class="divider"></li>
-                              <li><a href="#">View all Collection <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-                            </ul>
-                          </li>
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header">Dresses</li>
-                              <li><a href="#">Unique Features</a></li>
-                              <li><a href="#">Image Responsive</a></li>
-                              <li><a href="#">Auto Carousel</a></li>
-                              <li><a href="#">Newsletter Form</a></li>
-                              <li><a href="#">Four columns</a></li>
-                              <li class="divider"></li>
-                              <li class="dropdown-header">Tops</li>
-                              <li><a href="#">Good Typography</a></li>
-                            </ul>
-                          </li>
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header">Jackets</li>
-                              <li><a href="#">Easy to customize</a></li>
-                              <li><a href="#">Glyphicons</a></li>
-                              <li><a href="#">Pull Right Elements</a></li>
-                              <li class="divider"></li>
-                              <li class="dropdown-header">Pants</li>
-                              <li><a href="#">Coloured Headers</a></li>
-                              <li><a href="#">Primary Buttons & Default</a></li>
-                              <li><a href="#">Calls to action</a></li>
-                            </ul>
-                          </li>
-                          <li class="col-sm-3">
-                            <ul>
-                              <li class="dropdown-header">Accessories</li>
-                              <li><a href="#">Default Navbar</a></li>
-                              <li><a href="#">Lovely Fonts</a></li>
-                              <li><a href="#">Responsive Dropdown </a></li>
-                              <li class="divider"></li>
-                              <li class="dropdown-header">Newsletter</li>
-                              <form class="form" role="form">
-                                <div class="form-group">
-                                  <label class="sr-only" for="email">Email address</label>
-                                  <input type="email" class="form-control" id="email" placeholder="Enter email">
-                                </div>
-                                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
-                              </form>
-                            </ul>
-                          </li>
-                        </ul>
-                      </li>
-                  {% else %}
+{% if loop.index == 1 %}
+    <li class="dropdown mega-dropdown">
+      <a href="{{item.href}}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title}} 
+        <span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span></a>
+      <ul class="dropdown-menu mega-dropdown-menu row">
+
+        {% for column in columns %}
+        <li class="col-sm-3">
+          <ul>
+            <li class="dropdown-header">{{ column.header }}</li>
+            
+            {% for colutem in column[loop.index0] %}
+              <li><a href="#">{{ colutem }}</a></li>
+            {% endfor %}
+            
+          </ul>
+        </li>
+        {% endfor %}
+
+
+        <li class="col-sm-3">
+          <ul>
+            <li class="dropdown-header">ПРОДУКЦИЯ</li>
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+              <div class="carousel-inner">
+                <div class="item active" style="height:300px;">
+                  <a href="#">
+<img src="http://placehold.it/254x150/3498db/f5f5f5/&text=НовыйТовар" class="img-responsive" alt="product 1"></a>
+                  <h4><small>Малый подзаголовок к товару 1</small></h4>
+                  <button class="btn btn-success" type="button">100500 Руб</button>
+                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
+                </div>
+                <!-- End Item -->
+                <div class="item">
+                  <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
+                  <h4><small>Скидки и распродажи этого продукта</small></h4>
+                  <button class="btn btn-success" type="button">100 Руб</button>
+                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
+                </div>
+                <!-- End Item -->
+                <div class="item">
+                  <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=ТоварИзРекламы" class="img-responsive" alt="product 3"></a>
+                  <h4><small>Акции и распродажи</small></h4>
+                  <button class="btn btn-success" type="button">от 100 руб</button>
+                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
+                </div>
+                <!-- End Item -->
+              </div>
+              <!-- End Carousel Inner -->
+            </div>
+            <!-- /.carousel -->
+                                         <!-- Controls -->
+                          <a class="left carousel-control" href="#womenCollection" role="button" data-slide="prev">
+                            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+                            <span class="sr-only">Пред</span>
+                          </a>
+                          <a class="right carousel-control" href="#womenCollection" role="button" data-slide="next">
+                            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+                            <span class="sr-only">След</span>
+                          </a>
+                       
+            <li class="divider"></li>
+            <li><a href="index.php?route=product/category&path=113">Перейти в каталог <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
+          </ul>
+        </li>
+
+      </ul>
+    </li>
+{% else %}
                       <li><a href="{{ item.href }}">{{ item.title}}</a></li>
                   {% endif %}
                   {% endfor %}
