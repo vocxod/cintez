@@ -9,10 +9,10 @@
 propel:
     paths:
         # The directory where Propel expects to find your `schema.xml` file.
-        schemaDir: /var/www/html/cintez/PaSInteZ/propel_2
+        schemaDir: /var/www/html/oc3demo/opencart/cli_utils
 
         # The directory where Propel should output generated object model classes.
-        phpDir: /var/www/html/cintez/PaSInteZ/propel_2/model
+        phpDir: /var/www/html/oc3demo/opencart/cli_utils/model
 
 #   database:
 #       connections:

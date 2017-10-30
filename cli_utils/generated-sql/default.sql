@@ -77,6 +77,24 @@ CREATE TABLE `modx_site_content`
 ) ENGINE=MyISAM;
 
 -- ---------------------------------------------------------------------
+-- modx_site_tmplvar_contentvalues
+-- ---------------------------------------------------------------------
+
+DROP TABLE IF EXISTS `modx_site_tmplvar_contentvalues`;
+
+CREATE TABLE `modx_site_tmplvar_contentvalues`
+(
+    `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+    `tmplvarid` INTEGER(10) DEFAULT 0 NOT NULL,
+    `contentid` INTEGER(10) DEFAULT 0 NOT NULL,
+    `value` TEXT NOT NULL,
+    PRIMARY KEY (`id`),
+    INDEX `tmplvarid` (`tmplvarid`),
+    INDEX `contentid` (`contentid`),
+    INDEX `tv_cnt` (`tmplvarid`, `contentid`)
+) ENGINE=MyISAM;
+
+-- ---------------------------------------------------------------------
 -- oc_address
 -- ---------------------------------------------------------------------
 
@@ -984,6 +1002,8 @@ CREATE TABLE `oc_information`
     `bottom` INTEGER(1) DEFAULT 0 NOT NULL,
     `sort_order` INTEGER(3) DEFAULT 0 NOT NULL,
     `status` TINYINT(1) DEFAULT 1 NOT NULL,
+    `isnews` INTEGER DEFAULT 0,
+    `onhome` INTEGER DEFAULT 0,
     PRIMARY KEY (`information_id`)
 ) ENGINE=MyISAM;
 

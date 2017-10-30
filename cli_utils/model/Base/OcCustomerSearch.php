@@ -1253,7 +1253,7 @@ abstract class OcCustomerSearch implements ActiveRecordInterface
             $keys[9] => $this->getIp(),
             $keys[10] => $this->getDateAdded(),
         );
-        if ($result[$keys[10]] instanceof \DateTimeInterface) {
+        if ($result[$keys[10]] instanceof \DateTime) {
             $result[$keys[10]] = $result[$keys[10]]->format('c');
         }
 

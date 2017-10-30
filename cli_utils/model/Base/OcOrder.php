@@ -3780,11 +3780,11 @@ abstract class OcOrder implements ActiveRecordInterface
             $keys[59] => $this->getDateAdded(),
             $keys[60] => $this->getDateModified(),
         );
-        if ($result[$keys[59]] instanceof \DateTimeInterface) {
+        if ($result[$keys[59]] instanceof \DateTime) {
             $result[$keys[59]] = $result[$keys[59]]->format('c');
         }
 
-        if ($result[$keys[60]] instanceof \DateTimeInterface) {
+        if ($result[$keys[60]] instanceof \DateTime) {
             $result[$keys[60]] = $result[$keys[60]]->format('c');
         }
 

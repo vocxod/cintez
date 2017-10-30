@@ -1185,7 +1185,7 @@ abstract class OcModification implements ActiveRecordInterface
             $keys[8] => $this->getStatus(),
             $keys[9] => $this->getDateAdded(),
         );
-        if ($result[$keys[9]] instanceof \DateTimeInterface) {
+        if ($result[$keys[9]] instanceof \DateTime) {
             $result[$keys[9]] = $result[$keys[9]]->format('c');
         }
 

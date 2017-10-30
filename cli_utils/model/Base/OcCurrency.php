@@ -1135,7 +1135,7 @@ abstract class OcCurrency implements ActiveRecordInterface
             $keys[7] => $this->getStatus(),
             $keys[8] => $this->getDateModified(),
         );
-        if ($result[$keys[8]] instanceof \DateTimeInterface) {
+        if ($result[$keys[8]] instanceof \DateTime) {
             $result[$keys[8]] = $result[$keys[8]]->format('c');
         }
 

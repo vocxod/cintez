@@ -906,7 +906,7 @@ abstract class OcCustomerOnline implements ActiveRecordInterface
             $keys[3] => $this->getReferer(),
             $keys[4] => $this->getDateAdded(),
         );
-        if ($result[$keys[4]] instanceof \DateTimeInterface) {
+        if ($result[$keys[4]] instanceof \DateTime) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
         }
 

@@ -4,7 +4,6 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		$this->load->language('extension/module/newslatest');
 
 		$this->load->model('catalog/product');
-
 		$this->load->model('tool/image');
 
 		$data['products'] = array();
@@ -17,6 +16,37 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		);
 
 		$results = $this->model_catalog_product->getProducts($filter_data);
+
+		$sLanguageCode = $this->session->data['language'];
+		switch ($sLanguageCode) {
+			case 'ru-ru':
+				$iLanguageId = 4;
+				break;
+			case 'en-gb':
+				$iLanguageId = 1;
+				break;
+			default:
+				$iLanguageId = 1;
+				break;
+		}
+
+		$this->load->model('catalog/information');
+		$top_news = $this->model_catalog_information->getTopNews( $iLanguageId );
+		
+		$aResult = [];
+		foreach ($top_news as $key => $value) {
+
+			$aData = [];
+			if(is_array($value)){
+				foreach ($value as $key2 => $value2) {
+					//echo $key2 . " : " . $value2 . "<br>";
+					$aData[$key2] = html_entity_decode( $value2 );
+				}
+				$aResult[] = $aData;
+			}
+		}
+		
+		$data['top_news'] = $aResult;
 
 		if ($results) {
 			foreach ($results as $result) {

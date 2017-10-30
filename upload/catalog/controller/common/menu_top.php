@@ -40,7 +40,12 @@ class ControllerCommonMenuTop extends Controller {
 			];
 		endif;
 
-
+		$data['apply_menu_list'] = [ 
+			["name"=>"NAME 1", "href"=>"index.php"],
+			["name"=>"NAME 2", "href"=>"index.php?bla=2"],
+			["name"=>"NAME 3", "href"=>"index.php?bla=3"], 
+		];
+		//var_dump( $data['apply_menu_list'] ); die();
 		return $this->load->view('common/menu_top', $data);
 	}
 }

@@ -1335,7 +1335,7 @@ abstract class OcUser implements ActiveRecordInterface
             $keys[11] => $this->getStatus(),
             $keys[12] => $this->getDateAdded(),
         );
-        if ($result[$keys[12]] instanceof \DateTimeInterface) {
+        if ($result[$keys[12]] instanceof \DateTime) {
             $result[$keys[12]] = $result[$keys[12]]->format('c');
         }
 

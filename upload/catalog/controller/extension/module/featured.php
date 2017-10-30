@@ -13,6 +13,15 @@ class ControllerExtensionModuleFeatured extends Controller {
 			$setting['limit'] = 4;
 		}
 
+		// корректируем содержимое массива PRODUCT и заталкиваем туда
+		// LINIT товаров и которых SKU = 1
+		$aProducts = $this->model_catalog_product->getFeaturedProduct( $setting['limit'] );
+		$aTmp = [];
+		foreach($aProducts as $aItem){
+			$aTmp[] = $aItem['product_id'];
+		}
+		$setting['product'] = $aTmp;
+
 		if (!empty($setting['product'])) {
 			$products = array_slice($setting['product'], 0, (int)$setting['limit']);
 

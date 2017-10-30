@@ -985,7 +985,7 @@ abstract class OcReturnHistory implements ActiveRecordInterface
             $keys[4] => $this->getComment(),
             $keys[5] => $this->getDateAdded(),
         );
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 

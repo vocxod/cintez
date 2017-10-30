@@ -806,7 +806,7 @@ abstract class OcCustomerWishlist implements ActiveRecordInterface
             $keys[1] => $this->getProductId(),
             $keys[2] => $this->getDateAdded(),
         );
-        if ($result[$keys[2]] instanceof \DateTimeInterface) {
+        if ($result[$keys[2]] instanceof \DateTime) {
             $result[$keys[2]] = $result[$keys[2]]->format('c');
         }
 

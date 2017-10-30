@@ -806,7 +806,7 @@ abstract class OcSession implements ActiveRecordInterface
             $keys[1] => $this->getData(),
             $keys[2] => $this->getExpire(),
         );
-        if ($result[$keys[2]] instanceof \DateTimeInterface) {
+        if ($result[$keys[2]] instanceof \DateTime) {
             $result[$keys[2]] = $result[$keys[2]]->format('c');
         }
 

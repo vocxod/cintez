@@ -938,11 +938,11 @@ abstract class OcTaxClass implements ActiveRecordInterface
             $keys[3] => $this->getDateAdded(),
             $keys[4] => $this->getDateModified(),
         );
-        if ($result[$keys[3]] instanceof \DateTimeInterface) {
+        if ($result[$keys[3]] instanceof \DateTime) {
             $result[$keys[3]] = $result[$keys[3]]->format('c');
         }
 
-        if ($result[$keys[4]] instanceof \DateTimeInterface) {
+        if ($result[$keys[4]] instanceof \DateTime) {
             $result[$keys[4]] = $result[$keys[4]]->format('c');
         }
 

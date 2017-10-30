@@ -2459,15 +2459,15 @@ abstract class OcProduct implements ActiveRecordInterface
             $keys[30] => $this->getDateModified(),
             $keys[31] => $this->getStatus2(),
         );
-        if ($result[$keys[17]] instanceof \DateTimeInterface) {
+        if ($result[$keys[17]] instanceof \DateTime) {
             $result[$keys[17]] = $result[$keys[17]]->format('c');
         }
 
-        if ($result[$keys[29]] instanceof \DateTimeInterface) {
+        if ($result[$keys[29]] instanceof \DateTime) {
             $result[$keys[29]] = $result[$keys[29]]->format('c');
         }
 
-        if ($result[$keys[30]] instanceof \DateTimeInterface) {
+        if ($result[$keys[30]] instanceof \DateTime) {
             $result[$keys[30]] = $result[$keys[30]]->format('c');
         }
 

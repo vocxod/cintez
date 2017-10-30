@@ -1057,11 +1057,11 @@ abstract class OcProductSpecial implements ActiveRecordInterface
             $keys[5] => $this->getDateStart(),
             $keys[6] => $this->getDateEnd(),
         );
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 
-        if ($result[$keys[6]] instanceof \DateTimeInterface) {
+        if ($result[$keys[6]] instanceof \DateTime) {
             $result[$keys[6]] = $result[$keys[6]]->format('c');
         }
 

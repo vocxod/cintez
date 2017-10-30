@@ -1117,7 +1117,7 @@ abstract class OcCart implements ActiveRecordInterface
             $keys[7] => $this->getQuantity(),
             $keys[8] => $this->getDateAdded(),
         );
-        if ($result[$keys[8]] instanceof \DateTimeInterface) {
+        if ($result[$keys[8]] instanceof \DateTime) {
             $result[$keys[8]] = $result[$keys[8]]->format('c');
         }
 

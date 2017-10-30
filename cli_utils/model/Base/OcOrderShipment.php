@@ -929,7 +929,7 @@ abstract class OcOrderShipment implements ActiveRecordInterface
             $keys[3] => $this->getShippingCourierId(),
             $keys[4] => $this->getTrackingNumber(),
         );
-        if ($result[$keys[2]] instanceof \DateTimeInterface) {
+        if ($result[$keys[2]] instanceof \DateTime) {
             $result[$keys[2]] = $result[$keys[2]]->format('c');
         }
 

@@ -985,7 +985,7 @@ abstract class OcCustomerReward implements ActiveRecordInterface
             $keys[4] => $this->getPoints(),
             $keys[5] => $this->getDateAdded(),
         );
-        if ($result[$keys[5]] instanceof \DateTimeInterface) {
+        if ($result[$keys[5]] instanceof \DateTime) {
             $result[$keys[5]] = $result[$keys[5]]->format('c');
         }
 

@@ -1,7 +1,13 @@
 <?php
 class ModelCatalogInformation extends Model {
 	public function addInformation($data) {
-		$this->db->query("INSERT INTO " . DB_PREFIX . "information SET sort_order = '" . (int)$data['sort_order'] . "', bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', status = '" . (int)$data['status'] . "'");
+		$this->db->query("INSERT INTO " . DB_PREFIX . "information 
+			SET sort_order = '" . (int)$data['sort_order'] . "', 
+			bottom = '" . (isset($data['bottom']) ? (int)$data['bottom'] : 0) . "', 
+			status = '" . (int)$data['status'] . "',
+			onhome = '" . (int)$data['onhome'] . "',
+			isnews = '" . (int)$data['isnews'] . "' "
+			);
 
 		$information_id = $this->db->getLastId();
 

@@ -1685,7 +1685,7 @@ abstract class OcOrderRecurring implements ActiveRecordInterface
             $keys[18] => $this->getStatus(),
             $keys[19] => $this->getDateAdded(),
         );
-        if ($result[$keys[19]] instanceof \DateTimeInterface) {
+        if ($result[$keys[19]] instanceof \DateTime) {
             $result[$keys[19]] = $result[$keys[19]]->format('c');
         }
 

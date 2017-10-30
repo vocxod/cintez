@@ -353,7 +353,13 @@ class ControllerDesignBanner extends Controller {
 					'link'       => $banner_image['link'],
 					'image'      => $image,
 					'thumb'      => $this->model_tool_image->resize($thumb, 100, 100),
-					'sort_order' => $banner_image['sort_order']
+					'sort_order' => $banner_image['sort_order'],
+					// дополнительные поля к баннеру/слайдеру
+					'description' => $banner_image['description'],
+					'background_color'	=> $banner_image['background_color'],
+					'effect_image'	=> $banner_image['effect_image'],
+					'effect_title'	=>	$banner_image['effect_title'],
+					'effect_description'	=> $banner_image['effect_description'],
 				);
 			}
 		}

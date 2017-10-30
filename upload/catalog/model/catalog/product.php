@@ -75,6 +75,15 @@ class ModelCatalogProduct extends Model {
 		}
 	}
 
+	// выводим советуемые товары 
+	public function getFeaturedProduct( $iLimit ){
+		$sSqlSelect = "SELECT p.product_id FROM " . DB_PREFIX .
+		"product AS p WHERE p.ean=1 LIMIT " . $iLimit;
+		//var_dump( $sSqlSelect ); die();
+		$query = $this->db->query( $sSqlSelect );
+		return $query->rows;
+	}
+
 	public function getProducts($data = array()) {
 		$sql = "SELECT p.product_id, 
 		(SELECT AVG(rating) AS total FROM " . DB_PREFIX . "review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
@@ -297,6 +306,9 @@ class ModelCatalogProduct extends Model {
 	}
 
 	// получить последние товары, которые отмечены как "новости"
+	/*
+Устаревшая - можно удалять
+	*/
 	public function getNewslatestProducts($limit) {
 		// вытащить свежие товары из кэша
 		$product_data = $this->cache->get('product.latest.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);

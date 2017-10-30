@@ -1839,7 +1839,7 @@ abstract class OcCustomer implements ActiveRecordInterface
             $keys[20] => $this->getCode(),
             $keys[21] => $this->getDateAdded(),
         );
-        if ($result[$keys[21]] instanceof \DateTimeInterface) {
+        if ($result[$keys[21]] instanceof \DateTime) {
             $result[$keys[21]] = $result[$keys[21]]->format('c');
         }
 

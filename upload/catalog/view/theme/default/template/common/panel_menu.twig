@@ -8,7 +8,7 @@
 
             {% if loop.index < 11 %}
               <div class="col-md-1-5 " style="text-align:center;">
-                  <div class="panel_menu">
+                  <div class="panel_menu" onclick="location={{ item.href }}">
                     <a href="{{ item.href }}">
                       <img src="/image/{{ item.image }}" alt="" title=""/> <br/> 
                       {{ item.name }}
