@@ -91,6 +91,7 @@ function getCategoryList( $iCategoryId, $uuResult = array() ){
 	return $GLOBALS['uuResult'];
 }
 
+// Расставляем товрам категории и пописываем взаимосвязи между категориями
 function p2c(){
 	OcProductToCategoryQuery::create()->deleteAll();
 	OcCategoryPathQuery::create()->deleteAll();
