@@ -1,11 +1,11 @@
 /* sintez.css */
 
-/*
-Credits:
-Code snippet by @maridlcrmn (Follow me on Twitter)
-Images by Nike.com (http://www.nike.com/us/en_us/)
-Logo by Sneaker-mission.com (http://www.sneaker-mission.com/)
-*/
+.navbar-inverse .navbar-nav > .open > a, 
+.navbar-inverse .navbar-nav > .open > a:hover, 
+.navbar-inverse .navbar-nav > .open > a:focus {
+    color: #FEFAEA;
+    background-color: rgb(54,154,56) !important;
+}
 
 .navbar-brand { 
   width: 70px;
