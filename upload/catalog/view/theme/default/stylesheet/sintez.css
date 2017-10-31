@@ -1,5 +1,13 @@
 /* sintez.css */
 
+.dropdown-zone {
+  background: rgb(54,154,56);
+  border:none;
+  border-radius: 0px;
+  box-shadow: 0 0px 0px rgb(0, 0, 0);
+}
+
+
 .navbar-inverse .navbar-nav > .open > a, 
 .navbar-inverse .navbar-nav > .open > a:hover, 
 .navbar-inverse .navbar-nav > .open > a:focus {

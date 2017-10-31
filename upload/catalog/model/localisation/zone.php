@@ -1,7 +1,9 @@
 <?php
 class ModelLocalisationZone extends Model {
 	public function getZone($code) {
-		$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "zone WHERE code = '" . $code . "' AND status = '1'");
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX . "zone WHERE code = '" . $code . "' AND status = '1'";
+		$query = $this->db->query( $sSqlSelect );
+		//var_dump( $sSqlSelect );
 		return $query->row;
 	}
 

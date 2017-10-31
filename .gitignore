@@ -1,7 +1,8 @@
 # Config and Htaccess Files
 storage/logs/error.log
 /storage/logs/error.log
-
+/upload/php_errors.log
+upload/php_errors.log
 storage/logs/index.html
 /storage/logs/index.html
 

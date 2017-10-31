@@ -3,20 +3,20 @@
   {% if zones[0].layout == 0 %}
     <div class="pull-left">
       <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
-        <div class="btn-group">
+        <div class="btn-group" style="margin-top:5px;outline:0px dashed red; background: green;">{# рамка на всё #}
       
-          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown">
+          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration:none;">
             <span class="glyphicon glyphicon-map-marker" style="color:#FAFAFA; font-size:14px;"></span>
-            <span class="hidden-xs hidden-sm hidden-md zone_font" style="">
-              {{ current_zone.name }}
+            <span class="hidden-xs hidden-sm hidden-md zone_font" style="color:#FEFAEA;">
+              {{ current_zone.name }}           
             </span>&nbsp;
-            <i class="fa fa-caret-down" style="color:#FAFAFA; font-size:14px;"></i>
+            <i class="fa fa-caret-down" style="color:#FEFAEA; font-size:14px;"></i>
           </button>
 
-          <ul class="dropdown-menu">
+          <ul class="dropdown-menu dropdown-zone">
             {% for zone in zones %}
                   <li>
-                    <button  style="color:#888;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">&#x20bd; - {{ zone.name }}</button>
+                    <button  style="color:#FEFAEA; text-align:left;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">{{ zone.name }}</button>
                   </li>
             {% endfor %}
           </ul>
@@ -27,11 +27,17 @@
       </form>
     </div>
   {% else %}
+
         <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
-        <ul class="nav navbar-nav navbar-left">
-            <li class="dropdown">
-              <a style="color:#FEFAEA;" href="#" class="dropdown-toggle" data-toggle="dropdown">{{ current_zone.name }}<span class="caret"></span></a>
-              <ul class="dropdown-menu" role="menu">
+        
+        <ul class="nav navbar-nav navbar-left" style="background:rgb(54,154,56);">
+            
+            <li class="dropdown" style="background:green;" >
+              <a style="color:#fefaea;" href="#" class="dropdown-toggle" data-toggle="dropdown">
+<i class="fa fa-map-marker" aria-hidden="true" style="float:leftq;"></i>
+                &nbsp;{{ current_zone.name }}&nbsp;<span class="caret"></span></a>
+              
+              <ul class="dropdown-menu" role="menu"  style="background:blue;" >
                 
                 {% for zone in zones %}
                     <li>
