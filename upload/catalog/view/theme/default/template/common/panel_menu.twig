@@ -6,16 +6,13 @@
             <div class="row">
         {% endif %}
 
-            {% if loop.index < 11 %}
-              <div class="col-md-1-5 " style="text-align:center;">
-                  <div class="panel_menu" onclick="location={{ item.href }}">
-                    <a href="{{ item.href }}">
-                      <img src="/image/{{ item.image }}" alt="" title=""/> <br/> 
-                      {{ item.name }}
-                    </a>
-                  </div>
-              </div>
-            {% endif %}
+{% if loop.index < 11 %}
+<div id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
+<div id="menu_{{ item.category_id }}" class="panel_menu" >
+</div>
+<a href="{{ item.href }}">{{ item.name }}</a>
+</div>
+{% endif %}
 
         {% if loop.index % 5 == 0 %}
             </div>

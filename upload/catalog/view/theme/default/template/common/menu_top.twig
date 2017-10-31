@@ -128,7 +128,7 @@ style="background:rgb(240,244,245);border:0px dashed red;">
         <li class="col-sm-3">
           <ul>
             <li class="dropdown-header">АКЦИИ</li>
-            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+            <div id="mySmallCarousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
 
 <div class="item dropdown-offer active">
@@ -139,7 +139,7 @@ style="background:rgb(240,244,245);border:0px dashed red;">
 </div>
                 
 {% for banner in banners %}
-<div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}">
+<div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}" id="small_{{ loop.index }}">
 <a href="{{ banner.link }}">
 <img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
 
@@ -176,11 +176,11 @@ style="background:rgb(240,244,245);border:0px dashed red;">
             <!-- /.carousel -->
 
             <!-- Controls -->
-            <a class="left carousel-control" href="#" role="button" data-slide="prev">
+            <a class="left carousel-control" href="#small_1" role="button" data-slide="prev">
             <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
             <span class="sr-only">Пред</span>
             </a>
-            <a class="right carousel-control" href="#" role="button" data-slide="next">
+            <a class="right carousel-control" href="#small_2" role="button" data-slide="next">
             <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
             <span class="sr-only">След</span>
             </a>
@@ -206,9 +206,5 @@ style="background:rgb(240,244,245);border:0px dashed red;">
   </div>
 </div>
 
-<script type="text/javascript">
-  jQuery(document).on('click', '.mega-dropdown', function(e) {
-  e.stopPropagation()
-})
-</script>
+
 

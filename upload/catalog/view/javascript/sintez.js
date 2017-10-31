@@ -1,4 +1,5 @@
 /* sintez.js */
+
 $(document).ready(function(){
     $("#dropdownleft").hover(            
         function() {
@@ -27,7 +28,7 @@ $(document).ready(function(){
 		$('#form-zone input[name=\'code\']').val($(this).attr('name'));
 		//console.log( "FORM-ZONE: ", val($(this).attr('name')) );
 		$('#form-zone').submit();
-	});
-    //
-    
+	});   
 });
+
+

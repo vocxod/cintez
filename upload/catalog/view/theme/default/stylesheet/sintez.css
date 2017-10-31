@@ -375,55 +375,103 @@ body {
     border-color: rgb(54,154,56);
 }
 /* панели */
-#menu_car {
-  width: 30px;
-  height: 30px;
-  background: url('/image/catalog/categories/png-car-inactive.png');
+.panel-menu-item {
+  outline:1px dashed red;
+  text-align:center;
+  height: 60px;
+  overflow: hidden;
+  padding-top: 6px;
+  background: #FFF;
 }
-#menu_clining {
-  width: 30px;
-  height: 30px;
-  background: url('/image/catalog/categories/png-clining-inactive.png');
+.panel-menu-item a {
+  color: #111;
 }
-#menu_ferma {
-  width: 30px;
-  height: 30px;
-  background: url('/image/catalog/categories/png-ferma-inactive.png');
+.panel-menu-item a:hover {
+  color: #FEFAEA;
+  background: rgb(54,154,56);
+  text-decoration: none;
 }
-#menu_food {
-  width: 30px;
-  height: 30px;
-  background: url('/image/catalog/categories/png-food-inactive.png');
+.bg_green {
+  background: rgb(54,154,56);
 }
-#menu_health {
-  width: 30px;
-  height: 30px;
-  background: url('/image/catalog/categories/png-health-inactive.png');
+/* добавить класс для сдвига меню */
+.active-panel-menu {
+  background-position: bottom;
 }
-#menu_horega {
+#menu_94 {
+  /* car */
   width: 30px;
   height: 30px;
-  background: url('/image/catalog/categories/png-horega-inactive.png');
+  margin: 0 auto;
+  outline: 0px dashed blue;
+  background: url('/image/catalog/categories/panel-menu.png') 0px -30px !important;
 }
-#menu_metall {
+.menu94-active{
+  background: url('/image/catalog/categories/panel-menu.png') 0px 0px !important;
+} 
+#menu_87 {
+  /* clining */
   width: 30px;
   height: 30px;
-  background: url('/image/catalog/categories/png-metall-inactive.png');
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -30px -30px !important;
+  background-repeat: no-repeat;
 }
-#menu_school {
+#menu_54 {
+  /* ferma */
   width: 30px;
   height: 30px;
-  background: url('/image/catalog/categories/png-school-inactive.png');
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png')-60px -30px !important;
 }
-#menu_clining {
+#menu_10 {
+  /* food */
   width: 30px;
   height: 30px;
-  background: url('/image/catalog/categories/png-spa-inactive.png');
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png')-90px -30px !important;
 }
-#menu_clining {
+#menu_131 {
+  /* HEALTH */
   width: 30px;
   height: 30px;
-  background: url('/image/catalog/categories/png-teplo-inactive.png');
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png')-120px -30px !important;
+}
+#menu_72 {
+  /* HOREGA */
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -150px -30px !important;
+}
+#menu_117 {
+  /* MACHINERY & METALL*/
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -180px -30px !important;
+}
+#menu_150 {
+  /* school */
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -210px -30px !important;
+}
+#menu_168 {
+  /* spa */
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -240px -30px !important;
+}
+#menu_113 {
+  /* teplo */
+  width: 30px;
+  height: 30px;
+  margin: 0 auto;
+  background: url('/image/catalog/categories/panel-menu.png') -270px -30px !important;
 }
 
 
