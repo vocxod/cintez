@@ -312,3 +312,22 @@ https://bootsnipp.com/snippets/g07VM
   border: 1px solid #ddd;
 }
 
+/* drowdown-offer */
+@media (min-width: 768px) {
+  .drowdown-offer { 
+  display: none;
+  overflow: hidden;
+  }
+}
+@media (min-width: 992px) {
+  .drowdown-offer { 
+    display: none;
+    overflow: hidden;
+  }
+}
+@media (min-width: 1200px) {
+  .drowdown-offer { 
+    min-height: 400px;
+    height:400px; outline:0px dashed blue;
+  }
+}

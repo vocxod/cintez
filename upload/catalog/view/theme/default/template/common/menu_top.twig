@@ -131,21 +131,21 @@ style="background:rgb(240,244,245);border:0px dashed red;">
             <div id="myCarousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
 
-<div class="item active" style="height:400px; outline:0px dashed blue;">
+<div class="item dropdown-offer active">
 <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
 <h4><small>Скидки и распродажи этого продукта</small></h4>
-<button class="btn btn-success" type="button">100 Руб</button>
+{#<button class="btn btn-success" type="button">100 Руб</button>#}
 <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
 </div>
                 
 {% for banner in banners %}
-<div class="item {% if loop.ibdex == 1 %}active{% endif %}" style="height:400px; outline:0px dashed blue;">
+<div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}">
 <a href="{{ banner.link }}">
 <img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
 
 </a>
 <h4><small>{{ banner.title }}</small></h4>
-<button class="btn btn-success" type="button">123 Руб</button>
+{#<button class="btn btn-success" type="button">123 Руб</button>#}
 <button href="{{ banner.link }}" class="btn btn-default" type="button">
   <span class="glyphicon glyphicon-earphone"></span> Узнать больше</button>  
 </div>
