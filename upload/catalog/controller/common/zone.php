@@ -6,7 +6,7 @@ class ControllerCommonZone extends Controller {
 		// что делать на смену города
 		$data['action'] = $this->url->link('common/zone/zone', '', $this->request->server['HTTPS']);
 
-//var_dump($this->session->data); die();
+		//var_dump($this->session->data); die();
 
 		// храним выбранный город в сессии и оттуда же его вытаскиваем
 		// $data['code'] = $this->session->data['zone'];

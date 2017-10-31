@@ -92,13 +92,15 @@
   
   <section class="slide-wrapper">
       <div class="container">
-          <div id="myCarousel" class="carousel slide" style="outline:1px dashed green;">
+          <div id="myCarousel" class="carousel slide">
               <!-- Indicators -->
-              <ol class="carousel-indicators" style="outline:1px dashed red;color:blue;" >
-                  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-                  <li data-target="#myCarousel" data-slide-to="1"></li>
-                  <li data-target="#myCarousel" data-slide-to="2"></li>
-               </ol>
+<ol class="carousel-indicators" style="outline:0px dashed red;color:blue;" >
+{% for banner in banners %}
+  <li data-target="#myCarousel" data-slide-to="{{loop.index0}}" 
+  {% if loop.index == 1 %}class="active"{% endif %}>
+  </li>
+{% endfor %}
+</ol>
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner">
@@ -114,7 +116,7 @@
                   <div class="carousel-desc">
                       <h2>{{ banner.title }}</h2>
                       <p>
-      {{ banner.description }}.
+                        {{ banner.description }}.
                       </p>
                   </div>
               </div>

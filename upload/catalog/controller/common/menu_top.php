@@ -12,6 +12,7 @@ class ControllerCommonMenuTop extends Controller {
 		$data['banners'] = $aBanner;
  		
 		$data['lang'] = $this->language->get('code');
+		//var_dump($data['lang']); die();
 		if( $data['lang'] == 'ru'):
 			$data['up_line']= [ 
 				['title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true],

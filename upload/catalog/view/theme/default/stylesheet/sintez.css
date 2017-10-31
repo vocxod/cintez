@@ -151,6 +151,10 @@ a.zone-select {
 }
 
 /* SLIDER 3*/
+/* большой слайдер на главной */
+#myCarousel {
+
+}
 /*
 .carousel-inner,.carousel,.item,.container,.fill {
   height:100%;
@@ -376,7 +380,7 @@ body {
 }
 /* панели */
 .panel-menu-item {
-  outline:1px dashed red;
+  outline:1px solid #ccc;
   text-align:center;
   height: 60px;
   overflow: hidden;
