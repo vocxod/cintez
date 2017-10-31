@@ -7,10 +7,10 @@
         {% endif %}
 
 {% if loop.index < 11 %}
-<div id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
+<div data="{{ item.category_id }}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
 <div id="menu_{{ item.category_id }}" class="panel_menu" >
 </div>
-<a href="{{ item.href }}">{{ item.name }}</a>
+<a id="panel_link_{{ item.category_id }}" href="{{ item.href }}">{{ item.name }}</a>
 </div>
 {% endif %}
 

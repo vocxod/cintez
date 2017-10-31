@@ -404,17 +404,17 @@ body {
   height: 30px;
   margin: 0 auto;
   outline: 0px dashed blue;
-  background: url('/image/catalog/categories/panel-menu.png') 0px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') 0px -30px;
 }
 .menu94-active{
-  background: url('/image/catalog/categories/panel-menu.png') 0px 0px !important;
+  background: url('/image/catalog/categories/panel-menu.png') 0px 0px;
 } 
 #menu_87 {
   /* clining */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -30px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -30px -30px;
   background-repeat: no-repeat;
 }
 #menu_54 {
@@ -422,56 +422,56 @@ body {
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png')-60px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png')-60px -30px;
 }
 #menu_10 {
   /* food */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png')-90px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png')-90px -30px ;
 }
 #menu_131 {
   /* HEALTH */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png')-120px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png')-120px -30px ;
 }
 #menu_72 {
   /* HOREGA */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -150px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -150px -30px ;
 }
 #menu_117 {
   /* MACHINERY & METALL*/
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -180px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -180px -30px ;
 }
 #menu_150 {
   /* school */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -210px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -210px -30px ;
 }
 #menu_168 {
   /* spa */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -240px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -240px -30px ;
 }
 #menu_113 {
   /* teplo */
   width: 30px;
   height: 30px;
   margin: 0 auto;
-  background: url('/image/catalog/categories/panel-menu.png') -270px -30px !important;
+  background: url('/image/catalog/categories/panel-menu.png') -270px -30px ;
 }
 
 
