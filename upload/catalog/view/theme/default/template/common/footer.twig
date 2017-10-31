@@ -137,6 +137,10 @@ $( document ).ready(function() {
     if( dataid == 113 ) $('#menu_' + dataid).css('background-position', '-283px -30px') 
     $('#panel_link_' + dataid).css('color', '#111');
   })
+  $('.panel-menu-item').on( "click", function(){
+    dataid = $(this).attr('data')
+    location = "index.php?route=product/category&path=" + dataid
+  })
 });
 
 

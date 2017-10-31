@@ -382,6 +382,7 @@ body {
   overflow: hidden;
   padding-top: 6px;
   background: #FFF;
+  cursor: pointer;
 }
 .panel-menu-item a {
   color: #111;
