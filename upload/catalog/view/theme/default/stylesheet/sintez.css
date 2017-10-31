@@ -7,6 +7,25 @@
   box-shadow: 0 0px 0px rgb(0, 0, 0);
 }
 
+/* language */
+/* .langnavbar-nav > li > .dropdown-menu, */
+#langdropdown {
+    margin-top: 0px;
+    outline: 0px solid magenta;
+    border:none;
+    border-radius: 0px;
+    box-shadow: 0 0px 0px rgb(0, 0, 0);
+    background: rgb(54,154,56);
+    color:#FEFAEA;
+}
+.langreen {
+  color:red;
+}
+.language-select .langreen {
+  outline: 3px solid black;
+}
+/* \\language */
+
 
 .navbar-inverse .navbar-nav > .open > a, 
 .navbar-inverse .navbar-nav > .open > a:hover, 
@@ -300,7 +319,7 @@ https://bootsnipp.com/snippets/g07VM
 }
 
 .open {
-  outline: 2px solid green;
+  /*outline: 2px solid green;*/
   background-color: rgb(54,154,56) !important;
 }
 

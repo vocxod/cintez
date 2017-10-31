@@ -2,26 +2,12 @@
 class ControllerCommonLanguage extends Controller {
 	public function index() {
 		$this->load->language('common/language');
-
 		$data['action'] = $this->url->link('common/language/language', '', $this->request->server['HTTPS']);
-
 		$data['code'] = $this->session->data['language'];
-
-		/*
-		if($data['code']==""){
-			$data['code'] = 'ru_ru';
-			$this->session->data['language'] = $data['code'];
-		}
-		*/
-
 		$this->load->model('localisation/language');
-
 		$data['languages'] = array();
-
 		$results = $this->model_localisation_language->getLanguages();
-
 		//var_dump($results); die();
-
 		foreach ($results as $result) {
 			if ($result['status']) {
 				$data['languages'][] = array(

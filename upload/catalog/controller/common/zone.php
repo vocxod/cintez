@@ -21,7 +21,7 @@ class ControllerCommonZone extends Controller {
 //			die( "check" );
 			$aResult = $this->model_localisation_zone->getZone( 'SP' ); // 2785 = СПбург
 			$this->session->data['current_zone'] = $aResult;
-			var_dump($aResult);
+			//var_dump($aResult);
 			//echo "1";
 		} 
 //		die("stop");

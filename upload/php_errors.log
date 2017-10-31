@@ -183,3 +183,12 @@ Stack trace:
 [31-Oct-2017 21:14:11 UTC] PHP  15. ControllerCommonFooter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
 [31-Oct-2017 21:14:11 UTC] PHP  16. Loader->controller() /var/www/html/vkartel.dev/upload/catalog/controller/common/footer.php:31
 [31-Oct-2017 21:14:11 UTC] PHP  17. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/loader.php:48
+[31-Oct-2017 22:08:36 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: Got error 28 from storage engine<br />Error No: 1030<br />SELECT DISTINCT *, pd.name AS name, p.image, m.name AS manufacturer, 
+		(SELECT price FROM oc_product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '1' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, 
+		(SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special, 
+		(SELECT points FROM oc_product_reward pr WHERE pr.product_id = p.product_id AND pr.customer_group_id = '1') AS reward, 
+		(SELECT ss.name FROM oc_stock_status ss WHERE ss.stock_status_id = p.stock_status_id AND ss.language_id = '1') in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php on line 40
+[31-Oct-2017 22:10:33 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)<br />Error No: 2002' in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php:10
+Stack trace:
+#0 /var/www/html/vkartel.dev/upload/system/library/db.php(31): DB\MySQLi->__construct('localhost', 'ocart3', 'r75sc13', 'ocart3', '3306')
+#1 /var/www/html/vkartel.dev/upload/system/framework.php(82): DB->__construct('mysqli', 'localhost', 'ocart3', 'r75sc13', 'ocart
