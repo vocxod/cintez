@@ -331,3 +331,41 @@ https://bootsnipp.com/snippets/g07VM
     height:400px; outline:0px dashed blue;
   }
 }
+
+a:hover, a:focus {
+    color: rgb(54,154,56);
+    text-decoration: underline;
+}
+
+.breadcrumb {
+    padding: 8px 15px;
+    margin-bottom: 20px;
+    list-style: none;
+    background: none;
+    border-radius: 4px;
+    color: rgb(54,154,56);
+}
+
+body {
+  font-family: 'Cuprum', sans-serif;
+}
+
+
+#top {
+  margin-bottom: 0px;
+  padding-bottom: 0px;
+  border-bottom: 0px;
+}
+.navbar-inverse {
+  background-color: #eee;
+  background-image: linear-gradient(to bottom, #eee 0%, #eee 100%);
+  color: #111;
+  border: 0px solid #eee;
+  font-size: 18px;  
+}
+.navbar-inverse .navbar-nav > li > a {
+  color: #111;
+}
+
+
+

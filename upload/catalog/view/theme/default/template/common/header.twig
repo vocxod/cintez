@@ -56,33 +56,14 @@
 
 
 <style type="text/css">
-  body {
-    font-family: 'Cuprum', sans-serif;
-  }
 
-
-  #top {
-    margin-bottom: 0px;
-    padding-bottom: 0px;
-    border-bottom: 0px;
-  }
-  .navbar-inverse {
-    background-color: #eee;
-    background-image: linear-gradient(to bottom, #eee 0%, #eee 100%);
-    color: #111;
-    border: 0px solid #eee;
-    font-size: 18px;  
-  }
-  .navbar-inverse .navbar-nav > li > a {
-    color: #111;
-  }
 </style>
 
 </head>
 <body>
 {##}
 <nav class="navbar navbar-default" role="navigation" 
-style="margin-bottom:0px; background:rgb(54,154,56);color:#FEFAEA;">
+style="margin-bottom:0px; background:rgb(54,154,56);color:#FEFAEA;margin-top:0px;">
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
     <div class="navbar-header">
@@ -97,152 +78,12 @@ style="margin-bottom:0px; background:rgb(54,154,56);color:#FEFAEA;">
 
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-megadropdown-tabs">
-          {#        
-        <ul class="nav navbar-nav">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-        <li class="dropdown mega-dropdown active" id="dropdownleft">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Утвердить/Отказать <span class="caret"></span></a>       
-        <div class="dropdown-menu mega-dropdown-menu" style="z-index:8000;">
-                    <div class="container-fluid">
-                <!-- Tab panes -->
-                        <div class="tab-content">
-                          <div class="tab-pane active" id="men">
-                            <ul class="nav-list list-inline">
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"><span>Running</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Basketball</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>Football</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Soccer</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Men's Training</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_WomensTraining.png"><span>Women's Training</span></a></li>
-                            </ul>
-                          </div>
-                          <div class="tab-pane" id="women">
-                            <ul class="nav-list list-inline">
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"><span>Running</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Basketball</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>Football</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Soccer</span></a></li>                                
-                            </ul>
-                          </div>
-                          <div class="tab-pane" id="kids">
-                            <ul class="nav-list list-inline">
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Running.png"><span>Running</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Basketball</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>Football</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Soccer</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Men's Training</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_WomensTraining.png"><span>Women's Training</span></a></li>
-                            </ul>
-                          </div>
-                          <div class="tab-pane" id="sports">
-                            <ul class="nav-list list-inline">                                
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Basketball.png"><span>Basketball</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Football.png"><span>Football</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_Soccer.png"><span>Soccer</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_MensTraining.png"><span>Men's Training</span></a></li>
-                                <li><a href="#"><img src="http://content.nike.com/content/dam/one-nike/globalAssets/menu_header_images/OneNike_Global_Nav_Icons_WomensTraining.png"><span>Women's Training</span></a></li>
-                            </ul>
-                          </div>
-                        </div>
-                    </div>
-                    <!-- Nav tabs -->
-                    <ul class="nav nav-tabs" role="tablist">
-                       <li class="active"><a href="#men" role="tab" data-toggle="tab">Men</a></li>
-                       <li><a href="#women" role="tab" data-toggle="tab">Women</a></li>
-                       <li><a href="#kids" role="tab" data-toggle="tab">Kids</a></li>
-                       <li><a href="#sports" role="tab" data-toggle="tab">Sports</a></li>
-                    </ul>                    
-        </div>        
-      </li>
-        </ul>
-        #}
         {{ zone }}
         {{ language }}
         {{ search }}
     </div><!-- /.navbar-collapse -->
   </div><!-- /.container-fluid -->
 </nav>
-{#
-<nav id="top">
-  <div class="container">
-    {{ zone }}
-    <div id="top-links" class="nav pull-right">
-      <ul class="list-inline">
-        <li>
-          <a href="{{ contact }}">
-            <i class="fa fa-phone"></i>
-          </a> 
-          <span class="hidden-xs hidden-sm hidden-md">{{ telephone }}</span>
-        </li>       
-        <li>
-          <form class="navbar-form navbar-left" role="search">
-              <div class="form-group">
-                <input type="text" class="form-control" placeholder="Найти">
-              </div>
-              <button type="submit" class="btn btn-default">Ok</button>
-          </form>
-        </li>
-        <li>
-          {{ language }}
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-#}
-
-
-
-{#
-<nav class="navbar navbar-default navbar-fixed-top">
-  <div class="container">
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Название сайта</a>
-    </div>
- 
-    <div class="collapse navbar-collapse" id="navbar-collapse">
-      <ul class="nav navbar-nav">
-        <li class="active">
-          <a href="#">Пункт 1 <span class="sr-only">(current)</span></a>
-        </li>
-        <li>
-          <a href="#">Пункт 2</a>
-        </li>
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" 
- 
-aria-expanded="false">Пункт с подпунктами 1<span class="caret"></span></a>
-          <ul class="dropdown-menu" role="menu">
-            <li><a href="#">Подпункт 1.1</a></li>
-            <li><a href="#">Подпункт 1.2</a></li>
-            <li><a href="#">Подпункт 1.3</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Подпункт 1.4</a></li>
-            <li class="divider"></li>
-            <li><a href="#">Подпункт 1.5</a></li>
-          </ul>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left" role="search">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Найти">
-        </div>
-        <button type="submit" class="btn btn-default">Submit</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li><a href="#">Пункт 3</a></li>
-      </ul>
-    </div>
-  </div>
-</nav>
-#}
 
 <nav style="background:rgb(240,244,245);">
   {{ menu_top }}
@@ -252,23 +93,5 @@ aria-expanded="false">Пункт с подпунктами 1<span class="caret">
 
 <header>
 
-{#
-  <div class="container">
-    <div class="row">
-      <div class="col-sm-4">
-        <div id="logo" class="hidden-xs" >{% if logo %}<a href="{{ home }}"><img src="{{ logo }}" title="{{ name }}" alt="{{ name }}" class="img-responsive" /></a>{% else %}
-          <h1><a href="{{ home }}">{{ name }}</a></h1>
-          {% endif %}</div>
-      </div>
-      <div class="col-sm-5">{{ search }}</div>
-      <div class="col-sm-3">{{ cart }}</div>
-    </div>
-  </div>
-#}
 </header>
 
-
-
-{#{ menu }#}
-
-{#{ menu_top2 }#}
