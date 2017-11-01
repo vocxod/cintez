@@ -376,6 +376,9 @@ a:hover, a:focus {
     border-radius: 4px;
     color: rgb(54,154,56);
 }
+.breadcrumb.big {
+  font-size: 24px;
+}
 
 .breadcrumb a{
     color: #111;
@@ -383,6 +386,17 @@ a:hover, a:focus {
 .breadcrumb a:hover{
     color: rgb(54,154,56);
     text-decoration: none;
+}
+
+.breadcrumb > li + li::before {
+    padding: 0 5px;
+    color: #111;
+    content: none;
+    /* content: "/\00a0"; */
+    /* content:'/\27F6'; /* стрелка вправо */
+}
+.breadcrumb.big > li + li::before {
+  content:'\27F6';
 }
 
 body {
@@ -515,3 +529,9 @@ body {
 }
 
 
+/* left category column */
+.column-head {
+  font-size: 24px;
+  font-weight: bold;
+  
+}
