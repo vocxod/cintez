@@ -191,4 +191,12 @@ Stack trace:
 [31-Oct-2017 22:10:33 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2)<br />Error No: 2002' in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php:10
 Stack trace:
 #0 /var/www/html/vkartel.dev/upload/system/library/db.php(31): DB\MySQLi->__construct('localhost', 'ocart3', 'r75sc13', 'ocart3', '3306')
-#1 /var/www/html/vkartel.dev/upload/system/framework.php(82): DB->__construct('mysqli', 'localhost', 'ocart3', 'r75sc13', 'ocart
+#1 /var/www/html/vkartel.dev/upload/system/framework.php(82): DB->__construct('mysqli', 'localhost', 'ocart3', 'r75sc13', 'ocart[01-Nov-2017 12:00:01 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unknown "endif" tag in "default/template/product/category.twig" at line 153.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php:178
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Parser->subparse(NULL, false)
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(619): Twig_Parser->parse(Object(Twig_TokenStream))
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(671): Twig_Environment->parse(Object(Twig_TokenStream))
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(396): Twig_Environment->compileSource('{{ header }}\n<d...', 'default/templat...')
+#4 /var/www/html/vkartel.dev/upload/system/library/template/twig.php(26): Twig_Environment->loadTemplate('default/templat...')
+#5 /var/www/html/vkartel.dev/upload/system/library/template.php(51): Template\Twig->render('default/templat...', '0')
+#6 /var/www/htm in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php on line 178
