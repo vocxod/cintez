@@ -532,6 +532,9 @@ body {
 /* left category column */
 .column-head {
   font-size: 24px;
+  color: #000;
   font-weight: bold;
-  
+  background: url('/image/catalog/categories/header-decorator.png') -1585px -4px;
+  background-repeat: repeat-x;
+  outline: 0px dashed red;
 }
