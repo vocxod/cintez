@@ -427,6 +427,17 @@ body {
     background-color: rgb(54,154,56);
     border-color: rgb(54,154,56);
 }
+
+.category-list {
+  margin-top: 10px;
+  border: none;
+}
+.category-list > a.list-group-item {
+  font-size: 16px;
+  border: none;
+  border-radius: 0;
+}
+
 /* панели */
 .panel-menu-item {
   outline:1px solid #ccc;
@@ -566,3 +577,4 @@ body {
 .product-tile-image-background {
   background: rgb(240,244,245);
 }
+
