@@ -377,6 +377,14 @@ a:hover, a:focus {
     color: rgb(54,154,56);
 }
 
+.breadcrumb a{
+    color: #111;
+}
+.breadcrumb a:hover{
+    color: rgb(54,154,56);
+    text-decoration: none;
+}
+
 body {
   font-family: 'Cuprum', sans-serif;
 }

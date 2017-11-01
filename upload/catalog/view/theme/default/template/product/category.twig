@@ -6,6 +6,7 @@
     {% endfor %}
   </ul>
   <div class="row">{{ column_left }}
+    
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
     {% elseif column_left or column_right %}
@@ -13,8 +14,9 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
+
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h2>{{ heading_title }}</h2>
+      <h2>{{ heading_title }}</h2> {# заголовок страницы = название открываемой категории #}
       {% if thumb or description %}
       <div class="row"> {% if thumb %}
         <div class="col-sm-2"><img src="{{ thumb }}" alt="{{ heading_title }}" title="{{ heading_title }}" class="img-thumbnail" /></div>
@@ -25,19 +27,26 @@
       <hr>
       {% endif %}
       {% if categories %}
-      <h3>{{ text_refine }}</h3>
+      <h3>{{ text_refine }}</h3>{# выберите подкатегорию #}
+      {# если немного категорий #}
       {% if categories|length <= 5 %}
       <div class="row">
         <div class="col-sm-3">
           <ul>
             {% for category in categories %}
-            <li><a href="{{ category.href }}">{{ category.name }}</a></li>
+            <li>
+              <a href="{{ category.href }}">
+              {{ category.name }}
+              </a>
+            </li>
             {% endfor %}
           </ul>
         </div>
       </div>
+      {# если категорий много #}
+      {# эти категории и субкати выводятся в ЦЕНТРАЛЬНОЙ ЧАСТИ этой страницы #}
       {% else %}
-      <div class="row">{% for category in categories|batch((categories|length / 4)|round(1, 'ceil')) %}
+      <div class="row sintezcat">{% for category in categories|batch((categories|length / 4)|round(1, 'ceil')) %}
         <div class="col-sm-3">
           <ul>
             {% for child in category %}
@@ -49,6 +58,7 @@
       <br />
       {% endif %}
       {% endif %}
+
       {% if products %}
       <div class="row">
         <div class="col-md-2 col-sm-6 hidden-xs">
