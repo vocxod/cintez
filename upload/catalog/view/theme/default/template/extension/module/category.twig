@@ -1,15 +1,14 @@
 
-
-
-
 <div class="list-group">
     {% for category in categories %}
         {% if category.category_id == category_id %}
         <a href="{{ category.href }}" class="list-group-item active">
+          
           {% if category.top == 1 %}
             <img src="/image/{{ category.image }}" alt="{{ category.name }}" style="width:24px;height:24px;">
           {% endif %}
-          {{ category.name }} <span class="badge"> > </span>
+
+         <span style="margin-left:40px;">{{ category.name }}</span>  <span class="budge"> > </span>
         </a>
         {% else %}
         <a href="{{ category.href }}" class="list-group-item">
