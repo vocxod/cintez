@@ -583,6 +583,6 @@ body {
 }
 /* фон под картинкой */
 .product-tile-image-background {
-  background: rgb(240,244,245);
+  /* background: rgb(240,244,245); */
 }
 
