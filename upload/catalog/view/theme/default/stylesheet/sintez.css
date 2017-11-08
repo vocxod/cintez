@@ -445,9 +445,15 @@ body {
 .budge::after {
   content: "\25ba";
 }
+
 .budge-open::after {
   content: "\25bc";
 }
+
+.budge-close::after {
+  content: "\25b6";
+}
+
 .media-body::after {
   content: "\25b6";
 }
@@ -477,6 +483,109 @@ body {
 .active-panel-menu {
   background-position: bottom;
 }
+
+/* category */
+/*
++-------------+--------------------------------------------------------+
+| category_id | name                                                   |
++-------------+--------------------------------------------------------+
+|          10 | Пищевая промышленность                                 |
+|          54 | Сельское хозяйство                                     |
+|          72 | HoReCa                                                 |
+|          87 | Клининг                                                |
+|          94 | Транспорт                                              |
+|         113 | Теплообменное оборудование                             |
+|         117 | Машиностроение и металлургия                           |
+|         127 | Охрана труда                                           |
+|         131 | Учреждения здравоохранения                             |
+|         150 | Детские сады и школы                                   |
+|         168 | Салоны красоты и СПА                                   |
++-------------+--------------------------------------------------------+
+*/
+/* разная картинка на фон разных категорий */
+.category_ids {
+  height: 32px; width: 32px; 
+  outline: 1px dashed red;
+  float: left;
+}
+/* пищевая */
+.category_id_10 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -92px; 
+}
+.category_id_10_unselect {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -92px;   
+}
+/* с/х */
+.category_id_54 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -426px; 
+}
+.category_id_54_unselect {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -426px;   
+}
+/* хорега */
+.category_id_72 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -132px; 
+}
+.category_id_72_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -132px;   
+}
+/* клининг */
+.category_id_87 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -386px; 
+}
+.category_id_87_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -386px;   
+}
+/* транспорт */
+.category_id_94 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -468px; 
+}
+.category_id_94_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -468px;   
+}
+/* теплообменное */
+.category_id_113 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -516px; 
+}
+.category_id_113_unselect {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -516px;   
+}
+/* машиностроение и металл */
+.category_id_117 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -174px; 
+}
+.category_id_117_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -174px;   
+}
+/* охрана труда */
+.category_id_127 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -298px; 
+}
+.category_id_127_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -298px;   
+}
+/* здравохранение */
+.category_id_131 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -11px; 
+}
+.category_id_131_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -11px;   
+}
+/* детские сады */
+.category_id_150 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -343px; 
+}
+.category_id_150_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -343px;   
+}
+/* СПА */
+.category_id_168 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -51px; 
+}
+.category_id_168_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -51px;   
+}
+
 #menu_94 {
   /* car */
   width: 30px;
