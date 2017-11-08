@@ -700,4 +700,12 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 .product-tile-image-background {
   /* background: rgb(240,244,245); */
 }
-
+/* модифицированный список */
+.list-group-item {
+    position: relative;
+    display: block;
+    padding: 6px 0px;
+    margin-bottom: -1px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+}
