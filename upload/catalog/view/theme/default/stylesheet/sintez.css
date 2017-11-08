@@ -709,3 +709,6 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
     background-color: #fff;
     border: 1px solid #ddd;
 }
+.list-group-item > .subcategory {
+  margin-right: 40px; outline: 1px dashed green;
+}
