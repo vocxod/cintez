@@ -363,9 +363,20 @@ https://bootsnipp.com/snippets/g07VM
   }
 }
 
+a {
+    color: rgb(54,154,56);
+}
+
 a:hover, a:focus {
     color: rgb(54,154,56);
     text-decoration: underline;
+}
+.nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
+    color: #555;
+    cursor: default;
+    background-color: #fff;
+    border: 0px solid #ddd;
+    border-bottom-color: transparent;
 }
 
 .breadcrumb {
@@ -910,4 +921,11 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
   outline: 1px dashed orange;
 }
 
+/* товар */
+.attr_name {
+  font-weight: bold;
+  font-size: 18px;
+}
+.attr_value {
 
+}

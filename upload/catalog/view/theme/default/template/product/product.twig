@@ -417,11 +417,25 @@
             <div class="col-sm-6 debug-3">
         {# наименование, опции, цена товара #}
         {# <div class="{{ class }}" style="outline:1px dashed blue;"> #}
+          
+          {# кнопки в закладки и сравнение
           <div class="btn-group">
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product_id }}');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_compare }}" onclick="compare.add('{{ product_id }}');"><i class="fa fa-exchange"></i></button>
           </div>
+          #}
           <h1>{{ heading_title }}</h1>
+          {% if attribute_groups %}
+            {% for attribute_group in attribute_groups %}
+                {% for attribute in attribute_group.attribute %}
+                <span class="attr_name">{{ attribute.name }}</span>
+                <span class="attr_value">{{ attribute.text }}</span>
+                <br/>
+                {% endfor %}
+            {% endfor %}
+          {% endif %}
+
+          {# цена/спецЦена/бонусныеБ
           <ul class="list-unstyled">
             {% if manufacturer %}
             <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
@@ -432,6 +446,7 @@
             {% endif %}
             <li>{{ text_stock }} {{ stock }}</li>
           </ul>
+          
           {% if price %}
           <ul class="list-unstyled">
             {% if not special %}
@@ -460,8 +475,10 @@
             {% endif %}
           </ul>
           {% endif %}
+          #}
           {# нижняя часть 3-ей колонки с данными по товару #}          
-          <div id="product"> {% if options %}
+          <div id="product"> 
+          {% if options %}
             <hr>
             <h3>{{ text_option }}</h3>
             {# перебираем все имеющиеся опции данного товара и шоу ит зис плейс #}
@@ -587,6 +604,8 @@
             </div>
             {% endif %}
 
+            {# микроформа заказа #}
+            {#
             <div class="form-group">
               <label class="control-label" for="input-quantity">{{ entry_qty }}</label>
               <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control" />
@@ -594,14 +613,26 @@
               <br />
               <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg btn-block">{{ button_cart }}</button>
             </div>
+            #}
+            
+            <div class="form-group">
+              <input type="hidden" name="product_id" value="{{ product_id }}" />
+              <br />
+              <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block">{{ button_cart }}</button>
+            </div>
+
             {% if minimum > 1 %}
-            <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_minimum }}</div>
+              <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_minimum }}</div>
             {% endif %}</div>
+
           {% if review_status %}
           <div class="rating">
+            {# звездочки рейтинга и возможность оценки #} 
             <p>{% for i in 1..5 %}
               {% if rating < i %}<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>{% else %}<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>{% endif %}
-              {% endfor %} <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ reviews }}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ text_write }}</a></p>
+              {% endfor %} <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ reviews }}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ text_write }}</a>
+            </p>
+            
             {#
             <hr>
             <!-- AddThis Button BEGIN -->
