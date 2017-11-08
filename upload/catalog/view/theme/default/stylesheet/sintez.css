@@ -505,7 +505,7 @@ body {
 /* разная картинка на фон разных категорий */
 .category_ids {
   height: 32px; width: 32px; 
-  outline: 1px dashed red;
+  outline: 0px dashed red;
   float: left;
 }
 /* пищевая */
@@ -710,5 +710,149 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
     border: 1px solid #ddd;
 }
 .list-group-item > .subcategory {
-  margin-right: 40px; outline: 1px dashed green;
+  margin-right: 40px; outline: 0px dashed green;
 }
+
+/* filter */
+.noborder {
+  border:0px dashed #fff;
+}
+.material-switch > input[type="checkbox"] {
+    display: none;   
+}
+
+.material-switch > label {
+    cursor: pointer;
+    height: 0px;
+    position: relative; 
+    width: 40px;  
+}
+
+.material-switch > label::before {
+    background: rgb(0, 0, 0);
+    box-shadow: inset 0px 0px 10px rgba(0, 0, 0, 0.5);
+    border-radius: 8px;
+    content: '';
+    height: 16px;
+    margin-top: -8px;
+    position:absolute;
+    opacity: 0.3;
+    transition: all 0.4s ease-in-out;
+    width: 40px;
+}
+.material-switch > label::after {
+    background: rgb(255, 255, 255);
+    border-radius: 16px;
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.3);
+    content: '';
+    height: 24px;
+    left: -4px;
+    margin-top: -8px;
+    position: absolute;
+    top: -4px;
+    transition: all 0.3s ease-in-out;
+    width: 24px;
+}
+.material-switch > input[type="checkbox"]:checked + label::before {
+    background: inherit;
+    opacity: 0.5;
+}
+.material-switch > input[type="checkbox"]:checked + label::after {
+    background: inherit;
+    left: 20px;
+}
+
+/* filter form classes */
+/* Checkbox and Radio buttons */
+.fform-group input[type="radio"],
+.fform-group input[type="checkbox"]{
+  display: none;
+}
+
+.fform-group input[type="checkbox"] + .btn-group > label,
+.fform-group input[type="radio"] + .btn-group > label{
+  white-space: normal;
+}
+
+.fform-group input[type="checkbox"] + .btn-group > label.btn-default,
+.fform-group input[type="radio"] + .btn-group > label.btn-default{
+  color: #333;
+  background-color: #fff;
+  border-color: #fff;
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-primary,
+.fform-group input[type="radio"] + .btn-group > label.btn-primary{
+  color: #fff;
+  background-color: #428bca;
+  border-color: #fff; /*#357ebd;*/
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-success,
+.fform-group input[type="radio"] + .btn-group > label.btn-success{
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-info,
+.fform-group input[type="radio"] + .btn-group > label.btn-info{
+  color: #fff;
+  background-color: #5bc0de;
+  border-color: #46b8da;
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-warning,
+.fform-group input[type="radio"] + .btn-group > label.btn-warning{
+  color: #fff;
+  background-color: #f0ad4e;
+  border-color: #eea236;
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-danger,
+.fform-group input[type="radio"] + .btn-group > label.btn-danger{
+  color: #fff;
+  background-color: #d9534f;
+  border-color: #d43f3a;
+  border: none;
+}
+.fform-group input[type="checkbox"] + .btn-group > label.btn-link,
+.fform-group input[type="radio"] + .btn-group > label.btn-link {
+  font-weight: normal;
+  color: #428bca;
+  border-radius: 0;
+  border: none;
+}
+
+.fform-group input[type="radio"] + .btn-group > label span:first-child,
+.fform-group input[type="checkbox"] + .btn-group > label span:first-child{
+  display: none;
+}
+
+.fform-group input[type="radio"] + .btn-group > label span:first-child + span,
+.fform-group input[type="checkbox"] + .btn-group > label span:first-child + span{
+  display: inline-block;
+}
+
+.fform-group input[type="radio"]:checked + .btn-group > label span:first-child,
+.fform-group input[type="checkbox"]:checked + .btn-group > label span:first-child{
+  display: inline-block;
+}
+
+.fform-group input[type="radio"]:checked + .btn-group > label span:first-child + span,
+.fform-group input[type="checkbox"]:checked + .btn-group > label span:first-child + span{
+  display: none;  
+}
+
+.fform-group input[type="checkbox"] + .btn-group > label span[class*="fa-"],
+.fform-group input[type="radio"] + .btn-group > label span[class*="fa-"]{
+  width: 15px;
+  float: left;
+  margin: 4px 0 2px -2px;
+}
+
+.fform-group input[type="checkbox"] + .btn-group > label span.content,
+.fform-group input[type="radio"] + .btn-group > label span.content{
+  margin-left: 10px;
+}
+/* End::Checkbox and Radio buttons */
