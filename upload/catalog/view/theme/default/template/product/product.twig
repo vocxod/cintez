@@ -5,6 +5,15 @@
     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
     {% endfor %}
   </ul>
+
+<div class="row">
+  
+<div class="col-md-3 column-head">Область применения </div>
+<div class="col-md-6"></div>
+<div class="col-md-3 how-match-items-on-page">&nbsp;</div>
+
+</div>
+
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -13,13 +22,16 @@
     {% else %}
     {% set class = 'col-sm-12' %}
     {% endif %}
+    {#% set class = 'col-sm-9' %#}
     <div id="content" class="{{ class }}">{{ content_top }}
       <div class="row"> {% if column_left or column_right %}
+        {# расчеты ширины колонки 1 #}
         {% set class = 'col-sm-6' %}
         {% else %}
         {% set class = 'col-sm-8' %}
         {% endif %}
-        <div class="{{ class }}"> {% if thumb or images %}
+        {# средняя колонка штатного дизайна #}
+        <div class="{{ class }}" style="outline:1px dashed green;"> {% if thumb or images %}
           <ul class="thumbnails">
             {% if thumb %}
             <li><a class="thumbnail" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
@@ -31,6 +43,7 @@
             {% endif %}
           </ul>
           {% endif %}
+          {# описане/хактеристики/отзывы #}
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
             {% if attribute_groups %}
@@ -40,7 +53,7 @@
             <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
             {% endif %}
           </ul>
-          <div class="tab-content">
+          <div class="tab-content" style="outline:1px dashed magenta;">
             <div class="tab-pane active" id="tab-description">{{ description }}</div>
             {% if attribute_groups %}
             <div class="tab-pane" id="tab-specification">
@@ -63,8 +76,8 @@
               </table>
             </div>
             {% endif %}
-            {% if review_status %}
-            <div class="tab-pane" id="tab-review">
+            {% if review_status  %}
+            <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">
               <form class="form-horizontal" id="form-review">
                 <div id="review"></div>
                 <h2>{{ text_write }}</h2>
@@ -108,14 +121,17 @@
                 {% endif %}
               </form>
             </div>
-            {% endif %}</div>
+            {% endif %}
+          </div>
         </div>
+        {# расчеты ширины колонки #}
         {% if column_left or column_right %}
         {% set class = 'col-sm-6' %}
         {% else %}
         {% set class = 'col-sm-4' %}
         {% endif %}
-        <div class="{{ class }}">
+        {# последняя колонка штатного дизайна #}
+        <div class="{{ class }}" style="outline:1px dashed blue;">
           <div class="btn-group">
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product_id }}');"><i class="fa fa-heart"></i></button>
             <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_compare }}" onclick="compare.add('{{ product_id }}');"><i class="fa fa-exchange"></i></button>
