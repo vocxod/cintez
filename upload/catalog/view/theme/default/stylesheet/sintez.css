@@ -884,3 +884,30 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
   margin-left: 10px;
 }
 /* End::Checkbox and Radio buttons */
+
+
+
+/* debug */
+.debug {
+  outline: 1px dashed red;
+}
+.debug-1 {
+  outline: 1px dashed magenta;
+}
+.debug-2 {
+  outline: 1px dashed yellow;
+}
+.debug-3 {
+  outline: 1px dashed green;
+}
+.debug-4 {
+  outline: 1px dashed blue;
+}
+.debug-5 {
+  outline: 1px dashed brown;
+}
+.debug-6 {
+  outline: 1px dashed orange;
+}
+
+
