@@ -78,7 +78,7 @@
 
             {% for item in up_line %}
               <li>
-                <a class="up_line" href="{{item.href}}"> 
+                <a class="up_line {{ item.class }}" href="{{item.href}}"> 
                   <i class="{{item.awesome}}"></i>
                   &nbsp;{{ item.title }}
                 </a>
@@ -117,7 +117,7 @@ style="background:rgb(240,244,245);border:0px dashed red;">
             <li class="dropdown-header">{{ column.header }}</li>
             
             {% for colutem in column[loop.index0] %}
-              <li><a href="#">{{ colutem }}</a></li>
+              <li class="text-left"><a class="column.class" href="#">{{ colutem }}</a></li>
             {% endfor %}
             
           </ul>
@@ -193,7 +193,7 @@ style="background:rgb(240,244,245);border:0px dashed red;">
       </ul>
     </li>
 {% else %}
-                      <li><a href="{{ item.href }}">{{ item.title}}</a></li>
+                      <li><a class="{{item.class}}" href="{{ item.href }}">{{ item.title}}</a></li>
                   {% endif %}
                   {% endfor %}
                 </ul>

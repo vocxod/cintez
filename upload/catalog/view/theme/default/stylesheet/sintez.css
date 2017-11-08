@@ -954,3 +954,13 @@ p.price {
   font-weight: bold;
   font-size: 24px;
 }
+
+.up_line {
+  color: #aaa;
+}
+.not-active {
+  color: $aaa;
+  pointer-events: none;
+  cursor: default;
+}
+
