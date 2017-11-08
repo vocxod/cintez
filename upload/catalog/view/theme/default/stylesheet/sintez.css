@@ -929,3 +929,28 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 .attr_value {
 
 }
+
+
+/* price */
+p.price {
+  font-size: 16px;
+}
+.pdf-icon {
+  width: 48px;
+  height: 48px;
+}
+.price-ul {
+  list-style-type: none;
+  font-size: 16px;
+  margin-left: 0px;
+  padding-left: 0px;
+}
+.price-ul > li {
+  font-size: 16px;
+  min-height: 56px;
+  outline: 0px dashed red;
+} 
+.price-h4 {
+  font-weight: bold;
+  font-size: 24px;
+}
