@@ -442,6 +442,12 @@ body {
     float: right;
 }
 
+.budge::after {
+  content: "\25ba";
+}
+.budge-open::after {
+  content: "\25bc";
+}
 .media-body::after {
   content: "\25b6";
 }

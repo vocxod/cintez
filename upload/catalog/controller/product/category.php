@@ -328,7 +328,10 @@ class ControllerProductCategory extends Controller {
 			$pagination->url = $this->url->link('product/category', 'path=' . $this->request->get['path'] . $url . '&page={page}');
 
 			$data['pagination'] = $pagination->render();
-
+$data['products_count'] = $product_total;
+$data['products_start'] = ($page - 1) * $limit + 1;
+$data['products_finish'] = ($page + 1 ) * $limit;
+// var_dump( $pagination ); die();
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
 
 			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
