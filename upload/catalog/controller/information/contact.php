@@ -142,7 +142,9 @@ class ControllerInformationContact extends Controller {
 		$this->load->model('catalog/information');
 		$contact_content = $this->model_catalog_information->getInformation( 348 );
 		$data['contact_content'] = html_entity_decode($contact_content['description']);
-		//var_dump( $data['contact_content'] ); die();
+		$published = $this->model_catalog_information->getNewsList( 4 );
+		$data['published'] = $published;
+		//var_dump( $data['published'] ); die();
 		$this->response->setOutput($this->load->view('information/contact', $data));
 	}
 

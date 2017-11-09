@@ -1000,3 +1000,6 @@ p.price {
   padding-top: 10px;
   padding-bottom: 20px;
 }
+.feednews {
+  min-height: 120px;
+}
