@@ -1118,3 +1118,21 @@ p {
     width: 50%;
 }
 
+#mapcontent {
+  position:absolute;
+  width:210px;
+  min-height:400px;
+  top:40px;left:64px;
+  z-index:8000;
+  background: #FEFEFE;
+  padding: 12px;
+}
+.txt24 {
+  font-size: 24px;
+}
+.grin {
+  color: rgb(54,154,56);
+}
+#mapcontent > h4 {
+  font-weight: bold;
+}

@@ -1,0 +1,260 @@
+{{ header }}
+
+<div id="information-contact" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <div class="row">  
+    {{ contact_content|raw }}
+  </div>
+
+</div>
+
+<script type="text/javascript">
+
+  ymaps.ready(function () {
+    var myMap = new ymaps.Map('map', {
+            center: [59.957539, 30.470504],
+            zoom: 16
+        }, {
+            searchControlProvider: 'yandex#search'
+        }),
+
+        // Создаём макет содержимого.
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="background:rgb(54,154,56);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+
+        myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+            hintContent: 'Головной офис',
+            balloonContent: '"СпецСинтез" <br/> Время работы: <br/> С 9:00 до 18:00 <br/> Выходные дни: Суббота, Воскресенье'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: '/image/catalog/pages/contacts/yamap-maker.png',
+            // Размеры метки.
+            iconImageSize: [52, 70],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38]
+        })
+        // ,
+/*
+        myPlacemarkWithContent = new ymaps.Placemark([59.957539, 30.470504], {
+            hintContent: 'Собственный значок метки с контентом',
+            balloonContent: 'А эта — новогодняя',
+            iconContent: '12'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#imageWithContent',
+            // Своё изображение иконки метки.
+            iconImageHref: '/image/catalog/pages/contacts/yamap-maker.png',
+            // Размеры метки.
+            iconImageSize: [52, 70],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-24, -24],
+            // Смещение слоя с содержимым относительно слоя с картинкой.
+            iconContentOffset: [15, 15],
+            // Макет содержимого.
+            iconContentLayout: MyIconContentLayout
+        })
+*/
+        ;
+
+    myMap.geoObjects
+        .add(myPlacemark)
+        //.add(myPlacemarkWithContent);
+});
+
+</script>
+
+{{ footer }}
+
+
+    {#  
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (812) <span style="font-size:24px; font-weight:bold;">318-47-17</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              mail@specsintez.com 
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                195279 Санкт-Петербург,<br/>
+                Индустриальный пр-т 43 лит. "К"
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Подъезд под погрузку осуществляется с<br/>
+                правой стороны здания.<br/>
+                Оформление документов внутри здания<br/> 
+                (после входа, налево, логист:<br/>
+                Коршикова Галина Николаевна)<br/>
+              </p>
+          </div>
+      </div>
+    </div>
+    #}
+
+{# старый код страницы #}
+{#
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      <h3>{{ text_location }}</h3>
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <div class="row">
+            {% if image %}
+            <div class="col-sm-3"><img src="{{ image }}" alt="{{ store }}" title="{{ store }}" class="img-thumbnail" /></div>
+            {% endif %}
+            <div class="col-sm-3"><strong>{{ store }}</strong><br />
+              <address>
+              {{ address }}
+              </address>
+              {% if geocode %}
+              <a href="https://maps.google.com/maps?q={{ geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn btn-info"><i class="fa fa-map-marker"></i> {{ button_map }}</a>
+              {% endif %}
+            </div>
+            <div class="col-sm-3"><strong>{{ text_telephone }}</strong><br>
+              {{ telephone }}<br />
+              <br />
+              {% if fax %}
+              <strong>{{ text_fax }}</strong><br>
+              {{ fax }}
+              {% endif %}
+            </div>
+            <div class="col-sm-3">
+              {% if open %}
+              <strong>{{ text_open }}</strong><br />
+              {{ open }}<br />
+              <br />
+              {% endif %}
+              {% if comment %}
+              <strong>{{ text_comment }}</strong><br />
+              {{ comment }}
+              {% endif %}
+            </div>
+          </div>
+        </div>
+      </div>
+      {% if locations %}
+      <h3>{{ text_store }}</h3>
+      <div class="panel-group" id="accordion">
+        {% for location in locations %}
+        <div class="panel panel-default">
+          <div class="panel-heading">
+            <h4 class="panel-title"><a href="#collapse-location{{ location.location_id }}" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion">{{ location.name }} <i class="fa fa-caret-down"></i></a></h4>
+          </div>
+          <div class="panel-collapse collapse" id="collapse-location{{ location.location_id }}">
+            <div class="panel-body">
+              <div class="row">
+                {% if location.image %}
+                <div class="col-sm-3"><img src="{{ location.image }}" alt="{{ location.name }}" title="{{ location.name }}" class="img-thumbnail" /></div>
+                {% endif %}
+                <div class="col-sm-3"><strong>{{ location.name }}</strong><br />
+                  <address>
+                  {{ location.address }}
+                  </address>
+                  {% if location.geocode %}
+                  <a href="https://maps.google.com/maps?q={{ location.geocode|url_encode }}&hl={{ geocode_hl }}&t=m&z=15" target="_blank" class="btn btn-info"><i class="fa fa-map-marker"></i> {{ button_map }}</a>
+                  {% endif %}
+                </div>
+                <div class="col-sm-3"> <strong>{{ text_telephone }}</strong><br>
+                  {{ location.telephone }}<br />
+                  <br />
+                  {% if location.fax %}
+                  <strong>{{ text_fax }}</strong><br>
+                  {{ location.fax }}
+                  {% endif %}
+                </div>
+                <div class="col-sm-3">
+                  {% if location.open %}
+                  <strong>{{ text_open }}</strong><br />
+                  {{ location.open }}<br />
+                  <br />
+                  {% endif %}
+                  {% if location.comment %}
+                  <strong>{{ text_comment }}</strong><br />
+                  {{ location.comment }}
+                  {% endif %}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+      {% endif %}
+      <form action="{{ action }}" method="post" enctype="multipart/form-data" class="form-horizontal">
+        <fieldset>
+          <legend>{{ text_contact }}</legend>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-name">{{ entry_name }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="name" value="{{ name }}" id="input-name" class="form-control" />
+              {% if error_name %}
+              <div class="text-danger">{{ error_name }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-email">{{ entry_email }}</label>
+            <div class="col-sm-10">
+              <input type="text" name="email" value="{{ email }}" id="input-email" class="form-control" />
+              {% if error_email %}
+              <div class="text-danger">{{ error_email }}</div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="form-group required">
+            <label class="col-sm-2 control-label" for="input-enquiry">{{ entry_enquiry }}</label>
+            <div class="col-sm-10">
+              <textarea name="enquiry" rows="10" id="input-enquiry" class="form-control">{{ enquiry }}</textarea>
+              {% if error_enquiry %}
+              <div class="text-danger">{{ error_enquiry }}</div>
+              {% endif %}
+            </div>
+          </div>
+          {{ captcha }}
+        </fieldset>
+        <div class="buttons">
+          <div class="pull-right">
+            <input class="btn btn-primary" type="submit" value="{{ button_submit }}" />
+          </div>
+        </div>
+      </form>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+#}
+
