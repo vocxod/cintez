@@ -17,7 +17,12 @@ class ControllerInformationInformation extends Controller {
 		} else {
 			$information_id = 0;
 		}
-
+		
+		$data['information_id'] = $information_id;
+		
+		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', ['heading_title'=>'heading_title'] );
+		//var_dump( $data['newslatest'] ); die();
+		
 		$information_info = $this->model_catalog_information->getInformation($information_id);
 
 		if ($information_info) {

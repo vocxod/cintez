@@ -31,8 +31,8 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		}
 
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews( $iLanguageId );
-		
+		$top_news = $this->model_catalog_information->getTopNews();
+		//var_dump($top_news); die();
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
 

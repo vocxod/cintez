@@ -14,8 +14,103 @@
     {% set class = 'col-sm-12' %}
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
-      <h1>{{ heading_title }}</h1>
-      {{ description }}{{ content_bottom }}</div>
-    {{ column_right }}</div>
+      {% if information_id != 10 %}
+        {# если страница не ДИЛЕРАМ #}
+        <h1>{{ information_id }} : {{ heading_title }}</h1>
+      {% else %}
+      {# debug #}  
+      <div class="container">
+        <div class="row">
+          <h4 class="h4-info"><span class="green-uline">НПО "СпецСинтез" приглашает к сотрудничеству</span></h4>
+        <div class="col-sm-12">
+            <p>Все клиенты компании - это корпоративный капитал. Мы ценим это и выстраиваем с нашими партнерами прочные и долговременные отношения.</p>
+          </div>
+        </div>
+        
+        <div class="row">
+          
+
+          <h5><span class="sub-title">Схема индивидуальной работы с заказчиком:</span></h5>
+        <div class="col-sm-12">
+            <div class="col-md-1-5 text-center">
+                <div class="step-1 debug"></div>
+                <p>Сбор и анализ информации</p>
+            </div>
+            <div class="col-md-1-5 text-center">
+                <div class="step-2 debug-1"></div>
+                  <p>Лабораторные разработки&nbsp; и исследования </p>
+            </div>
+            <div class="col-md-1-5 text-center">
+                <div class="step-3 debug-2"></div>
+                  <p>Испытания на месте</p>
+            </div>
+            <div class="col-md-1-5 text-center">
+                <div class="step-4 debug-3"></div>
+                <p>Внедрение</p>
+            </div>
+            <div class="col-md-1-5 text-center">
+                <div class="step-5 debug-4"></div>
+                <p>Авторский надзор</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row">
+          <div class="col-sm-12">
+          <p class="p4">
+            Компания организует выездные обучающие материалы для руководителей и персонала. Мы гарантируем оперативность выполненения заказов, 
+            осуществляем доставку по России и СНГ, обеспечиваем клиентов бесплатными образцами продукции и рекламной информацией.
+            Осуществляем техническую поддержку и консультации в постоянном режиме.
+            </p>
+          </div>
+        </div>
+          
+        <div class="row">
+          
+          <h4 class="h4-info"><span class="green-uline">Начать сотрудничество </span></h4>
+
+        
+
+          <div class="col-sm-6">
+<p>
+  Если Вы желаете обратиться к нашей компании с предложением о сотрудничестве, заполните расположенную ниже форму, и мы оперативно свяжемся с Вами. Также, чтобы стать нашим дилером, необходимо иметь статус юридического лица, желательно наличие наработанных контактов по Вашему региону. 
+</p>
+          </div>
+        <div class="col-sm-6">
+          <div class="md-input">
+              <input class="md-form-control" required="" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><i class="fa fa-user bigicon" aria-hidden="true"></i>&nbsp;Ваше имя</label>
+          </div>
+          <div class="md-input">
+              <input class="md-form-control" required="" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><i class="fa fa-mobile bigicon" aria-hidden="true"></i>&nbsp;Ваш телефон</label>
+          </div>
+          <div class="md-input">
+              <input class="md-form-control" required="" type="text">
+              <span class="highlight"></span>
+              <span class="bar"></span>
+              <label><i class="fa fa-pencil bigicon" aria-hidden="true"></i>&nbsp;Ваше сообщение</label>
+          </div>
+          <p class="block-center text-center">
+            <button class="btn btn-success">ОТПРАВИТЬ</button>
+          </p>
+        </div>
+      </div>
+
+        <div class="row">
+          <h4 class="h4-info"><span class="green-uline">Последние новости &nbsp;&nbsp; </span></h4>
+          {{ newslatest }}
+        </div>
+
+      {# end debug #}
+      {% endif %}
+      {#{ description }}{{ content_bottom }#}
+    </div>
+    {{ column_right }}
+  </div>
 </div>
 {{ footer }}
