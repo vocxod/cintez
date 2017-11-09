@@ -5,6 +5,23 @@
     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
     {% endfor %}
   </ul>
+
+  <div class="row">
+    {% set class = 'col-sm-9 debug' %}  
+    <div id="content" class="{{ class }}">
+      {{ contact_content|raw }}
+    </div>
+    {% set class = 'col-sm-3 debug-3' %}
+    <div id="content" class="{{ class }}">
+      <h3>Публикации</h3>
+    </div>  
+  </div>
+
+</div>
+{{ footer }}
+
+{# старый код страницы #}
+{#
   <div class="row">{{ column_left }}
     {% if column_left and column_right %}
     {% set class = 'col-sm-6' %}
@@ -140,5 +157,5 @@
       </form>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
-</div>
-{{ footer }}
+#}
+

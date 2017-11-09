@@ -138,6 +138,11 @@ class ControllerInformationContact extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
+		/* получаем контент страницы ID=348  */
+		$this->load->model('catalog/information');
+		$contact_content = $this->model_catalog_information->getInformation( 348 );
+		$data['contact_content'] = html_entity_decode($contact_content['description']);
+		//var_dump( $data['contact_content'] ); die();
 		$this->response->setOutput($this->load->view('information/contact', $data));
 	}
 

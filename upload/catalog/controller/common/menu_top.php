@@ -26,7 +26,7 @@ class ControllerCommonMenuTop extends Controller {
 				['class'=>'not-active', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'ПУБЛИКАЦИИ', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'НОВОСТИ', 'href' => '#', 'target'=>'_blank', 'active' => true], 			
-				['class'=>'not-active', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
+				['class'=>'', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
 				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 			];
 			$data['apply_menu_list'] = [ 
@@ -49,7 +49,7 @@ class ControllerCommonMenuTop extends Controller {
 				['class'=>'not-active', 'title'=>'DEALERS', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'ARTICLES', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'NEWS', 'href' => '#', 'target'=>'_blank', 'active' => true], 			
-				['class'=>'not-active', 'title'=>'FEEDBACK', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
+				['class'=>'', 'title'=>'FEEDBACK', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true],
 				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 			];
 			$data['apply_menu_list'] = [ 
