@@ -988,4 +988,15 @@ p.price {
 .feedp {
   font-size: 16px;
 }
-
+.even_p {
+  background: #F0FFF0;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
+.odd_p {
+  background: #FFF;
+  padding-left: 10px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+}
