@@ -19,8 +19,23 @@ class ControllerInformationInformation extends Controller {
 		}
 		
 		$data['information_id'] = $information_id;
-		
-		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', ['heading_title'=>'heading_title'] );
+		/* получить нужные данные для формирования последних новостей из шаблона */
+		$aDataNews['heading_title'] = "Последние новости";  
+		$this->load->model('catalog/information');
+		$top_news = $this->model_catalog_information->getTopNews();
+		$aResult = [];
+		foreach ($top_news as $key => $value) {
+			$aData = [];
+			if(is_array($value)){
+				foreach ($value as $key2 => $value2) {
+					$aData[$key2] = html_entity_decode( $value2 );
+				}
+				$aResult[] = $aData;
+			}
+		}
+		$aDataNews['top_news'] = $aResult;
+		/* */
+		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
 		//var_dump( $data['newslatest'] ); die();
 		
 		$information_info = $this->model_catalog_information->getInformation($information_id);
