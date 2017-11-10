@@ -1,0 +1,74 @@
+{{ header }}
+
+<div id="information-contact" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+    
+    {# content page #}
+  <div class="row">
+    <div class="col-sm-12 debug">
+      <h4 class="h4-info"><span class="green-uline">{{ heading_title }}</span></h4>
+      <div class="col-sm-4 debug-1">
+
+          <div class="dropdown debug-4">
+            <button class="btn btn-default dropdown-toggle col-sm-12" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Выберите категорию
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#">Учреждения здравохранения</a></li>
+              <li><a href="#">Учреждения общественного питания</a></li>
+              <li><a href="#">Сельскохозяйственные предприятия</a></li>
+              <li role="separator" class="divider"></li>
+              <li><a href="#">Клининговые учреждения</a></li>
+            </ul>
+          </div>
+
+          <div class="dropdown debug-4">
+            <button class="btn btn-default dropdown-toggle col-sm-12" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Выберите вид обработки
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+              <li><a href="#">Дезинфенкция изделий медицинского назначения</a></li>
+              <li><a href="#">Учреждения общественного питания</a></li>
+            </ul>
+          </div>
+
+          <div class="dropdown debug-4">
+            <button class="btn btn-default dropdown-toggle col-sm-12" type="button" id="dropdownMenu3" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Выберите средство
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu3">
+              <li><a href="#">Все</a></li>
+              <li><a href="#">Популярные</a></li>
+              <li><a href="#">Бюджетные</a></li>
+            </ul>
+          </div>          
+
+      </div>
+      <div class="col-sm-8 debug-2">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis numquam impedit possimus nostrum. Quia animi, aperiam asperiores quaerat quo quam neque totam quasi temporibus repudiandae ratione ab, optio, eum, aliquid.
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 debug-3">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nisi asperiores, alias ipsam vitae omnis exercitationem odio qui molestiae non amet eveniet tempore, maiores harum nemo, ea possimus placeat sunt sit.
+    </div>
+  </div>
+    {# //content page #}
+
+    {#{ contact_content|raw }#}
+
+
+</div>
+
+{{ footer }}
+
