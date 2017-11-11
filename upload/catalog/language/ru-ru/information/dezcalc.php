@@ -1,6 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'Дезкалькулятор дозировок';
+$_['heading_title_second_form']  = 'Дезинфекция изделий медицинского назначения';
 
 // Text
 $_['text_location']  = 'Наше местонахождение';

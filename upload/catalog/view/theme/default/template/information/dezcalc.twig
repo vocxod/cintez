@@ -85,30 +85,40 @@
 
   <div class="row">
     <div class="col-sm-12 debug-5">
-      <h3>Дезинфекция изделий медицинского назначения</h3>
+      <h3>{{ heading_title_second_form }}</h3>
           
-          <div class="list-group">
-            <a onclick="return false;" href="#" class="list-group-item">Объем емкости для погружения ИМН</a>
-            <a onclick="return false;" href="#" class="list-group-item">Количество емкостей для погружения</a>
-            
 
-    <div class="input-group">
-        <a onclick="return false;" href="#" class="list-group-item">Режим обработки</a>
-        <input type="checkbox" aria-label="...">
-        Бактерии
-        <input type="checkbox" aria-label="...">
-        Бактерии
-        <input type="checkbox" aria-label="...">
-        Бактерии
-        <input type="checkbox" aria-label="...">
-        Бактерии
-    </div><!-- /input-group -->
+<div class="list-group">
+  {% for detail in details %}
+  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start debug">
+    <div class="d-flex w-100 justify-content-between debug-1">
 
-             
+      <div class="text-left" style="height:40px;float:left;padding-top:20px;margin-right:10px;">
+          <img class="debug-6" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
+      </div>
 
-            <a onclick="return false;" href="#" class="list-group-item">Желаемое время экспозиции</a>
-            <a onclick="return false;" href="#" class="list-group-item">Количество суток в расчетном периоде</a>
-          </div>
+      <div class="outline:1px solid red;">
+        <h4 class="mb-1 debug-5">{{ detail.title }}
+            {% for field in detail.fields %}        
+              <label class="form-check-label">
+                  <input class="form-check-input" type="checkbox"> {{ field.title }}
+              </label>
+              {% endfor %}
+        </h4>
+
+        <small class="debug-2">{{ detail.subtitle }}</small>
+        &nbsp;
+      </div>
+
+    </div>
+    {#
+    <p class="mb-1 debug-3">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
+    <small class="debug-4">Donec id elit non mi porta.</small>
+    #}
+  </a>
+  {% endfor %}
+</div>
+
 
       <div class="text-left">
           <button type="submit" class="btn btn-success">Рассчитать</button>  

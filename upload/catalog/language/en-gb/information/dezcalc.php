@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'Calculate volume of products';
-
+$_['heading_title_second_form']  = 'Дезинфекция изделий medical target';
 // Text
 $_['text_location']  = 'Our Location';
 $_['text_store']     = 'Our Stores';

@@ -145,6 +145,37 @@ class ControllerInformationDezcalc extends Controller {
 		$data['contact_content'] = html_entity_decode($contact_content['description']);
 		$published = $this->model_catalog_information->getNewsList( 4 );
 		$data['published'] = $published;
+		/* @TODO вогнать в БД и там редактировать сии штучки */
+		$aDetails = 
+		[
+		"ru"=>
+			[ 
+				["title"=>"Объем емкости для погружения ИМН", "subtitle"=>"V емк, л"],
+				["title"=>"Количество емкостей для погружения", "subtitle"=>"N емк"],
+				["title"=>"Режим обработки", "subtitle"=>"", "fields" => [ "Бактерии", "Вирусы", "Кандида", "Дерматофин", "Микобактерия туберкулеза" ] ],
+				["title"=>"Желаемое время экспозиции", "subtitle"=>"t, мин"],
+				["title"=>"Количество суток в расчетном периоде", "subtitle"=>"С, сут"], 
+			],
+		"en"=>
+			[ 
+				["title"=>"Volume емкости для погружения ИМН", "subtitle"=>"V емк, л"],
+				["title"=>"Quantity емкостей для погружения", "subtitle"=>"N емк"],
+				["title"=>"Mode обработки", "subtitle"=>"", 
+					"fields"=>[  
+								["title" => "Бактерии", "value" => "1" ], 
+								["title" => "Viruses", "value" => "2" ], 
+								["title" => "Кандида", "value" => "3" ], 
+								["title" => "Дерматофин", "value" => "4" ], 
+								["title" => "Микобактерия туберкулеза", "value" => "4" ] 
+							] 
+				],
+				["title"=>"Wanted время экспозиции", "subtitle"=>"t, мин"],
+				["title"=>"Quantity суток в расчетном периоде", "subtitle"=>"С, сут"], 
+			],
+		]		
+		;
+		// var_dump( (int)$this->config->get('config_language_id'), $this->language->get('code') ); die();
+		$data['details'] = $aDetails[ $this->language->get('code') ] ;
 		$this->response->setOutput($this->load->view('information/dezcalc', $data));
 	}
 
