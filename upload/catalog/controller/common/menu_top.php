@@ -16,7 +16,7 @@ class ControllerCommonMenuTop extends Controller {
 		if( $data['lang'] == 'ru'):
 			$data['up_line']= [ 
 				['class'=>'', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true],
-				['class'=>'not-active', 'title'=>'подбор продукта', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => '#2', 'target'=>'_self', 'active' => true],
+				['class'=>'', 'title'=>'подбор продукта', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true],
 				['class'=>'', 'title'=>'дезкалькулятор' , 'awesome' => 'fa fa-calculator', 'img' => '', 'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => true], 
 			];
 
@@ -39,7 +39,7 @@ class ControllerCommonMenuTop extends Controller {
 		if( $data['lang'] == 'en'):
 			$data['up_line']= [ 
 				['class'=>'', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone',  'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true],
-				['class'=>'not-active', 'title'=>'select product', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => '#2', 'target'=>'_self', 'active' => true],
+				['class'=>'', 'title'=>'product selection', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true],
 				['class'=>'', 'title'=>'dez calculator', 'awesome' => 'fa fa-calculator','img' => '', 
 				'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => true], 
 			];

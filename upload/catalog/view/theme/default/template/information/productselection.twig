@@ -1,0 +1,154 @@
+{{ header }}
+
+<div id="information-dezcalculator" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+    
+  {# content page #}
+  {# subcategory level 1 #}
+  <div class="row" id="step-select-1">
+    <div class="container bottom-green-wings debug-3" style="padding-bottom:30px;">
+        <div class="col-sm-12">
+          <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+          <h3>{{heading_title_second_form}}</h3>
+          <div class="col-sm-6">
+                {% for what_item in categories_left %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="where_{{ what_item.category_id }}" type="checkbox">
+                    <label for="where_{{ what_item.category_id }}">
+                        {{ what_item.category_id }} : {{ what_item.name }}
+                    </label>
+                </div>
+                {% endfor %}              
+          </div>
+          <div class="col-sm-6">
+                {% for what_item in categories_right %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="where_{{ what_item.category_id }}" type="checkbox">
+                    <label for="where_{{ what_item.category_id }}">
+                        {{ what_item.category_id }} : {{ what_item.name }}
+                    </label>
+                </div>
+                {% endfor %}  
+          </div>
+
+          <div class="text-center">
+          <button id="submit-step-1" type="submit" class="btn btn-success">{{ button_show }}</button>  
+          </div>
+        </div>  
+    </div> {# CONTAINER #}
+  </div>{# ROW #}
+
+  {# subcategory level 2 #}
+  <div class="row hidden" id="step-select-2">
+    <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
+        <div class="col-sm-12">
+          <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+          <h3>{{heading_title_second_form}}</h3>
+          <div class="col-sm-6">
+                {% for where_item in categories_left %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="where_{{ where_item.category_id }}" type="checkbox">
+                    <label for="where_{{ where_item.category_id }}">
+                        {{ where_item.category_id }} : {{ where_item.name }}
+                    </label>
+                </div>
+                {% endfor %}              
+          </div>
+          <div class="col-sm-6">
+                {% for where_item in categories_right %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="where_{{ where_item.category_id }}" type="checkbox">
+                    <label for="where_{{ where_item.category_id }}">
+                        {{ where_item.category_id }} : {{ where_item.name }}
+                    </label>
+                </div>
+                {% endfor %}  
+          </div>
+
+          <div class="text-center">
+          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
+          </div>
+        </div>  
+    </div> {# CONTAINER #}
+  </div>{# ROW #}
+
+  {# subcategory level 3 #}
+  <div class="row hidden" id="step-select-3">
+    <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
+        <div class="col-sm-12">
+          <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+          <h3>{{heading_title_second_form}}</h3>
+          <div class="col-sm-6">
+                {% for how_item in categories_left %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="how_{{ how_item.category_id }}" type="checkbox">
+                    <label for="how_{{ how_item.category_id }}">
+                        {{ how_item.category_id }} : {{ how_item.name }}
+                    </label>
+                </div>
+                {% endfor %}              
+          </div>
+          <div class="col-sm-6">
+                {% for how_item in categories_right %}
+                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                    <input id="how_{{ how_item.category_id }}" type="checkbox">
+                    <label for="how_{{ how_item.category_id }}">
+                        {{ how_item.category_id }} : {{ how_item.name }}
+                    </label>
+                </div>
+                {% endfor %}  
+          </div>
+
+          <div class="text-center">
+          <button id="submit-step-3" type="submit" class="btn btn-success">{{ button_show }}</button>  
+          </div>
+        </div>  
+    </div> {# CONTAINER #}
+  </div>{# ROW #}
+
+  <div class="row">
+    <div class="container">
+    <div class="col-sm-12 debug-3">
+
+{{ filtered_products }}
+
+    </div>
+  </div>{# container #}
+  </div>{# row #}
+</div>
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+    /* на каждый радиобатон 1, 2, 3 подвешиваем также работу
+    управляющий видимостью и доступностью элементов на странице
+    а также их поведением (реакцией на события)
+    */
+    $('#submit-step-1').on( "click", function(){
+      console.log('select step 1');
+      // hide 3 section
+      // disable 1 section
+      // show 2 section
+      //dataid = $(this).attr('data')
+    })
+
+    $('#submit-step-2').on( "click", function(){
+      console.log('select step 2');
+      // disable 1 section
+      // disable 2 section
+      // show 3 section
+    })
+
+    $('#submit-step-3').on( "click", function(){
+      console.log('select step 3');
+      // show selected products
+    })
+  });
+</script>
+
+{{ footer }}
+

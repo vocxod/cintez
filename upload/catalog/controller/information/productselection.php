@@ -1,31 +1,11 @@
 <?php
-class ControllerInformationDezcalc extends Controller {
+class ControllerInformationProductselection extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('information/dezcalc');
+		$this->load->language('information/productselection');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-			$mail->setTo($this->config->get('config_email'));
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setReplyTo($this->request->post['email']);
-			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
-			$mail->send();
-
-			$this->response->redirect($this->url->link('information/contact/success'));
-		}
 
 		$data['breadcrumbs'] = array();
 
@@ -36,9 +16,9 @@ class ControllerInformationDezcalc extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
+			'href' => $this->url->link('information/productselection')
 		);
-
+/*
 		if (isset($this->error['name'])) {
 			$data['error_name'] = $this->error['name'];
 		} else {
@@ -56,19 +36,21 @@ class ControllerInformationDezcalc extends Controller {
 		} else {
 			$data['error_enquiry'] = '';
 		}
-
+*/
 		$data['button_submit'] = $this->language->get('button_submit');
 
-		$data['action'] = $this->url->link('information/contact', '', true);
+		$data['action'] = $this->url->link('information/productselection', '', true);
 
 		$this->load->model('tool/image');
-
+/*
 		if ($this->config->get('config_image')) {
 			$data['image'] = $this->model_tool_image->resize($this->config->get('config_image'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_location_height'));
 		} else {
 			$data['image'] = false;
 		}
+*/
 
+		/* 
 		$data['store'] = $this->config->get('config_name');
 		$data['address'] = nl2br($this->config->get('config_address'));
 		$data['geocode'] = $this->config->get('config_geocode');
@@ -123,28 +105,35 @@ class ControllerInformationDezcalc extends Controller {
 		} else {
 			$data['enquiry'] = '';
 		}
+*/
 
 		// Captcha
+		/*
 		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
 			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
 		} else {
 			$data['captcha'] = '';
 		}
-
+*/
+		/*
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
+		*/
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
 		/* получаем контент страницы ID=5  */
+		/*
 		$data['information_id'] = 5;
 		$this->load->model('catalog/information');
 		$contact_content = $this->model_catalog_information->getInformation( $data['information_id'] );
 		$data['contact_content'] = html_entity_decode($contact_content['description']);
 		$published = $this->model_catalog_information->getNewsList( 4 );
 		$data['published'] = $published;
+		*/
+
 		/* @TODO вогнать в БД и там редактировать сии штучки */
 		$aDetails = 
 		[
@@ -213,15 +202,21 @@ class ControllerInformationDezcalc extends Controller {
 				], 
 			]	
 		];
-		// var_dump( (int)$this->config->get('config_language_id'), $this->language->get('code') ); die();
-		$data['details'] = $aDetails[ $this->language->get('code') ] ;
-		
+		$this->load->model('catalog/category');
+		$aCategories = $this->model_catalog_category->getCategories(0);
+		$iLen = count( $aCategories ) / 2;
+		//var_dump($aCategories); die();
+		$data['categories_left'] =  array_slice( $aCategories, 0, $iLen );
+		$data['categories_right'] =  array_slice( $aCategories, $iLen );
+		$data['details'] = $aDetails[ $this->language->get('code') ] ;	
 		$data['filtered_products'] = $this->load->controller('product/filtered/index', ['path'=>'127'] ); 
-		//var_dump( $data['filtered_products'] ); die();
-		$this->response->setOutput($this->load->view('information/dezcalc', $data));
+		$this->response->setOutput($this->load->view('information/productselection', $data));
 	}
 
+	// @TODO отменим работу этой функции, здесь у нас только поиск
 	protected function validate() {
+		return true;
+		/*
 		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
 			$this->error['name'] = $this->language->get('error_name');
 		}
@@ -242,11 +237,16 @@ class ControllerInformationDezcalc extends Controller {
 				$this->error['captcha'] = $captcha;
 			}
 		}
-
 		return !$this->error;
+		*/
 	}
 
+	/**
+	* for LS скрипта - отрисовываем контент, отдаем его в JS тот выводит его в партиале
+	* 
+	*/
 	public function success() {
+		
 		$this->load->language('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
@@ -260,7 +260,7 @@ class ControllerInformationDezcalc extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact', '', true)
+			'href' => $this->url->link('information/productselection', '', true)
 		);
 
 		$data['continue'] = $this->url->link('common/home');
@@ -273,5 +273,6 @@ class ControllerInformationDezcalc extends Controller {
 		$data['header'] = $this->load->controller('common/header');
 
 		$this->response->setOutput($this->load->view('common/success', $data));
+
 	}
 }

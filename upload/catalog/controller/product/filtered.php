@@ -1,9 +1,9 @@
 <?php
 class ControllerProductFiltered extends Controller {
-	public function index() {
+	public function index( $aOption = [] ) {
+		// var_dump( $aOption ); die();
+		$this->request->get['path'] = $aOption['path'];
 
-		$this->request->get['path'] = "10_19";
-//var_dump( $this->request->get['path'] ); die();
 		$this->load->language('product/filtered');
 
 		$this->load->model('catalog/category');

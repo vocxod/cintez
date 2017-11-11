@@ -1145,3 +1145,15 @@ p {
     font-weight: 400;
     font-size: 18px;
 }
+
+/* productselection */
+.bottom-green-wings {
+  background: url('/image/catalog/pages/productselection/green-wings.png') center bottom no-repeat;
+}
+.checkbox-success input[type="checkbox"]:checked + label::before {
+    background-color: #5cb85c;
+    border-color: #5cb85c; }
+.checkbox-success input[type="checkbox"]:checked + label::after {
+    color: #fff; }
+    
+
