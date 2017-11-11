@@ -1,6 +1,9 @@
 <?php
 class ControllerProductFiltered extends Controller {
 	public function index() {
+
+		$this->request->get['path'] = "10_19";
+//var_dump( $this->request->get['path'] ); die();
 		$this->load->language('product/filtered');
 
 		$this->load->model('catalog/category');
@@ -359,52 +362,8 @@ $data['products_finish'] = ($page + 1 ) * $limit;
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 
-
-			$this->response->setOutput($this->load->view('product/filtered', $data));
-		} else {
-			$url = '';
-
-			if (isset($this->request->get['path'])) {
-				$url .= '&path=' . $this->request->get['path'];
-			}
-
-			if (isset($this->request->get['filter'])) {
-				$url .= '&filter=' . $this->request->get['filter'];
-			}
-
-			if (isset($this->request->get['sort'])) {
-				$url .= '&sort=' . $this->request->get['sort'];
-			}
-
-			if (isset($this->request->get['order'])) {
-				$url .= '&order=' . $this->request->get['order'];
-			}
-
-			if (isset($this->request->get['page'])) {
-				$url .= '&page=' . $this->request->get['page'];
-			}
-
-			if (isset($this->request->get['limit'])) {
-				$url .= '&limit=' . $this->request->get['limit'];
-			}
-
-			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('text_error'),
-				'href' => $this->url->link('product/filtered', $url)
-			);
-
-			$this->document->setTitle($this->language->get('text_error'));
-
-			$data['continue'] = $this->url->link('common/home');
-
-			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
-
-
-			$data['content_top'] = $this->load->controller('common/content_top');
-			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-
-
-			$this->response->setOutput($this->load->view('error/not_found', $data));
+			$sResult = $this->load->view('product/filtered', $data);
+			return $sResult; 
 		}
 	}
 }
