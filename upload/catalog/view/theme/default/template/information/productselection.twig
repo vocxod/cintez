@@ -45,13 +45,13 @@
 
   {# subcategory level 2 #}
   <div class="row " id="step-select-2">
-    <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
+    <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
                 {% for where_item in categories_left %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                <div class="checkbox checkbox-success" style="margin:10px;">
                     <input id="where_{{ where_item.category_id }}" type="checkbox">
                     <label for="where_{{ where_item.category_id }}">
                         {{ where_item.category_id }} : {{ where_item.name }}
@@ -61,7 +61,7 @@
           </div>
           <div class="col-sm-6">
                 {% for where_item in categories_right %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                <div class="checkbox checkbox-success" style="margin:10px;">
                     <input id="where_{{ where_item.category_id }}" type="checkbox">
                     <label for="where_{{ where_item.category_id }}">
                         {{ where_item.category_id }} : {{ where_item.name }}
@@ -79,13 +79,13 @@
 
   {# subcategory level 3 #}
   <div class="row " id="step-select-3">
-    <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
+    <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
                 {% for how_item in categories_left %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                <div class="checkbox checkbox-success" style="margin:10px;">
                     <input id="how_{{ how_item.category_id }}" type="checkbox">
                     <label for="how_{{ how_item.category_id }}">
                         {{ how_item.category_id }} : {{ how_item.name }}
@@ -95,7 +95,7 @@
           </div>
           <div class="col-sm-6">
                 {% for how_item in categories_right %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
+                <div class="checkbox checkbox-success" style="margin:10px;">
                     <input id="how_{{ how_item.category_id }}" type="checkbox">
                     <label for="how_{{ how_item.category_id }}">
                         {{ how_item.category_id }} : {{ how_item.name }}
