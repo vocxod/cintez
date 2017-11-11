@@ -11,29 +11,29 @@
   {# content page #}
   {# subcategory level 1 #}
   <div class="row" id="step-select-1">
-    <div class="container bottom-green-wings debug-3" style="padding-bottom:30px;">
+    <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
                 {% for what_item in categories_left %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
-                    <input id="where_{{ what_item.category_id }}" type="checkbox">
-                    <label for="where_{{ what_item.category_id }}">
-                        {{ what_item.category_id }} : {{ what_item.name }}
-                    </label>
-                </div>
+
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_1" id="where_{{ what_item.category_id }}" value="{{what_item.category_id}}">
+    <label for="where_{{ what_item.category_id }}">
+        {{ what_item.category_id }} : {{ what_item.name }}
+    </label>
+</div>
                 {% endfor %}              
           </div>
           <div class="col-sm-6">
                 {% for what_item in categories_right %}
-                <div class="checkbox checkbox-success debug-6" style="margin:10px;">
-                    <input id="where_{{ what_item.category_id }}" type="checkbox">
-                    <label for="where_{{ what_item.category_id }}">
-                        {{ what_item.category_id }} : {{ what_item.name }}
-                    </label>
-                </div>
-                {% endfor %}  
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_1" id="where_{{ what_item.category_id }}" value="{{what_item.category_id}}">
+    <label for="where_{{ what_item.category_id }}">
+        {{ what_item.category_id }} : {{ what_item.name }}
+    </label>
+</div>                {% endfor %}  
           </div>
 
           <div class="text-center">
@@ -44,7 +44,7 @@
   </div>{# ROW #}
 
   {# subcategory level 2 #}
-  <div class="row hidden" id="step-select-2">
+  <div class="row " id="step-select-2">
     <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
@@ -78,7 +78,7 @@
   </div>{# ROW #}
 
   {# subcategory level 3 #}
-  <div class="row hidden" id="step-select-3">
+  <div class="row " id="step-select-3">
     <div class="container bottom-green-wings debug" style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
@@ -112,10 +112,10 @@
   </div>{# ROW #}
 
   <div class="row">
-    <div class="container">
+    <div class="container hidden" id="filtered_product">
     <div class="col-sm-12 debug-3">
 
-{{ filtered_products }}
+      {{ filtered_products }}
 
     </div>
   </div>{# container #}
@@ -134,6 +134,9 @@
       // disable 1 section
       // show 2 section
       //dataid = $(this).attr('data')
+      // получить выбранный радио галочку
+      subcategory = $('input[name=where_1]:checked').val();
+      console.log( subcategory );
     })
 
     $('#submit-step-2').on( "click", function(){
@@ -148,6 +151,14 @@
       // show selected products
     })
   });
+
+  /*
+получаем по аналогии с information/filtered партиал, который вклеим в страницу
+  */
+  function getProductSelectionBlock( subcategory ){
+
+  }
+
 </script>
 
 {{ footer }}
