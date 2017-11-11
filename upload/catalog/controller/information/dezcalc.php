@@ -215,6 +215,8 @@ class ControllerInformationDezcalc extends Controller {
 		];
 		// var_dump( (int)$this->config->get('config_language_id'), $this->language->get('code') ); die();
 		$data['details'] = $aDetails[ $this->language->get('code') ] ;
+		$data['filtered_products'] = $this->load->controller('product/filtered'); 
+var_dump( $data['filtered_products'] ); die();
 		$this->response->setOutput($this->load->view('information/dezcalc', $data));
 	}
 
