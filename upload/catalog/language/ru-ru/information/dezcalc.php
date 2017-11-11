@@ -2,7 +2,7 @@
 // Heading
 $_['heading_title']  = 'Дезкалькулятор дозировок';
 $_['heading_title_second_form']  = 'Дезинфекция изделий медицинского назначения';
-
+$_['heading_button_calc']  = 'РАССЧИТАТЬ';
 // Text
 $_['text_location']  = 'Наше местонахождение';
 $_['text_store']     = 'Наши магазины';

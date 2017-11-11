@@ -150,16 +150,50 @@ class ControllerInformationDezcalc extends Controller {
 		[
 		"ru"=>
 			[ 
-				["title"=>"Объем емкости для погружения ИМН", "subtitle"=>"V емк, л"],
-				["title"=>"Количество емкостей для погружения", "subtitle"=>"N емк"],
-				["title"=>"Режим обработки", "subtitle"=>"", "fields" => [ "Бактерии", "Вирусы", "Кандида", "Дерматофин", "Микобактерия туберкулеза" ] ],
-				["title"=>"Желаемое время экспозиции", "subtitle"=>"t, мин"],
-				["title"=>"Количество суток в расчетном периоде", "subtitle"=>"С, сут"], 
+				["title"=>"Объем емкости для погружения ИМН", "subtitle"=>"V емк, л",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				["title"=>"Количество емкостей для погружения", "subtitle"=>"N емк",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				["title"=>"Режим обработки", "subtitle"=>"", 
+					"fields"=>[  
+								["title" => "Бактерии", "type"=>"checkbox", "value" => "1" ], 
+								["title" => "Viruses", "type"=>"checkbox", "value" => "2" ], 
+								["title" => "Кандида", "type"=>"checkbox", "value" => "3" ], 
+								["title" => "Дерматофин", "type"=>"checkbox", "value" => "4" ], 
+								["title" => "Микобактерия туберкулеза", "type"=>"checkbox", "value" => "4" ] 
+							] 
+				],
+				["title"=>"Желаемое время экспозиции", "subtitle"=>"t, мин",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				["title"=>"Количество суток в расчетном периоде", "subtitle"=>"С, сут",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+				]
+				], 
 			],
 		"en"=>
 			[ 
-				["title"=>"Volume емкости для погружения ИМН", "subtitle"=>"V емк, л"],
-				["title"=>"Quantity емкостей для погружения", "subtitle"=>"N емк"],
+				["title"=>"Volume емкости для погружения ИМН", "subtitle"=>"V емк, л",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				
+				["title"=>"Quantity емкостей для погружения", "subtitle"=>"N емк",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				
 				["title"=>"Mode обработки", "subtitle"=>"", 
 					"fields"=>[  
 								["title" => "Бактерии", "value" => "1" ], 
@@ -169,8 +203,18 @@ class ControllerInformationDezcalc extends Controller {
 								["title" => "Микобактерия туберкулеза", "value" => "4" ] 
 							] 
 				],
-				["title"=>"Wanted время экспозиции", "subtitle"=>"t, мин"],
-				["title"=>"Quantity суток в расчетном периоде", "subtitle"=>"С, сут"], 
+				
+				["title"=>"Wanted время экспозиции", "subtitle"=>"t, мин",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				],
+				
+				["title"=>"Quantity суток в расчетном периоде", "subtitle"=>"С, сут",
+					"fields" => [
+						["title"=>"", "type"=>"input"]
+					]
+				], 
 			],
 		]		
 		;

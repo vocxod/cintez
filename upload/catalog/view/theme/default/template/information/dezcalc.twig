@@ -90,38 +90,45 @@
 
 <div class="list-group">
   {% for detail in details %}
-  <a href="#" class="list-group-item list-group-item-action flex-column align-items-start debug">
-    <div class="d-flex w-100 justify-content-between debug-1">
+  <a onclick="return false;" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+    <div class="d-flex w-100 justify-content-between ">
 
-      <div class="text-left" style="height:40px;float:left;padding-top:20px;margin-right:10px;">
-          <img class="debug-6" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
+      <div class="text-left debug" style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
+          <img class="" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
       </div>
 
       <div class="outline:1px solid red;">
-        <h4 class="mb-1 debug-5">{{ detail.title }}
-            {% for field in detail.fields %}        
-              <label class="form-check-label">
-                  <input class="form-check-input" type="checkbox"> {{ field.title }}
-              </label>
+        <h4 class="mb-1">{{ detail.title }}
+
+            <span style="" class="pull-right">
+              {% for field in detail.fields %}  
+                  {% if field.type == 'checkbox' %}
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="checkbox"> {{ field.title }}
+                  </label>
+                  {% endif %}  
+                  {% if field.type == 'input' %}
+                  <label class="form-check-label">
+                      <input class="form-check-input" type="text"> 
+                  </label>
+                  {% endif %}  
               {% endfor %}
+            </span>
         </h4>
 
-        <small class="debug-2">{{ detail.subtitle }}</small>
+        <small class="">{{ detail.subtitle }}</small>
         &nbsp;
       </div>
 
     </div>
-    {#
-    <p class="mb-1 debug-3">Donec id elit non mi porta gravida at eget metus. Maecenas sed diam eget risus varius blandit.</p>
-    <small class="debug-4">Donec id elit non mi porta.</small>
-    #}
+
   </a>
   {% endfor %}
 </div>
 
 
       <div class="text-left">
-          <button type="submit" class="btn btn-success">Рассчитать</button>  
+          <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
       </div>
     </div>
   </div>
