@@ -189,15 +189,15 @@
             url: 'index.php?route=product/filtered', // указываем URL и
             // в запрашиваем ТИП возвращаемых даных
             data: { 'jpath' : [ {'type':'html'},{'category_ids': ['131']}, { 'search_text': 'средство' } ] }, 
-            dataType : "html",                     // тип загружаемых данных
+            dataType : "json",                     // тип загружаемых данных
             success: function (data, textStatus) { // вешаем свой обработчик на функцию success
-                /*
+                
                 $.each(data, function(i, val) {    // обрабатываем полученные данные
                     console.log( i, val );
                     $('#filtered_product').removeClass('hidden');
                 });
-                */
-                console.log('data:', data );
+                
+                console.log('data:', data, 'textStatus', textStatus );
             }
         });
         console.log('3', subcategory);

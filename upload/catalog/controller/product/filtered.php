@@ -7,12 +7,15 @@ class ControllerProductFiltered extends Controller {
 		$sSearchText = '';
 		if( array_key_exists('jpath', $this->request->get ) ){
 			$aData = $this->request->get['jpath'];
+			echo "1";
 		}		
 		
 		if( count($aData) > 0 ){
+			echo "2";
 			// jpath = в запросе от JS прилетает	
 			// ответ формируем или JSON или HTML
-			foreach ($aData as $aItem) {
+			foreach ($aData as $iKey=>$aItem) {
+				echo "3 . $iKey:";
 				/*
 // формат получаемого запроса от JS скрипта		
 // все параметры и порядок следования - ОБЯЗАТЕЛЕН		
