@@ -182,42 +182,37 @@ class ControllerInformationDezcalc extends Controller {
 			],
 		"en"=>
 			[ 
-				["title"=>"Volume емкости для погружения ИМН", "subtitle"=>"V емк, л",
+				["title"=>"eОбъем емкости для погружения ИМН", "subtitle"=>"V емк, л",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				
-				["title"=>"Quantity емкостей для погружения", "subtitle"=>"N емк",
+				["title"=>"eКоличество емкостей для погружения", "subtitle"=>"N емк",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				
-				["title"=>"Mode обработки", "subtitle"=>"", 
+				["title"=>"eРежим обработки", "subtitle"=>"", 
 					"fields"=>[  
-								["title" => "Бактерии", "value" => "1" ], 
-								["title" => "Viruses", "value" => "2" ], 
-								["title" => "Кандида", "value" => "3" ], 
-								["title" => "Дерматофин", "value" => "4" ], 
-								["title" => "Микобактерия туберкулеза", "value" => "4" ] 
+								["title" => "eБактерии", "type"=>"checkbox", "value" => "1" ], 
+								["title" => "eViruses", "type"=>"checkbox", "value" => "2" ], 
+								["title" => "eКандида", "type"=>"checkbox", "value" => "3" ], 
+								["title" => "eДерматофин", "type"=>"checkbox", "value" => "4" ], 
+								["title" => "eМикобактерия туберкулеза", "type"=>"checkbox", "value" => "4" ] 
 							] 
 				],
-				
-				["title"=>"Wanted время экспозиции", "subtitle"=>"t, мин",
+				["title"=>"eЖелаемое время экспозиции", "subtitle"=>"t, мин",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				
-				["title"=>"Quantity суток в расчетном периоде", "subtitle"=>"С, сут",
+				["title"=>"eКоличество суток в расчетном периоде", "subtitle"=>"С, сут",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
-					]
+				]
 				], 
-			],
-		]		
-		;
+			]	
+		];
 		// var_dump( (int)$this->config->get('config_language_id'), $this->language->get('code') ); die();
 		$data['details'] = $aDetails[ $this->language->get('code') ] ;
 		$this->response->setOutput($this->load->view('information/dezcalc', $data));
