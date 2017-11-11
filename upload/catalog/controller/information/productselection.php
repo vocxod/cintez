@@ -208,6 +208,13 @@ class ControllerInformationProductselection extends Controller {
 		//var_dump($aCategories); die();
 		$data['categories_left'] =  array_slice( $aCategories, 0, $iLen );
 		$data['categories_right'] =  array_slice( $aCategories, $iLen );
+
+		$data['sub_categories_left'] =  array_slice( $aCategories, 0, $iLen );
+		$data['sub_categories_right'] =  array_slice( $aCategories, $iLen );
+
+		$data['subsub_categories_left'] =  array_slice( $aCategories, 0, $iLen );
+		$data['subsub_categories_right'] =  array_slice( $aCategories, $iLen );
+
 		$data['details'] = $aDetails[ $this->language->get('code') ] ;	
 		$data['filtered_products'] = $this->load->controller('product/filtered/index', ['path'=>'127'] ); 
 		$this->response->setOutput($this->load->view('information/productselection', $data));

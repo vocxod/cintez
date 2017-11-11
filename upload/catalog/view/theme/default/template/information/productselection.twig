@@ -29,90 +29,102 @@
           <div class="col-sm-6">
                 {% for what_item in categories_right %}
 <div class="radio radio-primary" style="margin:10px;">
-    <input type="radio" name="where_1" id="where_{{ what_item.category_id }}" value="{{what_item.category_id}}">
-    <label for="where_{{ what_item.category_id }}">
+    <input type="radio" name="where_1" id="where_1_{{ what_item.category_id }}" value="{{what_item.category_id}}">
+    <label for="where_1_{{ what_item.category_id }}">
         {{ what_item.category_id }} : {{ what_item.name }}
     </label>
 </div>                {% endfor %}  
           </div>
 
+{#
           <div class="text-center">
-          <button id="submit-step-1" type="submit" class="btn btn-success">{{ button_show }}</button>  
+          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
           </div>
+#}
+
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
   {# subcategory level 2 #}
-  <div class="row " id="step-select-2">
+  <div class="row hidden" id="step-select-2">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
-                {% for where_item in categories_left %}
-                <div class="checkbox checkbox-success" style="margin:10px;">
-                    <input id="where_{{ where_item.category_id }}" type="checkbox">
-                    <label for="where_{{ where_item.category_id }}">
-                        {{ where_item.category_id }} : {{ where_item.name }}
-                    </label>
-                </div>
+                {% for where_item in sub_categories_left %}
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_2_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>
                 {% endfor %}              
           </div>
           <div class="col-sm-6">
-                {% for where_item in categories_right %}
-                <div class="checkbox checkbox-success" style="margin:10px;">
-                    <input id="where_{{ where_item.category_id }}" type="checkbox">
-                    <label for="where_{{ where_item.category_id }}">
-                        {{ where_item.category_id }} : {{ where_item.name }}
-                    </label>
-                </div>
+                {% for where_item in sub_categories_right %}
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_2_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>                  
                 {% endfor %}  
-          </div>
-
-          <div class="text-center">
-          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
           </div>
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
   {# subcategory level 3 #}
-  <div class="row " id="step-select-3">
+  <div class="row hidden" id="step-select-3">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
-                {% for how_item in categories_left %}
-                <div class="checkbox checkbox-success" style="margin:10px;">
-                    <input id="how_{{ how_item.category_id }}" type="checkbox">
-                    <label for="how_{{ how_item.category_id }}">
-                        {{ how_item.category_id }} : {{ how_item.name }}
-                    </label>
-                </div>
+                {% for where_item in subsub_categories_left %}
+<div class="checkbox checkbox-success" style="margin:10px;">
+    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_3_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>
+{#
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_3_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>
+#}
                 {% endfor %}              
           </div>
           <div class="col-sm-6">
-                {% for how_item in categories_right %}
-                <div class="checkbox checkbox-success" style="margin:10px;">
-                    <input id="how_{{ how_item.category_id }}" type="checkbox">
-                    <label for="how_{{ how_item.category_id }}">
-                        {{ how_item.category_id }} : {{ how_item.name }}
-                    </label>
-                </div>
+                {% for where_item in sub_categories_right %}
+{#
+<div class="radio radio-primary" style="margin:10px;">
+    <input type="radio" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_3_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>
+#}                  
                 {% endfor %}  
           </div>
 
+{#
           <div class="text-center">
-          <button id="submit-step-3" type="submit" class="btn btn-success">{{ button_show }}</button>  
+          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
           </div>
+#}
+
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
-  <div class="row">
-    <div class="container " id="filtered_product">
+  <div class="row hidden" id="filtered_product">
+    <div class="container ">
     <div class="col-sm-12 debug-3">
 
       {{ filtered_products }}
@@ -150,6 +162,49 @@
       console.log('select step 3');
       // show selected products
     })
+
+    $('input[name=where_1]').on( "change", function(){
+        subcategory = $('input[name=where_1]:checked').val() ;
+        $('#step-select-2').removeClass('hidden');
+        $('#step-select-3').addClass('hidden');
+        $('#filtered_product').addClass('hidden');
+        console.log('1', subcategory);
+    })
+
+    $('input[name=where_2]').on( "change", function(){
+        subcategory = $('input[name=where_2]:checked').val() ;
+        $('#step-select-3').removeClass('hidden');
+        $('#filtered_product').addClass('hidden');
+        console.log('2', subcategory);
+    })
+
+    $('input[name=where_3]').on( "change", function(){
+        arr_subcategory = $('input[name=where_3]:checked');
+        $('#filtered_product').removeClass('hidden');
+        arr_cats = new Array();
+
+        // получим данные с product/filtered и проявим их в блоке
+        // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
+        $.ajax({
+            url: 'index.php?route=product/filtered', // указываем URL и
+            // в запрашиваем ТИП возвращаемых даных
+            data: { 'jpath' : [ {'type':'html'},{'category_ids': ['131']}, { 'search_text': 'средство' } ] }, 
+            dataType : "html",                     // тип загружаемых данных
+            success: function (data, textStatus) { // вешаем свой обработчик на функцию success
+                /*
+                $.each(data, function(i, val) {    // обрабатываем полученные данные
+                    console.log( i, val );
+                    $('#filtered_product').removeClass('hidden');
+                });
+                */
+                console.log('data:', data );
+            }
+        });
+        console.log('3', subcategory);
+        
+        // 
+    })
+
   });
 
   /*
