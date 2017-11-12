@@ -12,6 +12,8 @@ $_['text_fax']       = 'Fax';
 $_['text_open']      = 'Opening Times';
 $_['text_comment']   = 'Comments';
 $_['text_message']   = '<p>Your enquiry has been successfully sent to the store owner!</p>';
+$_['button_submit']  = 'Submit';
+$_['button_more']    = 'More';
 $_['text_error']	= 'Error get a news list!';
 
 // Entry

@@ -11,7 +11,7 @@ class ControllerInformationNewslist extends Controller {
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('information/newslist')
 		);
-
+/*
 		if (isset($this->request->get['information_id'])) {
 			$information_id = (int)$this->request->get['information_id'];
 		} else {
@@ -19,6 +19,8 @@ class ControllerInformationNewslist extends Controller {
 		}
 		
 		$data['information_id'] = $information_id;
+		*/
+
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
@@ -37,24 +39,25 @@ class ControllerInformationNewslist extends Controller {
 		/* */
 		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
 		//var_dump( $data['newslatest'] ); die();
-		
-		$information_info = $this->model_catalog_information->getInformation($information_id);
 
-		if ($information_info) {
-			$this->document->setTitle($information_info['meta_title']);
-			$this->document->setDescription($information_info['meta_description']);
-			$this->document->setKeywords($information_info['meta_keyword']);
+		//$information_info = $this->model_catalog_information->getInformation($information_id);
+
+		if ( $aResult ) {
+			/* @todo fix it */
+			$this->document->setTitle('meta_title');
+			$this->document->setDescription('meta_description');
+			$this->document->setKeywords('meta_keyword');
 
 			$data['breadcrumbs'][] = array(
-				'text' => $information_info['title'],
-				'href' => $this->url->link('information/information', 'information_id=' .  $information_id)
+				'text' => $this->language->get('heading_title'),
+				'href' => $this->url->link('information/newslist')
 			);
 
-			$data['heading_title'] = $information_info['title'];
+			$data['heading_title'] = $this->language->get('heading_title');
 
-			$data['description'] = html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
-
-			$data['continue'] = $this->url->link('common/home');
+			$data['description'] = ''; //html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
+			
+			//$data['continue'] = $this->url->link('common/home');
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
@@ -62,6 +65,7 @@ class ControllerInformationNewslist extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+			
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/newslist', $data);
 			// отдаем в браузер
