@@ -1158,4 +1158,13 @@ p {
 .light-bg-green{
   background:#F0FFF0;
 }    
-
+.news-anonce {
+  max-height: 300px;
+  min-height: 200px;
+  overflow: hidden;
+}
+.img-anonce > img {
+  width:100%;
+  max-height: 400px;
+  overflow: hidden;
+}

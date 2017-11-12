@@ -24,21 +24,34 @@ class ControllerInformationNewslist extends Controller {
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews();
+		$top_news = $this->model_catalog_information->getTopNews( 5 );
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
 			$aData = [];
+
 			if(is_array($value)){
 				foreach ($value as $key2 => $value2) {
-					$aData[$key2] = html_entity_decode( $value2 );
+				
+					$content = html_entity_decode( $value2 );
+					$content = preg_replace("/<img[^>]+\>/i", "", $content); 
+					$aOut = [];
+
+					if( $key2 == 'description'){
+						if( preg_match_all("/<img[^>]+\>/i", html_entity_decode( $value2 ), $aOut) ){
+							$aData[ 'image' ] = $aOut[0][0];//первая картинка 	
+						}
+					}
+
+					$aData[$key2] = html_entity_decode( $content );
 				}
 				$aResult[] = $aData;
 			}
 		}
 		$aDataNews['top_news'] = $aResult;
 		/* */
-		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
-		//var_dump( $data['newslatest'] ); die();
+		$data['top_news'] = $aResult;
+		// $data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
+		// var_dump( $data['top_news'] ); die();
 
 		//$information_info = $this->model_catalog_information->getInformation($information_id);
 

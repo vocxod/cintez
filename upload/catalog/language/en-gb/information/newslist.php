@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'News';
-
+$_['heading_title_pub'] = 'Articles';
 // Text
 $_['text_location']  = 'Our Location';
 $_['text_store']     = 'Our Stores';
@@ -14,7 +14,7 @@ $_['text_comment']   = 'Comments';
 $_['text_message']   = '<p>Your enquiry has been successfully sent to the store owner!</p>';
 $_['button_submit']  = 'Submit';
 $_['button_more']    = 'More';
-$_['text_error']	= 'Error get a news list!';
+$_['text_error']	= 'While news articles not present on site. Coming soon.';
 
 // Entry
 $_['entry_name']     = 'Your Name';

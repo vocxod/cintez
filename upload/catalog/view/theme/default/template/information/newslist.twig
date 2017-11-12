@@ -9,26 +9,30 @@
 
   <div class="row">
     <div class="col-sm-12 debug-4">
-    <h4 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+      
+      <div class="col-sm-4 img-anonce debug-1">
+          <h4 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 img-anonce debug-4">
+          <h4 class="h2"><span class="green-uline">{{ heading_title_pub }}</span></h2>
+      </div>
 
         <div class="col-sm-8 debug">
-        {% for item in 1..2 %}
-            <div class="row">
-            <div class="col-sm-6 debug-1">
-              <img width="100%" src="https://dummyimage.com/200x200/ebebe4/1c1b19" alt=""/>
+        {% for item in top_news %}
+            <div class="row news-anonce" >
+            <div class="col-sm-6 img-anonce debug-1">
+              {{ item.image }}
             </div>  
-            <div class="col-sm-6 debug-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex praesentium distinctio labore molestias commodi voluptas repudiandae eos iste, maxime illum, quas voluptates animi, voluptate! Fugit excepturi, vero soluta aut autem.
+            <div class="col-sm-6 debug-2 ">
+              <h3>{{ item.title }}</h3>
+              <p>
+                {{ item.description }}
+              </p>
             </div>
             </div>
-
-            <div class="row">
-            <div class="col-sm-6 debug-1">
-              <img width="62%" class="pull-right" src="https://dummyimage.com/200x200/beebe4/1c1b19" alt=""/>
-            </div>  
-            <div class="col-sm-6 debug-2">
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ex praesentium distinctio labore molestias commodi voluptas repudiandae eos iste, maxime illum, quas voluptates animi, voluptate! Fugit excepturi, vero soluta aut autem.
-            </div>
+            <div class="row" >
+              <button class="btn btn-success pull-right">{{ button_more }}</button>
             </div>
         {% endfor %}
         </div>
