@@ -1168,3 +1168,20 @@ p {
   max-height: 400px;
   overflow: hidden;
 }
+
+/* красный уголок */
+.ribbon {
+    background-color: #a00;
+    overflow: hidden;
+    position: absolute;
+    left: -3em;
+    top: 2.5em;
+    -moz-transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    transform: rotate(-45deg);
+    -webkit-box-shadow: 0 0 1em #888;
+    box-shadow: 0 0 1em #888;
+}
+
