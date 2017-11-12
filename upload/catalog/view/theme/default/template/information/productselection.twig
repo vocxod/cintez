@@ -36,12 +36,6 @@
 </div>                {% endfor %}  
           </div>
 
-{#
-          <div class="text-center">
-          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
-          </div>
-#}
-
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
@@ -90,14 +84,6 @@
         {{ where_item.category_id }} : {{ where_item.name }}
     </label>
 </div>
-{#
-<div class="radio radio-primary" style="margin:10px;">
-    <input type="radio" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>
-#}
                 {% endfor %}              
           </div>
           <div class="col-sm-6">
@@ -108,14 +94,7 @@
         {{ where_item.category_id }} : {{ where_item.name }}
     </label>
 </div>                  
-{#
-<div class="radio radio-primary" style="margin:10px;">
-    <input type="radio" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>
-#}                  
+                 
                 {% endfor %}  
           </div>
 
