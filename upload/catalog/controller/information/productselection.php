@@ -216,7 +216,7 @@ class ControllerInformationProductselection extends Controller {
 		$data['subsub_categories_right'] =  array_slice( $aCategories, $iLen );
 
 		$data['details'] = $aDetails[ $this->language->get('code') ] ;	
-		$data['filtered_products'] = $this->load->controller('product/filtered/index', ['path'=>'127'] ); 
+		$data['filtered_products'] = $this->load->controller('product/filtered/index', '127' ); 
 		$this->response->setOutput($this->load->view('information/productselection', $data));
 	}
 
