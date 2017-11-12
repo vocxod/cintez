@@ -47,7 +47,7 @@
   </div>{# ROW #}
 
   {# subcategory level 2 #}
-  <div class="row hidden" id="step-select-2">
+  <div class="row hidden light-bg-green" id="step-select-2">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
@@ -102,6 +102,12 @@
           </div>
           <div class="col-sm-6">
                 {% for where_item in sub_categories_right %}
+<div class="checkbox checkbox-success" style="margin:10px;">
+    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+    <label for="where_3_{{ where_item.category_id }}">
+        {{ where_item.category_id }} : {{ where_item.name }}
+    </label>
+</div>                  
 {#
 <div class="radio radio-primary" style="margin:10px;">
     <input type="radio" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
@@ -125,7 +131,7 @@
 
   <div class="row hidden" id="filtered_product">
     <div class="container ">
-    <div class="col-sm-12 debug-3">
+    <div class="col-sm-12">
 
       {{ filtered_products }}
 
@@ -140,28 +146,6 @@
     управляющий видимостью и доступностью элементов на странице
     а также их поведением (реакцией на события)
     */
-    $('#submit-step-1').on( "click", function(){
-      console.log('select step 1');
-      // hide 3 section
-      // disable 1 section
-      // show 2 section
-      //dataid = $(this).attr('data')
-      // получить выбранный радио галочку
-      subcategory = $('input[name=where_1]:checked').val();
-      console.log( subcategory );
-    })
-
-    $('#submit-step-2').on( "click", function(){
-      console.log('select step 2');
-      // disable 1 section
-      // disable 2 section
-      // show 3 section
-    })
-
-    $('#submit-step-3').on( "click", function(){
-      console.log('select step 3');
-      // show selected products
-    })
 
     $('input[name=where_1]').on( "change", function(){
         subcategory = $('input[name=where_1]:checked').val() ;
@@ -175,6 +159,9 @@
         subcategory = $('input[name=where_2]:checked').val() ;
         $('#step-select-3').removeClass('hidden');
         $('#filtered_product').addClass('hidden');
+        // зачистим все чекбоксы
+        $('input[name=where_3]').removeAttr('checked');
+        // where_3
         console.log('2', subcategory);
     })
 
