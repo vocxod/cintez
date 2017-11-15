@@ -1,0 +1,77 @@
+{{ header }}
+
+<div id="information-newslist" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li>
+      {% if loop.index != 1 %}
+      &#x27f6;
+      {% endif %}
+      <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+  <div class="row">
+    <div class="col-sm-12 debug-4">
+      
+      <div class="col-sm-4 img-anonce debug-1">
+          <h3 class="h2"><span class="green-uline">{{ heading_title }}</span></h3>
+      </div>
+      <div class="col-sm-4"></div>
+      <div class="col-sm-4 img-anonce debug-4">
+          <h3 class="h2"><span class="green-uline">{{ heading_title_pub }}</span></h3>
+      </div>
+
+        <div class="col-sm-8 debug">
+        {% for item in top_news %}
+            <div class="row news-anonce" >
+            <div class="col-sm-6 img-anonce debug-1">
+              {{ item.image }}
+            </div>  
+            <div class="col-sm-6 debug-2 ">
+              <h4 style="font-weight:bold;">{{ item.title }}</h4>
+              <p>
+                {{ item.description }}
+              </p>
+            </div>
+            </div>
+            <div class="row" >
+              <div class="col-sm-6">
+              </div>
+              <div class="col-sm-6">
+                  <div class="button-group" style="margin-top:5px; border:none; background:none;">
+                      <button class="" style="width:45%;color:#111;" type="button">
+                        <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+                      </button>  
+                      <button style="width:15%; margin-left:15px;" type="button" title="">
+                        <i class="fa fa-vk"></i>
+                      </button>
+                      <button style="width:15%;" type="button"  title="">
+                        <i class="fa fa-twitter"></i>
+                      </button>
+                      <button style="width:15%;" type="button"  title="">
+                        <i class="fa fa-facebook"></i>
+                      </button>
+                  </div>
+              </div>
+              <hr/>&nbsp;
+            </div>
+        {% endfor %}
+        </div>
+       
+        <div class="col-sm-4 debug-3">
+          {% for item in 1..6 %}
+              <div class="col-sm-12 debug-2">
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium esse amet optio delectus illo, error ex consequuntur! Provident quod vitae autem dolore dignissimos ratione praesentium ullam animi. Tempore, molestiae, ex.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt, nemo temporibus veritatis dolore eos expedita accusantium consequuntur qui doloremque, ad vitae ducimus maxime ea. Labore impedit autem, consequatur ratione vitae!
+              </div>
+          {% endfor %}
+        </div>
+    </div>
+  </div> {# row 1 #}
+</div>{# information-newslist #}
+
+
+
+{{ footer }}
+
