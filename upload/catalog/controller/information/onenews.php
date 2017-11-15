@@ -20,41 +20,35 @@ class ControllerInformationOnenews extends Controller {
 		
 		$data['information_id'] = $information_id;
 		
-
-		/* получить нужные данные для формирования последних новостей из шаблона */
-		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews( 5 );
+		$is_news = $this->model_catalog_information->getInformation( $information_id );
 		$aResult = [];
-		foreach ($top_news as $key => $value) {
+		// var_dump($is_news); die();
+		if($is_news){
 			$aData = [];
+			foreach ($is_news as $key => $value) {
+		
+				$content = html_entity_decode( $value );
+				$content = preg_replace("/<img[^>]+\>/i", "", $content); 
+				$aOut = [];
 
-			if(is_array($value)){
-				foreach ($value as $key2 => $value2) {
-				
-					$content = html_entity_decode( $value2 );
-					$content = preg_replace("/<img[^>]+\>/i", "", $content); 
-					$aOut = [];
-
-					if( $key2 == 'description'){
-						if( preg_match_all("/<img[^>]+\>/i", html_entity_decode( $value2 ), $aOut) ){
-							$aData[ 'image' ] = $aOut[0][0];//первая картинка 	
-						}
+				if( $key == 'description'){
+					$aData[$key] = html_entity_decode( $content );
+					
+					if( preg_match_all("/<img[^>]+\>/i", html_entity_decode( $value ), $aOut) ){
+						//var_dump($aData['image']);
+						$aData[ 'image' ] = $aOut[0][0];//первая картинка
+						//$aData[''] = html_entity_decode( $content );
 					}
-
-					$aData[$key2] = html_entity_decode( $content );
+				} else {
+					$aData[$key] = html_entity_decode( $content );	
 				}
-				$aResult[] = $aData;
-			}
+			}	
+			$aResult = $aData;		
 		}
-		$aDataNews['top_news'] = $aResult;
 		/* */
-		$data['top_news'] = $aResult;
-		// $data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
-		// var_dump( $data['top_news'] ); die();
-
-		//$information_info = $this->model_catalog_information->getInformation($information_id);
-
+		$data['is_new'] = $aResult;
+		
 		if ( $aResult ) {
 			/* @todo fix it */
 			$this->document->setTitle('meta_title');
@@ -66,8 +60,8 @@ class ControllerInformationOnenews extends Controller {
 				'href' => $this->url->link('information/onenews' . '') //@TODO!!!
 			);
 			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('heading_title'), //@TODO from meta (url)
-				'href' => $this->url->link('information/onenews' . '') //@TODO!!!
+				'text' => $aResult['title'], //@TODO from meta (url)
+				'href' => $this->url->link('information/onenews' . '?information=' . $information_id) //@TODO!!!
 			);			
 
 			$data['heading_title'] = $this->language->get('heading_title');
@@ -84,6 +78,9 @@ class ControllerInformationOnenews extends Controller {
 			$data['header'] = $this->load->controller('common/header');
 			
 			// ренднрим страницу данными на шаблоне
+		//var_dump($data);
+		//die();
+
 			$aResult = $this->load->view('information/onenews', $data);
 			// отдаем в браузер
 			$this->response->setOutput( $aResult );

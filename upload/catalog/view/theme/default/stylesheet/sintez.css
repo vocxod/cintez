@@ -1185,3 +1185,7 @@ p {
     box-shadow: 0 0 1em #888;
 }
 
+.article_start > img {
+  width:100%;
+  outline:0px solid green;
+}

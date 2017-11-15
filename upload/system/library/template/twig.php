@@ -14,13 +14,16 @@ final class Twig {
 
 		// initialize Twig environment
 		$config = array('autoescape' => false);
-
+		// scard
+		$config['debug'] = true;
 		if ($cache) {
 			$config['cache'] = DIR_CACHE;
 		}
 
 		$this->twig = new \Twig_Environment($loader, $config);
-
+		// scard
+		$this->twig->addExtension(new \Twig_Extension_Debug());
+		
 		try {
 			// load template
 			$template = $this->twig->loadTemplate($template . '.twig');
