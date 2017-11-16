@@ -1,31 +1,11 @@
 <?php
-class ControllerInformationYamap extends Controller {
+class ControllerInformationAbout extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('information/yamap');
+		$this->load->language('information/about');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-			$mail->setTo($this->config->get('config_email'));
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setReplyTo($this->request->post['email']);
-			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
-			$mail->send();
-
-			$this->response->redirect($this->url->link('information/contact/success'));
-		}
 
 		$data['breadcrumbs'] = array();
 
@@ -35,27 +15,9 @@ class ControllerInformationYamap extends Controller {
 		);
 
 		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
+			'text' => $this->language->get('heading_title') . "",
 			'href' => $this->url->link('information/contact')
 		);
-
-		if (isset($this->error['name'])) {
-			$data['error_name'] = $this->error['name'];
-		} else {
-			$data['error_name'] = '';
-		}
-
-		if (isset($this->error['email'])) {
-			$data['error_email'] = $this->error['email'];
-		} else {
-			$data['error_email'] = '';
-		}
-
-		if (isset($this->error['enquiry'])) {
-			$data['error_enquiry'] = $this->error['enquiry'];
-		} else {
-			$data['error_enquiry'] = '';
-		}
 
 		$data['button_submit'] = $this->language->get('button_submit');
 
@@ -106,49 +68,21 @@ class ControllerInformationYamap extends Controller {
 			}
 		}
 
-		if (isset($this->request->post['name'])) {
-			$data['name'] = $this->request->post['name'];
-		} else {
-			$data['name'] = $this->customer->getFirstName();
-		}
-
-		if (isset($this->request->post['email'])) {
-			$data['email'] = $this->request->post['email'];
-		} else {
-			$data['email'] = $this->customer->getEmail();
-		}
-
-		if (isset($this->request->post['enquiry'])) {
-			$data['enquiry'] = $this->request->post['enquiry'];
-		} else {
-			$data['enquiry'] = '';
-		}
-
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
-		} else {
-			$data['captcha'] = '';
-		}
-
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
-		$data['header'] = $this->load->controller('common/header', ['yamap'=>1] );
+		$data['header'] = $this->load->controller('common/header');
 
-		/* получаем контент страницы ID=8  */
+		/* получаем контент страницы ID=348  */
 		$this->load->model('catalog/information');
-		$contact_content = $this->model_catalog_information->getInformation( 8 );
+		$contact_content = $this->model_catalog_information->getInformation( 348 );
 		$data['contact_content'] = html_entity_decode($contact_content['description']);
 		$published = $this->model_catalog_information->getNewsList( 4 );
 		$data['published'] = $published;
 		//var_dump( $data['published'] ); die();
-		$data['information_id'] = 8;
-		$data['yamap'] = '1';
-
-		$this->response->setOutput($this->load->view('information/yamap', $data));
+		$this->response->setOutput($this->load->view('information/about', $data));
 	}
 
 	protected function validate() {

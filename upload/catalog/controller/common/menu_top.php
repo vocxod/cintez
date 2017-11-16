@@ -22,7 +22,7 @@ class ControllerCommonMenuTop extends Controller {
 
 			$data['down_line']= [ 
 				['class'=>'', 'title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=59', 'target'=>'_self', 'active' => true],
-				['class'=>'not-active', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/information&information_id=4', 'target'=>'_self', 'active' => true],
+				['class'=>'', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true],
 				['class'=>'', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'ПУБЛИКАЦИИ', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['class'=>'', 'title'=>'НОВОСТИ', 'href' => 'index.php?route=information/newslist', 'target'=>'_blank', 'active' => true], 			
@@ -46,7 +46,7 @@ class ControllerCommonMenuTop extends Controller {
 
 			$data['down_line']= [ 
 				['class'=>'not-active', 'title'=>'PRODUCTS', 'href' => 'index.php?route=product/category&path=59', 'target'=>'_self', 'active' => true],
-				['class'=>'not-active', 'title'=>'ABOUT', 'href' => 'index.php?route=information/information&information_id=4', 'target'=>'_self', 'active' => true],
+				['class'=>'', 'title'=>'ABOUT', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true],
 				['class'=>'', 'title'=>'DEALERS', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true],
 				['class'=>'not-active', 'title'=>'ARTICLES', 'href' => '#', 'target'=>'_blank', 'active' => true],
 				['class'=>'', 'title'=>'NEWS', 'href' => 'index.php?route=information/newslist', 'target'=>'_blank', 'active' => true], 			

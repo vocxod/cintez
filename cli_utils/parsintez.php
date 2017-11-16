@@ -35,6 +35,7 @@ foreach ($argv as $key => $value) {
 			break;
 		case '--articles':
 			echo "--articles\n";
+			importArticles();
 			break;
 		case '--news':
 			echo "--news\n";
@@ -76,6 +77,21 @@ function fact($n) {
   }
 }
 
+function importArticles(){
+	$oTmp = ModxSiteTmplvarContentvaluesQuery::create()
+		->filterByTmplvarid(9)
+		//->filterByValue( '%web:%' )
+		->find();
+		$iCount = 0;
+	foreach ($oTmp as $key => $value) {
+		if(strpos( $value, 'web:' ) != false ){
+			//echo $value->getValue() . ":";
+			$iCount++;			
+		}
+	}
+
+	echo "$iCount founded \nArticles imported\n";
+}
 
 function getCategoryList( $iCategoryId, $uuResult = array() ){
 	//var_dump( $GLOBALS['uuResult'] ); die();

@@ -1,6 +1,6 @@
 <?php
 class ControllerCommonHeader extends Controller {
-	public function index() {
+	public function index($aOption=[]) {
 		// Analytics
 		$this->load->model('setting/extension');
 
@@ -22,6 +22,10 @@ class ControllerCommonHeader extends Controller {
 
 		if (is_file(DIR_IMAGE . $this->config->get('config_icon'))) {
 			$this->document->addLink($server . 'image/' . $this->config->get('config_icon'), 'icon');
+		}
+
+		if( count($aOption) > 0 && array_key_exists('yamap', $aOption) ){
+			$data['yamap'] = $aOption['yamap'];
 		}
 
 		$data['title'] = $this->document->getTitle();
