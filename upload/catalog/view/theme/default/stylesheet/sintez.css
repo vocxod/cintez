@@ -1,5 +1,9 @@
 /* sintez.css */
 
+body {
+  font-size: 16px;
+}
+
 .dropdown-zone {
   background: rgb(54,154,56);
   border:none;
@@ -335,7 +339,7 @@ https://bootsnipp.com/snippets/g07VM
 }
 .carousel-control .glyphicon-chevron-left, 
 .carousel-control .glyphicon-chevron-right {
-  font-size: 12px;
+  /*font-size: 12px;*/
   background-color: #fff;
   line-height: 30px;
   text-shadow: none;
@@ -444,7 +448,7 @@ body {
   border: none;
 }
 .category-list > a.list-group-item {
-  font-size: 16px;
+  /*font-size: 16px;*/
   border: none;
   border-radius: 0;
 }
@@ -933,7 +937,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 
 /* price */
 p.price {
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 .pdf-icon {
   width: 48px;
@@ -941,12 +945,12 @@ p.price {
 }
 .price-ul {
   list-style-type: none;
-  font-size: 16px;
+  /* font-size: 16px; */
   margin-left: 0px;
   padding-left: 0px;
 }
 .price-ul > li {
-  font-size: 16px;
+  /* font-size: 16px; */
   min-height: 56px;
   outline: 0px dashed red;
 } 
@@ -986,7 +990,7 @@ p.price {
   font-size: 18px;
 }
 .feedp {
-  font-size: 16px;
+  /* font-size: 16px; */ 
 }
 .even_p {
   background: #F0FFF0;
@@ -1018,8 +1022,13 @@ p.price {
 }
 /* натянем на весь сайт */
 p {
+  /* font-size: 14px; */
+}
+
+.caption > p {
   font-size: 14px;
 }
+
 .step-1 {
   width: 150px;
   height: 150px;
