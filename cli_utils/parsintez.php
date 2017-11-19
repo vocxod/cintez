@@ -79,13 +79,51 @@ function fact($n) {
 
 function importArticles(){
 	$oTmp = ModxSiteTmplvarContentvaluesQuery::create()
-		->filterByTmplvarid(9)
+		->filterByTmplvarid(9) 
 		//->filterByValue( '%web:%' )
 		->find();
 		$iCount = 0;
 	foreach ($oTmp as $key => $value) {
 		if(strpos( $value, 'web:' ) != false ){
 			//echo $value->getValue() . ":";
+			$sPattern = "|web:(\d+)|i";
+			$sSubject = $value->getValue();
+			$aOut = [];
+			$iArticleId = 0;
+			if( preg_match_all($sPattern, $sSubject, $aOut )){
+				$iArticleId = $aOut[1][0];
+				$oArticle = ModxSiteContentQuery::create()
+				->filterById( $iArticleId )
+				->findOne();
+				if( $oArticle != null && strlen($oArticle->getContent())>255 ){
+					echo "Find article with ID: $iArticleId \n";
+					$oNewinfo = new OcInformation();
+					$oNewinfo->setSortOrder(999);
+					$oNewinfo->save();
+					echo "Save new article: " . $oNewinfo->getInformationId() . "\n";
+					$iNewinfoId = $oNewinfo->getInformationId();
+					$aLanguages = [1, 4];
+					foreach ($aLanguages as $iLanguageId) {
+						$oNewinfoDescription = new OcInformationDescription();
+						$oNewinfoDescription->setLanguageId( $iLanguageId );
+						$oNewinfoDescription->setInformationId( $iNewinfoId );
+						$oNewinfoDescription->setTitle( $oArticle->getPagetitle() );
+						$oNewinfoDescription->setDescription( $oArticle->getContent() );
+						$oNewinfoDescription->setMetaTitle('');
+						$oNewinfoDescription->setMetaDescription('');
+						$oNewinfoDescription->setMetaKeyword( $iArticleId );
+						$oNewinfoDescription->save(); 
+					}
+					$oInformationToStore = new OcInformationToStore();
+					$oInformationToStore->setInformationId( $iNewinfoId );
+					$oInformationToStore->setStoreId( 0 );
+					$oInformationToStore->save();
+					$oInformationLayout = new OcInformationToLayout();
+					$oInformationLayout->setInformationId( $iNewinfoId );
+					$oInformationLayout->setLayoutId( 0 );
+					$oInformationLayout->save();
+				}
+			}
 			$iCount++;			
 		}
 	}

@@ -15,6 +15,15 @@ class ModelCatalogInformation extends Model {
 		return $query->rows;
 	}
 
+	public function getTopArticles( $iLimit = 3 ){
+		$iLanguageId = (int)$this->config->get('config_language_id');
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit";
+		// echo $sSqlSelect . "\n";
+		$query = $this->db->query( $sSqlSelect );
+		//var_dump($query); die();
+		return $query->rows;
+	}	
+
 	/* вернуть LIMIT новостей */
 	function getNewsList( $iLimit = 20, $iLanguageId = 4 ){
 		$iLanguageId = (int)$this->config->get('config_language_id');

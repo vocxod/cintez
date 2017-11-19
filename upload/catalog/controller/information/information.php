@@ -21,9 +21,13 @@ class ControllerInformationInformation extends Controller {
 		$data['information_id'] = $information_id;
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
+		
 		$this->load->model('catalog/information');
+		
 		$top_news = $this->model_catalog_information->getTopNews();
+
 		$aResult = [];
+		
 		foreach ($top_news as $key => $value) {
 			$aData = [];
 			if(is_array($value)){
