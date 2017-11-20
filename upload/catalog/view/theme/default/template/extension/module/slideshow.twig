@@ -106,7 +106,7 @@
               <div class="carousel-inner">
 
   {% for banner in banners %}
-    {% if loop.index==1 %}
+    {#% if loop.index==1 %#}
       <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:400px;overflow:hidden;">
           <div class="fill" style="background-color:#fff;">
               <div class="inner-content">
@@ -124,7 +124,9 @@
               </div>
           </div>
       </div>
-    {% endif %}
+    {#% endif %#}
+    
+    {#
       {% if loop.index==2 %}
       <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
           <div class="fill" style="background-color:#fff;">
@@ -151,6 +153,7 @@
           </div>
       </div>
     {% endif %}
+
     {% if loop.index==3 %}
       <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
         <div class="fill" style="background-color:#fff;">
@@ -168,6 +171,7 @@
         </div>
       </div>
     {% endif %}
+    #}
   {% endfor %}
 
               </div>
