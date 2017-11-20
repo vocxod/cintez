@@ -509,6 +509,19 @@ body {
   content: "\25b6";
 }
 
+#id1 {
+  margin-top:14px;
+}
+#id1.navbar-inverse.nav-upper .navbar-upper > li > a {
+    color: #111;
+}
+#id1.navbar-inverse.nav-upper .navbar-upper > li > a:hover {
+    background: none;
+}
+#id2 {
+
+}
+
 /* панели */
 .panel-menu-item {
   outline:1px solid #ccc;
