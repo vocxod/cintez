@@ -105,6 +105,21 @@ a.zone-select {
 	color: #FEFAEA;
 }
 
+/* top menu ROW1 and ROW2 */
+#id2 {
+  margin-bottom: 0px;
+}
+#row-menu-2 {
+  margin-bottom: 0px;
+  outline: 0px dashed green;
+}
+.navbar-inverse .navbar-nav > li > a.menu-selected {
+  color:rgb(54,154,56);
+}
+.navbar-inverse.nav-upper .navbar-upper > li > a.menu-selected {
+    color: rgb(54,154,56);
+}
+
 .panel_menu {
   height: 84px;
   overflow: hidden;
@@ -288,7 +303,7 @@ https://bootsnipp.com/snippets/g07VM
   border-left: 17px solid transparent;
   position: absolute;
   top: -15px;
-  left: 385px;
+  left: 485px;
   z-index: 10;
 }
 
@@ -299,7 +314,7 @@ https://bootsnipp.com/snippets/g07VM
   border-left: 19px solid transparent;
   position: absolute;
   top: -17px;
-  left: 383px;
+  left: 483px;
   z-index: 8;
 }
 

@@ -90,7 +90,7 @@
 
       <nav id="id2" class="navbar navbar-inverse navbar-static-top navbar-lower" >
         {#<div class="container-fluid">#}
-          <nav class="navbar navbar-default">
+          <nav id="row-menu-2" class="navbar navbar-default">
               <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                   <span class="sr-only">Toggle navigation</span>
@@ -106,9 +106,9 @@
                   {% for item in down_line %}
 {% if loop.index == 1 %}
     <li class="dropdown mega-dropdown">
-      <a href="{{item.href}}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title}} 
-        <span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span></a>
-      <ul class="dropdown-menu mega-dropdown-menu row" style="margin-left:30px;">
+      <a href="{{item.href}}" class="dropdown-toggle {{item.class}}" data-toggle="dropdown">{{ item.title}} 
+        {#<span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span>#}</a>
+      <ul class="dropdown-menu mega-dropdown-menu row" style="margin-left:0px;">
 
         {% for column in columns %}
         <li class="col-sm-3">
