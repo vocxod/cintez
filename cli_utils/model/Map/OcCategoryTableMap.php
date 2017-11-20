@@ -451,6 +451,10 @@ class OcCategoryTableMap extends TableMap
             $criteria = $criteria->buildCriteria(); // build Criteria from OcCategory object
         }
 
+        if ($criteria->containsKey(OcCategoryTableMap::COL_CATEGORY_ID) && $criteria->keyContainsValue(OcCategoryTableMap::COL_CATEGORY_ID) ) {
+            throw new PropelException('Cannot insert a value for auto-increment primary key ('.OcCategoryTableMap::COL_CATEGORY_ID.')');
+        }
+
 
         // Set the correct dbName
         $query = OcCategoryQuery::create()->mergeWith($criteria);

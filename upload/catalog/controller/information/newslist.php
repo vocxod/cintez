@@ -78,7 +78,7 @@ class ControllerInformationNewslist extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			$data['toparticles'] = $this->load->controller('common/toparticles');
+			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=>8] );
 			
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/newslist', $data);

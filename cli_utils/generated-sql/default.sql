@@ -250,6 +250,11 @@ CREATE TABLE `oc_banner_image`
     `link` VARCHAR(255) NOT NULL,
     `image` VARCHAR(255) NOT NULL,
     `sort_order` INTEGER(3) DEFAULT 0 NOT NULL,
+    `description` TEXT,
+    `background_color` VARCHAR(6),
+    `effect_image` VARCHAR(255),
+    `effect_title` VARCHAR(255),
+    `effect_description` VARCHAR(255),
     PRIMARY KEY (`banner_image_id`)
 ) ENGINE=MyISAM;
 
@@ -1004,6 +1009,7 @@ CREATE TABLE `oc_information`
     `status` TINYINT(1) DEFAULT 1 NOT NULL,
     `isnews` INTEGER DEFAULT 0,
     `onhome` INTEGER DEFAULT 0,
+    `artice_id` INTEGER DEFAULT 0,
     PRIMARY KEY (`information_id`)
 ) ENGINE=MyISAM;
 
@@ -1017,7 +1023,7 @@ CREATE TABLE `oc_information_description`
 (
     `information_id` INTEGER NOT NULL,
     `language_id` INTEGER NOT NULL,
-    `title` VARCHAR(64) NOT NULL,
+    `title` VARCHAR(255),
     `description` TEXT NOT NULL,
     `meta_title` VARCHAR(255) NOT NULL,
     `meta_description` VARCHAR(255) NOT NULL,

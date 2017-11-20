@@ -25,6 +25,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationQuery orderByStatus($order = Criteria::ASC) Order by the status column
  * @method     ChildOcInformationQuery orderByIsnews($order = Criteria::ASC) Order by the isnews column
  * @method     ChildOcInformationQuery orderByOnhome($order = Criteria::ASC) Order by the onhome column
+ * @method     ChildOcInformationQuery orderByArticeId($order = Criteria::ASC) Order by the artice_id column
  *
  * @method     ChildOcInformationQuery groupByInformationId() Group by the information_id column
  * @method     ChildOcInformationQuery groupByBottom() Group by the bottom column
@@ -32,6 +33,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationQuery groupByStatus() Group by the status column
  * @method     ChildOcInformationQuery groupByIsnews() Group by the isnews column
  * @method     ChildOcInformationQuery groupByOnhome() Group by the onhome column
+ * @method     ChildOcInformationQuery groupByArticeId() Group by the artice_id column
  *
  * @method     ChildOcInformationQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcInformationQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -49,7 +51,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformation findOneBySortOrder(int $sort_order) Return the first ChildOcInformation filtered by the sort_order column
  * @method     ChildOcInformation findOneByStatus(boolean $status) Return the first ChildOcInformation filtered by the status column
  * @method     ChildOcInformation findOneByIsnews(int $isnews) Return the first ChildOcInformation filtered by the isnews column
- * @method     ChildOcInformation findOneByOnhome(int $onhome) Return the first ChildOcInformation filtered by the onhome column *
+ * @method     ChildOcInformation findOneByOnhome(int $onhome) Return the first ChildOcInformation filtered by the onhome column
+ * @method     ChildOcInformation findOneByArticeId(int $artice_id) Return the first ChildOcInformation filtered by the artice_id column *
 
  * @method     ChildOcInformation requirePk($key, ConnectionInterface $con = null) Return the ChildOcInformation by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformation requireOne(ConnectionInterface $con = null) Return the first ChildOcInformation matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -60,6 +63,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformation requireOneByStatus(boolean $status) Return the first ChildOcInformation filtered by the status column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformation requireOneByIsnews(int $isnews) Return the first ChildOcInformation filtered by the isnews column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformation requireOneByOnhome(int $onhome) Return the first ChildOcInformation filtered by the onhome column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcInformation requireOneByArticeId(int $artice_id) Return the first ChildOcInformation filtered by the artice_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcInformation[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcInformation objects based on current ModelCriteria
  * @method     ChildOcInformation[]|ObjectCollection findByInformationId(int $information_id) Return ChildOcInformation objects filtered by the information_id column
@@ -68,6 +72,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformation[]|ObjectCollection findByStatus(boolean $status) Return ChildOcInformation objects filtered by the status column
  * @method     ChildOcInformation[]|ObjectCollection findByIsnews(int $isnews) Return ChildOcInformation objects filtered by the isnews column
  * @method     ChildOcInformation[]|ObjectCollection findByOnhome(int $onhome) Return ChildOcInformation objects filtered by the onhome column
+ * @method     ChildOcInformation[]|ObjectCollection findByArticeId(int $artice_id) Return ChildOcInformation objects filtered by the artice_id column
  * @method     ChildOcInformation[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -166,7 +171,7 @@ abstract class OcInformationQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT information_id, bottom, sort_order, status, isnews, onhome FROM oc_information WHERE information_id = :p0';
+        $sql = 'SELECT information_id, bottom, sort_order, status, isnews, onhome, artice_id FROM oc_information WHERE information_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -486,6 +491,47 @@ abstract class OcInformationQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcInformationTableMap::COL_ONHOME, $onhome, $comparison);
+    }
+
+    /**
+     * Filter the query on the artice_id column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByArticeId(1234); // WHERE artice_id = 1234
+     * $query->filterByArticeId(array(12, 34)); // WHERE artice_id IN (12, 34)
+     * $query->filterByArticeId(array('min' => 12)); // WHERE artice_id > 12
+     * </code>
+     *
+     * @param     mixed $articeId The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcInformationQuery The current query, for fluid interface
+     */
+    public function filterByArticeId($articeId = null, $comparison = null)
+    {
+        if (is_array($articeId)) {
+            $useMinMax = false;
+            if (isset($articeId['min'])) {
+                $this->addUsingAlias(OcInformationTableMap::COL_ARTICE_ID, $articeId['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($articeId['max'])) {
+                $this->addUsingAlias(OcInformationTableMap::COL_ARTICE_ID, $articeId['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcInformationTableMap::COL_ARTICE_ID, $articeId, $comparison);
     }
 
     /**

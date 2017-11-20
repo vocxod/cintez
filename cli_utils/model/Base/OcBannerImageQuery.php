@@ -26,6 +26,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcBannerImageQuery orderByLink($order = Criteria::ASC) Order by the link column
  * @method     ChildOcBannerImageQuery orderByImage($order = Criteria::ASC) Order by the image column
  * @method     ChildOcBannerImageQuery orderBySortOrder($order = Criteria::ASC) Order by the sort_order column
+ * @method     ChildOcBannerImageQuery orderByDescription($order = Criteria::ASC) Order by the description column
+ * @method     ChildOcBannerImageQuery orderByBackgroundColor($order = Criteria::ASC) Order by the background_color column
+ * @method     ChildOcBannerImageQuery orderByEffectImage($order = Criteria::ASC) Order by the effect_image column
+ * @method     ChildOcBannerImageQuery orderByEffectTitle($order = Criteria::ASC) Order by the effect_title column
+ * @method     ChildOcBannerImageQuery orderByEffectDescription($order = Criteria::ASC) Order by the effect_description column
  *
  * @method     ChildOcBannerImageQuery groupByBannerImageId() Group by the banner_image_id column
  * @method     ChildOcBannerImageQuery groupByBannerId() Group by the banner_id column
@@ -34,6 +39,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcBannerImageQuery groupByLink() Group by the link column
  * @method     ChildOcBannerImageQuery groupByImage() Group by the image column
  * @method     ChildOcBannerImageQuery groupBySortOrder() Group by the sort_order column
+ * @method     ChildOcBannerImageQuery groupByDescription() Group by the description column
+ * @method     ChildOcBannerImageQuery groupByBackgroundColor() Group by the background_color column
+ * @method     ChildOcBannerImageQuery groupByEffectImage() Group by the effect_image column
+ * @method     ChildOcBannerImageQuery groupByEffectTitle() Group by the effect_title column
+ * @method     ChildOcBannerImageQuery groupByEffectDescription() Group by the effect_description column
  *
  * @method     ChildOcBannerImageQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcBannerImageQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -52,7 +62,12 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcBannerImage findOneByTitle(string $title) Return the first ChildOcBannerImage filtered by the title column
  * @method     ChildOcBannerImage findOneByLink(string $link) Return the first ChildOcBannerImage filtered by the link column
  * @method     ChildOcBannerImage findOneByImage(string $image) Return the first ChildOcBannerImage filtered by the image column
- * @method     ChildOcBannerImage findOneBySortOrder(int $sort_order) Return the first ChildOcBannerImage filtered by the sort_order column *
+ * @method     ChildOcBannerImage findOneBySortOrder(int $sort_order) Return the first ChildOcBannerImage filtered by the sort_order column
+ * @method     ChildOcBannerImage findOneByDescription(string $description) Return the first ChildOcBannerImage filtered by the description column
+ * @method     ChildOcBannerImage findOneByBackgroundColor(string $background_color) Return the first ChildOcBannerImage filtered by the background_color column
+ * @method     ChildOcBannerImage findOneByEffectImage(string $effect_image) Return the first ChildOcBannerImage filtered by the effect_image column
+ * @method     ChildOcBannerImage findOneByEffectTitle(string $effect_title) Return the first ChildOcBannerImage filtered by the effect_title column
+ * @method     ChildOcBannerImage findOneByEffectDescription(string $effect_description) Return the first ChildOcBannerImage filtered by the effect_description column *
 
  * @method     ChildOcBannerImage requirePk($key, ConnectionInterface $con = null) Return the ChildOcBannerImage by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcBannerImage requireOne(ConnectionInterface $con = null) Return the first ChildOcBannerImage matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -64,6 +79,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcBannerImage requireOneByLink(string $link) Return the first ChildOcBannerImage filtered by the link column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcBannerImage requireOneByImage(string $image) Return the first ChildOcBannerImage filtered by the image column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcBannerImage requireOneBySortOrder(int $sort_order) Return the first ChildOcBannerImage filtered by the sort_order column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcBannerImage requireOneByDescription(string $description) Return the first ChildOcBannerImage filtered by the description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcBannerImage requireOneByBackgroundColor(string $background_color) Return the first ChildOcBannerImage filtered by the background_color column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcBannerImage requireOneByEffectImage(string $effect_image) Return the first ChildOcBannerImage filtered by the effect_image column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcBannerImage requireOneByEffectTitle(string $effect_title) Return the first ChildOcBannerImage filtered by the effect_title column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcBannerImage requireOneByEffectDescription(string $effect_description) Return the first ChildOcBannerImage filtered by the effect_description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcBannerImage[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcBannerImage objects based on current ModelCriteria
  * @method     ChildOcBannerImage[]|ObjectCollection findByBannerImageId(int $banner_image_id) Return ChildOcBannerImage objects filtered by the banner_image_id column
@@ -73,6 +93,11 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcBannerImage[]|ObjectCollection findByLink(string $link) Return ChildOcBannerImage objects filtered by the link column
  * @method     ChildOcBannerImage[]|ObjectCollection findByImage(string $image) Return ChildOcBannerImage objects filtered by the image column
  * @method     ChildOcBannerImage[]|ObjectCollection findBySortOrder(int $sort_order) Return ChildOcBannerImage objects filtered by the sort_order column
+ * @method     ChildOcBannerImage[]|ObjectCollection findByDescription(string $description) Return ChildOcBannerImage objects filtered by the description column
+ * @method     ChildOcBannerImage[]|ObjectCollection findByBackgroundColor(string $background_color) Return ChildOcBannerImage objects filtered by the background_color column
+ * @method     ChildOcBannerImage[]|ObjectCollection findByEffectImage(string $effect_image) Return ChildOcBannerImage objects filtered by the effect_image column
+ * @method     ChildOcBannerImage[]|ObjectCollection findByEffectTitle(string $effect_title) Return ChildOcBannerImage objects filtered by the effect_title column
+ * @method     ChildOcBannerImage[]|ObjectCollection findByEffectDescription(string $effect_description) Return ChildOcBannerImage objects filtered by the effect_description column
  * @method     ChildOcBannerImage[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -171,7 +196,7 @@ abstract class OcBannerImageQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT banner_image_id, banner_id, language_id, title, link, image, sort_order FROM oc_banner_image WHERE banner_image_id = :p0';
+        $sql = 'SELECT banner_image_id, banner_id, language_id, title, link, image, sort_order, description, background_color, effect_image, effect_title, effect_description FROM oc_banner_image WHERE banner_image_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -498,6 +523,131 @@ abstract class OcBannerImageQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcBannerImageTableMap::COL_SORT_ORDER, $sortOrder, $comparison);
+    }
+
+    /**
+     * Filter the query on the description column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByDescription('fooValue');   // WHERE description = 'fooValue'
+     * $query->filterByDescription('%fooValue%', Criteria::LIKE); // WHERE description LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $description The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcBannerImageQuery The current query, for fluid interface
+     */
+    public function filterByDescription($description = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($description)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcBannerImageTableMap::COL_DESCRIPTION, $description, $comparison);
+    }
+
+    /**
+     * Filter the query on the background_color column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByBackgroundColor('fooValue');   // WHERE background_color = 'fooValue'
+     * $query->filterByBackgroundColor('%fooValue%', Criteria::LIKE); // WHERE background_color LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $backgroundColor The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcBannerImageQuery The current query, for fluid interface
+     */
+    public function filterByBackgroundColor($backgroundColor = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($backgroundColor)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcBannerImageTableMap::COL_BACKGROUND_COLOR, $backgroundColor, $comparison);
+    }
+
+    /**
+     * Filter the query on the effect_image column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEffectImage('fooValue');   // WHERE effect_image = 'fooValue'
+     * $query->filterByEffectImage('%fooValue%', Criteria::LIKE); // WHERE effect_image LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $effectImage The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcBannerImageQuery The current query, for fluid interface
+     */
+    public function filterByEffectImage($effectImage = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($effectImage)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcBannerImageTableMap::COL_EFFECT_IMAGE, $effectImage, $comparison);
+    }
+
+    /**
+     * Filter the query on the effect_title column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEffectTitle('fooValue');   // WHERE effect_title = 'fooValue'
+     * $query->filterByEffectTitle('%fooValue%', Criteria::LIKE); // WHERE effect_title LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $effectTitle The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcBannerImageQuery The current query, for fluid interface
+     */
+    public function filterByEffectTitle($effectTitle = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($effectTitle)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcBannerImageTableMap::COL_EFFECT_TITLE, $effectTitle, $comparison);
+    }
+
+    /**
+     * Filter the query on the effect_description column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByEffectDescription('fooValue');   // WHERE effect_description = 'fooValue'
+     * $query->filterByEffectDescription('%fooValue%', Criteria::LIKE); // WHERE effect_description LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $effectDescription The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcBannerImageQuery The current query, for fluid interface
+     */
+    public function filterByEffectDescription($effectDescription = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($effectDescription)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcBannerImageTableMap::COL_EFFECT_DESCRIPTION, $effectDescription, $comparison);
     }
 
     /**

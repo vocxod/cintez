@@ -158,7 +158,7 @@ class OcInformationDescriptionTableMap extends TableMap
         // columns
         $this->addPrimaryKey('information_id', 'InformationId', 'INTEGER', true, null, null);
         $this->addPrimaryKey('language_id', 'LanguageId', 'INTEGER', true, null, null);
-        $this->addColumn('title', 'Title', 'VARCHAR', true, 64, null);
+        $this->addColumn('title', 'Title', 'VARCHAR', false, 255, null);
         $this->addColumn('description', 'Description', 'LONGVARCHAR', true, null, null);
         $this->addColumn('meta_title', 'MetaTitle', 'VARCHAR', true, 255, null);
         $this->addColumn('meta_description', 'MetaDescription', 'VARCHAR', true, 255, null);

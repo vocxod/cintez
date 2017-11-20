@@ -19,34 +19,23 @@
       {% if information_id != 10 and information_id != 9 %}
         {# если страница не ДИЛЕРАМ и не ПРАЙС-ЛИСТ #}
         <h1>{{ heading_title }}</h1>
+        {{ description }}
       {% endif %}
-
-      {{ description }}
+     
 
       {# выводим новости в нижней части страницы для конкретной ID=10 #}
       {% if information_id == 10 %}    
         <div class="row">
-          {{ newslatest }}
-        </div>
-      {% endif %}      
-
-      {{ content_bottom }}  
-
-    </div>
-    {{ column_right }}
-  </div>
-</div>
-{{ footer }}
-
-
-{# 
-
-страница для быстрого чека 
-
-        {#
-      <div class="container">
+          {# ID=10 start #}
+          {% if lang == 'ru' %}
+          <div class="container">
         <div class="row">
           <h4 class="h4-info"><span class="green-uline">НПО "СпецСинтез" приглашает к сотрудничеству</span></h4>
+        {% if hint != '' %}
+          <div id="hint-msg" class="alert alert-success">
+            {{ hint }}
+          </div>
+        {% endif %}
         <div class="col-sm-12">
             <p>Все клиенты компании - это корпоративный капитал. Мы ценим это и выстраиваем с нашими партнерами прочные и долговременные отношения.</p>
           </div>
@@ -58,23 +47,23 @@
           <h5><span class="sub-title">Схема индивидуальной работы с заказчиком:</span></h5>
         <div class="col-sm-12">
             <div class="col-md-1-5 text-center">
-                <div class="step-1 debug"></div>
+                <div class="step-1 "></div>
                 <p>Сбор и анализ информации</p>
             </div>
             <div class="col-md-1-5 text-center">
-                <div class="step-2 debug-1"></div>
+                <div class="step-2 "></div>
                   <p>Лабораторные разработки&nbsp; и исследования </p>
             </div>
             <div class="col-md-1-5 text-center">
-                <div class="step-3 debug-2"></div>
+                <div class="step-3"></div>
                   <p>Испытания на месте</p>
             </div>
             <div class="col-md-1-5 text-center">
-                <div class="step-4 debug-3"></div>
+                <div class="step-4"></div>
                 <p>Внедрение</p>
             </div>
             <div class="col-md-1-5 text-center">
-                <div class="step-5 debug-4"></div>
+                <div class="step-5"></div>
                 <p>Авторский надзор</p>
             </div>
           </div>
@@ -101,29 +90,58 @@
   Если Вы желаете обратиться к нашей компании с предложением о сотрудничестве, заполните расположенную ниже форму, и мы оперативно свяжемся с Вами. Также, чтобы стать нашим дилером, необходимо иметь статус юридического лица, желательно наличие наработанных контактов по Вашему региону. 
 </p>
           </div>
+        <form {#action="index.php?route=information/information&information_id=10"#} method="POST">
         <div class="col-sm-6">
           <div class="md-input">
-              <input class="md-form-control" required="" type="text">
+              <input name="myname" class="md-form-control" required="" type="text">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label><i class="fa fa-user bigicon" aria-hidden="true"></i>&nbsp;Ваше имя</label>
           </div>
           <div class="md-input">
-              <input class="md-form-control" required="" type="text">
+              <input name="myphone" class="md-form-control" required="" type="text">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label><i class="fa fa-mobile bigicon" aria-hidden="true"></i>&nbsp;Ваш телефон</label>
           </div>
           <div class="md-input">
-              <input class="md-form-control" required="" type="text">
+              <input name="mymessage" class="md-form-control" required="" type="text">
               <span class="highlight"></span>
               <span class="bar"></span>
               <label><i class="fa fa-pencil bigicon" aria-hidden="true"></i>&nbsp;Ваше сообщение</label>
           </div>
-          <p class="block-center text-center">
-            <button class="btn btn-success">ОТПРАВИТЬ</button>
+
+          <div class="g-recaptcha" data-sitekey="6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq"></div>
+
+          <p class="block-center text-center block-center">
+
+            <input type="submit" class="btn btn-success" value="ОТПРАВИТЬ">
           </p>
+
         </div>
-      </div>
-      #}
+
+        </form>
+
+      </div></div>
+          {% endif %}
+          {% if lang == 'en' %}
+            <div>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem culpa tenetur debitis, accusamus dignissimos, provident cumque enim, dolorem consequuntur animi eaque. Quae ea in aliquam quas maxime rerum omnis cumque?
+            </div>
+
+          {% endif %}
+          {# id=10 end #}
+        </div>
+      {% endif %}      
+
+      {{ newslatest }}
+      {{ content_bottom }}  
+
+    </div>
+    {{ column_right }}
+  </div>
+</div>
+{{ footer }}
+
+
 

@@ -59,7 +59,7 @@ class OcBannerImageTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 12;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcBannerImageTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 12;
 
     /**
      * the column name for the banner_image_id field
@@ -107,6 +107,31 @@ class OcBannerImageTableMap extends TableMap
     const COL_SORT_ORDER = 'oc_banner_image.sort_order';
 
     /**
+     * the column name for the description field
+     */
+    const COL_DESCRIPTION = 'oc_banner_image.description';
+
+    /**
+     * the column name for the background_color field
+     */
+    const COL_BACKGROUND_COLOR = 'oc_banner_image.background_color';
+
+    /**
+     * the column name for the effect_image field
+     */
+    const COL_EFFECT_IMAGE = 'oc_banner_image.effect_image';
+
+    /**
+     * the column name for the effect_title field
+     */
+    const COL_EFFECT_TITLE = 'oc_banner_image.effect_title';
+
+    /**
+     * the column name for the effect_description field
+     */
+    const COL_EFFECT_DESCRIPTION = 'oc_banner_image.effect_description';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -118,11 +143,11 @@ class OcBannerImageTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('BannerImageId', 'BannerId', 'LanguageId', 'Title', 'Link', 'Image', 'SortOrder', ),
-        self::TYPE_CAMELNAME     => array('bannerImageId', 'bannerId', 'languageId', 'title', 'link', 'image', 'sortOrder', ),
-        self::TYPE_COLNAME       => array(OcBannerImageTableMap::COL_BANNER_IMAGE_ID, OcBannerImageTableMap::COL_BANNER_ID, OcBannerImageTableMap::COL_LANGUAGE_ID, OcBannerImageTableMap::COL_TITLE, OcBannerImageTableMap::COL_LINK, OcBannerImageTableMap::COL_IMAGE, OcBannerImageTableMap::COL_SORT_ORDER, ),
-        self::TYPE_FIELDNAME     => array('banner_image_id', 'banner_id', 'language_id', 'title', 'link', 'image', 'sort_order', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('BannerImageId', 'BannerId', 'LanguageId', 'Title', 'Link', 'Image', 'SortOrder', 'Description', 'BackgroundColor', 'EffectImage', 'EffectTitle', 'EffectDescription', ),
+        self::TYPE_CAMELNAME     => array('bannerImageId', 'bannerId', 'languageId', 'title', 'link', 'image', 'sortOrder', 'description', 'backgroundColor', 'effectImage', 'effectTitle', 'effectDescription', ),
+        self::TYPE_COLNAME       => array(OcBannerImageTableMap::COL_BANNER_IMAGE_ID, OcBannerImageTableMap::COL_BANNER_ID, OcBannerImageTableMap::COL_LANGUAGE_ID, OcBannerImageTableMap::COL_TITLE, OcBannerImageTableMap::COL_LINK, OcBannerImageTableMap::COL_IMAGE, OcBannerImageTableMap::COL_SORT_ORDER, OcBannerImageTableMap::COL_DESCRIPTION, OcBannerImageTableMap::COL_BACKGROUND_COLOR, OcBannerImageTableMap::COL_EFFECT_IMAGE, OcBannerImageTableMap::COL_EFFECT_TITLE, OcBannerImageTableMap::COL_EFFECT_DESCRIPTION, ),
+        self::TYPE_FIELDNAME     => array('banner_image_id', 'banner_id', 'language_id', 'title', 'link', 'image', 'sort_order', 'description', 'background_color', 'effect_image', 'effect_title', 'effect_description', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
     );
 
     /**
@@ -132,11 +157,11 @@ class OcBannerImageTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('BannerImageId' => 0, 'BannerId' => 1, 'LanguageId' => 2, 'Title' => 3, 'Link' => 4, 'Image' => 5, 'SortOrder' => 6, ),
-        self::TYPE_CAMELNAME     => array('bannerImageId' => 0, 'bannerId' => 1, 'languageId' => 2, 'title' => 3, 'link' => 4, 'image' => 5, 'sortOrder' => 6, ),
-        self::TYPE_COLNAME       => array(OcBannerImageTableMap::COL_BANNER_IMAGE_ID => 0, OcBannerImageTableMap::COL_BANNER_ID => 1, OcBannerImageTableMap::COL_LANGUAGE_ID => 2, OcBannerImageTableMap::COL_TITLE => 3, OcBannerImageTableMap::COL_LINK => 4, OcBannerImageTableMap::COL_IMAGE => 5, OcBannerImageTableMap::COL_SORT_ORDER => 6, ),
-        self::TYPE_FIELDNAME     => array('banner_image_id' => 0, 'banner_id' => 1, 'language_id' => 2, 'title' => 3, 'link' => 4, 'image' => 5, 'sort_order' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('BannerImageId' => 0, 'BannerId' => 1, 'LanguageId' => 2, 'Title' => 3, 'Link' => 4, 'Image' => 5, 'SortOrder' => 6, 'Description' => 7, 'BackgroundColor' => 8, 'EffectImage' => 9, 'EffectTitle' => 10, 'EffectDescription' => 11, ),
+        self::TYPE_CAMELNAME     => array('bannerImageId' => 0, 'bannerId' => 1, 'languageId' => 2, 'title' => 3, 'link' => 4, 'image' => 5, 'sortOrder' => 6, 'description' => 7, 'backgroundColor' => 8, 'effectImage' => 9, 'effectTitle' => 10, 'effectDescription' => 11, ),
+        self::TYPE_COLNAME       => array(OcBannerImageTableMap::COL_BANNER_IMAGE_ID => 0, OcBannerImageTableMap::COL_BANNER_ID => 1, OcBannerImageTableMap::COL_LANGUAGE_ID => 2, OcBannerImageTableMap::COL_TITLE => 3, OcBannerImageTableMap::COL_LINK => 4, OcBannerImageTableMap::COL_IMAGE => 5, OcBannerImageTableMap::COL_SORT_ORDER => 6, OcBannerImageTableMap::COL_DESCRIPTION => 7, OcBannerImageTableMap::COL_BACKGROUND_COLOR => 8, OcBannerImageTableMap::COL_EFFECT_IMAGE => 9, OcBannerImageTableMap::COL_EFFECT_TITLE => 10, OcBannerImageTableMap::COL_EFFECT_DESCRIPTION => 11, ),
+        self::TYPE_FIELDNAME     => array('banner_image_id' => 0, 'banner_id' => 1, 'language_id' => 2, 'title' => 3, 'link' => 4, 'image' => 5, 'sort_order' => 6, 'description' => 7, 'background_color' => 8, 'effect_image' => 9, 'effect_title' => 10, 'effect_description' => 11, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
     );
 
     /**
@@ -163,6 +188,11 @@ class OcBannerImageTableMap extends TableMap
         $this->addColumn('link', 'Link', 'VARCHAR', true, 255, null);
         $this->addColumn('image', 'Image', 'VARCHAR', true, 255, null);
         $this->addColumn('sort_order', 'SortOrder', 'INTEGER', true, 3, 0);
+        $this->addColumn('description', 'Description', 'LONGVARCHAR', false, null, null);
+        $this->addColumn('background_color', 'BackgroundColor', 'VARCHAR', false, 6, null);
+        $this->addColumn('effect_image', 'EffectImage', 'VARCHAR', false, 255, null);
+        $this->addColumn('effect_title', 'EffectTitle', 'VARCHAR', false, 255, null);
+        $this->addColumn('effect_description', 'EffectDescription', 'VARCHAR', false, 255, null);
     } // initialize()
 
     /**
@@ -320,6 +350,11 @@ class OcBannerImageTableMap extends TableMap
             $criteria->addSelectColumn(OcBannerImageTableMap::COL_LINK);
             $criteria->addSelectColumn(OcBannerImageTableMap::COL_IMAGE);
             $criteria->addSelectColumn(OcBannerImageTableMap::COL_SORT_ORDER);
+            $criteria->addSelectColumn(OcBannerImageTableMap::COL_DESCRIPTION);
+            $criteria->addSelectColumn(OcBannerImageTableMap::COL_BACKGROUND_COLOR);
+            $criteria->addSelectColumn(OcBannerImageTableMap::COL_EFFECT_IMAGE);
+            $criteria->addSelectColumn(OcBannerImageTableMap::COL_EFFECT_TITLE);
+            $criteria->addSelectColumn(OcBannerImageTableMap::COL_EFFECT_DESCRIPTION);
         } else {
             $criteria->addSelectColumn($alias . '.banner_image_id');
             $criteria->addSelectColumn($alias . '.banner_id');
@@ -328,6 +363,11 @@ class OcBannerImageTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.link');
             $criteria->addSelectColumn($alias . '.image');
             $criteria->addSelectColumn($alias . '.sort_order');
+            $criteria->addSelectColumn($alias . '.description');
+            $criteria->addSelectColumn($alias . '.background_color');
+            $criteria->addSelectColumn($alias . '.effect_image');
+            $criteria->addSelectColumn($alias . '.effect_title');
+            $criteria->addSelectColumn($alias . '.effect_description');
         }
     }
 

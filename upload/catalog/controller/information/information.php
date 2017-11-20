@@ -1,6 +1,7 @@
 <?php
 class ControllerInformationInformation extends Controller {
 	public function index() {
+
 		$this->load->language('information/information');
 
 		$this->load->model('catalog/information');
@@ -41,9 +42,17 @@ class ControllerInformationInformation extends Controller {
 		/* */
 		$data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
 		//var_dump( $data['newslatest'] ); die();
+		$data['hint'] = '';
+		/* start SEND MEFFAGE */
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			// google sekret key
+			// 6LfQiDkUAAAAAGdg5kC_vNfGHp6jdHS2o9TKfW6w
+			// 6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq
+			$data['hint'] = $this->language->get('text_send_success');
+		}
+		/* end SEND MESSAGE */
 		
 		$information_info = $this->model_catalog_information->getInformation($information_id);
-
 		if ($information_info) {
 			$this->document->setTitle($information_info['meta_title']);
 			$this->document->setDescription($information_info['meta_description']);
@@ -66,7 +75,8 @@ class ControllerInformationInformation extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
+			$data['lang'] = $this->language->get('code');
+			//var_dump($data['lang']); die();
 			$this->response->setOutput($this->load->view('information/information', $data));
 		} else {
 			$data['breadcrumbs'][] = array(
@@ -93,6 +103,11 @@ class ControllerInformationInformation extends Controller {
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
+	}
+
+	public function validate(){
+		$iResult = true;
+		return $iResult;
 	}
 
 	public function agree() {

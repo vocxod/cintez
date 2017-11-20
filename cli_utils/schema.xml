@@ -227,6 +227,11 @@
     <column name="link" phpName="Link" type="VARCHAR" size="255" required="true"/>
     <column name="image" phpName="Image" type="VARCHAR" size="255" required="true"/>
     <column name="sort_order" phpName="SortOrder" type="INTEGER" size="3" required="true" defaultValue="0"/>
+    <column name="description" phpName="Description" type="LONGVARCHAR"/>
+    <column name="background_color" phpName="BackgroundColor" type="VARCHAR" size="6"/>
+    <column name="effect_image" phpName="EffectImage" type="VARCHAR" size="255"/>
+    <column name="effect_title" phpName="EffectTitle" type="VARCHAR" size="255"/>
+    <column name="effect_description" phpName="EffectDescription" type="VARCHAR" size="255"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
@@ -252,8 +257,8 @@
       <parameter name="Engine" value="InnoDB"/>
     </vendor>
   </table>
-  <table name="oc_category" idMethod="native" phpName="OcCategory" allowPkInsert="true">
-    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true" allowPkInsert="true" />
+  <table name="oc_category" idMethod="native" phpName="OcCategory">
+    <column name="category_id" phpName="CategoryId" type="INTEGER" primaryKey="true" autoIncrement="true" required="true"/>
     <column name="image" phpName="Image" type="VARCHAR" size="255"/>
     <column name="parent_id" phpName="ParentId" type="INTEGER" required="true" defaultValue="0"/>
     <column name="top" phpName="Top" type="BOOLEAN" size="1" required="true"/>
@@ -727,6 +732,7 @@
     <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
     <column name="isnews" phpName="Isnews" type="INTEGER" defaultValue="0"/>
     <column name="onhome" phpName="Onhome" type="INTEGER" defaultValue="0"/>
+    <column name="artice_id" phpName="ArticeId" type="INTEGER" defaultValue="0"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>
@@ -734,7 +740,7 @@
   <table name="oc_information_description" idMethod="native" phpName="OcInformationDescription">
     <column name="information_id" phpName="InformationId" type="INTEGER" primaryKey="true" required="true"/>
     <column name="language_id" phpName="LanguageId" type="INTEGER" primaryKey="true" required="true"/>
-    <column name="title" phpName="Title" type="VARCHAR" size="64" required="true"/>
+    <column name="title" phpName="Title" type="VARCHAR" size="255"/>
     <column name="description" phpName="Description" type="LONGVARCHAR" required="true"/>
     <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>

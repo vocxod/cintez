@@ -97,31 +97,72 @@ function importArticles(){
 				->findOne();
 				if( $oArticle != null && strlen($oArticle->getContent())>255 ){
 					echo "Find article with ID: $iArticleId \n";
-					$oNewinfo = new OcInformation();
-					$oNewinfo->setSortOrder(999);
-					$oNewinfo->save();
-					echo "Save new article: " . $oNewinfo->getInformationId() . "\n";
-					$iNewinfoId = $oNewinfo->getInformationId();
+					// если такой статьи еще нет - для репарсинга
+					// если статьи нет - создадим - если есть -вернем ее ID
+					$oTmp = OcInformationQuery::create()
+					->filterByArticeId( $iArticleId )
+					->findOne();
+					if( $oTmp != null ){
+						$iNewinfoId = $oTmp->getInformationId();
+					} else {
+						$oNewinfo = new OcInformation();
+						$oNewinfo->setSortOrder(999);
+						$oNewinfo->setArticeId( $iArticleId );
+						$oNewinfo->save();
+						$iNewinfoId = $oNewinfo->getInformationId();
+					}
+
+					echo "Save new article: " . $iNewinfoId . "\n";
+				
 					$aLanguages = [1, 4];
 					foreach ($aLanguages as $iLanguageId) {
-						$oNewinfoDescription = new OcInformationDescription();
-						$oNewinfoDescription->setLanguageId( $iLanguageId );
-						$oNewinfoDescription->setInformationId( $iNewinfoId );
-						$oNewinfoDescription->setTitle( $oArticle->getPagetitle() );
-						$oNewinfoDescription->setDescription( $oArticle->getContent() );
-						$oNewinfoDescription->setMetaTitle('');
-						$oNewinfoDescription->setMetaDescription('');
-						$oNewinfoDescription->setMetaKeyword( $iArticleId );
-						$oNewinfoDescription->save(); 
+
+						$oTmp = OcInformationDescriptionQuery::create()
+						->filterByLanguageId( $iLanguageId )
+						->filterByInformationId($iNewinfoId)
+						->findOne();
+						if( $oTmp != null ){
+							echo "UPDATE exist record\n";
+							$oNewinfoDescription = $oTmp;
+							$oNewinfoDescription->setTitle( $oArticle->getPagetitle() );
+							$oNewinfoDescription->setDescription( $oArticle->getContent() );
+							$oNewinfoDescription->setMetaTitle('');
+							$oNewinfoDescription->setMetaDescription('');
+							$oNewinfoDescription->setMetaKeyword( $iArticleId );
+							$oNewinfoDescription->save(); 
+						} else {
+							$oNewinfoDescription = new OcInformationDescription();
+							$oNewinfoDescription->setLanguageId( $iLanguageId );
+							$oNewinfoDescription->setInformationId( $iNewinfoId );
+							$oNewinfoDescription->setTitle( $oArticle->getPagetitle() );
+							$oNewinfoDescription->setDescription( $oArticle->getContent() );
+							$oNewinfoDescription->setMetaTitle('');
+							$oNewinfoDescription->setMetaDescription('');
+							$oNewinfoDescription->setMetaKeyword( $iArticleId );
+							$oNewinfoDescription->save(); 							
+						}
+
 					}
-					$oInformationToStore = new OcInformationToStore();
-					$oInformationToStore->setInformationId( $iNewinfoId );
-					$oInformationToStore->setStoreId( 0 );
-					$oInformationToStore->save();
-					$oInformationLayout = new OcInformationToLayout();
-					$oInformationLayout->setInformationId( $iNewinfoId );
-					$oInformationLayout->setLayoutId( 0 );
-					$oInformationLayout->save();
+					$oTmp = OcInformationToStoreQuery::create()
+					->filterByInformationId( $iNewinfoId )
+					->filterByStoreId( 0 )
+					->findOne();
+					if( $oTmp == null ){
+						$oInformationToStore = new OcInformationToStore();
+						$oInformationToStore->setInformationId( $iNewinfoId );
+						$oInformationToStore->setStoreId( 0 );
+						$oInformationToStore->save();						
+					}
+					$oTmp = OcInformationToLayoutQuery::create()
+					->filterByInformationId( $iNewinfoId )
+					->filterByLayoutId( 0 )
+					->findOne();
+					if( $oTmp == null ){
+						$oInformationLayout = new OcInformationToLayout();
+						$oInformationLayout->setInformationId( $iNewinfoId );
+						$oInformationLayout->setLayoutId( 0 );
+						$oInformationLayout->save();
+					}
 				}
 			}
 			$iCount++;			

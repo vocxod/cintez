@@ -110,6 +110,41 @@ abstract class OcBannerImage implements ActiveRecordInterface
     protected $sort_order;
 
     /**
+     * The value for the description field.
+     *
+     * @var        string
+     */
+    protected $description;
+
+    /**
+     * The value for the background_color field.
+     *
+     * @var        string
+     */
+    protected $background_color;
+
+    /**
+     * The value for the effect_image field.
+     *
+     * @var        string
+     */
+    protected $effect_image;
+
+    /**
+     * The value for the effect_title field.
+     *
+     * @var        string
+     */
+    protected $effect_title;
+
+    /**
+     * The value for the effect_description field.
+     *
+     * @var        string
+     */
+    protected $effect_description;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -426,6 +461,56 @@ abstract class OcBannerImage implements ActiveRecordInterface
     }
 
     /**
+     * Get the [description] column value.
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Get the [background_color] column value.
+     *
+     * @return string
+     */
+    public function getBackgroundColor()
+    {
+        return $this->background_color;
+    }
+
+    /**
+     * Get the [effect_image] column value.
+     *
+     * @return string
+     */
+    public function getEffectImage()
+    {
+        return $this->effect_image;
+    }
+
+    /**
+     * Get the [effect_title] column value.
+     *
+     * @return string
+     */
+    public function getEffectTitle()
+    {
+        return $this->effect_title;
+    }
+
+    /**
+     * Get the [effect_description] column value.
+     *
+     * @return string
+     */
+    public function getEffectDescription()
+    {
+        return $this->effect_description;
+    }
+
+    /**
      * Set the value of [banner_image_id] column.
      *
      * @param int $v new value
@@ -566,6 +651,106 @@ abstract class OcBannerImage implements ActiveRecordInterface
     } // setSortOrder()
 
     /**
+     * Set the value of [description] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcBannerImage The current object (for fluent API support)
+     */
+    public function setDescription($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->description !== $v) {
+            $this->description = $v;
+            $this->modifiedColumns[OcBannerImageTableMap::COL_DESCRIPTION] = true;
+        }
+
+        return $this;
+    } // setDescription()
+
+    /**
+     * Set the value of [background_color] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcBannerImage The current object (for fluent API support)
+     */
+    public function setBackgroundColor($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->background_color !== $v) {
+            $this->background_color = $v;
+            $this->modifiedColumns[OcBannerImageTableMap::COL_BACKGROUND_COLOR] = true;
+        }
+
+        return $this;
+    } // setBackgroundColor()
+
+    /**
+     * Set the value of [effect_image] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcBannerImage The current object (for fluent API support)
+     */
+    public function setEffectImage($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->effect_image !== $v) {
+            $this->effect_image = $v;
+            $this->modifiedColumns[OcBannerImageTableMap::COL_EFFECT_IMAGE] = true;
+        }
+
+        return $this;
+    } // setEffectImage()
+
+    /**
+     * Set the value of [effect_title] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcBannerImage The current object (for fluent API support)
+     */
+    public function setEffectTitle($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->effect_title !== $v) {
+            $this->effect_title = $v;
+            $this->modifiedColumns[OcBannerImageTableMap::COL_EFFECT_TITLE] = true;
+        }
+
+        return $this;
+    } // setEffectTitle()
+
+    /**
+     * Set the value of [effect_description] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcBannerImage The current object (for fluent API support)
+     */
+    public function setEffectDescription($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->effect_description !== $v) {
+            $this->effect_description = $v;
+            $this->modifiedColumns[OcBannerImageTableMap::COL_EFFECT_DESCRIPTION] = true;
+        }
+
+        return $this;
+    } // setEffectDescription()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -625,6 +810,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcBannerImageTableMap::translateFieldName('SortOrder', TableMap::TYPE_PHPNAME, $indexType)];
             $this->sort_order = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : OcBannerImageTableMap::translateFieldName('Description', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->description = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : OcBannerImageTableMap::translateFieldName('BackgroundColor', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->background_color = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : OcBannerImageTableMap::translateFieldName('EffectImage', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->effect_image = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : OcBannerImageTableMap::translateFieldName('EffectTitle', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->effect_title = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : OcBannerImageTableMap::translateFieldName('EffectDescription', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->effect_description = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -633,7 +833,7 @@ abstract class OcBannerImage implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = OcBannerImageTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 12; // 12 = OcBannerImageTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcBannerImage'), 0, $e);
@@ -855,6 +1055,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
         if ($this->isColumnModified(OcBannerImageTableMap::COL_SORT_ORDER)) {
             $modifiedColumns[':p' . $index++]  = 'sort_order';
         }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_DESCRIPTION)) {
+            $modifiedColumns[':p' . $index++]  = 'description';
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_BACKGROUND_COLOR)) {
+            $modifiedColumns[':p' . $index++]  = 'background_color';
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_IMAGE)) {
+            $modifiedColumns[':p' . $index++]  = 'effect_image';
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_TITLE)) {
+            $modifiedColumns[':p' . $index++]  = 'effect_title';
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_DESCRIPTION)) {
+            $modifiedColumns[':p' . $index++]  = 'effect_description';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_banner_image (%s) VALUES (%s)',
@@ -886,6 +1101,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
                         break;
                     case 'sort_order':
                         $stmt->bindValue($identifier, $this->sort_order, PDO::PARAM_INT);
+                        break;
+                    case 'description':
+                        $stmt->bindValue($identifier, $this->description, PDO::PARAM_STR);
+                        break;
+                    case 'background_color':
+                        $stmt->bindValue($identifier, $this->background_color, PDO::PARAM_STR);
+                        break;
+                    case 'effect_image':
+                        $stmt->bindValue($identifier, $this->effect_image, PDO::PARAM_STR);
+                        break;
+                    case 'effect_title':
+                        $stmt->bindValue($identifier, $this->effect_title, PDO::PARAM_STR);
+                        break;
+                    case 'effect_description':
+                        $stmt->bindValue($identifier, $this->effect_description, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -970,6 +1200,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
             case 6:
                 return $this->getSortOrder();
                 break;
+            case 7:
+                return $this->getDescription();
+                break;
+            case 8:
+                return $this->getBackgroundColor();
+                break;
+            case 9:
+                return $this->getEffectImage();
+                break;
+            case 10:
+                return $this->getEffectTitle();
+                break;
+            case 11:
+                return $this->getEffectDescription();
+                break;
             default:
                 return null;
                 break;
@@ -1006,6 +1251,11 @@ abstract class OcBannerImage implements ActiveRecordInterface
             $keys[4] => $this->getLink(),
             $keys[5] => $this->getImage(),
             $keys[6] => $this->getSortOrder(),
+            $keys[7] => $this->getDescription(),
+            $keys[8] => $this->getBackgroundColor(),
+            $keys[9] => $this->getEffectImage(),
+            $keys[10] => $this->getEffectTitle(),
+            $keys[11] => $this->getEffectDescription(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1066,6 +1316,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
             case 6:
                 $this->setSortOrder($value);
                 break;
+            case 7:
+                $this->setDescription($value);
+                break;
+            case 8:
+                $this->setBackgroundColor($value);
+                break;
+            case 9:
+                $this->setEffectImage($value);
+                break;
+            case 10:
+                $this->setEffectTitle($value);
+                break;
+            case 11:
+                $this->setEffectDescription($value);
+                break;
         } // switch()
 
         return $this;
@@ -1112,6 +1377,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
         }
         if (array_key_exists($keys[6], $arr)) {
             $this->setSortOrder($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setDescription($arr[$keys[7]]);
+        }
+        if (array_key_exists($keys[8], $arr)) {
+            $this->setBackgroundColor($arr[$keys[8]]);
+        }
+        if (array_key_exists($keys[9], $arr)) {
+            $this->setEffectImage($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setEffectTitle($arr[$keys[10]]);
+        }
+        if (array_key_exists($keys[11], $arr)) {
+            $this->setEffectDescription($arr[$keys[11]]);
         }
     }
 
@@ -1174,6 +1454,21 @@ abstract class OcBannerImage implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcBannerImageTableMap::COL_SORT_ORDER)) {
             $criteria->add(OcBannerImageTableMap::COL_SORT_ORDER, $this->sort_order);
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_DESCRIPTION)) {
+            $criteria->add(OcBannerImageTableMap::COL_DESCRIPTION, $this->description);
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_BACKGROUND_COLOR)) {
+            $criteria->add(OcBannerImageTableMap::COL_BACKGROUND_COLOR, $this->background_color);
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_IMAGE)) {
+            $criteria->add(OcBannerImageTableMap::COL_EFFECT_IMAGE, $this->effect_image);
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_TITLE)) {
+            $criteria->add(OcBannerImageTableMap::COL_EFFECT_TITLE, $this->effect_title);
+        }
+        if ($this->isColumnModified(OcBannerImageTableMap::COL_EFFECT_DESCRIPTION)) {
+            $criteria->add(OcBannerImageTableMap::COL_EFFECT_DESCRIPTION, $this->effect_description);
         }
 
         return $criteria;
@@ -1267,6 +1562,11 @@ abstract class OcBannerImage implements ActiveRecordInterface
         $copyObj->setLink($this->getLink());
         $copyObj->setImage($this->getImage());
         $copyObj->setSortOrder($this->getSortOrder());
+        $copyObj->setDescription($this->getDescription());
+        $copyObj->setBackgroundColor($this->getBackgroundColor());
+        $copyObj->setEffectImage($this->getEffectImage());
+        $copyObj->setEffectTitle($this->getEffectTitle());
+        $copyObj->setEffectDescription($this->getEffectDescription());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setBannerImageId(NULL); // this is a auto-increment column, so set to default value
@@ -1309,6 +1609,11 @@ abstract class OcBannerImage implements ActiveRecordInterface
         $this->link = null;
         $this->image = null;
         $this->sort_order = null;
+        $this->description = null;
+        $this->background_color = null;
+        $this->effect_image = null;
+        $this->effect_title = null;
+        $this->effect_description = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();
