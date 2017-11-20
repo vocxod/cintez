@@ -1,81 +1,3 @@
-{% if banner_type == 3 %}
-
-  <section class="slide-wrapper"style="min-height:600px;">
-  <div class="{#container#}">
-  <div id="myCarousel" class="carousel slide">
-    <!-- Indicators -->
-      <ol class="carousel-indicators">
-        <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-        <li data-target="#myCarousel" data-slide-to="1"></li>
-        <li data-target="#myCarousel" data-slide-to="2"></li>
-        <li data-target="#myCarousel" data-slide-to="3"></li>
-      </ol>
-
-<!-- Wrapper for slides -->
-<div class="carousel-inner">
-  <div class="item active">
-  <div class="fill" style=" background-color:#48c3af; background-image:url(/image/catalog/slider/sample-1280x800.jpg);"></div>
-  </div>
-  <div class="item">
-  <div class="fill" style="background-color:#b33f4a;background-image:url(/image/catalog/slider/sample-2-1280x800.jpg);"></div>
-  </div>
-  <div class="item">
-  <div class="fill" style="background-color:#7fc2f4;background-image:url(/image/catalog/slider/sample-3-1280x800.jpg);"></div>
-  </div>
-  <div class="item">
-  <div class="fill" style="background-color:#e47794; background-image:url(/image/catalog/slider/sample-4-1280x800.jpg);"></div>
-  </div>
-</div>
-  </div>
-  </div>
-  </section>
-  <script type="text/javascript">
-    $(document).ready(function(){
-  // invoke the carousel
-      $('#myCarousel').carousel({
-        interval: false
-      });
-
-  // scroll slides on mouse scroll 
-  $('#myCarousel').bind('mousewheel DOMMouseScroll', function(e){
-
-          if(e.originalEvent.wheelDelta > 0 || e.originalEvent.detail < 0) {
-              $(this).carousel('prev');
-        
-          }
-          else{
-              $(this).carousel('next');
-        
-          }
-      });
-
-  //scroll slides on swipe for touch enabled devices 
-
-    $("#myCarousel").on("touchstart", function(event){
-   
-          var yClick = event.originalEvent.touches[0].pageY;
-        $(this).one("touchmove", function(event){
-
-          var yMove = event.originalEvent.touches[0].pageY;
-          if( Math.floor(yClick - yMove) > 1 ){
-              $(".carousel").carousel('next');
-          }
-          else if( Math.floor(yClick - yMove) < -1 ){
-              $(".carousel").carousel('prev');
-          }
-      });
-      $(".carousel").on("touchend", function(){
-              $(this).off("touchmove");
-      });
-  });
-      
-  });
-  </script>
-
-
-{% endif %}
-
-{% if banner_type == 2 %}
   <style type="text/css">
     .carousel-indicators{
       position:absolute;
@@ -94,20 +16,20 @@
       {#<div class="container">#}
           <div id="myCarousel" class="carousel slide">
               <!-- Indicators -->
-<ol class="carousel-indicators" style="outline:0px dashed red;color:blue;" >
-{% for banner in banners %}
-  <li data-target="#myCarousel" data-slide-to="{{loop.index0}}" 
-  {% if loop.index == 1 %}class="active"{% endif %}>
-  </li>
-{% endfor %}
-</ol>
+              <ol class="carousel-indicators" style="outline:0px dashed red;color:blue;" >
+              {% for banner in banners %}
+                  <li data-target="#myCarousel" data-slide-to="{{loop.index0}}" 
+                      {% if loop.index == 1 %}class="active"{% endif %}>
+                  </li>
+              {% endfor %}
+              </ol>
 
               <!-- Wrapper for slides -->
               <div class="carousel-inner">
 
   {% for banner in banners %}
     {#% if loop.index==1 %#}
-      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:400px;overflow:hidden;">
+      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:560px;overflow:hidden;">
           <div class="fill" style="background-color:#fff;">
               <div class="inner-content">
                   <div class="carousel-img">
@@ -126,52 +48,7 @@
       </div>
     {#% endif %#}
     
-    {#
-      {% if loop.index==2 %}
-      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
-          <div class="fill" style="background-color:#fff;">
-              <div class="inner-content">
-                  <div class="col-md-4">
-                    <div class="carousel-img">
-                      <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="carousel-desc">
-                        <h2>{{ banner.title }}</h2>
-                        <p>
-                            {{ banner.description }}.
-                        </p>
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <div class="carousel-img">
-                      <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
-                    </div>
-                  </div>
-              </div>
-          </div>
-      </div>
-    {% endif %}
 
-    {% if loop.index==3 %}
-      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
-        <div class="fill" style="background-color:#fff;">
-            <div class="inner-content">
-                <div class="carousel-img">
-                  <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
-                </div>
-                <div class="carousel-desc">
-                    <h2>{{ banner.title }}</h2>
-                    <p>
-        {{ banner.description }}.
-                    </p>
-                </div>
-            </div>
-        </div>
-      </div>
-    {% endif %}
-    #}
   {% endfor %}
 
               </div>
@@ -271,33 +148,51 @@
   });
 
   </script>
-{% endif %}
 
-{#
-<div class="swiper-viewport">
-  <div id="slideshow{{ module }}" class="swiper-container">
-    <div class="swiper-wrapper"> {% for banner in banners %}
-      <div class="swiper-slide text-center">{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img-responsive" />{% endif %}</div>
-      {% endfor %} </div>
-  </div>
-  <div class="swiper-pagination slideshow{{ module }}"></div>
-  <div class="swiper-pager">
-    <div class="swiper-button-next"></div>
-    <div class="swiper-button-prev"></div>
-  </div>
-</div>
-<script type="text/javascript"><!--
-$('#slideshow{{ module }}').swiper({
-	mode: 'horizontal',
-	slidesPerView: 1,
-	pagination: '.slideshow{{ module }}',
-	paginationClickable: true,
-	nextButton: '.swiper-button-next',
-    prevButton: '.swiper-button-prev',
-    spaceBetween: 30,
-	autoplay: 2500,
-    autoplayDisableOnInteraction: true,
-	loop: true
-});
---></script>
-#}
+
+    {#
+      {% if loop.index==2 %}
+      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
+          <div class="fill" style="background-color:#fff;">
+              <div class="inner-content">
+                  <div class="col-md-4">
+                    <div class="carousel-img">
+                      <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="carousel-desc">
+                        <h2>{{ banner.title }}</h2>
+                        <p>
+                            {{ banner.description }}.
+                        </p>
+                    </div>
+                  </div>
+                  <div class="col-md-4">
+                    <div class="carousel-img">
+                      <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
+                    </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+    {% endif %}
+
+    {% if loop.index==3 %}
+      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
+        <div class="fill" style="background-color:#fff;">
+            <div class="inner-content">
+                <div class="carousel-img">
+                  <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
+                </div>
+                <div class="carousel-desc">
+                    <h2>{{ banner.title }}</h2>
+                    <p>
+        {{ banner.description }}.
+                    </p>
+                </div>
+            </div>
+        </div>
+      </div>
+    {% endif %}
+    #}
