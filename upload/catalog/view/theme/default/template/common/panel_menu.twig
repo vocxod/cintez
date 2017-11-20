@@ -1,5 +1,6 @@
 <div class="container">
   <div class="row">
+    <div class="col-lg-12">
       {% for item in categories %}
 
         {% if loop.index == 1 or loop.index == 6 %}
@@ -19,12 +20,10 @@
         {% endif %}
 
       {% endfor %}
+      </div>
   </div>
-  <div class="row" id="information">
-    
+  <div class="row" id="information">   
     {{ information_description | raw }}
-  
   </div>  
-
 </div>
 

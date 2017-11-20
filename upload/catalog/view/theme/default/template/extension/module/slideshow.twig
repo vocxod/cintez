@@ -107,18 +107,20 @@
 
   {% for banner in banners %}
     {% if loop.index==1 %}
-      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:600px;overflow:hidden;">
+      <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:400px;overflow:hidden;">
           <div class="fill" style="background-color:#fff;">
               <div class="inner-content">
                   <div class="carousel-img">
                     <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
                   </div>
+                  {#
                   <div class="carousel-desc">
                       <h2>{{ banner.title }}</h2>
                       <p>
                         {{ banner.description }}.
                       </p>
                   </div>
+                  #}
               </div>
           </div>
       </div>
