@@ -1,11 +1,11 @@
 {% if zones|length > 1 %}
 
   {% if zones[0].layout == 0 %}
-    <div class="pull-left">
+    <div class="pull-left" style="padding:0px; margin:0px;height:30px;min-height:30px;">
       <form action="{{ action }}" method="post" enctype="multipart/form-data" id="form-zone">
         <div class="btn-group" style="margin-top:5px;outline:0px dashed red; background: green;">{# рамка на всё #}
       
-          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration:none;">
+          <button class="btn btn-link dropdown-toggle" data-toggle="dropdown" style="text-decoration:none;padding-top:0px; padding-bottom:0px; border:none;">
             <span class="glyphicon glyphicon-map-marker" style="color:#FAFAFA; font-size:14px;"></span>
             <span class="hidden-xs hidden-sm hidden-md zone_font" style="color:#FEFAEA;">
               {{ current_zone.name }}           
@@ -13,10 +13,10 @@
             <i class="fa fa-caret-down" style="color:#FEFAEA; font-size:14px;"></i>
           </button>
 
-          <ul class="dropdown-menu dropdown-zone">
+          <ul class="dropdown-menu dropdown-zone" style="z-index:5000;">
             {% for zone in zones %}
-                  <li>
-                    <button  style="color:#FEFAEA; text-align:left;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">{{ zone.name }}</button>
+                  <li style="outline:0px solid red; z-index:5000;">
+                    <button  style="color:#FEFAEA; text-align:left; z-index:5000;" class="zone-select btn btn-link btn-block" type="button" name="{{ zone.code }}">{{ zone.name }}</button>
                   </li>
             {% endfor %}
           </ul>

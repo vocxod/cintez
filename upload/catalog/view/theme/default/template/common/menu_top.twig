@@ -37,10 +37,10 @@
   .navbar-logo {
     outline: 0px dashed red;
     background-image: url('/image/catalog/logo-325x160.png');
-    width: 325px;
+    width: 345px;
     height: 120px;
-    background-size: cover;
-    background-position: 0px -20px;
+    /*background-size: cover;*/
+    background-position: 20px -20px;
     background-repeat: no-repeat;
     position: absolute;
     top: 5px;
@@ -102,14 +102,14 @@
               </div>
 
 <div class="collapse navbar-collapse js-navbar-collapse" 
-style="background:rgb(240,244,245);border:0px dashed red;">
+style="background:rgb(240,244,245);float:right;margin-left:0px;">
                 <ul class="nav navbar-nav">
                   {% for item in down_line %}
 {% if loop.index == 1 %}
     <li class="dropdown mega-dropdown">
       <a href="{{item.href}}" class="dropdown-toggle" data-toggle="dropdown">{{ item.title}} 
         <span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span></a>
-      <ul class="dropdown-menu mega-dropdown-menu row">
+      <ul class="dropdown-menu mega-dropdown-menu row" style="border:1px dashed red; width:860px; margin-left:0px;">
 
         {% for column in columns %}
         <li class="col-sm-3">
