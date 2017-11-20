@@ -34,7 +34,7 @@ class ControllerCommonTopnews extends Controller {
 			}
 		}
 		$data['topnews'] = $aResult;
-		//var_dump($data); die();
+		var_dump($data); die();
 
 		return $this->load->view('common/topnews', $data);
 	}
