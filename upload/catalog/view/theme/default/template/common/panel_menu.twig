@@ -7,13 +7,14 @@
             <div class="row">
         {% endif %}
 
-{% if loop.index < 11 %}
-<div data="{{ item.category_id }}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
-<div id="menu_{{ item.category_id }}" class="panel_menu" >
-</div>
-<a id="panel_link_{{ item.category_id }}" href="{{ item.href }}">{{ item.name }}</a>
-</div>
-{% endif %}
+        {% if loop.index < 11 %}
+
+            <div data="{{ item.category_id }}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
+                <div id="menu_{{ item.category_id }}" class="panel_menu" >
+                </div>
+                <a id="panel_link_{{ item.category_id }}" href="{{ item.href }}">{{ item.name }}</a>
+            </div>
+        {% endif %}
 
         {% if loop.index % 5 == 0 %}
             </div>
@@ -26,12 +27,13 @@
 {# страница из БД с ИД=11 как главная - замещаем кодированием  
   <div class="row" id="information">   
     {{ information_description | raw }}
-  </div>
+  </div> 
 #}
+
+<div style="clear:both;"/>
 
 {% if lang == 'ru' %}
   <div class="row">
-    <br><br><br><br><br>
     <h4 class="h4-info" style="margin-left:14px;padding-top:20px;">
       <span class="green-uline">Производитель профессиональной химии.</span>
     </h4>
@@ -70,7 +72,6 @@
 
 {% if lang == 'en' %}
   <div class="row">
-    <br><br><br><br><br>
     <h4 class="h4-info" style="margin-left:14px;padding-top:20px;">
       <span class="green-uline">Professional manufacturer of Cheme</span>
     </h4>

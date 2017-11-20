@@ -513,9 +513,9 @@ body {
 .panel-menu-item {
   outline:1px solid #ccc;
   text-align:center;
-  height: 60px;
+  padding-top: 10px;
+  height: 90px;
   overflow: hidden;
-  padding-top: 6px;
   background: #FFF;
   cursor: pointer;
 }
