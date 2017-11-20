@@ -251,7 +251,7 @@ width:auto;
 https://bootsnipp.com/snippets/g07VM
 */
 .navbar-nav>li>.dropdown-menu {
-  margin-top: 20px;
+  margin-top: 0px;
   border-top-left-radius: 4px;
   border-top-right-radius: 4px;
 }
