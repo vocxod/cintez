@@ -10,7 +10,7 @@
     
     {# content page #}
   <div class="row">
-    <div class="col-sm-12 debug-4">
+    <div class="col-sm-12 ">
       <h4 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
         <br>
       <div class="col-sm-6">
@@ -54,11 +54,11 @@
               <option value="1">Все</option>
             </select>
           </div>
-          
+{#
           <div class="text-center">
             <button type="submit" class="btn btn-success">Рассчитать</button>  
           </div>
-
+#}
         </form>        
         {##}
       </div>
@@ -79,7 +79,7 @@
   </div>{# ROW #}
 
   <div class="row">
-    <div class="col-sm-12 debug-3">
+    <div class="col-sm-12">
 
 {{ filtered_products }}
 
@@ -87,7 +87,7 @@
   </div>
 
   <div class="row">
-    <div class="col-sm-12 debug-5">
+    <div class="col-sm-12 ">
       <h3>{{ heading_title_second_form }}</h3>
           
 
@@ -96,7 +96,7 @@
   <a onclick="return false;" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
     <div class="d-flex w-100 justify-content-between ">
 
-      <div class="text-left debug" style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
+      <div class="text-left " style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
           <img class="" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
       </div>
 
