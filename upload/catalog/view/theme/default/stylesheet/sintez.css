@@ -35,7 +35,15 @@ body {
 .navbar-inverse .navbar-nav > .open > a:hover, 
 .navbar-inverse .navbar-nav > .open > a:focus {
     color: #FEFAEA;
-    background-color: rgb(54,154,56) !important;
+    background-color: rgb(54,154,56);
+}
+
+#menu2 > .navbar-inverse .navbar-nav > .open > a, 
+#menu2 > .navbar-inverse .navbar-nav > .open > a:hover, 
+#menu2 > .navbar-inverse .navbar-nav > .open > a:focus {
+    color: rgb(54,154,56) !important;
+    font-weight: bold;
+    background: rgb(240,244,245);
 }
 
 .navbar-brand { 
