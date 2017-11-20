@@ -987,6 +987,9 @@ a.up_line:hover, a.up_line:focus{
 .menu-space {
   margin-left: 20px;
 }
+.menu-bold {
+  font-weight: bold;
+}
 
 /* feedback page */
 .feedback-title {
