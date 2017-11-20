@@ -1239,7 +1239,10 @@ p {
   height: 100%;
   outline: 0px solid blue;
 }
-
+.spanbold {
+  font-size: 18px;
+  font-weight: bold;
+}
 /*
 .active {
   color: rgb(54,154,56) !important;
