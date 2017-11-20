@@ -45,13 +45,17 @@ class ControllerInformationInformation extends Controller {
 		$data['hint'] = '';
 		/* start SEND MEFFAGE */
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			// google sekret key
-			// 6LfQiDkUAAAAAGdg5kC_vNfGHp6jdHS2o9TKfW6w
-			// 6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq
 			$sMyName = $this->request->post['myname'];
 			$sMyPhone = $this->request->post['myphone'];
 			$sMyMessage = $this->request->post['mymessage'];
+			$sCaptcha = $this->request->post['g-recaptcha-response'];
 			$data['hint'] = $this->language->get('text_send_success'); // . $sMyName . $sMyPhone . $sMyMessage;
+			$this->load->model('catalog/review');
+/*
+INSERT INTO oc_review ( `product_id`, `customer_id`, `author`, `text`, `rating`, `status`, `date_added` ) VALUES (  997,  1, "обратная связь", "сообщение из формы обратной связи ", 5, 0, "2017-11-20 09:00:00" )
+*/
+			$aReviewData = ['customer_id' => 1, 'author' => $sMyName, 'text' => $sMyPhone . " \n<br>" . $sMyMessage, 'rating' => 5, 'status' => 0, 'date_added' => date( "Y-m-d H:i:s",  time()) ];
+			$this->model_catalog_review->addReview(997, $aReviewData);
 		}
 		/* end SEND MESSAGE */
 		
@@ -110,7 +114,42 @@ class ControllerInformationInformation extends Controller {
 
 	public function validate(){
 		$iResult = true;
-		return $iResult;
+		// google sekret key
+		$sSecret = '6LfQiDkUAAAAAGdg5kC_vNfGHp6jdHS2o9TKfW6w';
+		// form key
+		// 6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq
+		$sMyName = $this->request->post['myname'];
+		$sMyPhone = $this->request->post['myphone'];
+		$sMyMessage = $this->request->post['mymessage'];
+
+		if( strlen($sMyName) > 3 && strlen($sMyPhone) > 6 && strlen($sMyMessage)>10){
+			$sCaptcha = $this->request->post['g-recaptcha-response'];
+			$sUrl = 'https://www.google.com/recaptcha/api/siteverify';
+			
+	 		$ip = $_SERVER['REMOTE_ADDR'];
+	 		$url_data = $sUrl.'?secret='.$sSecret.'&response='.$sCaptcha.'&remoteip='.$ip;
+			$curl = curl_init();
+
+			curl_setopt($curl,CURLOPT_URL,$url_data);
+			curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,FALSE);
+			curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+
+			$res = curl_exec($curl);
+			curl_close($curl);
+
+			$res = json_decode($res);
+
+			if($res->success) {
+				$iResult = 1;
+			}
+			else {
+				$iResult = 0;
+			}
+
+			return $iResult;
+		} else {
+			return 0;
+		}
 	}
 
 	public function agree() {
