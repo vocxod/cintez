@@ -1201,9 +1201,10 @@ p {
 .article_item {
   max-height: 320px;
   overflow: hidden;
+  margin-bottom: 20px;
 }
 .article_item img {
   width:100%;
   height: 100%;
-  outline: 1px solid blue;
+  outline: 0px solid blue;
 }

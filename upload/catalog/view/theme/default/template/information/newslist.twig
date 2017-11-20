@@ -8,23 +8,23 @@
   </ul>
 
   <div class="row">
-    <div class="col-sm-12 debug-4">
+    <div class="col-sm-12 ">
       
-      <div class="col-sm-4 img-anonce debug-1">
+      <div class="col-sm-4 img-anonce ">
           <h3 class="h2"><span class="green-uline">{{ heading_title }}</span></h3>
       </div>
       <div class="col-sm-4"></div>
-      <div class="col-sm-4 img-anonce debug-4">
+      <div class="col-sm-4 img-anonce ">
           <h3 class="h2"><span class="green-uline">{{ heading_title_pub }}</span></h3>
       </div>
 
-        <div class="col-sm-8 debug">
+        <div class="col-sm-8 ">
         {% for item in top_news %}
             <div class="row news-anonce" >
-            <div class="col-sm-6 img-anonce debug-1">
+            <div class="col-sm-6 img-anonce ">
               {{ item.image }}
             </div>  
-            <div class="col-sm-6 debug-2 ">
+            <div class="col-sm-6  ">
               <h4 style="font-weight:bold;">{{ item.title }}</h4>
               <p>
                 {{ item.description }}
@@ -59,7 +59,7 @@
         {% endfor %}
         </div>
        
-        <div class="col-sm-4 debug-3">
+        <div class="col-sm-4 ">
             {{ toparticles }}
         </div>
     </div>

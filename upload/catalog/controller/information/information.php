@@ -48,7 +48,10 @@ class ControllerInformationInformation extends Controller {
 			// google sekret key
 			// 6LfQiDkUAAAAAGdg5kC_vNfGHp6jdHS2o9TKfW6w
 			// 6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq
-			$data['hint'] = $this->language->get('text_send_success');
+			$sMyName = $this->request->post['myname'];
+			$sMyPhone = $this->request->post['myphone'];
+			$sMyMessage = $this->request->post['mymessage'];
+			$data['hint'] = $this->language->get('text_send_success'); // . $sMyName . $sMyPhone . $sMyMessage;
 		}
 		/* end SEND MESSAGE */
 		
