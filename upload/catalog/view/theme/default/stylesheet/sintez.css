@@ -74,6 +74,18 @@ body {
   text-transform: uppercase;
 }
 
+.nav > li > a {
+    position: relative;
+    display: block;
+    /* padding: 10px 15px; */
+    padding: 3px 2px;
+}
+.nav > li > a:hover, .nav > li > a:focus {
+    text-decoration: none;
+    color: #111 !important;
+    background-color: rgb(54,154,56);
+}
+
 .mega-dropdown { position: static !important; }
 .mega-dropdown-menu {
   padding: 20px 15px 15px;
@@ -242,6 +254,7 @@ https://bootsnipp.com/snippets/g07VM
     border:0px;
     outline: 0px dashed red;
     margin-top: 30px;
+    background: rgb(240,244,245);
 }
 .navbar-default .navbar-nav>li>a {
  /* width: 200px;*/
@@ -962,10 +975,17 @@ p.price {
 .up_line {
   color: #aaa;
 }
+a.up_line:hover, a.up_line:focus{
+  background: none;
+} 
 .not-active {
   color: $aaa;
   pointer-events: none;
   cursor: default;
+}
+
+.menu-space {
+  margin-left: 20px;
 }
 
 /* feedback page */
