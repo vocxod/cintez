@@ -11,9 +11,37 @@ class ControllerCommonMenuTop extends Controller {
 		$data['banners'] = $aBanner;		
 		$data['lang'] = $this->language->get('code');
 		
+//var_dump($this->session->data['current_zone']);
+
+		switch ($this->session->data['current_zone']['zone_id']) {
+			// SPB
+			case '2785':
+				$sLocatPhone = '+7 812 318-47-17';
+				break;
+			// MSK
+			case '2761':
+				$sLocatPhone = '+7 495 665-02-53';
+				break;
+			// NSK
+			case '2768':
+				$sLocatPhone = '+7 383 363-09-88';
+				break;
+			// RnD
+			case '2778':
+				$sLocatPhone = '+7 863 201-43-44';
+				break;
+			// Kursk
+			case '2755':
+				$sLocatPhone = '+7 471 244-60-18';
+				break;			
+			default:
+				$sLocatPhone = '+7 812 318-47-17';
+				break;
+		}
+
 		if( $data['lang'] == 'ru'):
 			$data['up_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route'=>''],
+				['class'=>'menu-bold ', 'title'=>$sLocatPhone, 'awesome' => 'fa fa-phone', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route'=>''],
 				['class'=>'menu-space menu-bold ' , 'title'=>'ПОДБОР ПРОДУКТА', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true, 'route'=>'information/productselection'],
 				['class'=>'menu-space menu-bold ', 'title'=>'ДЕЗКАЛЬКУЛЯТОР' , 'awesome' => 'fa fa-calculator', 'img' => '', 'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => true, 'route' => 'information/dezcalc'], 
 			];
