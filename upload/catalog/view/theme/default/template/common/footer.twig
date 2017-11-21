@@ -393,9 +393,19 @@ $( document ).ready(function() {
     e.stopPropagation()
   })
 
-  $("#product_button").on( 'click', function(){
-    $("#id3").show();
-    $("#product_button").addClass("selected-item");
+  $("#product_button").on( 'mouseover', function(){
+    var iMaxHeight = '420px';
+    if( $("#id3").css('height') != iMaxHeight ){
+      $("#id3").css('height', '0px');
+      $("#id3").css('overflow', 'hidden');
+      $("#id3").animate({height: iMaxHeight});
+    }
+    return false;
+  });
+
+  $("#id22 li>a").not("#product_button").on( 'mouseover', function(){
+    //$("#id3").css('height', '0px');
+    $("#id3").animate({height: "0px"});
     return false;
   });
 

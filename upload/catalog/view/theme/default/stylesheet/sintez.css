@@ -120,6 +120,11 @@ a.zone-select {
     color: rgb(54,154,56);
 }
 
+#id3 {
+  height: 0px;
+  overflow: hidden;
+}
+
 .panel_menu {
   height: 84px;
   overflow: hidden;
@@ -1292,6 +1297,8 @@ p {
   font-weight: bold;
 }
 */
-
+.square {
+  border-radius: 0px;
+}
 
 

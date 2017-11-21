@@ -101,12 +101,84 @@
                 {#<a class="navbar-brand" href="#">Главная</a>#}
               </div>
 
-<div class="collapse navbar-collapse js-navbar-collapse" style="background:rgb(240,244,245);float:right;margin-left:0px;">
+              <div class="collapse navbar-collapse js-navbar-collapse" style="background:rgb(240,244,245);float:right;margin-left:0px;">
                 <ul id="id22" class="nav navbar-nav">
                   {% for item in down_line %}
-{% if loop.index == 1 %}
-    <li class="dropdown mega-dropdown">
-      <a id="product_button" href="{{item.href}}" class="dropdown-toggle {{item.class}}" data-toggle="_dropdown">{{ item.title}} 
+                      {% if loop.index == 1 %}
+                          <li>
+                            <a id="product_button" class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
+                          </li>  
+                      {% else %}
+                          <li>
+                            <a class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
+                          </li>
+                      {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- /.nav-collapse -->
+            </nav>
+        {#</div>#}
+      </nav>
+
+      {# выплывающее меню #}      
+      <nav id="id3" class="navbar-inverse nav-upper wobble" style="">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="col-lg-3">
+                  {% for item in 0..1 %}
+                    <ul class="nav">
+                      Группа {{filters[item].name}}
+                    {% for yfon in filters[item].filter %}
+                      <li>{{ yfon.filter_id}} : {{ yfon.name}}</li>  
+                    {% endfor %}
+                    </ul>
+                  {% endfor %}
+              </div>
+
+              <div class="col-lg-3">
+                  {% for item in 2..3 %}
+                    <ul class="nav">
+                      Группа {{filters[item].name}}
+                    {% for yfon in filters[item].filter %}
+                      <li>{{ yfon.filter_id}} : {{ yfon.name}}</li>  
+                    {% endfor %}
+                    </ul>
+                  {% endfor %}
+              </div>
+
+              <div class="col-lg-3">
+                    <ul class="nav">
+                      Группа {{filters[4].name}}
+                    {% for yfon in filters[4].filter %}
+                      <li>{{ yfon.filter_id}} : {{ yfon.name}}</li>  
+                    {% endfor %}
+                    </ul>
+              </div>  
+
+              <div class="col-lg-3">
+                <img src="/image/catalog/slider/popup-menu-image.png" alt="238*160">
+                <h3>{{ text_products }}</h3>
+                <p>
+                  {{ text_description }}
+                </p>
+                <a href="index.php?route=product/category&path=10" class="btn btn-success square">
+                  {{text_to_catalog}}
+                </a>
+              </div>  
+
+            </div>    
+          </div>
+      </nav>
+
+
+
+    </div>
+  </div>
+</div>
+
+
+
         {#<span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span>#}</a>
 {#
       <ul class="dropdown-menu mega-dropdown-menu row" style="margin-left:0px;">
@@ -167,83 +239,3 @@
         </li>
       </ul>
 #}
-    </li>
-{% else %}
-                      <li><a class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a></li>
-                  {% endif %}
-                  {% endfor %}
-                </ul>
-              </div>
-              <!-- /.nav-collapse -->
-            </nav>
-        {#</div>#}
-      </nav>
-
-      {# выплывающее меню #}      
-      <nav id="id3" class="navbar-inverse nav-upper" style="display:none;;">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="col-lg-3">
-              <ul class="nav">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>77777777 7777777 777777 77777777</li>
-                <li>8</li>
-              </ul>
-              </div>
-
-              <div class="col-lg-3">
-              <ul class="nav">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>444444 4444 444444</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-              </ul>
-              </div>
-
-              <div class="col-lg-3">
-              <ul class="nav">
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>828888888888888</li>
-              </ul>
-              </div>  
-
-              <div class="col-lg-3">
-              <ul class="nav">
-                <li>11111111111111</li>
-                <li>2</li>
-                <li>3</li>
-                <li>4</li>
-                <li>5</li>
-                <li>6</li>
-                <li>7</li>
-                <li>8</li>
-              </ul>
-              </div>  
-
-            </div>    
-          </div>
-      </nav>
-
-
-
-    </div>
-  </div>
-</div>
-
-
-
