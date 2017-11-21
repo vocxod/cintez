@@ -1,7 +1,7 @@
 <?php
 class ControllerCommonTopnews extends Controller {
 	public function index( $aOption=[]) {
-		$this->load->language('common/toparticles');
+		$this->load->language('common/topnews');
 
 		$this->load->model('catalog/information');
 		if( array_key_exists('news', $aOption) ){
@@ -34,7 +34,7 @@ class ControllerCommonTopnews extends Controller {
 			}
 		}
 		$data['topnews'] = $aResult;
-		var_dump($data); die();
+		//var_dump($data); die();
 
 		return $this->load->view('common/topnews', $data);
 	}
