@@ -3,16 +3,18 @@
 
   {% for category in categories %}
       {% if category.category_id == category_id %} 
-          <a href="{{ category.href }}" class="list-group-item active">
+          <a href="{{ category.href }}" class="list-group-item active" style="">
           {% if category.top == 1 %}
               {#<img src="/image/{{ category.image }}" alt="{{ category.name }}">#}
               <div class="category_ids category_id_{{ category.category_id }}"></div>
               <span style="margin-left:2px;">{{ category.name }}</span>  <span class="budge budge-open">  </span>
+          {#
           {% else %}     
               <span style="margin-left:38px;">={{ category.name }}</span>  <span class="budge-close">  </span>
+          #}
           {% endif %}
+          <i class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true" style="margin-top:4px; margin-right:4px;"></i>
           </a>
-
           {% if category.children %}
               {% for child in category.children %}
                   {% if child.category_id == child_id %}
@@ -33,7 +35,7 @@
               <div class="category_ids category_id_{{ category.category_id }}_unselect"></div>
               <span style="margin-left:2px;">{{ category.name }}</span>
               <span class="budge budge-close">
-              {# <i class="fa fa-chevron-down pull-right"></i> #}  
+              <i class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="margin-right:4px;margin-top:4px;"></i>  
               </span>
           {% else %}
               
@@ -45,46 +47,47 @@
 
 
 <div class="list-group category-list">
-    <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -9px;">Фильтр 1</h3>
+
+    <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -9px; width:260px; overflow:hidden;">Фильтр</h3>
     <div class="" style="">
       <ul class="list-group noborder">
           <li class="list-group-item noborder" style="border:0px dashed #fff;">
               Моющее средство
               <div class="material-switch pull-right">
                   <input id="someSwitchOptionDefault" name="someSwitchOption001" type="checkbox"/>
-                  <label for="someSwitchOptionDefault" class="label-default"></label>
+                  <label for="someSwitchOptionDefault" class="label-success"></label>
               </div>
           </li>
           <li class="list-group-item noborder" style="border:0px dashed #fff;">
               Средство для дезинфекции
               <div class="material-switch pull-right">
-                  <input id="someSwitchOptionPrimary" name="someSwitchOption001" type="checkbox"/>
+                  <input id="someSwitchOptionPrimary" name="someSwitchOption002" type="checkbox"/>
                   <label for="someSwitchOptionPrimary" class="label-primary"></label>
               </div>
           </li>
           <li class="list-group-item noborder" style="border:0px dashed #fff;">
-              Средство для ухода за поверхностью
+              Ухода за поверхностью
               <div class="material-switch pull-right">
-                  <input id="someSwitchOptionSuccess" name="someSwitchOption001" type="checkbox"/>
+                  <input id="someSwitchOptionSuccess" name="someSwitchOption003" type="checkbox"/>
                   <label for="someSwitchOptionSuccess" class="label-success"></label>
               </div>
           </li>
           <li class="list-group-item noborder" style="border:0px dashed #fff;">
-              Средство для очистки металла
+              Очистка металла
               <div class="material-switch pull-right">
-                  <input id="someSwitchOptionInfo" name="someSwitchOption001" type="checkbox"/>
-                  <label for="someSwitchOptionInfo" class="label-info"></label>
+                  <input id="someSwitchOptionInfo" name="someSwitchOption004" type="checkbox"/>
+                  <label for="someSwitchOptionInfo" class="label-primary"></label>
               </div>
           </li>
           <li class="list-group-item noborder" style="border:0px dashed #fff;">
-              Средство для очистки паластика
+              Очистка паластика
               <div class="material-switch pull-right">
-                  <input id="someSwitchOptionWarning" name="someSwitchOption001" type="checkbox"/>
-                  <label for="someSwitchOptionWarning" class="label-warning"></label>
+                  <input id="someSwitchOptionWarning" name="someSwitchOption005" type="checkbox"/>
+                  <label for="someSwitchOptionWarning" class="label-success"></label>
               </div>
           </li>
       </ul>
-
+{#
 <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -9px;">Фильтр 2</h3>
 
         <div class="fform-group row">
@@ -142,6 +145,7 @@
               </div>
             </div>
         </div>
+        #}
     </div>
 </div>
 

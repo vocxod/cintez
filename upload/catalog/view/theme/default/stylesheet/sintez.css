@@ -494,15 +494,20 @@ body {
 }
 
 .budge::after {
-  content: "\25ba";
+  /*content: "\25ba";*/
 }
 
+/*
+<i class="glyphicon glyphicon-chevron-right" aria-hidden="true"></i>
+*/
 .budge-open::after {
-  content: "\25bc";
+  /* когда выбрана категория */
+/*  content: "\25bc"; */
 }
 
 .budge-close::after {
-  content: "\25b6";
+/*  content: "\25b6"; */
+/* коллапснутая категория */
 }
 
 .media-body::after {
