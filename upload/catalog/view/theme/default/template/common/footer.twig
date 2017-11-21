@@ -21,10 +21,13 @@
           <li><a href="index.php?route=information/dezcalc">Дезкалькулятор</a></li>
         </ul>
       </div>
+      {# петербург #}
+      {% if current_zone.zone_id == 2785 %}
       <div class="col-md-2">
         <h3>КОНТАКТ</h3>
         <ul class="footer-list">
           <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+78123184717"> <i class="fa fa-phone"></i>&nbsp;  +7 812 318 47 17</a> </li>
           <li>&nbsp;</li>
           <li>Прием заказов ежедневно</li>
           <li>с 9:00 до 18:00</li>
@@ -45,8 +48,42 @@
         <ul class="footer-list">
           <li>195279, Санкт-Петербург </li>
           <li>Индустриальный пр-т, д. 49 литера "К"</li>
+        </ul>    
+      </div>
+      {% endif %}
+
+      {# МОСКВА #}
+      {% if current_zone.zone_id == 2761 %}
+      <div class="col-md-2">
+        <h3>КОНТАКТ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+74956650253"> <i class="fa fa-phone"></i>&nbsp; +7 495 665 02 53</a> </li>
+          
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:dir-msk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;dir-msk@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
         </ul>
       </div>
+      <div class="col-md-2">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>27576, Москва </li>
+          <li>ул. Новгородская, д.1</li>
+        </ul>      
+      </div>
+      {% endif %}
+
 {% endif %}
 
 {% if lang == 'en' %}
