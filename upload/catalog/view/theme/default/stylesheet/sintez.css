@@ -531,7 +531,10 @@ body {
 #id22.nav.navbar-nav > li > a.selected-item {
     color: rgb(54,154,56);
 }
-
+#id22.nav.navbar-nav > li > a:hover,
+#id22.nav.navbar-nav > li > a:focus {
+    color: rgb(54,154,56) !important;
+}
 
 /* панели */
 .panel-menu-item {
