@@ -28,7 +28,7 @@ class ControllerCommonZone extends Controller {
 		$data['current_zone'] = $this->session->data['current_zone'];
 		//var_dump( $data['current_zone'] ); die();
 		$results = $this->model_localisation_zone->getZonesByCountryId( 176 ); // 176 = Russia
-
+		// var_dump($results); die();
 		foreach ($results as $result) {
 			if ($result['status']) {
 				$data['zones'][] = array(

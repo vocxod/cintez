@@ -21,6 +21,40 @@
           <li><a href="index.php?route=information/dezcalc">Дезкалькулятор</a></li>
         </ul>
       </div>
+
+      {# Курск #}
+      {% if current_zone.zone_id == 2755 %}
+      <div class="col-md-2">
+        <h3>КОНТАКТ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+74712446018"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 18</a> </li>
+          <li><a href="tel:+74712446019"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 19</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:V.Shukin@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;V.Shukin@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>305018, г. Курск</li>
+          <li>Элеваторный переулок, д.14</li>
+        </ul>      
+      </div>
+      {% endif %}
+
       {# петербург #}
       {% if current_zone.zone_id == 2785 %}
       <div class="col-md-2">
@@ -84,6 +118,73 @@
       </div>
       {% endif %}
 
+      {# Novosibirsk #}
+      {% if current_zone.zone_id == 2768 %}
+      <div class="col-md-2">
+        <h3>КОНТАКТ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+73833630988"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 09 88</a> </li>
+          <li><a href="tel:+73833631088"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 10 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:opt-nsk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;opt-nsk@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>630117, г. Новосибирск </li>
+          <li>ул. Арбузова 1/1 к. 14, оф. 222/5</li>
+          <li> (со стороны улицы Иванова)</li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Ростов на Донц #}
+      {% if current_zone.zone_id == 2778 %}
+      <div class="col-md-2">
+        <h3>КОНТАКТ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+78632014344"> <i class="fa fa-phone"></i>&nbsp; +7 863 201 43 44</a> </li>
+          <li><a href="tel:+79287770288"> <i class="fa fa-phone"></i>&nbsp; +7 928 777 02 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:rostov@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;rostov@specsintez.com </li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>344091, г. Ростов-на-Дону</li>
+          <li>ул. Пескова, дом № 1/2/169а</li>
+        </ul>      
+      </div>
+      {% endif %}
+
 {% endif %}
 
 {% if lang == 'en' %}
@@ -101,6 +202,41 @@
           <li><a href="index.php?route=information/dezcalc">Dez calculator</a></li>
         </ul>
       </div>
+      {# Курск #}
+      {% if current_zone.zone_id == 2755 %}
+      <div class="col-md-2">
+        <h3>CONTACT</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+74712446018"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 18</a> </li>
+          <li><a href="tel:+74712446019"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 19</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:V.Shukin@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;V.Shukin@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>305018, г. Курск</li>
+          <li>Элеваторный переулок, д.14</li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# петербург #}
+      {% if current_zone.zone_id == 2785 %}
       <div class="col-md-2">
         <h3>CONTACT</h3>
         <ul class="footer-list">
@@ -127,10 +263,109 @@
           <li>St. Peterburg,  Russia, 195279</li>
         </ul>
       </div>
+      {% endif %}
+
+      {# МОСКВА #}
+      {% if current_zone.zone_id == 2761 %}
+      <div class="col-md-2">
+        <h3>CONTACT</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+74956650253"> <i class="fa fa-phone"></i>&nbsp; +7 495 665 02 53</a> </li>
+          
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:dir-msk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;dir-msk@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>27576, Москва </li>
+          <li>ул. Новгородская, д.1</li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Novosibirsk #}
+      {% if current_zone.zone_id == 2768 %}
+      <div class="col-md-2">
+        <h3>CONTACT</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+73833630988"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 09 88</a> </li>
+          <li><a href="tel:+73833631088"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 10 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:opt-nsk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;opt-nsk@specsintez.com</li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>630117, г. Новосибирск </li>
+          <li>ул. Арбузова 1/1 к. 14, оф. 222/5</li>
+          <li> (со стороны улицы Иванова)</li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Ростов на Донц #}
+      {% if current_zone.zone_id == 2778 %}
+      <div class="col-md-2">
+        <h3>CONTACT</h3>
+        <ul class="footer-list">
+          <li><a href="tel:88002003035"> <i class="fa fa-phone"></i>&nbsp;  8 800 200 30 35</a> </li>
+          <li><a href="tel:+78632014344"> <i class="fa fa-phone"></i>&nbsp; +7 863 201 43 44</a> </li>
+          <li><a href="tel:+79287770288"> <i class="fa fa-phone"></i>&nbsp; +7 928 777 02 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов ежедневно</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:rostov@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;rostov@specsintez.com </li>
+          <li>&nbsp;</li>
+          <li>Мы в соцсетях</li>
+          <li>
+            <a class="not-active" href="#"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-2">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>344091, г. Ростов-на-Дону</li>
+          <li>ул. Пескова, дом № 1/2/169а</li>
+        </ul>      
+      </div>
+      {% endif %}
+
 {% endif %}
-
-
-    </div>
+</div>
     <p>{{ powered }}</p>
   </div>
 </footer>
