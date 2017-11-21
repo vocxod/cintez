@@ -106,69 +106,46 @@
                   {% for item in down_line %}
 {% if loop.index == 1 %}
     <li class="dropdown mega-dropdown">
-      <a href="{{item.href}}" class="dropdown-toggle {{item.class}}" data-toggle="dropdown">{{ item.title}} 
+      <a id="product_button" href="{{item.href}}" class="dropdown-toggle {{item.class}}" data-toggle="_dropdown">{{ item.title}} 
         {#<span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span>#}</a>
+{#
       <ul class="dropdown-menu mega-dropdown-menu row" style="margin-left:0px;">
-
         {% for column in columns %}
         <li class="col-sm-3">
           <ul>
-            <li class="dropdown-header">{{ column.header }}</li>
-            
+            <li class="dropdown-header">{{ column.header }}</li>           
             {% for colutem in column[loop.index0] %}
               <li class="text-left"><a class="column.class" href="#">{{ colutem }}</a></li>
             {% endfor %}
-            
           </ul>
         </li>
         {% endfor %}
-
-
         <li class="col-sm-3">
           <ul>
             <li class="dropdown-header">АКЦИИ</li>
             <div id="mySmallCarousel" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
 
-<div class="item dropdown-offer active">
-<a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
-<h4><small>Скидки и распродажи этого продукта</small></h4>
-{#<button class="btn btn-success" type="button">100 Руб</button>#}
-<button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-</div>
-                
-{% for banner in banners %}
-<div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}" id="small_{{ loop.index }}">
-<a href="{{ banner.link }}">
-<img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
-
-</a>
-<h4><small>{{ banner.title }}</small></h4>
-{#<button class="btn btn-success" type="button">123 Руб</button>#}
-<button href="{{ banner.link }}" class="btn btn-default" type="button">
-  <span class="glyphicon glyphicon-earphone"></span> Узнать больше</button>  
-</div>
-{% endfor %}
-
-
-                <!-- End Item -->
-{#
-                <div class="item">
-                  <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
-                  <h4><small>Скидки и распродажи этого продукта</small></h4>
-                  <button class="btn btn-success" type="button">100 Руб</button>
-                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
+                <div class="item dropdown-offer active">
+                <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
+                <h4><small>Скидки и распродажи этого продукта</small></h4>
+                <button class="btn btn-success" type="button">100 Руб</button>
+                <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
                 </div>
-                <!-- End Item -->
+                      
+                {% for banner in banners %}
+                    <div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}" id="small_{{ loop.index }}">
+                    <a href="{{ banner.link }}">
+                    <img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
 
-                <div class="item">
-                  <a href="#"><img src="http://placehold.it/254x150/2ecc71/f5f5f5/&text=ТоварИзРекламы" class="img-responsive" alt="product 3"></a>
-                  <h4><small>Акции и распродажи</small></h4>
-                  <button class="btn btn-success" type="button">от 100 руб</button>
-                  <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                </div>
+                    </a>
+                    <h4><small>{{ banner.title }}</small></h4>
+                    <button class="btn btn-success" type="button">123 Руб</button>
+                    <button href="{{ banner.link }}" class="btn btn-default" type="button">
+                      <span class="glyphicon glyphicon-earphone"></span> Узнать больше</button>  
+                    </div>
+                {% endfor %}
                 <!-- End Item -->
-                #}
               </div>
               <!-- End Carousel Inner -->
             </div>
@@ -188,8 +165,8 @@
             <li><a href="index.php?route=product/category&path=113">Перейти в каталог <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
           </ul>
         </li>
-
       </ul>
+#}
     </li>
 {% else %}
                       <li><a class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a></li>
@@ -201,6 +178,69 @@
             </nav>
         {#</div>#}
       </nav>
+
+      {# выплывающее меню #}      
+      <nav id="id3" class="navbar-inverse nav-upper" style="display:none;;">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="col-lg-3">
+              <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>77777777 7777777 777777 77777777</li>
+                <li>8</li>
+              </ul>
+              </div>
+
+              <div class="col-lg-3">
+              <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>444444 4444 444444</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+              </ul>
+              </div>
+
+              <div class="col-lg-3">
+              <ul class="nav">
+                <li>1</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>828888888888888</li>
+              </ul>
+              </div>  
+
+              <div class="col-lg-3">
+              <ul class="nav">
+                <li>11111111111111</li>
+                <li>2</li>
+                <li>3</li>
+                <li>4</li>
+                <li>5</li>
+                <li>6</li>
+                <li>7</li>
+                <li>8</li>
+              </ul>
+              </div>  
+
+            </div>    
+          </div>
+      </nav>
+
+
+
     </div>
   </div>
 </div>

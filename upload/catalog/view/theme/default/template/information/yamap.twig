@@ -8,7 +8,7 @@
   </ul>
 
   <div class="row">  
-    {#{ contact_content|raw }#}
+
 
     {# SPB-RU start #}   
     {% if lang == 'ru' and current_zone == 2785 %}
@@ -94,7 +94,7 @@
   {# SPB - EN end#}
   
 
-    {# MSK-RU start #}   
+{# MSK-RU start #}   
     {% if lang == 'ru' and current_zone == 2761 %}
     <div id="center_content" class="col-sm-12">
       <div id="map" style="min-height:600px;">
@@ -132,8 +132,8 @@
       </div>
     </div>
     {% endif %}
-    {# MSK RU end #}
-    {# MSK EN start #}
+{# MSK RU end #}
+{# MSK EN start #}
     {% if lang == 'en' and current_zone == 2761 %}
     <div id="center_content" class="col-sm-12">
       <div id="map" style="min-height:600px;">
@@ -172,16 +172,273 @@
       </div>
     </div>
   {% endif %}
-  {# MSK EN end#}
-  </div>
+{# MSK EN end#}
 
-</div>
+
+{# NSK-RU start #}   
+    {% if lang == 'ru' and current_zone == 2768 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (383) <span style="font-size:24px; font-weight:bold;">363 09 88</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              opt-nsk@specsintez.com
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                630117, г. Новосибирск, <br>
+                ул. Арбузова 1/1 к. 14, оф. 222/5<br> 
+                (со стороны улицы Иванова)<br>
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Место погрузки и график<br>
+                уточняйте по телефону<br>
+              </p>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+{# NSK RU end #}
+{# NSK EN start #}
+    {% if lang == 'en' and current_zone == 2768 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Contacts</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (383) <span style="font-size:24px; font-weight:bold;">363 09 88</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              opt-nsk@specsintez.com
+            </p>
+              <h4>Address</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                Office 222/5 Building 14<br> 
+                Home 1/1, Novosibirsk <br> 
+                Russia, 630117 <br>
+                (from Ivanov street side)<br>                
+              </p>
+              <h4>Loading</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                For loading track call us<br>
+                <br>
+              </p>
+          </div>
+      </div>
+    </div>
+  {% endif %}
+{# NSK EN end#}
+
+
+{# R-n-D RU start #}   
+    {% if lang == 'ru' and current_zone == 2778 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (863) <span style="font-size:24px; font-weight:bold;">201 43 44</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              rostov@specsintez.com 
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                344091, г. Ростов-на-Дону,<br> 
+                ул. Пескова, дом № 1/2/169а<br>
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Место погрузки и график<br>
+                уточняйте по телефону<br>
+              </p>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+{# R-n-D RU end #}
+{# R-n-D EN start #}
+    {% if lang == 'en' and current_zone == 2778 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Contacts</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (863) <span style="font-size:24px; font-weight:bold;">201 43 44</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              rostov@specsintez.com 
+            </p>
+              <h4>Address</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                1/2/169а Peskov street <br>
+                Rostov - na - Donu, <br> 
+                Russia, 344091 <br>
+              </p>
+              <h4>Loading</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                For loading track call us<br>
+                <br>
+              </p>
+          </div>
+      </div>
+    </div>
+  {% endif %}
+{# R-n-D EN end#}
+
+
+{# KURSK RU start #}   
+    {% if lang == 'ru' and current_zone == 2755 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (471 2) <span style="font-size:24px; font-weight:bold;">44 60 18</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              V.Shukin@specsintez.com  
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                305018, г. Курск,<br> 
+                Элеваторный переулок, д.14<br>
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Место погрузки и график<br>
+                уточняйте по телефону<br>
+              </p>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+{# KURSK RU end #}
+{# KURSK EN start #}
+    {% if lang == 'en' and current_zone == 2755 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Contacts</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (471 2) <span style="font-size:24px; font-weight:bold;">44 60 18</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              V.Shukin@specsintez.com
+            </p>
+              <h4>Address</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                14, Elevatornyj pereulok<br>
+                Kursk, Russia <br>
+                305018<br>
+              </p>
+              <h4>Loading</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                For loading track call us<br>
+                <br>
+              </p>
+          </div>
+      </div>
+    </div>
+  {% endif %}
+{# KURSK EN end#}
+
+  </div>{# ROW #}
+</div>{# INFORMATION-CONTACT #}
 
 <script type="text/javascript">
+/*
+SPB
+59.957891, 30.470622
+MSK
+55.889278, 37.578821
+R-n-D
+47.203139, 39.607592
+NSK
+54.872367, 83.103857
+KURSK
+51.677281, 36.152088
 
+*/
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
-            center: [59.957891, 30.470622],
+            center: [{{ center_map }}],
             zoom: 16
         }, {
             searchControlProvider: 'yandex#search'

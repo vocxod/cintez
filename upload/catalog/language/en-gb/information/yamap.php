@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'We on a Map and our Contacts';
-
+$_['text_storetitle'] = 'SpecSintez';
 // Text
 $_['text_location']  = 'Our Location';
 $_['text_store']     = 'Our Stores';

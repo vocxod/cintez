@@ -392,6 +392,13 @@ $( document ).ready(function() {
   jQuery(document).on('click', '.mega-dropdown', function(e) {
     e.stopPropagation()
   })
+
+  $("#product_button").on( 'click', function(){
+    $("#id3").show();
+    $("#product_button").addClass("selected-item");
+    return false;
+  });
+
   $('.panel-menu-item').on( "mouseover", function(){
     $(this).css('background', 'rgb(54,154,56)')
     $(this).css('color', '#FEFAEA')

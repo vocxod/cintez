@@ -1,7 +1,7 @@
 <?php
 // Heading
 $_['heading_title']  = 'Карта';
-
+$_['text_storetitle'] = 'СпецСинтез';
 // Text
 $_['text_location']  = 'Наше местонахождение';
 $_['text_store']     = 'Наши магазины';

@@ -39,24 +39,6 @@ class ControllerInformationYamap extends Controller {
 			'href' => $this->url->link('information/contact')
 		);
 
-		if (isset($this->error['name'])) {
-			$data['error_name'] = $this->error['name'];
-		} else {
-			$data['error_name'] = '';
-		}
-
-		if (isset($this->error['email'])) {
-			$data['error_email'] = $this->error['email'];
-		} else {
-			$data['error_email'] = '';
-		}
-
-		if (isset($this->error['enquiry'])) {
-			$data['error_enquiry'] = $this->error['enquiry'];
-		} else {
-			$data['error_enquiry'] = '';
-		}
-
 		$data['button_submit'] = $this->language->get('button_submit');
 
 		$data['action'] = $this->url->link('information/contact', '', true);
@@ -125,7 +107,31 @@ class ControllerInformationYamap extends Controller {
 		$data['yamap'] = '1';
 		$data['lang']	= $this->language->get('code');
 		$data['current_zone']	= $this->session->data['current_zone']['zone_id'];
-		// $this->session->data['current_zone']['zone_id']
+		switch ($data['current_zone']) {
+			case '2785':
+				// SPB
+				$data['center_map'] = '59.957891, 30.470622';
+				break;
+			case '2761':
+			//MSK
+				$data['center_map'] = '55.889278, 37.578821';
+				break;
+			case '2778':
+			// RnD
+				$data['center_map'] = '47.203139, 39.607592';
+				break;
+			case '2768':
+				// NSK
+				$data['center_map'] = '54.872367, 83.103857';
+				break;
+			case '2755':
+			// KURSK
+				$data['center_map'] = '51.677281, 36.152088';
+				break;
+			default:
+				$data['center_map'] = '59.957891, 30.470622';
+				break;
+		}
 		$this->response->setOutput($this->load->view('information/yamap', $data));
 	}
 
