@@ -526,6 +526,7 @@ body {
 #id1.navbar-inverse.nav-upper .navbar-upper > li > a:hover,
 #id1.navbar-inverse.nav-upper .navbar-upper > li > a:focus {
     background: none;
+    color: rgb(54,154,56) !important;
 }
 
 #id22.nav.navbar-nav > li > a.selected-item {
