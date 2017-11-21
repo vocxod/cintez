@@ -19,7 +19,7 @@ class ControllerCommonMenuTop extends Controller {
 			];
 
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=10', 'target'=>'_self', 'active' => true, 'route' => ''],
+				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=10', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
 				
 				['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 
@@ -41,7 +41,7 @@ class ControllerCommonMenuTop extends Controller {
 
 		if( $data['lang'] == 'en'):
 			$data['up_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone',  'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route' => ''],
+				['class'=>'menu-bold ', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone',  'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
 
 				['class'=>'menu-space menu-bold ', 'title'=>'PRODUCT SELECTION', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true, 'route'=>'information/productselection'],
 				
