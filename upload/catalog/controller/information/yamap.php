@@ -106,31 +106,6 @@ class ControllerInformationYamap extends Controller {
 			}
 		}
 
-		if (isset($this->request->post['name'])) {
-			$data['name'] = $this->request->post['name'];
-		} else {
-			$data['name'] = $this->customer->getFirstName();
-		}
-
-		if (isset($this->request->post['email'])) {
-			$data['email'] = $this->request->post['email'];
-		} else {
-			$data['email'] = $this->customer->getEmail();
-		}
-
-		if (isset($this->request->post['enquiry'])) {
-			$data['enquiry'] = $this->request->post['enquiry'];
-		} else {
-			$data['enquiry'] = '';
-		}
-
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
-		} else {
-			$data['captcha'] = '';
-		}
-
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
 		$data['content_top'] = $this->load->controller('common/content_top');
@@ -140,14 +115,17 @@ class ControllerInformationYamap extends Controller {
 
 		/* получаем контент страницы ID=8  */
 		$this->load->model('catalog/information');
-		$contact_content = $this->model_catalog_information->getInformation( 8 );
-		$data['contact_content'] = html_entity_decode($contact_content['description']);
+		// 8=инфа на странице с данными СПб
+		//$contact_content = $this->model_catalog_information->getInformation( 8 );
+		//$data['contact_content'] = html_entity_decode($contact_content['description']);
+
 		$published = $this->model_catalog_information->getNewsList( 4 );
 		$data['published'] = $published;
-		//var_dump( $data['published'] ); die();
 		$data['information_id'] = 8;
 		$data['yamap'] = '1';
-
+		$data['lang']	= $this->language->get('code');
+		$data['current_zone']	= $this->session->data['current_zone']['zone_id'];
+		// $this->session->data['current_zone']['zone_id']
 		$this->response->setOutput($this->load->view('information/yamap', $data));
 	}
 

@@ -8,7 +8,171 @@
   </ul>
 
   <div class="row">  
-    {{ contact_content|raw }}
+    {#{ contact_content|raw }#}
+
+    {# SPB-RU start #}   
+    {% if lang == 'ru' and current_zone == 2785 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (812) <span style="font-size:24px; font-weight:bold;">318-47-17</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              mail@specsintez.com 
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                195279 Санкт-Петербург,<br>
+                Индустриальный пр-т 43 лит. "К"
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Подъезд под погрузку осуществляется с<br>
+                правой стороны здания.<br>
+                Оформление документов внутри здания<br> 
+                (после входа, налево, логист:<br>
+                Коршикова Галина Николаевна)<br>
+              </p>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+    {# SPB-RU end #}
+    {# SPB - EN start #}
+    {% if lang == 'en' and current_zone == 2785 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Contacts</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (812) <span style="font-size:24px; font-weight:bold;">318-47-17</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              mail@specsintez.com 
+            </p>
+              <h4>Address</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                liter. "K", Industrialny ave. 43,
+                St.Petersberg, Russia, 195279<br>
+                 
+              </p>
+              <h4>Loading</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Way for loading from right side our building.<br>
+                Logist: Korshikova Galina<br>
+              </p>
+          </div>
+      </div>
+    </div>
+  {% endif %}
+  {# SPB - EN end#}
+  
+
+    {# MSK-RU start #}   
+    {% if lang == 'ru' and current_zone == 2761 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Контакты</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (495) <span style="font-size:24px; font-weight:bold;">665 02 53</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              dir-msk@specsintez.com
+            </p>
+              <h4>Адрес</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                127576, Москва<br>
+                ул. Новгородская, д.1
+              </p>
+              <h4>Подъезд</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                Место погрузки и график<br>
+                уточняйте по телефону<br>
+              </p>
+          </div>
+      </div>
+    </div>
+    {% endif %}
+    {# MSK RU end #}
+    {# MSK EN start #}
+    {% if lang == 'en' and current_zone == 2761 %}
+    <div id="center_content" class="col-sm-12">
+      <div id="map" style="min-height:600px;">
+          <div id="mapcontent">
+            <h4>Contacts</h4>
+            <p>
+              <span class="txt24">
+                <i class="fa fa-mobile" style="font-size:32px;"></i>
+              </span> 
+              +7 (495) <span style="font-size:24px; font-weight:bold;">665 02 53</span>
+            </p>
+            <p>
+              <span class="txt24">
+              <i class="fa fa-envelope"></i>
+              </span>&nbsp;
+              dir-msk@specsintez.com 
+            </p>
+              <h4>Address</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-address-card" aria-hidden="true"></i>
+                </span>
+                1 building, Novgorodskaya street,
+                Moscow, Russia, 127576<br>
+                 
+              </p>
+              <h4>Loading</h4>
+              <p>
+                <span class="txt24">
+                <i class="fa fa-truck" aria-hidden="true"></i>
+                </span>
+                For loading track call us<br>
+                <br>
+              </p>
+          </div>
+      </div>
+    </div>
+  {% endif %}
+  {# MSK EN end#}
   </div>
 
 </div>
