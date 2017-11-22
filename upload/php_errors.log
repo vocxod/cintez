@@ -1,1 +1,9 @@
 
+[22-Nov-2017 05:56:03 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected "endif" tag (expecting closing tag for the "for" tag defined near line 62) in "default/template/extension/module/category.twig" at line 67.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php:172
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_For->parse(Object(Twig_Token))
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_For->parse(Object(Twig_Token))
+#4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(100): Twig_Parser->subparse(NULL, false)
+#5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(619): Twig_Parser->parse(Object(Twig_TokenSt in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php on line 172
