@@ -67,7 +67,7 @@
 
 <div id="sidebar_13" class="list-group category-list">
   
-  <div class="sidebar left ">
+  <div id="id_13" class="sidebar left ">
     <ul class="list-sidebar bg-defoult">
   
       </li>
@@ -133,10 +133,11 @@
 
 
 <script type="text/javascript">
-  $(document).ready(function(){
-   $('#button_13').click(function(){
-       $('.sidebar').toggleClass('fliph');
-   });
+$(document).ready(function(){
+   $('#id_13 a').click(function(e){
+       e.preventDefault();
+       //$('.sidebar').toggleClass('fliph');
+   }); 
 });
 </script>
 

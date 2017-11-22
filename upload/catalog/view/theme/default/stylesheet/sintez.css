@@ -1355,69 +1355,31 @@ p {
 
 }
 
-#sidebar_13 {
-
-}
-
-#sidebar_13 > article, 
-#sidebar_13 > aside, 
-#sidebar_13 > details, 
-#sidebar_13 > figcaption, 
-#sidebar_13 > figure, 
-#sidebar_13 > footer, 
-#sidebar_13 > header, 
-#sidebar_13 > main, 
-#sidebar_13 > menu, 
-#sidebar_13 > nav, 
-#sidebar_13 > section, 
-#sidebar_13 > summary {
-  display: block;
-}
-
-#sidebar_13 > audio, 
-#sidebar_13 > canvas, 
-#sidebar_13 > progress, 
-#sidebar_13 > video {
-  display: inline-block;
-  vertical-align: baseline;
-}
-#sidebar_13 > audio:not([controls]) {
-  display: none;
-  height: 0;
-}
-
-#sidebar_13 > a {
-  background-color: transparent;
-  text-decoration: none;
-}
-#sidebar_13 > a:active, a:hover {
-  outline: 0;
-}
-
-#sidebar_13 > h1,
-#sidebar_13 > h2,
-#sidebar_13 > h3,
-#sidebar_13 > h4,
-#sidebar_13 > h5,
-#sidebar_13 > h6,
-#sidebar_13 > p,
-#sidebar_13 > ul,
-#sidebar_13 > ol{ 
-  margin:0px; padding:0px;
-}
-
 
 /***********************  TOP Bar ********************/
-#sidebar_13 > .sidebar{ width:220px;  background-color:#000;transition: all 0.5s  ease-in-out; }
-#sidebar_13 > .bg-defoult{background-color:#222;}
-#sidebar_13 > .sidebar ul{ list-style:none; margin:0px; padding:0px; }
-#sidebar_13 > .sidebar li a,
-#sidebar_13 > .sidebar li a.collapsed.active{ display:block; padding:8px 12px; color:#fff;border-left:0px solid #dedede;  text-decoration:none}
-#sidebar_13 > .sidebar li a.active{background-color:#000;border-left:5px solid #dedede; transition: all 0.5s  ease-in-out}
-#sidebar_13 > .sidebar li a:hover{background-color:#000 !important;}
-#sidebar_13 > .sidebar li a i{ padding-right:5px;}
-#sidebar_13 > .sidebar ul li .sub-menu li a{ position:relative}
-#sidebar_13 > .sidebar ul li .sub-menu li a:before{
+#id_13.sidebar{ 
+    width:220px;  
+    background-color:#ddd;
+    transition: all 0.5s  ease-in-out; }
+#id_13.bg-defoult{background-color:#222;}
+#id_13.sidebar ul{ list-style:none; margin:0px; padding:0px; }
+#id_13.sidebar li a,
+#id_13.sidebar li a.collapsed.active{ 
+    display:block; 
+    padding:8px 12px; 
+    color:#111;
+    border-left:0px solid #dedede;  
+    text-decoration:none
+}
+#id_13.sidebar li a.active{
+    background-color:#c0c0c0;
+    border-left:5px solid #dedede; 
+    transition: all 0.5s  ease-in-out
+}
+#id_13.sidebar li a:hover{background-color:#c0c0c0 !important;}
+#id_13.sidebar li a i{ padding-right:5px;}
+#id_13.sidebar ul li .sub-menu li a{ position:relative}
+#id_13.sidebar ul li .sub-menu li a:before{
     font-family: FontAwesome;
     content: "\f105";
     display: inline-block;
@@ -1425,7 +1387,7 @@ p {
     padding-right: 10px;
     vertical-align: middle;
 }
-#sidebar_13 > .sidebar ul li .sub-menu li a:hover:after {
+#id_13.sidebar ul li .sub-menu li a:hover:after {
     content: "";
     position: absolute;
     left: -5px;
@@ -1434,20 +1396,28 @@ p {
     background-color: #111;
     height: 100%;
 }
-#sidebar_13 > .sidebar ul li .sub-menu li a:hover{ background-color:#222; padding-left:20px; transition: all 0.5s  ease-in-out}
-#sidebar_13 > .sub-menu{ border-left:5px solid #dedede;}
-#sidebar_13 > .sidebar li a .nav-label,
-#sidebar_13 > .sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
+#id_13.sidebar ul li .sub-menu li a:hover{ 
+    background-color:#222; 
+    padding-left:20px; 
+    transition: all 0.5s  ease-in-out;
+    color: rgb(54,154,56);
+}
+#id_13.sub-menu{ border-left:5px solid #dedede;}
+#id_13.sidebar li a .nav-label,
+#id_13.sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
   
 
-#sidebar_13 > .sidebar.fliph li a .nav-label,
-#sidebar_13 > .sidebar.fliph li a .nav-label+span{ display:none;transition: all 0.5s  ease-in-out}
-#sidebar_13 >   .sidebar.fliph {
+#id_13.sidebar.fliph li a .nav-label,
+#id_13.sidebar.fliph li a .nav-label+span{ 
+    display:none;
+    transition: all 0.5s  ease-in-out
+}
+#id_13.sidebar.fliph {
     width: 42px;transition: all 0.5s  ease-in-out;
 }
   
-#sidebar_13 > .sidebar.fliph li{ position:relative}
-#sidebar_13 > .sidebar.fliph .sub-menu {
+#id_13.sidebar.fliph li{ position:relative}
+#id_13.sidebar.fliph .sub-menu {
     position: absolute;
     left: 39px;
     top: 0;
@@ -1455,5 +1425,3 @@ p {
     width: 150px;
     z-index: 100;
 }
-
-
