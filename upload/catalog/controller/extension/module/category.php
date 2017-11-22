@@ -25,6 +25,9 @@ class ControllerExtensionModuleCategory extends Controller {
 
 		$this->load->model('catalog/product');
 
+		$this->load->model('catalog/category');
+		$data['filters'] = $this->model_catalog_category->getAllFilters(0);
+
 		$data['categories'] = array();
 
 		$categories = $this->model_catalog_category->getCategories(0);

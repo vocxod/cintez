@@ -1,5 +1,6 @@
 <?php
 // Text
+$_['where_it_use']	= 'Lorem:Where it use';
 $_['text_search']              = 'Search';
 $_['text_brand']               = 'Brand';
 $_['text_manufacturer']        = 'Brand:';

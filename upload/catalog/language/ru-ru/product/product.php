@@ -1,5 +1,6 @@
 <?php
 // Text
+$_['where_it_use']	= 'Область использования';
 $_['text_search']                             = 'Поиск';
 $_['text_brand']                              = 'Производитель';
 $_['text_manufacturer']                       = 'Производитель:';
