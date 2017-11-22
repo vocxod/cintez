@@ -133,7 +133,7 @@
                 <li class="dropdown-header" style="list-style-type:none;"><a href="#">{{filters[item].name}}</a></li>
                 {% for yfon in filters[item].filter %}
                   <li>
-                      <a href="#">{{ yfon.name}}</a>
+                  <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{ yfon.name}}</a>
                   </li>  
                 {% endfor %}
 
@@ -144,7 +144,8 @@
           <li class="col-sm-3">
             <ul style="list-style-type:none;float:left;">
             {% for item in 2..3 %}
-                <li class="dropdown-header" style="list-style-type:none;"><a href="#">{{filters[item].name}}</a></li>
+                <li class="dropdown-header" style="list-style-type:none;">
+                <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{filters[item].name}}</a></li>
                 {% for yfon in filters[item].filter %}
                   <li>
                       <a href="#">{{ yfon.name}}</a>
@@ -160,7 +161,7 @@
                 <li class="dropdown-header" style="list-style-type:none;"><a href="#">{{filters[item].name}}</a></li>
                 {% for yfon in filters[item].filter %}
                   <li>
-                      <a href="#">{{ yfon.name}}</a>
+                      <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{ yfon.name}}</a>
                   </li>  
                 {% endfor %}
             </ul>

@@ -32,15 +32,16 @@
         {% set class = 'col-sm-8' %}
         {% endif %}
         {# средняя колонка штатного дизайна #}
-        <div class="{{ class }} debug-5" > 
+        <div class="{{ class }}" > 
           {% if thumb or images %}
-            <ul class="thumbnails">
+            <ul class="thumbnails" style="list-style-type:none;">
               {% if thumb %}
-              <li><a class="thumbnail" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
+              <li>
+                <a class="thumbnail" style="list-style-type:none;border:none;" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
               {% endif %}
               {% if images %}
               {% for image in images %}
-              <li class="image-additional"><a class="thumbnail" href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
+              <li class="image-additional"><a class="thumbnail" style="list-style-type:none;border:none;" href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
               {% endfor %}
               {% endif %}
             </ul>
@@ -390,31 +391,41 @@
     {{ column_right }}
   </div>
 {% else %} {# используем новую товарную страницу #}
-  <div class="row debug-4">
+  <div class="row">
 
     {{ column_left }}
     {% set class = 'col-sm-9' %}
     
-    <div id="content_new" class="{{ class }} debug-3">
+    <div id="content_new" class="{{ class }}">
       {{ content_top }}  
-      <div class="row debug" >
-        <div class="col-sm-12 debug-1">
-            <div class="col-sm-6 debug-2">
+      <div class="row" >
+        <div class="col-sm-12">
+            <div class="col-sm-6">
               {# картинка если есть #}
               {% if thumb or images %}
-                <ul class="thumbnails">
+                <ul class="thumbnails" style="list-style-type:none;">
+                  
                   {% if thumb %}
-                  <li><a class="thumbnail" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
+                  <li>
+                    <a style="border:none;" class="thumbnail" href="{{ popup }}" title="{{ heading_title }}"><img src="{{ thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
+                    </a>
+                  </li>
                   {% endif %}
+                  
                   {% if images %}
-                  {% for image in images %}
-                  <li class="image-additional"><a class="thumbnail" href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
-                  {% endfor %}
+                      {% for image in images %}
+                      <li class="image-additional">
+                        <a style="border:none;" class="thumbnail" href="{{ image.popup }}" title="{{ heading_title }}"> 
+                          <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
+                        </a>
+                      </li>
+                      {% endfor %}                 
                   {% endif %}
+                  
                 </ul>
               {% endif %}
             </div>
-            <div class="col-sm-6 debug-3">
+            <div class="col-sm-6">
         {# наименование, опции, цена товара #}
         {# <div class="{{ class }}" style="outline:1px dashed blue;"> #}
           
@@ -649,7 +660,7 @@
       </div>
 
       <div class="row">
-        <div class="col-sm-12 debug">
+        <div class="col-sm-12">
           {# Описание*Характеристики/Отзывы #}
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
@@ -660,7 +671,7 @@
             <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
             {% endif %}
           </ul>
-          <div class="tab-content" style="outline:1px dashed magenta;">
+          <div class="tab-content">
             <div class="tab-pane active" id="tab-description">{{ description }}</div>
             {% if attribute_groups %}
             <div class="tab-pane" id="tab-specification">
