@@ -123,6 +123,7 @@ a.zone-select {
 #id3 {
   height: 0px;
   overflow: hidden;
+  float:left;
 }
 
 .panel_menu {
@@ -1302,3 +1303,54 @@ p {
 }
 
 
+/* miga */
+.miga-dropdown {
+  position: static !important;
+  list-style-type:none;
+}
+.miga-dropdown-menu {
+    padding: 20px 0px;
+    width: 100%;
+    box-shadow: none;
+    -webkit-box-shadow: none;
+    list-style-type:none;
+    float:left;
+}
+.miga-dropdown-menu > li > ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.miga-dropdown-menu > li > ul > li {
+  list-style: none;
+  line-height: 1.75em;
+}
+.miga-dropdown-menu > li > ul > li > a {
+  display: block;
+  color: #333;
+  padding: 3px 5px;
+  font-size: 16px;
+}
+.miga-dropdown-menu > li ul > li > a:hover,
+.miga-dropdown-menu > li ul > li > a:focus {
+  text-decoration: none;
+  color:rgb(54,154,56);
+}
+.miga-dropdown-menu .dropdown-header {
+  font-size: 18px;
+  color: #111;
+  padding: 5px 60px 5px 5px;
+  line-height: 30px;
+  font-weight: bold;
+  list-style: none;
+  padding-left: 0px;
+}
+
+.miga-dropdown-menu .dropdown-header > a:hover,
+.miga-dropdown-menu .dropdown-header > a:focus {
+  color: rgb(54,154,56);
+}
+
+#id3>.drapdawn-menu.miga-dropdown-menu{
+
+}

@@ -394,7 +394,7 @@ $( document ).ready(function() {
   })
 
   $("#product_button").on( 'mouseover', function(){
-    var iMaxHeight = '420px';
+    var iMaxHeight = '550px';
     if( $("#id3").css('height') != iMaxHeight ){
       $("#id3").css('height', '0px');
       $("#id3").css('overflow', 'hidden');
@@ -408,6 +408,17 @@ $( document ).ready(function() {
     $("#id3").animate({height: "0px"});
     return false;
   });
+
+  $(".drapdawn").hover(            
+    function() {
+      $('.drapdawn-menu', this).not('.in .drapdawn-menu').stop(true,true).slideDown("500");
+      $(this).toggleClass('open');        
+    },
+    function() {
+      $('.drapdawn-menu', this).not('.in .drapdawn-menu').stop(true,true).slideUp("500");
+      $(this).toggleClass('open');       
+    }
+  );
 
   $('.panel-menu-item').on( "mouseover", function(){
     $(this).css('background', 'rgb(54,154,56)')
