@@ -13,7 +13,7 @@ class ControllerCommonMenuTop extends Controller {
 		
 		$this->load->model('catalog/category'); 
 		$data['filters'] = $this->model_catalog_category->getAllFilters(0);		
-//var_dump($data['filters'][0]);die();
+
 		switch ($this->session->data['current_zone']['zone_id']) {
 			// SPB
 			case '2785':
