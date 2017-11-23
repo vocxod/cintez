@@ -1458,7 +1458,7 @@ p {
 #id_10.sidebar li a.collapsed.active {
     display: block;
     padding: 10px 10px;
-    color: #FEFAEA;
+    color: #222;
     border-left: 0px solid #fafafa;
     text-decoration: none;
 }
