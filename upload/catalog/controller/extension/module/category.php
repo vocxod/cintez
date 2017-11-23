@@ -64,6 +64,9 @@ class ControllerExtensionModuleCategory extends Controller {
 			);
 		}
 		$data['lang'] = $this->language->get('code');
+		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
+		$data['category_tree'] = $aCategoryTree['tree'];
+		//var_dump( $aCategoryTree['tree'][168]['children'][172]['children'] ); die();
 		return $this->load->view('extension/module/category', $data);
 	}
 }

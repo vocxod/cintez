@@ -25,13 +25,13 @@
 
 #}
 
-{% import "category_menu.twig" as catmenu %}
+{% import "macros/category_menu.twig" as catmenu %}
 
   <div id="id_10" class="sidebar left ">
     <ul class="list-sidebar bg-defoult">
-    {% for category in categories %}
-      {% if category.top == 1 %}
-        {{ catmenu.menuItem( category.top, category.category_id, category.name, loop.index ) }}
+
+    {% for category in category_tree %}
+        {{ catmenu.menuItem( category.category_id, category.name, category.children ) }}
 {#
       <li> 
         <a href="#" data-toggle="collapse" data-target="#category_{{ category.category_id }}" class="collapsed active" > 
@@ -50,8 +50,7 @@
         </ul>
       </li>
 #}
-      {% else %}
-      {% endif %}
+
     {% endfor %}  
 {#  
       {% for item in filters %}
