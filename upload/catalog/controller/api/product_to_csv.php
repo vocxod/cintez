@@ -13,8 +13,8 @@ class ControllerApiProductToCsv extends Controller {
 			$json['status'] = ['code'=>200];
 			$json['filters'] = $this->model_catalog_category->getAllFilters(0);	
 			$json['products'] = $this->model_catalog_product->getProducts();
-			$json['row'] = ["\"Наименование\""];
-			$json['empty_row'] = [""];
+			$json['row'] = ["\"ID\"", "\"Наименование\""];
+			$json['empty_row'] = ["", ""];
 			foreach ($json['filters'] as $aFilter ) {
 				foreach ($aFilter as $sKey=>$aItem) {
 					if($sKey=='filter'){
@@ -30,7 +30,8 @@ class ControllerApiProductToCsv extends Controller {
 			$fp = fopen('product_property.csv', 'w');
 			fputcsv($fp, $json['row']); //первая строка с заголовками
 			foreach ($json['products'] as $aProduct) {
-				$json['empty_row'][0] = $aProduct["name"];
+				$json['empty_row'][0] =  $aProduct["product_id"];
+				$json['empty_row'][1] =  $aProduct["name"];
 			    fputcsv($fp, $json['empty_row'] ); //внутренние строки ТОВАР и нули по числу колонок
 			}
 			fclose($fp);
