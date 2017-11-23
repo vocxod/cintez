@@ -1451,7 +1451,7 @@ p {
     transition: all 0.5s  ease-in-out; 
     margin-left:0px;
 }
-#id_10.bg-defoult{background-color:#222;}
+#id_10.bg-defoult{background-color:#f0f5f0;}
 #id_10.sidebar ul{ list-style:none; margin:0px; padding:0px; }
 
 #id_10.sidebar li a, 
@@ -1467,7 +1467,7 @@ p {
 } 
 
 #id_10.sidebar li a.active{
-    background-color:#369a36; /* активный фон заголовка категории */
+    background-color:#f0f5f0; /* активный фон заголовка категории */
     border-left:15px solid rgba(10, 86, 11, 0.89); 
     transition: all 0.5s  ease-in-out
 }
@@ -1547,7 +1547,7 @@ p {
     left: -5px;
     top: 0;
     width: 5px;
-    background-color: #36989a;
+    background-color: #f0f5f0;
     height: 100%;
     color:green;
 }
