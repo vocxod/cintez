@@ -24,10 +24,15 @@
 <i class="fa fa-building" aria-hidden="true"></i>
 
 #}
+
+{% import "category_menu.twig" as catmenu %}
+
   <div id="id_10" class="sidebar left ">
     <ul class="list-sidebar bg-defoult">
     {% for category in categories %}
       {% if category.top == 1 %}
+        {{ catmenu.menuItem( category.top, category.category_id, category.name, loop.index ) }}
+{#
       <li> 
         <a href="#" data-toggle="collapse" data-target="#category_{{ category.category_id }}" class="collapsed active" > 
           <i class="fa fa-cutlery" aria-hidden="true"></i> 
@@ -44,6 +49,7 @@
           {% endfor %}
         </ul>
       </li>
+#}
       {% else %}
       {% endif %}
     {% endfor %}  
