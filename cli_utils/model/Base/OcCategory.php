@@ -138,6 +138,14 @@ abstract class OcCategory implements ActiveRecordInterface
     protected $category_site_id;
 
     /**
+     * The value for the css field.
+     *
+     * Note: this column has a database default value of: '0'
+     * @var        string
+     */
+    protected $css;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -158,6 +166,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $this->sort_order = 0;
         $this->status = 0;
         $this->date_modified = PropelDateTime::newInstance(NULL, null, 'DateTime');
+        $this->css = '0';
     }
 
     /**
@@ -518,6 +527,16 @@ abstract class OcCategory implements ActiveRecordInterface
     }
 
     /**
+     * Get the [css] column value.
+     *
+     * @return string
+     */
+    public function getCss()
+    {
+        return $this->css;
+    }
+
+    /**
      * Set the value of [category_id] column.
      *
      * @param int $v new value
@@ -728,6 +747,26 @@ abstract class OcCategory implements ActiveRecordInterface
     } // setCategorySiteId()
 
     /**
+     * Set the value of [css] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcCategory The current object (for fluent API support)
+     */
+    public function setCss($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->css !== $v) {
+            $this->css = $v;
+            $this->modifiedColumns[OcCategoryTableMap::COL_CSS] = true;
+        }
+
+        return $this;
+    } // setCss()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -754,6 +793,10 @@ abstract class OcCategory implements ActiveRecordInterface
             }
 
             if ($this->date_modified && $this->date_modified->format('Y-m-d H:i:s.u') !== NULL) {
+                return false;
+            }
+
+            if ($this->css !== '0') {
                 return false;
             }
 
@@ -818,6 +861,9 @@ abstract class OcCategory implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : OcCategoryTableMap::translateFieldName('CategorySiteId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->category_site_id = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : OcCategoryTableMap::translateFieldName('Css', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->css = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -826,7 +872,7 @@ abstract class OcCategory implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = OcCategoryTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 11; // 11 = OcCategoryTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcCategory'), 0, $e);
@@ -1057,6 +1103,9 @@ abstract class OcCategory implements ActiveRecordInterface
         if ($this->isColumnModified(OcCategoryTableMap::COL_CATEGORY_SITE_ID)) {
             $modifiedColumns[':p' . $index++]  = 'category_site_id';
         }
+        if ($this->isColumnModified(OcCategoryTableMap::COL_CSS)) {
+            $modifiedColumns[':p' . $index++]  = 'css';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_category (%s) VALUES (%s)',
@@ -1097,6 +1146,9 @@ abstract class OcCategory implements ActiveRecordInterface
                         break;
                     case 'category_site_id':
                         $stmt->bindValue($identifier, $this->category_site_id, PDO::PARAM_INT);
+                        break;
+                    case 'css':
+                        $stmt->bindValue($identifier, $this->css, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1190,6 +1242,9 @@ abstract class OcCategory implements ActiveRecordInterface
             case 9:
                 return $this->getCategorySiteId();
                 break;
+            case 10:
+                return $this->getCss();
+                break;
             default:
                 return null;
                 break;
@@ -1229,6 +1284,7 @@ abstract class OcCategory implements ActiveRecordInterface
             $keys[7] => $this->getDateAdded(),
             $keys[8] => $this->getDateModified(),
             $keys[9] => $this->getCategorySiteId(),
+            $keys[10] => $this->getCss(),
         );
         if ($result[$keys[7]] instanceof \DateTime) {
             $result[$keys[7]] = $result[$keys[7]]->format('c');
@@ -1306,6 +1362,9 @@ abstract class OcCategory implements ActiveRecordInterface
             case 9:
                 $this->setCategorySiteId($value);
                 break;
+            case 10:
+                $this->setCss($value);
+                break;
         } // switch()
 
         return $this;
@@ -1361,6 +1420,9 @@ abstract class OcCategory implements ActiveRecordInterface
         }
         if (array_key_exists($keys[9], $arr)) {
             $this->setCategorySiteId($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setCss($arr[$keys[10]]);
         }
     }
 
@@ -1432,6 +1494,9 @@ abstract class OcCategory implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcCategoryTableMap::COL_CATEGORY_SITE_ID)) {
             $criteria->add(OcCategoryTableMap::COL_CATEGORY_SITE_ID, $this->category_site_id);
+        }
+        if ($this->isColumnModified(OcCategoryTableMap::COL_CSS)) {
+            $criteria->add(OcCategoryTableMap::COL_CSS, $this->css);
         }
 
         return $criteria;
@@ -1528,6 +1593,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $copyObj->setDateAdded($this->getDateAdded());
         $copyObj->setDateModified($this->getDateModified());
         $copyObj->setCategorySiteId($this->getCategorySiteId());
+        $copyObj->setCss($this->getCss());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setCategoryId(NULL); // this is a auto-increment column, so set to default value
@@ -1573,6 +1639,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $this->date_added = null;
         $this->date_modified = null;
         $this->category_site_id = null;
+        $this->css = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

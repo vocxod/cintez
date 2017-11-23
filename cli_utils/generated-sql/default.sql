@@ -297,6 +297,7 @@ CREATE TABLE `oc_category`
     `date_added` TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
     `date_modified` DATETIME DEFAULT '0000-00-00 00:00:00' NOT NULL,
     `category_site_id` INTEGER,
+    `css` VARCHAR(64) DEFAULT '0',
     PRIMARY KEY (`category_id`),
     INDEX `parent_id` (`parent_id`)
 ) ENGINE=MyISAM;
@@ -1685,6 +1686,7 @@ CREATE TABLE `oc_product_filter`
 (
     `product_id` INTEGER NOT NULL,
     `filter_id` INTEGER NOT NULL,
+    `liked` INTEGER DEFAULT 0,
     PRIMARY KEY (`product_id`,`filter_id`)
 ) ENGINE=MyISAM;
 

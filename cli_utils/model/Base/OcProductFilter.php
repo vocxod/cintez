@@ -74,6 +74,14 @@ abstract class OcProductFilter implements ActiveRecordInterface
     protected $filter_id;
 
     /**
+     * The value for the liked field.
+     *
+     * Note: this column has a database default value of: 0
+     * @var        int
+     */
+    protected $liked;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -82,10 +90,23 @@ abstract class OcProductFilter implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
+     * Applies default values to this object.
+     * This method should be called from the object's constructor (or
+     * equivalent initialization method).
+     * @see __construct()
+     */
+    public function applyDefaultValues()
+    {
+        $this->liked = 0;
+    }
+
+    /**
      * Initializes internal state of Base\OcProductFilter object.
+     * @see applyDefaults()
      */
     public function __construct()
     {
+        $this->applyDefaultValues();
     }
 
     /**
@@ -327,6 +348,16 @@ abstract class OcProductFilter implements ActiveRecordInterface
     }
 
     /**
+     * Get the [liked] column value.
+     *
+     * @return int
+     */
+    public function getLiked()
+    {
+        return $this->liked;
+    }
+
+    /**
      * Set the value of [product_id] column.
      *
      * @param int $v new value
@@ -367,6 +398,26 @@ abstract class OcProductFilter implements ActiveRecordInterface
     } // setFilterId()
 
     /**
+     * Set the value of [liked] column.
+     *
+     * @param int $v new value
+     * @return $this|\OcProductFilter The current object (for fluent API support)
+     */
+    public function setLiked($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->liked !== $v) {
+            $this->liked = $v;
+            $this->modifiedColumns[OcProductFilterTableMap::COL_LIKED] = true;
+        }
+
+        return $this;
+    } // setLiked()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -376,6 +427,10 @@ abstract class OcProductFilter implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
+            if ($this->liked !== 0) {
+                return false;
+            }
+
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -407,6 +462,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : OcProductFilterTableMap::translateFieldName('FilterId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->filter_id = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : OcProductFilterTableMap::translateFieldName('Liked', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->liked = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -415,7 +473,7 @@ abstract class OcProductFilter implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 2; // 2 = OcProductFilterTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 3; // 3 = OcProductFilterTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcProductFilter'), 0, $e);
@@ -618,6 +676,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
         if ($this->isColumnModified(OcProductFilterTableMap::COL_FILTER_ID)) {
             $modifiedColumns[':p' . $index++]  = 'filter_id';
         }
+        if ($this->isColumnModified(OcProductFilterTableMap::COL_LIKED)) {
+            $modifiedColumns[':p' . $index++]  = 'liked';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_product_filter (%s) VALUES (%s)',
@@ -634,6 +695,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
                         break;
                     case 'filter_id':
                         $stmt->bindValue($identifier, $this->filter_id, PDO::PARAM_INT);
+                        break;
+                    case 'liked':
+                        $stmt->bindValue($identifier, $this->liked, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -696,6 +760,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
             case 1:
                 return $this->getFilterId();
                 break;
+            case 2:
+                return $this->getLiked();
+                break;
             default:
                 return null;
                 break;
@@ -727,6 +794,7 @@ abstract class OcProductFilter implements ActiveRecordInterface
         $result = array(
             $keys[0] => $this->getProductId(),
             $keys[1] => $this->getFilterId(),
+            $keys[2] => $this->getLiked(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -772,6 +840,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
             case 1:
                 $this->setFilterId($value);
                 break;
+            case 2:
+                $this->setLiked($value);
+                break;
         } // switch()
 
         return $this;
@@ -803,6 +874,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
         }
         if (array_key_exists($keys[1], $arr)) {
             $this->setFilterId($arr[$keys[1]]);
+        }
+        if (array_key_exists($keys[2], $arr)) {
+            $this->setLiked($arr[$keys[2]]);
         }
     }
 
@@ -850,6 +924,9 @@ abstract class OcProductFilter implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcProductFilterTableMap::COL_FILTER_ID)) {
             $criteria->add(OcProductFilterTableMap::COL_FILTER_ID, $this->filter_id);
+        }
+        if ($this->isColumnModified(OcProductFilterTableMap::COL_LIKED)) {
+            $criteria->add(OcProductFilterTableMap::COL_LIKED, $this->liked);
         }
 
         return $criteria;
@@ -947,6 +1024,7 @@ abstract class OcProductFilter implements ActiveRecordInterface
     {
         $copyObj->setProductId($this->getProductId());
         $copyObj->setFilterId($this->getFilterId());
+        $copyObj->setLiked($this->getLiked());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -983,8 +1061,10 @@ abstract class OcProductFilter implements ActiveRecordInterface
     {
         $this->product_id = null;
         $this->filter_id = null;
+        $this->liked = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
+        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);

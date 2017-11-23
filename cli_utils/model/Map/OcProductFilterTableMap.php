@@ -59,7 +59,7 @@ class OcProductFilterTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 2;
+    const NUM_COLUMNS = 3;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcProductFilterTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 2;
+    const NUM_HYDRATE_COLUMNS = 3;
 
     /**
      * the column name for the product_id field
@@ -80,6 +80,11 @@ class OcProductFilterTableMap extends TableMap
      * the column name for the filter_id field
      */
     const COL_FILTER_ID = 'oc_product_filter.filter_id';
+
+    /**
+     * the column name for the liked field
+     */
+    const COL_LIKED = 'oc_product_filter.liked';
 
     /**
      * The default string format for model objects of the related table
@@ -93,11 +98,11 @@ class OcProductFilterTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ProductId', 'FilterId', ),
-        self::TYPE_CAMELNAME     => array('productId', 'filterId', ),
-        self::TYPE_COLNAME       => array(OcProductFilterTableMap::COL_PRODUCT_ID, OcProductFilterTableMap::COL_FILTER_ID, ),
-        self::TYPE_FIELDNAME     => array('product_id', 'filter_id', ),
-        self::TYPE_NUM           => array(0, 1, )
+        self::TYPE_PHPNAME       => array('ProductId', 'FilterId', 'Liked', ),
+        self::TYPE_CAMELNAME     => array('productId', 'filterId', 'liked', ),
+        self::TYPE_COLNAME       => array(OcProductFilterTableMap::COL_PRODUCT_ID, OcProductFilterTableMap::COL_FILTER_ID, OcProductFilterTableMap::COL_LIKED, ),
+        self::TYPE_FIELDNAME     => array('product_id', 'filter_id', 'liked', ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -107,11 +112,11 @@ class OcProductFilterTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ProductId' => 0, 'FilterId' => 1, ),
-        self::TYPE_CAMELNAME     => array('productId' => 0, 'filterId' => 1, ),
-        self::TYPE_COLNAME       => array(OcProductFilterTableMap::COL_PRODUCT_ID => 0, OcProductFilterTableMap::COL_FILTER_ID => 1, ),
-        self::TYPE_FIELDNAME     => array('product_id' => 0, 'filter_id' => 1, ),
-        self::TYPE_NUM           => array(0, 1, )
+        self::TYPE_PHPNAME       => array('ProductId' => 0, 'FilterId' => 1, 'Liked' => 2, ),
+        self::TYPE_CAMELNAME     => array('productId' => 0, 'filterId' => 1, 'liked' => 2, ),
+        self::TYPE_COLNAME       => array(OcProductFilterTableMap::COL_PRODUCT_ID => 0, OcProductFilterTableMap::COL_FILTER_ID => 1, OcProductFilterTableMap::COL_LIKED => 2, ),
+        self::TYPE_FIELDNAME     => array('product_id' => 0, 'filter_id' => 1, 'liked' => 2, ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -133,6 +138,7 @@ class OcProductFilterTableMap extends TableMap
         // columns
         $this->addPrimaryKey('product_id', 'ProductId', 'INTEGER', true, null, null);
         $this->addPrimaryKey('filter_id', 'FilterId', 'INTEGER', true, null, null);
+        $this->addColumn('liked', 'Liked', 'INTEGER', false, null, 0);
     } // initialize()
 
     /**
@@ -347,9 +353,11 @@ class OcProductFilterTableMap extends TableMap
         if (null === $alias) {
             $criteria->addSelectColumn(OcProductFilterTableMap::COL_PRODUCT_ID);
             $criteria->addSelectColumn(OcProductFilterTableMap::COL_FILTER_ID);
+            $criteria->addSelectColumn(OcProductFilterTableMap::COL_LIKED);
         } else {
             $criteria->addSelectColumn($alias . '.product_id');
             $criteria->addSelectColumn($alias . '.filter_id');
+            $criteria->addSelectColumn($alias . '.liked');
         }
     }
 

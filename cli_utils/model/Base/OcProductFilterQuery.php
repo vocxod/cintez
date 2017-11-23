@@ -21,9 +21,11 @@ use Propel\Runtime\Exception\PropelException;
  *
  * @method     ChildOcProductFilterQuery orderByProductId($order = Criteria::ASC) Order by the product_id column
  * @method     ChildOcProductFilterQuery orderByFilterId($order = Criteria::ASC) Order by the filter_id column
+ * @method     ChildOcProductFilterQuery orderByLiked($order = Criteria::ASC) Order by the liked column
  *
  * @method     ChildOcProductFilterQuery groupByProductId() Group by the product_id column
  * @method     ChildOcProductFilterQuery groupByFilterId() Group by the filter_id column
+ * @method     ChildOcProductFilterQuery groupByLiked() Group by the liked column
  *
  * @method     ChildOcProductFilterQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcProductFilterQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -37,17 +39,20 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductFilter findOneOrCreate(ConnectionInterface $con = null) Return the first ChildOcProductFilter matching the query, or a new ChildOcProductFilter object populated from the query conditions when no match is found
  *
  * @method     ChildOcProductFilter findOneByProductId(int $product_id) Return the first ChildOcProductFilter filtered by the product_id column
- * @method     ChildOcProductFilter findOneByFilterId(int $filter_id) Return the first ChildOcProductFilter filtered by the filter_id column *
+ * @method     ChildOcProductFilter findOneByFilterId(int $filter_id) Return the first ChildOcProductFilter filtered by the filter_id column
+ * @method     ChildOcProductFilter findOneByLiked(int $liked) Return the first ChildOcProductFilter filtered by the liked column *
 
  * @method     ChildOcProductFilter requirePk($key, ConnectionInterface $con = null) Return the ChildOcProductFilter by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductFilter requireOne(ConnectionInterface $con = null) Return the first ChildOcProductFilter matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcProductFilter requireOneByProductId(int $product_id) Return the first ChildOcProductFilter filtered by the product_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductFilter requireOneByFilterId(int $filter_id) Return the first ChildOcProductFilter filtered by the filter_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcProductFilter requireOneByLiked(int $liked) Return the first ChildOcProductFilter filtered by the liked column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcProductFilter[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcProductFilter objects based on current ModelCriteria
  * @method     ChildOcProductFilter[]|ObjectCollection findByProductId(int $product_id) Return ChildOcProductFilter objects filtered by the product_id column
  * @method     ChildOcProductFilter[]|ObjectCollection findByFilterId(int $filter_id) Return ChildOcProductFilter objects filtered by the filter_id column
+ * @method     ChildOcProductFilter[]|ObjectCollection findByLiked(int $liked) Return ChildOcProductFilter objects filtered by the liked column
  * @method     ChildOcProductFilter[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -146,7 +151,7 @@ abstract class OcProductFilterQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT product_id, filter_id FROM oc_product_filter WHERE product_id = :p0 AND filter_id = :p1';
+        $sql = 'SELECT product_id, filter_id, liked FROM oc_product_filter WHERE product_id = :p0 AND filter_id = :p1';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key[0], PDO::PARAM_INT);
@@ -328,6 +333,47 @@ abstract class OcProductFilterQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcProductFilterTableMap::COL_FILTER_ID, $filterId, $comparison);
+    }
+
+    /**
+     * Filter the query on the liked column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByLiked(1234); // WHERE liked = 1234
+     * $query->filterByLiked(array(12, 34)); // WHERE liked IN (12, 34)
+     * $query->filterByLiked(array('min' => 12)); // WHERE liked > 12
+     * </code>
+     *
+     * @param     mixed $liked The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcProductFilterQuery The current query, for fluid interface
+     */
+    public function filterByLiked($liked = null, $comparison = null)
+    {
+        if (is_array($liked)) {
+            $useMinMax = false;
+            if (isset($liked['min'])) {
+                $this->addUsingAlias(OcProductFilterTableMap::COL_LIKED, $liked['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($liked['max'])) {
+                $this->addUsingAlias(OcProductFilterTableMap::COL_LIKED, $liked['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcProductFilterTableMap::COL_LIKED, $liked, $comparison);
     }
 
     /**

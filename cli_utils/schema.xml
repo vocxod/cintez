@@ -268,6 +268,7 @@
     <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
     <column name="category_site_id" phpName="CategorySiteId" type="INTEGER"/>
+    <column name="css" phpName="Css" type="VARCHAR" size="64" defaultValue="0"/>
     <index name="parent_id">
       <index-column name="parent_id"/>
     </index>
@@ -1210,6 +1211,7 @@
   <table name="oc_product_filter" idMethod="native" phpName="OcProductFilter">
     <column name="product_id" phpName="ProductId" type="INTEGER" primaryKey="true" required="true"/>
     <column name="filter_id" phpName="FilterId" type="INTEGER" primaryKey="true" required="true"/>
+    <column name="liked" phpName="Liked" type="INTEGER" defaultValue="0"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

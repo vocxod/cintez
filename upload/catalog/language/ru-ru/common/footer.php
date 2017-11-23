@@ -14,4 +14,4 @@ $_['text_account']      = 'Личный Кабинет';
 $_['text_order']        = 'История заказов';
 $_['text_wishlist']     = 'Закладки';
 $_['text_newsletter']   = 'Рассылка';
-$_['text_powered']      = '2013 - %s &copy; OOO СпецСинтез %s';
+$_['text_powered']      = '&copy; OOO "СпецСинтез" %s  2013 - %s';

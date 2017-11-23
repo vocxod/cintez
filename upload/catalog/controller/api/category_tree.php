@@ -36,7 +36,8 @@ class ControllerApiCategoryTree extends Controller {
 		$this->load->model('catalog/category');
 		foreach( $aCategories as $aCategory ){
 			$aResult[ $aCategory['category_id'] ] = [ 'category_id'=>$aCategory['category_id'], 
-			'name'=>$aCategory['name'], 
+			'name'=> $aCategory['name'], 
+			'css' => $aCategory['css'],
 			'children'=>$this->createTree( 
 				$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
 			) ]; 	
