@@ -1626,7 +1626,7 @@ p {
     transition: all 0.5s  ease-in-out
 }
 #id_13.sidebar li a:hover{
-    background-color:rgba(54,200,56, .65) !important;
+    background-color:#449d44 !important;
 }
 #id_13.sidebar li a i{ padding-right:5px;}
 #id_13.sidebar ul li .sub-menu li a{ position:relative}
