@@ -63,7 +63,7 @@ class ControllerExtensionModuleCategory extends Controller {
 				'image'		  => $category['image'],
 			);
 		}
-
+		$data['lang'] = $this->language->get('code');
 		return $this->load->view('extension/module/category', $data);
 	}
 }

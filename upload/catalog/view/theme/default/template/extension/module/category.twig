@@ -1,53 +1,75 @@
+<div id="sidebar_10" class="list-group category-list">
+  {% if lang == 'ru' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1590px -10px; width:291px; overflow:hidden;">{{ where_use }}
+      </h3>
+  {% endif %}
 
-<div class="list-group category-list">
+  {% if lang == 'en' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1630px -10px; width:291px; overflow:hidden;">{{ where_use }}
+      </h3>
+  {% endif %}
+{#
+<i class="fa fa-bath" aria-hidden="true"></i>
+<i class="fa fa-building" aria-hidden="true"></i>
 
-  {% for category in categories %}
-      {% if category.category_id == category_id %} 
-          <a href="{{ category.href }}" class="list-group-item active" style="">
-          {% if category.top == 1 %}
-              {#<img src="/image/{{ category.image }}" alt="{{ category.name }}">#}
-              <div class="category_ids category_id_{{ category.category_id }}"></div>
-              <span style="margin-left:2px;">{{ category.name }}</span>  <span class="budge budge-open">  </span>
-          {#
-          {% else %}     
-              <span style="margin-left:38px;">={{ category.name }}</span>  <span class="budge-close">  </span>
-          #}
-          {% endif %}
-          <i class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true" style="margin-top:4px; margin-right:4px;"></i>
-          </a>
-          {% if category.children %}
-              {% for child in category.children %}
-                  {% if child.category_id == child_id %}
-                  <a href="{{ child.href }}" class="list-group-item active">
-                    <span class="subcategory">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{ child.name }}</a>
-                  </a> 
-                  {% else %} 
-                  <a href="{{ child.href }}" class="list-group-item">
-                    <span class="subcategory">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{ child.name }}
-                  </a>
-                  {% endif %}
-              {% endfor %}
-          {% endif %}
-      {% else %} 
-          {# Не выбранная категория #}
-          <a href="{{ category.href }}" class="list-group-item">
-          {% if category.top == 1 %}
-              <div class="category_ids category_id_{{ category.category_id }}_unselect"></div>
-              <span style="margin-left:2px;">{{ category.name }}</span>
-              <span class="budge budge-close">
-              <i class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="margin-right:4px;margin-top:4px;"></i>  
-              </span>
-          {% else %}
-              
-          {% endif %}
-          </a>
+#}
+  <div id="id_10" class="sidebar left ">
+    <ul class="list-sidebar bg-defoult">
+    {% for category in categories %}
+      {% if category.top == 1 %}
+      <li> 
+        <a href="#" data-toggle="collapse" data-target="#category_{{ category.category_id }}" class="collapsed active" > 
+          <i class="fa fa-cutlery" aria-hidden="true"></i> 
+          <span class="nav-label"> {{category.name}} </span>         
+          <span class="fa fa-chevron-right pull-right"></span> 
+        </a>
+        <ul class="sub-menu collapse" id="category_{{ category.category_id }}">
+          {% for yfon in item.filter %}
+            {% if loop.index==1 %}
+                <li class="active"><a href="#">{{ category.name }}</a></li>
+            {% else %}
+                <li><a href="#">{{ category.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+      {% else %}
       {% endif %}
-  {% endfor %}
+    {% endfor %}  
+{#  
+      {% for item in filters %}
+      <li> 
+        <a href="#" data-toggle="collapse" data-target="#dashboard_{{ item.filter_group_id }}" class="collapsed active" > 
+          <i class="fa fa-th-large"></i> 
+          <span class="nav-label"> {{item.name}} </span> 
+          <span class="fa fa-chevron-left pull-right"></span> 
+        </a>
+        <ul class="sub-menu collapse" id="dashboard_{{ item.filter_group_id }}">
+          {% for yfon in item.filter %}
+            {% if loop.index==1 %}
+                <li class="active"><a href="#">{{ yfon.name }}</a></li>
+            {% else %}
+                <li><a href="#">{{ yfon.name }}</a></li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </li>
+      {% endfor %}
+#}
+    </ul>
+  </div>
 </div>
-
 <div id="sidebar_13" class="list-group category-list">
-  <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -9px; width:260px; overflow:hidden;">{{ text_filter }}
-  </h3>
+  {% if lang == 'ru' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -10px; width:291px; overflow:hidden;">{{ text_filter }}
+      </h3>
+  {% endif %}
+
+  {% if lang == 'en' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1736px -10px; width:291px; overflow:hidden;">{{ text_filter }}
+      </h3>
+  {% endif %}
+
   <div id="id_13" class="sidebar left ">
     <ul class="list-sidebar bg-defoult">
   
@@ -73,7 +95,52 @@
     </ul>
   </div>
 </div>
+{#
+<div class="list-group category-list">
+  {% for category in categories %}
+      {% if category.category_id == category_id %} 
+          <a href="{{ category.href }}" class="list-group-item active" style="">
+          {% if category.top == 1 %}
+              <!--<img src="/image/{{ category.image }}" alt="{{ category.name }}"> -->
+              <div class="category_ids category_id_{{ category.category_id }}"></div>
+              <span style="margin-left:2px;">{{ category.name }}</span>  <span class="budge budge-open">  </span>
+          {% endif %}
+          <i class="glyphicon glyphicon-chevron-down pull-right" aria-hidden="true" style="margin-top:4px; margin-right:4px;"></i>
+          </a>
+          {% if category.children %}
+              {% for child in category.children %}
+                  {% if child.category_id == child_id %}
+                  <a href="{{ child.href }}" class="list-group-item active">
+                    <span class="subcategory">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{ child.name }}</a>
+                  </a> 
+                  {% else %} 
+                  <a href="{{ child.href }}" class="list-group-item">
+                    <span class="subcategory">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- {{ child.name }}
+                  </a>
+                  {% endif %}
+              {% endfor %}
+          {% endif %}
+      {% else %} 
+          <!-- Не выбранная категория -->
+          <a href="{{ category.href }}" class="list-group-item">
+          {% if category.top == 1 %}
+              <div class="category_ids category_id_{{ category.category_id }}_unselect"></div>
+              <span style="margin-left:2px;">{{ category.name }}</span>
+              <span class="budge budge-close">
+              <i class="glyphicon glyphicon-chevron-right" aria-hidden="true" style="margin-right:4px;margin-top:4px;"></i>  
+              </span>
+          {% else %}
+              
+          {% endif %}
+          </a>
+      {% endif %}
+  {% endfor %}
+</div>
+#}
 
+
+
+{#
 <div id="sidebar_12" class="list-group category-list">
   
   <div id="id_12" class="sidebar left ">
@@ -138,12 +205,16 @@
     </ul>
   </div>
 </div>
-
+#}
 
 
 <script type="text/javascript">
 $(document).ready(function(){
    $('#id_13 a').click(function(e){
+       e.preventDefault();
+       //$('.sidebar').toggleClass('fliph');
+   });
+   $('#id_10 a').click(function(e){
        e.preventDefault();
        //$('.sidebar').toggleClass('fliph');
    }); 
