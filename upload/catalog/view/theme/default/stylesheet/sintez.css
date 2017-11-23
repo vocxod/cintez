@@ -1451,8 +1451,15 @@ p {
     transition: all 0.5s  ease-in-out; 
     margin-left:0px;
 }
-#id_10.bg-defoult{background-color:#f0f5f0;}
-#id_10.sidebar ul{ list-style:none; margin:0px; padding:0px; }
+
+#id_10.bg-defoult {
+  background-color:#f0f5f0;
+}
+
+#id_10.sidebar ul{ 
+  list-style:none; 
+  margin:0px; padding:0px; 
+}
 
 #id_10.sidebar li a, 
 #id_10.sidebar li a.collapsed.active {
@@ -1462,20 +1469,24 @@ p {
     border-left: 0px solid #fafafa;
     text-decoration: none;
 }
-#id_10.sidebar li a {
-  color:#222;
-} 
 
 #id_10.sidebar li a.active{
     background-color:#f0f5f0; /* активный фон заголовка категории */
     border-left:15px solid rgba(10, 86, 11, 0.89); 
     transition: all 0.5s  ease-in-out
 }
+
 #id_10.sidebar li a:hover{
     background-color:rgba(54,200,56, .65) !important;
 }
-#id_10.sidebar li a i{ padding-right:5px;}
-#id_10.sidebar ul li .sub-menu li a{ position:relative}
+
+#id_10.sidebar li a i { 
+  padding-right:5px;
+}
+/* SUBMENU 1 */
+#id_10.sidebar ul li .sub-menu li a { 
+  position:relative
+}
 #id_10.sidebar ul li .sub-menu li a:before{
     font-family: FontAwesome;
     content: "\f105";
@@ -1485,9 +1496,28 @@ p {
     vertical-align: middle;
     color:#36989a;
 }
+#id_10.sub-menu{ border-left:5px solid #dedede;}
+#id_10.sidebar ul li .sub-menu li a:hover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    background-color: #f0f5f0;
+    height: 100%;
+    color:green;
+}
+#id_10.sidebar ul li .sub-menu li a:hover{ 
+    background-color:#222; 
+    padding-left:20px; 
+    transition: all 0.5s  ease-in-out;
+    
+}
 
-/* третий уровень мню */
-#id_10.sidebar ul li .sub-menu2 li a{ position:relative}
+/* SUBMENU 2 */
+#id_10.sidebar ul li .sub-menu2 li a{ 
+  position:relative
+}
 #id_10.sidebar ul li .sub-menu2 li a:before{
     font-family: FontAwesome;
     content: "\f105\f105";
@@ -1497,8 +1527,21 @@ p {
     vertical-align: middle;
     color:blue;
 }
-/* 4ый уровень мню */
-#id_10.sidebar ul li .sub-menu3 li a{ position:relative}
+#id_10.sidebar ul li .sub-menu2 li a:hover:after {
+    content: "\f105";
+    position: absolute;
+    left: -25px;
+    top: 0;
+    width: 5px;
+    background-color: yellow;
+    height: 100%;
+    color:green;
+}
+
+/* SUBMENU 3 */
+#id_10.sidebar ul li .sub-menu3 li a{ 
+  position:relative
+}
 #id_10.sidebar ul li .sub-menu3 li a:before{
     font-family: FontAwesome;
     content: "\f105\f105\f105";
@@ -1508,7 +1551,7 @@ p {
     vertical-align: middle;
     color:green;
 }
-/* наведение на субкатегорию 3 */
+
 #id_10.sidebar ul li .sub-menu3 li a:hover:after {
     content: "\f105";
     position: absolute;
@@ -1528,36 +1571,6 @@ p {
     color:blue;
 }
 
-/* наведение на субкатегорию 2 */
-#id_10.sidebar ul li .sub-menu2 li a:hover:after {
-    content: "\f105";
-    position: absolute;
-    left: -25px;
-    top: 0;
-    width: 5px;
-    background-color: yellow;
-    height: 100%;
-    color:green;
-}
-
-/* наведение на субкатегорию */
-#id_10.sidebar ul li .sub-menu li a:hover:after {
-    content: "";
-    position: absolute;
-    left: -5px;
-    top: 0;
-    width: 5px;
-    background-color: #f0f5f0;
-    height: 100%;
-    color:green;
-}
-#id_10.sidebar ul li .sub-menu li a:hover{ 
-    background-color:#222; 
-    padding-left:20px; 
-    transition: all 0.5s  ease-in-out;
-    
-}
-#id_10.sub-menu{ border-left:5px solid #dedede;}
 #id_10.sidebar li a .nav-label,
 #id_10.sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
   
@@ -1566,13 +1579,11 @@ p {
     display:none;
     transition: all 0.5s  ease-in-out
 }
-
+/*
 #id_10.sidebar.fliph {
     width: 42px;
-    /*transition: all 0.5s  ease-in-out; */
-    transition: all 0.5s  ease;
+    transition: all 0.5s  ease-in-out;
 }
-  
 #id_10.sidebar.fliph li{ position:relative}
 #id_10.sidebar.fliph .sub-menu {
     position: absolute;
@@ -1582,7 +1593,7 @@ p {
     width: 150px;
     z-index: 100;
 }
-  
+*/  
 /* FILTER block */
 #id13 {
   padding:0px;
@@ -1601,7 +1612,7 @@ p {
 #id_13.sidebar li a.collapsed.active {
     display: block;
     padding: 10px 10px;
-    color: #FEFAEA;
+    color: #222;
     border-left: 0px solid #fafafa;
     text-decoration: none;
 }
@@ -1610,7 +1621,7 @@ p {
 } 
 
 #id_13.sidebar li a.active{
-    background-color:#369a36; /* активный фон заголовка категории */
+    background-color:#f0f5f0; /* активный фон заголовка категории */
     border-left:15px solid rgba(10, 86, 11, 0.89); 
     transition: all 0.5s  ease-in-out
 }
