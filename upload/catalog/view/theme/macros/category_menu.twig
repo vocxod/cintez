@@ -1,0 +1,63 @@
+{% macro menuItem( category_id, category_name, category_children ) %}
+{% if category_children|length > 0 %}
+{# это категория с дочерними #}
+  <li> 
+  <a href="#" data-toggle="collapse" data-target="#category_{{ category_id }}" class="collapsed active" > 
+    <i class="fa fa-cutlery" aria-hidden="true"></i> 
+    <span class="nav-label">{{ category_id}}:{{category_children|length}}:{{category_name}} </span>         
+    <span class="fa fa-chevron-right pull-right"></span> 
+  </a>
+
+  <ul class="sub-menu collapse" id="category_{{ category_id }}">
+    {% for child in category_children %}
+      {% if loop.index==1 %}
+          
+          {% if child.children|length > 0 %}
+             {{ _self.menuItem( child.category_id, child.name, child.children ) }} 
+          {% else  %}
+              <li class="active"><a href="#">{{ child.name }}</a></li>
+          {% endif %}
+
+      {% else %}
+      
+          {% if child.children|length > 0 %}
+             {{ _self.menuItem( child.category_id, child.name, child.children ) }} 
+          {% else  %}
+              <li><a href="#">{{ child.name }}</a></li>
+          {% endif %}
+      
+      {% endif %}
+    {% endfor %}
+  </ul>
+
+  </li>
+
+{% else %}
+{# это категория БЕЗ дочерних (просто пункт) #}
+{% endif %}
+
+
+      
+{% endmacro menuItem %}
+
+
+{#
+
+      <a href="#" data-toggle="collapse" data-target="#category_{{ category_id }}" class="collapsed active" > 
+        <i class="fa fa-cutlery" aria-hidden="true"></i> 
+        <span class="nav-label">{{ category_id}}:{{category_children|length}}:{{category_name}} </span>         
+        <span class="fa fa-chevron-right pull-right"></span> 
+      </a>
+      
+      <ul class="sub-menu collapse" id="category_{{ category_id }}">
+        {% for yfon in item.filter %}
+          {% if loop.index==1 %}
+              <li class="active"><a href="#">{{ category.name }}</a></li>
+          {% else %}
+              <li><a href="#">{{ category.name }}</a></li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+
+
+#}
