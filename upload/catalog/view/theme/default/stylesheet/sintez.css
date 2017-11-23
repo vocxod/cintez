@@ -590,82 +590,82 @@ body {
 /* разная картинка на фон разных категорий */
 .category_ids {
   height: 32px; width: 32px; 
-  outline: 0px dashed red;
+  outline: 1px dashed red;
   float: left;
 }
 /* пищевая */
 .category_id_10 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -92px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -92px; 
 }
 .category_id_10_unselect {
   background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -92px;   
 }
 /* с/х */
 .category_id_54 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -426px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -426px; 
 }
 .category_id_54_unselect {
   background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -426px;   
 }
 /* хорега */
 .category_id_72 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -132px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -132px; 
 }
 .category_id_72_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -132px;   
 }
 /* клининг */
 .category_id_87 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -386px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -386px; 
 }
 .category_id_87_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -386px;   
 }
 /* транспорт */
 .category_id_94 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -468px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -468px; 
 }
 .category_id_94_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -468px;   
 }
 /* теплообменное */
 .category_id_113 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -516px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -516px; 
 }
 .category_id_113_unselect {
   background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -516px;   
 }
 /* машиностроение и металл */
 .category_id_117 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -174px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -174px; 
 }
 .category_id_117_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -174px;   
 }
 /* охрана труда */
 .category_id_127 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -298px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -298px; 
 }
 .category_id_127_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -298px;   
 }
 /* здравохранение */
 .category_id_131 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -11px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -11px; 
 }
 .category_id_131_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -11px;   
 }
 /* детские сады */
 .category_id_150 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -343px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -343px; 
 }
 .category_id_150_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -343px;   
 }
 /* СПА */
 .category_id_168 {
-  background: url('/image/catalog/categories/all-icons-for-categories.png') -28px -51px; 
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -51px; 
 }
 .category_id_168_unselect {
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -51px;   
@@ -1483,11 +1483,11 @@ p {
 #id_10.sidebar li a i { 
   padding-right:5px;
 }
-/* SUBMENU 1 */
-#id_10.sidebar ul li .sub-menu li a { 
+/* SUBMENU 0 */
+#id_10.sidebar ul li .sub-menu_0 li a { 
   position:relative
 }
-#id_10.sidebar ul li .sub-menu li a:before{
+#id_10.sidebar ul li .sub-menu_0 li a:before{
     font-family: FontAwesome;
     content: "\f105";
     display: inline-block;
@@ -1496,8 +1496,10 @@ p {
     vertical-align: middle;
     color:#36989a;
 }
-#id_10.sub-menu{ border-left:5px solid #dedede;}
-#id_10.sidebar ul li .sub-menu li a:hover:after {
+#id_10.sub-menu_0{ 
+  border-left:5px solid #dedede;
+}
+#id_10.sidebar ul li .sub-menu_0 li a:hover:after {
     content: "";
     position: absolute;
     left: -5px;
@@ -1507,7 +1509,42 @@ p {
     height: 100%;
     color:green;
 }
-#id_10.sidebar ul li .sub-menu li a:hover{ 
+#id_10.sidebar ul li .sub-menu_0 li a:hover,
+#id_10.sidebar ul li .sub-menu_0 li a:focus{ 
+    background-color:#222; 
+    padding-left:20px; 
+    transition: all 0.5s  ease-in-out;
+    
+}
+
+/* SUBMENU 1 */
+#id_10.sidebar ul li .sub-menu_1 li a { 
+  position:relative
+}
+#id_10.sidebar ul li .sub-menu_1 li a:before{
+    font-family: FontAwesome;
+    content: "\f105\f105";
+    display: inline-block;
+    padding-left: 0px;
+    padding-right: 10px;
+    vertical-align: middle;
+    color:#36989a;
+}
+#id_10.sub-menu_0{ 
+  border-left:5px solid #dedede;
+}
+#id_10.sidebar ul li .sub-menu_1 li a:hover:after {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 0;
+    width: 5px;
+    background-color: #f0f5f0;
+    height: 100%;
+    color:green;
+}
+#id_10.sidebar ul li .sub-menu_1 li a:hover,
+#id_10.sidebar ul li .sub-menu_1 li a:focus{ 
     background-color:#222; 
     padding-left:20px; 
     transition: all 0.5s  ease-in-out;
@@ -1520,15 +1557,18 @@ p {
 }
 #id_10.sidebar ul li .sub-menu2 li a:before{
     font-family: FontAwesome;
-    content: "\f105\f105";
+    content: "\f105\f105\f105";
     display: inline-block;
     padding-left: 0px;
     padding-right: 10px;
     vertical-align: middle;
     color:blue;
 }
+#id_10.sub-menu2 { 
+  border-left:5px solid #dedede;
+}
 #id_10.sidebar ul li .sub-menu2 li a:hover:after {
-    content: "\f105";
+    content: "";
     position: absolute;
     left: -25px;
     top: 0;
@@ -1537,23 +1577,31 @@ p {
     height: 100%;
     color:green;
 }
-
+#id_10.sidebar ul li .sub-menu2 li a:hover,
+#id_10.sidebar ul li .sub-menu2 li a:focus{ 
+    background-color:#222; 
+    padding-left:20px; 
+    transition: all 0.5s  ease-in-out;
+    
+}
 /* SUBMENU 3 */
 #id_10.sidebar ul li .sub-menu3 li a{ 
   position:relative
 }
 #id_10.sidebar ul li .sub-menu3 li a:before{
     font-family: FontAwesome;
-    content: "\f105\f105\f105";
+    content: "\f105\f105\f105\f105";
     display: inline-block;
     padding-left: 0px;
     padding-right: 15px;
     vertical-align: middle;
     color:green;
 }
-
+#id_10.sub-menu3 { 
+  border-left:5px solid #dedede;
+}
 #id_10.sidebar ul li .sub-menu3 li a:hover:after {
-    content: "\f105";
+    content: "";
     position: absolute;
     left: -20px;
     top: 0;

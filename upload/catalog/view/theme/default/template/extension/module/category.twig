@@ -31,26 +31,7 @@
     <ul class="list-sidebar bg-defoult">
 
     {% for category in category_tree %}
-        {{ catmenu.menuItem( category.category_id, category.name, category.children ) }}
-{#
-      <li> 
-        <a href="#" data-toggle="collapse" data-target="#category_{{ category.category_id }}" class="collapsed active" > 
-          <i class="fa fa-cutlery" aria-hidden="true"></i> 
-          <span class="nav-label"> {{category.name}} </span>         
-          <span class="fa fa-chevron-right pull-right"></span> 
-        </a>
-        <ul class="sub-menu collapse" id="category_{{ category.category_id }}">
-          {% for yfon in item.filter %}
-            {% if loop.index==1 %}
-                <li class="active"><a href="#">{{ category.name }}</a></li>
-            {% else %}
-                <li><a href="#">{{ category.name }}</a></li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </li>
-#}
-
+        {{ catmenu.menuItem( category.category_id, category.name, category.children, "0" ) }}
     {% endfor %}  
 {#  
       {% for item in filters %}

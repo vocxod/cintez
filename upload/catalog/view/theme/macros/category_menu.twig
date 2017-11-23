@@ -1,29 +1,31 @@
-{% macro menuItem( category_id, category_name, category_children ) %}
-{% if category_children|length > 0 %}
-{# это категория с дочерними #}
+{% macro menuItem( category_id, category_name, category_children, category_css ) %}
+
+  {% if category_children|length > 0 %}
+  {# это категория с дочерними #}
   <li> 
   <a href="#" data-toggle="collapse" data-target="#category_{{ category_id }}" class="collapsed active" > 
-    <i class="fa fa-cutlery" aria-hidden="true"></i> 
-    <span class="nav-label">{{ category_id}}:{{category_children|length}}:{{category_name}} </span>         
+    {#<i class="fa fa-cutlery" aria-hidden="true"></i>#}
+    <span class="category_ids category_id_{{category_id}}" style="position:relative;width:22px;height:22px;"></span> 
+    <span class="nav-label">{{ category_id}}:{{category_name}} </span>         
     <span class="fa fa-chevron-right pull-right"></span> 
   </a>
 
-  <ul class="sub-menu collapse" id="category_{{ category_id }}">
+  <ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
     {% for child in category_children %}
       {% if loop.index==1 %}
           
           {% if child.children|length > 0 %}
-             {{ _self.menuItem( child.category_id, child.name, child.children ) }} 
+             {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
           {% else  %}
-              <li class="active"><a href="#">{{ child.name }}</a></li>
+              <li class="active"><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
           {% endif %}
 
       {% else %}
       
           {% if child.children|length > 0 %}
-             {{ _self.menuItem( child.category_id, child.name, child.children ) }} 
+             {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
           {% else  %}
-              <li><a href="#">{{ child.name }}</a></li>
+              <li><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
           {% endif %}
       
       {% endif %}
@@ -34,10 +36,9 @@
 
 {% else %}
 {# это категория БЕЗ дочерних (просто пункт) #}
+{# need to do for hashed menu: category with subcategories and category item simple #}
 {% endif %}
-
-
-      
+     
 {% endmacro menuItem %}
 
 

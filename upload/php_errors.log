@@ -150,3 +150,38 @@ Stack trace:
 #4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(144): Twig_ExpressionParser->parseExpression()
 #5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
 #6 / in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/ExpressionParser.php on line 574
+[23-Nov-2017 11:32:17 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected character ";" in "macros/category_menu.twig" at line 4.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Lexer.php:284
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Lexer.php(205): Twig_Lexer->lexExpression()
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Lexer.php(111): Twig_Lexer->lexBlock()
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(581): Twig_Lexer->tokenize('{% macro menuIt...', 'macros/category...')
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(671): Twig_Environment->tokenize('{% macro menuIt...', 'macros/category...')
+#4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Environment.php(396): Twig_Environment->compileSource('{% macro menuIt...', 'macros/category...')
+#5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Template.php(286): Twig_Environment->loadTemplate('macros/category...', NU in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Lexer.php on line 284
+[23-Nov-2017 11:32:39 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected "category_level" tag (expecting closing tag for the "if" tag defined near line 21) in "macros/category_menu.twig" at line 21.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php:172
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
+#5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_For->parse(Object(Twig_Token))
+#6 /var/www in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php on line 172
+[23-Nov-2017 11:33:20 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected token "operator" of value "=" ("end of print statement" expected) in "macros/category_menu.twig" at line 21.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenStream.php:87
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(145): Twig_TokenStream->expect(4)
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
+#4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
+#6 /var/www/html/vkartel.dev/storage/vendor/ in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenStream.php on line 87
+[23-Nov-2017 11:34:02 UTC] PHP Fatal error:  Uncaught exception 'Twig_Error_Syntax' with message 'Unexpected "category_level" tag (expecting closing tag for the "if" tag defined near line 30) in "macros/category_menu.twig" at line 30.' in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php:172
+Stack trace:
+#0 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(34): Twig_Parser->subparse(Array)
+#1 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#2 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/If.php(43): Twig_Parser->subparse(Array)
+#3 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_If->parse(Object(Twig_Token))
+#4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
+#5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_For->parse(Object(Twig_Token))
+#6 /var/www in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php on line 172
