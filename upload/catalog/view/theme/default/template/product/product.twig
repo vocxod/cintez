@@ -3,7 +3,12 @@
   <div class="row">
   <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;font-size:24px;">
     {% for breadcrumb in breadcrumbs %}
-    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    <li>
+      {% if loop.index != 1 %}
+          <span style="color:#222">&#x27F6;</span>
+      {% endif %}
+      <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+    </li>
     {% endfor %}
   </ul>
   </div>
