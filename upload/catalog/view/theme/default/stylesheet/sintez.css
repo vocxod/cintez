@@ -1492,7 +1492,7 @@ p {
 }
 #id_10.sidebar ul li .sub-menu_0 li a:before{
     font-family: FontAwesome;
-    content: "\f105";
+    content: ""; /* \f105 */
     display: inline-block;
     padding-left: 0px;
     padding-right: 10px;
@@ -1526,7 +1526,7 @@ p {
 }
 #id_10.sidebar ul li .sub-menu_1 li a:before{
     font-family: FontAwesome;
-    content: "\f105\f105";
+    content: ""; /* \f105\f105 */
     display: inline-block;
     padding-left: 0px;
     padding-right: 10px;
@@ -1561,7 +1561,7 @@ p {
 }
 #id_10.sidebar ul li .sub-menu2 li a:before{
     font-family: FontAwesome;
-    content: "\f105\f105\f105";
+    content: ""; /* \f105\f105\f105 */
     display: inline-block;
     padding-left: 0px;
     padding-right: 10px;
@@ -1593,7 +1593,7 @@ p {
 }
 #id_10.sidebar ul li .sub-menu3 li a:before{
     font-family: FontAwesome;
-    content: "\f105\f105\f105\f105";
+    content: "";/* \f105\f105\f105\f105 */
     display: inline-block;
     padding-left: 0px;
     padding-right: 15px;
