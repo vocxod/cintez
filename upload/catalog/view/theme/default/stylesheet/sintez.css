@@ -1448,7 +1448,7 @@ p {
 }
 #id_10.sidebar{ 
     width:100%;  
-    background-color:#369A38; /* зеленый  */
+    background-color:#f0f5f0; /* зеленый  */
     transition: all 0.5s  ease-in-out; 
     margin-left:0px;
 }
