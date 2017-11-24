@@ -7,7 +7,11 @@
     data-toggle="collapse" 
     data-target="#category_{{ category_id }}" 
     class="collapsed active" > 
-<span class="category_ids category_id_{{category_id}}" style=""></span> 
+{% if category_css == "0" %}
+  <span class="category_ids category_id_{{category_id}}" style=""></span> 
+{% else %}
+  <span></span>
+{% endif %}
 <span class="nav-label">
   {{category_name}} 
 </span>         
