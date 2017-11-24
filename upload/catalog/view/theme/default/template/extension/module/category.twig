@@ -68,7 +68,17 @@ $(document).ready(function(){
        //$('.sidebar').toggleClass('fliph');
    });
   $('#id_10 a').click(function(e){
-    console.log( 'click on menu ', e );
+    sData = e.currentTarget.lastElementChild;
+    if( sData.className == "fa fa-chevron-down pull-right"){
+      sData.className = "fa fa-chevron-right pull-right";
+    } else {
+      if( sData.className == "fa fa-chevron-right pull-right" ){
+        sData.className = "fa fa-chevron-down pull-right";
+      }
+    }
+    console.log( 'click on menu ', sData  );
+    // заменим шеврон
+
     e.preventDefault();
     //$('.sidebar').toggleClass('fliph');
   }); 
