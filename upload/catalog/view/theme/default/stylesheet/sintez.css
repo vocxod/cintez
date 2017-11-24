@@ -1460,6 +1460,7 @@ p {
 #id_10.sidebar ul{ 
   list-style:none; 
   margin:0px; padding:0px; 
+  line-height: 1.8em;
 }
 
 #id_10.sidebar li a, 
