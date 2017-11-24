@@ -1622,7 +1622,10 @@ p {
 }
 
 #id_10.sidebar li a .nav-label,
-#id_10.sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
+#id_10.sidebar li a .nav-label+span{ 
+  transition: all 0.5s  ease-in-out;
+  margin-left:8px;
+}
 
 /*  
 #id_10.sidebar.fliph li a .nav-label,
