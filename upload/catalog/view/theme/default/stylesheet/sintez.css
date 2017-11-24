@@ -1486,7 +1486,8 @@ p {
 }
 /* SUBMENU 0 */
 #id_10.sidebar ul li .sub-menu_0 li a { 
-  position:relative
+  position:relative;
+  background: #B3CCB3;
 }
 #id_10.sidebar ul li .sub-menu_0 li a:before{
     font-family: FontAwesome;
@@ -1520,7 +1521,8 @@ p {
 
 /* SUBMENU 1 */
 #id_10.sidebar ul li .sub-menu_1 li a { 
-  position:relative
+  position:relative;
+  background: #D1C1D1;
 }
 #id_10.sidebar ul li .sub-menu_1 li a:before{
     font-family: FontAwesome;
@@ -1554,7 +1556,8 @@ p {
 
 /* SUBMENU 2 */
 #id_10.sidebar ul li .sub-menu2 li a{ 
-  position:relative
+  position:relative;
+  background: #FFFFFF;
 }
 #id_10.sidebar ul li .sub-menu2 li a:before{
     font-family: FontAwesome;
@@ -1622,12 +1625,15 @@ p {
 
 #id_10.sidebar li a .nav-label,
 #id_10.sidebar li a .nav-label+span{ transition: all 0.5s  ease-in-out}
-  
+
+/*  
 #id_10.sidebar.fliph li a .nav-label,
 #id_10.sidebar.fliph li a .nav-label+span{ 
     display:none;
     transition: all 0.5s  ease-in-out
 }
+*/
+
 /*
 #id_10.sidebar.fliph {
     width: 42px;
