@@ -1505,19 +1505,18 @@ p {
 #id_10.sidebar ul li .sub-menu_0 li a:hover:after {
     content: "";
     position: absolute;
-    left: -5px;
+    left: 0px;
     top: 0;
-    width: 5px;
+    width: 0px;
     background-color: #f0f5f0;
     height: 100%;
     color:green;
 }
 #id_10.sidebar ul li .sub-menu_0 li a:hover,
 #id_10.sidebar ul li .sub-menu_0 li a:focus{ 
-    background-color:#222; 
-    padding-left:20px; 
+    background-color:#f0f5f0; 
+    padding-left:0px; 
     transition: all 0.5s  ease-in-out;
-    
 }
 
 /* SUBMENU 1 */
@@ -1540,17 +1539,17 @@ p {
 #id_10.sidebar ul li .sub-menu_1 li a:hover:after {
     content: "";
     position: absolute;
-    left: -5px;
+    left: 0px;
     top: 0;
-    width: 5px;
+    width: 0px;
     background-color: #f0f5f0;
     height: 100%;
     color:green;
 }
 #id_10.sidebar ul li .sub-menu_1 li a:hover,
 #id_10.sidebar ul li .sub-menu_1 li a:focus{ 
-    background-color:#222; 
-    padding-left:20px; 
+    background-color:#f0f5f0;  
+    padding-left:0px; 
     transition: all 0.5s  ease-in-out;
     
 }
@@ -1575,19 +1574,18 @@ p {
 #id_10.sidebar ul li .sub-menu2 li a:hover:after {
     content: "";
     position: absolute;
-    left: -25px;
+    left: 0px;
     top: 0;
-    width: 5px;
-    background-color: yellow;
+    width: 0px;
+    background-color: #f0f5f0;
     height: 100%;
     color:green;
 }
 #id_10.sidebar ul li .sub-menu2 li a:hover,
 #id_10.sidebar ul li .sub-menu2 li a:focus{ 
-    background-color:#222; 
-    padding-left:20px; 
+    background-color:#f0f5f0;  
+    padding-left:0px; 
     transition: all 0.5s  ease-in-out;
-    
 }
 /* SUBMENU 3 */
 #id_10.sidebar ul li .sub-menu3 li a{ 
@@ -1608,20 +1606,19 @@ p {
 #id_10.sidebar ul li .sub-menu3 li a:hover:after {
     content: "";
     position: absolute;
-    left: -20px;
+    left: 0px;
     top: 0;
-    width: 5px;
-    background-color: yellow;
+    width: 0px;
+    background-color: #f0f5f0;
     height: 100%;
     color:green;
 }
 #id_10.sidebar ul li .sub-menu3 li a:hover,
 #id_10.sidebar ul li .sub-menu3 li a:focus
 {
-    background-color: rgba(54,154,56,.618);
-    padding-left: 20px;
+    background-color:#f0f5f0; 
+    padding-left: 0px;
     transition: all 0.5s ease-in-out;
-    color:blue;
 }
 
 #id_10.sidebar li a .nav-label,
