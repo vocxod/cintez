@@ -589,8 +589,9 @@ body {
 */
 /* разная картинка на фон разных категорий */
 .category_ids {
-  height: 32px; width: 32px; 
-  outline: 1px dashed red;
+  height: 22px; width: 22px; 
+  outline: 0px dashed red;
+  position:relative;
   float: left;
 }
 /* пищевая */

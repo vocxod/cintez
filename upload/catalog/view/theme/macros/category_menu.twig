@@ -2,37 +2,38 @@
 
   {% if category_children|length > 0 %}
   {# это категория с дочерними #}
-  <li> 
-  <a href="#" data-toggle="collapse" data-target="#category_{{ category_id }}" class="collapsed active" > 
-    {#<i class="fa fa-cutlery" aria-hidden="true"></i>#}
-    <span class="category_ids category_id_{{category_id}}" style="position:relative;width:22px;height:22px;"></span> 
-    <span class="nav-label">{{ category_id}}:{{category_name}} </span>         
-    <span class="fa fa-chevron-right pull-right"></span> 
-  </a>
+<li> 
+<a  href="index.php?route=product/category&path={{category_id}}" 
+    data-toggle="collapse" 
+    data-target="#category_{{ category_id }}" 
+    class="collapsed active" > 
+<span class="category_ids category_id_{{category_id}}" style=""></span> 
+<span class="nav-label">{{ category_id}}:{{category_css}}:{{category_name}} </span>         
+<span class="fa fa-chevron-right pull-right"></span> 
+</a>
 
-  <ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
-    {% for child in category_children %}
-      {% if loop.index==1 %}
-          
-          {% if child.children|length > 0 %}
-             {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
-          {% else  %}
-              <li class="active"><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
-          {% endif %}
+<ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
+  {% for child in category_children %}
+    {% if loop.index==1 %}
+        
+        {% if child.children|length > 0 %}
+           {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
+        {% else  %}
+            <li class="active"><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
+        {% endif %}
 
-      {% else %}
-      
-          {% if child.children|length > 0 %}
-             {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
-          {% else  %}
-              <li><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
-          {% endif %}
-      
-      {% endif %}
-    {% endfor %}
-  </ul>
-
-  </li>
+    {% else %}
+    
+        {% if child.children|length > 0 %}
+           {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
+        {% else  %}
+            <li><a href="#">{{ child.category_id}}:{{child.css}}:{{ child.name }}</a></li>
+        {% endif %}
+    
+    {% endif %}
+  {% endfor %}
+</ul>
+</li>
 
 {% else %}
 {# это категория БЕЗ дочерних (просто пункт) #}
