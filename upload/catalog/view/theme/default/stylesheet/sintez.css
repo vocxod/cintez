@@ -1289,6 +1289,21 @@ p {
   height: 100%;
   outline: 0px solid blue;
 }
+
+/* article anonce */
+.article_anonce_block {
+  color: #212;
+}
+.article_title {
+  color: #232;
+}
+.article_image {
+  color: #343;
+}
+.article_text {
+  color: #454;
+}
+
 .spanbold {
   font-size: 18px;
   font-weight: bold;
