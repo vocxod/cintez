@@ -1,0 +1,19 @@
+{# atricte anonce item #}
+{# how to use: 
+Insert line to twig template: {% import "macros/article_anonce.twig" as artile_item %}
+And use it as: article_item.show
+Enjoy
+#}
+{% macro show( article_title, article_text, article_image ) %}
+	<div class="article_anonce_block">
+		<div class="article_title">{{ article_title }}</div>
+		{% if article_image is defined   %}
+		<div class="article_image">
+			<img src="{{article_image}}" alt="{{article_title}}">
+		</div>
+		{% endif %}
+		<div class="article_text">
+			{{ article_text }}
+		</div>
+	</div>
+{% endmacro show %}
