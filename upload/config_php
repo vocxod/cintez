@@ -1,9 +1,11 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://ocart3.dev/');
+define('HTTP_SERVER', 'http://vkartel.dev/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://ocart3.dev/');
+define('HTTPS_SERVER', 'http://vkartel.dev/');
+
+echo getcwd(); die();
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/oc3demo/opencart/upload/catalog/');
