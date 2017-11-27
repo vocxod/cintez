@@ -395,6 +395,15 @@ $( document ).ready(function() {
     e.stopPropagation()
   })
 
+  $("#button-order").on( "click", function() {
+    // show dialog
+    console.log("Show dialog");
+    // create order
+    console.log("Create order");
+    // send order & confirm for user
+    console.log("Notify user");
+  });
+
   $("#product_button").on( 'mouseover', function(){
     var iMaxHeight = '550px';
     if( $("#id3").css('height') != iMaxHeight ){

@@ -8,14 +8,27 @@
     </li>
     {% endfor %}
   </ul>
+
+  <!-- Modal -->
+  <div class="modal fade" id="my_order_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">Быстрый заказ</h4>
+        </div>
+        <div class="modal-body">
+          ...
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+          <button type="button" class="btn btn-success">Заказать</button>
+        </div>
+      </div>
+    </div>
   </div>
-{#
-<div class="row">
-  <div class="col-md-3 column-head">{{ where_it_use }} </div>
-  <div class="col-md-6"></div>
-  <div class="col-md-3 how-match-items-on-page">&nbsp;</div>
-</div>
-#}
+
+  </div>
 {% if oldpage %}
   <div class="row">
     {{ column_left }}
@@ -633,7 +646,7 @@
             <div class="form-group">
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               <br />
-              <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block">{{ button_cart }}</button>
+              <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#my_order_dialog">{{ button_cart }}</button>
             </div>
 
             {% if minimum > 1 %}
