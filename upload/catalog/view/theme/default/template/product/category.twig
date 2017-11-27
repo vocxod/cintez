@@ -4,9 +4,6 @@
   <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
     {% for breadcrumb in breadcrumbs %}
     <li>
-      {% if loop.index != 1 %}
-          <span style="color:#222">&#x27F6;</span>
-      {% endif %}
       <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
     </li>
     {% endfor %}
