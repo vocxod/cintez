@@ -34,7 +34,7 @@ class ControllerCommonToparticles extends Controller {
 			}
 		}
 		$data['toparticles'] = $aResult;
-		// var_dump($data); die();
+		//var_dump($data); die();
 
 		return $this->load->view('common/toparticles', $data);
 	}

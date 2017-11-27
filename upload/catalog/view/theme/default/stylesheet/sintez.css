@@ -431,7 +431,7 @@ a:hover, a:focus {
     list-style: none;
     background: none;
     border-radius: 4px;
-    color: rgb(54,154,56);
+    color: #222;
 }
 .breadcrumb.big {
   font-size: 24px;
@@ -446,9 +446,9 @@ a:hover, a:focus {
 }
 
 .breadcrumb > li + li::before {
-    padding: 0 5px;
-    color: #111;
-    content: none;
+    padding: 0 0px;
+    color: #222;
+    content: '\27F6';
     /* content: "/\00a0"; */
     /* content:'/\27F6'; /* стрелка вправо */
 }
@@ -1055,7 +1055,8 @@ a.up_line:hover, a.up_line:focus{
   font-weight: bold;
   font-style: italic;
   border-bottom: 5px solid rgb(54,154,56);
-  /*width: 250px;*/
+  margin-top: 20px;
+  
 }
 .boss_title {
   font-size: 24px;

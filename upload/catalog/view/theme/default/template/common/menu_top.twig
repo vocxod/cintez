@@ -40,7 +40,15 @@
     width: 345px;
     height: 120px;
     /*background-size: cover;*/
-    background-position: 5px -20px;
+    {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
+      width: 359px;
+      background-position: 33px -20px;
+    {% else %}
+      background-position: 19px -20px;
+    {% endif %}
+    {% if route == "information/dealers" or route == "product/category" or route == "product/product" %}
+      background-position: 0px -20px;
+    {% endif %}
     background-repeat: no-repeat;
     position: absolute;
     top: 5px;
@@ -187,126 +195,8 @@
           </li>
         </ul>  
       </nav>
-      {#   
-      <nav id="id3" class="navbar-inverse nav-upper wobble" style="">
-          <div class="row">
-            <div class="col-lg-12">
-              <div class="col-lg-3">
-                  {% for item in 0..1 %}
-                      <h4><a href="/"><b>{{filters[item].name}}</b></a></h4> 
-                      <ul class="nav">
-                      {% for yfon in filters[item].filter %}
-                        <li>
-                            <a href="/">{{ yfon.name}}</a>
-                        </li>  
-                      {% endfor %}
-                      </ul>
-                  {% endfor %}
-              </div>
-
-              <div class="col-lg-3">
-                  {% for item in 2..3 %}
-                    <h4><a href="/"><b>{{filters[item].name}}</b></a></h4>
-                    <ul class="nav">                   
-                    {% for yfon in filters[item].filter %}
-                      <li>
-                          <a href="/">{{ yfon.name}}</a>
-                      </li>  
-                    {% endfor %}
-                    </ul>
-                  {% endfor %}
-              </div>
-
-              <div class="col-lg-3">
-                    <h4><a href="/"><b>{{filters[4].name}}</b></a></h4> 
-                    <ul class="nav">                    
-                    {% for yfon in filters[4].filter %}
-                      <li>
-                          <a href="/">{{ yfon.name}}</a>
-                      </li>   
-                    {% endfor %}
-                    </ul>
-              </div>  
-
-              <div class="col-lg-3">
-                <img src="/image/catalog/slider/popup-menu-image.png" alt="238*160">
-                <h3>{{ text_products }}</h3>
-                <p>
-                  {{ text_description }}
-                </p>
-                <a href="index.php?route=product/category&path=10" class="btn btn-success square">
-                  {{text_to_catalog}}
-                </a>
-              </div>  
-
-            </div>    
-          </div>
-      </nav>
-    #}
-
     </div>
   </div>
 </div>
 
 
-
-        {#<span class="glyphicon glyphicon-chevron-down pull-right" style="margin-left:6px;"></span>#}</a>
-{#
-      <ul class="dropdown-menu mega-dropdown-menu row" style="margin-left:0px;">
-        {% for column in columns %}
-        <li class="col-sm-3">
-          <ul>
-            <li class="dropdown-header">{{ column.header }}</li>           
-            {% for colutem in column[loop.index0] %}
-              <li class="text-left"><a class="column.class" href="#">{{ colutem }}</a></li>
-            {% endfor %}
-          </ul>
-        </li>
-        {% endfor %}
-        <li class="col-sm-3">
-          <ul>
-            <li class="dropdown-header">АКЦИИ</li>
-            <div id="mySmallCarousel" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-
-                <div class="item dropdown-offer active">
-                <a href="#"><img src="http://placehold.it/254x150/ef5e55/f5f5f5/&text=ТоварПоАкции" class="img-responsive" alt="product 2"></a>
-                <h4><small>Скидки и распродажи этого продукта</small></h4>
-                <button class="btn btn-success" type="button">100 Руб</button>
-                <button href="#" class="btn btn-default" type="button"><span class="glyphicon glyphicon-earphone"></span> Заказать звонок</button>  
-                </div>
-                      
-                {% for banner in banners %}
-                    <div class="item dropdown-offer {% if loop.ibdex == 1 %}active{% endif %}" id="small_{{ loop.index }}">
-                    <a href="{{ banner.link }}">
-                    <img src="/image/{{ banner.image }}" class="img-responsive" alt="{{ banner.title }}">
-
-                    </a>
-                    <h4><small>{{ banner.title }}</small></h4>
-                    <button class="btn btn-success" type="button">123 Руб</button>
-                    <button href="{{ banner.link }}" class="btn btn-default" type="button">
-                      <span class="glyphicon glyphicon-earphone"></span> Узнать больше</button>  
-                    </div>
-                {% endfor %}
-                <!-- End Item -->
-              </div>
-              <!-- End Carousel Inner -->
-            </div>
-            <!-- /.carousel -->
-
-            <!-- Controls -->
-            <a class="left carousel-control" href="#small_1" role="button" data-slide="prev">
-            <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
-            <span class="sr-only">Пред</span>
-            </a>
-            <a class="right carousel-control" href="#small_2" role="button" data-slide="next">
-            <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
-            <span class="sr-only">След</span>
-            </a>
-                       
-            <li class="divider"></li>
-            <li><a href="index.php?route=product/category&path=113">Перейти в каталог <span class="glyphicon glyphicon-chevron-right pull-right"></span></a></li>
-          </ul>
-        </li>
-      </ul>
-#}

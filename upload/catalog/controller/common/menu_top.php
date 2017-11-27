@@ -1,6 +1,6 @@
 <?php
 class ControllerCommonMenuTop extends Controller {
-	public function index() {
+	public function index( $aOption = [] ) {
 		
 		$data = [];
 
@@ -52,7 +52,7 @@ class ControllerCommonMenuTop extends Controller {
 				
 				['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 
-				['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true, 'route' => 'information/information'],
+				['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
 				
 				['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 				
@@ -83,7 +83,7 @@ class ControllerCommonMenuTop extends Controller {
 				
 				['class'=>'menu-bold ', 'title'=>'ABOUT', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 				
-				['class'=>'menu-bold ', 'title'=>'DEALERS', 'href' => 'index.php?route=information/information&information_id=10', 'target'=>'_blank', 'active' => true, 'route' => 'information/information'],
+				['class'=>'menu-bold ', 'title'=>'DEALERS', 'href' => 'index.php?route=information/dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
 				
 				['class'=>'menu-bold ', 'title'=>'ARTICLES', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 				
@@ -135,7 +135,7 @@ class ControllerCommonMenuTop extends Controller {
 					'Кислотные пенные средства',
 				]  ],	
 		];
-
+		$sRoute = '';
 		if (isset($this->request->get['route'])) {
 			$sRoute = (string)$this->request->get['route'];
 			// найти текущий пункт меню, добавить класс
@@ -162,7 +162,7 @@ class ControllerCommonMenuTop extends Controller {
 				}
 			}
     	}
-    	//var_dump($sRoute);
+    	$data['route'] = $sRoute;
 		//var_dump( $data['down_line'] ); //die();
 		return $this->load->view('common/menu_top', $data);
 	}

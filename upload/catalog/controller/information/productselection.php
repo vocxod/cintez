@@ -217,6 +217,7 @@ class ControllerInformationProductselection extends Controller {
 
 		$data['details'] = $aDetails[ $this->language->get('code') ] ;	
 		$data['filtered_products'] = $this->load->controller('product/filtered/index', '127' ); 
+		$data['page_route'] = "information/productselection";
 		$this->response->setOutput($this->load->view('information/productselection', $data));
 	}
 

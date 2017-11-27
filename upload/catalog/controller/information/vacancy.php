@@ -3,29 +3,9 @@ class ControllerInformationVacancy extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('information/contact');
+		$this->load->language('information/vacancy');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
-		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
-			$mail = new Mail($this->config->get('config_mail_engine'));
-			$mail->parameter = $this->config->get('config_mail_parameter');
-			$mail->smtp_hostname = $this->config->get('config_mail_smtp_hostname');
-			$mail->smtp_username = $this->config->get('config_mail_smtp_username');
-			$mail->smtp_password = html_entity_decode($this->config->get('config_mail_smtp_password'), ENT_QUOTES, 'UTF-8');
-			$mail->smtp_port = $this->config->get('config_mail_smtp_port');
-			$mail->smtp_timeout = $this->config->get('config_mail_smtp_timeout');
-
-			$mail->setTo($this->config->get('config_email'));
-			$mail->setFrom($this->config->get('config_email'));
-			$mail->setReplyTo($this->request->post['email']);
-			$mail->setSender(html_entity_decode($this->request->post['name'], ENT_QUOTES, 'UTF-8'));
-			$mail->setSubject(html_entity_decode(sprintf($this->language->get('email_subject'), $this->request->post['name']), ENT_QUOTES, 'UTF-8'));
-			$mail->setText($this->request->post['enquiry']);
-			$mail->send();
-
-			$this->response->redirect($this->url->link('information/contact/success'));
-		}
 
 		$data['breadcrumbs'] = array();
 
@@ -36,7 +16,7 @@ class ControllerInformationVacancy extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('information/contact')
+			'href' => $this->url->link('information/vacancy')
 		);
 
 		if (isset($this->error['name'])) {
@@ -137,6 +117,7 @@ class ControllerInformationVacancy extends Controller {
 		$data['content_bottom'] = $this->load->controller('common/content_bottom');
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
+		$data['toparticles'] = $this->load->controller('common/toparticles');
 
 		/* получаем контент страницы ID = 7  */
 		$this->load->model('catalog/information');

@@ -89,8 +89,10 @@ class ControllerCommonHeader extends Controller {
 		$data['cart'] = $this->load->controller('common/cart');
 		$data['menu'] = $this->load->controller('common/menu');
 
-		$data['menu_top'] = $this->load->controller('common/menu_top');
-		//$data['menu_top'] = $this->load->controller('common/menu_top2');
+		$sRoute = ['route' => 'information/dealers' ];
+
+		$data['menu_top'] = $this->load->controller('common/menu_top', $sRoute );
+
 
 		return $this->load->view('common/header', $data);
 	}

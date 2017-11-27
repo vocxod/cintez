@@ -1,6 +1,6 @@
 {{ header }}
 <div id="information-contact" class="container">
-  <ul class="breadcrumb">
+  <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
     {% for breadcrumb in breadcrumbs %}
     <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
     {% endfor %}
@@ -11,19 +11,13 @@
     <div id="content" class="{{ class }}">
       {{ contact_content|raw }}
     </div>
-    {% set class = 'col-sm-3 debug-3' %}
+
+    {% set class = 'col-sm-3' %}
     <div id="content" class="{{ class }}">
-      <h3>Публикации</h3>
-      {% for item in published %}
-        <div class="feednews debug">
-          <img src="https://dummyimage.com/200x100/fafaac/111" alt="" style="width:100%;">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolor, possimus perspiciatis? Nisi odit maxime, nulla consectetur ut, doloribus eligendi voluptatem veniam voluptatum fugit impedit facere veritatis aliquam voluptas ipsam sed.
-        </div>
-      {% endfor %}
-      <div class="text-center">
-        <button class="btn btn-success" style="background:rgb(54,154,56);">ДРУГИЕ ПУБЛИКАЦИИ</button>
-      </div>
-    </div>  
+      <h3><span class="sub-title green-uline">Публикации</span></h3>
+      {{ toparticles }}
+    </div> 
+     
   </div>
 
 </div>
