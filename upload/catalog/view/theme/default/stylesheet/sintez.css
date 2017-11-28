@@ -1644,8 +1644,21 @@ p {
 #id_10.sidebar li a .nav-label,
 #id_10.sidebar li a .nav-label+span{ 
   transition: all 0.5s  ease-in-out;
-  margin-left:8px;
+  margin-left:8px; 
+  margin-top: 7px;
 }
+#id_10.sidebar li a .nav-label {
+  outline: 0px dashed blue;
+}
+
+/* индивидуальные фичи на категории */
+#sb-100 { width:120px; outline: 0px dashed magenta !important; }
+#sb-100 + span{ outline: 1px solid red; margin-top:-21px !important; }
+#sb-99  + span{ outline: 1px solid red; margin-top:-21px !important; }
+#sb-98  + span{ outline: 1px solid red; margin-top:-21px !important; }
+#sb-112 + span{ outline: 1px solid red; margin-top:-21px !important; }
+#sb-131 + span{ outline: 1px solid red; margin-top:-21px !important; }
+#sb-117 + span{ outline: 1px solid red; margin-top:-21px !important; }
 
 /*  
 #id_10.sidebar.fliph li a .nav-label,
