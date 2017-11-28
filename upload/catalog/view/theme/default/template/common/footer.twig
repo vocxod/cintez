@@ -400,16 +400,28 @@ $( document ).ready(function() {
     if( $("#id3").css('height') != iMaxHeight ){
       $("#id3").css('height', '0px');
       $("#id3").css('overflow', 'hidden');
-      $("#id3").animate({height: iMaxHeight});
+      $("#id3").animate({height: iMaxHeight}, 'fast');
     }
     return false;
   });
 
   $("#id22 li>a").not("#product_button").on( 'mouseover', function(){
-    //$("#id3").css('height', '0px');
-    $("#id3").animate({height: "0px"});
+    $("#id3").animate({height: "0px"}, 'fast');
     return false;
   });
+
+
+
+  $( "#ulid3" )
+  .on( "mouseenter", function() {
+    //console.log("mouseenter ulid3");
+  })
+  .on( "mouseleave", function() {
+    $("#id3").animate({height: "0px"}, 'fast');
+    //console.log("mouseleave ulid3");
+  });
+  
+
 
   $(".drapdawn").hover(            
     function() {

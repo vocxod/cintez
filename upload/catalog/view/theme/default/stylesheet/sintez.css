@@ -543,6 +543,10 @@ body {
     color: rgb(54,154,56) !important;
 }
 
+.hidemenu {
+  
+}
+
 /* панели */
 .panel-menu-item {
   outline:1px solid #ccc;
