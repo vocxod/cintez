@@ -42,7 +42,7 @@ class ControllerCommonMenuTop extends Controller {
 
 		if( $data['lang'] == 'ru'):
 			$data['up_line']= [ 
-				['class'=>'menu-bold ', 'title'=>$sLocatPhone, 'awesome' => 'fa fa-phone', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route'=>''],
+				['class'=>'menu-bold ', 'title'=>$sLocatPhone, 'awesome' => 'fa fa-tablet', 'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route'=>''],
 
 				['class'=>'menu-space menu-bold ' , 'title'=>'ПОДБОР ПРОДУКТА', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => false, 'route'=>'information/productselection'],
 				['class'=>'menu-space menu-bold ', 'title'=>'ДЕЗКАЛЬКУЛЯТОР' , 'awesome' => 'fa fa-calculator', 'img' => '', 'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => false, 'route' => 'information/dezcalc'], 
@@ -72,9 +72,8 @@ class ControllerCommonMenuTop extends Controller {
 
 		if( $data['lang'] == 'en'):
 			$data['up_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-phone',  'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
-
-				['class'=>'menu-space menu-bold ', 'title'=>'PRODUCT SELECTION', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true, 'route'=>'information/productselection'],
+['class'=>'menu-bold ', 'title'=>'8 800 200 30 35', 'awesome' => 'fa fa-tablet',  'img' => '', 'href' => '#1', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
+['class'=>'menu-space menu-bold ', 'title'=>'PRODUCT SELECTION', 'awesome' => 'fa fa-binoculars', 'img' => '', 'href' => 'index.php?route=information/productselection', 'target'=>'_self', 'active' => true, 'route'=>'information/productselection'],
 				
 				['class'=>'menu-space menu-bold ', 'title'=>'DEZ CALCULATOR', 'awesome' => 'fa fa-calculator','img' => '', 
 				'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => true, 'route'=>'information/dezcalc'], 
