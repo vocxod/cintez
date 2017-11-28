@@ -121,7 +121,7 @@ if ($config->get('url_autostart')) {
 // Language
 $language = new Language($config->get('language_directory'));
 $registry->set('language', $language);
-
+//var_dump("LANGUAGE:", $language); die();
 // OpenBay Pro
 $registry->set('openbay', new Openbay($registry));
 

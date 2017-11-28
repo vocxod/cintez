@@ -14,7 +14,7 @@ class ControllerProductStaticpage extends Controller {
 				$iLanguageId = 1;
 				break;
 			default:
-				$iLanguageId = 1;
+				$iLanguageId = 4;
 				break;
 		}
 

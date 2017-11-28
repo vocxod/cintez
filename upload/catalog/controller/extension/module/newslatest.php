@@ -18,6 +18,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		$results = $this->model_catalog_product->getProducts($filter_data);
 
 		$sLanguageCode = $this->session->data['language'];
+
 		switch ($sLanguageCode) {
 			case 'ru-ru':
 				$iLanguageId = 4;
@@ -26,7 +27,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 				$iLanguageId = 1;
 				break;
 			default:
-				$iLanguageId = 1;
+				$iLanguageId = 4;
 				break;
 		}
 

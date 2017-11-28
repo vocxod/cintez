@@ -33,6 +33,7 @@ class ControllerExtensionModulePPLogin extends Controller {
 
 			if (!isset($data['locale'])) {
 				$data['locale'] = 'en-gb';
+				$data['locale'] = 'en-ru';
 			}
 
 			$scopes = array(
