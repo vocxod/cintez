@@ -1,6 +1,7 @@
 <?php
 class ControllerCommonHeader extends Controller {
 	public function index($aOption=[]) {
+
 		// Analytics
 		$this->load->model('setting/extension');
 

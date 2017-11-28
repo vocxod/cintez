@@ -286,3 +286,19 @@ Stack trace:
 #6 [internal function]: Loader->{closure}(Array, Array)
 #7 /var/www/html/vkartel.dev/upload/system/engine/proxy.php(47): call_user_func_array(Object(Closure), Array)
 #8 /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php(105): Proxy->__call('add in /var/www/html/vkartel.dev/upload/system/library/mail.php on line 119
+[28-Nov-2017 08:58:22 UTC] PHP Parse error:  syntax error, unexpected 'if' (T_IF) in /var/www/html/vkartel.dev/upload/catalog/controller/startup/startup.php on line 70
+[28-Nov-2017 08:58:22 UTC] PHP Stack trace:
+[28-Nov-2017 08:58:22 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 08:58:22 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 08:58:22 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 08:58:22 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:172
+[28-Nov-2017 08:58:22 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:46
+[28-Nov-2017 08:58:22 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 09:22:01 UTC] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/vkartel.dev/upload/catalog/controller/startup/startup.php on line 117
+[28-Nov-2017 09:22:01 UTC] PHP Stack trace:
+[28-Nov-2017 09:22:01 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 09:22:01 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 09:22:01 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 09:22:01 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:172
+[28-Nov-2017 09:22:01 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:46
+[28-Nov-2017 09:22:01 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
