@@ -13,20 +13,82 @@
   <div class="modal fade" id="my_order_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
-        <div class="modal-header">
+        <div class="modal-header" style="background: rgb(54,154,56);">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <h4 class="modal-title" id="myModalLabel">Быстрый заказ</h4>
+          <h4 class="modal-title" id="myModalLabel">
+            <span style="color:#FEFAEA;" >Быстрый заказ</span>
+          </h4>
         </div>
         <div class="modal-body">
-          ...
+        <p>
+          Мы готовы предложить Вам лучшие условия на выпускаемые нами товары.
+        </p>
+        <p>
+          Вам надо просто указать свой телефон, наши сотрудники свяжутся с Вами и обсудят детали.
+        </p>
+        <p>
+          <input type="text" text name="customer_phone" id="customer_phone">
+        </p>
         </div>
         <div class="modal-footer">
+          <input type="hidden" name="order_product_id" value="{{ product_id }}">
           <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
-          <button type="button" class="btn btn-success">Заказать</button>
+          <button id="create_order" type="button" class="btn btn-success">Заказать</button>
         </div>
       </div>
     </div>
   </div>
+
+  <div class="modal fade" id="my_message_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background: rgb(54,154,56);">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">
+            <span style="color:#FEFAEA;" >Ваш заказ <span id="order_id"></span> в обработке</span>
+          </h4>
+        </div>
+        <div class="modal-body">
+        <p>
+          Спасибо за заказ. 
+        </p>
+        <p>
+          Наши сотрудники свяжутся с вами по указанным Вами контактным занным
+        </p>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="order_product_id" value="{{ product_id }}">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="my_error_dialog" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header" style="background: rgb(54,154,56);">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="myModalLabel">
+            <span style="color:#FEFAEA;" >Ошибка обработки заказа</span>
+          </h4>
+        </div>
+        <div class="modal-body">
+        <p>
+Что-то пошло не так и в процессе оформления произошел сбой. Повторите попытку через некоторое время. Если ошибка повторится, сообщите пожалуйста нам по любому email из раздела "Контакты".
+        </p>
+        <p>
+          Спасибо.
+        </p>
+        </div>
+        <div class="modal-footer">
+          <input type="hidden" name="order_product_id" value="{{ product_id }}">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- \\end modal -->
 
   </div>
 {% if oldpage %}
@@ -785,6 +847,41 @@ $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
 });
 //--></script> 
 <script type="text/javascript"><!--
+
+$("#button-order").on( "click", function() {
+  // show dialog
+  console.log("Show dialog");
+  $("input[name='customer_phone']").val("");
+  // create order
+  console.log("Create order");
+  // send order & confirm for user
+  console.log("Notify user");
+});
+// создать заказ 
+$( "#create_order" ).on( "click", function() {
+  // create order
+  console.log( "phone ", $("input[name='customer_phone']").val() );
+  console.log( "order_product_id ", $("input[name='product_id']").val() );
+  $("#my_order_dialog").modal('hide');
+  $.ajax({
+    url: 'index.php?route=common/create_order',
+    data: { "order_product_id": $("input[name='product_id']").val(), "customer_phone": $("input[name='customer_phone']").val()  },
+    dataType: 'json',
+    method: 'GET',
+    error: function( error ){
+      console.log( error );
+      $("#my_error_dialog").modal("show");
+    },
+    success: function( data ){
+      console.log( data );
+      $("#my_message_dialog").modal("show");
+    },
+    complete: function( data ){
+      //console.log( 'complete', data );
+    }
+  });
+} );
+
 $('#button-cart').on('click', function() {
 	$.ajax({
 		url: 'index.php?route=checkout/cart/add',

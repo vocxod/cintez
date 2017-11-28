@@ -185,3 +185,104 @@ Stack trace:
 #4 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/TokenParser/For.php(40): Twig_Parser->subparse(Array)
 #5 /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php(187): Twig_TokenParser_For->parse(Object(Twig_Token))
 #6 /var/www in /var/www/html/vkartel.dev/storage/vendor/twig/twig/lib/Twig/Parser.php on line 172
+[28-Nov-2017 02:06:18 UTC] PHP Parse error:  syntax error, unexpected '(string)' (string) (T_STRING_CAST) in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 33
+[28-Nov-2017 02:06:18 UTC] PHP Stack trace:
+[28-Nov-2017 02:06:18 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:06:18 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:06:18 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:06:18 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:06:18 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:06:18 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:06:18 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:18 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:18 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:06:39 UTC] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 39
+[28-Nov-2017 02:06:39 UTC] PHP Stack trace:
+[28-Nov-2017 02:06:39 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:06:39 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:06:39 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:06:39 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:06:39 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:06:39 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:06:39 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:39 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:39 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:06:49 UTC] PHP Parse error:  syntax error, unexpected '=', expecting ']' in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 50
+[28-Nov-2017 02:06:49 UTC] PHP Stack trace:
+[28-Nov-2017 02:06:49 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:06:49 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:06:49 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:06:49 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:06:49 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:06:49 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:06:49 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:49 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:06:49 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:07:02 UTC] PHP Parse error:  syntax error, unexpected ';' in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 54
+[28-Nov-2017 02:07:02 UTC] PHP Stack trace:
+[28-Nov-2017 02:07:02 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:07:02 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:07:02 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:07:02 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:07:02 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:07:02 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:07:02 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:02 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:02 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:07:20 UTC] PHP Parse error:  syntax error, unexpected ';' in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 69
+[28-Nov-2017 02:07:20 UTC] PHP Stack trace:
+[28-Nov-2017 02:07:20 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:07:20 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:07:20 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:07:20 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:07:20 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:07:20 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:07:20 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:20 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:20 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:07:29 UTC] PHP Parse error:  syntax error, unexpected ')' in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 80
+[28-Nov-2017 02:07:29 UTC] PHP Stack trace:
+[28-Nov-2017 02:07:29 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:07:29 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:07:29 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:07:29 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:07:29 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:07:29 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:07:29 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:29 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:29 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:07:37 UTC] PHP Fatal error:  Call to a member function addOrder() on null in /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php on line 99
+[28-Nov-2017 02:07:37 UTC] PHP Stack trace:
+[28-Nov-2017 02:07:37 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[28-Nov-2017 02:07:37 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[28-Nov-2017 02:07:37 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[28-Nov-2017 02:07:37 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:170
+[28-Nov-2017 02:07:37 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[28-Nov-2017 02:07:37 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[28-Nov-2017 02:07:37 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:37 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:37 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[28-Nov-2017 02:07:37 UTC] PHP  10. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:07:37 UTC] PHP  11. ControllerCommonCreateOrder->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[28-Nov-2017 02:17:05 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: E-Mail to required!' in /var/www/html/vkartel.dev/upload/system/library/mail.php:119
+Stack trace:
+#0 /var/www/html/vkartel.dev/upload/catalog/controller/mail/order.php(275): Mail->send()
+#1 /var/www/html/vkartel.dev/upload/catalog/controller/mail/order.php(34): ControllerMailOrder->add(Array, 1, '', '')
+#2 [internal function]: ControllerMailOrder->index('checkout/order/...', Array)
+#3 /var/www/html/vkartel.dev/upload/system/engine/action.php(79): call_user_func_array(Array, Array)
+#4 /var/www/html/vkartel.dev/upload/system/engine/event.php(62): Action->execute(Object(Registry), Array)
+#5 /var/www/html/vkartel.dev/upload/system/engine/loader.php(229): Event->trigger('model/checkout/...', Array)
+#6 [internal function]: Loader->{closure}(Array, Array)
+#7 /var/www/html/vkartel.dev/upload/system/engine/proxy.php(47): call_user_func_array(Object(Closure), Array)
+#8 /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php(105): Proxy->__call('add in /var/www/html/vkartel.dev/upload/system/library/mail.php on line 119
+[28-Nov-2017 02:38:13 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: E-Mail to required!' in /var/www/html/vkartel.dev/upload/system/library/mail.php:119
+Stack trace:
+#0 /var/www/html/vkartel.dev/upload/catalog/controller/mail/order.php(275): Mail->send()
+#1 /var/www/html/vkartel.dev/upload/catalog/controller/mail/order.php(34): ControllerMailOrder->add(Array, 1, '', '')
+#2 [internal function]: ControllerMailOrder->index('checkout/order/...', Array)
+#3 /var/www/html/vkartel.dev/upload/system/engine/action.php(79): call_user_func_array(Array, Array)
+#4 /var/www/html/vkartel.dev/upload/system/engine/event.php(62): Action->execute(Object(Registry), Array)
+#5 /var/www/html/vkartel.dev/upload/system/engine/loader.php(229): Event->trigger('model/checkout/...', Array)
+#6 [internal function]: Loader->{closure}(Array, Array)
+#7 /var/www/html/vkartel.dev/upload/system/engine/proxy.php(47): call_user_func_array(Object(Closure), Array)
+#8 /var/www/html/vkartel.dev/upload/catalog/controller/common/create_order.php(105): Proxy->__call('add in /var/www/html/vkartel.dev/upload/system/library/mail.php on line 119
