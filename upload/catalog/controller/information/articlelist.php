@@ -16,7 +16,7 @@ class ControllerInformationArticlelist extends Controller {
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews( 5 );
+		$top_news = $this->model_catalog_information->getTopArticles( 5 );
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
 			$aData = [];
@@ -66,8 +66,8 @@ class ControllerInformationArticlelist extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=>8] );
-			
+			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8] );
+
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/articlelist', $data);
 			// отдаем в браузер
