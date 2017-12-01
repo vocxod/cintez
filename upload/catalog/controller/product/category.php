@@ -1,5 +1,28 @@
 <?php
 class ControllerProductCategory extends Controller {
+
+	private function getOption( $sOptionName, $iProductId ){
+		$sResult = '';
+		$this->load->model('catalog/product');	
+		$aData = $this->model_catalog_product->getProductAttributes( $iProductId ); 
+		$iAttributeGroupId = 0;
+		if( $sOptionName == 'packing' ){
+			$iAttributeGroupId = 3;	
+		}
+		if( $sOptionName == 'ingridient' ){
+			$iAttributeGroupId = 5;	
+		}
+		//var_dump( $iProductId ); die();
+		// var_dump( $aData[1] ); die();
+		foreach ($aData as $key => $value) {
+			//var_dump($key, $aData[$key]['attribute_group_id']);
+			if($aData[$key]['attribute_group_id'] == 5 || $aData[$key]['attribute_group_id'] == 3 ){
+				$sResult = ( $aData[$key]['attribute'][0]['name'] );
+			}; 
+		}	
+		return $sResult;
+	}
+
 	public function index() {
 		$this->load->language('product/category');
 
@@ -203,8 +226,8 @@ class ControllerProductCategory extends Controller {
 //'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'small_description' => $result['small_description'],
 					
-'packing' => '1, 2, 3 литра',
-'ingridient' => 'сахар, соль, перец, мед, молоко, пряности...',
+'packing' => $this->getOption('packing', $result['product_id']),
+'ingridient' => $this->getOption('ingridient', $result['product_id']),
 
 					'price'       => $price,
 					'special'     => $special,
