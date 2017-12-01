@@ -1,9 +1,10 @@
 <?php
 class ControllerCommonTopnews extends Controller {
 	public function index( $aOption=[]) {
-		$this->load->language('common/topnews');
 
+		$this->load->language('common/topnews');
 		$this->load->model('catalog/information');
+
 		if( array_key_exists('news', $aOption) ){
 			$iLimit = $aOption['news'];
 		} else {
@@ -33,6 +34,7 @@ class ControllerCommonTopnews extends Controller {
 				$aResult[] = $aData;
 			}
 		}
+		//$data['text_title'] = $this->language->get('text_title') . ">>";
 		$data['topnews'] = $aResult;
 		//var_dump($data['topnews']); die();
 

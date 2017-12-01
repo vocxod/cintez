@@ -36,12 +36,16 @@
               </div>
               <div class="col-sm-6">
                   <div class="button-group" style="margin-top:5px; border:none; background:none;">
-                    <form action="index.php">
-<input type="hidden" name="route" value="information/onenews">
-<input type="hidden" name="information_id" value="{{item.information_id}}">
-                      <button class="" style="width:45%;color:#111;" type="submit">
+                      
+                      <input type="hidden" name="route" value="information/onearticle">
+                      <input type="hidden" name="information_id" value="{{item.information_id}}">
+                      
+                      <a href="index.php?route=information/onearticle&information_id={{item.information_id}}">
+                      <button class="" style="width:45%;color:#111;">
                         <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
                       </button>
+                      </a>
+
                       <button style="width:15%; margin-left:15px;" type="button" title="">
                         <i class="fa fa-vk"></i>
                       </button>
@@ -51,7 +55,7 @@
                       <button style="width:15%;" type="button"  title="">
                         <i class="fa fa-facebook"></i>
                       </button>
-                    </form> 
+
                   </div>
               </div>
               <hr/>&nbsp;

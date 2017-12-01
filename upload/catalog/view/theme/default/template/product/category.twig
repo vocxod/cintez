@@ -136,6 +136,11 @@
             <div>
               <div class="caption">
                 <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+
+<p class="run_string">{{ product.small_description }}<p>
+<p class=""><span style="font-weight:bold">Упаковка:</span>{{ product.packing }}<p> 
+<p class="run_string"><span style="font-weight:bold">Состав:</span>{{ product.ingridient }}<p>
+
                 <p>{{ product.description }}</p>
                 
                 {# цены и кнопки на товаре скрываем #}

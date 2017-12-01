@@ -66,6 +66,7 @@ class ModelCatalogProduct extends Model {
 				// дополнительные поля из дескрипшн
 				'newslatest'	   => $query->row['newslatest'],
 				'show_newslatest'  => $query->row['show_newslatest'],
+				'small_description'=> $query->row['small_description']
 			);
 			//var_dump( $aRow['show_newslatest'] );
 			//var_dump( $aRow['newslatest'] );

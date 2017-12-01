@@ -15,6 +15,7 @@ echo "Where ACTION is one from is:
 \t--cats	\t;import CATEGORIes from site
 \t--delinfo=12\t;delete information srom start ID=12
 \t--translite=*.jpg\t;translite image files from dir
+\t--add-annonce \t;extract a product ANNONCE from them DB table MODX_CONTENT and insert to OC_PRODUCT_CATEGORY table
 ***************************************************************
 ";
 
@@ -22,6 +23,10 @@ echo "Where ACTION is one from is:
 foreach ($argv as $key => $value) {
 	$aAction = explode("=", $value);
 	switch ($aAction[0]) {
+		case '--add-annonce':
+			setAnnonce();
+			echo "Set product annonce complete.\n";
+			break;
 		case '--dcat':
 			$iStartId = 76;
 			if( array_key_exists(1, $aAction) ){
@@ -75,6 +80,29 @@ function fact($n) {
   else {
      return $n * fact($n-1); // <--calling itself.
   }
+}
+
+/*
+Расставляем анонсы для товаров из таблиц старого сайта
+*/
+function setAnnonce(){
+	// for each product
+	$aProducts = OcProductQuery::create()
+	->find();
+	foreach ($aProducts as $aProduct) {
+		//echo "A" . $aProduct->getProductId() . "\n";
+		$aOldProduct = ModxSiteContentQuery::create()->filterById( $aProduct->getModel() )->findOne();
+		if( $aOldProduct != null ){
+			if( $aOldProduct->getIntrotext() != "" ){
+				$aPd = OcProductDescriptionQuery::create()->filterByProductId( $aProduct->getProductId() )->find();
+				foreach ($aPd as $aPdItem) {
+					$aPdItem->setSmallDescription( $aOldProduct->getIntrotext() );
+					$aPdItem->save();
+				}
+				echo $aProduct->getProductId() . " : " . $aOldProduct->getIntrotext() . "\n";
+			}
+		}
+	}
 }
 
 function importArticles(){

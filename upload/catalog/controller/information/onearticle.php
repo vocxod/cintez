@@ -1,7 +1,7 @@
 <?php
-class ControllerInformationOnenews extends Controller {
+class ControllerInformationOnearticle extends Controller {
 	public function index() {
-		$this->load->language('information/onenews');
+		$this->load->language('information/onearticle');
 
 		$this->load->model('catalog/information');
 
@@ -56,18 +56,16 @@ class ControllerInformationOnenews extends Controller {
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/onenews' . '') //@TODO!!!
+				'href' => $this->url->link('information/onearticle' . '') //@TODO!!!
 			);
 			$data['breadcrumbs'][] = array(
 				'text' => $aResult['title'], //@TODO from meta (url)
-				'href' => $this->url->link('information/onenews' . '?information=' . $information_id) //@TODO!!!
+				'href' => $this->url->link('information/onearticle' . '?information=' . $information_id) //@TODO!!!
 			);			
 
 			$data['heading_title'] = $this->language->get('heading_title');
 
-			$data['description'] = ''; //html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8');
-			
-			//$data['continue'] = $this->url->link('common/home');
+			$data['description'] = ''; 
 
 			$data['column_left'] = $this->load->controller('common/column_left');
 			$data['column_right'] = $this->load->controller('common/column_right');
@@ -75,11 +73,11 @@ class ControllerInformationOnenews extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			// забираем новости
-			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8] );
-			// новости забираем
+			// забираем материалы
+			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=>8] );
+			// материалы забираем
 			// ренднрим страницу данными на шаблоне
-			$aResult = $this->load->view('information/onenews', $data);
+			$aResult = $this->load->view('information/onearticle', $data);
 			// отдаем в браузер
 			$this->response->setOutput( $aResult );
 		} else {
