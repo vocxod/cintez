@@ -2,6 +2,10 @@
 // Text
 $_['text_refine']       = 'Выберите подкатегорию';
 $_['text_product']      = 'Товары';
+
+$_['product_packing']='Упаковка:';
+$_['product_ingridient']='Состав:';
+
 $_['text_error']        = 'Категория не найдена!';
 $_['text_empty']        = 'В данной категории нет товаров.';
 $_['text_quantity']     = 'Количество:';

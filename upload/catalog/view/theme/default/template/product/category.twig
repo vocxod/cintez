@@ -124,8 +124,10 @@
       </div>
 
       <div class="row">{% for product in products %}
+        
         <div class="product-layout product-list col-xs-12" style="margin-top:10px;">
-          <div class="product-thumb">
+
+          <div class="product-thumb" style="outline:1px solid #CCC; padding-left:20px; padding-top:20px; box-shadow: 5px 5px 1px 1px rgba(54, 154, 56, .2);">
             
             <div class="image product-tile-image-background">
               <a href="{{ product.href }}">
@@ -137,11 +139,11 @@
               <div class="caption">
                 <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
 
-<p class="run_string">{{ product.small_description }}<p>
-<p class=""><span style="font-weight:bold">Упаковка:</span>{{ product.packing }}<p> 
-<p class="run_string"><span style="font-weight:bold">Состав:</span>{{ product.ingridient }}<p>
+<p class="run_string">{{ product.small_description }}</p>
+<p class="run_packing"><span style="font-weight:bold">{{ product_packing }}:</span>{{ product.packing }}</p> 
+<p class="run_ingridient"><span style="font-weight:bold">{{ product_ingridient }}:</span>{{ product.ingridient }}</p>
 
-                <p>{{ product.description }}</p>
+                {#<p>{{ product.description }}</p>#}
                 
                 {# цены и кнопки на товаре скрываем #}
                 {# @TODO - показыватьуголок для спец предложений #}

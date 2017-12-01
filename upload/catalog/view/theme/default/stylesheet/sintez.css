@@ -192,6 +192,22 @@ a.zone-select {
   background: rgb (240,244,245);
 }
 
+/* оформление данных на карточке */
+.run_string {
+  margin:0px;
+  padding: 0px;
+  max-height: 40px;
+  overflow: hidden;
+}
+.run_packing {
+  margin:0px;
+  padding: 0px;
+}
+.run_ingridient {
+  margin:0px;
+  padding: 0px;
+}
+
 /* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */
 @media (min-width: 768px) {
     #column-left  .product-layout .col-md-3 {
@@ -1828,3 +1844,4 @@ p {
     z-index: 100;
 }
   
+
