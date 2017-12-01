@@ -59,7 +59,7 @@ class OcZoneTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 6;
+    const NUM_COLUMNS = 7;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcZoneTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 6;
+    const NUM_HYDRATE_COLUMNS = 7;
 
     /**
      * the column name for the zone_id field
@@ -102,6 +102,11 @@ class OcZoneTableMap extends TableMap
     const COL_SORT_ORDER = 'oc_zone.sort_order';
 
     /**
+     * the column name for the language_id field
+     */
+    const COL_LANGUAGE_ID = 'oc_zone.language_id';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -113,11 +118,11 @@ class OcZoneTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ZoneId', 'CountryId', 'Name', 'Code', 'Status', 'SortOrder', ),
-        self::TYPE_CAMELNAME     => array('zoneId', 'countryId', 'name', 'code', 'status', 'sortOrder', ),
-        self::TYPE_COLNAME       => array(OcZoneTableMap::COL_ZONE_ID, OcZoneTableMap::COL_COUNTRY_ID, OcZoneTableMap::COL_NAME, OcZoneTableMap::COL_CODE, OcZoneTableMap::COL_STATUS, OcZoneTableMap::COL_SORT_ORDER, ),
-        self::TYPE_FIELDNAME     => array('zone_id', 'country_id', 'name', 'code', 'status', 'sort_order', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
+        self::TYPE_PHPNAME       => array('ZoneId', 'CountryId', 'Name', 'Code', 'Status', 'SortOrder', 'LanguageId', ),
+        self::TYPE_CAMELNAME     => array('zoneId', 'countryId', 'name', 'code', 'status', 'sortOrder', 'languageId', ),
+        self::TYPE_COLNAME       => array(OcZoneTableMap::COL_ZONE_ID, OcZoneTableMap::COL_COUNTRY_ID, OcZoneTableMap::COL_NAME, OcZoneTableMap::COL_CODE, OcZoneTableMap::COL_STATUS, OcZoneTableMap::COL_SORT_ORDER, OcZoneTableMap::COL_LANGUAGE_ID, ),
+        self::TYPE_FIELDNAME     => array('zone_id', 'country_id', 'name', 'code', 'status', 'sort_order', 'language_id', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
     );
 
     /**
@@ -127,11 +132,11 @@ class OcZoneTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ZoneId' => 0, 'CountryId' => 1, 'Name' => 2, 'Code' => 3, 'Status' => 4, 'SortOrder' => 5, ),
-        self::TYPE_CAMELNAME     => array('zoneId' => 0, 'countryId' => 1, 'name' => 2, 'code' => 3, 'status' => 4, 'sortOrder' => 5, ),
-        self::TYPE_COLNAME       => array(OcZoneTableMap::COL_ZONE_ID => 0, OcZoneTableMap::COL_COUNTRY_ID => 1, OcZoneTableMap::COL_NAME => 2, OcZoneTableMap::COL_CODE => 3, OcZoneTableMap::COL_STATUS => 4, OcZoneTableMap::COL_SORT_ORDER => 5, ),
-        self::TYPE_FIELDNAME     => array('zone_id' => 0, 'country_id' => 1, 'name' => 2, 'code' => 3, 'status' => 4, 'sort_order' => 5, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, )
+        self::TYPE_PHPNAME       => array('ZoneId' => 0, 'CountryId' => 1, 'Name' => 2, 'Code' => 3, 'Status' => 4, 'SortOrder' => 5, 'LanguageId' => 6, ),
+        self::TYPE_CAMELNAME     => array('zoneId' => 0, 'countryId' => 1, 'name' => 2, 'code' => 3, 'status' => 4, 'sortOrder' => 5, 'languageId' => 6, ),
+        self::TYPE_COLNAME       => array(OcZoneTableMap::COL_ZONE_ID => 0, OcZoneTableMap::COL_COUNTRY_ID => 1, OcZoneTableMap::COL_NAME => 2, OcZoneTableMap::COL_CODE => 3, OcZoneTableMap::COL_STATUS => 4, OcZoneTableMap::COL_SORT_ORDER => 5, OcZoneTableMap::COL_LANGUAGE_ID => 6, ),
+        self::TYPE_FIELDNAME     => array('zone_id' => 0, 'country_id' => 1, 'name' => 2, 'code' => 3, 'status' => 4, 'sort_order' => 5, 'language_id' => 6, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
     );
 
     /**
@@ -157,6 +162,7 @@ class OcZoneTableMap extends TableMap
         $this->addColumn('code', 'Code', 'VARCHAR', true, 32, null);
         $this->addColumn('status', 'Status', 'BOOLEAN', true, 1, true);
         $this->addColumn('sort_order', 'SortOrder', 'INTEGER', false, null, 0);
+        $this->addColumn('language_id', 'LanguageId', 'INTEGER', false, null, 1);
     } // initialize()
 
     /**
@@ -313,6 +319,7 @@ class OcZoneTableMap extends TableMap
             $criteria->addSelectColumn(OcZoneTableMap::COL_CODE);
             $criteria->addSelectColumn(OcZoneTableMap::COL_STATUS);
             $criteria->addSelectColumn(OcZoneTableMap::COL_SORT_ORDER);
+            $criteria->addSelectColumn(OcZoneTableMap::COL_LANGUAGE_ID);
         } else {
             $criteria->addSelectColumn($alias . '.zone_id');
             $criteria->addSelectColumn($alias . '.country_id');
@@ -320,6 +327,7 @@ class OcZoneTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.code');
             $criteria->addSelectColumn($alias . '.status');
             $criteria->addSelectColumn($alias . '.sort_order');
+            $criteria->addSelectColumn($alias . '.language_id');
         }
     }
 

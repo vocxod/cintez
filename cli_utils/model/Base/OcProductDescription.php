@@ -130,6 +130,13 @@ abstract class OcProductDescription implements ActiveRecordInterface
     protected $show_newslatest;
 
     /**
+     * The value for the small_description field.
+     *
+     * @var        string
+     */
+    protected $small_description;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -463,6 +470,16 @@ abstract class OcProductDescription implements ActiveRecordInterface
     }
 
     /**
+     * Get the [small_description] column value.
+     *
+     * @return string
+     */
+    public function getSmallDescription()
+    {
+        return $this->small_description;
+    }
+
+    /**
      * Set the value of [product_id] column.
      *
      * @param int $v new value
@@ -663,6 +680,26 @@ abstract class OcProductDescription implements ActiveRecordInterface
     } // setShowNewslatest()
 
     /**
+     * Set the value of [small_description] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcProductDescription The current object (for fluent API support)
+     */
+    public function setSmallDescription($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->small_description !== $v) {
+            $this->small_description = $v;
+            $this->modifiedColumns[OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION] = true;
+        }
+
+        return $this;
+    } // setSmallDescription()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -727,6 +764,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 9 + $startcol : OcProductDescriptionTableMap::translateFieldName('ShowNewslatest', TableMap::TYPE_PHPNAME, $indexType)];
             $this->show_newslatest = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : OcProductDescriptionTableMap::translateFieldName('SmallDescription', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->small_description = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -735,7 +775,7 @@ abstract class OcProductDescription implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 10; // 10 = OcProductDescriptionTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 11; // 11 = OcProductDescriptionTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcProductDescription'), 0, $e);
@@ -962,6 +1002,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
         if ($this->isColumnModified(OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST)) {
             $modifiedColumns[':p' . $index++]  = 'show_newslatest';
         }
+        if ($this->isColumnModified(OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION)) {
+            $modifiedColumns[':p' . $index++]  = 'small_description';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_product_description (%s) VALUES (%s)',
@@ -1002,6 +1045,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
                         break;
                     case 'show_newslatest':
                         $stmt->bindValue($identifier, $this->show_newslatest, PDO::PARAM_INT);
+                        break;
+                    case 'small_description':
+                        $stmt->bindValue($identifier, $this->small_description, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1088,6 +1134,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
             case 9:
                 return $this->getShowNewslatest();
                 break;
+            case 10:
+                return $this->getSmallDescription();
+                break;
             default:
                 return null;
                 break;
@@ -1127,6 +1176,7 @@ abstract class OcProductDescription implements ActiveRecordInterface
             $keys[7] => $this->getMetaKeyword(),
             $keys[8] => $this->getNewslatest(),
             $keys[9] => $this->getShowNewslatest(),
+            $keys[10] => $this->getSmallDescription(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1196,6 +1246,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
             case 9:
                 $this->setShowNewslatest($value);
                 break;
+            case 10:
+                $this->setSmallDescription($value);
+                break;
         } // switch()
 
         return $this;
@@ -1251,6 +1304,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
         }
         if (array_key_exists($keys[9], $arr)) {
             $this->setShowNewslatest($arr[$keys[9]]);
+        }
+        if (array_key_exists($keys[10], $arr)) {
+            $this->setSmallDescription($arr[$keys[10]]);
         }
     }
 
@@ -1322,6 +1378,9 @@ abstract class OcProductDescription implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST)) {
             $criteria->add(OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST, $this->show_newslatest);
+        }
+        if ($this->isColumnModified(OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION)) {
+            $criteria->add(OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION, $this->small_description);
         }
 
         return $criteria;
@@ -1427,6 +1486,7 @@ abstract class OcProductDescription implements ActiveRecordInterface
         $copyObj->setMetaKeyword($this->getMetaKeyword());
         $copyObj->setNewslatest($this->getNewslatest());
         $copyObj->setShowNewslatest($this->getShowNewslatest());
+        $copyObj->setSmallDescription($this->getSmallDescription());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -1471,6 +1531,7 @@ abstract class OcProductDescription implements ActiveRecordInterface
         $this->meta_keyword = null;
         $this->newslatest = null;
         $this->show_newslatest = null;
+        $this->small_description = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

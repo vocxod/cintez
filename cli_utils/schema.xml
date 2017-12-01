@@ -1185,6 +1185,7 @@
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
     <column name="newslatest" phpName="Newslatest" type="LONGVARCHAR"/>
     <column name="show_newslatest" phpName="ShowNewslatest" type="INTEGER"/>
+    <column name="small_description" phpName="SmallDescription" type="LONGVARCHAR"/>
     <index name="name">
       <index-column name="name"/>
     </index>
@@ -1659,6 +1660,7 @@
     <column name="code" phpName="Code" type="VARCHAR" size="32" required="true"/>
     <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
     <column name="sort_order" phpName="SortOrder" type="INTEGER" defaultValue="0"/>
+    <column name="language_id" phpName="LanguageId" type="INTEGER" defaultValue="1"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

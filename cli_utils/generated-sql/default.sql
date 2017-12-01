@@ -1652,6 +1652,7 @@ CREATE TABLE `oc_product_description`
     `meta_keyword` VARCHAR(255) NOT NULL,
     `newslatest` TEXT,
     `show_newslatest` INTEGER,
+    `small_description` TEXT,
     PRIMARY KEY (`product_id`,`language_id`),
     INDEX `name` (`name`)
 ) ENGINE=MyISAM;
@@ -2374,6 +2375,7 @@ CREATE TABLE `oc_zone`
     `code` VARCHAR(32) NOT NULL,
     `status` TINYINT(1) DEFAULT 1 NOT NULL,
     `sort_order` INTEGER DEFAULT 0,
+    `language_id` INTEGER DEFAULT 1,
     PRIMARY KEY (`zone_id`)
 ) ENGINE=MyISAM;
 

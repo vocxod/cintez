@@ -59,7 +59,7 @@ class OcProductDescriptionTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 10;
+    const NUM_COLUMNS = 11;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcProductDescriptionTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 10;
+    const NUM_HYDRATE_COLUMNS = 11;
 
     /**
      * the column name for the product_id field
@@ -122,6 +122,11 @@ class OcProductDescriptionTableMap extends TableMap
     const COL_SHOW_NEWSLATEST = 'oc_product_description.show_newslatest';
 
     /**
+     * the column name for the small_description field
+     */
+    const COL_SMALL_DESCRIPTION = 'oc_product_description.small_description';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -133,11 +138,11 @@ class OcProductDescriptionTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ProductId', 'LanguageId', 'Name', 'Description', 'Tag', 'MetaTitle', 'MetaDescription', 'MetaKeyword', 'Newslatest', 'ShowNewslatest', ),
-        self::TYPE_CAMELNAME     => array('productId', 'languageId', 'name', 'description', 'tag', 'metaTitle', 'metaDescription', 'metaKeyword', 'newslatest', 'showNewslatest', ),
-        self::TYPE_COLNAME       => array(OcProductDescriptionTableMap::COL_PRODUCT_ID, OcProductDescriptionTableMap::COL_LANGUAGE_ID, OcProductDescriptionTableMap::COL_NAME, OcProductDescriptionTableMap::COL_DESCRIPTION, OcProductDescriptionTableMap::COL_TAG, OcProductDescriptionTableMap::COL_META_TITLE, OcProductDescriptionTableMap::COL_META_DESCRIPTION, OcProductDescriptionTableMap::COL_META_KEYWORD, OcProductDescriptionTableMap::COL_NEWSLATEST, OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST, ),
-        self::TYPE_FIELDNAME     => array('product_id', 'language_id', 'name', 'description', 'tag', 'meta_title', 'meta_description', 'meta_keyword', 'newslatest', 'show_newslatest', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('ProductId', 'LanguageId', 'Name', 'Description', 'Tag', 'MetaTitle', 'MetaDescription', 'MetaKeyword', 'Newslatest', 'ShowNewslatest', 'SmallDescription', ),
+        self::TYPE_CAMELNAME     => array('productId', 'languageId', 'name', 'description', 'tag', 'metaTitle', 'metaDescription', 'metaKeyword', 'newslatest', 'showNewslatest', 'smallDescription', ),
+        self::TYPE_COLNAME       => array(OcProductDescriptionTableMap::COL_PRODUCT_ID, OcProductDescriptionTableMap::COL_LANGUAGE_ID, OcProductDescriptionTableMap::COL_NAME, OcProductDescriptionTableMap::COL_DESCRIPTION, OcProductDescriptionTableMap::COL_TAG, OcProductDescriptionTableMap::COL_META_TITLE, OcProductDescriptionTableMap::COL_META_DESCRIPTION, OcProductDescriptionTableMap::COL_META_KEYWORD, OcProductDescriptionTableMap::COL_NEWSLATEST, OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST, OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION, ),
+        self::TYPE_FIELDNAME     => array('product_id', 'language_id', 'name', 'description', 'tag', 'meta_title', 'meta_description', 'meta_keyword', 'newslatest', 'show_newslatest', 'small_description', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
     );
 
     /**
@@ -147,11 +152,11 @@ class OcProductDescriptionTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ProductId' => 0, 'LanguageId' => 1, 'Name' => 2, 'Description' => 3, 'Tag' => 4, 'MetaTitle' => 5, 'MetaDescription' => 6, 'MetaKeyword' => 7, 'Newslatest' => 8, 'ShowNewslatest' => 9, ),
-        self::TYPE_CAMELNAME     => array('productId' => 0, 'languageId' => 1, 'name' => 2, 'description' => 3, 'tag' => 4, 'metaTitle' => 5, 'metaDescription' => 6, 'metaKeyword' => 7, 'newslatest' => 8, 'showNewslatest' => 9, ),
-        self::TYPE_COLNAME       => array(OcProductDescriptionTableMap::COL_PRODUCT_ID => 0, OcProductDescriptionTableMap::COL_LANGUAGE_ID => 1, OcProductDescriptionTableMap::COL_NAME => 2, OcProductDescriptionTableMap::COL_DESCRIPTION => 3, OcProductDescriptionTableMap::COL_TAG => 4, OcProductDescriptionTableMap::COL_META_TITLE => 5, OcProductDescriptionTableMap::COL_META_DESCRIPTION => 6, OcProductDescriptionTableMap::COL_META_KEYWORD => 7, OcProductDescriptionTableMap::COL_NEWSLATEST => 8, OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST => 9, ),
-        self::TYPE_FIELDNAME     => array('product_id' => 0, 'language_id' => 1, 'name' => 2, 'description' => 3, 'tag' => 4, 'meta_title' => 5, 'meta_description' => 6, 'meta_keyword' => 7, 'newslatest' => 8, 'show_newslatest' => 9, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, )
+        self::TYPE_PHPNAME       => array('ProductId' => 0, 'LanguageId' => 1, 'Name' => 2, 'Description' => 3, 'Tag' => 4, 'MetaTitle' => 5, 'MetaDescription' => 6, 'MetaKeyword' => 7, 'Newslatest' => 8, 'ShowNewslatest' => 9, 'SmallDescription' => 10, ),
+        self::TYPE_CAMELNAME     => array('productId' => 0, 'languageId' => 1, 'name' => 2, 'description' => 3, 'tag' => 4, 'metaTitle' => 5, 'metaDescription' => 6, 'metaKeyword' => 7, 'newslatest' => 8, 'showNewslatest' => 9, 'smallDescription' => 10, ),
+        self::TYPE_COLNAME       => array(OcProductDescriptionTableMap::COL_PRODUCT_ID => 0, OcProductDescriptionTableMap::COL_LANGUAGE_ID => 1, OcProductDescriptionTableMap::COL_NAME => 2, OcProductDescriptionTableMap::COL_DESCRIPTION => 3, OcProductDescriptionTableMap::COL_TAG => 4, OcProductDescriptionTableMap::COL_META_TITLE => 5, OcProductDescriptionTableMap::COL_META_DESCRIPTION => 6, OcProductDescriptionTableMap::COL_META_KEYWORD => 7, OcProductDescriptionTableMap::COL_NEWSLATEST => 8, OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST => 9, OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION => 10, ),
+        self::TYPE_FIELDNAME     => array('product_id' => 0, 'language_id' => 1, 'name' => 2, 'description' => 3, 'tag' => 4, 'meta_title' => 5, 'meta_description' => 6, 'meta_keyword' => 7, 'newslatest' => 8, 'show_newslatest' => 9, 'small_description' => 10, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
     );
 
     /**
@@ -181,6 +186,7 @@ class OcProductDescriptionTableMap extends TableMap
         $this->addColumn('meta_keyword', 'MetaKeyword', 'VARCHAR', true, 255, null);
         $this->addColumn('newslatest', 'Newslatest', 'LONGVARCHAR', false, null, null);
         $this->addColumn('show_newslatest', 'ShowNewslatest', 'INTEGER', false, null, null);
+        $this->addColumn('small_description', 'SmallDescription', 'LONGVARCHAR', false, null, null);
     } // initialize()
 
     /**
@@ -403,6 +409,7 @@ class OcProductDescriptionTableMap extends TableMap
             $criteria->addSelectColumn(OcProductDescriptionTableMap::COL_META_KEYWORD);
             $criteria->addSelectColumn(OcProductDescriptionTableMap::COL_NEWSLATEST);
             $criteria->addSelectColumn(OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST);
+            $criteria->addSelectColumn(OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION);
         } else {
             $criteria->addSelectColumn($alias . '.product_id');
             $criteria->addSelectColumn($alias . '.language_id');
@@ -414,6 +421,7 @@ class OcProductDescriptionTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.meta_keyword');
             $criteria->addSelectColumn($alias . '.newslatest');
             $criteria->addSelectColumn($alias . '.show_newslatest');
+            $criteria->addSelectColumn($alias . '.small_description');
         }
     }
 

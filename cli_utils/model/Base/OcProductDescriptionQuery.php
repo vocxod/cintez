@@ -29,6 +29,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductDescriptionQuery orderByMetaKeyword($order = Criteria::ASC) Order by the meta_keyword column
  * @method     ChildOcProductDescriptionQuery orderByNewslatest($order = Criteria::ASC) Order by the newslatest column
  * @method     ChildOcProductDescriptionQuery orderByShowNewslatest($order = Criteria::ASC) Order by the show_newslatest column
+ * @method     ChildOcProductDescriptionQuery orderBySmallDescription($order = Criteria::ASC) Order by the small_description column
  *
  * @method     ChildOcProductDescriptionQuery groupByProductId() Group by the product_id column
  * @method     ChildOcProductDescriptionQuery groupByLanguageId() Group by the language_id column
@@ -40,6 +41,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductDescriptionQuery groupByMetaKeyword() Group by the meta_keyword column
  * @method     ChildOcProductDescriptionQuery groupByNewslatest() Group by the newslatest column
  * @method     ChildOcProductDescriptionQuery groupByShowNewslatest() Group by the show_newslatest column
+ * @method     ChildOcProductDescriptionQuery groupBySmallDescription() Group by the small_description column
  *
  * @method     ChildOcProductDescriptionQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcProductDescriptionQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -61,7 +63,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductDescription findOneByMetaDescription(string $meta_description) Return the first ChildOcProductDescription filtered by the meta_description column
  * @method     ChildOcProductDescription findOneByMetaKeyword(string $meta_keyword) Return the first ChildOcProductDescription filtered by the meta_keyword column
  * @method     ChildOcProductDescription findOneByNewslatest(string $newslatest) Return the first ChildOcProductDescription filtered by the newslatest column
- * @method     ChildOcProductDescription findOneByShowNewslatest(int $show_newslatest) Return the first ChildOcProductDescription filtered by the show_newslatest column *
+ * @method     ChildOcProductDescription findOneByShowNewslatest(int $show_newslatest) Return the first ChildOcProductDescription filtered by the show_newslatest column
+ * @method     ChildOcProductDescription findOneBySmallDescription(string $small_description) Return the first ChildOcProductDescription filtered by the small_description column *
 
  * @method     ChildOcProductDescription requirePk($key, ConnectionInterface $con = null) Return the ChildOcProductDescription by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductDescription requireOne(ConnectionInterface $con = null) Return the first ChildOcProductDescription matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -76,6 +79,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductDescription requireOneByMetaKeyword(string $meta_keyword) Return the first ChildOcProductDescription filtered by the meta_keyword column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductDescription requireOneByNewslatest(string $newslatest) Return the first ChildOcProductDescription filtered by the newslatest column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductDescription requireOneByShowNewslatest(int $show_newslatest) Return the first ChildOcProductDescription filtered by the show_newslatest column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcProductDescription requireOneBySmallDescription(string $small_description) Return the first ChildOcProductDescription filtered by the small_description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcProductDescription[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcProductDescription objects based on current ModelCriteria
  * @method     ChildOcProductDescription[]|ObjectCollection findByProductId(int $product_id) Return ChildOcProductDescription objects filtered by the product_id column
@@ -88,6 +92,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductDescription[]|ObjectCollection findByMetaKeyword(string $meta_keyword) Return ChildOcProductDescription objects filtered by the meta_keyword column
  * @method     ChildOcProductDescription[]|ObjectCollection findByNewslatest(string $newslatest) Return ChildOcProductDescription objects filtered by the newslatest column
  * @method     ChildOcProductDescription[]|ObjectCollection findByShowNewslatest(int $show_newslatest) Return ChildOcProductDescription objects filtered by the show_newslatest column
+ * @method     ChildOcProductDescription[]|ObjectCollection findBySmallDescription(string $small_description) Return ChildOcProductDescription objects filtered by the small_description column
  * @method     ChildOcProductDescription[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -186,7 +191,7 @@ abstract class OcProductDescriptionQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT product_id, language_id, name, description, tag, meta_title, meta_description, meta_keyword, newslatest, show_newslatest FROM oc_product_description WHERE product_id = :p0 AND language_id = :p1';
+        $sql = 'SELECT product_id, language_id, name, description, tag, meta_title, meta_description, meta_keyword, newslatest, show_newslatest, small_description FROM oc_product_description WHERE product_id = :p0 AND language_id = :p1';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key[0], PDO::PARAM_INT);
@@ -584,6 +589,31 @@ abstract class OcProductDescriptionQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcProductDescriptionTableMap::COL_SHOW_NEWSLATEST, $showNewslatest, $comparison);
+    }
+
+    /**
+     * Filter the query on the small_description column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBySmallDescription('fooValue');   // WHERE small_description = 'fooValue'
+     * $query->filterBySmallDescription('%fooValue%', Criteria::LIKE); // WHERE small_description LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $smallDescription The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcProductDescriptionQuery The current query, for fluid interface
+     */
+    public function filterBySmallDescription($smallDescription = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($smallDescription)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcProductDescriptionTableMap::COL_SMALL_DESCRIPTION, $smallDescription, $comparison);
     }
 
     /**

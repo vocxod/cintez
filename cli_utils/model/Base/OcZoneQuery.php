@@ -25,6 +25,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcZoneQuery orderByCode($order = Criteria::ASC) Order by the code column
  * @method     ChildOcZoneQuery orderByStatus($order = Criteria::ASC) Order by the status column
  * @method     ChildOcZoneQuery orderBySortOrder($order = Criteria::ASC) Order by the sort_order column
+ * @method     ChildOcZoneQuery orderByLanguageId($order = Criteria::ASC) Order by the language_id column
  *
  * @method     ChildOcZoneQuery groupByZoneId() Group by the zone_id column
  * @method     ChildOcZoneQuery groupByCountryId() Group by the country_id column
@@ -32,6 +33,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcZoneQuery groupByCode() Group by the code column
  * @method     ChildOcZoneQuery groupByStatus() Group by the status column
  * @method     ChildOcZoneQuery groupBySortOrder() Group by the sort_order column
+ * @method     ChildOcZoneQuery groupByLanguageId() Group by the language_id column
  *
  * @method     ChildOcZoneQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcZoneQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -49,7 +51,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcZone findOneByName(string $name) Return the first ChildOcZone filtered by the name column
  * @method     ChildOcZone findOneByCode(string $code) Return the first ChildOcZone filtered by the code column
  * @method     ChildOcZone findOneByStatus(boolean $status) Return the first ChildOcZone filtered by the status column
- * @method     ChildOcZone findOneBySortOrder(int $sort_order) Return the first ChildOcZone filtered by the sort_order column *
+ * @method     ChildOcZone findOneBySortOrder(int $sort_order) Return the first ChildOcZone filtered by the sort_order column
+ * @method     ChildOcZone findOneByLanguageId(int $language_id) Return the first ChildOcZone filtered by the language_id column *
 
  * @method     ChildOcZone requirePk($key, ConnectionInterface $con = null) Return the ChildOcZone by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcZone requireOne(ConnectionInterface $con = null) Return the first ChildOcZone matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -60,6 +63,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcZone requireOneByCode(string $code) Return the first ChildOcZone filtered by the code column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcZone requireOneByStatus(boolean $status) Return the first ChildOcZone filtered by the status column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcZone requireOneBySortOrder(int $sort_order) Return the first ChildOcZone filtered by the sort_order column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcZone requireOneByLanguageId(int $language_id) Return the first ChildOcZone filtered by the language_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcZone[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcZone objects based on current ModelCriteria
  * @method     ChildOcZone[]|ObjectCollection findByZoneId(int $zone_id) Return ChildOcZone objects filtered by the zone_id column
@@ -68,6 +72,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcZone[]|ObjectCollection findByCode(string $code) Return ChildOcZone objects filtered by the code column
  * @method     ChildOcZone[]|ObjectCollection findByStatus(boolean $status) Return ChildOcZone objects filtered by the status column
  * @method     ChildOcZone[]|ObjectCollection findBySortOrder(int $sort_order) Return ChildOcZone objects filtered by the sort_order column
+ * @method     ChildOcZone[]|ObjectCollection findByLanguageId(int $language_id) Return ChildOcZone objects filtered by the language_id column
  * @method     ChildOcZone[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -166,7 +171,7 @@ abstract class OcZoneQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT zone_id, country_id, name, code, status, sort_order FROM oc_zone WHERE zone_id = :p0';
+        $sql = 'SELECT zone_id, country_id, name, code, status, sort_order, language_id FROM oc_zone WHERE zone_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -454,6 +459,47 @@ abstract class OcZoneQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcZoneTableMap::COL_SORT_ORDER, $sortOrder, $comparison);
+    }
+
+    /**
+     * Filter the query on the language_id column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByLanguageId(1234); // WHERE language_id = 1234
+     * $query->filterByLanguageId(array(12, 34)); // WHERE language_id IN (12, 34)
+     * $query->filterByLanguageId(array('min' => 12)); // WHERE language_id > 12
+     * </code>
+     *
+     * @param     mixed $languageId The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcZoneQuery The current query, for fluid interface
+     */
+    public function filterByLanguageId($languageId = null, $comparison = null)
+    {
+        if (is_array($languageId)) {
+            $useMinMax = false;
+            if (isset($languageId['min'])) {
+                $this->addUsingAlias(OcZoneTableMap::COL_LANGUAGE_ID, $languageId['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($languageId['max'])) {
+                $this->addUsingAlias(OcZoneTableMap::COL_LANGUAGE_ID, $languageId['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcZoneTableMap::COL_LANGUAGE_ID, $languageId, $comparison);
     }
 
     /**

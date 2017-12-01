@@ -163,10 +163,10 @@ class ControllerInformationDezcalc extends Controller {
 				["title"=>"Режим обработки", "subtitle"=>"", 
 					"fields"=>[  
 								["title" => "Бактерии", "type"=>"checkbox", "value" => "1" ], 
-								["title" => "Viruses", "type"=>"checkbox", "value" => "2" ], 
+								["title" => "Вирусы", "type"=>"checkbox", "value" => "2" ], 
 								["title" => "Кандида", "type"=>"checkbox", "value" => "3" ], 
-								["title" => "Дерматофин", "type"=>"checkbox", "value" => "4" ], 
-								["title" => "Микобактерия туберкулеза", "type"=>"checkbox", "value" => "4" ] 
+								["title" => "Дерматофитии", "type"=>"checkbox", "value" => "4" ], 
+								["title" => "Микобактерии туберкулеза", "type"=>"checkbox", "value" => "4" ] 
 							] 
 				],
 				["title"=>"Желаемое время экспозиции", "subtitle"=>"t, мин",
@@ -182,31 +182,31 @@ class ControllerInformationDezcalc extends Controller {
 			],
 		"en"=>
 			[ 
-				["title"=>"eОбъем емкости для погружения ИМН", "subtitle"=>"V емк, л",
+				["title"=>"en-Объем емкости для погружения ИМН", "subtitle"=>"V емк, л",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				["title"=>"eКоличество емкостей для погружения", "subtitle"=>"N емк",
+				["title"=>"en-Количество емкостей для погружения", "subtitle"=>"N емк",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				["title"=>"eРежим обработки", "subtitle"=>"", 
+				["title"=>"en-Режим обработки", "subtitle"=>"", 
 					"fields"=>[  
-								["title" => "eБактерии", "type"=>"checkbox", "value" => "1" ], 
-								["title" => "eViruses", "type"=>"checkbox", "value" => "2" ], 
-								["title" => "eКандида", "type"=>"checkbox", "value" => "3" ], 
-								["title" => "eДерматофин", "type"=>"checkbox", "value" => "4" ], 
-								["title" => "eМикобактерия туберкулеза", "type"=>"checkbox", "value" => "4" ] 
+								["title" => "en-Бактерии", "type"=>"checkbox", "value" => "1" ], 
+								["title" => "en-Вирусы", "type"=>"checkbox", "value" => "2" ], 
+								["title" => "en-Кандида", "type"=>"checkbox", "value" => "3" ], 
+								["title" => "en-Дерматофитии", "type"=>"checkbox", "value" => "4" ], 
+								["title" => "en-Микобактерии туберкулеза", "type"=>"checkbox", "value" => "4" ] 
 							] 
 				],
-				["title"=>"eЖелаемое время экспозиции", "subtitle"=>"t, мин",
+				["title"=>"en-Желаемое время экспозиции", "subtitle"=>"t, мин",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 					]
 				],
-				["title"=>"eКоличество суток в расчетном периоде", "subtitle"=>"С, сут",
+				["title"=>"en-Количество суток в расчетном периоде", "subtitle"=>"С, сут",
 					"fields" => [
 						["title"=>"", "type"=>"input"]
 				]

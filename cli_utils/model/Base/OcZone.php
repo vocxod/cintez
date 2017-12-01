@@ -104,6 +104,14 @@ abstract class OcZone implements ActiveRecordInterface
     protected $sort_order;
 
     /**
+     * The value for the language_id field.
+     *
+     * Note: this column has a database default value of: 1
+     * @var        int
+     */
+    protected $language_id;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -121,6 +129,7 @@ abstract class OcZone implements ActiveRecordInterface
     {
         $this->status = true;
         $this->sort_order = 0;
+        $this->language_id = 1;
     }
 
     /**
@@ -421,6 +430,16 @@ abstract class OcZone implements ActiveRecordInterface
     }
 
     /**
+     * Get the [language_id] column value.
+     *
+     * @return int
+     */
+    public function getLanguageId()
+    {
+        return $this->language_id;
+    }
+
+    /**
      * Set the value of [zone_id] column.
      *
      * @param int $v new value
@@ -549,6 +568,26 @@ abstract class OcZone implements ActiveRecordInterface
     } // setSortOrder()
 
     /**
+     * Set the value of [language_id] column.
+     *
+     * @param int $v new value
+     * @return $this|\OcZone The current object (for fluent API support)
+     */
+    public function setLanguageId($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->language_id !== $v) {
+            $this->language_id = $v;
+            $this->modifiedColumns[OcZoneTableMap::COL_LANGUAGE_ID] = true;
+        }
+
+        return $this;
+    } // setLanguageId()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -563,6 +602,10 @@ abstract class OcZone implements ActiveRecordInterface
             }
 
             if ($this->sort_order !== 0) {
+                return false;
+            }
+
+            if ($this->language_id !== 1) {
                 return false;
             }
 
@@ -609,6 +652,9 @@ abstract class OcZone implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : OcZoneTableMap::translateFieldName('SortOrder', TableMap::TYPE_PHPNAME, $indexType)];
             $this->sort_order = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcZoneTableMap::translateFieldName('LanguageId', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->language_id = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -617,7 +663,7 @@ abstract class OcZone implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 6; // 6 = OcZoneTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 7; // 7 = OcZoneTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcZone'), 0, $e);
@@ -836,6 +882,9 @@ abstract class OcZone implements ActiveRecordInterface
         if ($this->isColumnModified(OcZoneTableMap::COL_SORT_ORDER)) {
             $modifiedColumns[':p' . $index++]  = 'sort_order';
         }
+        if ($this->isColumnModified(OcZoneTableMap::COL_LANGUAGE_ID)) {
+            $modifiedColumns[':p' . $index++]  = 'language_id';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_zone (%s) VALUES (%s)',
@@ -864,6 +913,9 @@ abstract class OcZone implements ActiveRecordInterface
                         break;
                     case 'sort_order':
                         $stmt->bindValue($identifier, $this->sort_order, PDO::PARAM_INT);
+                        break;
+                    case 'language_id':
+                        $stmt->bindValue($identifier, $this->language_id, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -945,6 +997,9 @@ abstract class OcZone implements ActiveRecordInterface
             case 5:
                 return $this->getSortOrder();
                 break;
+            case 6:
+                return $this->getLanguageId();
+                break;
             default:
                 return null;
                 break;
@@ -980,6 +1035,7 @@ abstract class OcZone implements ActiveRecordInterface
             $keys[3] => $this->getCode(),
             $keys[4] => $this->getStatus(),
             $keys[5] => $this->getSortOrder(),
+            $keys[6] => $this->getLanguageId(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1037,6 +1093,9 @@ abstract class OcZone implements ActiveRecordInterface
             case 5:
                 $this->setSortOrder($value);
                 break;
+            case 6:
+                $this->setLanguageId($value);
+                break;
         } // switch()
 
         return $this;
@@ -1080,6 +1139,9 @@ abstract class OcZone implements ActiveRecordInterface
         }
         if (array_key_exists($keys[5], $arr)) {
             $this->setSortOrder($arr[$keys[5]]);
+        }
+        if (array_key_exists($keys[6], $arr)) {
+            $this->setLanguageId($arr[$keys[6]]);
         }
     }
 
@@ -1139,6 +1201,9 @@ abstract class OcZone implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcZoneTableMap::COL_SORT_ORDER)) {
             $criteria->add(OcZoneTableMap::COL_SORT_ORDER, $this->sort_order);
+        }
+        if ($this->isColumnModified(OcZoneTableMap::COL_LANGUAGE_ID)) {
+            $criteria->add(OcZoneTableMap::COL_LANGUAGE_ID, $this->language_id);
         }
 
         return $criteria;
@@ -1231,6 +1296,7 @@ abstract class OcZone implements ActiveRecordInterface
         $copyObj->setCode($this->getCode());
         $copyObj->setStatus($this->getStatus());
         $copyObj->setSortOrder($this->getSortOrder());
+        $copyObj->setLanguageId($this->getLanguageId());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setZoneId(NULL); // this is a auto-increment column, so set to default value
@@ -1272,6 +1338,7 @@ abstract class OcZone implements ActiveRecordInterface
         $this->code = null;
         $this->status = null;
         $this->sort_order = null;
+        $this->language_id = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

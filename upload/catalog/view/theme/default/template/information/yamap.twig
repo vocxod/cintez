@@ -439,9 +439,10 @@ KURSK
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [{{ center_map }}],
-            zoom: 16
+            zoom: 16,
+            controls: [],
         }, {
-            searchControlProvider: 'yandex#search'
+            //searchControlProvider: 'yandex#search'
         }),
 
         // Создаём макет содержимого.
@@ -465,6 +466,12 @@ KURSK
             iconImageOffset: [-5, -38]
         })
         ;
+        /*
+        // Получим ссылку на элемент управления.
+        control = myMap.controls.get('routeButtonControl');
+        // Программно установим начальную точку маршрута.
+        control.routePanel.state.set('to', 'чернышевская');
+  */
     myMap.geoObjects
         .add(myPlacemark)
 });
