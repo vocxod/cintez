@@ -201,16 +201,60 @@ a.zone-select {
   margin:0px;
   padding: 0px;
   padding-right: 10px;
-  height: 1.4em;
+  height: 1.5em;
   overflow: hidden;
   width:90%;
+  position: relative;
 }
+/**/
+.run_string h5 {
+ font-size: 16px;
+ color: rgb(54,154,56);
+ position: absolute;
+ width: 100%;
+ height: 100%;
+ margin: 0;
+ line-height: 22px;
+ text-align: center;
+ /* Starting position */
+ -moz-transform:translateX(100%);
+ -webkit-transform:translateX(100%);  
+ transform:translateX(100%);
+ /* Apply animation to this element */  
+ -moz-animation: example1 15s linear infinite;
+ -webkit-animation: example1 15s linear infinite;
+ animation: example1 15s linear infinite;
+}
+/* Move it (define the animation) */
+@-moz-keyframes example1 {
+ 0%   { -moz-transform: translateX(100%); }
+ 100% { -moz-transform: translateX(-100%); }
+}
+@-webkit-keyframes example1 {
+ 0%   { -webkit-transform: translateX(100%); }
+ 100% { -webkit-transform: translateX(-100%); }
+}
+@keyframes example1 {
+ 0%   { 
+ -moz-transform: translateX(100%); /* Firefox bug fix */
+ -webkit-transform: translateX(100%); /* Firefox bug fix */
+ transform: translateX(100%);     
+ }
+ 100% { 
+ -moz-transform: translateX(-100%); /* Firefox bug fix */
+ -webkit-transform: translateX(-100%); /* Firefox bug fix */
+ transform: translateX(-100%); 
+ }
+}
+/**/
+
 .run_packing {
   margin:0px;
   padding: 0px;
   max-height: 1.4em;
   overflow: hidden;
   font-size: 14px;
+  width:90%;
 }
 .run_ingridient {
   margin:0px;
@@ -218,9 +262,16 @@ a.zone-select {
   max-height: 1.4em;
   overflow: hidden;
   font-size: 14px;
+  text-overflow: ellipsis;
 }
-
-
+a.run_link {
+text-decoration: none;
+color:#444;
+}
+a.run_link:hover {
+  color:rgb(54,154,56);
+  text-decoration: none;
+}
 /* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */
 @media (min-width: 768px) {
     #column-left  .product-layout .col-md-3 {
