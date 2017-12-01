@@ -210,10 +210,9 @@
 $(document).ready( function(){
   var sFullString = '';
   var iSetIntervalID = 0;
-  function shiftString(){
-    iShift = iShift + 1;
-    console.log("shift " + iShift );
-  }
+  var iOffset1 = 0; 
+  var iOffset2 = 0; 
+  var iOffset3 = 0;
   $(".run_card").mouseenter(function(event) {
     // найти все внутренние элементы с классами:
     // runlineone run_packing_content run_ingridient_content
@@ -224,21 +223,24 @@ $(document).ready( function(){
     sFullString2 = oElement2.text() + " ";
     sFullString3 = oElement3.text() + " ";
     function shiftString(iShift){
-        sFullString = sFullString.slice( iShift ) + sFullString.slice(0, iShift);
+        sFullString = sFullString.slice( iShift + 1) + sFullString.slice(0, iShift + 1 );
         oElement.text( sFullString );
+        iOffset1 = iOffset1 + iShift + 1;
 
-        sFullString2 = sFullString2.slice( iShift ) + sFullString2.slice(0, iShift);
+        sFullString2 = sFullString2.slice( iShift ) + sFullString2.slice(0, iShift  );
         oElement2.text( sFullString2 );
+        iOffset2 = iOffset2 + iShift;
 
-        sFullString3 = sFullString3.slice( iShift ) + sFullString3.slice(0, iShift);
+        sFullString3 = sFullString3.slice( iShift + 2 ) + sFullString3.slice(0, iShift + 2);
         oElement3.text( sFullString3 );
-        
+        iOffset3 = iOffset3 + iShift + 2;
       }
       iSetIntervalID = window.setInterval( function(){ 
         shiftString(1); // по сколько символом сдвигать 
-      }, 120);
+      }, 200);
     })
     .mouseleave(function() {
+        console.log( iOffset1, iOffset2, iOffset3 );
         window.clearInterval( iSetIntervalID )
     });
   })
