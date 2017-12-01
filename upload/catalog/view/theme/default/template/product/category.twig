@@ -140,9 +140,21 @@
                 <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
 <a class="run_link" href="{{ product.href }}">
   <div class="run_bottom">
-  <div class="run_string"><span class="runlineone">{{ product.small_description }}</span></div>
-  <div class="run_packing"><span style="font-weight:bold">{{ product_packing }}:</span>{{ product.packing }}</div> 
-  <div class="run_ingridient"><span style="font-weight:bold">{{ product_ingridient }}:</span>{{ product.ingridient }}</div>
+
+    <div class="run_string">
+      <span class="runlineone">{{ product.small_description }}</span>
+    </div>
+    
+    <div class="run_packing">
+      <span style="font-weight:bold">{{ product_packing }}:</span>
+      <span class="run_packing_content">{{ product.packing }}</span>
+    </div> 
+    
+    <div class="run_ingridient">
+      <span style="font-weight:bold">{{ product_ingridient }}:</span>
+      <span class="run_ingridient_content">{{ product.ingridient }}</span>
+    </div>
+
   </div>
 </a>
 
@@ -192,4 +204,45 @@
       {{ content_bottom }}</div>
     {{ column_right }}</div>
 </div>
+
+<script type="text/javascript"> 
+
+$(document).ready( function(){
+  var sFullString = '';
+  var iSetIntervalID = 0;
+  function shiftString(){
+    iShift = iShift + 1;
+    console.log("shift " + iShift );
+  }
+  $(".run_card").mouseenter(function(event) {
+    // найти все внутренние элементы с классами:
+    // runlineone run_packing_content run_ingridient_content
+    var oElement = $(this).find(".runlineone"); 
+    var oElement2 = $(this).find(".run_packing_content");
+    var oElement3 = $(this).find(".run_ingridient_content");
+    sFullString = oElement.text() + " ";
+    sFullString2 = oElement2.text() + " ";
+    sFullString3 = oElement3.text() + " ";
+    function shiftString(iShift){
+        sFullString = sFullString.slice( iShift ) + sFullString.slice(0, iShift);
+        oElement.text( sFullString );
+
+        sFullString2 = sFullString2.slice( iShift ) + sFullString2.slice(0, iShift);
+        oElement2.text( sFullString2 );
+
+        sFullString3 = sFullString3.slice( iShift ) + sFullString3.slice(0, iShift);
+        oElement3.text( sFullString3 );
+        
+      }
+      iSetIntervalID = window.setInterval( function(){ 
+        shiftString(1); // по сколько символом сдвигать 
+      }, 120);
+    })
+    .mouseleave(function() {
+        window.clearInterval( iSetIntervalID )
+    });
+  })
+
+</script>
+
 {{ footer }} 

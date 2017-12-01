@@ -1,21 +1,13 @@
 <?php
 class ControllerProductCategory extends Controller {
 
-	private function getOption( $sOptionName, $iProductId ){
+	private function getOption( $iOptionId, $iProductId ){
 		$sResult = '';
 		$this->load->model('catalog/product');	
 		$aData = $this->model_catalog_product->getProductAttributes( $iProductId ); 
-		$iAttributeGroupId = 0;
-		if( $sOptionName == 'packing' ){
-			$iAttributeId = 10;	
-		}
-		if( $sOptionName == 'ingridient' ){
-			$iAttributedId = 11;	
-		}
 		$sResult = '';
 		for($i=0; $i < count($aData); $i++ ){
-			if( $aData[$i]['attribute'][0]['attribute_id'] == 10 || 
-				$aData[$i]['attribute'][0]['attribute_id'] == 11 ){
+			if( $aData[$i]['attribute'][0]['attribute_id'] == $iOptionId ){
 				$sResult = ( $aData[$i]['attribute'][0]['text'] ); 
 			}
 		}
@@ -225,8 +217,8 @@ class ControllerProductCategory extends Controller {
 //'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
 					'small_description' => $result['small_description'],
 					
-'packing' => $this->getOption('packing', $result['product_id']),
-'ingridient' => $this->getOption('ingridient', $result['product_id']),
+'packing' => $this->getOption(10, $result['product_id']),
+'ingridient' => $this->getOption(11, $result['product_id']),
 
 					'price'       => $price,
 					'special'     => $special,

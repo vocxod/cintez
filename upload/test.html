@@ -110,20 +110,41 @@ function shiftText(){
 
 $( document ).ready(function() {
 
-$(".row-line-1").mouseenter(function( event ) {
-	function rrShift(){
-		oMy = $(this);
-		console.log( "text= " + oMy.text() );
+	var sFullString = '';
+	var iSetIntervalID = 0;
+
+	function shiftString(){
+		iShift = iShift + 1;
+		console.log("shift " + iShift );
 	}
-	console.log(event);
-	iSetIntervalID = window.setInterval( function() {
-		rrShift();
-		console.log( 'shift');		
-    }, 1000)
-  })
-  .mouseleave(function() {
-    window.clearInterval( iSetIntervalID )
-  });
+	$(".run_card").mouseenter(function(event) {
+	  	/*
+	    var oElement = $(this);
+	    sFullString = oElement.text();  
+	    
+	    function shiftString(iShift){
+	    	sFullString = sFullString.slice(1) + sFullString.slice(0,1);
+	      oElement.text( sFullString );
+	    }
+	  	iSetIntervalID = window.setInterval( function(){ 
+	    shiftString(1) }, 70)
+*/
+		// найти все внутренние элементы с классами:
+		// runlineone run_packing_content run_ingridient_content
+		var oElement = $(this).children(".runlineone"); 
+		console.log( oElement );
+		sFullString = oElement.text();
+		function shiftString(iShift){
+		    sFullString = sFullString.slice( iShift ) + sFullString.slice(0, iShift);
+		    oElement.text( sFullString );
+	    }
+	  	iSetIntervalID = window.setInterval( function(){ 
+	    	shiftString(1); // по сколько символом сдвигать 
+	    }, 70);
+	  })
+	  .mouseleave(function() {
+	  		window.clearInterval( iSetIntervalID )
+	  });
 
 
 
