@@ -200,24 +200,26 @@ a.zone-select {
 .run_string {
   margin:0px;
   padding: 0px;
-  height: 16px;
+  padding-right: 10px;
+  height: 1.4em;
   overflow: hidden;
-  outline: 1px solid red;
+  width:90%;
 }
 .run_packing {
   margin:0px;
   padding: 0px;
-  max-height: 2em;
+  max-height: 1.4em;
   overflow: hidden;
   font-size: 14px;
 }
 .run_ingridient {
   margin:0px;
   padding: 0px;
-  max-height: 2em;
+  max-height: 1.4em;
   overflow: hidden;
   font-size: 14px;
 }
+
 
 /* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */
 @media (min-width: 768px) {
