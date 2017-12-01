@@ -138,10 +138,11 @@
             <div>
               <div class="caption">
                 <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
-
-<p class="run_string">{{ product.small_description }}</p>
-<p class="run_packing"><span style="font-weight:bold">{{ product_packing }}:</span>{{ product.packing }}</p> 
-<p class="run_ingridient"><span style="font-weight:bold">{{ product_ingridient }}:</span>{{ product.ingridient }}</p>
+<div class="run_bottom">
+<span class="run_string">{{ product.small_description }}</span>
+<span class="run_packing"><span style="font-weight:bold">{{ product_packing }}:</span>{{ product.packing }}</span> 
+<span class="run_ingridient"><span style="font-weight:bold">{{ product_ingridient }}:</span>{{ product.ingridient }}</span>
+</div>
 
                 {#<p>{{ product.description }}</p>#}
                 

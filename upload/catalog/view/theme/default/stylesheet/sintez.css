@@ -193,19 +193,30 @@ a.zone-select {
 }
 
 /* оформление данных на карточке */
+.run_bottom {
+  height: 60px;
+  overflow: hidden;
+}
 .run_string {
   margin:0px;
   padding: 0px;
-  max-height: 40px;
+  height: 16px;
   overflow: hidden;
+  outline: 1px solid red;
 }
 .run_packing {
   margin:0px;
   padding: 0px;
+  max-height: 2em;
+  overflow: hidden;
+  font-size: 14px;
 }
 .run_ingridient {
   margin:0px;
   padding: 0px;
+  max-height: 2em;
+  overflow: hidden;
+  font-size: 14px;
 }
 
 /* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */

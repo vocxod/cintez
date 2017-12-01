@@ -7,19 +7,18 @@ class ControllerProductCategory extends Controller {
 		$aData = $this->model_catalog_product->getProductAttributes( $iProductId ); 
 		$iAttributeGroupId = 0;
 		if( $sOptionName == 'packing' ){
-			$iAttributeGroupId = 3;	
+			$iAttributeId = 10;	
 		}
 		if( $sOptionName == 'ingridient' ){
-			$iAttributeGroupId = 5;	
+			$iAttributedId = 11;	
 		}
-		//var_dump( $iProductId ); die();
-		// var_dump( $aData[1] ); die();
-		foreach ($aData as $key => $value) {
-			//var_dump($key, $aData[$key]['attribute_group_id']);
-			if($aData[$key]['attribute_group_id'] == 5 || $aData[$key]['attribute_group_id'] == 3 ){
-				$sResult = ( $aData[$key]['attribute'][0]['name'] );
-			}; 
-		}	
+		$sResult = '';
+		for($i=0; $i < count($aData); $i++ ){
+			if( $aData[$i]['attribute'][0]['attribute_id'] == 10 || 
+				$aData[$i]['attribute'][0]['attribute_id'] == 11 ){
+				$sResult = ( $aData[$i]['attribute'][0]['text'] ); 
+			}
+		}
 		return $sResult;
 	}
 
