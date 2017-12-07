@@ -425,14 +425,14 @@ $( document ).ready(function() {
   .on( "mouseenter", function(event) {
     sBigId = '#' + $(this).attr('data');
     //console.log( sBigId )
-    $( sBigId ).show();
+    $( sBigId ).show( "slow" );
   })
   ;
   $( ".big-product" )
   .on( "mouseleave", function(event) {
     sBigId = '#' + $(this).attr('data');
     //console.log( sBigId )
-    $( sBigId ).hide();
+    $( sBigId ).hide( "slow" );
   })
 
   ;
