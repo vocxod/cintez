@@ -421,7 +421,21 @@ $( document ).ready(function() {
     //console.log("mouseleave ulid3");
   });
   
+  $( ".product-thumb" )
+  .on( "mouseenter", function(event) {
+    sBigId = '#' + $(this).attr('data');
+    //console.log( sBigId )
+    $( sBigId ).show();
+  })
+  ;
+  $( ".big-product" )
+  .on( "mouseleave", function(event) {
+    sBigId = '#' + $(this).attr('data');
+    //console.log( sBigId )
+    $( sBigId ).hide();
+  })
 
+  ;
 
   $(".drapdawn").hover(            
     function() {
