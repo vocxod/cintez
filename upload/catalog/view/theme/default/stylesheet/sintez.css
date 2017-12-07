@@ -844,7 +844,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
   height:480px; 
   display:none; 
   border:0px solid green; 
-  background:#F0F8F5; 
+  background:#FEFEFE; 
   z-index:2000; 
   border-bottom-left-radius: 5px; 
   border-bottom-right-radius: 5px; 
