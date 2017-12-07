@@ -841,7 +841,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 /* для улучшенного вида карточки товара */
 .big-product {
   position:absolute; 
-  height:480px; 
+  min-height:460px; 
   display:none; 
   border:0px solid green; 
   background:#FEFEFE; 
@@ -851,6 +851,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
   -webkit-box-shadow: 0px 5px 7px 0px rgba(50, 50, 50, 0.75);
   -moz-box-shadow:    0px 5px 7px 0px rgba(50, 50, 50, 0.75);
   box-shadow:         0px 5px 7px 0px rgba(50, 50, 50, 0.75);
+  outline: 0px dashed magenta;
 }
 .big-col-0 {
   left:15px;

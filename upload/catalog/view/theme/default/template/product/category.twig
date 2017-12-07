@@ -130,8 +130,7 @@
         {% set num_row = loop.index0 // 3 %}
 
         <div class="big-product product-layout col-lg-4 big-col-{{ num_column }} big-row-{{ num_row }}" id="big_{{ product.product_id }}" data="big_{{ product.product_id }}" >
-            <div class="product-layout product-list col-xs-12" style="margin-top:10px;">
- num col= {{ num_column }} num col= {{ num_row }}
+            <div style="margin-top:10px;">
                 <div class="image product-tile-image-background">
                   <a href="{{ product.href }}">
                     <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
@@ -142,17 +141,17 @@
                   <div class="caption">
                     <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
                     <a class="run_link" href="{{ product.href }}">
-                      <div class="run_bottom">
-                        <div class="run_string">
-                          <span class="runlineone">{{ product.small_description }}</span>
+                      <div class="">
+                        <div class="">
+                          <span class="">{{ product.small_description }}</span>
                         </div>  
-                        <div class="run_packing">
+                        <div class="">
                           <span style="font-weight:bold">{{ product_packing }}:</span>
-                          <span class="run_packing_content">{{ product.packing }}</span>
+                          <span class="">{{ product.packing }}</span>
                         </div> 
-                        <div class="run_ingridient">
+                        <div class="">
                           <span style="font-weight:bold">{{ product_ingridient }}:</span>
-                          <span class="run_ingridient_content">{{ product.ingridient }}</span>
+                          <span class="">{{ product.ingridient }}</span>
                         </div>
                       </div>
                     </a>
