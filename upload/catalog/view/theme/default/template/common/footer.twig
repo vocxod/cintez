@@ -424,15 +424,18 @@ $( document ).ready(function() {
   $( ".product-thumb" )
   .on( "mouseenter", function(event) {
     sBigId = '#' + $(this).attr('data');
-    //console.log( sBigId )
-    $( sBigId ).show( "fast" );
+    /*$( sBigId ).show( "fast" );*/
+    $(sBigId).css('display', 'block');
+    $(sBigId).css('opacity', 1);
+
   })
   ;
   $( ".big-product" )
   .on( "mouseleave", function(event) {
     sBigId = '#' + $(this).attr('data');
-    //console.log( sBigId )
-    $( sBigId ).hide( "fast" );
+    $(sBigId).css('opacity', 0)
+    $(sBigId).css('display', 'none')
+    /*$( sBigId ).hide();*/
   })
 
   ;

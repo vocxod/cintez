@@ -842,7 +842,8 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 .big-product {
   position:absolute; 
   min-height:460px; 
-  display:none; 
+  display:none;
+  opacity: 0; 
   border:0px solid green; 
   background:#FEFEFE; 
   z-index:2000; 
