@@ -12,7 +12,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 		if (!$setting['limit']) {
 			$setting['limit'] = 4;
 		}
-
+		// var_dump( $setting['limit'] ); die();
 		// корректируем содержимое массива PRODUCT и заталкиваем туда
 		// LINIT товаров и которых SKU = 1
 		$aProducts = $this->model_catalog_product->getFeaturedProduct( $setting['limit'] );
@@ -77,7 +77,7 @@ class ControllerExtensionModuleFeatured extends Controller {
 			}
 		}
 		//var_dump( $products ); 
-		// die();
+		//die();
 		if ($data['products']) {
 			return $this->load->view('extension/module/featured', $data);
 		}
