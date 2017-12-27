@@ -17,7 +17,8 @@
             {{is_new.image}}
             <h4 style="font-weight:bold;">{{ is_new.title }}</h4>
             <p>
-              {{ is_new.description }}
+              {{ is_new.description | raw }}
+              {#{ dump( is_new.description ) }#}
             </p>
         </div>
        

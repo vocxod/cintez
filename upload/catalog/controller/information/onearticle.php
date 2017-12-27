@@ -29,7 +29,9 @@ class ControllerInformationOnearticle extends Controller {
 			foreach ($is_news as $key => $value) {
 		
 				$content = html_entity_decode( $value );
+				/*
 				$content = preg_replace("/<img[^>]+\>/i", "", $content); 
+				*/
 				$aOut = [];
 
 				if( $key == 'description'){

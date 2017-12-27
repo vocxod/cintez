@@ -23,20 +23,22 @@ class ControllerInformationOnenews extends Controller {
 		$this->load->model('catalog/information');
 		$is_news = $this->model_catalog_information->getInformation( $information_id );
 		$aResult = [];
-		// var_dump($is_news); die();
+		
 		if($is_news){
 			$aData = [];
 			foreach ($is_news as $key => $value) {
 		
 				$content = html_entity_decode( $value );
+				/*
 				$content = preg_replace("/<img[^>]+\>/i", "", $content); 
+				*/
 				$aOut = [];
-
+				
 				if( $key == 'description'){
 					$aData[$key] = html_entity_decode( $content );
 					
 					if( preg_match_all("/<img[^>]+\>/i", html_entity_decode( $value ), $aOut) ){
-						//var_dump($aData['image']);
+						//var_dump($aOut);
 						$aData[ 'image' ] = $aOut[0][0];//первая картинка
 						//$aData[''] = html_entity_decode( $content );
 					}
@@ -48,7 +50,8 @@ class ControllerInformationOnenews extends Controller {
 		}
 		/* */
 		$data['is_new'] = $aResult;
-		
+		file_put_contents('fname.txt', ( $data['is_new']['description'] ) ); 
+
 		if ( $aResult ) {
 			/* @todo fix it */
 			$this->document->setTitle('meta_title');
