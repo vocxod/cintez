@@ -50,7 +50,7 @@ class ControllerInformationOnenews extends Controller {
 		}
 		/* */
 		$data['is_new'] = $aResult;
-		file_put_contents('fname.txt', ( $data['is_new']['description'] ) ); 
+		// file_put_contents('fname.txt', ( $data['is_new']['description'] ) ); 
 
 		if ( $aResult ) {
 			/* @todo fix it */
