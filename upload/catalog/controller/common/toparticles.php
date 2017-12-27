@@ -9,7 +9,7 @@ class ControllerCommonToparticles extends Controller {
 		} else {
 			$iLimit = 6;
 		}
-		$aTopArticles = $this->model_catalog_information->getTopArticles( $iLimit );
+		$aTopArticles = $this->model_catalog_information->getTopArticles( 0, $iLimit );
 		/* get first image for each atricle */
 		$aResult = [];
 		foreach ($aTopArticles as $key => $value) {

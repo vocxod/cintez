@@ -1,1 +1,17 @@
 
+[27-Dec-2017 16:06:05 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'OFFSET 0 LIMIT 3' at line 1<br />Error No: 1064<br />SELECT * FROM oc_information i LEFT JOIN oc_information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='4' ORDER BY i.information_id DESC OFFSET 0 LIMIT 3' in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/vkartel.dev/upload/system/library/db.php(45): DB\MySQLi->query('SELECT * FROM o...')
+#1 /var/www/html/vkartel.dev/upload/catalog/model/catalog/information.php(13): DB->query('SELECT * FROM o...')
+#2 [internal function]: ModelCatalogInformation->getTopNews()
+#3 /var/www/html/vkartel.dev/upload/system/engine/loader.php(248): call_user_func_array(Array, Array)
+#4 [internal function]: Loader->{closure}(Array, Array)
+#5 /var/www/html/vkartel.dev/upload/system/engine/pro in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php on line 40
+[27-Dec-2017 17:42:43 UTC] PHP Fatal error:  Uncaught exception 'Exception' with message 'Error: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near '=0' at line 1<br />Error No: 1064<br />SELECT * FROM oc_information i LEFT JOIN oc_information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='4' ORDER BY i.information_id DESC LIMIT 5 OFFSET=0' in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/vkartel.dev/upload/system/library/db.php(45): DB\MySQLi->query('SELECT * FROM o...')
+#1 /var/www/html/vkartel.dev/upload/catalog/model/catalog/information.php(32): DB->query('SELECT * FROM o...')
+#2 [internal function]: ModelCatalogInformation->getTopArticles(0, 5)
+#3 /var/www/html/vkartel.dev/upload/system/engine/loader.php(248): call_user_func_array(Array, Array)
+#4 [internal function]: Loader->{closure}(Array, Array)
+#5 /var/www/html/vkartel.dev/upload/system/engine/proxy.php in /var/www/html/vkartel.dev/upload/system/library/db/mysqli.php on line 40

@@ -6,23 +6,43 @@ class ModelCatalogInformation extends Model {
 		return $query->row;
 	}
 
-	public function getTopNews( $iLimit = 3 ){
+	public function getTopNews( $iOffset = 0, $iLimit = 3 ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
-		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit";
-		// echo $sSqlSelect . "\n";
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset ";
+		//echo $sSqlSelect . "\n"; die();
 		$query = $this->db->query( $sSqlSelect );
 		//var_dump($query); die();
 		return $query->rows;
 	}
 
-	public function getTopArticles( $iLimit = 3 ){
+	public function getNewsCount( ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
-		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit";
+		$sSqlSelect = "SELECT count(*) AS news_count FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id ";
+		// echo $sSqlSelect . "\n"; die();
+		$query = $this->db->query( $sSqlSelect );
+		// var_dump($query->row['NEWS_COUNT']); die();
+		$iResult = $query->row['news_count'];
+		return $iResult;
+	}
+
+	public function getTopArticles( $iOffset, $iLimit = 3 ){
+		$iLanguageId = (int)$this->config->get('config_language_id');
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset";
 		// echo $sSqlSelect . "\n";
 		$query = $this->db->query( $sSqlSelect );
 		//var_dump($query); die();
 		return $query->rows;
 	}	
+
+	public function getArticlesCount(){
+		$iLanguageId = (int)$this->config->get('config_language_id');
+		$sSqlSelect = "SELECT count(*) AS articles_count FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "'";
+		// echo $sSqlSelect . "\n";
+		$query = $this->db->query( $sSqlSelect );
+		$iResult = $query->row['articles_count'];
+		//var_dump($query); die();
+		return $iResult;
+	}
 
 	/* вернуть LIMIT новостей */
 	function getNewsList( $iLimit = 20, $iLanguageId = 4 ){

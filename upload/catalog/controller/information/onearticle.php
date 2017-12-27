@@ -9,7 +9,7 @@ class ControllerInformationOnearticle extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('information/newslist')
+			'href' => $this->url->link('common/home')
 		);
 
 		if (isset($this->request->get['information_id'])) {
@@ -58,11 +58,11 @@ class ControllerInformationOnearticle extends Controller {
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/onearticle' . '') //@TODO!!!
+				'href' => $this->url->link('information/articlelist' . '') //@TODO!!!
 			);
 			$data['breadcrumbs'][] = array(
 				'text' => $aResult['title'], //@TODO from meta (url)
-				'href' => $this->url->link('information/onearticle' . '?information=' . $information_id) //@TODO!!!
+				'href' => $this->url->link('information/onearticle' . '&information_id=' . $information_id) //@TODO!!!
 			);			
 
 			$data['heading_title'] = $this->language->get('heading_title');

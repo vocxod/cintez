@@ -12,11 +12,24 @@ class ControllerInformationArticlelist extends Controller {
 			'href' => $this->url->link('information/newslist')
 		);
 
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
+		} else {
+			$page = 1;
+		}
+
+		if (isset($this->request->get['limit'])) {
+			$iLimit = (int)$this->request->get['limit'];
+		} else {
+			$iLimit = 5;
+		}
+
+		$iOffset = ( $page - 1 ) * $iLimit;
 
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopArticles( 5 );
+		$top_news = $this->model_catalog_information->getTopArticles( $iOffset, $iLimit );
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
 			$aData = [];
@@ -67,6 +80,15 @@ class ControllerInformationArticlelist extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8] );
+
+			// расставим страницу 
+			$pagination = new Pagination();
+			$product_total = $this->model_catalog_information->getArticlesCount();
+			$pagination->total = $product_total;
+			$pagination->page = $page;
+			$pagination->limit = $iLimit;
+			$pagination->url = $this->url->link('information/articlelist', '&page={page}');
+			$data['pagination'] = $pagination->render();
 
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/articlelist', $data);
