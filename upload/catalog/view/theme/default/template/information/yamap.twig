@@ -50,8 +50,10 @@
           </div>
       </div>
     </div>
-    <div>&nbsp;</div>
+
+
     {# row 2 #}
+    <div>&nbsp;</div>
     <div id="center_content" class="col-sm-12">
     <div  class="col-sm-6">Москва</div>
     <div  class="col-sm-6">Курск</div>
@@ -60,15 +62,13 @@
     <div id="center_content" class="col-sm-12">
       
       <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
-        <a href="index.php?route=common/zone/zone&">
-          <img src="/image/catalog/map/moscow-static.png" width="100%" alt="Москва" title="Москва">
-        </a>       
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
       </div>
 
       <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
-        <a href="#">
-          <img src="/image/catalog/map/kursk-static.png" width="100%" alt="Курск" title="Курск">
-        </a>       
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
       </div>
     </div>
     <div id="center_content" class="col-sm-12">
@@ -84,21 +84,18 @@
     </div>
     <div id="center_content" class="col-sm-12">
       <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
-        <a href="#">
-          <img src="/image/catalog/map/nsk-static.png" width="100%" alt="Новосибирск" title="Новосибирск">
-        </a> 
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
       </div>
       <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
-        <a href="#">
-          <img src="/image/catalog/map/rnd-static.png" width="100%" alt="Ростов-на-Дону" title="Ростов-на-Дону">
-        </a> 
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
       </div>
     </div>
     <div id="center_content" class="col-sm-12">
     <div  class="col-sm-6">Тел: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
     <div  class="col-sm-6">Тел: +7(863) 201-43-44 email: rostov@specsintez.com</div>
     </div>
-
 
     {% endif %}
     {# SPB-RU end #}
@@ -140,6 +137,52 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Moscow</div>
+    <div  class="col-sm-6">Kurks</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Novosibirsk</div>
+    <div  class="col-sm-6">Rostov-na-Donu</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>
+
   {% endif %}
   {# SPB - EN end#}
   
@@ -181,8 +224,54 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Санкт-Петербург</div>
+    <div  class="col-sm-6">Курск</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Новосибирск</div>
+    <div  class="col-sm-6">Ростов-на-Дону</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>
     {% endif %}
 {# MSK RU end #}
+
 {# MSK EN start #}
     {% if lang == 'en' and current_zone == 2761 %}
     <div id="center_content" class="col-sm-12">
@@ -221,6 +310,52 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">St.Peterburg</div>
+    <div  class="col-sm-6">Kursk</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Novosibirsk</div>
+    <div  class="col-sm-6">Rostov-na-Donu</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>
+
   {% endif %}
 {# MSK EN end#}
 
@@ -263,8 +398,56 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Санкт-Петербург</div>
+    <div  class="col-sm-6">Курск</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Санкт-Петербург</div>
+    <div  class="col-sm-6">Ростов-на-Дону</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>
+
     {% endif %}
 {# NSK RU end #}
+
+
 {# NSK EN start #}
     {% if lang == 'en' and current_zone == 2768 %}
     <div id="center_content" class="col-sm-12">
@@ -304,6 +487,50 @@
           </div>
       </div>
     </div>
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Moscow</div>
+    <div  class="col-sm-6">Kursk</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">St. Peterburg</div>
+    <div  class="col-sm-6">Rostov na Donu</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>  
   {% endif %}
 {# NSK EN end#}
 
@@ -345,6 +572,51 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Москва</div>
+    <div  class="col-sm-6">Курск</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Новосибирск</div>
+    <div  class="col-sm-6">Санкт-Петербург</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    </div>
     {% endif %}
 {# R-n-D RU end #}
 {# R-n-D EN start #}
@@ -385,6 +657,50 @@
           </div>
       </div>
     </div>
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Moscow</div>
+    <div  class="col-sm-6">Kursk</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/kursk-static.png", "KK", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(4712) 44-60-18 email: V.Shukin@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Novosibirsk</div>
+    <div  class="col-sm-6">St. Peterburg</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    </div>   
   {% endif %}
 {# R-n-D EN end#}
 
@@ -426,6 +742,52 @@
           </div>
       </div>
     </div>
+
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Москва</div>
+    <div  class="col-sm-6">Санкт-Петербург</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Новосибирск</div>
+    <div  class="col-sm-6">Ростов-на-Дону</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Тел: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Тел: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>
+
     {% endif %}
 {# KURSK RU end #}
 {# KURSK EN start #}
@@ -466,6 +828,50 @@
           </div>
       </div>
     </div>
+    {# row 2 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Moscow</div>
+    <div  class="col-sm-6">St.Peterburg</div>
+    </div>
+
+    <div id="center_content" class="col-sm-12">
+      
+      <div  class="col-sm-6" id="map_2_1" style="overflow:hidden; height:300px; outline:0px dashed blue;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/moscow-static.png", "MO", redirect ) }}
+      </div>
+
+      <div  class="col-sm-6" id="map_2_2" style="overflow:hidden; height:300px; outline:0px dashed red;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/spb-static.png", "SP", redirect ) }}      
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(495) 665-02-53 email: dir-msk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(812) 318-47-17 email: mail@specsintez.com</div>
+    </div>
+
+    {# row 3 #}
+    <div>&nbsp;</div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Novosibirsk</div>
+    <div  class="col-sm-6">Rostov na Donu</div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+      <div  class="col-sm-6" id="map_3_1" style="overflow:hidden; height:300px; outline:0px dashed green;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/nsk-static.png", "NV", redirect ) }}   
+      </div>
+      <div  class="col-sm-6" id="map_3_2" style="overflow:hidden; height:300px; outline:0px dashed magenta;">
+        {% import "macros/city_form.twig" as city_form %}
+        {{ city_form.show( form_action, "/image/catalog/map/rnd-static.png", "RO", redirect ) }} 
+      </div>
+    </div>
+    <div id="center_content" class="col-sm-12">
+    <div  class="col-sm-6">Phone: +7(383) 363-10-88 email: opt-nsk@specsintez.com</div>
+    <div  class="col-sm-6">Phone: +7(863) 201-43-44 email: rostov@specsintez.com</div>
+    </div>  
   {% endif %}
 {# KURSK EN end#}
 
@@ -486,6 +892,11 @@ KURSK
 51.677281, 36.152088
 
 */
+
+  $(".city_image").on('click', function(){
+    console.log("click");
+  });
+
   ymaps.ready(function () {
     var myMap = new ymaps.Map('map', {
             center: [{{ center_map }}],
@@ -530,27 +941,4 @@ KURSK
 
 {{ footer }}
 
-{#
-/*
-        myPlacemarkWithContent = new ymaps.Placemark([59.957539, 30.470504], {
-            hintContent: 'Собственный значок метки с контентом',
-            balloonContent: 'А эта — новогодняя',
-            iconContent: '12'
-        }, {
-            // Опции.
-            // Необходимо указать данный тип макета.
-            iconLayout: 'default#imageWithContent',
-            // Своё изображение иконки метки.
-            iconImageHref: '/image/catalog/pages/contacts/yamap-maker.png',
-            // Размеры метки.
-            iconImageSize: [52, 70],
-            // Смещение левого верхнего угла иконки относительно
-            // её "ножки" (точки привязки).
-            iconImageOffset: [-24, -24],
-            // Смещение слоя с содержимым относительно слоя с картинкой.
-            iconContentOffset: [15, 15],
-            // Макет содержимого.
-            iconContentLayout: MyIconContentLayout
-        })
-*/
-#}
+
