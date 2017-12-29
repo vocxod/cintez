@@ -727,6 +727,14 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -51px;   
 }
 
+/* СПА */
+.category_id_168 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -199px; 
+}
+.category_id_168_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -199px;   
+}
+
 #menu_94 {
   /* car */
   width: 30px;
