@@ -12,7 +12,7 @@
   {# subcategory level 1 #}
   <div class="row" id="step-select-1">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
-        <div class="col-sm-12">
+        <div id="path_level_1" class="col-sm-12">
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
@@ -21,7 +21,7 @@
                 <div class="radio radio-primary" style="margin:10px;">
                     <input type="radio" name="where_1" id="where_{{ what_item.category_id }}" value="{{what_item.category_id}}">
                     <label for="where_{{ what_item.category_id }}">
-                        {{ what_item.name }}
+                        {{ what_item.category_id }} : {{ what_item.name }}
                     </label>
                 </div>
               {% endfor %}              
@@ -31,7 +31,7 @@
                       <div class="radio radio-primary" style="margin:10px;">
                           <input type="radio" name="where_1" id="where_1_{{ what_item.category_id }}" value="{{what_item.category_id}}">
                           <label for="where_1_{{ what_item.category_id }}">
-                              {{ what_item.name }}
+                              {{ what_item.category_id }} : {{ what_item.name }}
                           </label>
                       </div>                
               {% endfor %}  
@@ -41,31 +41,31 @@
   </div>{# ROW #}
 
   {# subcategory level 2 #}
-                    <div class="row hidden light-bg-green" id="step-select-2">
-                      <div class="container bottom-green-wings " style="padding-bottom:30px;">
-                          <div class="col-sm-12">
-                            <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
-                            <h3>{{heading_title_second_form}}</h3>
-                            <div class="col-sm-6">
-                                  {% for where_item in sub_categories_left %}
-                  <div class="radio radio-primary" style="margin:10px;">
-                      <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-                      <label for="where_2_{{ where_item.category_id }}">
-                          {{ where_item.name }}
-                      </label>
-                  </div>
-                {% endfor %}              
-          </div>
-          <div class="col-sm-6">
-                {% for where_item in sub_categories_right %}
-<div class="radio radio-primary" style="margin:10px;">
-    <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_2_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>                  
-                {% endfor %}  
-          </div>
+  <div class="row hidden light-bg-green" id="step-select-2">
+      <div class="container bottom-green-wings " style="padding-bottom:30px;">
+          <div id="path_level_2" class="col-sm-12">
+            <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+            <h3>{{heading_title_second_form}}</h3>
+            <div class="col-sm-6">
+              {% for where_item in sub_categories_left %}
+                <div class="radio radio-primary" style="margin:10px;">
+                    <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+                    <label for="where_2_{{ where_item.category_id }}">
+                        {{ where_item.category_id }} : {{ where_item.name }}
+                    </label>
+                </div>
+              {% endfor %}              
+            </div>
+            <div class="col-sm-6">
+                  {% for where_item in sub_categories_right %}
+                      <div class="radio radio-primary" style="margin:10px;">
+                          <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+                          <label for="where_2_{{ where_item.category_id }}">
+                              {{ where_item.category_id }} : {{ where_item.name }}
+                          </label>
+                      </div>                  
+                  {% endfor %}  
+            </div>
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
@@ -77,24 +77,23 @@
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
           <div class="col-sm-6">
-                {% for where_item in subsub_categories_left %}
-<div class="checkbox checkbox-success" style="margin:10px;">
-    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>
-                {% endfor %}              
+              {% for where_item in subsub_categories_left %}
+              <div class="checkbox checkbox-success" style="margin:10px;">
+                  <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+                  <label for="where_3_{{ where_item.category_id }}">
+                      {{ where_item.category_id }} : {{ where_item.name }}
+                  </label>
+              </div>
+              {% endfor %}              
           </div>
           <div class="col-sm-6">
                 {% for where_item in sub_categories_right %}
-<div class="checkbox checkbox-success" style="margin:10px;">
-    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>                  
-                 
+                <div class="checkbox checkbox-success" style="margin:10px;">
+                    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
+                    <label for="where_3_{{ where_item.category_id }}">
+                        {{ where_item.category_id }} : {{ where_item.name }}
+                    </label>
+                </div>                  
                 {% endfor %}  
           </div>
 
@@ -108,7 +107,7 @@
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
-  <div class="row hidden" id="filtered_product">
+  <div class="row" id="filtered_product">
     <div class="container ">
     <div id="productselection" class="col-sm-12">
 
