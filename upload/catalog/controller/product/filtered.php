@@ -7,6 +7,12 @@ class ControllerProductFiltered extends Controller {
 			$this->request->get['path'] = $sOption['path'];
 		}
 
+		$data = [];
+		/*
+		$sResult = $this->load->view('product/filtered', $data);
+		$this->response->setOutput( $sortResult );
+		return;
+		*/
 		$this->load->language('product/filtered');
 
 		$this->load->model('catalog/category');
@@ -370,10 +376,15 @@ class ControllerProductFiltered extends Controller {
 			$sResult = $this->load->view('product/filtered', $data);
 			
 			//var_dump( $sResult ); die();
-			
-			return $sResult; 
+			//return $sResult; 
+			$this->response->setOutput( $sResult );
+			return;
+
 		} else {
-			die("Сбой обработки запроса / Fail opetaion when request to do.");
+			//$sResult = ("Сбой обработки запроса / Fail opetaion when request to do.");
+			$sResult = $this->load->view('product/filtered', [] );
+			$this->response->setOutput( $sResult );
+			return;
 		}
 	}
 }

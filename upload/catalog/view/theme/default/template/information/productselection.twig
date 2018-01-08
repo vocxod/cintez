@@ -178,15 +178,18 @@
               $.ajax({
                   url: 'index.php?route=product/filtered', // указываем URL и
                   // в запрашиваем ТИП возвращаемых даных
-                  data: { 'jpath' : [ {'type':'html'},{'category3_ids': ['131']}, { 'search_text': 'средство' } ] }, 
-                  dataType : "json",                     // тип загружаемых данных
+                  // data: { 'jpath' : [ {'type':'html'},{'category3_ids': ['10']}, { 'search_text': 'средство' } ] }, 
+                  data: {'path':168},
+                  dataType : "html",                     // тип загружаемых данных
                   success: function (data, textStatus) { // вешаем свой обработчик на функцию success
-                      
+                      /*
                       $.each(data, function(i, val) {    // обрабатываем полученные данные
                           console.log( i, val );
                           $('#filtered_product').removeClass('hidden');
                       });
-                      
+                      */
+                      $('#filtered_product').html( data );
+                      $('#filtered_product').removeClass('hidden');
                       console.log('data:', data, 'textStatus', textStatus );
                   },
                   error: function (jqXHR, exception) {

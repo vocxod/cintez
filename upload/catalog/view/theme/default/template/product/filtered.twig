@@ -1,10 +1,7 @@
-<div class="container">
-  <div class="row">
-    <div id="content" class='col-sm-12'>
-Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta consequuntur suscipit molestias assumenda quae provident excepturi impedit perspiciatis earum ut aut, facilis beatae doloremque voluptate nemo fugit explicabo esse, dolores.
-    </div>
-  </div>
-</div>
+{#
+Это ПАРТИАЛ а не СТРАНИЦА!!!
+Выводит результат для ПОДБОРА ТОВАРА и ДЕЗКАЛЬКУЛЯТОРа
+#}
 
 <div id="product-category" class="container">
 
@@ -110,17 +107,21 @@ Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dicta consequuntur sus
           <button class="btn btn-success">ЕЩЕ</button>
         </div>
       </div>
-
+      
+      {% else %}
+      <div class="alert alert-info text-center">
+Товары, отвечающие заданным критериям, не найдены.
+      </div>
       {% endif %}
-
+{#
       {% if not categories and not products %}
       <p>{{ text_empty }}</p>
       <div class="buttons">
         <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
       </div>
       {% endif %}
-      
-      {{ content_bottom }}</div>
-    {{ column_right }}</div>
+#}      
+      {#{ content_bottom }#}</div>
+    {#{ column_right }#}</div>
 </div>
 
