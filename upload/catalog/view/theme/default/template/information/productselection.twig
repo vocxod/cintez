@@ -137,7 +137,7 @@
       // заполняем первый id="step-select-1"
       var div = document.createElement('div');
       div.className = "radio radio-primary";
-      div.innerHTML = '<input type="checkbox" name="where_3" id="where_3_' + element.id + '" value="' + element.id + '"><label for="where_3_'+ element.id +'">'+ element.id +' : '+ element.title +' </label>';
+      div.innerHTML = '<input class="where_3" type="checkbox" name="where_3[]" id="where_3_' + element.id + '" value="' + element.id + '"><label for="where_3_'+ element.id +'">'+ element.id +' : '+ element.title +' </label>';
       // последовательно в блоки ODD EVEN
       if( index%2 == 1){
         // добавим DIV в левую колонку       
@@ -170,9 +170,14 @@
           // финальный обработчик - показываем найденные товары
           $('input[name=where_3]').on( "change", function(){
               arr_subcategory = $('input[name=where_3]:checked');
-              $('#filtered_product').removeClass('hidden');
               arr_cats = new Array();
-
+              console.log( arr_subcategory );
+              console.log( $('.where_3').val() );
+              /*
+              arr_subcategory.forEach( function( element, index, array ){
+                console.log( element );
+              });
+*/
               // получим данные с product/filtered и проявим их в блоке
               // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
               $.ajax({
@@ -190,7 +195,7 @@
                       */
                       $('#filtered_product').html( data );
                       $('#filtered_product').removeClass('hidden');
-                      console.log('data:', data, 'textStatus', textStatus );
+                      // 
                   },
                   error: function (jqXHR, exception) {
                     var msg = '';
