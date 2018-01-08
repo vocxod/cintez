@@ -168,7 +168,7 @@ class ControllerProductFiltered extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
-//var_dump($results); die();
+			//var_dump($results); die();
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -366,9 +366,14 @@ class ControllerProductFiltered extends Controller {
 
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-
+			
 			$sResult = $this->load->view('product/filtered', $data);
+			
+			//var_dump( $sResult ); die();
+			
 			return $sResult; 
+		} else {
+			die("Сбой обработки запроса / Fail opetaion when request to do.");
 		}
 	}
 }

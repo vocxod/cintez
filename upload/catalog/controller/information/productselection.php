@@ -30,8 +30,12 @@ class ControllerInformationProductselection extends Controller {
 		$aCategories = $this->model_catalog_category->getCategories(0);
 		$iLen = count( $aCategories ) / 2;
 		
-		//var_dump($aCategories); die();
-		
+
+		// @TODO - все переделать!!!
+		// при начальной отрисовке значения 2-3 уровня не определны!
+		// Грузим ВСЁ дерево из oc_category_path
+		//$this->load->model('model_catalog_category_path');
+
 		$data['categories_left'] =  array_slice( $aCategories, 0, $iLen );
 		$data['categories_right'] =  array_slice( $aCategories, $iLen );
 
