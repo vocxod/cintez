@@ -12,7 +12,7 @@ class ControllerCommonCategoryTree extends Controller {
 		} else {
 			$iParentId = 0;
 		}
-
+		$json['parent_id_request'] = $iParentId;
 		$json['status'] = ['code'=>200];
 		$aCategories = $this->model_catalog_category->getCategories( $iParentId );
 		$json['categories'] = $aCategories;
