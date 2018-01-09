@@ -18,32 +18,27 @@
         <form>
           <div class="form-group">
             <label for="field_id_1">Выберите категорию</label>
-            <select id="field_id_1" class="form-control">
+            <select id="field_id_1" name="field_id_1" class="form-control">
               <option value="0">--- Все товары ---</option>
-              <option value="10">Пищевая промышленность</option>
-              <option value="54">Сельское хозяйство</option>
-              <option value="87">Клининг</option>
-              <option value="94">Транспорт</option>
-              <option value="113">Теплообменное оборудование</option>
-              <option value="117">Машиностроение и металлургия</option>
-              <option value="127">Охрана труда</option>
-              <option value="131">Учреждения здравохранения</option>
-              <option value="150">Детские сады и школы</option>
-              <option value="168">Салоны красоты и SPA</option>
+              {% for category in categories %}
+                <option value="{{category.id}}">{{category.name}}</option>
+              {% endfor %}
             </select>
           </div>
 
           <div class="form-group">
             <label for="field_id_3">Выберите средство</label>
-            <select id="field_id_3" class="form-control">
+            <select id="field_id_3" name="field_id_3" class="form-control">
               <option value="0">--- Выберите ---</option>
-              <option value="1" selected>Товар 393</option>
+              {% for product in products %}
+                <option value="{{ product.id }}">{{ product.name }}</option>
+              {% endfor %}
             </select>
           </div>
 
           <div class="form-group">
             <label for="field_id_2">Выберите вид обработки</label>
-            <select id="field_id_2" class="form-control">
+            <select id="field_id_2" name="field_id_2" class="form-control">
               <option value="0">--- Выберите ---</option>
               <option value="1">Дезинфекция поверхностей</option>
               <option value="2">Дезинфекция изделий медицинского назначения</option>
