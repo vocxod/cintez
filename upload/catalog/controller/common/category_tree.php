@@ -35,6 +35,7 @@ class ControllerCommonCategoryTree extends Controller {
 			$aResult[ $aCategory['category_id'] ] = [ 'category_id'=>$aCategory['category_id'], 
 			'name'		=>	$aCategory['name'], 
 			'css'		=>	$aCategory['css'],
+			'class'		=>	$aCategory['class'],
 			'children'	=>	$this->createTree( 
 				$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
 			) ]; 	

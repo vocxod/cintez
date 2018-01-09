@@ -47,6 +47,10 @@ class ControllerInformationProductselection extends Controller {
 
 		$data['filtered_products'] = $this->load->controller('product/filtered/index', ['path' => 127, 'offset' => 0, 'limit' => 12 ] ); 
 		
+
+		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
+		// $data['category_tree'] = json_encode($aCategoryTree);
+		// file_put_contents("filename", $data['category_tree']);
 		$data['page_route'] = "information/productselection";
 		$this->response->setOutput($this->load->view('information/productselection', $data));
 	}

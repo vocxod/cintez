@@ -61,6 +61,7 @@ class ControllerExtensionModuleCategory extends Controller {
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
 				'top'		  => $category['top'],
 				'image'		  => $category['image'],
+				'class'		  => $category['class'] 
 			);
 		}
 		$data['lang'] = $this->language->get('code');

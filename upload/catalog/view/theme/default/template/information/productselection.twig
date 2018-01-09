@@ -13,9 +13,10 @@
   <div class="row" id="step-select-1">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div id="path_level_1" class="col-sm-12">
+          {#{ dump(category_tree) }#}
           <div class="alert alert-error" id="error_message"/>
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
-          <h3>{{heading_title_second_form}}</h3>
+          <h3>{{heading_title_second_form}}:</h3>
           <div class="col-sm-6 odd" id="step_1_odd"></div>
           <div class="col-sm-6 even" id="step_1_even"></div>
         </div>  
@@ -26,8 +27,10 @@
   <div class="row hidden light-bg-green" id="step-select-2">
       <div class="container bottom-green-wings " style="padding-bottom:30px;">
           <div id="path_level_2" class="col-sm-12">
+            {#}
             <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
             <h3>{{heading_title_second_form}}</h3>
+            #}
             <div class="col-sm-6 odd" id="step_2_odd"></div>
             <div class="col-sm-6 even" id="step_2_even"></div>
         </div>  
@@ -38,8 +41,10 @@
   <div class="row hidden" id="step-select-3">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
+          {#}
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
+          #}
           <div class="col-sm-6 odd" id="step_3_odd"></div>
           <div class="col-sm-6 even" id="step_3_even"></div>
         </div>  
@@ -94,6 +99,11 @@
         ] 
       } 
     ]; 
+
+    var category_tree = '';
+
+    //console.log( JSON.parse(category_tree) );
+
     var oddParent_1 = document.getElementById('step_1_odd');
     var evenParent_1 = document.getElementById('step_1_even');
     var oddParent_2 = document.getElementById('step_2_odd');
@@ -107,7 +117,7 @@
       // заполняем первый id="step-select-1"
       var div = document.createElement('div');
       div.className = "radio radio-primary";
-      div.innerHTML = '<input type="radio" name="where_1" id="where_1_' + element.id + '" value="' + element.id + '"><label for="where_1_'+ element.id +'">'+ element.id +' : '+ element.title +' </label>';
+      div.innerHTML = '<input type="radio" name="where_1" id="where_1_' + element.id + '" value="' + element.id + '"><label for="where_1_'+ element.id +'">' + element.title +' </label>';
       // последовательно в блоки ODD EVEN
       if( index%2 == 1){
         // добавим DIV в левую колонку       
@@ -116,6 +126,23 @@
         // добавим DIV в правую колонку
         evenParent_1.appendChild( div );
       }
+    }
+
+    function createOne( element, index, array ){
+      // заполняем первый id="step-select-1"
+      
+      var div = document.createElement('div');
+      div.className = "radio radio-primary";
+      div.innerHTML = '<input type="radio" name="where_1" id="where_1_' + element.category_id + '" value="' + element.category_id + '"><label for="where_1_'+ element.category_id +'">'+ element.name +' </label>';
+      // последовательно в блоки ODD EVEN
+      if( index%2 == 1){
+        // добавим DIV в левую колонку       
+        oddParent_1.appendChild( div );
+      } else {
+        // добавим DIV в правую колонку
+        evenParent_1.appendChild( div );
+      }
+      
     }
 
     function fillingTwo( element, index, array ){
@@ -137,7 +164,7 @@
       // заполняем первый id="step-select-1"
       var div = document.createElement('div');
       div.className = "radio radio-primary";
-      div.innerHTML = '<input class="where_3" type="checkbox" name="where_3[]" id="where_3_' + element.id + '" value="' + element.id + '"><label for="where_3_'+ element.id +'">'+ element.id +' : '+ element.title +' </label>';
+      div.innerHTML = '<input class="where_3" type="checkbox" name="where_3" id="where_3_' + element.id + '" value="' + element.id + '"><label for="where_3_'+ element.id +'">'+ element.id +' : '+ element.title +' </label>';
       // последовательно в блоки ODD EVEN
       if( index%2 == 1){
         // добавим DIV в левую колонку       
@@ -148,15 +175,48 @@
       }
     }
 
-    aCategories.forEach( fillingOne );
+    //aCategories.forEach( fillingOne );
 
+    $.ajax({
+        url: 'index.php?route=common/category_tree', 
+        data: {'category_id': "0" },
+        dataType : "json",                     
+        success: function (data, textStatus) { 
+            data.categories.forEach( createOne );
+            console.log( data.categories );
+        },
+        error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
+            }
+            $('#error_message').html(msg);
+            console.log( msg );
+        },
+        complete: function(){
+            console.log('hide ajax');
+        }
+    });
+              
     $('input[name=where_1]').on( "change", function(){
         subcategory = $('input[name=where_1]:checked').val() ;
         $('#step-select-2').removeClass('hidden');
         $('#step-select-3').addClass('hidden');
         $('#filtered_product').addClass('hidden');
-        console.log('1', subcategory);
-        aCategories.forEach( fillingTwo );
+        //console.log('1', subcategory);
+aCategories.forEach( fillingTwo );
         // навешиваем обработчик событий
         $('input[name=where_2]').on( "change", function(){
           subcategory = $('input[name=where_2]:checked').val() ;
@@ -165,14 +225,19 @@
           // зачистим все чекбоксы
           $('input[name=where_3]').removeAttr('checked');
           // where_3
-          console.log('2', subcategory);
-          aCategories.forEach( fillingThree );
+          //console.log('2', subcategory);
+aCategories.forEach( fillingThree );
           // финальный обработчик - показываем найденные товары
           $('input[name=where_3]').on( "change", function(){
               arr_subcategory = $('input[name=where_3]:checked');
               arr_cats = new Array();
-              console.log( arr_subcategory );
-              console.log( $('.where_3').val() );
+              //console.log( arr_subcategory );
+              //console.log( $('.where_3').val() );
+              var sCategoryList = "";
+              $("input:checkbox:checked").each( function(index, value){ 
+                sCategoryList = value.value + '_'; 
+              });  
+              console.log( sCategoryList );
               /*
               arr_subcategory.forEach( function( element, index, array ){
                 console.log( element );
@@ -184,7 +249,7 @@
                   url: 'index.php?route=product/filtered', // указываем URL и
                   // в запрашиваем ТИП возвращаемых даных
                   // data: { 'jpath' : [ {'type':'html'},{'category3_ids': ['10']}, { 'search_text': 'средство' } ] }, 
-                  data: {'path':168},
+                  data: {'path': "168_54" },
                   dataType : "html",                     // тип загружаемых данных
                   success: function (data, textStatus) { // вешаем свой обработчик на функцию success
                       /*
