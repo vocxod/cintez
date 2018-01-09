@@ -1,1 +1,15 @@
 
+[09-Jan-2018 07:13:24 UTC] PHP Parse error:  syntax error, unexpected ')', expecting variable (T_VARIABLE) in /var/www/html/vkartel.dev/upload/catalog/model/catalog/product.php on line 7
+[09-Jan-2018 07:13:24 UTC] PHP Stack trace:
+[09-Jan-2018 07:13:24 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[09-Jan-2018 07:13:24 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[09-Jan-2018 07:13:24 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[09-Jan-2018 07:13:24 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:171
+[09-Jan-2018 07:13:24 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[09-Jan-2018 07:13:24 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[09-Jan-2018 07:13:24 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[09-Jan-2018 07:13:24 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[09-Jan-2018 07:13:24 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[09-Jan-2018 07:13:24 UTC] PHP  10. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[09-Jan-2018 07:13:24 UTC] PHP  11. ControllerCommonGetproductJson->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[09-Jan-2018 07:13:24 UTC] PHP  12. Loader->model() /var/www/html/vkartel.dev/upload/catalog/controller/common/getproduct_json.php:8

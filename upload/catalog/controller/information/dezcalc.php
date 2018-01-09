@@ -124,12 +124,15 @@ class ControllerInformationDezcalc extends Controller {
 			$data['enquiry'] = '';
 		}
 
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
+
+		if (isset($this->request->get['product_id'])) {
+			$data['product_id'] = $this->request->get['product_id'];
 		} else {
-			$data['captcha'] = '';
+			$data['product_id'] = 0;
 		}
+
+		// var_dump($data['product_id']); die();
+		
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
