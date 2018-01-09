@@ -144,15 +144,15 @@
           // set EVENT and load SUBCATEGORY 2
           $('input[name=where_1]').on( "change", function(){
               subcategory = $('input[name=where_1]:checked').val() ;
-$('#step-select-2 .radio.radio-primary').remove();              
+              $('#step-select-2 .radio.radio-primary').remove();              
               $('#step-select-2').removeClass('hidden');
-$('#step-select-3 .radio.radio-primary').remove();
+              $('#step-select-3 .radio.radio-primary').remove();
               $('#step-select-3').addClass('hidden');
               $('#filtered_product').addClass('hidden');
 
               $.ajax({
                   url: 'index.php?route=common/category_tree', 
-                  data: {'category_id': "131" }, //@TODO - установить все правильно
+                  data: {'category_id': subcategory }, //@TODO - установить все правильно
                   dataType : "json",                     
                   success: function (data, textStatus) { 
                       data.categories.forEach( createTwo );
@@ -183,7 +183,7 @@ $('#step-select-3 .radio.radio-primary').remove();
                       // навешиваем обработчик событий 2
                       $('input[name=where_2]').on( "change", function(){
                         subcategory = $('input[name=where_2]:checked').val() ;
-$('#step-select-3 .radio.radio-primary').remove();                        
+                        $('#step-select-3 .radio.radio-primary').remove();                        
                         $('#step-select-3').removeClass('hidden');
                         $('#filtered_product').addClass('hidden');
                         // зачистим все чекбоксы
@@ -192,7 +192,7 @@ $('#step-select-3 .radio.radio-primary').remove();
                         console.log('2', subcategory);
                         $.ajax({
                             url: 'index.php?route=common/category_tree', 
-                            data: {'category_id': "132" }, //@TODO - установить все правильно
+                            data: {'category_id': subcategory }, //@TODO - установить все правильно
                             dataType : "json",                     
                             success: function (data, textStatus) { 
                                 data.categories.forEach( createThree );
@@ -228,7 +228,7 @@ $('#step-select-3 .radio.radio-primary').remove();
                                   $("input:checkbox:checked").each( function(index, value){ 
                                     sCategoryList = value.value + '_'; 
                                   });  
-                                  console.log( sCategoryList );
+                                  console.log( arr_subcategory );
                                   // получим данные с product/filtered и проявим их в блоке
                                   // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
                                   $.ajax({
