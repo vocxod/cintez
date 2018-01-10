@@ -5,6 +5,13 @@ class ModelCatalogProduct extends Model {
 	}
 
 
+	public function getAllProducts(){
+		$sSqlSelect = "SELECT a.product_id, b.name FROM oc_product AS a LEFT JOIN oc_product_description AS b ON a.product_id=b.product_id WHERE b.language_id='" . (int)$this->config->get('config_language_id') . "' AND a.status=1 ORDER BY b.name ";
+		$query = $this->db->query( $sSqlSelect );
+		return( $query->rows );
+	}
+
+
 	public function getProductCategories( $product_id ){
 		$sSqlSelect = "select a.category_id, a.product_id, c.name  from oc_product_to_category AS a LEFT JOIN oc_category AS b ON a.category_id=b.category_id  LEFT JOIN oc_category_description AS c ON b.category_id=c.category_id  where a.product_id='" . $product_id . "' AND b.parent_id=0 AND language_id='" . (int)$this->config->get('config_language_id') . "' ORDER BY a.category_id LIMIT 1;";
 		$query = $this->db->query( $sSqlSelect );

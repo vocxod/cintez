@@ -11,27 +11,36 @@
     {# content page #}
   <div class="row">
     <div class="col-sm-12 ">
-      <h4 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+      <h4 class="h2">
+        <span class="green-uline">{{ heading_title }}</span>
+{% if product %} : {{ product.name }} {% endif %}
+        
+      </h4>
         <br>
       <div class="col-sm-6">
         {##}
         <form>
           <div class="form-group">
-            <label for="field_id_1">Выберите категорию</label>
-            <select id="field_id_1" name="field_id_1" class="form-control">
+            <label for="categories">Выберите категорию</label>
+            <select id="categories" name="field_id_1" class="form-control">
               <option value="0">--- Все товары ---</option>
               {% for category in categories %}
-                <option value="{{category.id}}">{{category.name}}</option>
+                <option value="{{category.id}}"
+                {% if category.category_id == category_id %}selected="selected"{% endif %}
+                >{{category.name}}</option>
               {% endfor %}
             </select>
           </div>
 
           <div class="form-group">
-            <label for="field_id_3">Выберите средство</label>
-            <select id="field_id_3" name="field_id_3" class="form-control">
+            <label for="products">Выберите средство</label>
+            <select id="products" name="field_id_3" class="form-control">
               <option value="0">--- Выберите ---</option>
               {% for product in products %}
-                <option value="{{ product.id }}">{{ product.name }}</option>
+                <option value="{{ product.product_id }}" 
+                {% if product.product_id == product_id %}selected="selected"{% endif %}>
+                {# {{ product.product_id}} : {{product_id}} : #}{{ product.name }}
+                </option>
               {% endfor %}
             </select>
           </div>
@@ -40,8 +49,8 @@
             <label for="field_id_2">Выберите вид обработки</label>
             <select id="field_id_2" name="field_id_2" class="form-control">
               <option value="0">--- Выберите ---</option>
-              <option value="1">Дезинфекция поверхностей</option>
-              <option value="2">Дезинфекция изделий медицинского назначения</option>
+              <option value="1" selected="selected">Дезинфекция изделий медицинского назначения</option>
+              <option value="2">Дезинфекция поверхностей</option>             
               <option value="3">Дезинфекция на пищеблоке</option>
               <option value="4">Стерилизация и ДВУ эндоскопов </option>
               <option value="5">Дезинфекция биологических и медицинских отходов</option>
@@ -140,7 +149,14 @@
 
 </div>{# information-contact #}
 
-
+<script type="text/javascript">
+  $( document ).ready(function() {
+      $('#products').on('change', function(){
+        console.log( $('#products').val()  );
+        window.location.href="index.php?route=information/dezcalc&product_id=" + $('#products').val();
+      })
+  })
+</script>
 
 {{ footer }}
 
