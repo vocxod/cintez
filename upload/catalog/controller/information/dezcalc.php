@@ -119,7 +119,7 @@ class ControllerInformationDezcalc extends Controller {
 		} else {
 			$data['product_id'] = 0;
 		}
-		$data['products'] = $this->model_catalog_product->getAllProducts(); 
+		$data['products'] = $this->model_catalog_product->getAllProducts(  ); 
 		$data['product'] = $this->model_catalog_product->getProduct( $data['product_id'] );
 		$data['categories']  = $this->model_catalog_category->getCategories(0);
 		//var_dump($data['products']); die();

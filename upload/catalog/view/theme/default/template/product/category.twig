@@ -249,6 +249,21 @@
 </div>
 
 <script type="text/javascript"> 
+  $(document).ready(function(){
+    $('.SIDEBAR_LEVEL_3').each( function(index, item) {  
+       // $(this).parent().attr('href') = "";
+       // console.log( );
+       $(this).parent().on( "click", function(){
+          // console.log( "to " + $(this).attr('href') + " go " );
+          window.location.href = $(this).attr('href');
+       })
+    })
+  })
+</script>
+
+{{ footer }} 
+
+{#
 /*
 $(document).ready( function(){
   var sFullString = '';
@@ -293,6 +308,4 @@ $(document).ready( function(){
     });
   })
 */
-</script>
-
-{{ footer }} 
+#}

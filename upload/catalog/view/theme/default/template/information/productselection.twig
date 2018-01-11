@@ -156,7 +156,7 @@
                   dataType : "json",                     
                   success: function (data, textStatus) { 
                       data.categories.forEach( createTwo );
-                      console.log( data );
+                      //console.log( data );
                   },
                   error: function (jqXHR, exception) {
                       var msg = '';
@@ -189,14 +189,14 @@
                         // зачистим все чекбоксы
                         $('input[name=where_3]').removeAttr('checked');
                         // where_3
-                        console.log('2', subcategory);
+                        // console.log('2', subcategory);
                         $.ajax({
                             url: 'index.php?route=common/category_tree', 
                             data: {'category_id': subcategory }, //@TODO - установить все правильно
                             dataType : "json",                     
                             success: function (data, textStatus) { 
                                 data.categories.forEach( createThree );
-                                console.log( data );
+                                //console.log( data );
                             },
                             error: function (jqXHR, exception) {
                                 var msg = '';
