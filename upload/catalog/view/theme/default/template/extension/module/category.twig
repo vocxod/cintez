@@ -16,7 +16,7 @@
     <ul class="list-sidebar bg-defoult">
 
     {% for category in category_tree %}
-        {{ catmenu.menuItem( category.category_id, category.name, category.children, "0", category.class ) }}
+        {{ catmenu.menuItem( category.category_id, category.cat_path, category.name, category.children, "0", category.class ) }}
     {% endfor %}  
 
     </ul>

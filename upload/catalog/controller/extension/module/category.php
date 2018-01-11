@@ -56,6 +56,7 @@ class ControllerExtensionModuleCategory extends Controller {
 
 			$data['categories'][] = array(
 				'category_id' => $category['category_id'],
+				'cat_path'	  => $this->model_catalog_category->getCatPath( $category['category_id'] ),
 				'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
@@ -67,7 +68,7 @@ class ControllerExtensionModuleCategory extends Controller {
 		$data['lang'] = $this->language->get('code');
 		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
 		$data['category_tree'] = $aCategoryTree['tree'];
-		//var_dump( $aCategoryTree['tree'][94]['children'][95]['children'][98]['children'] ); die();
+		//var_dump($data['categories']); //die();
 		return $this->load->view('extension/module/category', $data);
 	}
 }

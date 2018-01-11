@@ -1,1 +1,15 @@
 
+[11-Jan-2018 20:29:44 UTC] PHP Parse error:  syntax error, unexpected '}' in /var/www/html/vkartel.dev/upload/catalog/model/catalog/category.php on line 15
+[11-Jan-2018 20:29:44 UTC] PHP Stack trace:
+[11-Jan-2018 20:29:44 UTC] PHP   1. {main}() /var/www/html/vkartel.dev/upload/index.php:0
+[11-Jan-2018 20:29:44 UTC] PHP   2. start() /var/www/html/vkartel.dev/upload/index.php:19
+[11-Jan-2018 20:29:44 UTC] PHP   3. require_once() /var/www/html/vkartel.dev/upload/system/startup.php:104
+[11-Jan-2018 20:29:44 UTC] PHP   4. Router->dispatch() /var/www/html/vkartel.dev/upload/system/framework.php:171
+[11-Jan-2018 20:29:44 UTC] PHP   5. Router->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:56
+[11-Jan-2018 20:29:44 UTC] PHP   6. Action->execute() /var/www/html/vkartel.dev/upload/system/engine/router.php:67
+[11-Jan-2018 20:29:44 UTC] PHP   7. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[11-Jan-2018 20:29:44 UTC] PHP   8. ControllerStartupRouter->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[11-Jan-2018 20:29:44 UTC] PHP   9. Action->execute() /var/www/html/vkartel.dev/upload/catalog/controller/startup/router.php:25
+[11-Jan-2018 20:29:44 UTC] PHP  10. call_user_func_array:{/var/www/html/vkartel.dev/upload/system/engine/action.php:79}() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[11-Jan-2018 20:29:44 UTC] PHP  11. ControllerProductCategory->index() /var/www/html/vkartel.dev/upload/system/engine/action.php:79
+[11-Jan-2018 20:29:44 UTC] PHP  12. Loader->model() /var/www/html/vkartel.dev/upload/catalog/controller/product/category.php:19

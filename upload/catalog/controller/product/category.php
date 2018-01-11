@@ -16,14 +16,11 @@ class ControllerProductCategory extends Controller {
 
 	public function index() {
 		$this->load->language('product/category');
-
 		$this->load->model('catalog/category');
-
 		$this->load->model('catalog/product');
-
 		$this->load->model('tool/image');
-
 		$this->load->model('catalog/category'); 
+
 		$data['filters'] = $this->model_catalog_category->getAllFilters(0);	
 
 		if (isset($this->request->get['filter'])) {
@@ -215,11 +212,9 @@ class ControllerProductCategory extends Controller {
 					'thumb'       => $image,
 					'name'        => $result['name'],
 //'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '..',
-					'small_description' => $result['small_description'],
-					
-'packing' => $this->getOption(10, $result['product_id']),
-'ingridient' => $this->getOption(11, $result['product_id']),
-
+					'small_description' => $result['small_description'],				
+					'packing' => $this->getOption(10, $result['product_id']),
+					'ingridient' => $this->getOption(11, $result['product_id']),
 					'price'       => $price,
 					'special'     => $special,
 					'tax'         => $tax,
