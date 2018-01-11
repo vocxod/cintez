@@ -46,8 +46,8 @@
           </div>
 
           <div class="form-group">
-            <label for="field_id_2">Выберите вид обработки</label>
-            <select id="field_id_2" name="field_id_2" class="form-control">
+            <label for="dez_type">Выберите вид обработки</label>
+            <select id="dez_type" name="dez_type" class="form-control">
               <option value="0">--- Выберите ---</option>
               <option value="1" selected="selected">Дезинфекция изделий медицинского назначения</option>
               <option value="2">Дезинфекция поверхностей</option>             
@@ -86,15 +86,13 @@
 
   <div class="row">
     <div class="col-sm-12">
-
-{{ filtered_products }}
-
+      {{ filtered_products }}
     </div>
   </div>
 
   <div class="row">
     <div class="col-sm-12 ">
-      <h3>{{ heading_title_second_form }}</h3>
+      <h3 id="tabname">{{ heading_title_second_form }}</h3>
           
 
 <div class="list-group">
@@ -152,12 +150,18 @@
 <script type="text/javascript">
   $( document ).ready(function() {
       $('#products').on('change', function(){
-        console.log( $('#products').val()  );
         window.location.href="index.php?route=information/dezcalc&product_id=" + $('#products').val();
       })
+/*
       $('#categories').on('change', function(){
-        console.log( $('#products').val()  );
         window.location.href="index.php?route=information/dezcalc&category_id=" + $('#categories').val();
+      })
+*/
+      $("#dez_type option:selected").text();
+      //$("#tabname");
+      $("#dez_type").on('change', function(){
+        //console.log( $("#dez_type option:selected").text() );
+        $("#tabname").text( $("#dez_type option:selected").text() );
       })
   })
 </script>
