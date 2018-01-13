@@ -15,7 +15,7 @@ class CategoriesToProduct {
 	public $aCategories;
 
 	function __construct() {
-		
+				
 	}
 
 	function setCategory(){
