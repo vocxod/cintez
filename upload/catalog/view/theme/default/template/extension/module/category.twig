@@ -41,6 +41,19 @@ function getTree() {
       nodes: [
         {
           text: "КРС",
+          icon: "glyphicon glyphicon-stop",
+          selectedIcon: "glyphicon glyphicon-stop",
+          color: "#3a3a3a",
+          backColor: "#FEFAEA",
+          href: "index.php?route=product/category&path=54",
+          selectable: true,
+          state: {
+            //checked: true,
+            disabled: false,
+            //expanded: true,
+            //selected: true
+          },
+          tags: ['available'],
           nodes: [
             {
               text: "Дезинфекция животноводческих помещений"
@@ -105,7 +118,7 @@ function getTree() {
   return tree;
 }
 
-$('#sidebar_13').treeview( { data: getTree() } );
+$('#sidebar_13').treeview( { data: getTree(), enableLinks: true } );
 
 
 //****************************************************************

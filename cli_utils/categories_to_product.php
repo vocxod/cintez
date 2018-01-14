@@ -52,7 +52,20 @@ class CategoriesToProduct {
 		    fclose($handle);
 		}
 	}
-	
+	// вернуть ВСЕ старшие категории вместе с данной
+	private function getCategoryPath( $iCategoryId){
+		$aObj = OcCategoryPathQuery::create()
+		->filterByCategoryId( $iCategoryId )
+		->find();
+		$aResult = [];
+		foreach ($aObj as $oObj ) {
+			if( $oObj != null ){
+	 			$aResult[] = $oObj->getPathId();
+			}
+		}
+		return $aResult;
+	}
+
 	private function parseOneProduct( $aData ){
 		$iProductId = $aData[0];
 		if( $iProductId > 0 ){
@@ -61,16 +74,20 @@ class CategoriesToProduct {
 			for( $i = 2; $i < count($aData); $i++){
 				// echo $aData[ $i ] . " : ";
 				if( $aData[$i] > 0 ){
-					$oObj = OcProductToCategoryQuery::create()
-					->filterByProductId( $iProductId )
-					->filterByCategoryId( $aData[$i] )
-					->findOne();
-					if($oObj == null){
-						$oObj = new OcProductToCategory();
-						$oObj->setCategoryId( $aData[$i] );
-						$oObj->setProductId( $iProductId );
-						$oObj->save();
-						echo $aData[$i];
+					$aCats = $this->getCategoryPath( $aData[$i] );
+					//var_dump( $aCats ); die();
+					foreach ($aCats as $iCategoryId ) {
+						$oObj = OcProductToCategoryQuery::create()
+						->filterByProductId( $iProductId )
+						->filterByCategoryId( $iCategoryId )
+						->findOne();
+						if($oObj == null){
+							$oObj = new OcProductToCategory();
+							$oObj->setCategoryId( $iCategoryId );
+							$oObj->setProductId( $iProductId );
+							$oObj->save();
+							echo $aData[$i];
+						}
 					}
 				}
 			} 
