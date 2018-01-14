@@ -1,4 +1,7 @@
 <?php
+
+// publication
+
 class ControllerCatalogInformationPublications extends Controller {
 	private $error = array();
 

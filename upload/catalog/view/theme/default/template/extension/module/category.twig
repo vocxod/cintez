@@ -24,48 +24,91 @@
 </div>
 
 {# ФИЛЬТР FILTER #}
-{#
+
 <div id="sidebar_13" class="list-group category-list">
-  {% if lang == 'ru' %}
-      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -10px; width:291px; overflow:hidden;">{{ text_filter }}
-      </h3>
-  {% endif %}
 
-  {% if lang == 'en' %}
-      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1736px -10px; width:291px; overflow:hidden;">{{ text_filter }}
-      </h3>
-  {% endif %}
-
-  <div id="id_13" class="sidebar left ">
-    <ul class="list-sidebar bg-defoult">
-  
-      {% for item in filters %}
-      <li> 
-        <a href="index.php?route=product/category&path=10&filter=" data-toggle="collapse" data-target="#dashboard_{{ item.filter_group_id }}" class="collapsed active" > 
-          <i class="fa fa-th-large"></i> 
-          <span class="nav-label"> {{item.name}} </span> 
-          <span class="fa fa-chevron-left pull-right"></span> 
-        </a>
-        <ul class="sub-menu collapse" id="dashboard_{{ item.filter_group_id }}">
-          {% for yfon in item.filter %}
-            {% if loop.index==1 %}
-                <li class="active"><a href="#">{{ yfon.name }}</a></li>
-            {% else %}
-                <li><a href="#">{{ yfon.name }}</a></li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </li>
-      {% endfor %}
-
-    </ul>
-  </div>
 </div>
-#}
+
 
 
 <script type="text/javascript">
 $(document).ready(function(){
+//****************************************************************
+function getTree() {
+  var tree = [
+    {
+      text: "Сельское хозяйство",
+      nodes: [
+        {
+          text: "КРС",
+          nodes: [
+            {
+              text: "Дезинфекция животноводческих помещений"
+            },
+            {
+              text: "Заполнение дезбарьеров и дезковриков"
+            },
+            {
+              text: "Мойка животноводческих помещений"
+            },
+            {
+              text: "Безразборная мойка (CIP)"
+            },
+            {
+              text: "Уход за выменем"
+            },
+            {
+              text: "Личная гигиена персонала"
+            },
+            {
+              text: "Средства для обработки копыт"
+            }
+          ]
+        },
+        {
+          text: "Птицеводство",
+          nodes: [
+            {
+              text: "Grandchild 1"
+            },
+            {
+              text: "Grandchild 2"
+            }
+          ]
+        },
+        {
+          text: "Свиноводство",
+          nodes: [
+            {
+              text: "Grandchild 1"
+            },
+            {
+              text: "Grandchild 2"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      text: "Parent 2"
+    },
+    {
+      text: "Parent 3"
+    },
+    {
+      text: "Parent 4"
+    },
+    {
+      text: "Parent 5"
+    }
+  ];
+  return tree;
+}
+
+$('#sidebar_13').treeview( { data: getTree() } );
+
+
+//****************************************************************
    $('#id_13 a').click(function(e){
        e.preventDefault();
        //$('.sidebar').toggleClass('fliph');
