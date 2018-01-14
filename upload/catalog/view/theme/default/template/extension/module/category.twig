@@ -117,9 +117,9 @@ function getTree() {
   ];
   return tree;
 }
-
-$('#sidebar_13').treeview( { data: getTree(), enableLinks: true } );
-
+{% if localsite == "vkartel.dev" %}
+  $('#sidebar_13').treeview( { data: getTree(), enableLinks: true } );
+{% endif %}
 
 //****************************************************************
    $('#id_13 a').click(function(e){

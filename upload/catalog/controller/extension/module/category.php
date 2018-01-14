@@ -65,6 +65,13 @@ class ControllerExtensionModuleCategory extends Controller {
 				'class'		  => $category['class'] 
 			);
 		}
+
+		if( $_SERVER['SERVER_NAME'] == 'vkartel.dev'){
+			$data['localsite'] = 'vkartel.dev';
+		} else {
+			$data['localsite'] = 'vkartel.ru';
+		}
+
 		$data['lang'] = $this->language->get('code');
 		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
 		$data['category_tree'] = $aCategoryTree['tree'];
