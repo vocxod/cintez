@@ -222,20 +222,18 @@
                               // set EVENT and SHOW FILTER PRODUCTs
                               // финальный обработчик - показываем найденные товары
                               $('input[name=where_3]').on( "change", function(){
-                                  arr_subcategory = $('input[name=where_3]:checked');
-                                  arr_cats = new Array();
+                                  //arr_subcategory = $('input[name=where_3]:checked');
+                                  //arr_cats = new Array();
                                   var sCategoryList = "";
-                                  $("input:checkbox:checked").each( function(index, value){ 
-                                    sCategoryList = value.value + '_'; 
-                                  });  
-                                  console.log( arr_subcategory );
+                                  $("input:checkbox[name='where_3']:checked").each( function(index, value){ 
+                                    sCategoryList = sCategoryList + value.value + '_'; 
+                                  });
+console.log( 'index.php?route=product/filtered&path=' + sCategoryList.slice(0,-1) );
                                   // получим данные с product/filtered и проявим их в блоке
                                   // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
                                   $.ajax({
                                       url: 'index.php?route=product/filtered', // указываем URL и
-                                      // в запрашиваем ТИП возвращаемых даных
-                                      // data: { 'jpath' : [ {'type':'html'},{'category3_ids': ['10']}, { 'search_text': 'средство' } ] }, 
-                                      data: {'path': "168_54" },
+                                      data: {'path': sCategoryList.slice(0, -1) },
                                       dataType : "html",                     // тип загружаемых данных
                                       success: function (data, textStatus) { // вешаем свой обработчик на функцию success
                                           /*
@@ -269,18 +267,18 @@
                                         console.log( msg );
                                     }
                                   });
-                                  console.log('3', subcategory);
+                                  //console.log('3', subcategory);
                               }) // финальный обработчик                              
-                              console.log('hide 3 ajax');
+                              //console.log('hide 3 ajax');
                             }
                         });
                       }) // обработчик 2
-                      console.log('hide ajax 2');
+                      //console.log('hide ajax 2');
                   }
               });
           }) // обработчик 1
           //
-          console.log('hide 1 ajax');
+          // console.log('hide 1 ajax');
         }
     });
               

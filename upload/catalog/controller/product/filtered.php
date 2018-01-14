@@ -76,24 +76,28 @@ class ControllerProductFiltered extends Controller {
 			$path = '';
 			//var_dump( $this->request->get['path'] ); die();
 			$parts = explode('_', (string)$this->request->get['path']);
-
+			
+			//var_dump($parts); die();
+			
 			$category_id = (int)array_pop($parts);
-
 			foreach ($parts as $path_id) {
-				if (!$path) {
-					$path = (int)$path_id;
-				} else {
-					$path .= '_' . (int)$path_id;
+				if( $path_id != '' ){
+					if (!$path) {
+						$path = (int)$path_id;
+					} else {
+						$path .= '_' . (int)$path_id;
+					}
+
+					$category_info = $this->model_catalog_category->getCategory($path_id);
+
+					if ($category_info) {
+						$data['breadcrumbs'][] = array(
+							'text' => $category_info['name'],
+							'href' => $this->url->link('product/filtered', 'path=' . $path . $url)
+						);
+					}
 				}
 
-				$category_info = $this->model_catalog_category->getCategory($path_id);
-
-				if ($category_info) {
-					$data['breadcrumbs'][] = array(
-						'text' => $category_info['name'],
-						'href' => $this->url->link('product/filtered', 'path=' . $path . $url)
-					);
-				}
 			}
 		} else {
 			$category_id = 0;

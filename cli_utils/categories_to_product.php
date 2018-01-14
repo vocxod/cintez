@@ -30,19 +30,6 @@ class CategoriesToProduct {
 		    		// var_dump( $this->aCategories ); die("category load");
 		    	} else {
 		    		// пошли товары
-			        //$num = count($data);
-			        // var_dump( $data );
-			        //echo "<p> $num полей в строке $row: <br /></p>\n";
-			        
-/*
-			        for ($c=0; $c < $num; $c++) {
-			        	if( $c == 0 ){
-			        		// 
-			        	}
-			        	
-			            // echo $data[$c] . ":";
-			        }
-*/
 			        $this->parseOneProduct( $data );
 			        $row++;
 			        //die();
@@ -50,6 +37,7 @@ class CategoriesToProduct {
 
 		    }
 		    fclose($handle);
+		    echo "$row rows\n";
 		}
 	}
 	// вернуть ВСЕ старшие категории вместе с данной
@@ -72,9 +60,12 @@ class CategoriesToProduct {
 			echo "iProductId $iProductId ";
 			// проставим этому товару категории
 			for( $i = 2; $i < count($aData); $i++){
-				// echo $aData[ $i ] . " : ";
+				
+				echo $aData[ $i ] . " : ";
+
 				if( $aData[$i] > 0 ){
-					$aCats = $this->getCategoryPath( $aData[$i] );
+					$iMyCategory = $this->aCategories[ $i ]; // вес (значимость) товара игнорируется
+					$aCats = $this->getCategoryPath( $iMyCategory );
 					//var_dump( $aCats ); die();
 					foreach ($aCats as $iCategoryId ) {
 						$oObj = OcProductToCategoryQuery::create()
@@ -86,7 +77,7 @@ class CategoriesToProduct {
 							$oObj->setCategoryId( $iCategoryId );
 							$oObj->setProductId( $iProductId );
 							$oObj->save();
-							echo $aData[$i];
+							echo $aData[$i] . ":";
 						}
 					}
 				}
