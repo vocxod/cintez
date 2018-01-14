@@ -34,93 +34,40 @@
 <script type="text/javascript">
 $(document).ready(function(){
 //****************************************************************
-function getTree() {
-  var tree = [
-    {
-      text: "Сельское хозяйство",
-      nodes: [
-        {
-          text: "КРС",
-          icon: "glyphicon glyphicon-stop",
-          selectedIcon: "glyphicon glyphicon-stop",
-          color: "#3a3a3a",
-          backColor: "#FEFAEA",
-          href: "index.php?route=product/category&path=54",
-          selectable: true,
-          state: {
-            //checked: true,
-            disabled: false,
-            //expanded: true,
-            //selected: true
-          },
-          tags: ['available'],
-          nodes: [
-            {
-              text: "Дезинфекция животноводческих помещений"
-            },
-            {
-              text: "Заполнение дезбарьеров и дезковриков"
-            },
-            {
-              text: "Мойка животноводческих помещений"
-            },
-            {
-              text: "Безразборная мойка (CIP)"
-            },
-            {
-              text: "Уход за выменем"
-            },
-            {
-              text: "Личная гигиена персонала"
-            },
-            {
-              text: "Средства для обработки копыт"
-            }
-          ]
-        },
-        {
-          text: "Птицеводство",
-          nodes: [
-            {
-              text: "Grandchild 1"
-            },
-            {
-              text: "Grandchild 2"
-            }
-          ]
-        },
-        {
-          text: "Свиноводство",
-          nodes: [
-            {
-              text: "Grandchild 1"
-            },
-            {
-              text: "Grandchild 2"
-            }
-          ]
+{% if devel == "debug" %}
+  $.ajax({
+      url: 'index.php?route=common/category_tree/tree_type2',
+      //data: {}},
+      dataType : "json",                     
+      success: function (data, textStatus) { 
+        console.log( data.tree );
+        $('#sidebar_13').treeview( { data: data.tree, enableLinks: true } ); 
+      },
+      error: function (jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
         }
-      ]
-    },
-    {
-      text: "Parent 2"
-    },
-    {
-      text: "Parent 3"
-    },
-    {
-      text: "Parent 4"
-    },
-    {
-      text: "Parent 5"
-    }
-  ];
-  return tree;
-}
-{% if localsite == "vkartel.dev" %}
-  $('#sidebar_13').treeview( { data: getTree(), enableLinks: true } );
+        $('#error_message').html(msg);
+        console.log( msg );
+      },
+      complete: function(){
+        console.log("complete");
+      }
+  });
 {% endif %}
-
 //****************************************************************
    $('#id_13 a').click(function(e){
        e.preventDefault();

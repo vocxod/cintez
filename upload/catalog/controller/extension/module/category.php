@@ -66,10 +66,12 @@ class ControllerExtensionModuleCategory extends Controller {
 			);
 		}
 
-		if( $_SERVER['SERVER_NAME'] == 'vkartel.dev'){
-			$data['localsite'] = 'vkartel.dev';
+		if( $_SERVER['SERVER_NAME'] == 'vkartel.dev' || 
+				( isset($this->request->get['devel']) && $this->request->get['devel'] == 'debug' ) 
+			){
+			$data['devel'] = 'debug';
 		} else {
-			$data['localsite'] = 'vkartel.ru';
+			$data['devel'] = 'prod';
 		}
 
 		$data['lang'] = $this->language->get('code');

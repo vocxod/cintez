@@ -84,7 +84,7 @@ class ControllerCommonCategoryTree extends Controller {
 		$this->load->model('catalog/category');
 		foreach( $aCategories as $aCategory ){
 			$aResult[] = [ 
-			'href'=>"index.php?route=category/product?path=" . $this->getFullPath($aCategory['category_id']), 
+			'href'=>"index.php?route=product/category&path=" . $this->getFullPath($aCategory['category_id']), 
 			'cat_path'  =>  $this->model_catalog_category->getCatPath( $aCategory['category_id'] ),
 			'text'		=>	$aCategory['name'], 
 			'css'		=>	$aCategory['css'],
