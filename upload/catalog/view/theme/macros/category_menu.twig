@@ -1,60 +1,80 @@
 {% macro menuItem( category_id, cat_path, category_name, category_children, category_css, category_class, category_count ) %}
 
-  {% if category_children|length > 0 %}
-  {# это категория с дочерними #}
-<li> 
-<a  href="index.php?route=product/category&path={{cat_path}}" 
-    data-toggle="collapse" 
-    data-target="#category_{{ category_id }}" 
-    class="collapsed active" > 
-{% if category_css == "0" %}
-  <span class="category_ids category_id_{{category_id}}"></span> 
-{% else %}
-  {#<span></span>#}
-  <div class="{{ category_class }}" style="outline:1px solid red;left:20px;color:blue;">&nbsp;</div>
-{% endif %}
-<span class="nav-label" id="sb-{{ category_id }}">
-  {{category_count}}:{{category_name}} 
-</span>         
-<span class="fa fa-chevron-right pull-right"></span> 
-</a>
+{% if category_children|length > 0 %}
+    {# это категория с дочерними #}
+    <li> 
 
-<ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
-  {% for child in category_children %}
-    {% if loop.index==1 %}
-        
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class, child.count ) }} 
-        {% else  %}
-            <li class="active">
-              {# самый последний уровень, без наследников #}
-              <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
-                <span class="{{child.class}}">{{ child.name }}</span>
-              </a>
-            </li>
-        {% endif %}
+      <a  href="index.php?route=product/category&path={{cat_path}}" 
+          data-toggle="collapse" 
+          data-target="#category_{{ category_id }}" 
+          class="collapsed active" > 
 
-    {% else %}
-    
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class, child.count ) }} 
-        {% else  %}
-            <li>
-              {# самый последний уровень, без наследников #}
-              <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
-                <span class="{{child.class}}">{{ child.name }}</span>
-              </a>
-            </li>
-        {% endif %}
-    
-    {% endif %}
-  {% endfor %}
-</ul>
-</li>
+          {% if category_css == "0" %}
+              <span class="category_ids category_id_{{category_id}}"/> 
+          {% else %}
+              <span class="{{ category_class }}" style="float:left;outline:1px solid red;left:20px;background-color:blue;"/>
+          {% endif %}
 
-{% else %}
-{# это категория БЕЗ дочерних (просто пункт) #}
-{# need to do for hashed menu: category with subcategories and category item simple #}
+          <span class="nav-label" id="sb-{{ category_id }}">
+            {{category_name}} 
+          </span>         
+
+          <span class="fa fa-chevron-right pull-right"/> 
+      </a>
+
+      <ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
+        {% for child in category_children %}
+          {% if loop.index==1 %}
+              
+              {% if child.children|length > 0 %}
+                {{ 
+                  _self.menuItem( 
+                    child.category_id, 
+                    child.cat_path, 
+                    child.name, 
+                    child.children, 
+                    child.css, 
+                    child.class, 
+                    child.count ) 
+                }} 
+              {% else  %}
+                  <li class="active">
+                      {# самый последний уровень, без наследников #}
+                      <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+                        <span class="{{child.class}}"/>
+                        <span>{{ child.name }}</span>
+                      </a>
+                  </li>
+              {% endif %}
+
+          {% else %}
+          
+              {% if child.children|length > 0 %}
+                 {{ 
+                    _self.menuItem( 
+                      child.category_id, 
+                      child.cat_path, 
+                      child.name, 
+                      child.children, 
+                      child.css, 
+                      child.class, 
+                      child.count ) 
+                  }} 
+              {% else  %}
+                  <li>
+                    {# самый последний уровень, без наследников #}
+                    <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+                      <span class="{{child.class}}"/>
+                      <span>{{ child.name }}</span>
+                    </a>
+                  </li>
+              {% endif %}
+          
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </li>
+
 {% endif %}
      
 {% endmacro menuItem %}
