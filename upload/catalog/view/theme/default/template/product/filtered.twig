@@ -18,8 +18,17 @@
               <div>
                 <div class="caption">
                    <h4 class="product-caption text-center">
-                    <a href="index.php?route=information/dezcalc&product_id={{ product.product_id }}">
-                      {{ product.name }}
+                    
+                    <div style="margin-bottom:8px; font-weight:bold;">
+                    {{ product.name }}
+                    </div>
+
+                    <a class="btn btn-primary btn-block" href="index.php?route=product/product&product_id={{ product.product_id }}">
+                      Подробнее
+                    </a>
+                    <div style="height:8px;"/>
+                    <a class="btn btn-info  btn-block" href="index.php?route=information/dezcalc&product_id={{ product.product_id }}">
+                      В ДезКалькулятор
                     </a>
                   </h4>
                 </div>
