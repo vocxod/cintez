@@ -1360,7 +1360,7 @@ p {
 }    
 .news-anonce {
   max-height: 300px;
-  min-height: 200px;
+  min-height: 130px;
   overflow: hidden;
 }
 .img-anonce > img {
