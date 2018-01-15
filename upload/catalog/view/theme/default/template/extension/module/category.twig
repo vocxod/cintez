@@ -26,7 +26,6 @@
 {# ФИЛЬТР FILTER #}
 
 <div id="sidebar_13" class="list-group category-list">
-
 </div>
 
 
@@ -40,7 +39,7 @@ $(document).ready(function(){
       //data: {}},
       dataType : "json",                     
       success: function (data, textStatus) { 
-        console.log( data.tree );
+        // console.log( data.tree );
         $('#sidebar_13').treeview( { data: data.tree, enableLinks: true } ); 
       },
       error: function (jqXHR, exception) {

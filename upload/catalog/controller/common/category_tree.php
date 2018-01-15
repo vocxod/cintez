@@ -80,15 +80,85 @@ class ControllerCommonCategoryTree extends Controller {
 	}
 
 	// рекурсивно строим категории их таблички OC_CATEGORIES
+	/*
+	формируемая структура
+	{
+	  text: "Node 1",
+	  icon: "glyphicon glyphicon-stop",
+	  selectedIcon: "glyphicon glyphicon-stop",
+	  color: "#000000",
+	  backColor: "#FFFFFF",
+	  href: "#node-1",
+	  selectable: true,
+	  state: {
+	    checked: true,
+	    disabled: true,
+	    expanded: true,
+	    selected: true
+	  },
+	  tags: ['available'],
+	  nodes: [
+	    {},
+	    ...
+	  ]
+	}
+
+	*/
 	private function createTree2( $aCategories, $aResult = [] ){
 		$this->load->model('catalog/category');
 		foreach( $aCategories as $aCategory ){
+			
+			switch ($aCategory['category_id']) {
+				case '10':  //| Пищевая промышленность':
+					$sIcon = "glyphicon glyphicon-apple";
+					break;
+				case '54':// | Сельское хозяйство':
+					$sIcon = "glyphicon glyphicon-piggy-bank";
+					break;	
+				case '72':// | HoReCa':
+					$sIcon = "glyphicon glyphicon-calendar";
+					break;
+				case '87':// | Клининг':
+					$sIcon = "glyphicon glyphicon-screenshot";
+					break;
+				case '94':// | Транспорт':
+					$sIcon = "glyphicon glyphicon-calendar";
+					break;
+				case '113':// | Обслуживание теплообменного оборудования':
+					$sIcon = "glyphicon glyphicon-screenshot";
+					break;
+				case '117':// | Машиностроение и металлообработка':
+					$sIcon = "glyphicon glyphicon-calendar";
+					break;
+				case '131':// | Учреждения здравоохранения':
+					$sIcon = "glyphicon glyphicon-screenshot";
+					break;
+				case '150':// | Детские сады и школы':
+					$sIcon = "glyphicon glyphicon-calendar";
+					break;
+				case '168':// | Салоны красоты и SPA':
+					$sIcon = "glyphicon glyphicon-screenshot";
+					break;
+				default:
+					$sIcon = "";
+					break;
+			}			
+
 			$aResult[] = [ 
+			'text'	=>	$aCategory['name'],
+			'icon' 	=> "$sIcon", // иконка конкретной категории (группы категорий)
+			'selectedIcon' => "glyphicon glyphicon-ban-circle", // выбранная иконка
+			'color' 	=> "#404540",
+			'backColor' =>  "#FEFEFE", // "#369A38",
 			'href'=>"index.php?route=product/category&path=" . $this->getFullPath($aCategory['category_id']), 
-			'cat_path'  =>  $this->model_catalog_category->getCatPath( $aCategory['category_id'] ),
-			'text'		=>	$aCategory['name'], 
-			'css'		=>	$aCategory['css'],
-			'class'		=>	$aCategory['class'],
+			'selectable' => 1,
+			'state' => [
+				//'checked'  => true,
+				//'disabled' => true,
+				'expanded' => false,
+				//'selected' => true
+			],
+			'tags' => ['СпецСинтез'],			 
 			'nodes'	=>	$this->createTree2( 
 				$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
 			) ]; 	
