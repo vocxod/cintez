@@ -146,6 +146,14 @@ abstract class OcCategory implements ActiveRecordInterface
     protected $css;
 
     /**
+     * The value for the class field.
+     *
+     * Note: this column has a database default value of: ''
+     * @var        string
+     */
+    protected $class;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -167,6 +175,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $this->status = 0;
         $this->date_modified = PropelDateTime::newInstance(NULL, null, 'DateTime');
         $this->css = '0';
+        $this->class = '';
     }
 
     /**
@@ -537,6 +546,16 @@ abstract class OcCategory implements ActiveRecordInterface
     }
 
     /**
+     * Get the [class] column value.
+     *
+     * @return string
+     */
+    public function getClass()
+    {
+        return $this->class;
+    }
+
+    /**
      * Set the value of [category_id] column.
      *
      * @param int $v new value
@@ -767,6 +786,26 @@ abstract class OcCategory implements ActiveRecordInterface
     } // setCss()
 
     /**
+     * Set the value of [class] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcCategory The current object (for fluent API support)
+     */
+    public function setClass($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->class !== $v) {
+            $this->class = $v;
+            $this->modifiedColumns[OcCategoryTableMap::COL_CLASS] = true;
+        }
+
+        return $this;
+    } // setClass()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -797,6 +836,10 @@ abstract class OcCategory implements ActiveRecordInterface
             }
 
             if ($this->css !== '0') {
+                return false;
+            }
+
+            if ($this->class !== '') {
                 return false;
             }
 
@@ -864,6 +907,9 @@ abstract class OcCategory implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 10 + $startcol : OcCategoryTableMap::translateFieldName('Css', TableMap::TYPE_PHPNAME, $indexType)];
             $this->css = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 11 + $startcol : OcCategoryTableMap::translateFieldName('Class', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->class = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -872,7 +918,7 @@ abstract class OcCategory implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 11; // 11 = OcCategoryTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 12; // 12 = OcCategoryTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcCategory'), 0, $e);
@@ -1106,6 +1152,9 @@ abstract class OcCategory implements ActiveRecordInterface
         if ($this->isColumnModified(OcCategoryTableMap::COL_CSS)) {
             $modifiedColumns[':p' . $index++]  = 'css';
         }
+        if ($this->isColumnModified(OcCategoryTableMap::COL_CLASS)) {
+            $modifiedColumns[':p' . $index++]  = 'class';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_category (%s) VALUES (%s)',
@@ -1149,6 +1198,9 @@ abstract class OcCategory implements ActiveRecordInterface
                         break;
                     case 'css':
                         $stmt->bindValue($identifier, $this->css, PDO::PARAM_STR);
+                        break;
+                    case 'class':
+                        $stmt->bindValue($identifier, $this->class, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -1245,6 +1297,9 @@ abstract class OcCategory implements ActiveRecordInterface
             case 10:
                 return $this->getCss();
                 break;
+            case 11:
+                return $this->getClass();
+                break;
             default:
                 return null;
                 break;
@@ -1285,6 +1340,7 @@ abstract class OcCategory implements ActiveRecordInterface
             $keys[8] => $this->getDateModified(),
             $keys[9] => $this->getCategorySiteId(),
             $keys[10] => $this->getCss(),
+            $keys[11] => $this->getClass(),
         );
         if ($result[$keys[7]] instanceof \DateTime) {
             $result[$keys[7]] = $result[$keys[7]]->format('c');
@@ -1365,6 +1421,9 @@ abstract class OcCategory implements ActiveRecordInterface
             case 10:
                 $this->setCss($value);
                 break;
+            case 11:
+                $this->setClass($value);
+                break;
         } // switch()
 
         return $this;
@@ -1423,6 +1482,9 @@ abstract class OcCategory implements ActiveRecordInterface
         }
         if (array_key_exists($keys[10], $arr)) {
             $this->setCss($arr[$keys[10]]);
+        }
+        if (array_key_exists($keys[11], $arr)) {
+            $this->setClass($arr[$keys[11]]);
         }
     }
 
@@ -1497,6 +1559,9 @@ abstract class OcCategory implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcCategoryTableMap::COL_CSS)) {
             $criteria->add(OcCategoryTableMap::COL_CSS, $this->css);
+        }
+        if ($this->isColumnModified(OcCategoryTableMap::COL_CLASS)) {
+            $criteria->add(OcCategoryTableMap::COL_CLASS, $this->class);
         }
 
         return $criteria;
@@ -1594,6 +1659,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $copyObj->setDateModified($this->getDateModified());
         $copyObj->setCategorySiteId($this->getCategorySiteId());
         $copyObj->setCss($this->getCss());
+        $copyObj->setClass($this->getClass());
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setCategoryId(NULL); // this is a auto-increment column, so set to default value
@@ -1640,6 +1706,7 @@ abstract class OcCategory implements ActiveRecordInterface
         $this->date_modified = null;
         $this->category_site_id = null;
         $this->css = null;
+        $this->class = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->applyDefaultValues();

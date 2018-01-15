@@ -269,6 +269,7 @@
     <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
     <column name="category_site_id" phpName="CategorySiteId" type="INTEGER"/>
     <column name="css" phpName="Css" type="VARCHAR" size="64" defaultValue="0"/>
+    <column name="class" phpName="Class" type="VARCHAR" size="255" defaultValue=""/>
     <index name="parent_id">
       <index-column name="parent_id"/>
     </index>

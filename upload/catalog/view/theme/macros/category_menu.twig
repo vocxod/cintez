@@ -8,11 +8,12 @@
     data-target="#category_{{ category_id }}" 
     class="collapsed active" > 
 {% if category_css == "0" %}
-  <span class="category_ids category_id_{{category_id}}" style=""></span> 
+  <span class="category_ids category_id_{{category_id}}"></span> 
 {% else %}
-  <span></span>
+  {#<span></span>#}
+  <div class="{{ category_class }}" style="outline:1px solid red;left:20px;color:blue;">&nbsp;</div>
 {% endif %}
-<span class="nav-label {{ category_class }}" id="sb-{{ category_id }}">
+<span class="nav-label" id="sb-{{ category_id }}">
   {{category_count}}:{{category_name}} 
 </span>         
 <span class="fa fa-chevron-right pull-right"></span> 
