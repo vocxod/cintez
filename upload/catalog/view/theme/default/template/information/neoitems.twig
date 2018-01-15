@@ -126,9 +126,9 @@
     </div> {# row 1 #}
   </div>
 
-<div style="height:2px;outline:1px solid red;clear:both;"></div>
 
 {# variant 2 #}
+<div style="height:2px;outline:1px solid red;clear:both;"></div>
   <div class="row">
     <div class="col-sm-12 ">
 
@@ -236,6 +236,117 @@
     </div> {# row 1 #}
   </div>
 
+{# variant 3 #}
+<div style="height:2px;outline:1px solid red;clear:both;"></div>
+  <div class="row">
+    <div class="col-sm-12 ">
+
+        <div class="col-sm-9 ">
+          {% for item in top_news %}
+
+              <div class="row news-anonce" >
+                <div class="col-sm-3 img-anonce ">
+                  {% if item.foreground_image|length > 1 %}
+                    <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
+                  {% else %}
+                    <img src="/image/catalog/logo-325x325.png" alt="SpecSyntez News Article" />
+                  {% endif %}
+                </div>  
+                <div class="col-sm-9  ">
+                  <h4 style="font-weight:bold;">{{ item.title }}</h4>
+                  <p>
+                    {{ item.foreground_text }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-sm-12">
+                    <div class="button-group" style="margin-top:5px; border:none; background:none;">
+
+                        <a href="index.php?route=information/onenews&information_id={{item.information_id}}">
+                        <button class="" style="width:45%;color:#111;">
+                          <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+                        </button>
+                        </a>
+
+                        <button style="width:15%; margin-left:15px;" type="button" title="">
+                          <i class="fa fa-vk"></i>
+                        </button>
+                        <button style="width:15%;" type="button"  title="">
+                          <i class="fa fa-twitter"></i>
+                        </button>
+                        <button style="width:15%;" type="button"  title="">
+                          <i class="fa fa-facebook"></i>
+                        </button>
+
+                    </div>
+                </div>
+              </div>
+          {% endfor %}      
+        </div>        
+
+        <div class="col-sm-3 ">
+          {{ toparticles }}
+          {#
+          {% for item in top_news %}
+
+              <div class="row news-anonce" >
+                <div class="col-sm-3 img-anonce ">
+                  {% if item.foreground_image|length > 1 %}
+                    <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
+                  {% else %}
+                    <img src="/image/catalog/logo-325x325.png" alt="SpecSyntez News Article" />
+                  {% endif %}
+                </div>  
+                <div class="col-sm-9  ">
+                  <h4 style="font-weight:bold;">{{ item.title }}</h4>
+                  <p>
+                    {{ item.foreground_text }}
+                  </p>
+                </div>
+              </div>
+
+              <div class="row" >
+                <div class="col-sm-12">
+                    <div class="button-group" style="margin-top:5px; border:none; background:none;">
+
+                        <a href="index.php?route=information/onenews&information_id={{item.information_id}}">
+                        <button class="" style="width:45%;color:#111;">
+                          <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+                        </button>
+                        </a>
+
+                        <button style="width:15%; margin-left:15px;" type="button" title="">
+                          <i class="fa fa-vk"></i>
+                        </button>
+                        <button style="width:15%;" type="button"  title="">
+                          <i class="fa fa-twitter"></i>
+                        </button>
+                        <button style="width:15%;" type="button"  title="">
+                          <i class="fa fa-facebook"></i>
+                        </button>
+
+                    </div>
+                </div>
+              </div>
+          {% endfor %}
+          #}      
+        </div>
+       {#
+        <div class="col-sm-4 ">
+            {{ toparticles }}
+        </div>
+        #}        
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-sm-12 ">
+      <div class="block-center text-center">
+      {{ pagination }}
+      </div>
+    </div> {# row 1 #}
+  </div>
 </div>{# information-newslist #}
 
 
