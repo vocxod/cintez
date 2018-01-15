@@ -80,7 +80,7 @@ class ControllerInformationNeoitems extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=> 4] );
+			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=> 3] );
 			
 			// расставим страницу 
 			$pagination = new Pagination();
