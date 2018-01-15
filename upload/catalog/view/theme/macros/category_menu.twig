@@ -25,8 +25,8 @@
         {% if child.children|length > 0 %}
            {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
         {% else  %}
-            <li class="active">
-              <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+            <li class="active" style="width:290px; overflow:hidden; height:45px; outline:1px dashed blue;">
+              <a class="start_products loopindex" href="index.php?route=product/category&path={{child.cat_path}}">
                 <span class="{{child.class}}">{{ child.name }}</span>
               </a>
             </li>
@@ -37,10 +37,12 @@
         {% if child.children|length > 0 %}
            {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
         {% else  %}
-            <li>
+            <li style="width:290px; overflow:hidden; height:45px; outline:1px dashed red;">
+              
               <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
                 <span class="{{child.class}}">{{ child.name }}</span>
               </a>
+
             </li>
         {% endif %}
     
