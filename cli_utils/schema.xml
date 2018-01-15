@@ -284,6 +284,7 @@
     <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <column name="sidebar_title" phpName="SidebarTitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <index name="name">
       <index-column name="name"/>
     </index>

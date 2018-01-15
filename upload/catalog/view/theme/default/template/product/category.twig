@@ -250,11 +250,9 @@
 
 <script type="text/javascript"> 
   $(document).ready(function(){
-    $('.SIDEBAR_LEVEL_3').each( function(index, item) {  
-       // $(this).parent().attr('href') = "";
-       // console.log( );
-       $(this).parent().on( "click", function(){
-          // console.log( "to " + $(this).attr('href') + " go " );
+    $('.start_products').each( function(index, item) {  
+       $(this).on( "click", function(){
+          //console.log( "to " + $(this).attr('href') + " go " );
           window.location.href = $(this).attr('href');
        })
     })

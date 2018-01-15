@@ -26,6 +26,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryDescriptionQuery orderByMetaTitle($order = Criteria::ASC) Order by the meta_title column
  * @method     ChildOcCategoryDescriptionQuery orderByMetaDescription($order = Criteria::ASC) Order by the meta_description column
  * @method     ChildOcCategoryDescriptionQuery orderByMetaKeyword($order = Criteria::ASC) Order by the meta_keyword column
+ * @method     ChildOcCategoryDescriptionQuery orderBySidebarTitle($order = Criteria::ASC) Order by the sidebar_title column
  *
  * @method     ChildOcCategoryDescriptionQuery groupByCategoryId() Group by the category_id column
  * @method     ChildOcCategoryDescriptionQuery groupByLanguageId() Group by the language_id column
@@ -34,6 +35,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryDescriptionQuery groupByMetaTitle() Group by the meta_title column
  * @method     ChildOcCategoryDescriptionQuery groupByMetaDescription() Group by the meta_description column
  * @method     ChildOcCategoryDescriptionQuery groupByMetaKeyword() Group by the meta_keyword column
+ * @method     ChildOcCategoryDescriptionQuery groupBySidebarTitle() Group by the sidebar_title column
  *
  * @method     ChildOcCategoryDescriptionQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcCategoryDescriptionQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -52,7 +54,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryDescription findOneByDescription(string $description) Return the first ChildOcCategoryDescription filtered by the description column
  * @method     ChildOcCategoryDescription findOneByMetaTitle(string $meta_title) Return the first ChildOcCategoryDescription filtered by the meta_title column
  * @method     ChildOcCategoryDescription findOneByMetaDescription(string $meta_description) Return the first ChildOcCategoryDescription filtered by the meta_description column
- * @method     ChildOcCategoryDescription findOneByMetaKeyword(string $meta_keyword) Return the first ChildOcCategoryDescription filtered by the meta_keyword column *
+ * @method     ChildOcCategoryDescription findOneByMetaKeyword(string $meta_keyword) Return the first ChildOcCategoryDescription filtered by the meta_keyword column
+ * @method     ChildOcCategoryDescription findOneBySidebarTitle(string $sidebar_title) Return the first ChildOcCategoryDescription filtered by the sidebar_title column *
 
  * @method     ChildOcCategoryDescription requirePk($key, ConnectionInterface $con = null) Return the ChildOcCategoryDescription by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategoryDescription requireOne(ConnectionInterface $con = null) Return the first ChildOcCategoryDescription matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -64,6 +67,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryDescription requireOneByMetaTitle(string $meta_title) Return the first ChildOcCategoryDescription filtered by the meta_title column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategoryDescription requireOneByMetaDescription(string $meta_description) Return the first ChildOcCategoryDescription filtered by the meta_description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategoryDescription requireOneByMetaKeyword(string $meta_keyword) Return the first ChildOcCategoryDescription filtered by the meta_keyword column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcCategoryDescription requireOneBySidebarTitle(string $sidebar_title) Return the first ChildOcCategoryDescription filtered by the sidebar_title column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcCategoryDescription[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcCategoryDescription objects based on current ModelCriteria
  * @method     ChildOcCategoryDescription[]|ObjectCollection findByCategoryId(int $category_id) Return ChildOcCategoryDescription objects filtered by the category_id column
@@ -73,6 +77,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryDescription[]|ObjectCollection findByMetaTitle(string $meta_title) Return ChildOcCategoryDescription objects filtered by the meta_title column
  * @method     ChildOcCategoryDescription[]|ObjectCollection findByMetaDescription(string $meta_description) Return ChildOcCategoryDescription objects filtered by the meta_description column
  * @method     ChildOcCategoryDescription[]|ObjectCollection findByMetaKeyword(string $meta_keyword) Return ChildOcCategoryDescription objects filtered by the meta_keyword column
+ * @method     ChildOcCategoryDescription[]|ObjectCollection findBySidebarTitle(string $sidebar_title) Return ChildOcCategoryDescription objects filtered by the sidebar_title column
  * @method     ChildOcCategoryDescription[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -171,7 +176,7 @@ abstract class OcCategoryDescriptionQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT category_id, language_id, name, description, meta_title, meta_description, meta_keyword FROM oc_category_description WHERE category_id = :p0 AND language_id = :p1';
+        $sql = 'SELECT category_id, language_id, name, description, meta_title, meta_description, meta_keyword, sidebar_title FROM oc_category_description WHERE category_id = :p0 AND language_id = :p1';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key[0], PDO::PARAM_INT);
@@ -478,6 +483,31 @@ abstract class OcCategoryDescriptionQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcCategoryDescriptionTableMap::COL_META_KEYWORD, $metaKeyword, $comparison);
+    }
+
+    /**
+     * Filter the query on the sidebar_title column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterBySidebarTitle('fooValue');   // WHERE sidebar_title = 'fooValue'
+     * $query->filterBySidebarTitle('%fooValue%', Criteria::LIKE); // WHERE sidebar_title LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $sidebarTitle The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcCategoryDescriptionQuery The current query, for fluid interface
+     */
+    public function filterBySidebarTitle($sidebarTitle = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($sidebarTitle)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE, $sidebarTitle, $comparison);
     }
 
     /**

@@ -59,7 +59,7 @@ class OcCategoryDescriptionTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 8;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcCategoryDescriptionTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 8;
 
     /**
      * the column name for the category_id field
@@ -107,6 +107,11 @@ class OcCategoryDescriptionTableMap extends TableMap
     const COL_META_KEYWORD = 'oc_category_description.meta_keyword';
 
     /**
+     * the column name for the sidebar_title field
+     */
+    const COL_SIDEBAR_TITLE = 'oc_category_description.sidebar_title';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -118,11 +123,11 @@ class OcCategoryDescriptionTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('CategoryId', 'LanguageId', 'Name', 'Description', 'MetaTitle', 'MetaDescription', 'MetaKeyword', ),
-        self::TYPE_CAMELNAME     => array('categoryId', 'languageId', 'name', 'description', 'metaTitle', 'metaDescription', 'metaKeyword', ),
-        self::TYPE_COLNAME       => array(OcCategoryDescriptionTableMap::COL_CATEGORY_ID, OcCategoryDescriptionTableMap::COL_LANGUAGE_ID, OcCategoryDescriptionTableMap::COL_NAME, OcCategoryDescriptionTableMap::COL_DESCRIPTION, OcCategoryDescriptionTableMap::COL_META_TITLE, OcCategoryDescriptionTableMap::COL_META_DESCRIPTION, OcCategoryDescriptionTableMap::COL_META_KEYWORD, ),
-        self::TYPE_FIELDNAME     => array('category_id', 'language_id', 'name', 'description', 'meta_title', 'meta_description', 'meta_keyword', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('CategoryId', 'LanguageId', 'Name', 'Description', 'MetaTitle', 'MetaDescription', 'MetaKeyword', 'SidebarTitle', ),
+        self::TYPE_CAMELNAME     => array('categoryId', 'languageId', 'name', 'description', 'metaTitle', 'metaDescription', 'metaKeyword', 'sidebarTitle', ),
+        self::TYPE_COLNAME       => array(OcCategoryDescriptionTableMap::COL_CATEGORY_ID, OcCategoryDescriptionTableMap::COL_LANGUAGE_ID, OcCategoryDescriptionTableMap::COL_NAME, OcCategoryDescriptionTableMap::COL_DESCRIPTION, OcCategoryDescriptionTableMap::COL_META_TITLE, OcCategoryDescriptionTableMap::COL_META_DESCRIPTION, OcCategoryDescriptionTableMap::COL_META_KEYWORD, OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE, ),
+        self::TYPE_FIELDNAME     => array('category_id', 'language_id', 'name', 'description', 'meta_title', 'meta_description', 'meta_keyword', 'sidebar_title', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
 
     /**
@@ -132,11 +137,11 @@ class OcCategoryDescriptionTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('CategoryId' => 0, 'LanguageId' => 1, 'Name' => 2, 'Description' => 3, 'MetaTitle' => 4, 'MetaDescription' => 5, 'MetaKeyword' => 6, ),
-        self::TYPE_CAMELNAME     => array('categoryId' => 0, 'languageId' => 1, 'name' => 2, 'description' => 3, 'metaTitle' => 4, 'metaDescription' => 5, 'metaKeyword' => 6, ),
-        self::TYPE_COLNAME       => array(OcCategoryDescriptionTableMap::COL_CATEGORY_ID => 0, OcCategoryDescriptionTableMap::COL_LANGUAGE_ID => 1, OcCategoryDescriptionTableMap::COL_NAME => 2, OcCategoryDescriptionTableMap::COL_DESCRIPTION => 3, OcCategoryDescriptionTableMap::COL_META_TITLE => 4, OcCategoryDescriptionTableMap::COL_META_DESCRIPTION => 5, OcCategoryDescriptionTableMap::COL_META_KEYWORD => 6, ),
-        self::TYPE_FIELDNAME     => array('category_id' => 0, 'language_id' => 1, 'name' => 2, 'description' => 3, 'meta_title' => 4, 'meta_description' => 5, 'meta_keyword' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('CategoryId' => 0, 'LanguageId' => 1, 'Name' => 2, 'Description' => 3, 'MetaTitle' => 4, 'MetaDescription' => 5, 'MetaKeyword' => 6, 'SidebarTitle' => 7, ),
+        self::TYPE_CAMELNAME     => array('categoryId' => 0, 'languageId' => 1, 'name' => 2, 'description' => 3, 'metaTitle' => 4, 'metaDescription' => 5, 'metaKeyword' => 6, 'sidebarTitle' => 7, ),
+        self::TYPE_COLNAME       => array(OcCategoryDescriptionTableMap::COL_CATEGORY_ID => 0, OcCategoryDescriptionTableMap::COL_LANGUAGE_ID => 1, OcCategoryDescriptionTableMap::COL_NAME => 2, OcCategoryDescriptionTableMap::COL_DESCRIPTION => 3, OcCategoryDescriptionTableMap::COL_META_TITLE => 4, OcCategoryDescriptionTableMap::COL_META_DESCRIPTION => 5, OcCategoryDescriptionTableMap::COL_META_KEYWORD => 6, OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE => 7, ),
+        self::TYPE_FIELDNAME     => array('category_id' => 0, 'language_id' => 1, 'name' => 2, 'description' => 3, 'meta_title' => 4, 'meta_description' => 5, 'meta_keyword' => 6, 'sidebar_title' => 7, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
 
     /**
@@ -163,6 +168,7 @@ class OcCategoryDescriptionTableMap extends TableMap
         $this->addColumn('meta_title', 'MetaTitle', 'VARCHAR', true, 255, null);
         $this->addColumn('meta_description', 'MetaDescription', 'VARCHAR', true, 255, null);
         $this->addColumn('meta_keyword', 'MetaKeyword', 'VARCHAR', true, 255, null);
+        $this->addColumn('sidebar_title', 'SidebarTitle', 'VARCHAR', true, 255, '');
     } // initialize()
 
     /**
@@ -382,6 +388,7 @@ class OcCategoryDescriptionTableMap extends TableMap
             $criteria->addSelectColumn(OcCategoryDescriptionTableMap::COL_META_TITLE);
             $criteria->addSelectColumn(OcCategoryDescriptionTableMap::COL_META_DESCRIPTION);
             $criteria->addSelectColumn(OcCategoryDescriptionTableMap::COL_META_KEYWORD);
+            $criteria->addSelectColumn(OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE);
         } else {
             $criteria->addSelectColumn($alias . '.category_id');
             $criteria->addSelectColumn($alias . '.language_id');
@@ -390,6 +397,7 @@ class OcCategoryDescriptionTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.meta_title');
             $criteria->addSelectColumn($alias . '.meta_description');
             $criteria->addSelectColumn($alias . '.meta_keyword');
+            $criteria->addSelectColumn($alias . '.sidebar_title');
         }
     }
 

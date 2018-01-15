@@ -32,14 +32,29 @@ class ControllerCommonCategoryTree extends Controller {
 	private function createTree( $aCategories, $aResult = [] ){
 		$this->load->model('catalog/category');
 		foreach( $aCategories as $aCategory ){
-			$aResult[ $aCategory['category_id'] ] = [ 'category_id'=>$aCategory['category_id'], 
-			'cat_path'  =>  $this->model_catalog_category->getCatPath( $aCategory['category_id'] ),
-			'name'		=>	$aCategory['name'], 
-			'css'		=>	$aCategory['css'],
-			'class'		=>	$aCategory['class'],
-			'children'	=>	$this->createTree( 
-				$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
-			) ]; 	
+			$iCount		= count( $this->createTree( 
+					$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) ) );
+			if( $iCount >0 ){
+				$aResult[ $aCategory['category_id'] ] = [ 
+				'category_id'=>$aCategory['category_id'], 
+				'cat_path'  =>  $this->model_catalog_category->getCatPath( $aCategory['category_id'] ),
+				'name'		=>	$aCategory['sidebar_title'], //замещаем на текст, который подравняем для вида в блоке 
+				'css'		=>	$aCategory['css'],
+				'class'		=>	$aCategory['class'],
+				'count'		=>  $iCount,
+				'children'	=>	$this->createTree( 
+						$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) ), 
+				]; 	
+			} else {
+				$aResult[ $aCategory['category_id'] ] = [ 
+				'category_id'=>$aCategory['category_id'], 
+				'cat_path'  =>  $this->model_catalog_category->getCatPath( $aCategory['category_id'] ),
+				'name'		=>	$aCategory['sidebar_title'], //замещаем на текст, который подравняем для вида в блоке 
+				'css'		=>	$aCategory['css'],
+				'class'		=>	$aCategory['class'],
+				'count'		=>  0, 
+				];
+			}
 		}
 		return $aResult;
 	}
@@ -142,8 +157,12 @@ class ControllerCommonCategoryTree extends Controller {
 				default:
 					$sIcon = "";
 					break;
-			}			
-
+			}		
+			// измененная структура в зависимости от надичия наследников	
+			if( 
+				count( $this->createTree2( 
+					$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
+			) ) > 0 ) {
 			$aResult[] = [ 
 			'text'	=>	$aCategory['name'],
 			'icon' 	=> "$sIcon", // иконка конкретной категории (группы категорий)
@@ -158,10 +177,32 @@ class ControllerCommonCategoryTree extends Controller {
 				'expanded' => false,
 				//'selected' => true
 			],
-			'tags' => ['СпецСинтез'],			 
-			'nodes'	=>	$this->createTree2( 
-				$this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
-			) ]; 	
+'tags' => [count( $this->createTree2( $this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ) 
+) ) ],
+				/* вот тут пригодился бы вариант)) */
+'nodes'
+=> 
+$this->createTree2($this->model_catalog_category->getCategories( $aCategory['category_id'], $aResult ))
+			]; 
+			} else {
+				$aResult[] = [ 
+				'text'	=>	$aCategory['name'],
+				'icon' 	=> "$sIcon", // иконка конкретной категории (группы категорий)
+				'selectedIcon' => "glyphicon glyphicon-ban-circle", // выбранная иконка
+				'color' 	=> "#404540",
+				'backColor' =>  "#FEFEFE", // "#369A38",
+				'href'=>"index.php?route=product/category&path=" . $this->getFullPath($aCategory['category_id']), 
+				'selectable' => 1,
+				'state' => [
+					//'checked'  => true,
+					//'disabled' => true,
+					'expanded' => false,
+					//'selected' => true
+				],
+
+				]; 
+			}
+	
 		}
 		return $aResult;
 	}
