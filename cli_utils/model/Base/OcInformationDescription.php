@@ -109,6 +109,22 @@ abstract class OcInformationDescription implements ActiveRecordInterface
     protected $meta_keyword;
 
     /**
+     * The value for the foreground_text field.
+     *
+     * Note: this column has a database default value of: ''
+     * @var        string
+     */
+    protected $foreground_text;
+
+    /**
+     * The value for the foreground_image field.
+     *
+     * Note: this column has a database default value of: ''
+     * @var        string
+     */
+    protected $foreground_image;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -117,10 +133,24 @@ abstract class OcInformationDescription implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
+     * Applies default values to this object.
+     * This method should be called from the object's constructor (or
+     * equivalent initialization method).
+     * @see __construct()
+     */
+    public function applyDefaultValues()
+    {
+        $this->foreground_text = '';
+        $this->foreground_image = '';
+    }
+
+    /**
      * Initializes internal state of Base\OcInformationDescription object.
+     * @see applyDefaults()
      */
     public function __construct()
     {
+        $this->applyDefaultValues();
     }
 
     /**
@@ -412,6 +442,26 @@ abstract class OcInformationDescription implements ActiveRecordInterface
     }
 
     /**
+     * Get the [foreground_text] column value.
+     *
+     * @return string
+     */
+    public function getForegroundText()
+    {
+        return $this->foreground_text;
+    }
+
+    /**
+     * Get the [foreground_image] column value.
+     *
+     * @return string
+     */
+    public function getForegroundImage()
+    {
+        return $this->foreground_image;
+    }
+
+    /**
      * Set the value of [information_id] column.
      *
      * @param int $v new value
@@ -552,6 +602,46 @@ abstract class OcInformationDescription implements ActiveRecordInterface
     } // setMetaKeyword()
 
     /**
+     * Set the value of [foreground_text] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcInformationDescription The current object (for fluent API support)
+     */
+    public function setForegroundText($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->foreground_text !== $v) {
+            $this->foreground_text = $v;
+            $this->modifiedColumns[OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT] = true;
+        }
+
+        return $this;
+    } // setForegroundText()
+
+    /**
+     * Set the value of [foreground_image] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcInformationDescription The current object (for fluent API support)
+     */
+    public function setForegroundImage($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->foreground_image !== $v) {
+            $this->foreground_image = $v;
+            $this->modifiedColumns[OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE] = true;
+        }
+
+        return $this;
+    } // setForegroundImage()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -561,6 +651,14 @@ abstract class OcInformationDescription implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
+            if ($this->foreground_text !== '') {
+                return false;
+            }
+
+            if ($this->foreground_image !== '') {
+                return false;
+            }
+
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -607,6 +705,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcInformationDescriptionTableMap::translateFieldName('MetaKeyword', TableMap::TYPE_PHPNAME, $indexType)];
             $this->meta_keyword = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : OcInformationDescriptionTableMap::translateFieldName('ForegroundText', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->foreground_text = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 8 + $startcol : OcInformationDescriptionTableMap::translateFieldName('ForegroundImage', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->foreground_image = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -615,7 +719,7 @@ abstract class OcInformationDescription implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = OcInformationDescriptionTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 9; // 9 = OcInformationDescriptionTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcInformationDescription'), 0, $e);
@@ -833,6 +937,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
         if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_META_KEYWORD)) {
             $modifiedColumns[':p' . $index++]  = 'meta_keyword';
         }
+        if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT)) {
+            $modifiedColumns[':p' . $index++]  = 'foreground_text';
+        }
+        if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE)) {
+            $modifiedColumns[':p' . $index++]  = 'foreground_image';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_information_description (%s) VALUES (%s)',
@@ -864,6 +974,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
                         break;
                     case 'meta_keyword':
                         $stmt->bindValue($identifier, $this->meta_keyword, PDO::PARAM_STR);
+                        break;
+                    case 'foreground_text':
+                        $stmt->bindValue($identifier, $this->foreground_text, PDO::PARAM_STR);
+                        break;
+                    case 'foreground_image':
+                        $stmt->bindValue($identifier, $this->foreground_image, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -941,6 +1057,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
             case 6:
                 return $this->getMetaKeyword();
                 break;
+            case 7:
+                return $this->getForegroundText();
+                break;
+            case 8:
+                return $this->getForegroundImage();
+                break;
             default:
                 return null;
                 break;
@@ -977,6 +1099,8 @@ abstract class OcInformationDescription implements ActiveRecordInterface
             $keys[4] => $this->getMetaTitle(),
             $keys[5] => $this->getMetaDescription(),
             $keys[6] => $this->getMetaKeyword(),
+            $keys[7] => $this->getForegroundText(),
+            $keys[8] => $this->getForegroundImage(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1037,6 +1161,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
             case 6:
                 $this->setMetaKeyword($value);
                 break;
+            case 7:
+                $this->setForegroundText($value);
+                break;
+            case 8:
+                $this->setForegroundImage($value);
+                break;
         } // switch()
 
         return $this;
@@ -1083,6 +1213,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
         }
         if (array_key_exists($keys[6], $arr)) {
             $this->setMetaKeyword($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setForegroundText($arr[$keys[7]]);
+        }
+        if (array_key_exists($keys[8], $arr)) {
+            $this->setForegroundImage($arr[$keys[8]]);
         }
     }
 
@@ -1145,6 +1281,12 @@ abstract class OcInformationDescription implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_META_KEYWORD)) {
             $criteria->add(OcInformationDescriptionTableMap::COL_META_KEYWORD, $this->meta_keyword);
+        }
+        if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT)) {
+            $criteria->add(OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT, $this->foreground_text);
+        }
+        if ($this->isColumnModified(OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE)) {
+            $criteria->add(OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE, $this->foreground_image);
         }
 
         return $criteria;
@@ -1247,6 +1389,8 @@ abstract class OcInformationDescription implements ActiveRecordInterface
         $copyObj->setMetaTitle($this->getMetaTitle());
         $copyObj->setMetaDescription($this->getMetaDescription());
         $copyObj->setMetaKeyword($this->getMetaKeyword());
+        $copyObj->setForegroundText($this->getForegroundText());
+        $copyObj->setForegroundImage($this->getForegroundImage());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -1288,8 +1432,11 @@ abstract class OcInformationDescription implements ActiveRecordInterface
         $this->meta_title = null;
         $this->meta_description = null;
         $this->meta_keyword = null;
+        $this->foreground_text = null;
+        $this->foreground_image = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
+        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);

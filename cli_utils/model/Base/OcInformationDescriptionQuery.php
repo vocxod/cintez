@@ -26,6 +26,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationDescriptionQuery orderByMetaTitle($order = Criteria::ASC) Order by the meta_title column
  * @method     ChildOcInformationDescriptionQuery orderByMetaDescription($order = Criteria::ASC) Order by the meta_description column
  * @method     ChildOcInformationDescriptionQuery orderByMetaKeyword($order = Criteria::ASC) Order by the meta_keyword column
+ * @method     ChildOcInformationDescriptionQuery orderByForegroundText($order = Criteria::ASC) Order by the foreground_text column
+ * @method     ChildOcInformationDescriptionQuery orderByForegroundImage($order = Criteria::ASC) Order by the foreground_image column
  *
  * @method     ChildOcInformationDescriptionQuery groupByInformationId() Group by the information_id column
  * @method     ChildOcInformationDescriptionQuery groupByLanguageId() Group by the language_id column
@@ -34,6 +36,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationDescriptionQuery groupByMetaTitle() Group by the meta_title column
  * @method     ChildOcInformationDescriptionQuery groupByMetaDescription() Group by the meta_description column
  * @method     ChildOcInformationDescriptionQuery groupByMetaKeyword() Group by the meta_keyword column
+ * @method     ChildOcInformationDescriptionQuery groupByForegroundText() Group by the foreground_text column
+ * @method     ChildOcInformationDescriptionQuery groupByForegroundImage() Group by the foreground_image column
  *
  * @method     ChildOcInformationDescriptionQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcInformationDescriptionQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -52,7 +56,9 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationDescription findOneByDescription(string $description) Return the first ChildOcInformationDescription filtered by the description column
  * @method     ChildOcInformationDescription findOneByMetaTitle(string $meta_title) Return the first ChildOcInformationDescription filtered by the meta_title column
  * @method     ChildOcInformationDescription findOneByMetaDescription(string $meta_description) Return the first ChildOcInformationDescription filtered by the meta_description column
- * @method     ChildOcInformationDescription findOneByMetaKeyword(string $meta_keyword) Return the first ChildOcInformationDescription filtered by the meta_keyword column *
+ * @method     ChildOcInformationDescription findOneByMetaKeyword(string $meta_keyword) Return the first ChildOcInformationDescription filtered by the meta_keyword column
+ * @method     ChildOcInformationDescription findOneByForegroundText(string $foreground_text) Return the first ChildOcInformationDescription filtered by the foreground_text column
+ * @method     ChildOcInformationDescription findOneByForegroundImage(string $foreground_image) Return the first ChildOcInformationDescription filtered by the foreground_image column *
 
  * @method     ChildOcInformationDescription requirePk($key, ConnectionInterface $con = null) Return the ChildOcInformationDescription by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformationDescription requireOne(ConnectionInterface $con = null) Return the first ChildOcInformationDescription matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -64,6 +70,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationDescription requireOneByMetaTitle(string $meta_title) Return the first ChildOcInformationDescription filtered by the meta_title column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformationDescription requireOneByMetaDescription(string $meta_description) Return the first ChildOcInformationDescription filtered by the meta_description column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcInformationDescription requireOneByMetaKeyword(string $meta_keyword) Return the first ChildOcInformationDescription filtered by the meta_keyword column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcInformationDescription requireOneByForegroundText(string $foreground_text) Return the first ChildOcInformationDescription filtered by the foreground_text column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcInformationDescription requireOneByForegroundImage(string $foreground_image) Return the first ChildOcInformationDescription filtered by the foreground_image column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcInformationDescription[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcInformationDescription objects based on current ModelCriteria
  * @method     ChildOcInformationDescription[]|ObjectCollection findByInformationId(int $information_id) Return ChildOcInformationDescription objects filtered by the information_id column
@@ -73,6 +81,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcInformationDescription[]|ObjectCollection findByMetaTitle(string $meta_title) Return ChildOcInformationDescription objects filtered by the meta_title column
  * @method     ChildOcInformationDescription[]|ObjectCollection findByMetaDescription(string $meta_description) Return ChildOcInformationDescription objects filtered by the meta_description column
  * @method     ChildOcInformationDescription[]|ObjectCollection findByMetaKeyword(string $meta_keyword) Return ChildOcInformationDescription objects filtered by the meta_keyword column
+ * @method     ChildOcInformationDescription[]|ObjectCollection findByForegroundText(string $foreground_text) Return ChildOcInformationDescription objects filtered by the foreground_text column
+ * @method     ChildOcInformationDescription[]|ObjectCollection findByForegroundImage(string $foreground_image) Return ChildOcInformationDescription objects filtered by the foreground_image column
  * @method     ChildOcInformationDescription[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -171,7 +181,7 @@ abstract class OcInformationDescriptionQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT information_id, language_id, title, description, meta_title, meta_description, meta_keyword FROM oc_information_description WHERE information_id = :p0 AND language_id = :p1';
+        $sql = 'SELECT information_id, language_id, title, description, meta_title, meta_description, meta_keyword, foreground_text, foreground_image FROM oc_information_description WHERE information_id = :p0 AND language_id = :p1';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key[0], PDO::PARAM_INT);
@@ -478,6 +488,56 @@ abstract class OcInformationDescriptionQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcInformationDescriptionTableMap::COL_META_KEYWORD, $metaKeyword, $comparison);
+    }
+
+    /**
+     * Filter the query on the foreground_text column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByForegroundText('fooValue');   // WHERE foreground_text = 'fooValue'
+     * $query->filterByForegroundText('%fooValue%', Criteria::LIKE); // WHERE foreground_text LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $foregroundText The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcInformationDescriptionQuery The current query, for fluid interface
+     */
+    public function filterByForegroundText($foregroundText = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($foregroundText)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT, $foregroundText, $comparison);
+    }
+
+    /**
+     * Filter the query on the foreground_image column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByForegroundImage('fooValue');   // WHERE foreground_image = 'fooValue'
+     * $query->filterByForegroundImage('%fooValue%', Criteria::LIKE); // WHERE foreground_image LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $foregroundImage The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcInformationDescriptionQuery The current query, for fluid interface
+     */
+    public function filterByForegroundImage($foregroundImage = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($foregroundImage)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE, $foregroundImage, $comparison);
     }
 
     /**

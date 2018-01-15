@@ -746,6 +746,8 @@
     <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <column name="foreground_text" phpName="ForegroundText" type="LONGVARCHAR" required="true" defaultValue=""/>
+    <column name="foreground_image" phpName="ForegroundImage" type="LONGVARCHAR" required="true" defaultValue=""/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

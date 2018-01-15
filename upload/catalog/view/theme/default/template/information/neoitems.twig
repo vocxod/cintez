@@ -22,12 +22,16 @@
         {% for item in top_news %}
             <div class="row news-anonce" >
             <div class="col-sm-6 img-anonce ">
-              {{ item.image }}
+              {% if item.foreground_image|length > 1 %}
+                <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
+              {% else %}
+                <img src="/image/catalog/logo-325x325.png" alt="SpecSyntez News Article" />
+              {% endif %}
             </div>  
             <div class="col-sm-6  ">
               <h4 style="font-weight:bold;">{{ item.title }}</h4>
               <p>
-                {{ item.description }}
+                {{ item.foreground_text }}
               </p>
             </div>
             </div>

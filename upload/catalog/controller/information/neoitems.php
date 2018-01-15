@@ -9,7 +9,7 @@ class ControllerInformationNeoitems extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('information/newslist')
+			'href' => $this->url->link('information/neoitems')
 		);
 
 		if (isset($this->request->get['page'])) {
@@ -29,11 +29,13 @@ class ControllerInformationNeoitems extends Controller {
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
+		
 		$top_news = $this->model_catalog_information->getTopNews( $iOffset, $iLimit );
 		$aResult = [];
+
 		foreach ($top_news as $key => $value) {
 			$aData = [];
-
+//var_dump($value); die();
 			if(is_array($value)){
 				foreach ($value as $key2 => $value2) {
 				
@@ -53,13 +55,8 @@ class ControllerInformationNeoitems extends Controller {
 			}
 		}
 		$aDataNews['top_news'] = $aResult;
-		/* */
 		$data['top_news'] = $aResult;
-		// $data['newslatest'] = $this->load->view( 'extension/module/newslatest', $aDataNews );
-		// var_dump( $data['top_news'] ); die();
-
-		//$information_info = $this->model_catalog_information->getInformation($information_id);
-
+//var_dump( $data['top_news'] ); die();
 		if ( $aResult ) {
 			/* @todo fix it */
 			$this->document->setTitle('meta_title');
@@ -83,7 +80,7 @@ class ControllerInformationNeoitems extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=>8] );
+			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=> 4] );
 			
 			// расставим страницу 
 			$pagination = new Pagination();
@@ -91,7 +88,7 @@ class ControllerInformationNeoitems extends Controller {
 			$pagination->total = $product_total;
 			$pagination->page = $page;
 			$pagination->limit = $iLimit;
-			$pagination->url = $this->url->link('information/newslist', '&page={page}');
+			$pagination->url = $this->url->link('information/neoitems', '&page={page}');
 			$data['pagination'] = $pagination->render();
 			
 			// ренднрим страницу данными на шаблоне

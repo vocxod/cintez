@@ -9,6 +9,9 @@ class ControllerCommonToparticles extends Controller {
 		} else {
 			$iLimit = 6;
 		}
+		
+		//var_dump($iLimit, $aOption); die();
+
 		$aTopArticles = $this->model_catalog_information->getTopArticles( 0, $iLimit );
 		/* get first image for each atricle */
 		$aResult = [];

@@ -59,7 +59,7 @@ class OcInformationDescriptionTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 9;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcInformationDescriptionTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 9;
 
     /**
      * the column name for the information_id field
@@ -107,6 +107,16 @@ class OcInformationDescriptionTableMap extends TableMap
     const COL_META_KEYWORD = 'oc_information_description.meta_keyword';
 
     /**
+     * the column name for the foreground_text field
+     */
+    const COL_FOREGROUND_TEXT = 'oc_information_description.foreground_text';
+
+    /**
+     * the column name for the foreground_image field
+     */
+    const COL_FOREGROUND_IMAGE = 'oc_information_description.foreground_image';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -118,11 +128,11 @@ class OcInformationDescriptionTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('InformationId', 'LanguageId', 'Title', 'Description', 'MetaTitle', 'MetaDescription', 'MetaKeyword', ),
-        self::TYPE_CAMELNAME     => array('informationId', 'languageId', 'title', 'description', 'metaTitle', 'metaDescription', 'metaKeyword', ),
-        self::TYPE_COLNAME       => array(OcInformationDescriptionTableMap::COL_INFORMATION_ID, OcInformationDescriptionTableMap::COL_LANGUAGE_ID, OcInformationDescriptionTableMap::COL_TITLE, OcInformationDescriptionTableMap::COL_DESCRIPTION, OcInformationDescriptionTableMap::COL_META_TITLE, OcInformationDescriptionTableMap::COL_META_DESCRIPTION, OcInformationDescriptionTableMap::COL_META_KEYWORD, ),
-        self::TYPE_FIELDNAME     => array('information_id', 'language_id', 'title', 'description', 'meta_title', 'meta_description', 'meta_keyword', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('InformationId', 'LanguageId', 'Title', 'Description', 'MetaTitle', 'MetaDescription', 'MetaKeyword', 'ForegroundText', 'ForegroundImage', ),
+        self::TYPE_CAMELNAME     => array('informationId', 'languageId', 'title', 'description', 'metaTitle', 'metaDescription', 'metaKeyword', 'foregroundText', 'foregroundImage', ),
+        self::TYPE_COLNAME       => array(OcInformationDescriptionTableMap::COL_INFORMATION_ID, OcInformationDescriptionTableMap::COL_LANGUAGE_ID, OcInformationDescriptionTableMap::COL_TITLE, OcInformationDescriptionTableMap::COL_DESCRIPTION, OcInformationDescriptionTableMap::COL_META_TITLE, OcInformationDescriptionTableMap::COL_META_DESCRIPTION, OcInformationDescriptionTableMap::COL_META_KEYWORD, OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT, OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE, ),
+        self::TYPE_FIELDNAME     => array('information_id', 'language_id', 'title', 'description', 'meta_title', 'meta_description', 'meta_keyword', 'foreground_text', 'foreground_image', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
 
     /**
@@ -132,11 +142,11 @@ class OcInformationDescriptionTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('InformationId' => 0, 'LanguageId' => 1, 'Title' => 2, 'Description' => 3, 'MetaTitle' => 4, 'MetaDescription' => 5, 'MetaKeyword' => 6, ),
-        self::TYPE_CAMELNAME     => array('informationId' => 0, 'languageId' => 1, 'title' => 2, 'description' => 3, 'metaTitle' => 4, 'metaDescription' => 5, 'metaKeyword' => 6, ),
-        self::TYPE_COLNAME       => array(OcInformationDescriptionTableMap::COL_INFORMATION_ID => 0, OcInformationDescriptionTableMap::COL_LANGUAGE_ID => 1, OcInformationDescriptionTableMap::COL_TITLE => 2, OcInformationDescriptionTableMap::COL_DESCRIPTION => 3, OcInformationDescriptionTableMap::COL_META_TITLE => 4, OcInformationDescriptionTableMap::COL_META_DESCRIPTION => 5, OcInformationDescriptionTableMap::COL_META_KEYWORD => 6, ),
-        self::TYPE_FIELDNAME     => array('information_id' => 0, 'language_id' => 1, 'title' => 2, 'description' => 3, 'meta_title' => 4, 'meta_description' => 5, 'meta_keyword' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('InformationId' => 0, 'LanguageId' => 1, 'Title' => 2, 'Description' => 3, 'MetaTitle' => 4, 'MetaDescription' => 5, 'MetaKeyword' => 6, 'ForegroundText' => 7, 'ForegroundImage' => 8, ),
+        self::TYPE_CAMELNAME     => array('informationId' => 0, 'languageId' => 1, 'title' => 2, 'description' => 3, 'metaTitle' => 4, 'metaDescription' => 5, 'metaKeyword' => 6, 'foregroundText' => 7, 'foregroundImage' => 8, ),
+        self::TYPE_COLNAME       => array(OcInformationDescriptionTableMap::COL_INFORMATION_ID => 0, OcInformationDescriptionTableMap::COL_LANGUAGE_ID => 1, OcInformationDescriptionTableMap::COL_TITLE => 2, OcInformationDescriptionTableMap::COL_DESCRIPTION => 3, OcInformationDescriptionTableMap::COL_META_TITLE => 4, OcInformationDescriptionTableMap::COL_META_DESCRIPTION => 5, OcInformationDescriptionTableMap::COL_META_KEYWORD => 6, OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT => 7, OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE => 8, ),
+        self::TYPE_FIELDNAME     => array('information_id' => 0, 'language_id' => 1, 'title' => 2, 'description' => 3, 'meta_title' => 4, 'meta_description' => 5, 'meta_keyword' => 6, 'foreground_text' => 7, 'foreground_image' => 8, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, )
     );
 
     /**
@@ -163,6 +173,8 @@ class OcInformationDescriptionTableMap extends TableMap
         $this->addColumn('meta_title', 'MetaTitle', 'VARCHAR', true, 255, null);
         $this->addColumn('meta_description', 'MetaDescription', 'VARCHAR', true, 255, null);
         $this->addColumn('meta_keyword', 'MetaKeyword', 'VARCHAR', true, 255, null);
+        $this->addColumn('foreground_text', 'ForegroundText', 'LONGVARCHAR', true, null, '');
+        $this->addColumn('foreground_image', 'ForegroundImage', 'LONGVARCHAR', true, null, '');
     } // initialize()
 
     /**
@@ -382,6 +394,8 @@ class OcInformationDescriptionTableMap extends TableMap
             $criteria->addSelectColumn(OcInformationDescriptionTableMap::COL_META_TITLE);
             $criteria->addSelectColumn(OcInformationDescriptionTableMap::COL_META_DESCRIPTION);
             $criteria->addSelectColumn(OcInformationDescriptionTableMap::COL_META_KEYWORD);
+            $criteria->addSelectColumn(OcInformationDescriptionTableMap::COL_FOREGROUND_TEXT);
+            $criteria->addSelectColumn(OcInformationDescriptionTableMap::COL_FOREGROUND_IMAGE);
         } else {
             $criteria->addSelectColumn($alias . '.information_id');
             $criteria->addSelectColumn($alias . '.language_id');
@@ -390,6 +404,8 @@ class OcInformationDescriptionTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.meta_title');
             $criteria->addSelectColumn($alias . '.meta_description');
             $criteria->addSelectColumn($alias . '.meta_keyword');
+            $criteria->addSelectColumn($alias . '.foreground_text');
+            $criteria->addSelectColumn($alias . '.foreground_image');
         }
     }
 
