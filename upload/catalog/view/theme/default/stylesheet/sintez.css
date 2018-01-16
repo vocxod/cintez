@@ -2425,9 +2425,11 @@ left:15px;
 /* пищев пром */
 #sb-10.active{ 
   border-left: 5px solid red!important;
+  border-right: 5px solid red!important;
 }
 #sb-10.active.collapsed{ 
   border-left: 5px solid rgb(54,154,56)!important;
+  border-right: 0px solid red!important;
 }
 
 /* пищев пром */
