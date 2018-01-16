@@ -2399,6 +2399,14 @@ left:15px;
 }
 
 
+/*********** боковые отступы для уровней (старт) **************/
+#sb-65.active{ 
+  border-left: 10px solid rgba(10,86,11,.89)!important;
+}
+#sb-65.active.collapsed{ 
+  border-left: 5px solid rgba(10,86,11,.89)!important;
+}
+/************ боковые отступы для уровней (финиш)**************/
 
 
 
