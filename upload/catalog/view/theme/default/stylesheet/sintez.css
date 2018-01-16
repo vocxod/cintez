@@ -2407,18 +2407,31 @@ left:15px;
   border-left: 5px solid rgba(10,86,11,.89)!important;
 }
 
+/* здравохр */
 #sb-131.active{ 
   border-left: 10px solid rgba(10,86,11,.89)!important;
 }
 #sb-131.active.collapsed{ 
   border-left: 5px solid rgb(54,154,56)!important;
 }
+/* здр:дез поверх */
 #sb-132.active{ 
   border-left: 15px solid rgba(10,86,11,.89)!important;
 }
 #sb-132.active.collapsed{ 
   border-left: 5px solid rgb(54,154,56)!important;
 }
+
+/* пищев пром */
+#sb-10.active{ 
+  border-left: 5px solid red!important;
+}
+#sb-10.active.collapsed{ 
+  border-left: 5px solid rgb(54,154,56)!important;
+}
+
+/* пищев пром */
+/* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/
 
 
