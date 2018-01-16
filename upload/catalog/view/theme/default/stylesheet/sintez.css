@@ -2140,6 +2140,27 @@ left:-22px;
 #sb-1536 > span.fa.fa-chevron-down.pull-right{
 }
 
+/****** Клининг ***********/
+/*****************/
+#sb-1452 {
+}
+/* серединка */
+#sb-1452 > span.nav-label:before{
+}
+#sb-1452 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1452 > span.nav-label.one-row {
+}
+#sb-1452 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1452 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1452 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
 
 /* точечно SIDEBAR конечные */
 /* дезинфекция биологических и медицинских отходов 136 */
