@@ -56,17 +56,31 @@ class ControllerExtensionModuleCategory extends Controller {
 
 			$data['categories'][] = array(
 				'category_id' => $category['category_id'],
+				'cat_path'	  => $this->model_catalog_category->getCatPath( $category['category_id'] ),
 				'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 				'children'    => $children_data,
 				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
 				'top'		  => $category['top'],
 				'image'		  => $category['image'],
+				'class'		  => $category['class'] 
 			);
 		}
+
+		if( $_SERVER['SERVER_NAME'] == 'vkartel.dev' || 
+				( isset($this->request->get['devel']) && $this->request->get['devel'] == 'debug' ) 
+			){
+			$data['devel'] = 'debug';
+		} else {
+			$data['devel'] = 'prod';
+		}
+
 		$data['lang'] = $this->language->get('code');
 		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
 		$data['category_tree'] = $aCategoryTree['tree'];
-		//var_dump( $aCategoryTree['tree'][94]['children'][95]['children'][98]['children'] ); die();
+
+		$aCategoryTree2 = $this->load->controller('common/category_tree/tree_type2', ['category_id' => 0]);
+		$data['category_tree2'] = $aCategoryTree2['tree'];
+		// var_dump($data['category_tree2']); die();
 		return $this->load->view('extension/module/category', $data);
 	}
 }

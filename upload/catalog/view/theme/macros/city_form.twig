@@ -1,0 +1,7 @@
+{% macro show(form_action, image, code, redirect) %}
+<form action="{{ form_action }}" method="post" enctype="multipart/form-data">
+  <input type="image" width="100%" src="{{ image }}" border="0" alt="View" />
+  <input type="hidden" name="code" value="{{code}}" />
+  <input type="hidden" name="redirect" value="{{ redirect }}" />
+</form>
+{% endmacro show %}

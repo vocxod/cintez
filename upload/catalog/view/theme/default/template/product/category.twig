@@ -249,6 +249,19 @@
 </div>
 
 <script type="text/javascript"> 
+  $(document).ready(function(){
+    $('.start_products').each( function(index, item) {  
+       $(this).on( "click", function(){
+          //console.log( "to " + $(this).attr('href') + " go " );
+          window.location.href = $(this).attr('href');
+       })
+    })
+  })
+</script>
+
+{{ footer }} 
+
+{#
 /*
 $(document).ready( function(){
   var sFullString = '';
@@ -293,6 +306,4 @@ $(document).ready( function(){
     });
   })
 */
-</script>
-
-{{ footer }} 
+#}

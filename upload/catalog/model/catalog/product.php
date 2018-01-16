@@ -4,6 +4,20 @@ class ModelCatalogProduct extends Model {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
 
+
+	public function getAllProducts(){
+		$sSqlSelect = "SELECT a.product_id, b.name FROM oc_product AS a LEFT JOIN oc_product_description AS b ON a.product_id=b.product_id WHERE b.language_id='" . (int)$this->config->get('config_language_id') . "' AND a.status=1 ORDER BY b.name ";
+		$query = $this->db->query( $sSqlSelect );
+		return( $query->rows );
+	}
+
+
+	public function getProductCategories( $product_id ){
+		$sSqlSelect = "select a.category_id, a.product_id, c.name  from oc_product_to_category AS a LEFT JOIN oc_category AS b ON a.category_id=b.category_id  LEFT JOIN oc_category_description AS c ON b.category_id=c.category_id  where a.product_id='" . $product_id . "' AND b.parent_id=0 AND language_id='" . (int)$this->config->get('config_language_id') . "' ORDER BY a.category_id LIMIT 1;";
+		$query = $this->db->query( $sSqlSelect );
+		return( $query->row ); 
+	}
+
 	public function getProduct($product_id) {
 		$sSqlSelect = "SELECT DISTINCT *, pd.name AS name, p.image, m.name AS manufacturer, 
 		(SELECT price FROM " . DB_PREFIX . "product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '" . (int)$this->config->get('config_customer_group_id') . "' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, 

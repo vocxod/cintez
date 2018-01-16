@@ -7,6 +7,12 @@ class ControllerProductFiltered extends Controller {
 			$this->request->get['path'] = $sOption['path'];
 		}
 
+		$data = [];
+		/*
+		$sResult = $this->load->view('product/filtered', $data);
+		$this->response->setOutput( $sortResult );
+		return;
+		*/
 		$this->load->language('product/filtered');
 
 		$this->load->model('catalog/category');
@@ -70,24 +76,28 @@ class ControllerProductFiltered extends Controller {
 			$path = '';
 			//var_dump( $this->request->get['path'] ); die();
 			$parts = explode('_', (string)$this->request->get['path']);
-
+			
+			//var_dump($parts); die();
+			
 			$category_id = (int)array_pop($parts);
-
 			foreach ($parts as $path_id) {
-				if (!$path) {
-					$path = (int)$path_id;
-				} else {
-					$path .= '_' . (int)$path_id;
+				if( $path_id != '' ){
+					if (!$path) {
+						$path = (int)$path_id;
+					} else {
+						$path .= '_' . (int)$path_id;
+					}
+
+					$category_info = $this->model_catalog_category->getCategory($path_id);
+
+					if ($category_info) {
+						$data['breadcrumbs'][] = array(
+							'text' => $category_info['name'],
+							'href' => $this->url->link('product/filtered', 'path=' . $path . $url)
+						);
+					}
 				}
 
-				$category_info = $this->model_catalog_category->getCategory($path_id);
-
-				if ($category_info) {
-					$data['breadcrumbs'][] = array(
-						'text' => $category_info['name'],
-						'href' => $this->url->link('product/filtered', 'path=' . $path . $url)
-					);
-				}
 			}
 		} else {
 			$category_id = 0;
@@ -168,7 +178,7 @@ class ControllerProductFiltered extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
-//var_dump($results); die();
+			//var_dump($results); die();
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -366,9 +376,19 @@ class ControllerProductFiltered extends Controller {
 
 			$data['content_top'] = $this->load->controller('common/content_top');
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
-
+			
 			$sResult = $this->load->view('product/filtered', $data);
-			return $sResult; 
+			
+			//var_dump( $sResult ); die();
+			//return $sResult; 
+			$this->response->setOutput( $sResult );
+			return;
+
+		} else {
+			//$sResult = ("Сбой обработки запроса / Fail opetaion when request to do.");
+			$sResult = $this->load->view('product/filtered', [] );
+			$this->response->setOutput( $sResult );
+			return;
 		}
 	}
 }

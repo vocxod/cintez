@@ -3,11 +3,14 @@
 {% for article_item in toparticles %}
   <div class="article_item col-sm-12 ">
     <a href="index.php?route=information/information&information_id={{ article_item.information_id }}">
-    {% if article_item.image %}
+    {#{ dump(article_item.image) }#}
+    {#% if article_item.image %}
       <img style="width:100%;" src="/image/catalog/articles/empty_0.png" alt="article">
     {% else %}
       {{ article_item.image }}
-    {% endif %}
+    {% endif %#}
+
+    {{ article_item.image }}
     
     <h4 class="price-h4">{{ article_item.title }}</h4>
     {##} 

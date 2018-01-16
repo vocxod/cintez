@@ -11,20 +11,25 @@ class ControllerInformationNewslist extends Controller {
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('information/newslist')
 		);
-/*
-		if (isset($this->request->get['information_id'])) {
-			$information_id = (int)$this->request->get['information_id'];
+
+		if (isset($this->request->get['page'])) {
+			$page = $this->request->get['page'];
 		} else {
-			$information_id = 0;
+			$page = 1;
 		}
-		
-		$data['information_id'] = $information_id;
-		*/
+
+		if (isset($this->request->get['limit'])) {
+			$iLimit = (int)$this->request->get['limit'];
+		} else {
+			$iLimit = 5;
+		}
+
+		$iOffset = ( $page - 1 ) * $iLimit;
 
 		/* получить нужные данные для формирования последних новостей из шаблона */
 		$aDataNews['heading_title'] = "Последние новости";  
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews( 5 );
+		$top_news = $this->model_catalog_information->getTopNews( $iOffset, $iLimit );
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
 			$aData = [];
@@ -80,16 +85,28 @@ class ControllerInformationNewslist extends Controller {
 			$data['header'] = $this->load->controller('common/header');
 			$data['toparticles'] = $this->load->controller('common/toparticles', ['articles'=>8] );
 			
+			// расставим страницу 
+			$pagination = new Pagination();
+			$product_total = $this->model_catalog_information->getNewsCount();
+			$pagination->total = $product_total;
+			$pagination->page = $page;
+			$pagination->limit = $iLimit;
+			$pagination->url = $this->url->link('information/newslist', '&page={page}');
+			$data['pagination'] = $pagination->render();
+			
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/newslist', $data);
+
 			// отдаем в браузер
 			$this->response->setOutput( $aResult );
 		} else {
 			// избыточный код
+			/*
 			$data['breadcrumbs'][] = array(
 				'text' => $this->language->get('text_error'),
 				'href' => $this->url->link('information/newslist', 'information_id=' . $information_id)
 			);
+			*/
 
 			$this->document->setTitle($this->language->get('text_error'));
 

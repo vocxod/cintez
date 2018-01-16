@@ -109,6 +109,14 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
     protected $meta_keyword;
 
     /**
+     * The value for the sidebar_title field.
+     *
+     * Note: this column has a database default value of: ''
+     * @var        string
+     */
+    protected $sidebar_title;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -117,10 +125,23 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
     protected $alreadyInSave = false;
 
     /**
+     * Applies default values to this object.
+     * This method should be called from the object's constructor (or
+     * equivalent initialization method).
+     * @see __construct()
+     */
+    public function applyDefaultValues()
+    {
+        $this->sidebar_title = '';
+    }
+
+    /**
      * Initializes internal state of Base\OcCategoryDescription object.
+     * @see applyDefaults()
      */
     public function __construct()
     {
+        $this->applyDefaultValues();
     }
 
     /**
@@ -412,6 +433,16 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
     }
 
     /**
+     * Get the [sidebar_title] column value.
+     *
+     * @return string
+     */
+    public function getSidebarTitle()
+    {
+        return $this->sidebar_title;
+    }
+
+    /**
      * Set the value of [category_id] column.
      *
      * @param int $v new value
@@ -552,6 +583,26 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
     } // setMetaKeyword()
 
     /**
+     * Set the value of [sidebar_title] column.
+     *
+     * @param string $v new value
+     * @return $this|\OcCategoryDescription The current object (for fluent API support)
+     */
+    public function setSidebarTitle($v)
+    {
+        if ($v !== null) {
+            $v = (string) $v;
+        }
+
+        if ($this->sidebar_title !== $v) {
+            $this->sidebar_title = $v;
+            $this->modifiedColumns[OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE] = true;
+        }
+
+        return $this;
+    } // setSidebarTitle()
+
+    /**
      * Indicates whether the columns in this object are only set to default values.
      *
      * This method can be used in conjunction with isModified() to indicate whether an object is both
@@ -561,6 +612,10 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
      */
     public function hasOnlyDefaultValues()
     {
+            if ($this->sidebar_title !== '') {
+                return false;
+            }
+
         // otherwise, everything was equal, so return TRUE
         return true;
     } // hasOnlyDefaultValues()
@@ -607,6 +662,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcCategoryDescriptionTableMap::translateFieldName('MetaKeyword', TableMap::TYPE_PHPNAME, $indexType)];
             $this->meta_keyword = (null !== $col) ? (string) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : OcCategoryDescriptionTableMap::translateFieldName('SidebarTitle', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->sidebar_title = (null !== $col) ? (string) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -615,7 +673,7 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = OcCategoryDescriptionTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 8; // 8 = OcCategoryDescriptionTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcCategoryDescription'), 0, $e);
@@ -833,6 +891,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         if ($this->isColumnModified(OcCategoryDescriptionTableMap::COL_META_KEYWORD)) {
             $modifiedColumns[':p' . $index++]  = 'meta_keyword';
         }
+        if ($this->isColumnModified(OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE)) {
+            $modifiedColumns[':p' . $index++]  = 'sidebar_title';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_category_description (%s) VALUES (%s)',
@@ -864,6 +925,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
                         break;
                     case 'meta_keyword':
                         $stmt->bindValue($identifier, $this->meta_keyword, PDO::PARAM_STR);
+                        break;
+                    case 'sidebar_title':
+                        $stmt->bindValue($identifier, $this->sidebar_title, PDO::PARAM_STR);
                         break;
                 }
             }
@@ -941,6 +1005,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
             case 6:
                 return $this->getMetaKeyword();
                 break;
+            case 7:
+                return $this->getSidebarTitle();
+                break;
             default:
                 return null;
                 break;
@@ -977,6 +1044,7 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
             $keys[4] => $this->getMetaTitle(),
             $keys[5] => $this->getMetaDescription(),
             $keys[6] => $this->getMetaKeyword(),
+            $keys[7] => $this->getSidebarTitle(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -1037,6 +1105,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
             case 6:
                 $this->setMetaKeyword($value);
                 break;
+            case 7:
+                $this->setSidebarTitle($value);
+                break;
         } // switch()
 
         return $this;
@@ -1083,6 +1154,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         }
         if (array_key_exists($keys[6], $arr)) {
             $this->setMetaKeyword($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setSidebarTitle($arr[$keys[7]]);
         }
     }
 
@@ -1145,6 +1219,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcCategoryDescriptionTableMap::COL_META_KEYWORD)) {
             $criteria->add(OcCategoryDescriptionTableMap::COL_META_KEYWORD, $this->meta_keyword);
+        }
+        if ($this->isColumnModified(OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE)) {
+            $criteria->add(OcCategoryDescriptionTableMap::COL_SIDEBAR_TITLE, $this->sidebar_title);
         }
 
         return $criteria;
@@ -1247,6 +1324,7 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         $copyObj->setMetaTitle($this->getMetaTitle());
         $copyObj->setMetaDescription($this->getMetaDescription());
         $copyObj->setMetaKeyword($this->getMetaKeyword());
+        $copyObj->setSidebarTitle($this->getSidebarTitle());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -1288,8 +1366,10 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         $this->meta_title = null;
         $this->meta_description = null;
         $this->meta_keyword = null;
+        $this->sidebar_title = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
+        $this->applyDefaultValues();
         $this->resetModified();
         $this->setNew(true);
         $this->setDeleted(false);

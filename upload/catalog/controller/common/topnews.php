@@ -10,7 +10,7 @@ class ControllerCommonTopnews extends Controller {
 		} else {
 			$iLimit = 6;
 		}
-		$aTopArticles = $this->model_catalog_information->getTopNews( $iLimit );
+		$aTopArticles = $this->model_catalog_information->getTopNews( 0, $iLimit );
 		/* get first image for each news */
 		$aResult = [];
 		foreach ($aTopArticles as $key => $value) {

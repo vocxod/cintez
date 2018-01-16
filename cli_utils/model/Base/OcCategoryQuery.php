@@ -30,6 +30,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryQuery orderByDateModified($order = Criteria::ASC) Order by the date_modified column
  * @method     ChildOcCategoryQuery orderByCategorySiteId($order = Criteria::ASC) Order by the category_site_id column
  * @method     ChildOcCategoryQuery orderByCss($order = Criteria::ASC) Order by the css column
+ * @method     ChildOcCategoryQuery orderByClass($order = Criteria::ASC) Order by the class column
  *
  * @method     ChildOcCategoryQuery groupByCategoryId() Group by the category_id column
  * @method     ChildOcCategoryQuery groupByImage() Group by the image column
@@ -42,6 +43,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryQuery groupByDateModified() Group by the date_modified column
  * @method     ChildOcCategoryQuery groupByCategorySiteId() Group by the category_site_id column
  * @method     ChildOcCategoryQuery groupByCss() Group by the css column
+ * @method     ChildOcCategoryQuery groupByClass() Group by the class column
  *
  * @method     ChildOcCategoryQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcCategoryQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -64,7 +66,8 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategory findOneByDateAdded(string $date_added) Return the first ChildOcCategory filtered by the date_added column
  * @method     ChildOcCategory findOneByDateModified(string $date_modified) Return the first ChildOcCategory filtered by the date_modified column
  * @method     ChildOcCategory findOneByCategorySiteId(int $category_site_id) Return the first ChildOcCategory filtered by the category_site_id column
- * @method     ChildOcCategory findOneByCss(string $css) Return the first ChildOcCategory filtered by the css column *
+ * @method     ChildOcCategory findOneByCss(string $css) Return the first ChildOcCategory filtered by the css column
+ * @method     ChildOcCategory findOneByClass(string $class) Return the first ChildOcCategory filtered by the class column *
 
  * @method     ChildOcCategory requirePk($key, ConnectionInterface $con = null) Return the ChildOcCategory by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategory requireOne(ConnectionInterface $con = null) Return the first ChildOcCategory matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
@@ -80,6 +83,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategory requireOneByDateModified(string $date_modified) Return the first ChildOcCategory filtered by the date_modified column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategory requireOneByCategorySiteId(int $category_site_id) Return the first ChildOcCategory filtered by the category_site_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcCategory requireOneByCss(string $css) Return the first ChildOcCategory filtered by the css column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcCategory requireOneByClass(string $class) Return the first ChildOcCategory filtered by the class column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcCategory[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcCategory objects based on current ModelCriteria
  * @method     ChildOcCategory[]|ObjectCollection findByCategoryId(int $category_id) Return ChildOcCategory objects filtered by the category_id column
@@ -93,6 +97,7 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategory[]|ObjectCollection findByDateModified(string $date_modified) Return ChildOcCategory objects filtered by the date_modified column
  * @method     ChildOcCategory[]|ObjectCollection findByCategorySiteId(int $category_site_id) Return ChildOcCategory objects filtered by the category_site_id column
  * @method     ChildOcCategory[]|ObjectCollection findByCss(string $css) Return ChildOcCategory objects filtered by the css column
+ * @method     ChildOcCategory[]|ObjectCollection findByClass(string $class) Return ChildOcCategory objects filtered by the class column
  * @method     ChildOcCategory[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -191,7 +196,7 @@ abstract class OcCategoryQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT category_id, image, parent_id, top, column, sort_order, status, date_added, date_modified, category_site_id, css FROM oc_category WHERE category_id = :p0';
+        $sql = 'SELECT category_id, image, parent_id, top, column, sort_order, status, date_added, date_modified, category_site_id, css, class FROM oc_category WHERE category_id = :p0';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key, PDO::PARAM_INT);
@@ -688,6 +693,31 @@ abstract class OcCategoryQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcCategoryTableMap::COL_CSS, $css, $comparison);
+    }
+
+    /**
+     * Filter the query on the class column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByClass('fooValue');   // WHERE class = 'fooValue'
+     * $query->filterByClass('%fooValue%', Criteria::LIKE); // WHERE class LIKE '%fooValue%'
+     * </code>
+     *
+     * @param     string $class The value to use as filter.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcCategoryQuery The current query, for fluid interface
+     */
+    public function filterByClass($class = null, $comparison = null)
+    {
+        if (null === $comparison) {
+            if (is_array($class)) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcCategoryTableMap::COL_CLASS, $class, $comparison);
     }
 
     /**

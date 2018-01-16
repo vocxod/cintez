@@ -1,4 +1,7 @@
 # Config and Htaccess Files
+
+upload/fname.txt
+
 storage/logs/error.log
 /storage/logs/error.log
 

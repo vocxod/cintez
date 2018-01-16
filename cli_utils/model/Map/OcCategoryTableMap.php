@@ -59,7 +59,7 @@ class OcCategoryTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 11;
+    const NUM_COLUMNS = 12;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcCategoryTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 11;
+    const NUM_HYDRATE_COLUMNS = 12;
 
     /**
      * the column name for the category_id field
@@ -127,6 +127,11 @@ class OcCategoryTableMap extends TableMap
     const COL_CSS = 'oc_category.css';
 
     /**
+     * the column name for the class field
+     */
+    const COL_CLASS = 'oc_category.class';
+
+    /**
      * The default string format for model objects of the related table
      */
     const DEFAULT_STRING_FORMAT = 'YAML';
@@ -138,11 +143,11 @@ class OcCategoryTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('CategoryId', 'Image', 'ParentId', 'Top', 'Column', 'SortOrder', 'Status', 'DateAdded', 'DateModified', 'CategorySiteId', 'Css', ),
-        self::TYPE_CAMELNAME     => array('categoryId', 'image', 'parentId', 'top', 'column', 'sortOrder', 'status', 'dateAdded', 'dateModified', 'categorySiteId', 'css', ),
-        self::TYPE_COLNAME       => array(OcCategoryTableMap::COL_CATEGORY_ID, OcCategoryTableMap::COL_IMAGE, OcCategoryTableMap::COL_PARENT_ID, OcCategoryTableMap::COL_TOP, OcCategoryTableMap::COL_COLUMN, OcCategoryTableMap::COL_SORT_ORDER, OcCategoryTableMap::COL_STATUS, OcCategoryTableMap::COL_DATE_ADDED, OcCategoryTableMap::COL_DATE_MODIFIED, OcCategoryTableMap::COL_CATEGORY_SITE_ID, OcCategoryTableMap::COL_CSS, ),
-        self::TYPE_FIELDNAME     => array('category_id', 'image', 'parent_id', 'top', 'column', 'sort_order', 'status', 'date_added', 'date_modified', 'category_site_id', 'css', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
+        self::TYPE_PHPNAME       => array('CategoryId', 'Image', 'ParentId', 'Top', 'Column', 'SortOrder', 'Status', 'DateAdded', 'DateModified', 'CategorySiteId', 'Css', 'Class', ),
+        self::TYPE_CAMELNAME     => array('categoryId', 'image', 'parentId', 'top', 'column', 'sortOrder', 'status', 'dateAdded', 'dateModified', 'categorySiteId', 'css', 'class', ),
+        self::TYPE_COLNAME       => array(OcCategoryTableMap::COL_CATEGORY_ID, OcCategoryTableMap::COL_IMAGE, OcCategoryTableMap::COL_PARENT_ID, OcCategoryTableMap::COL_TOP, OcCategoryTableMap::COL_COLUMN, OcCategoryTableMap::COL_SORT_ORDER, OcCategoryTableMap::COL_STATUS, OcCategoryTableMap::COL_DATE_ADDED, OcCategoryTableMap::COL_DATE_MODIFIED, OcCategoryTableMap::COL_CATEGORY_SITE_ID, OcCategoryTableMap::COL_CSS, OcCategoryTableMap::COL_CLASS, ),
+        self::TYPE_FIELDNAME     => array('category_id', 'image', 'parent_id', 'top', 'column', 'sort_order', 'status', 'date_added', 'date_modified', 'category_site_id', 'css', 'class', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
     );
 
     /**
@@ -152,11 +157,11 @@ class OcCategoryTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('CategoryId' => 0, 'Image' => 1, 'ParentId' => 2, 'Top' => 3, 'Column' => 4, 'SortOrder' => 5, 'Status' => 6, 'DateAdded' => 7, 'DateModified' => 8, 'CategorySiteId' => 9, 'Css' => 10, ),
-        self::TYPE_CAMELNAME     => array('categoryId' => 0, 'image' => 1, 'parentId' => 2, 'top' => 3, 'column' => 4, 'sortOrder' => 5, 'status' => 6, 'dateAdded' => 7, 'dateModified' => 8, 'categorySiteId' => 9, 'css' => 10, ),
-        self::TYPE_COLNAME       => array(OcCategoryTableMap::COL_CATEGORY_ID => 0, OcCategoryTableMap::COL_IMAGE => 1, OcCategoryTableMap::COL_PARENT_ID => 2, OcCategoryTableMap::COL_TOP => 3, OcCategoryTableMap::COL_COLUMN => 4, OcCategoryTableMap::COL_SORT_ORDER => 5, OcCategoryTableMap::COL_STATUS => 6, OcCategoryTableMap::COL_DATE_ADDED => 7, OcCategoryTableMap::COL_DATE_MODIFIED => 8, OcCategoryTableMap::COL_CATEGORY_SITE_ID => 9, OcCategoryTableMap::COL_CSS => 10, ),
-        self::TYPE_FIELDNAME     => array('category_id' => 0, 'image' => 1, 'parent_id' => 2, 'top' => 3, 'column' => 4, 'sort_order' => 5, 'status' => 6, 'date_added' => 7, 'date_modified' => 8, 'category_site_id' => 9, 'css' => 10, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, )
+        self::TYPE_PHPNAME       => array('CategoryId' => 0, 'Image' => 1, 'ParentId' => 2, 'Top' => 3, 'Column' => 4, 'SortOrder' => 5, 'Status' => 6, 'DateAdded' => 7, 'DateModified' => 8, 'CategorySiteId' => 9, 'Css' => 10, 'Class' => 11, ),
+        self::TYPE_CAMELNAME     => array('categoryId' => 0, 'image' => 1, 'parentId' => 2, 'top' => 3, 'column' => 4, 'sortOrder' => 5, 'status' => 6, 'dateAdded' => 7, 'dateModified' => 8, 'categorySiteId' => 9, 'css' => 10, 'class' => 11, ),
+        self::TYPE_COLNAME       => array(OcCategoryTableMap::COL_CATEGORY_ID => 0, OcCategoryTableMap::COL_IMAGE => 1, OcCategoryTableMap::COL_PARENT_ID => 2, OcCategoryTableMap::COL_TOP => 3, OcCategoryTableMap::COL_COLUMN => 4, OcCategoryTableMap::COL_SORT_ORDER => 5, OcCategoryTableMap::COL_STATUS => 6, OcCategoryTableMap::COL_DATE_ADDED => 7, OcCategoryTableMap::COL_DATE_MODIFIED => 8, OcCategoryTableMap::COL_CATEGORY_SITE_ID => 9, OcCategoryTableMap::COL_CSS => 10, OcCategoryTableMap::COL_CLASS => 11, ),
+        self::TYPE_FIELDNAME     => array('category_id' => 0, 'image' => 1, 'parent_id' => 2, 'top' => 3, 'column' => 4, 'sort_order' => 5, 'status' => 6, 'date_added' => 7, 'date_modified' => 8, 'category_site_id' => 9, 'css' => 10, 'class' => 11, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, )
     );
 
     /**
@@ -187,6 +192,7 @@ class OcCategoryTableMap extends TableMap
         $this->addColumn('date_modified', 'DateModified', 'TIMESTAMP', true, null, '0000-00-00 00:00:00');
         $this->addColumn('category_site_id', 'CategorySiteId', 'INTEGER', false, null, null);
         $this->addColumn('css', 'Css', 'VARCHAR', false, 64, '0');
+        $this->addColumn('class', 'Class', 'VARCHAR', false, 255, '');
     } // initialize()
 
     /**
@@ -348,6 +354,7 @@ class OcCategoryTableMap extends TableMap
             $criteria->addSelectColumn(OcCategoryTableMap::COL_DATE_MODIFIED);
             $criteria->addSelectColumn(OcCategoryTableMap::COL_CATEGORY_SITE_ID);
             $criteria->addSelectColumn(OcCategoryTableMap::COL_CSS);
+            $criteria->addSelectColumn(OcCategoryTableMap::COL_CLASS);
         } else {
             $criteria->addSelectColumn($alias . '.category_id');
             $criteria->addSelectColumn($alias . '.image');
@@ -360,6 +367,7 @@ class OcCategoryTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.date_modified');
             $criteria->addSelectColumn($alias . '.category_site_id');
             $criteria->addSelectColumn($alias . '.css');
+            $criteria->addSelectColumn($alias . '.class');
         }
     }
 

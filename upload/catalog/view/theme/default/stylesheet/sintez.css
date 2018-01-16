@@ -727,6 +727,14 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -51px;   
 }
 
+/* СПА */
+.category_id_168 {
+  background: url('/image/catalog/categories/all-icons-for-categories.png') -9px -199px; 
+}
+.category_id_168_unselect {
+background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -199px;   
+}
+
 #menu_94 {
   /* car */
   width: 30px;
@@ -794,6 +802,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
   height: 30px;
   margin: 0 auto;
   background: url('/image/catalog/categories/panel-menu.png') -252px -30px ;
+  background: url('/image/catalog/categories/panel-menu.png') -317px -30px ;
 }
 #menu_113 {
   /* teplo */
@@ -1347,16 +1356,19 @@ p {
 .checkbox-success input[type="checkbox"]:checked + label::after {
     color: #fff; }
 .light-bg-green{
-  background:#F0FFF0;
+  background:#FFF;
 }    
 .news-anonce {
   max-height: 300px;
-  min-height: 200px;
+  min-height: 130px;
   overflow: hidden;
 }
 .img-anonce > img {
   width:100%;
-  max-height: 400px;
+  width:75%;
+  max-height: 300px;
+
+/*  height: 100px;*/
   overflow: hidden;
 }
 
@@ -1381,7 +1393,7 @@ p {
   outline:0px solid green;
 }
 .article_item {
-  max-height: 320px;
+  max-height: 400px;
   overflow: hidden;
   margin-bottom: 20px;
 }
@@ -1747,6 +1759,10 @@ p {
   outline: 0px dashed blue;
 }
 
+.node-sidebar_13 {
+  border: none;
+}
+
 /* индивидуальные фичи на категории */
 /*
 #sb-100 { width:120px; outline: 0px dashed magenta !important; }
@@ -1923,5 +1939,232 @@ p {
     width: 150px;
     z-index: 100;
 }
-  
+ 
+/* yamap */  
+.phone-city {
+  font-weight: bold;
+  font-size: 24px;
+}
+.phone-map {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+/* sidebar category */
+.SIDEBAR_ROOT {
+  font-size: 16px;
+  font-weight: bold;
+  /*white-space: nowrap;*/
+}
+.SIDEBAR_LEVEL_2 {
+  font-size: 15px;
+  font-weight: normal;
+  /*white-space: nowrap;*/
+}
+.SIDEBAR_LEVEL_3 {
+  font-size: 14px;
+  font-weight: normal;
+  font-style: italic;   
+}
+
+
+
+/* точечно SIDEBAR GROUPS*/
+#sb-133 {
+}
+/* серединка */
+#sb-133 > span.nav-label:before{
+}
+#sb-133 > span.nav-label.one-row {
+}
+#sb-133 > span.nav-label.two-row {
+  position: relative;
+  left:16px;
+}
+/* хвостик */
+#sb-133 > span.fa.fa-chevron-right.pull-right {
+  position:relative;
+  top:-14px;
+}
+#sb-133 > span.fa.fa-chevron-down.pull-right{
+  position:relative;
+  top:-14px;
+}
+/*****************/
+/* дезинфекция на пищеблоке 134 */
+#sb-134 {
+}
+/* серединка */
+#sb-134 > span.nav-label:before{
+}
+#sb-134 > span.nav-label {
+}
+#sb-134 > span.nav-label.one-row {
+}
+#sb-134 > span.nav-label.two-row {
+position: relative;
+left:15px;
+}  
+/* хвостик */
+#sb-134 > span.fa.fa-chevron-right.pull-right {
+  position:relative;
+  top:-14px;
+}
+#sb-134 > span.fa.fa-chevron-down.pull-right{
+  position:relative;
+  top:-14px;
+}
+/* дезинфекция на пищеблоке 134 */
+
+/****** Пищевая промышленность ***********/
+/*****************/
+#sb-1563 {
+}
+/* серединка */
+#sb-1563 > span.nav-label:before{
+}
+#sb-1563 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1563 > span.nav-label.one-row {
+}
+#sb-1563 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1563 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1563 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1569 {
+}
+/* серединка */
+#sb-1569 > span.nav-label:before{
+}
+#sb-1569 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1569 > span.nav-label.one-row {
+}
+#sb-1569 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1569 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1569 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1569 {
+}
+/* серединка */
+#sb-1575 > span.nav-label:before{
+}
+#sb-1575 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1575 > span.nav-label.one-row {
+}
+#sb-1575 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1575 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1575 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1581 > span.nav-label:before{
+}
+#sb-1581 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1581 > span.nav-label.one-row {
+}
+#sb-1581 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1581 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1581 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1587 > span.nav-label:before{
+}
+#sb-1587 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1587 > span.nav-label.one-row {
+}
+#sb-1587 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1587 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1587 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1593 > span.nav-label:before{
+}
+#sb-1593 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1593 > span.nav-label.one-row {
+}
+#sb-1593 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1593 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1593 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+
+
+#sb-1536 {
+}
+/* серединка */
+#sb-1536 > span.nav-label:before{
+}
+#sb-1536 > span.nav-label {
+position: relative;
+left:-22px;
+}
+/* хвостик */
+#sb-1536 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1536 > span.fa.fa-chevron-down.pull-right{
+}
+
+
+/* точечно SIDEBAR конечные */
+/* дезинфекция биологических и медицинских отходов 136 */
+#sb-136 {
+}
+/* серединка */
+#sb-136 > span.nav-label:before{
+}
+#sb-136 > span.nav-label {
+position: relative;
+left:0px;
+}
+#sb-136 > span.nav-label.one-row {
+}
+#sb-136 > span.nav-label.two-row {
+position: relative;
+left:15px;
+}  
+/* хвостик */
+#sb-136 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-136 > span.fa.fa-chevron-down.pull-right{
+}
+
+
+
+
 

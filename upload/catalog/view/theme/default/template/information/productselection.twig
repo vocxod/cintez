@@ -12,60 +12,27 @@
   {# subcategory level 1 #}
   <div class="row" id="step-select-1">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
-        <div class="col-sm-12">
+        <div id="path_level_1" class="col-sm-12">
+          {#{ dump(category_tree) }#}
+          <div class="alert alert-error" id="error_message"/>
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
-          <h3>{{heading_title_second_form}}</h3>
-          <div class="col-sm-6">
-              {% for what_item in categories_left %}
-
-                <div class="radio radio-primary" style="margin:10px;">
-                    <input type="radio" name="where_1" id="where_{{ what_item.category_id }}" value="{{what_item.category_id}}">
-                    <label for="where_{{ what_item.category_id }}">
-                        {{ what_item.name }}
-                    </label>
-                </div>
-              {% endfor %}              
-          </div>
-          <div class="col-sm-6">
-              {% for what_item in categories_right %}
-                      <div class="radio radio-primary" style="margin:10px;">
-                          <input type="radio" name="where_1" id="where_1_{{ what_item.category_id }}" value="{{what_item.category_id}}">
-                          <label for="where_1_{{ what_item.category_id }}">
-                              {{ what_item.name }}
-                          </label>
-                      </div>                
-              {% endfor %}  
-          </div>
+          <h3>{{heading_title_second_form}}:</h3>
+          <div class="col-sm-6 odd" id="step_1_odd"></div>
+          <div class="col-sm-6 even" id="step_1_even"></div>
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
   {# subcategory level 2 #}
-                    <div class="row hidden light-bg-green" id="step-select-2">
-                      <div class="container bottom-green-wings " style="padding-bottom:30px;">
-                          <div class="col-sm-12">
-                            <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
-                            <h3>{{heading_title_second_form}}</h3>
-                            <div class="col-sm-6">
-                                  {% for where_item in sub_categories_left %}
-                  <div class="radio radio-primary" style="margin:10px;">
-                      <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-                      <label for="where_2_{{ where_item.category_id }}">
-                          {{ where_item.name }}
-                      </label>
-                  </div>
-                {% endfor %}              
-          </div>
-          <div class="col-sm-6">
-                {% for where_item in sub_categories_right %}
-<div class="radio radio-primary" style="margin:10px;">
-    <input type="radio" name="where_2" id="where_2_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_2_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>                  
-                {% endfor %}  
-          </div>
+  <div class="row hidden light-bg-green" id="step-select-2">
+      <div class="container bottom-green-wings " style="padding-bottom:30px;">
+          <div id="path_level_2" class="col-sm-12">
+            {#}
+            <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
+            <h3>{{heading_title_second_form}}</h3>
+            #}
+            <div class="col-sm-6 odd" id="step_2_odd"></div>
+            <div class="col-sm-6 even" id="step_2_even"></div>
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
@@ -74,41 +41,17 @@
   <div class="row hidden" id="step-select-3">
     <div class="container bottom-green-wings " style="padding-bottom:30px;">
         <div class="col-sm-12">
+          {#}
           <h2 class="h2"><span class="green-uline">{{ heading_title }}</span></h2>
           <h3>{{heading_title_second_form}}</h3>
-          <div class="col-sm-6">
-                {% for where_item in subsub_categories_left %}
-<div class="checkbox checkbox-success" style="margin:10px;">
-    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>
-                {% endfor %}              
-          </div>
-          <div class="col-sm-6">
-                {% for where_item in sub_categories_right %}
-<div class="checkbox checkbox-success" style="margin:10px;">
-    <input type="checkbox" name="where_3" id="where_3_{{ where_item.category_id }}" value="{{where_item.category_id}}">
-    <label for="where_3_{{ where_item.category_id }}">
-        {{ where_item.category_id }} : {{ where_item.name }}
-    </label>
-</div>                  
-                 
-                {% endfor %}  
-          </div>
-
-{#
-          <div class="text-center">
-          <button id="submit-step-2" type="submit" class="btn btn-success">{{ button_show }}</button>  
-          </div>
-#}
-
+          #}
+          <div class="col-sm-6 odd" id="step_3_odd"></div>
+          <div class="col-sm-6 even" id="step_3_even"></div>
         </div>  
     </div> {# CONTAINER #}
   </div>{# ROW #}
 
-  <div class="row hidden" id="filtered_product">
+  <div class="row" id="filtered_product">
     <div class="container ">
     <div id="productselection" class="col-sm-12">
 
@@ -125,53 +68,230 @@
     управляющий видимостью и доступностью элементов на странице
     а также их поведением (реакцией на события)
     */
+    var category_tree = '';
 
-    $('input[name=where_1]').on( "change", function(){
-        subcategory = $('input[name=where_1]:checked').val() ;
-        $('#step-select-2').removeClass('hidden');
-        $('#step-select-3').addClass('hidden');
-        $('#filtered_product').addClass('hidden');
-        console.log('1', subcategory);
-    })
+    //console.log( JSON.parse(category_tree) );
 
-    $('input[name=where_2]').on( "change", function(){
-        subcategory = $('input[name=where_2]:checked').val() ;
-        $('#step-select-3').removeClass('hidden');
-        $('#filtered_product').addClass('hidden');
-        // зачистим все чекбоксы
-        $('input[name=where_3]').removeAttr('checked');
-        // where_3
-        console.log('2', subcategory);
-    })
+    var oddParent_1 = document.getElementById('step_1_odd');
+    var evenParent_1 = document.getElementById('step_1_even');
+    var oddParent_2 = document.getElementById('step_2_odd');
+    var evenParent_2 = document.getElementById('step_2_even');
+    var oddParent_3 = document.getElementById('step_3_odd');
+    var evenParent_3 = document.getElementById('step_3_even');
 
-    $('input[name=where_3]').on( "change", function(){
-        arr_subcategory = $('input[name=where_3]:checked');
-        $('#filtered_product').removeClass('hidden');
-        arr_cats = new Array();
+    function createOne( element, index, array ){
+      var div = document.createElement('div');
+      div.className = "radio radio-primary";
+      div.innerHTML = '<input type="radio" name="where_1" id="where_1_' + element.category_id + '" value="' + element.category_id + '"><label for="where_1_'+ element.category_id +'">'+ element.name +' </label>';
+      if( index%2 == 1){
+        oddParent_1.appendChild( div );
+      } else {
+        evenParent_1.appendChild( div );
+      }
+    }
 
-        // получим данные с product/filtered и проявим их в блоке
-        // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
-        $.ajax({
-            url: 'index.php?route=product/filtered', // указываем URL и
-            // в запрашиваем ТИП возвращаемых даных
-            data: { 'jpath' : [ {'type':'html'},{'category_ids': ['131']}, { 'search_text': 'средство' } ] }, 
-            dataType : "json",                     // тип загружаемых данных
-            success: function (data, textStatus) { // вешаем свой обработчик на функцию success
-                
-                $.each(data, function(i, val) {    // обрабатываем полученные данные
-                    console.log( i, val );
-                    $('#filtered_product').removeClass('hidden');
-                });
-                
-                console.log('data:', data, 'textStatus', textStatus );
+    function createTwo( element, index, array ){
+      var div = document.createElement('div');
+      div.className = "radio radio-primary";
+      div.innerHTML = '<input type="radio" name="where_2" id="where_2_' + element.category_id + '" value="' + element.category_id + '"><label for="where_2_'+ element.category_id +'">'+ element.name +' </label>';
+      if( index%2 == 1){
+        oddParent_2.appendChild( div );
+      } else {
+        evenParent_2.appendChild( div );
+      }
+    }
+
+    function createThree( element, index, array ){
+      var div = document.createElement('div');
+      div.className = "radio radio-primary";
+      div.innerHTML = '<input type="radio" name="where_3" id="where_3_' + element.category_id + '" value="' + element.category_id + '"><label for="where_3_'+ element.category_id +'">'+ element.name +' </label>';
+      if( index%2 == 1){
+        oddParent_3.appendChild( div );
+      } else {
+        evenParent_3.appendChild( div );
+      }
+    }
+
+    $.ajax({
+        url: 'index.php?route=common/category_tree', 
+        data: {'category_id': "0" },
+        dataType : "json",                     
+        success: function (data, textStatus) { 
+            data.categories.forEach( createOne );
+        },
+        error: function (jqXHR, exception) {
+            var msg = '';
+            if (jqXHR.status === 0) {
+                msg = 'Not connect.\n Verify Network.';
+            } else if (jqXHR.status == 404) {
+                msg = 'Requested page not found. [404]';
+            } else if (jqXHR.status == 500) {
+                msg = 'Internal Server Error [500].';
+            } else if (exception === 'parsererror') {
+                msg = 'Requested JSON parse failed.';
+            } else if (exception === 'timeout') {
+                msg = 'Time out error.';
+            } else if (exception === 'abort') {
+                msg = 'Ajax request aborted.';
+            } else {
+                msg = 'Uncaught Error.\n' + jqXHR.responseText;
             }
-        });
-        console.log('3', subcategory);
-        
-        // 
-    })
+            $('#error_message').html(msg);
+            console.log( msg );
+            alert("Ошибка получения данных с сервера. Проверьте наличие соединения с Интернет. " + msg )
+        },
+        complete: function(){
+          // set EVENT and load SUBCATEGORY 2
+          $('input[name=where_1]').on( "change", function(){
+              subcategory = $('input[name=where_1]:checked').val() ;
+              $('#step-select-2 .radio.radio-primary').remove();              
+              $('#step-select-2').removeClass('hidden');
+              $('#step-select-3 .radio.radio-primary').remove();
+              $('#step-select-3').addClass('hidden');
+              $('#filtered_product').addClass('hidden');
 
-  });
+              $.ajax({
+                  url: 'index.php?route=common/category_tree', 
+                  data: {'category_id': subcategory }, //@TODO - установить все правильно
+                  dataType : "json",                     
+                  success: function (data, textStatus) { 
+                      data.categories.forEach( createTwo );
+                      //console.log( data );
+                  },
+                  error: function (jqXHR, exception) {
+                      var msg = '';
+                      if (jqXHR.status === 0) {
+                          msg = 'Not connect.\n Verify Network.';
+                      } else if (jqXHR.status == 404) {
+                          msg = 'Requested page not found. [404]';
+                      } else if (jqXHR.status == 500) {
+                          msg = 'Internal Server Error [500].';
+                      } else if (exception === 'parsererror') {
+                          msg = 'Requested JSON parse failed.';
+                      } else if (exception === 'timeout') {
+                          msg = 'Time out error.';
+                      } else if (exception === 'abort') {
+                          msg = 'Ajax request aborted.';
+                      } else {
+                          msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                      }
+                      $('#error_message').html(msg);
+                      console.log( msg );
+                  },
+                  complete: function(){
+                      // set EVENT and load SUBCATEGORY 3
+                      // навешиваем обработчик событий 2
+                      $('input[name=where_2]').on( "change", function(){
+                        subcategory = $('input[name=where_2]:checked').val() ;
+                        $('#step-select-3 .radio.radio-primary').remove();                        
+                        $('#step-select-3').removeClass('hidden');
+                        $('#filtered_product').addClass('hidden');
+                        // зачистим все чекбоксы
+                        $('input[name=where_3]').removeAttr('checked');
+                        // where_3
+                        // console.log('2', subcategory);
+                        $.ajax({
+                            url: 'index.php?route=common/category_tree', 
+                            data: {'category_id': subcategory }, //@TODO - установить все правильно
+                            dataType : "json",                     
+                            success: function (data, textStatus) { 
+                                data.categories.forEach( createThree );
+                                //console.log( data );
+                            },
+                            error: function (jqXHR, exception) {
+                                var msg = '';
+                                if (jqXHR.status === 0) {
+                                    msg = 'Not connect.\n Verify Network.';
+                                } else if (jqXHR.status == 404) {
+                                    msg = 'Requested page not found. [404]';
+                                } else if (jqXHR.status == 500) {
+                                    msg = 'Internal Server Error [500].';
+                                } else if (exception === 'parsererror') {
+                                    msg = 'Requested JSON parse failed.';
+                                } else if (exception === 'timeout') {
+                                    msg = 'Time out error.';
+                                } else if (exception === 'abort') {
+                                    msg = 'Ajax request aborted.';
+                                } else {
+                                    msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                }
+                                $('#error_message').html(msg);
+                                console.log( msg );
+                            },
+                            complete: function(){
+                              // set EVENT and SHOW FILTER PRODUCTs
+                              // финальный обработчик - показываем найденные товары
+                              $('input[name=where_3]').on( "change", function(){
+                                  // для радио
+                                  subcategory = $('input[name=where_3]:checked').val() ;
+                                  console.log( 'subcategory ' + subcategory )
+                                  /*
+                                  для чекбокса  
+                                  var sCategoryList = "";
+                                  $("input:checkbox[name='where_3']:checked").each( function(index, value){ 
+                                    sCategoryList = sCategoryList + value.value + '_'; 
+                                  });
+                                  */
+                                  // получим данные с product/filtered и проявим их в блоке
+                                  // по ОКОНЧАНИИ загрузки (завернем проявление внутрь результа)
+                                  $.ajax({
+                                      url: 'index.php?route=product/filtered', // указываем URL и
+                                      // для радио
+                                      data: {'path': subcategory },
+                                      // для чекбокса data: {'path': sCategoryList.slice(0, -1) },
+                                      dataType : "html",                     // тип загружаемых данных
+                                      success: function (data, textStatus) { // вешаем свой обработчик на функцию success
+                                          /*
+                                          $.each(data, function(i, val) {    // обрабатываем полученные данные
+                                              console.log( i, val );
+                                              $('#filtered_product').removeClass('hidden');
+                                          });
+                                          */
+                                          $('#filtered_product').html( data );
+                                          $('#filtered_product').removeClass('hidden');
+                                          // 
+                                      },
+                                      error: function (jqXHR, exception) {
+                                        var msg = '';
+                                        if (jqXHR.status === 0) {
+                                            msg = 'Not connect.\n Verify Network.';
+                                        } else if (jqXHR.status == 404) {
+                                            msg = 'Requested page not found. [404]';
+                                        } else if (jqXHR.status == 500) {
+                                            msg = 'Internal Server Error [500].';
+                                        } else if (exception === 'parsererror') {
+                                            msg = 'Requested JSON parse failed.';
+                                        } else if (exception === 'timeout') {
+                                            msg = 'Time out error.';
+                                        } else if (exception === 'abort') {
+                                            msg = 'Ajax request aborted.';
+                                        } else {
+                                            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+                                        }
+                                        $('#error_message').html(msg);
+                                        console.log( msg );
+                                    }
+                                  });
+                                  //console.log('3', subcategory);
+                              }) // финальный обработчик                              
+                              //console.log('hide 3 ajax');
+                            }
+                        });
+                      }) // обработчик 2
+                      //console.log('hide ajax 2');
+                  }
+              });
+          }) // обработчик 1
+          //
+          // console.log('hide 1 ajax');
+        }
+    });
+              
+    
+
+
+
+  }); //document ready
 
   /*
 получаем по аналогии с information/filtered партиал, который вклеим в страницу

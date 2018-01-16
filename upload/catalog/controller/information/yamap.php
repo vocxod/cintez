@@ -132,6 +132,17 @@ class ControllerInformationYamap extends Controller {
 				$data['center_map'] = '59.957891, 30.470622';
 				break;
 		}
+
+		$data['form_action'] = $this->url->link('common/zone/zone', '', $this->request->server['HTTPS']);
+		$url_data = $this->request->get;
+		unset($url_data['_route_']);
+		$route = $url_data['route'];
+		unset($url_data['route']);
+		$url = '';
+		if ($url_data) {
+			$url = '&' . urldecode(http_build_query($url_data, '', '&'));
+		}
+		$data['redirect'] = $this->url->link($route, $url, $this->request->server['HTTPS']);
 		$this->response->setOutput($this->load->view('information/yamap', $data));
 	}
 

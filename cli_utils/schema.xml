@@ -269,6 +269,7 @@
     <column name="date_modified" phpName="DateModified" type="TIMESTAMP" required="true" defaultValue="0000-00-00 00:00:00"/>
     <column name="category_site_id" phpName="CategorySiteId" type="INTEGER"/>
     <column name="css" phpName="Css" type="VARCHAR" size="64" defaultValue="0"/>
+    <column name="class" phpName="Class" type="VARCHAR" size="255" defaultValue=""/>
     <index name="parent_id">
       <index-column name="parent_id"/>
     </index>
@@ -284,6 +285,7 @@
     <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <column name="sidebar_title" phpName="SidebarTitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
     <index name="name">
       <index-column name="name"/>
     </index>
@@ -746,6 +748,8 @@
     <column name="meta_title" phpName="MetaTitle" type="VARCHAR" size="255" required="true"/>
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
+    <column name="foreground_text" phpName="ForegroundText" type="LONGVARCHAR" required="true" defaultValue=""/>
+    <column name="foreground_image" phpName="ForegroundImage" type="LONGVARCHAR" required="true" defaultValue=""/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
     </vendor>

@@ -117,6 +117,22 @@ class ControllerCommonColumnLeft extends Controller {
 					'children' => array()		
 				);					
 			}
+
+			// расширяем меню администратора
+			if ($this->user->hasPermission('access', 'catalog/information')) {		
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_information_news'),
+					'href'     => $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()		
+				);					
+			}
+			if ($this->user->hasPermission('access', 'catalog/information')) {		
+				$catalog[] = array(
+					'name'	   => $this->language->get('text_information_publications'),
+					'href'     => $this->url->link('catalog/information_publications', 'user_token=' . $this->session->data['user_token'], true),
+					'children' => array()		
+				);					
+			}			
 			
 			if ($catalog) {
 				$data['menus'][] = array(

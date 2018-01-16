@@ -90,3 +90,7 @@ $_['text_paypal_search']        = 'Search';
 $_['text_complete_status']      = 'Orders Completed';
 $_['text_processing_status']    = 'Orders Processing';
 $_['text_other_status']         = 'Other Statuses';
+
+// дополнительное меню
+$_['text_information_publications'] = 'Publications';
+$_['text_information_news'] = 'News';

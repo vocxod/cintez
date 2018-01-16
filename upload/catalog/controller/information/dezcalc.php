@@ -39,24 +39,6 @@ class ControllerInformationDezcalc extends Controller {
 			'href' => $this->url->link('information/contact')
 		);
 
-		if (isset($this->error['name'])) {
-			$data['error_name'] = $this->error['name'];
-		} else {
-			$data['error_name'] = '';
-		}
-
-		if (isset($this->error['email'])) {
-			$data['error_email'] = $this->error['email'];
-		} else {
-			$data['error_email'] = '';
-		}
-
-		if (isset($this->error['enquiry'])) {
-			$data['error_enquiry'] = $this->error['enquiry'];
-		} else {
-			$data['error_enquiry'] = '';
-		}
-
 		$data['button_submit'] = $this->language->get('button_submit');
 
 		$data['action'] = $this->url->link('information/contact', '', true);
@@ -124,12 +106,24 @@ class ControllerInformationDezcalc extends Controller {
 			$data['enquiry'] = '';
 		}
 
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
+		$this->load->model( 'catalog/category');
+		$this->load->model( 'catalog/product' );
+
+		$data['category_id'] = 0;
+		if (isset($this->request->get['product_id'])) {
+			$data['product_id'] = $this->request->get['product_id'];	
+			$aResult = $this->model_catalog_product->getProductCategories( $data['product_id'] );
+			if( $aResult ){
+				$data['category_id'] = $aResult['category_id']; 
+			}
 		} else {
-			$data['captcha'] = '';
+			$data['product_id'] = 0;
 		}
+		$data['products'] = $this->model_catalog_product->getAllProducts(  ); 
+		$data['product'] = $this->model_catalog_product->getProduct( $data['product_id'] );
+		$data['categories']  = $this->model_catalog_category->getCategories(0);
+		//var_dump($data['products']); die();
+		
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -138,13 +132,6 @@ class ControllerInformationDezcalc extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		/* получаем контент страницы ID=5  */
-		$data['information_id'] = 5;
-		$this->load->model('catalog/information');
-		$contact_content = $this->model_catalog_information->getInformation( $data['information_id'] );
-		$data['contact_content'] = html_entity_decode($contact_content['description']);
-		$published = $this->model_catalog_information->getNewsList( 4 );
-		$data['published'] = $published;
 		/* @TODO вогнать в БД и там редактировать сии штучки */
 		$aDetails = 
 		[

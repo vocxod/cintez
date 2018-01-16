@@ -16,7 +16,16 @@
     <ul class="list-sidebar bg-defoult">
 
     {% for category in category_tree %}
-        {{ catmenu.menuItem( category.category_id, category.name, category.children, "0" ) }}
+        {{ 
+          catmenu.menuItem( 
+          category.category_id, 
+          category.cat_path, 
+          category.name, 
+          category.children, 
+          "0", 
+          category.class, 
+          category.count ) 
+        }}
     {% endfor %}  
 
     </ul>
@@ -24,51 +33,93 @@
 </div>
 
 {# ФИЛЬТР FILTER #}
+<<<<<<< HEAD
 {#
+=======
+
+>>>>>>> 2018-01-16-step2
 <div id="sidebar_13" class="list-group category-list">
-  {% if lang == 'ru' %}
-      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1700px -10px; width:291px; overflow:hidden;">{{ text_filter }}
-      </h3>
-  {% endif %}
+</div>
 
-  {% if lang == 'en' %}
-      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1736px -10px; width:291px; overflow:hidden;">{{ text_filter }}
-      </h3>
-  {% endif %}
 
-  <div id="id_13" class="sidebar left ">
-    <ul class="list-sidebar bg-defoult">
-  
-      {% for item in filters %}
-      <li> 
-        <a href="index.php?route=product/category&path=10&filter=" data-toggle="collapse" data-target="#dashboard_{{ item.filter_group_id }}" class="collapsed active" > 
-          <i class="fa fa-th-large"></i> 
-          <span class="nav-label"> {{item.name}} </span> 
-          <span class="fa fa-chevron-left pull-right"></span> 
-        </a>
-        <ul class="sub-menu collapse" id="dashboard_{{ item.filter_group_id }}">
-          {% for yfon in item.filter %}
-            {% if loop.index==1 %}
-                <li class="active"><a href="#">{{ yfon.name }}</a></li>
-            {% else %}
-                <li><a href="#">{{ yfon.name }}</a></li>
-            {% endif %}
-          {% endfor %}
-        </ul>
-      </li>
-      {% endfor %}
-
+<<<<<<< HEAD
     </ul>
   </div>
 </div>
 #}
+=======
+>>>>>>> 2018-01-16-step2
 
 <script type="text/javascript">
 $(document).ready(function(){
+//****************************************************************
+{% if devel == "debug" %}
+  $.ajax({
+      url: 'index.php?route=common/category_tree/tree_type2',
+      //data: {}},
+      dataType : "json",                     
+      success: function (data, textStatus) { 
+        // console.log( data.tree );
+        $('#sidebar_13').treeview( 
+          {
+
+            color: "#428bca",
+            expandIcon: 'glyphicon glyphicon-chevron-right',
+            collapseIcon: 'glyphicon glyphicon-chevron-down',
+            nodeIcon: 'glyphicon glyphicon-bookmark',
+  
+           /*
+            expandIcon: "glyphicon glyphicon-stop",
+            collapseIcon: "glyphicon glyphicon-unchecked",
+            nodeIcon: "glyphicon glyphicon-user",
+            color: "yellow",
+*/
+            backColor: "#FEFEFE",
+            onhoverColor: "369A38",
+            borderColor: "red",
+            showBorder: false,
+            showTags: true,
+            highlightSelected: true,
+            selectedColor: "yellow",
+            selectedBackColor: "darkorange",
+
+            data: data.tree, 
+            enableLinks: true 
+          }); 
+      },
+      error: function (jqXHR, exception) {
+        var msg = '';
+        if (jqXHR.status === 0) {
+            msg = 'Not connect.\n Verify Network.';
+        } else if (jqXHR.status == 404) {
+            msg = 'Requested page not found. [404]';
+        } else if (jqXHR.status == 500) {
+            msg = 'Internal Server Error [500].';
+        } else if (exception === 'parsererror') {
+            msg = 'Requested JSON parse failed.';
+        } else if (exception === 'timeout') {
+            msg = 'Time out error.';
+        } else if (exception === 'abort') {
+            msg = 'Ajax request aborted.';
+        } else {
+            msg = 'Uncaught Error.\n' + jqXHR.responseText;
+        }
+        $('#error_message').html(msg);
+        console.log( msg );
+      },
+      complete: function(){
+        console.log("complete");
+      }
+  });
+{% endif %}
+//****************************************************************
+/*
    $('#id_13 a').click(function(e){
        e.preventDefault();
-       //$('.sidebar').toggleClass('fliph');
    });
+*/
+
+
   $('#id_10 a').click(function(e){
     sData = e.currentTarget.lastElementChild;
     if( sData.className == "fa fa-chevron-down pull-right"){
@@ -78,12 +129,41 @@ $(document).ready(function(){
         sData.className = "fa fa-chevron-down pull-right";
       }
     }
-    console.log( 'click on menu ', sData  );
-    // заменим шеврон
-
     e.preventDefault();
-    //$('.sidebar').toggleClass('fliph');
   }); 
+
+
+
+// пробуем раскрывать/закрывать по наведению мышой
+// надо "послать" клик после прихода/ухода мышы
+/*
+  $('#id_10 a')
+  .mouseenter(function(e){
+    sData = e.currentTarget.lastElementChild;
+    if( sData.className == "fa fa-chevron-down  pull-right"){
+        sData.className =  "fa fa-chevron-right pull-right";
+    } else {
+      if( sData.className == "fa fa-chevron-right pull-right" ){
+          sData.className =  "fa fa-chevron-down  pull-right";
+      }
+    }
+    //$(this).parent().click();
+    e.preventDefault();
+  })
+  .mouseleave( function(e){
+    sData = e.currentTarget.lastElementChild;
+    if( sData.className == "fa fa-chevron-down  pull-right"){
+      sData.className    = "fa fa-chevron-right pull-right";
+    } else {
+      if( sData.className == "fa fa-chevron-right pull-right" ){
+        sData.className    = "fa fa-chevron-down  pull-right";
+      }
+    }
+    //$(this).parent().click();
+    e.preventDefault();
+  }); 
+*/
+
 });
 </script>
 

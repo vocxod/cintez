@@ -1,55 +1,62 @@
-{% macro menuItem( category_id, category_name, category_children, category_css ) %}
+{% macro menuItem( category_id, cat_path, category_name, category_children, category_css, category_class ) %}
 
-  {% if category_children|length > 0 %}
-  {# это категория с дочерними #}
-<li> 
-<a  href="index.php?route=product/category&path={{category_id}}" 
-    data-toggle="collapse" 
-    data-target="#category_{{ category_id }}" 
-    class="collapsed active" > 
-{% if category_css == "0" %}
-  <span class="category_ids category_id_{{category_id}}" style=""></span> 
-{% else %}
-  <span></span>
-{% endif %}
-<span class="nav-label" id="sb-{{ category_id }}">
-  {#{category_id}}:#}{{category_name}} 
-</span>         
-<span class="fa fa-chevron-right pull-right"></span> 
-</a>
+{% if category_children|length > 0 %}
 
-<ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
-  {% for child in category_children %}
-    {% if loop.index==1 %}
+    <li> 
+        <a  href="index.php?route=product/category&path={{cat_path}}" 
+            data-toggle="collapse" 
+            data-target="#category_{{ category_id }}" 
+            class="collapsed active {{ category_class }}" 
+            id="sb-{{ category_id }}"> 
+
+            {% if category_css == "0" %}
+                <span class="category_ids category_id_{{category_id}}" style=""></span> 
+            {% else %}
+                <span>{# иконка вторичной категории #}</span>
+            {% endif %}
+            
+            {% if category_id == 133 %}
+                  <span class="nav-label one-row">{{category_name[0:30]}}</span> <br/>
+                  <span class="nav-label two-row">{{category_name[31:10]}}</span>         
+            {% elseif category_id == 134 %}
+                  <span class="nav-label one-row">{{category_name[0:28]}}-</span> <br/>
+                  <span class="nav-label two-row">{{category_name[28:10]}}</span>            
+            {% elseif category_id == 1563 %}
+                  <span class="nav-label one-row">{{category_name[0:25]}}</span>               
+            {% else %}
+                <span class="nav-label one-row">
+                  {{category_name[0:30]}} 
+                </span> 
+            {% endif %}
+
+            <span class="fa fa-chevron-right pull-right"></span> 
         
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
-        {% else  %}
-            <li class="active">
-              <a href="index.php?route=product/category&path={{child.category_id}}">{{ child.name }}
-              </a>
-            </li>
-        {% endif %}
+        </a>
 
-    {% else %}
-    
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.name, child.children, child.css ) }} 
-        {% else  %}
-            <li>
-              <a href="index.php?route=product/category&path={{child.category_id}}">{{ child.name }}
-              </a>
-            </li>
-        {% endif %}
-    
-    {% endif %}
-  {% endfor %}
-</ul>
-</li>
+        <ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
+          {% for child in category_children %}
+             
+                {% if child.children|length > 0 %}
+                   {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
+                {% else  %}
+                    
+                    <li>
+                        <a id="sb-{{child.category_id}}" class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+                            {% if child.category_id == 136 %}
+                                <span class="nav-label one-row">{{ child.name[0:32] }}</span><br/>
+                                <span class="nav-label two-row">{{ child.name[32:60] }}</span>
+                            {% elseif child.category_id == 134 %}
+                            {% else %}
+                                <span class="nav-label">{{ child.name[0:30] }}</span>
+                            {% endif %}
+                        </a>
+                    </li>
+                {% endif %}
+              
+          {% endfor %}
+        </ul>
+    </li>
 
-{% else %}
-{# это категория БЕЗ дочерних (просто пункт) #}
-{# need to do for hashed menu: category with subcategories and category item simple #}
 {% endif %}
      
 {% endmacro menuItem %}

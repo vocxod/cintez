@@ -108,3 +108,7 @@ $_['text_processing_status']         = 'Заказы в процессе';
 $_['text_other_status']              = 'Остальные заказы';
 $_['text_online']              		 = 'Кто онлайн'; 
 $_['text_statistics']                = 'Статистика'; 
+
+// дополнительное меню
+$_['text_information_publications'] = 'Публикации';
+$_['text_information_news'] = 'Новости';

@@ -9,7 +9,10 @@ class ControllerCommonToparticles extends Controller {
 		} else {
 			$iLimit = 6;
 		}
-		$aTopArticles = $this->model_catalog_information->getTopArticles( $iLimit );
+		
+		//var_dump($iLimit, $aOption); die();
+
+		$aTopArticles = $this->model_catalog_information->getTopArticles( 0, $iLimit );
 		/* get first image for each atricle */
 		$aResult = [];
 		foreach ($aTopArticles as $key => $value) {
@@ -36,7 +39,7 @@ class ControllerCommonToparticles extends Controller {
 		$data['toparticles'] = $aResult;
 		//var_dump($data); die();
 		$aView = $this->load->view('common/toparticles', $data); 
-		// var_dump( $aView ); die();
+		//$this->response->setOutput( $aView ); die();
 		return $aView;
 	}
 }

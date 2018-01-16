@@ -108,3 +108,7 @@ $_['text_complete_status'] = 'Замовлення завершені';
 $_['text_processing_status'] = 'Замовлення у процесі'; 
 $_['text_other_status'] = 'Інші замовлення';
 $_['text_maintenance']          = 'Інструменти';
+
+// дополнительное меню
+$_['text_information_publications'] = 'Publications';
+$_['text_information_news'] = 'Новинi';
