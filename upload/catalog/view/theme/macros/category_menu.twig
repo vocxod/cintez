@@ -16,13 +16,14 @@
             {% endif %}
             
             {% if category_id == 133 %}
-                <span class="nav-label">
-                  {{category_name[0:30]}} <br/>
-                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category_name[31:10]}} 
-                </span>         
+                  <span class="nav-label one-row">{{category_name[0:30]}}</span> <br/>
+                  <span class="nav-label two-row">{{category_name[31:10]}}</span>         
+            {% elseif category_id == 134 %}
+                  <span class="nav-label one-row">{{category_name[0:28]}}-</span> <br/>
+                  <span class="nav-label two-row">{{category_name[28:10]}}</span>            
             {% else %}
-                <span class="nav-label">
-                  {{category_name}} 
+                <span class="nav-label one-row">
+                  {{category_name[0:30]}} 
                 </span> 
             {% endif %}
 
@@ -36,12 +37,17 @@
                 {% if child.children|length > 0 %}
                    {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
                 {% else  %}
-                    <li style="width:290px; overflow:hidden; height:45px; outline:1px dashed red;">
-                      
-                      <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
-                        <span class="{{child.class}}">{{ child.name }}</span>
-                      </a>
-
+                    
+                    <li>
+                        <a id="sb-{{child.category_id}}" class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+                            {% if child.category_id == 136 %}
+                                <span class="nav-label one-row">{{ child.name[0:32] }}</span><br/>
+                                <span class="nav-label two-row">{{ child.name[32:60] }}</span>
+                            {% elseif child.category_id == 134 %}
+                            {% else %}
+                                <span class="nav-label">{{ child.name[0:30] }}</span>
+                            {% endif %}
+                        </a>
                     </li>
                 {% endif %}
               
