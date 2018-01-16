@@ -2442,6 +2442,40 @@ left:15px;
   font-size: 13px;
 }
 
+#category_1587 > li a span, #category_1593 > li a span,
+#category_1581 > li a span, #category_1563 > li a span,
+#category_1569 > li a span, #category_1575 > li a span,
+#category_55 > li a span, #category_60 > li a span,
+#category_65 > li a span, #category_73 > li a span,
+#category_81 > li a span, #category_88 > li a span,
+#category_1452 > li a span, #category_95 > li a span,
+#category_100 > li a span, #category_108 > li a span,
+#category_1468 > li a span, #category_1471 > li a span,
+#category_1474 > li a span, #category_1478 > li a span,
+#category_1482 > li a span, #category_118 > li a span,
+#category_121 > li a span, #category_132 > li a span,
+#category_133 > li a span, #category_134 > li a span,
+#category_135 > li a span, #category_136 > li a span,
+#category_137 > li a span, #category_140 > li a span,
+#category_1536 > li a span, #category_151 > li a span,
+#category_152 > li a span, #category_153 > li a span,
+#category_154 > li a span, #category_157 > li a span,
+#category_158 > li a span, #category_1442 > li a span,
+#category_1445 > li a span, #category_172 > li a span,
+#category_1546 > li a span, #category_1543 > li a span,
+#category_1551 > li a span, #category_1552 > li a span,
+#category_1553 > li a span
+
+/* 
+#category_54  > li a span, #category_55 > li a span, #category_60 > li a span, 
+#category_132 > li a span, #category_133 > li a span, #category_137 > li a span, #category_140 > li a span 
+*/
+{
+  position: relative;
+  left: 32px;
+}
+
+
 /* пищев пром */
 /* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/

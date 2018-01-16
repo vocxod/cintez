@@ -3,9 +3,11 @@
 {% if category_children|length > 0 %}
 
     <li> 
-        <a  href="index.php?route=product/category&path={{cat_path}}" 
+        <a  {#href="index.php?route=product/category&path={{cat_path}}" #}
+            href="#category_{{ category_id }}" 
             data-toggle="collapse" 
             data-target="#category_{{ category_id }}" 
+            data-parent="#id_1010"
             class="collapsed active {{ category_class }}" 
             id="sb-{{ category_id }}"> 
 
