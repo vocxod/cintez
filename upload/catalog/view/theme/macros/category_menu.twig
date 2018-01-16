@@ -10,7 +10,11 @@
             id="sb-{{ category_id }}"> 
 
             {% if category_css == "0" %}
-                <span class="category_ids category_id_{{category_id}}" style=""></span> 
+                {% if category_id == 113 %}
+                <span class="category_ids category_id_{{category_id}}" style="position:relative;top:14px;"></span> 
+                {% else %}
+                <span class="category_ids category_id_{{category_id}}"></span> 
+                {% endif %}
             {% else %}
                 <span>{# иконка вторичной категории #}</span>
             {% endif %}
@@ -33,7 +37,12 @@
                   <span class="nav-label one-row">{{category_name[0:29]}}...</span>   
             {% elseif category_id == 113 %}
                   <span class="nav-label one-row">{{category_name[0:28]}}</span> <br/>
-                  <span class="nav-label two-row">{{category_name[28:20]}}</span>                       
+                  <span class="nav-label two-row">{{category_name[28:20]}}</span>        
+
+            {% elseif category_id == 1478 %}
+                  <span class="nav-label one-row">{{category_name[0:28]}}</span> <br/>
+                  <span class="nav-label two-row">{{category_name[28:20]}}</span> 
+
             {% else %}
                 <span class="nav-label one-row">
                   {{category_name[0:30]}} 

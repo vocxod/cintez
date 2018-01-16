@@ -2259,9 +2259,100 @@ top:-14px;
 position: relative;
 top:-14px;
 }
+/*****************/
+#sb-1478 {
+}
+/* серединка */
+#sb-1478 > span.nav-label:before{
+}
+#sb-1478 > span.nav-label {
+}
+#sb-1478 > span.nav-label.one-row {
+position: relative;
+left:-22px;
+}
+#sb-1478 > span.nav-label.two-row {
+position: relative;
+left:15px;
+}  
+/* хвостик */
+#sb-1478 > span.fa.fa-chevron-right.pull-right {
+position: relative;
+top:-14px;
+}
+#sb-1478 > span.fa.fa-chevron-down.pull-right{
+position: relative;
+top:-14px;
+}
 /***** ************/
-
-
+#sb-1474 {
+}
+#sb-1474 > span.nav-label:before{
+}
+#sb-1474 > span.nav-label {
+}
+#sb-1474 > span.nav-label.one-row {
+position: relative;
+left:-22px;
+}
+#sb-1474 > span.nav-label.two-row {
+}  
+#sb-1474 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1474 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1471 {
+}
+#sb-1471 > span.nav-label:before{
+}
+#sb-1471 > span.nav-label {
+}
+#sb-1471 > span.nav-label.one-row {
+position: relative;
+left:-22px;
+}
+#sb-1471 > span.nav-label.two-row {
+}  
+#sb-1471 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1471 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1468 {
+}
+#sb-1468 > span.nav-label:before{
+}
+#sb-1468 > span.nav-label {
+}
+#sb-1468 > span.nav-label.one-row {
+position: relative;
+left:-22px;
+}
+#sb-1468 > span.nav-label.two-row {
+}  
+#sb-1468 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1468 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1482 {
+}
+#sb-1482 > span.nav-label:before{
+}
+#sb-1468 > span.nav-label {
+}
+#sb-1482 > span.nav-label.one-row {
+position: relative;
+left:-22px;
+}
+#sb-1482 > span.nav-label.two-row {
+}  
+#sb-1482 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1482 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
 
 
 #sb-1553 {
