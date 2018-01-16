@@ -1969,7 +1969,7 @@ p {
 
 
 
-/* точечно SIDEBAR группы*/
+/* точечно SIDEBAR GROUPS*/
 #sb-133 {
 }
 /* серединка */
@@ -2014,7 +2014,116 @@ left:15px;
   position:relative;
   top:-14px;
 }
+/* дезинфекция на пищеблоке 134 */
+
+/****** Пищевая промышленность ***********/
 /*****************/
+#sb-1563 {
+}
+/* серединка */
+#sb-1563 > span.nav-label:before{
+}
+#sb-1563 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1563 > span.nav-label.one-row {
+}
+#sb-1563 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1563 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1563 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1569 {
+}
+/* серединка */
+#sb-1569 > span.nav-label:before{
+}
+#sb-1569 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1569 > span.nav-label.one-row {
+}
+#sb-1569 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1569 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1569 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1569 {
+}
+/* серединка */
+#sb-1575 > span.nav-label:before{
+}
+#sb-1575 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1575 > span.nav-label.one-row {
+}
+#sb-1575 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1575 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1575 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1581 > span.nav-label:before{
+}
+#sb-1581 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1581 > span.nav-label.one-row {
+}
+#sb-1581 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1581 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1581 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1587 > span.nav-label:before{
+}
+#sb-1587 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1587 > span.nav-label.one-row {
+}
+#sb-1587 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1587 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1587 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+#sb-1593 > span.nav-label:before{
+}
+#sb-1593 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1593 > span.nav-label.one-row {
+}
+#sb-1593 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1593 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1593 > span.fa.fa-chevron-down.pull-right{
+}
+/*****************/
+
 
 #sb-1536 {
 }
