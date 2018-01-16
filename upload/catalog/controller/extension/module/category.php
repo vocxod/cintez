@@ -78,8 +78,8 @@ class ControllerExtensionModuleCategory extends Controller {
 		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
 		$data['category_tree'] = $aCategoryTree['tree'];
 
-		$aCategoryTree2 = $this->load->controller('common/category_tree/tree_type2', ['category_id' => 0]);
-		$data['category_tree2'] = $aCategoryTree2['tree'];
+		//$aCategoryTree2 = $this->load->controller('common/category_tree/tree_type2', ['category_id' => 0]);
+		//$data['category_tree2'] = $aCategoryTree2['tree'];
 		// var_dump($data['category_tree2']); die();
 		return $this->load->view('extension/module/category', $data);
 	}
