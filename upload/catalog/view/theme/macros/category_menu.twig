@@ -1,59 +1,54 @@
 {% macro menuItem( category_id, cat_path, category_name, category_children, category_css, category_class ) %}
 
-  {% if category_children|length > 0 %}
-  {# это категория с дочерними #}
-<li> 
-<a  href="index.php?route=product/category&path={{cat_path}}" 
-    data-toggle="collapse" 
-    data-target="#category_{{ category_id }}" 
-    class="collapsed active" > 
-{% if category_css == "0" %}
-  <span class="category_ids category_id_{{category_id}}" style=""></span> 
-{% else %}
-  <span></span>
-{% endif %}
-<span class="nav-label {{ category_class }}" id="sb-{{ category_id }}">
-  {#{category_id}}:#}{{category_name}} 
-</span>         
-<span class="fa fa-chevron-right pull-right"></span> 
-</a>
+{% if category_children|length > 0 %}
 
-<ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
-  {% for child in category_children %}
-    {% if loop.index==1 %}
+    <li> 
+        <a  href="index.php?route=product/category&path={{cat_path}}" 
+            data-toggle="collapse" 
+            data-target="#category_{{ category_id }}" 
+            class="collapsed active {{ category_class }}" 
+            id="sb-{{ category_id }}"> 
+
+            {% if category_css == "0" %}
+                <span class="category_ids category_id_{{category_id}}" style=""></span> 
+            {% else %}
+                <span>{# иконка вторичной категории #}</span>
+            {% endif %}
+            
+            {% if category_id == 133 %}
+                <span class="nav-label">
+                  {{category_name[0:30]}} <br/>
+                  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{category_name[31:10]}} 
+                </span>         
+            {% else %}
+                <span class="nav-label">
+                  {{category_name}} 
+                </span> 
+            {% endif %}
+
+            <span class="fa fa-chevron-right pull-right"></span> 
         
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
-        {% else  %}
-            <li class="active" style="width:290px; overflow:hidden; height:45px; outline:1px dashed blue;">
-              <a class="start_products loopindex" href="index.php?route=product/category&path={{child.cat_path}}">
-                <span class="{{child.class}}">{{ child.name }}</span>
-              </a>
-            </li>
-        {% endif %}
+        </a>
 
-    {% else %}
-    
-        {% if child.children|length > 0 %}
-           {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
-        {% else  %}
-            <li style="width:290px; overflow:hidden; height:45px; outline:1px dashed red;">
+        <ul class="sub-menu_{{ category_css }} collapse" id="category_{{ category_id }}">
+          {% for child in category_children %}
+             
+                {% if child.children|length > 0 %}
+                   {{ _self.menuItem( child.category_id, child.cat_path, child.name, child.children, child.css, child.class ) }} 
+                {% else  %}
+                    <li style="width:290px; overflow:hidden; height:45px; outline:1px dashed red;">
+                      
+                      <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
+                        <span class="{{child.class}}">{{ child.name }}</span>
+                      </a>
+
+                    </li>
+                {% endif %}
               
-              <a class="start_products" href="index.php?route=product/category&path={{child.cat_path}}">
-                <span class="{{child.class}}">{{ child.name }}</span>
-              </a>
+          {% endfor %}
+        </ul>
+    </li>
 
-            </li>
-        {% endif %}
-    
-    {% endif %}
-  {% endfor %}
-</ul>
-</li>
-
-{% else %}
-{# это категория БЕЗ дочерних (просто пункт) #}
-{# need to do for hashed menu: category with subcategories and category item simple #}
 {% endif %}
      
 {% endmacro menuItem %}

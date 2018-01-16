@@ -1762,6 +1762,7 @@ p {
 .node-sidebar_13 {
   border: none;
 }
+
 /* индивидуальные фичи на категории */
 /*
 #sb-100 { width:120px; outline: 0px dashed magenta !important; }
@@ -1965,3 +1966,30 @@ p {
   font-weight: normal;
   font-style: italic;   
 }
+
+
+
+/* точечно SIDEBAR */
+#sb-133 {
+  /*color:green;*/
+  /*border-left: 3px red !important;*/
+}
+/* серединка */
+#sb-133 > span.nav-label:before{
+  content: "";
+}
+#sb-133 > span.nav-label {
+  color: red !important;
+}
+/* хвостик */
+#sb-133 > span.fa.fa-chevron-right.pull-right {
+  color: green;
+  position:relative;
+  top:-12px;
+}
+#sb-133 > span.fa.fa-chevron-down.pull-right{
+  color: green;
+  position:relative;
+  top:-12px;
+}
+
