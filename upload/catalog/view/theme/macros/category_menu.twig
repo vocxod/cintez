@@ -27,6 +27,8 @@
                 <span class="nav-label one-row">{{category_name[0:27]}}</span> <br/>
                 <span class="nav-label two-row">{{category_name[27:22]}}</span><br/>
                 <span class="nav-label three-row">{{category_name[49:22]}}</span>            
+            {% elseif category_id == 117 %}
+                  <span class="nav-label one-row">{{category_name[0:26]}}...</span>            
             {% else %}
                 <span class="nav-label one-row">
                   {{category_name[0:30]}} 
