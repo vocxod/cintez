@@ -2409,6 +2409,7 @@ left:15px;
 #sb-1551.active, #sb-1552.active,
 #sb-1553.active {
   border-left: 8px solid rgba(10,86,11,.89)!important;
+  font-size: 13px;
 }
 
 #sb-1587.active.collapsed, #sb-1593.active.collapsed,
@@ -2437,7 +2438,9 @@ left:15px;
   border-left: 5px solid rgba(10,86,11,.89)!important;
 }
 
-
+.start_products {
+  font-size: 13px;
+}
 
 /* пищев пром */
 /* rgb(54,154,56) */
