@@ -2213,6 +2213,29 @@ top:-28px;
 }
 /***** ************/
 
+/****** SCHOOLs ***********/
+/*****************/
+#sb-1445 {
+}
+/* серединка */
+#sb-1445 > span.nav-label:before{
+}
+#sb-1445 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1445 > span.nav-label.one-row {
+}
+#sb-1445 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1445 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1445 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+
+
 
 
 #sb-1553 {
