@@ -2162,6 +2162,79 @@ left:-22px;
 }
 /***** ************/
 
+/****** SPA ***********/
+/*****************/
+#sb-1546 {
+}
+/* серединка */
+#sb-1546 > span.nav-label:before{
+}
+#sb-1546 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1546 > span.nav-label.one-row {
+}
+#sb-1546 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1546 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1546 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+#sb-1543 {
+}
+/* серединка */
+#sb-1543 > span.nav-label:before{
+}
+#sb-1543 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1543 > span.nav-label.one-row {
+}
+#sb-1543 > span.nav-label.two-row {
+position: relative;
+left:16px;
+}  
+#sb-1543 > span.nav-label.three-row {
+position: relative;
+left:16px;
+}  
+/* хвостик */
+#sb-1543 > span.fa.fa-chevron-right.pull-right {
+position: relative;
+top:-28px;
+}
+#sb-1543 > span.fa.fa-chevron-down.pull-right{
+position: relative;
+top:-28px;
+}
+/***** ************/
+
+
+
+#sb-1553 {
+}
+/* серединка */
+#sb-1553 > span.nav-label:before{
+}
+#sb-1553 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-1553 > span.nav-label.one-row {
+}
+#sb-1553 > span.nav-label.two-row {
+}  
+/* хвостик */
+#sb-1553 > span.fa.fa-chevron-right.pull-right {
+}
+#sb-1553 > span.fa.fa-chevron-down.pull-right{
+}
+/***** ************/
+
 /* точечно SIDEBAR конечные */
 /* дезинфекция биологических и медицинских отходов 136 */
 #sb-136 {
