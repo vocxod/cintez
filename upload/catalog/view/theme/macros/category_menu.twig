@@ -28,7 +28,12 @@
                 <span class="nav-label two-row">{{category_name[27:22]}}</span><br/>
                 <span class="nav-label three-row">{{category_name[49:22]}}</span>            
             {% elseif category_id == 117 %}
-                  <span class="nav-label one-row">{{category_name[0:26]}}...</span>            
+                  <span class="nav-label one-row">{{category_name[0:26]}}...</span>   
+            {% elseif category_id == 100 %}
+                  <span class="nav-label one-row">{{category_name[0:29]}}...</span>   
+            {% elseif category_id == 113 %}
+                  <span class="nav-label one-row">{{category_name[0:28]}}</span> <br/>
+                  <span class="nav-label two-row">{{category_name[28:20]}}</span>                       
             {% else %}
                 <span class="nav-label one-row">
                   {{category_name[0:30]}} 

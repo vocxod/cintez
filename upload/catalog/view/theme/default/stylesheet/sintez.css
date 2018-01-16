@@ -2235,6 +2235,32 @@ left:-22px;
 }
 /***** ************/
 
+/****** ТЕПЛО ***********/
+/*****************/
+#sb-113 {
+}
+/* серединка */
+#sb-113 > span.nav-label:before{
+}
+#sb-113 > span.nav-label {
+}
+#sb-113 > span.nav-label.one-row {
+}
+#sb-113 > span.nav-label.two-row {
+position: relative;
+left:22px;
+}  
+/* хвостик */
+#sb-113 > span.fa.fa-chevron-right.pull-right {
+position: relative;
+top:-14px;
+}
+#sb-113 > span.fa.fa-chevron-down.pull-right{
+position: relative;
+top:-14px;
+}
+/***** ************/
+
 
 
 
