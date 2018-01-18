@@ -2409,7 +2409,7 @@ left:15px;
 #sb-1551.active, #sb-1552.active,
 #sb-1553.active {
   border-left: 8px solid rgba(10,86,11,.89)!important;
-  font-size: 13px;
+  font-size: 16px;
 }
 
 #sb-1587.active.collapsed, #sb-1593.active.collapsed,
@@ -2439,7 +2439,7 @@ left:15px;
 }
 
 .start_products {
-  font-size: 13px;
+  font-size: 16px;
 }
 
 #category_1587 > li a span, #category_1593 > li a span,
@@ -2466,13 +2466,10 @@ left:15px;
 #category_1551 > li a span, #category_1552 > li a span,
 #category_1553 > li a span
 
-/* 
-#category_54  > li a span, #category_55 > li a span, #category_60 > li a span, 
-#category_132 > li a span, #category_133 > li a span, #category_137 > li a span, #category_140 > li a span 
-*/
 {
   position: relative;
-  left: 32px;
+  left: 16px;
+  font-size: 16px;
 }
 
 
