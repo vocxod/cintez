@@ -295,6 +295,15 @@ a.run_link:hover {
   margin-left: 20px;
   outline: 0px solid green;
 }
+.shownews:focus, .shownews:hover,
+.shownews:active:hover,
+.shownews:active:focus
+{
+  background: #151515;
+  color: #fefefe;
+  border-radius: 0;
+  border-color: #111; 
+} 
 
 /* SLIDER 3*/
 /* большой слайдер на главной */
