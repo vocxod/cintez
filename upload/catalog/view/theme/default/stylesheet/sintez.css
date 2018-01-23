@@ -295,6 +295,9 @@ a.run_link:hover {
   margin-left: 20px;
   outline: 0px solid green;
 }
+.shownews {
+  border-radius: 0;
+}
 .shownews:focus, .shownews:hover,
 .shownews:active:hover,
 .shownews:active:focus
