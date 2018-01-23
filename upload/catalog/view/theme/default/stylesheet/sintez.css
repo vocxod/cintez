@@ -1390,7 +1390,24 @@ p {
   overflow: hidden;
 }
 .img-anonce > img {
-  width:360px;
+  width:100%;
+  vertical-align: top !important;
+}
+
+.anonce-description {
+  height: 114px;
+  outline: 0px dashed blue;
+  overflow: hidden;
+  margin-bottom: 27px;
+}
+.anonce-buttons {
+  outline: 0px dashed green;
+}
+.anonce-buttons > a {
+  color: #111;
+}
+.anonce-buttons > a:hover {
+  color: #333;
 }
 
 /* красный уголок */

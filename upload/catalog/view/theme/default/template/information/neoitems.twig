@@ -28,7 +28,7 @@
           <div class="col-sm-6">
             {% set yndex = y * 2 + x %}
             {% set item = top_news[yndex] %}
-              <div class="row news-anonce" style="height:240px; overflow: hidden;">
+              <div class="row news-anonce" style="height:182px; overflow: hidden; background:rgb(240,244,245); margin-bottom:5px; ">
                 <div class="col-sm-6 img-anonce ">
                   {% if item.foreground_image|length > 1 %}
                     <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
@@ -37,34 +37,33 @@
                   {% endif %}
                 </div>  
                 <div class="col-sm-6  ">
-                  <h4 style="font-weight:bold;">{{ item.title }}</h4>
-                  <p>
+                  {#<h4 style="font-weight:bold;">{{ item.title }}</h4>#}
+                  <p class="anonce-description">
                     {{ item.foreground_text }}
                   </p>
+                  <div class="col-sm-12" style="margin-left: 0;padding-left: 0;">
+                        <div class="col-sm-6 anonce-buttons" style="padding-left: 0;line-height: 2em;">
+                          <a href="#">
+                            <i class="fa fa-vk"></i>
+                          </a>
+                          <a href="#">
+                            <i class="fa fa-twitter"></i>
+                          </a>
+                          <a href="#">
+                            <i class="fa fa-facebook"></i>
+                          </a>    
+                        </div>
+                        <div class="col-sm-6" style="padding:0;">
+                          <a class="btn btn-success shownews" href="index.php?route=information/onenews&information_id={{item.information_id}}"
+                          style="color:#FEFEFE;margin-left:34px;">
+                          ПОДРОБНЕЕ&nbsp;
+                          <i class="fa fa-angle-right" aria-hidden="true"></i>
+                          </a>
+                        </div>
+                  </div>
                 </div>
               </div>
-              <div class="row" >
-                <div class="col-sm-12">
-                    <div class="button-group" style="margin-top:5px; border:none; background:none;">
-                        <a href="index.php?route=information/onenews&information_id={{item.information_id}}">
-                        <button class="" style="width:45%;color:#111;">
-                          <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
-                        </button>
-                        </a>
 
-                        <button style="width:15%; margin-left:15px;" type="button" title="">
-                          <i class="fa fa-vk"></i>
-                        </button>
-                        <button style="width:15%;" type="button"  title="">
-                          <i class="fa fa-twitter"></i>
-                        </button>
-                        <button style="width:15%;" type="button"  title="">
-                          <i class="fa fa-facebook"></i>
-                        </button>
-
-                    </div>
-                </div>
-              </div>
           </div>
       {% endfor %}
       </div>
