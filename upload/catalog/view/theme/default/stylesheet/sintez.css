@@ -310,6 +310,12 @@ a.run_link:hover {
   border-color: #111; 
 } 
 
+.latestnews {
+  color: #020202;  
+}
+.latestnews:hover {
+  color: #333333;  
+}
 /* SLIDER 3*/
 /* большой слайдер на главной */
 #myCarousel {
