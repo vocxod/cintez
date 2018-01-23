@@ -58,7 +58,7 @@ class ControllerCommonMenuTop extends Controller {
 				
 				['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 				
-				['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'index.php?route=information/newslist', 'target'=>'_blank', 'active' => true, 'route' => 'information/newslist'], 			
+				['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'index.php?route=information/neoitems', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
 				
 				['class'=>'menu-bold ', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
 				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
@@ -89,7 +89,7 @@ class ControllerCommonMenuTop extends Controller {
 				
 				['class'=>'menu-bold ', 'title'=>'ARTICLES', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 				
-				['class'=>'menu-bold ', 'title'=>'NEWS', 'href' => 'index.php?route=information/newslist', 'target'=>'_blank', 'active' => true, 'route' => 'information/newslist'], 			
+				['class'=>'menu-bold ', 'title'=>'NEWS', 'href' => 'index.php?route=information/neoitems', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
 
 				['class'=>'menu-bold ', 'title'=>'FEEDBACK', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
 				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 

@@ -21,7 +21,7 @@ class ControllerInformationNeoitems extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$iLimit = (int)$this->request->get['limit'];
 		} else {
-			$iLimit = 5;
+			$iLimit = 10;
 		}
 
 		$iOffset = ( $page - 1 ) * $iLimit;
