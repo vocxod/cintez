@@ -8,11 +8,11 @@
       </div>
       #}
       <div class="news_anonce">
-          {#<span style="color:#FEFAEA;">{{ article.information_id }}</span>#}
+          <span style="color:#FEFAEA;">{{ article.information_id }}</span>
           {% if article.foreground_image != "" %}
             <img src="{{ article.foreground_image }}" alt=""/>
           {% else %}
-            <img src="/image/catalog/logo-128x128.png" alt=""/>
+            <img src="/image/catalog/logo-325x325.png" alt=""/>
           {% endif %}
           <p>{{ article.foreground_text }}</p>
       </div>

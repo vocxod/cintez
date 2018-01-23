@@ -269,18 +269,19 @@ a.run_link:hover {
 
 /* newslatest */
 .news_anonce {
-  height: 140px;
+  background: rgb(240,244,245);
+  height: 454px;
   overflow: hidden;
 }
 .news_anonce img {
   outline: 0px solid blue;
-  float: left;
+  width: 100%;
   padding: 0px;
   margin: 0px;
   vertical-align: top; 
 }
 .news_anonce p{
-  margin-left: 140px;
+  margin-left: 20px;
   outline: 0px solid green;
 }
 
