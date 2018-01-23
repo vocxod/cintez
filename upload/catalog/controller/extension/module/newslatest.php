@@ -41,7 +41,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 			if(is_array($value)){
 				foreach ($value as $key2 => $value2) {
 					//echo $key2 . " : " . $value2 . "<br>";
-					$aData[$key2] = html_entity_decode( $value2 );
+					$aData[$key2] = html_entity_decode( strip_tags($value2) );
 				}
 				$aResult[] = $aData;
 			}

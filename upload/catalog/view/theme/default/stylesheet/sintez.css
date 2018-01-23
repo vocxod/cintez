@@ -269,8 +269,17 @@ a.run_link:hover {
 
 /* newslatest */
 .news_anonce {
-  max-height: 600px;
+  height: 140px;
   overflow: hidden;
+}
+.news_anonce img {
+  outline: 0px solid blue;
+  float: left;
+  padding-left: 40px; 
+}
+.news_anonce p{
+  padding-right: 20px;
+  outline: 1px solid green;
 }
 
 /* SLIDER 3*/

@@ -8,10 +8,13 @@
       </div>
       #}
       <div class="news_anonce">
-        <span style="color:#FEFAEA;">{{ article.information_id }}</span>
-        {{ article.description }}
+          <span style="color:#FEFAEA;">{{ article.information_id }}</span>
+          <img src="{{ article.foreground_image }}" alt=""/>
+          <p>
+          {{ article.foreground_text }}
+          </p>
       </div>
-      </span>
+
       <div class="button-group" style="margin-top:5px; border:none; background:none;">
 {#  
           <a href="index.php" class="btn btn-default">ПОДРОБНЕЕ</a>        
