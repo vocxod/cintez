@@ -275,11 +275,13 @@ a.run_link:hover {
 .news_anonce img {
   outline: 0px solid blue;
   float: left;
-  padding-left: 40px; 
+  padding: 0px;
+  margin: 0px;
+  vertical-align: top; 
 }
 .news_anonce p{
-  padding-right: 20px;
-  outline: 1px solid green;
+  margin-left: 140px;
+  outline: 0px solid green;
 }
 
 /* SLIDER 3*/

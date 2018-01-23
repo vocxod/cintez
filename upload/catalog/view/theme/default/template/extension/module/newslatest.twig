@@ -8,11 +8,13 @@
       </div>
       #}
       <div class="news_anonce">
-          <span style="color:#FEFAEA;">{{ article.information_id }}</span>
-          <img src="{{ article.foreground_image }}" alt=""/>
-          <p>
-          {{ article.foreground_text }}
-          </p>
+          {#<span style="color:#FEFAEA;">{{ article.information_id }}</span>#}
+          {% if article.foreground_image != "" %}
+            <img src="{{ article.foreground_image }}" alt=""/>
+          {% else %}
+            <img src="/image/catalog/logo-128x128.png" alt=""/>
+          {% endif %}
+          <p>{{ article.foreground_text }}</p>
       </div>
 
       <div class="button-group" style="margin-top:5px; border:none; background:none;">
