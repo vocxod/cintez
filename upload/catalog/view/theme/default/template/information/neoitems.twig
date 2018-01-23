@@ -25,10 +25,10 @@
       <div class="col-sm-12 ">
       {% for x in 0..1 %}
       {#% for item in top_news %#}         
-          <div class="col-sm-6 ">
+          <div class="col-sm-6">
             {% set yndex = y * 2 + x %}
             {% set item = top_news[yndex] %}
-              <div class="row news-anonce" >
+              <div class="row news-anonce" style="height:240px; overflow: hidden;">
                 <div class="col-sm-6 img-anonce ">
                   {% if item.foreground_image|length > 1 %}
                     <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
