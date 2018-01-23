@@ -32,7 +32,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 		}
 
 		$this->load->model('catalog/information');
-		$top_news = $this->model_catalog_information->getTopNews();
+		$top_news = $this->model_catalog_information->getHomeNews();
 		//var_dump($top_news); die();
 		$aResult = [];
 		foreach ($top_news as $key => $value) {
@@ -46,7 +46,7 @@ class ControllerExtensionModuleNewslatest extends Controller {
 				$aResult[] = $aData;
 			}
 		}
-		
+		//die();
 		$data['top_news'] = $aResult;
 
 		if ($results) {

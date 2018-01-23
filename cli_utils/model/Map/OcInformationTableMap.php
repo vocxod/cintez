@@ -59,7 +59,7 @@ class OcInformationTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 7;
+    const NUM_COLUMNS = 8;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcInformationTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 7;
+    const NUM_HYDRATE_COLUMNS = 8;
 
     /**
      * the column name for the information_id field
@@ -102,6 +102,11 @@ class OcInformationTableMap extends TableMap
     const COL_ONHOME = 'oc_information.onhome';
 
     /**
+     * the column name for the date_added field
+     */
+    const COL_DATE_ADDED = 'oc_information.date_added';
+
+    /**
      * the column name for the artice_id field
      */
     const COL_ARTICE_ID = 'oc_information.artice_id';
@@ -118,11 +123,11 @@ class OcInformationTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('InformationId', 'Bottom', 'SortOrder', 'Status', 'Isnews', 'Onhome', 'ArticeId', ),
-        self::TYPE_CAMELNAME     => array('informationId', 'bottom', 'sortOrder', 'status', 'isnews', 'onhome', 'articeId', ),
-        self::TYPE_COLNAME       => array(OcInformationTableMap::COL_INFORMATION_ID, OcInformationTableMap::COL_BOTTOM, OcInformationTableMap::COL_SORT_ORDER, OcInformationTableMap::COL_STATUS, OcInformationTableMap::COL_ISNEWS, OcInformationTableMap::COL_ONHOME, OcInformationTableMap::COL_ARTICE_ID, ),
-        self::TYPE_FIELDNAME     => array('information_id', 'bottom', 'sort_order', 'status', 'isnews', 'onhome', 'artice_id', ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('InformationId', 'Bottom', 'SortOrder', 'Status', 'Isnews', 'Onhome', 'DateAdded', 'ArticeId', ),
+        self::TYPE_CAMELNAME     => array('informationId', 'bottom', 'sortOrder', 'status', 'isnews', 'onhome', 'dateAdded', 'articeId', ),
+        self::TYPE_COLNAME       => array(OcInformationTableMap::COL_INFORMATION_ID, OcInformationTableMap::COL_BOTTOM, OcInformationTableMap::COL_SORT_ORDER, OcInformationTableMap::COL_STATUS, OcInformationTableMap::COL_ISNEWS, OcInformationTableMap::COL_ONHOME, OcInformationTableMap::COL_DATE_ADDED, OcInformationTableMap::COL_ARTICE_ID, ),
+        self::TYPE_FIELDNAME     => array('information_id', 'bottom', 'sort_order', 'status', 'isnews', 'onhome', 'date_added', 'artice_id', ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
 
     /**
@@ -132,11 +137,11 @@ class OcInformationTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('InformationId' => 0, 'Bottom' => 1, 'SortOrder' => 2, 'Status' => 3, 'Isnews' => 4, 'Onhome' => 5, 'ArticeId' => 6, ),
-        self::TYPE_CAMELNAME     => array('informationId' => 0, 'bottom' => 1, 'sortOrder' => 2, 'status' => 3, 'isnews' => 4, 'onhome' => 5, 'articeId' => 6, ),
-        self::TYPE_COLNAME       => array(OcInformationTableMap::COL_INFORMATION_ID => 0, OcInformationTableMap::COL_BOTTOM => 1, OcInformationTableMap::COL_SORT_ORDER => 2, OcInformationTableMap::COL_STATUS => 3, OcInformationTableMap::COL_ISNEWS => 4, OcInformationTableMap::COL_ONHOME => 5, OcInformationTableMap::COL_ARTICE_ID => 6, ),
-        self::TYPE_FIELDNAME     => array('information_id' => 0, 'bottom' => 1, 'sort_order' => 2, 'status' => 3, 'isnews' => 4, 'onhome' => 5, 'artice_id' => 6, ),
-        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, )
+        self::TYPE_PHPNAME       => array('InformationId' => 0, 'Bottom' => 1, 'SortOrder' => 2, 'Status' => 3, 'Isnews' => 4, 'Onhome' => 5, 'DateAdded' => 6, 'ArticeId' => 7, ),
+        self::TYPE_CAMELNAME     => array('informationId' => 0, 'bottom' => 1, 'sortOrder' => 2, 'status' => 3, 'isnews' => 4, 'onhome' => 5, 'dateAdded' => 6, 'articeId' => 7, ),
+        self::TYPE_COLNAME       => array(OcInformationTableMap::COL_INFORMATION_ID => 0, OcInformationTableMap::COL_BOTTOM => 1, OcInformationTableMap::COL_SORT_ORDER => 2, OcInformationTableMap::COL_STATUS => 3, OcInformationTableMap::COL_ISNEWS => 4, OcInformationTableMap::COL_ONHOME => 5, OcInformationTableMap::COL_DATE_ADDED => 6, OcInformationTableMap::COL_ARTICE_ID => 7, ),
+        self::TYPE_FIELDNAME     => array('information_id' => 0, 'bottom' => 1, 'sort_order' => 2, 'status' => 3, 'isnews' => 4, 'onhome' => 5, 'date_added' => 6, 'artice_id' => 7, ),
+        self::TYPE_NUM           => array(0, 1, 2, 3, 4, 5, 6, 7, )
     );
 
     /**
@@ -162,6 +167,7 @@ class OcInformationTableMap extends TableMap
         $this->addColumn('status', 'Status', 'BOOLEAN', true, 1, true);
         $this->addColumn('isnews', 'Isnews', 'INTEGER', false, null, 0);
         $this->addColumn('onhome', 'Onhome', 'INTEGER', false, null, 0);
+        $this->addColumn('date_added', 'DateAdded', 'TIMESTAMP', true, null, 'CURRENT_TIMESTAMP');
         $this->addColumn('artice_id', 'ArticeId', 'INTEGER', false, null, 0);
     } // initialize()
 
@@ -319,6 +325,7 @@ class OcInformationTableMap extends TableMap
             $criteria->addSelectColumn(OcInformationTableMap::COL_STATUS);
             $criteria->addSelectColumn(OcInformationTableMap::COL_ISNEWS);
             $criteria->addSelectColumn(OcInformationTableMap::COL_ONHOME);
+            $criteria->addSelectColumn(OcInformationTableMap::COL_DATE_ADDED);
             $criteria->addSelectColumn(OcInformationTableMap::COL_ARTICE_ID);
         } else {
             $criteria->addSelectColumn($alias . '.information_id');
@@ -327,6 +334,7 @@ class OcInformationTableMap extends TableMap
             $criteria->addSelectColumn($alias . '.status');
             $criteria->addSelectColumn($alias . '.isnews');
             $criteria->addSelectColumn($alias . '.onhome');
+            $criteria->addSelectColumn($alias . '.date_added');
             $criteria->addSelectColumn($alias . '.artice_id');
         }
     }

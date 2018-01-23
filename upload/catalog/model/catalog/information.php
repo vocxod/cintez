@@ -15,6 +15,15 @@ class ModelCatalogInformation extends Model {
 		return $query->rows;
 	}
 
+	public function getHomeNews( $iOffset = 0, $iLimit = 3 ){
+		$iLanguageId = (int)$this->config->get('config_language_id');
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND i.onhome=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.date_added DESC LIMIT $iLimit OFFSET $iOffset ";
+		//echo $sSqlSelect . "\n"; die();
+		$query = $this->db->query( $sSqlSelect );
+		//var_dump($query); die();
+		return $query->rows;
+	}
+
 	public function getNewsCount( ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
 		$sSqlSelect = "SELECT count(*) AS news_count FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id ";

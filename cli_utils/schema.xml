@@ -735,6 +735,7 @@
     <column name="status" phpName="Status" type="BOOLEAN" size="1" required="true" defaultValue="true"/>
     <column name="isnews" phpName="Isnews" type="INTEGER" defaultValue="0"/>
     <column name="onhome" phpName="Onhome" type="INTEGER" defaultValue="0"/>
+    <column name="date_added" phpName="DateAdded" type="TIMESTAMP" required="true" defaultExpr="CURRENT_TIMESTAMP"/>
     <column name="artice_id" phpName="ArticeId" type="INTEGER" defaultValue="0"/>
     <vendor type="mysql">
       <parameter name="Engine" value="MyISAM"/>
