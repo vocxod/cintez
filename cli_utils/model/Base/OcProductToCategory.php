@@ -74,6 +74,13 @@ abstract class OcProductToCategory implements ActiveRecordInterface
     protected $category_id;
 
     /**
+     * The value for the weight field.
+     *
+     * @var        int
+     */
+    protected $weight;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
@@ -327,6 +334,16 @@ abstract class OcProductToCategory implements ActiveRecordInterface
     }
 
     /**
+     * Get the [weight] column value.
+     *
+     * @return int
+     */
+    public function getWeight()
+    {
+        return $this->weight;
+    }
+
+    /**
      * Set the value of [product_id] column.
      *
      * @param int $v new value
@@ -365,6 +382,26 @@ abstract class OcProductToCategory implements ActiveRecordInterface
 
         return $this;
     } // setCategoryId()
+
+    /**
+     * Set the value of [weight] column.
+     *
+     * @param int $v new value
+     * @return $this|\OcProductToCategory The current object (for fluent API support)
+     */
+    public function setWeight($v)
+    {
+        if ($v !== null) {
+            $v = (int) $v;
+        }
+
+        if ($this->weight !== $v) {
+            $this->weight = $v;
+            $this->modifiedColumns[OcProductToCategoryTableMap::COL_WEIGHT] = true;
+        }
+
+        return $this;
+    } // setWeight()
 
     /**
      * Indicates whether the columns in this object are only set to default values.
@@ -407,6 +444,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
 
             $col = $row[TableMap::TYPE_NUM == $indexType ? 1 + $startcol : OcProductToCategoryTableMap::translateFieldName('CategoryId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->category_id = (null !== $col) ? (int) $col : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 2 + $startcol : OcProductToCategoryTableMap::translateFieldName('Weight', TableMap::TYPE_PHPNAME, $indexType)];
+            $this->weight = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
             $this->setNew(false);
@@ -415,7 +455,7 @@ abstract class OcProductToCategory implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 2; // 2 = OcProductToCategoryTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 3; // 3 = OcProductToCategoryTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcProductToCategory'), 0, $e);
@@ -618,6 +658,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
         if ($this->isColumnModified(OcProductToCategoryTableMap::COL_CATEGORY_ID)) {
             $modifiedColumns[':p' . $index++]  = 'category_id';
         }
+        if ($this->isColumnModified(OcProductToCategoryTableMap::COL_WEIGHT)) {
+            $modifiedColumns[':p' . $index++]  = 'weight';
+        }
 
         $sql = sprintf(
             'INSERT INTO oc_product_to_category (%s) VALUES (%s)',
@@ -634,6 +677,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
                         break;
                     case 'category_id':
                         $stmt->bindValue($identifier, $this->category_id, PDO::PARAM_INT);
+                        break;
+                    case 'weight':
+                        $stmt->bindValue($identifier, $this->weight, PDO::PARAM_INT);
                         break;
                 }
             }
@@ -696,6 +742,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
             case 1:
                 return $this->getCategoryId();
                 break;
+            case 2:
+                return $this->getWeight();
+                break;
             default:
                 return null;
                 break;
@@ -727,6 +776,7 @@ abstract class OcProductToCategory implements ActiveRecordInterface
         $result = array(
             $keys[0] => $this->getProductId(),
             $keys[1] => $this->getCategoryId(),
+            $keys[2] => $this->getWeight(),
         );
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
@@ -772,6 +822,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
             case 1:
                 $this->setCategoryId($value);
                 break;
+            case 2:
+                $this->setWeight($value);
+                break;
         } // switch()
 
         return $this;
@@ -803,6 +856,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
         }
         if (array_key_exists($keys[1], $arr)) {
             $this->setCategoryId($arr[$keys[1]]);
+        }
+        if (array_key_exists($keys[2], $arr)) {
+            $this->setWeight($arr[$keys[2]]);
         }
     }
 
@@ -850,6 +906,9 @@ abstract class OcProductToCategory implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcProductToCategoryTableMap::COL_CATEGORY_ID)) {
             $criteria->add(OcProductToCategoryTableMap::COL_CATEGORY_ID, $this->category_id);
+        }
+        if ($this->isColumnModified(OcProductToCategoryTableMap::COL_WEIGHT)) {
+            $criteria->add(OcProductToCategoryTableMap::COL_WEIGHT, $this->weight);
         }
 
         return $criteria;
@@ -947,6 +1006,7 @@ abstract class OcProductToCategory implements ActiveRecordInterface
     {
         $copyObj->setProductId($this->getProductId());
         $copyObj->setCategoryId($this->getCategoryId());
+        $copyObj->setWeight($this->getWeight());
         if ($makeNew) {
             $copyObj->setNew(true);
         }
@@ -983,6 +1043,7 @@ abstract class OcProductToCategory implements ActiveRecordInterface
     {
         $this->product_id = null;
         $this->category_id = null;
+        $this->weight = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
         $this->resetModified();

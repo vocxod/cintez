@@ -59,7 +59,7 @@ class OcProductToCategoryTableMap extends TableMap
     /**
      * The total number of columns
      */
-    const NUM_COLUMNS = 2;
+    const NUM_COLUMNS = 3;
 
     /**
      * The number of lazy-loaded columns
@@ -69,7 +69,7 @@ class OcProductToCategoryTableMap extends TableMap
     /**
      * The number of columns to hydrate (NUM_COLUMNS - NUM_LAZY_LOAD_COLUMNS)
      */
-    const NUM_HYDRATE_COLUMNS = 2;
+    const NUM_HYDRATE_COLUMNS = 3;
 
     /**
      * the column name for the product_id field
@@ -80,6 +80,11 @@ class OcProductToCategoryTableMap extends TableMap
      * the column name for the category_id field
      */
     const COL_CATEGORY_ID = 'oc_product_to_category.category_id';
+
+    /**
+     * the column name for the weight field
+     */
+    const COL_WEIGHT = 'oc_product_to_category.weight';
 
     /**
      * The default string format for model objects of the related table
@@ -93,11 +98,11 @@ class OcProductToCategoryTableMap extends TableMap
      * e.g. self::$fieldNames[self::TYPE_PHPNAME][0] = 'Id'
      */
     protected static $fieldNames = array (
-        self::TYPE_PHPNAME       => array('ProductId', 'CategoryId', ),
-        self::TYPE_CAMELNAME     => array('productId', 'categoryId', ),
-        self::TYPE_COLNAME       => array(OcProductToCategoryTableMap::COL_PRODUCT_ID, OcProductToCategoryTableMap::COL_CATEGORY_ID, ),
-        self::TYPE_FIELDNAME     => array('product_id', 'category_id', ),
-        self::TYPE_NUM           => array(0, 1, )
+        self::TYPE_PHPNAME       => array('ProductId', 'CategoryId', 'Weight', ),
+        self::TYPE_CAMELNAME     => array('productId', 'categoryId', 'weight', ),
+        self::TYPE_COLNAME       => array(OcProductToCategoryTableMap::COL_PRODUCT_ID, OcProductToCategoryTableMap::COL_CATEGORY_ID, OcProductToCategoryTableMap::COL_WEIGHT, ),
+        self::TYPE_FIELDNAME     => array('product_id', 'category_id', 'weight', ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -107,11 +112,11 @@ class OcProductToCategoryTableMap extends TableMap
      * e.g. self::$fieldKeys[self::TYPE_PHPNAME]['Id'] = 0
      */
     protected static $fieldKeys = array (
-        self::TYPE_PHPNAME       => array('ProductId' => 0, 'CategoryId' => 1, ),
-        self::TYPE_CAMELNAME     => array('productId' => 0, 'categoryId' => 1, ),
-        self::TYPE_COLNAME       => array(OcProductToCategoryTableMap::COL_PRODUCT_ID => 0, OcProductToCategoryTableMap::COL_CATEGORY_ID => 1, ),
-        self::TYPE_FIELDNAME     => array('product_id' => 0, 'category_id' => 1, ),
-        self::TYPE_NUM           => array(0, 1, )
+        self::TYPE_PHPNAME       => array('ProductId' => 0, 'CategoryId' => 1, 'Weight' => 2, ),
+        self::TYPE_CAMELNAME     => array('productId' => 0, 'categoryId' => 1, 'weight' => 2, ),
+        self::TYPE_COLNAME       => array(OcProductToCategoryTableMap::COL_PRODUCT_ID => 0, OcProductToCategoryTableMap::COL_CATEGORY_ID => 1, OcProductToCategoryTableMap::COL_WEIGHT => 2, ),
+        self::TYPE_FIELDNAME     => array('product_id' => 0, 'category_id' => 1, 'weight' => 2, ),
+        self::TYPE_NUM           => array(0, 1, 2, )
     );
 
     /**
@@ -133,6 +138,7 @@ class OcProductToCategoryTableMap extends TableMap
         // columns
         $this->addPrimaryKey('product_id', 'ProductId', 'INTEGER', true, null, null);
         $this->addPrimaryKey('category_id', 'CategoryId', 'INTEGER', true, null, null);
+        $this->addColumn('weight', 'Weight', 'INTEGER', true, null, null);
     } // initialize()
 
     /**
@@ -347,9 +353,11 @@ class OcProductToCategoryTableMap extends TableMap
         if (null === $alias) {
             $criteria->addSelectColumn(OcProductToCategoryTableMap::COL_PRODUCT_ID);
             $criteria->addSelectColumn(OcProductToCategoryTableMap::COL_CATEGORY_ID);
+            $criteria->addSelectColumn(OcProductToCategoryTableMap::COL_WEIGHT);
         } else {
             $criteria->addSelectColumn($alias . '.product_id');
             $criteria->addSelectColumn($alias . '.category_id');
+            $criteria->addSelectColumn($alias . '.weight');
         }
     }
 
