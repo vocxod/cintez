@@ -48,18 +48,20 @@
           <div class="form-group">
             <label for="dez_type">Выберите вид обработки</label>
             <select id="dez_type" name="dez_type" class="form-control">
-              <option value="0">--- Выберите ---</option>
-              <option value="1" selected="selected">Дезинфекция изделий медицинского назначения</option>
-              <option value="2">Дезинфекция поверхностей</option>             
-              <option value="3">Дезинфекция на пищеблоке</option>
-              <option value="4">Стерилизация и ДВУ эндоскопов </option>
-              <option value="5">Дезинфекция биологических и медицинских отходов</option>
-              <option value="6">Гигиена кожных покровов</option>
-              <option value="7">Профессиональная уборка</option>
+              <option value="0" selected="selected">--- Выберите ---</option>
+              <option value="100501">Дезинфекция поверхностей способом протирания</option>
+              <option value="100511">Дезинфекция санитарно-технического оборудования способом протирания</option>
+              <option value="100521">Дезинфекция уборочного материала</option>
+              <option value="100531">Дезинфекция поверхностей в помещении и санитарно-технического оборудования способом протирания</option>
+              <option value="100541">Дезинфекция уборочного материала</option>
+              <option value="100551">Обработка кожных покровов при выполнении хирургических операций</option>
+              <option value="100561">Обработка кожных покровов при выполнении перевязок</option>
+              <option value="100571">Обработка кожных покровов при выполнении инъекций</option>
+              <option value="100581">Дезинфекция изделий медицинского назначения</option>
+              <option value="100591">Дезинфекция высокого уровня эндоскопов:</option>
+              <option value="100601">Стерилизация изделий медицинского назначения:</option>
             </select>
           </div>
-
-
 {#
           <div class="text-center">
             <button type="submit" class="btn btn-success">Рассчитать</button>  
@@ -93,47 +95,131 @@
   <div class="row">
     <div class="col-sm-12 ">
       <h3 id="tabname">{{ heading_title_second_form }}</h3>
-          
+      {# @TODO загружаем контент в соответствии с выбранным режимом и способом дезинфекции #}    
+      {# Быстрый подбор по режимам #}
+{# Этап 1#}
+{#
+Режим
+ Дезинфекция поверхностей по бактериям (исключая туберкулез)
+ Дезинфекция поверхностей по вирусным инфекциям
+ Дезинфекция поверхностей по кандидозу
+ Дезинфекция поверхностей по дерматофитам
+ Дезинфекция поверхностей по туберкулезу
+ Дезинфекция ИМН при бактериальных, вирусных инфекциях и кандидозе
+ Дезинфекция, совмещенная с ПСО ИМН при бактериальных, вирусных инфекциях и кандидозе
+ Предстерилизационная очистка ИМН
+ ДВУ эндоскопов
+ Стерилизация изделий медицинского назначения
+ Дезинфекция крови
+ Дезинфекция мокроты
+ Дезинфекция фекалий
+ Гигиеническая обработка рук
+ Обработка рук хирургов
+ Обработка операционного поля
+#}
+{# Этап 2. Выберите тип действующего вещества #}
+{#
+ЧАС
+Хлоркислородные соединения (Анолит)
+Серебро и его соединения
+Кислоты
+Ферменты
+Производные фенолов
+Хлорсодержащие (выделяющие активный хлор)
+Спирты
+Кислородосодержащие
+Гуанидин
+Третичный амин
+Альдегид
+Йодосодержащие
+Поверхностно-активные вещества (ПАВ)
+#}
+{# Этап 3. Выберите форму выпуска препарата #}
+{#
+таблетка
+жидкий концентрат
+порошок
+готовое средство
+гранулы
+кожный антисептик
+жидкое мыло
+салфетка антисептическая
+двухкомпонентная система
+паста
+#}
+{# Этап 4. Подберите срок годности #}
+{#
+Срок годности в фабричной упаковке (год)
+Срок годности рабочего раствора (день)
+#}
 
-<div class="list-group">
-  {% for detail in details %}
-  <a onclick="return false;" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
-    <div class="d-flex w-100 justify-content-between ">
+{# Поправки по классу помещения 3#}
+{#
+НЕЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:
 
-      <div class="text-left " style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
-          <img class="" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
+1. Текущая уборка  неэпидзначимых помещений (бактериальный режим): 
+
+2. Генеральная уборка неэпидзначимых помещений (вирусный режим):
+ ( 1 раз в месяц):
+
+ЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:
+
+3. Текущая уборка  эпидзначимых помещений (вирусный режим)
+
+4. Генеральная уборка эпидзначимых помещений (вирусный режим):
+ ( 1 раз в месяц):
+5. Дезинфекция уборочного материала (бактериальный режим) для текущих уборок
+ (вирусный режим) для генеральных уборок в неэпидзначимых и эпидзначимых помещениях:
+6. Дезинфекция ванн (режим по грибковой инфекции)(после каждого пациента)
+7.Дезинфекция раковин (бактериальный режим
+8. Дезинфекция унитазов (бактериальный режим)
+9. Дезинфекция душевых поддонов (бактериальный режим)
+10. Дезинфекция, совмещенная с предстерилизационной очисткой ИМН (вирусный режим) 
+
+11.Дезинфекция медотходов х на 2 смены:
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин
+Расчет осуществляется по формуле:
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин= 0,01х 0,25%х4лх30 кг(в день)х21 р.д.=6,3л рабочего раствора в месяц. Соответственно- 0,3л рабочего раствора в день, 75,6л рабочего раствора в год.
+12. Расход антисептика:
+- при взятии крови из вены,
+- при в/в инъекции
+- при постановке капельницы
+- при перевязке
+13. Обработка операционного поля
+14. Экспресс обработка 
+15. Предварительная, окончательная очистка+ДВУ:
+#}     
+      <div class="list-group">
+        {% for detail in details %}
+        <a onclick="return false;" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between ">
+            <div class="text-left " style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
+                <img class="" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
+            </div>
+            <div class="outline:1px solid red;">
+              <h4 class="mb-1" style="font-weight:bold;font-size:20px;">{{ detail.title }}
+                  <span style="" class="pull-right">
+                    {% for field in detail.fields %}  
+                        {% if field.type == 'checkbox' %}
+                        <label class="form-check-label" style="font-weight:500;font-size:18px;margin-right:10px;">
+                            <input class="form-check-input" type="checkbox"> {{ field.title }}
+                        </label>
+                        {% endif %}  
+                        {% if field.type == 'input' %}
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="text"> 
+                        </label>
+                        {% endif %}  
+                    {% endfor %}
+                  </span>
+              </h4>
+              <small class="">{{ detail.subtitle }}</small>
+              &nbsp;
+            </div>
+          </div>
+        </a>
+        {% endfor %}
       </div>
-
-      <div class="outline:1px solid red;">
-        <h4 class="mb-1" style="font-weight:bold;font-size:20px;">{{ detail.title }}
-
-            <span style="" class="pull-right">
-              {% for field in detail.fields %}  
-                  {% if field.type == 'checkbox' %}
-                  <label class="form-check-label" style="font-weight:500;font-size:18px;margin-right:10px;">
-                      <input class="form-check-input" type="checkbox"> {{ field.title }}
-                  </label>
-                  {% endif %}  
-                  {% if field.type == 'input' %}
-                  <label class="form-check-label">
-                      <input class="form-check-input" type="text"> 
-                  </label>
-                  {% endif %}  
-              {% endfor %}
-            </span>
-        </h4>
-
-        <small class="">{{ detail.subtitle }}</small>
-        &nbsp;
-      </div>
-
-    </div>
-
-  </a>
-  {% endfor %}
-</div>
-
-
       <div class="text-left">
           <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
       </div>
