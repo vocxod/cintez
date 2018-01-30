@@ -31,9 +31,18 @@
                   </p>
                   <div class="col-sm-12" style="margin-left: 0;padding-left: 0;">
                         <div class="col-sm-6 anonce-buttons" style="padding-left: 0;line-height: 2em;">
+                          {#
                           <a href="#">
                             <i class="fa fa-vk"></i>
                           </a>
+#}
+
+<script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+<!-- Put this script tag to the place, where the Share button will be -->
+<script type="text/javascript"><!--
+document.write(VK.Share.button(false,{type: "link_noicon", text: "<i class='fa fa-vk' style='font-size:16px; color:#222;'></i>"}));
+--></script>
+
                           <a href="#">
                             <i class="fa fa-twitter"></i>
                           </a>
