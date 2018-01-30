@@ -35,7 +35,7 @@ class ControllerInformationNeoitems extends Controller {
 
 		foreach ($top_news as $key => $value) {
 			$aData = [];
-//var_dump($value); die();
+
 			if(is_array($value)){
 				foreach ($value as $key2 => $value2) {
 				
@@ -56,7 +56,7 @@ class ControllerInformationNeoitems extends Controller {
 		}
 		$aDataNews['top_news'] = $aResult;
 		$data['top_news'] = $aResult;
-//var_dump( $data['top_news'] ); die();
+
 		if ( $aResult ) {
 			/* @todo fix it */
 			$this->document->setTitle('meta_title');

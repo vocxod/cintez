@@ -9,12 +9,16 @@ class ModelCatalogInformation extends Model {
 	public function getTopNews( $iOffset = 0, $iLimit = 3 ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
 		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset ";
-		//echo $sSqlSelect . "\n"; die();
 		$query = $this->db->query( $sSqlSelect );
-		//var_dump($query); die();
 		return $query->rows;
 	}
-
+	public function getTopArticles( $iOffset, $iLimit = 3 ){
+		$iLanguageId = (int)$this->config->get('config_language_id');
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset";
+		$query = $this->db->query( $sSqlSelect );
+		return $query->rows;
+	}	
+	
 	public function getHomeNews( $iOffset = 0, $iLimit = 3 ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
 		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND i.onhome=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.date_added DESC LIMIT $iLimit OFFSET $iOffset ";
@@ -34,14 +38,7 @@ class ModelCatalogInformation extends Model {
 		return $iResult;
 	}
 
-	public function getTopArticles( $iOffset, $iLimit = 3 ){
-		$iLanguageId = (int)$this->config->get('config_language_id');
-		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=0 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset";
-		// echo $sSqlSelect . "\n";
-		$query = $this->db->query( $sSqlSelect );
-		//var_dump($query); die();
-		return $query->rows;
-	}	
+
 
 	public function getArticlesCount(){
 		$iLanguageId = (int)$this->config->get('config_language_id');

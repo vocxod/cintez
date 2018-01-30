@@ -250,7 +250,8 @@ class ModelCatalogProduct extends Model {
 		$product_data = array();
 
 // echo $sql; die("<br/>\n\nshow SQL");
-
+// пока так, жестко впаиваем признание веса товара в категории
+		// @TODO внести вес в построение SQL выражения выше
 $sql = "SELECT p.product_id, 
 
 (SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 

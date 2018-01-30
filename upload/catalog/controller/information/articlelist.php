@@ -21,13 +21,13 @@ class ControllerInformationArticlelist extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$iLimit = (int)$this->request->get['limit'];
 		} else {
-			$iLimit = 5;
+			$iLimit = 10;
 		}
 
 		$iOffset = ( $page - 1 ) * $iLimit;
 
 		/* получить нужные данные для формирования последних новостей из шаблона */
-		$aDataNews['heading_title'] = "Последние новости";  
+ 
 		$this->load->model('catalog/information');
 		$top_news = $this->model_catalog_information->getTopArticles( $iOffset, $iLimit );
 		$aResult = [];
@@ -123,22 +123,6 @@ class ControllerInformationArticlelist extends Controller {
 	}
 
 	public function agree() {
-		$this->load->model('catalog/information');
 
-		if (isset($this->request->get['information_id'])) {
-			$information_id = (int)$this->request->get['information_id'];
-		} else {
-			$information_id = 0;
-		}
-
-		$output = '';
-
-		$information_info = $this->model_catalog_information->getInformation($information_id);
-
-		if ($information_info) {
-			$output .= html_entity_decode($information_info['description'], ENT_QUOTES, 'UTF-8') . "\n";
-		}
-
-		$this->response->setOutput($output);
 	}
 }
