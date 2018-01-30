@@ -171,7 +171,7 @@
   {# form 2#} 
   <div class="row">    
       <div class="col-sm-12 ">
-  <h3>Дезинфекция санитарно-технического оборудования способом протирания</h3>
+      <h3>Дезинфекция санитарно-технического оборудования способом протирания</h3>
       </div>
   </div>
 
@@ -260,9 +260,7 @@
 
   <div class="row">    
   <div class="col-sm-12 ">
-        <div class="col-lg-8">Под заданный параметр не подходит ни одно средство</div>
-    <div class="col-lg-3"><input type="text"></div>
-  
+        <h4>Под заданный параметр не подходит ни одно средство</h4>
   </div>
   </div>
 
@@ -276,10 +274,8 @@
 
   <div class="row">    
   <div class="col-sm-12 ">
-        <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
+    <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
     <div class="col-lg-3"><input type="text"></div>
-   
-
   </div>
   </div>
 
@@ -290,7 +286,104 @@
       </div>
     </div>
 </div>
+
+  {# form 2#} 
+  <div class="row">    
+      <div class="col-sm-12 ">
+      <h3>Дезинфекция уборочного материала</h3>
+      </div>
+  </div> 
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Масса одного комплекта уборочного материала (Мум, кг)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Количество комплектов уборочного материала (Кум)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div> 
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4">Режим обработки:</div>
+    <div class="col-lg-4">бактерии</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+   
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">вирусы</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">кандида</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">дерматофитон</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">микобактерия туберкулеза</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div> 
+
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Желаемое время экспозиции (t, мин)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+<div class="row">    
+  <div class="col-sm-12 ">
+    <h4>Под заданный параметр не подходит ни одно средство</h4>  
+  </div>
+  </div> 
+
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Кратность обработки в сутки (KRc)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+    <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
  
+
 
 
       {# @TODO загружаем контент в соответствии с выбранным режимом и способом дезинфекции #}    
