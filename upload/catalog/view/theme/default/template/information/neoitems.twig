@@ -28,21 +28,23 @@
           <div class="col-sm-6">
             {% set yndex = y * 2 + x %}
             {% set item = top_news[yndex] %}
-              <div class="row news-anonce" style="height:182px; overflow: hidden; background:rgb(240,244,245); margin-bottom:5px; ">
-                <div class="col-sm-6 img-anonce ">
+              <div class="row news-anonce" style="height:182px; overflow: hidden; background:rgb(240,244,245); margin-bottom:5px; margin-right:2px;">
+                <div class="col-sm-6 img-anonce" style="padding-left: 0px;" >
                   {% if item.foreground_image|length > 1 %}
                     <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
                   {% else %}
                     <img src="/image/catalog/logo-325x325.png" alt="SpecSyntez News Article" />
                   {% endif %}
                 </div>  
-                <div class="col-sm-6  ">
+                <div class="col-sm-6" style="padding-left: 0px;">
                   {#<h4 style="font-weight:bold;">{{ item.title }}</h4>#}
                   <p class="anonce-description">
                     {{ item.foreground_text }}
                   </p>
                   <div class="col-sm-12" style="margin-left: 0;padding-left: 0;">
-                        <div class="col-sm-6 anonce-buttons" style="padding-left: 0;line-height: 2em;">
+                        <div class="col-sm-6 anonce-buttons" style="padding-left: 0;line-height: 2em; outline:0px solid red; overflow:hidden; width:123px;">
+                          {{ item.date_added|date("d/m/Y") }}
+
 <script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
 <!-- Put this script tag to the place, where the Share button will be -->
 <script type="text/javascript"><!--
@@ -53,7 +55,8 @@ document.write(VK.Share.button(false,{type: "link_noicon", text: "<i class='fa f
                           </a>
                           <a href="#">
                             <i class="fa fa-facebook"></i>
-                          </a>    
+                          </a> 
+
                         </div>
                         <div class="col-sm-6" style="padding:0;">
                           <a class="btn btn-success shownews" href="index.php?route=information/onenews&information_id={{item.information_id}}"
