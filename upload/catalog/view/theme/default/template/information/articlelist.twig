@@ -8,14 +8,14 @@
   </ul>
 
 {# varian 2 start #}
-  {% for y in 0..4 %}  
+  {% for y in 0..6 %}  
     <div class="row">
       <div class="col-sm-12 ">
       {% for x in 0..1 %}
-      {#% for item in top_news %#}         
+      {% set yndex = y * 2 + x %}
+      {% set item = top_news[yndex] %}
+      {% if item.information_id > 0 %}         
           <div class="col-sm-6">
-            {% set yndex = y * 2 + x %}
-            {% set item = top_news[yndex] %}
               <div class="row news-anonce" style="height:182px; overflow: hidden; background:rgb(240,244,245); margin-bottom:5px; ">
                 <div class="col-sm-6 img-anonce ">
                   {% if item.foreground_image|length > 1 %}
@@ -51,8 +51,8 @@
                   </div>
                 </div>
               </div>
-
           </div>
+      {% endif %}
       {% endfor %}
       </div>
     </div>

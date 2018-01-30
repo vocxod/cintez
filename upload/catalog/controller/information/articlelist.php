@@ -21,7 +21,7 @@ class ControllerInformationArticlelist extends Controller {
 		if (isset($this->request->get['limit'])) {
 			$iLimit = (int)$this->request->get['limit'];
 		} else {
-			$iLimit = 10;
+			$iLimit = 20;
 		}
 
 		$iOffset = ( $page - 1 ) * $iLimit;
