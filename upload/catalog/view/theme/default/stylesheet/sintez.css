@@ -2249,6 +2249,37 @@ top:-28px;
 position: relative;
 top:-28px;
 }
+
+#sb-152 {
+}
+/* серединка */
+#sb-152 > span.nav-label:before{
+}
+#sb-152 > span.nav-label {
+position: relative;
+left:-22px;
+}
+#sb-152 > span.nav-label.one-row {
+  margin-left: 29px;
+}
+#sb-152 > span.nav-label.two-row {
+position: relative;
+left:16px;
+}  
+#sb-152 > span.nav-label.three-row {
+position: relative;
+left:16px;
+}  
+/* хвостик */
+#sb-152 > span.fa.fa-chevron-right.pull-right {
+position: relative;
+top:-28px;
+}
+#sb-152 > span.fa.fa-chevron-down.pull-right{
+position: relative;
+top:-28px;
+}
+
 /***** ************/
 
 /****** SCHOOLs ***********/
@@ -2582,6 +2613,14 @@ left:15px;
 #sb-1441 > span.nav-label.two-row,
 #sb-1440 > span.nav-label.two-row,
 #sb-1442 > span.nav-label.two-row,
+#sb-1437 > span.nav-label.two-row,
+#sb-1438 > span.nav-label.two-row,
+#sb-1436 > span.nav-label.two-row,
+#sb-1449 > span.nav-label.two-row,
+#sb-1447 > span.nav-label.two-row,
+#sb-166 > span.nav-label.two-row,
+
+#sb-1448 > span.nav-label.two-row,
 
 #sb-120 > span.nav-label.two-row,
 #sb-119 > span.nav-label.two-row,
@@ -2620,7 +2659,11 @@ left:15px;
   position: relative;
   left:30px;
 }
-
+#sb-1442 > span.nav-label.two-row
+{
+  position: relative;
+  left:16px;
+}
 #sb-1551 > span.nav-label.two-row
 {
   position: relative;
@@ -2642,7 +2685,7 @@ left:15px;
 #sb-1482.active, #sb-118.active,
 #sb-121.active, #sb-132.active,
 #sb-133.active, #sb-134.active,
-#sb-135.active, #sb-136.active,
+#sb-135.active, #sb-136.active, #sb-1442.active,
 #sb-137.active, #sb-140.active,
 #sb-1536.active, #sb-151.active,
 #sb-152.active, #sb-153.active,
@@ -2669,7 +2712,7 @@ left:15px;
 #sb-1482.active.collapsed, #sb-118.active.collapsed,
 #sb-121.active.collapsed, #sb-132.active.collapsed,
 #sb-133.active.collapsed, #sb-134.active.collapsed,
-#sb-135.active.collapsed, #sb-136.active.collapsed,
+#sb-135.active.collapsed, #sb-136.active.collapsed, #sb-1442.active.collapsed,
 #sb-137.active.collapsed, #sb-140.active.collapsed,
 #sb-1536.active.collapsed, #sb-151.active.collapsed,
 #sb-152.active.collapsed, #sb-153.active.collapsed,
