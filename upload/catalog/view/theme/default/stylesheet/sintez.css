@@ -2437,6 +2437,128 @@ left:15px;
 }
 
 
+/* КРС */
+/* точечно SIDEBAR GROUPS*/
+#sb-66 {
+}
+/* серединка */
+#sb-66 > span.nav-label:before{
+}
+#sb-66 > span.nav-label.one-row {
+}
+#sb-66 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+/* хвостик */
+#sb-66 > span.fa.fa-chevron-right.pull-right {
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-66 > span.fa.fa-chevron-down.pull-right{
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+/* точечно SIDEBAR GROUPS*/
+#sb-67 {
+}
+/* серединка */
+#sb-67 > span.nav-label:before{
+}
+#sb-67 > span.nav-label.one-row {
+}
+#sb-67 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+/* хвостик */
+#sb-67 > span.fa.fa-chevron-right.pull-right {
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-68 > span.fa.fa-chevron-down.pull-right{
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-68 {
+}
+/* серединка */
+#sb-68 > span.nav-label:before{
+}
+#sb-68 > span.nav-label.one-row {
+}
+#sb-68 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+/* хвостик */
+#sb-68 > span.fa.fa-chevron-right.pull-right {
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-68 > span.fa.fa-chevron-down.pull-right{
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-56 {
+}
+/* серединка */
+#sb-56 > span.nav-label:before{
+}
+#sb-56 > span.nav-label.one-row {
+}
+#sb-56 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+/* хвостик */
+#sb-56 > span.fa.fa-chevron-right.pull-right {
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+#sb-56 > span.fa.fa-chevron-down.pull-right{
+  /*
+  position:relative;
+  top:-14px;
+  */
+}
+
+
+
+#sb-57 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+#sb-58 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+#sb-1465 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
+
+#sb-61 > span.nav-label.two-row,
+#sb-62 > span.nav-label.two-row,
+#sb-666 > span.nav-label.two-row,
+#sb-1467 > span.nav-label.two-row {
+  position: relative;
+  left:30px;
+}
 /*********** боковые отступы для уровней (старт) **************/
 
 
@@ -2531,6 +2653,7 @@ left:15px;
 /* пищев пром */
 /* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/
+
 
 
 
