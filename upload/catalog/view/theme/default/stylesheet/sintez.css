@@ -2555,9 +2555,76 @@ left:15px;
 #sb-61 > span.nav-label.two-row,
 #sb-62 > span.nav-label.two-row,
 #sb-666 > span.nav-label.two-row,
-#sb-1467 > span.nav-label.two-row {
+#sb-1467 > span.nav-label.two-row,
+#sb-1510 > span.nav-label.two-row,
+#sb-1512 > span.nav-label.two-row,
+#sb-1511 > span.nav-label.two-row,
+#sb-1525 > span.nav-label.two-row,
+#sb-1532 > span.nav-label.two-row,
+#sb-1533 > span.nav-label.two-row,
+#sb-1526 > span.nav-label.two-row,
+#sb-1524 > span.nav-label.two-row,
+#sb-1521 > span.nav-label.two-row,
+#sb-1522 > span.nav-label.two-row,
+#sb-1523 > span.nav-label.two-row,
+#sb-1564 > span.nav-label.two-row,
+#sb-1576 > span.nav-label.two-row,
+#sb-1577 > span.nav-label.two-row,
+#sb-1583 > span.nav-label.two-row,
+
+#sb-1459 > span.nav-label.two-row,
+#sb-769 > span.nav-label.two-row,
+#sb-85 > span.nav-label.two-row,
+#sb-1559 > span.nav-label.two-row,
+
+#sb-1549 > span.nav-label.two-row,
+
+#sb-1441 > span.nav-label.two-row,
+#sb-1440 > span.nav-label.two-row,
+#sb-1442 > span.nav-label.two-row,
+
+#sb-120 > span.nav-label.two-row,
+#sb-119 > span.nav-label.two-row,
+#sb-1486 > span.nav-label.two-row,
+#sb-1487 > span.nav-label.two-row,
+#sb-1485 > span.nav-label.two-row,
+#sb-1488 > span.nav-label.two-row,
+#sb-1599 > span.nav-label.two-row,
+
+#sb-107 > span.nav-label.two-row,
+#sb-97 > span.nav-label.two-row,
+#sb-96 > span.nav-label.two-row,
+#sb-99 > span.nav-label.two-row,
+#sb-851 > span.nav-label.two-row,
+#sb-864 > span.nav-label.two-row,
+#sb-112 > span.nav-label.two-row,
+#sb-109 > span.nav-label.two-row,
+#sb-110 > span.nav-label.two-row,
+#sb-1006 > span.nav-label.two-row,
+
+#sb-113 > span.nav-label.two-row,
+#sb-1480 > span.nav-label.two-row,
+#sb-1479 > span.nav-label.two-row,
+#sb-1475 > span.nav-label.two-row,
+#sb-1473 > span.nav-label.two-row,
+#sb-1472 > span.nav-label.two-row,
+#sb-1469 > span.nav-label.two-row,
+#sb-1483 > span.nav-label.two-row
+{
   position: relative;
   left:30px;
+}
+
+#sb-1441 > span.nav-label.two-row
+{
+  position: relative;
+  left:30px;
+}
+
+#sb-1551 > span.nav-label.two-row
+{
+  position: relative;
+  left:14px;
 }
 /*********** боковые отступы для уровней (старт) **************/
 
