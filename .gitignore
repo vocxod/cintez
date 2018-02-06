@@ -22,6 +22,9 @@ storage/logs/error.log
 /www/.htaccess
 /www/config.php
 /www/admin/config.php
+www/config.php
+www/admin/config.php
+
 
 # Image File
 !/www/image/no_image.jpg
