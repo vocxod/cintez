@@ -31,6 +31,7 @@ www/admin/config.php
 
 # Image Cache Files
 /www/image/cache/*
+www/image/cache/*
 !/www/image/cache/index.html
 
 # System Cache Files

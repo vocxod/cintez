@@ -194,7 +194,9 @@ a.zone-select {
 
 /* оформление данных на карточке */
 .run_card {
-  border:1px solid #CCC; padding-left:20px; padding-top:20px;  min-height:380px;
+  border:1px solid #CCC; padding-left:20px; padding-top:20px;  
+  height: 420px;
+  overflow: hidden;
   border-radius: 3px;
 }
 .run_card:hover {
