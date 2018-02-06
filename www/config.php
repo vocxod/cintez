@@ -1,15 +1,15 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://vkartel.dev/');
+define('HTTP_SERVER', 'http://vkartel.ru/');
 
 // HTTPS
-define('HTTPS_SERVER', 'http://vkartel.dev/');
+define('HTTPS_SERVER', 'https://vkartel.ru/');
 
 // DIR
-define('DIR_APPLICATION', '/var/www/html/vkartel/www/catalog/');
-define('DIR_SYSTEM', '/var/www/html/vkartel/www/system/');
-define('DIR_IMAGE', '/var/www/html/vkartel/www/image/');
-define('DIR_STORAGE', '/var/www/html/vkartel/storage/');
+define('DIR_APPLICATION', '/var/www/html/vkartel.ru/opencart/www/catalog/');
+define('DIR_SYSTEM', '/var/www/html/vkartel.ru/opencart/www/system/');
+define('DIR_IMAGE', '/var/www/html/vkartel.ru/opencart/www/image/');
+define('DIR_STORAGE', '/var/www/html/vkartel.ru/opencart/storage/');
 define('DIR_LANGUAGE', DIR_APPLICATION . 'language/');
 define('DIR_TEMPLATE', DIR_APPLICATION . 'view/theme/');
 define('DIR_CONFIG', DIR_SYSTEM . 'config/');
