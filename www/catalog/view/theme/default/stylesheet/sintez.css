@@ -287,6 +287,8 @@ a.run_link:hover {
   padding-top: 10px;
   font-weight: bold;
   font-size: 16px;
+  height: 72px;
+  overflow: hidden;
 }
 .news_anonce p.news_anonce_date {
   font-size: 16px;
@@ -298,6 +300,11 @@ a.run_link:hover {
 .news_anonce p{
   margin-left: 20px;
   outline: 0px solid green;
+}
+.foreground_text {
+  height: 96px;
+  overflow: hidden;
+  outline:0px solid red;
 }
 .shownews {
   border-radius: 0;
