@@ -22,6 +22,56 @@
       width: 14px;
       height: 14px;
     }
+/*
+   .imagediv {
+      height:560px;
+      overflow:hidden;"      
+    }
+*/
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+   .imagediv {
+      height:560px;
+      overflow:hidden;"      
+    }
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+   .imagediv {
+      height:560px;
+      overflow:hidden;"      
+    }
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+   .imagediv {
+      height:460px;
+      overflow:hidden;"      
+    }
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+   .imagediv {
+      height:360px;
+      overflow:hidden;"      
+    }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+   .imagediv {
+      height:160px;
+      overflow:hidden;"      
+    }
+    .carousel-indicators {
+      display: none;
+    }
+}
+ 
   </style>
   
   <section class="slide-wrapper">
@@ -42,7 +92,12 @@
               {% for banner in banners %}
 
                 {#% if loop.index==1 %#}
-                  <div class="item item{{loop.index}} {% if loop.index==1%}active{% endif %}" style="height:560px;overflow:hidden;">
+                  <div class="imagediv item item{{loop.index}} 
+                  {% if loop.index==1%}active{% endif %}" 
+                  
+                  
+                  
+                  >
                       <div class="fill" style="background-color:#fff;">
                           <div class="inner-content">
                               <div class="carousel-img">
