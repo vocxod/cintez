@@ -71,6 +71,39 @@
     color: rgb(54,154,56);
   }
 
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 480px) {
+  #row-menu-2{
+    display: none;
+  }
+  .up_menu_span {
+    display: none;
+  }
+  .navbar-logo {
+    background-position: -4px -35px;
+  }
+}
+
 
 </style>
 
@@ -88,7 +121,13 @@
               <li>
                 <a class="up_line {{ item.class }}" href="{{item.href}}"> 
                   <i class="{{item.awesome}}"></i>
-                  &nbsp;{{ item.title }}
+                  
+                  {% if item.awesone != "fa fa-phone" %}
+                    <span class="up_menu_span">&nbsp;{{ item.title }}</span>
+                  {% else %}
+                    <span class="">&nbsp;{{ item.title }}</span>
+                  {% endif %}
+
                 </a>
               </li>
             {% endfor %}
