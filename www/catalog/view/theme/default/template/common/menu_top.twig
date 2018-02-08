@@ -91,16 +91,27 @@
 
 }
 
+@media (min-width: 480px) and (max-width: 766px) {
+  .row-menu-2{
+    display: none;
+  }
+  .navbar-logo {
+    background-size: 90%;
+    background-position: 17px -35px;
+  }
+}
+
 /* Portrait phones and smaller */
-@media (max-width: 480px) {
-  #row-menu-2{
+@media (max-width: 479px) {
+  .row-menu-2{
     display: none;
   }
   .up_menu_span {
     display: none;
   }
   .navbar-logo {
-    background-position: -4px -35px;
+    background-position: 4px -25px;
+    background-size: 90%;
   }
 }
 
@@ -122,10 +133,10 @@
                 <a class="up_line {{ item.class }}" href="{{item.href}}"> 
                   <i class="{{item.awesome}}"></i>
                   
-                  {% if item.awesone != "fa fa-phone" %}
+                  {% if item.tel == 0 %}
                     <span class="up_menu_span">&nbsp;{{ item.title }}</span>
                   {% else %}
-                    <span class="">&nbsp;{{ item.title }}</span>
+                    <span class="block-left">&nbsp;{{ item.title }}</span>
                   {% endif %}
 
                 </a>
@@ -137,7 +148,7 @@
 
       <nav id="id2" class="navbar navbar-inverse navbar-static-top navbar-lower" >
         {#<div class="container-fluid">#}
-          <nav id="row-menu-2" class="navbar navbar-default">
+          <nav id="row-menu-2" class="navbar navbar-default row-menu-2  ">
               <div class="navbar-header">
                 <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
                   <span class="sr-only">Toggle navigation</span>
