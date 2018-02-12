@@ -32,12 +32,6 @@
   </div>
 </div>
 
-{# ФИЛЬТР FILTER #}
-{#
-<div id="sidebar_13" class="list-group category-list">
-</div>
-#}
-
 
 <script type="text/javascript">
 $(document).ready(function(){
@@ -45,12 +39,6 @@ $(document).ready(function(){
   $('#id_10').collapse({
     toggle: false
   })
-
-/*
-   $('#id_13 a').click(function(e){
-       e.preventDefault();
-   });
-*/
 
 
   $('#id_10 a').click(function(e){
@@ -64,38 +52,6 @@ $(document).ready(function(){
     }
     e.preventDefault();
   }); 
-
-
-
-// пробуем раскрывать/закрывать по наведению мышой
-// надо "послать" клик после прихода/ухода мышы
-/*
-  $('#id_10 a')
-  .mouseenter(function(e){
-    sData = e.currentTarget.lastElementChild;
-    if( sData.className == "fa fa-chevron-down  pull-right"){
-        sData.className =  "fa fa-chevron-right pull-right";
-    } else {
-      if( sData.className == "fa fa-chevron-right pull-right" ){
-          sData.className =  "fa fa-chevron-down  pull-right";
-      }
-    }
-    //$(this).parent().click();
-    e.preventDefault();
-  })
-  .mouseleave( function(e){
-    sData = e.currentTarget.lastElementChild;
-    if( sData.className == "fa fa-chevron-down  pull-right"){
-      sData.className    = "fa fa-chevron-right pull-right";
-    } else {
-      if( sData.className == "fa fa-chevron-right pull-right" ){
-        sData.className    = "fa fa-chevron-down  pull-right";
-      }
-    }
-    //$(this).parent().click();
-    e.preventDefault();
-  }); 
-*/
 
 });
 </script>
