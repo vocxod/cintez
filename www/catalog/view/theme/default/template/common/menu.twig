@@ -1,5 +1,5 @@
-{#{ dump(categories) }#}
 {% if categories %}
+    {% if mobile == 1 %}
     <div class="container">
       <nav id="menu" class="navbar">
         <div class="navbar-header"><span id="category" class="visible-xs">{{ text_category }}</span>
@@ -28,6 +28,13 @@
         </div>
       </nav>
     </div>
+    {% elseif mobile == -1 %}
+        {#
+        <div class="container">
+
+        </div>
+        #}
+    {% endif %}
 {% endif %} 
 
 
