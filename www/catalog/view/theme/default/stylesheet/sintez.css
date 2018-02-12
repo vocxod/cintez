@@ -1408,6 +1408,7 @@ p {
   outline: 0px dashed blue;
   overflow: hidden;
   margin-bottom: 27px;
+  padding-left: 6px;
 }
 .anonce-buttons {
   outline: 0px dashed green;
