@@ -292,7 +292,7 @@ a.run_link:hover {
 }
 .news_anonce p.news_anonce_date {
   font-size: 16px;
-  width:64px;
+  width:80px;
   height: 20px;
   overflow: hidden;
   outline: 0px solid green;
@@ -2773,6 +2773,10 @@ left:15px;
 /* пищев пром */
 /* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/
+
+
+/* самый топ меню */
+
 #verytop.container{
   background-color: rgb(54,159,56);
 }
