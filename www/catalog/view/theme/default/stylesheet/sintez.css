@@ -2774,6 +2774,16 @@ left:15px;
 /* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/
 
+#menu.navbar {
+  outline: 1px dashed red;
+  margin-bottom: 0px;
+  margin-top: 0px;
+  height: 30px;
+  min-height: 30px;
+  padding-top: 0px;
+  padding-bottom: 0px;
+}
+
 /* mobile menu */
 .see-all {
   color: #333333;
