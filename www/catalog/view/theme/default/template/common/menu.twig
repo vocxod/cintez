@@ -3,13 +3,16 @@
     <div id="verytop" class="container">
 
       <nav id="menu" class="navbar">
-          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
-            <i class="fa fa-map"></i>
-          </button>
 
-          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+          <button type="button" class="btn btn-navbar navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
             <i class="fa fa-bars"></i>
           </button>
+
+          <button type="button" class="btn btn-navbar navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+            <i class="fa fa-map-marker"></i>
+          </button>
+
+
         </div>
 
         <div class="collapse navbar-collapse navbar-ex2-collapse">
@@ -34,8 +37,12 @@
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
           
-          <ul class="nav navbar-nav">
-          
+          <ul id="ul-category" class="nav navbar-nav">
+            
+            <li style="text-align:center; font-weight:bold; font-size:16px; background: #FEFAEA;">
+Каталог нашей продукции
+            </li>
+
             {% for category in categories %}
             
                 {% if category.children %}
