@@ -2773,9 +2773,11 @@ left:15px;
 /* пищев пром */
 /* rgb(54,154,56) */
 /************ боковые отступы для уровней (финиш)**************/
-
+#verytop.container{
+  background-color: rgb(54,159,56);
+}
 #menu.navbar {
-  outline: 1px dashed red;
+  outline: 0px dashed red;
   margin-bottom: 0px;
   margin-top: 0px;
   height: 30px;

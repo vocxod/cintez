@@ -1,8 +1,35 @@
 {% if categories %}
     {% if mobile == 1 %}
-    <div class="container">
+    <div id="verytop" class="container">
+
       <nav id="menu" class="navbar">
-          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse"><i class="fa fa-bars"></i></button>
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+            <i class="fa fa-map"></i>
+          </button>
+
+          <button type="button" class="btn btn-navbar navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Санкт-Петербург</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Новосибирск</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Москва</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Курск</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ростов-на-Дону</a>
+          </li>
+        </ul>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
