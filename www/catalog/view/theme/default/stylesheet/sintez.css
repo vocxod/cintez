@@ -2827,3 +2827,10 @@ left:15px;
 
 }
 
+/* обертка на форму поиска */
+#search-wrap {
+  float:right; 
+  width:150px !important; 
+  height:30px !important; 
+  overflow: hidden !important;
+}
