@@ -2839,6 +2839,7 @@ left:15px;
   padding: 0 !important;
   margin: 0 !important;
   background: rgb(54,154,56) !important;
+  border: none !important;
 }
 
 .gsc-search-box.gsc-search-box-tools {
@@ -2850,7 +2851,19 @@ table.gsc-search-box {
 }
 
 .gsc-search-button.gsc-search-button-v2 {
-  width: 30px !important;
-  outline: 1px dashed red;
+  width: 66px !important; */
+  outline: 0px dashed red;
   background: rgb(54,154,56) !important;
+  border: none !important;
+}
+
+.gsc-input {
+  outline: 0px solid blue !important;
+  background: none !important;
+  font-size: 10px;
+  color: #111;
+}
+
+.gsc-input-box {
+  margin-top: 2px !important;
 }
