@@ -2834,3 +2834,23 @@ left:15px;
   height:30px !important; 
   overflow: hidden !important;
 }
+
+.gsc-control-cse.gsc-control-cse-ru {
+  padding: 0 !important;
+  margin: 0 !important;
+  background: rgb(54,154,56) !important;
+}
+
+.gsc-search-box.gsc-search-box-tools {
+  padding: 0 !important;
+  margin: 0 !important;
+}
+table.gsc-search-box {
+  padding: 0 !important;
+}
+
+.gsc-search-button.gsc-search-button-v2 {
+  width: 30px !important;
+  outline: 1px dashed red;
+  background: rgb(54,154,56) !important;
+}
