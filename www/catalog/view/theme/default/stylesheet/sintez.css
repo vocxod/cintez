@@ -2848,6 +2848,8 @@ left:15px;
 }
 table.gsc-search-box {
   padding: 0 !important;
+  background: #fff;
+  margin-top: 1px !important;
 }
 
 .gsc-search-button {
@@ -2855,6 +2857,14 @@ table.gsc-search-box {
   background: #fff; 
 }
 .gsc-search-button.gsc-search-button-v2 {
+  outline: 0px dashed red;
+  background-color: #fff;
+  background-image: url('/image/search-button.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  border: none !important;
+}
+.gsc-search-button.gsc-search-button-v2:hover {
   outline: 0px dashed red;
   background-color: #fff;
   background-image: url('/image/search-button.png');
@@ -2876,8 +2886,8 @@ table.gsc-search-box {
 }
 
 .gsib_a, .gsib_b {
-    padding: 0;
-    vertical-align: top;
+    padding: 0 !important;
+    vertical-align: top !important;
 }
 
 
