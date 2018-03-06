@@ -2850,10 +2850,16 @@ table.gsc-search-box {
   padding: 0 !important;
 }
 
+.gsc-search-button {
+  width: 40px !important; 
+  background: #fff; 
+}
 .gsc-search-button.gsc-search-button-v2 {
-  width: 66px !important; */
   outline: 0px dashed red;
-  background: rgb(54,154,56) !important;
+  background-color: #fff;
+  background-image: url('/image/search-button.png');
+  background-repeat: no-repeat;
+  background-position: center;
   border: none !important;
 }
 
@@ -2866,4 +2872,12 @@ table.gsc-search-box {
 
 .gsc-input-box {
   margin-top: 2px !important;
+  border: none !important;
 }
+
+.gsib_a, .gsib_b {
+    padding: 0;
+    vertical-align: top;
+}
+
+
