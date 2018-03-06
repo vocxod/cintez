@@ -16,70 +16,83 @@
 		<!-- Step 1 -->
 		<div class="calcstep step1">
 			<h2>1. Выберите тип объекта, подлежащего обеззараживанию:</h2>
-			<div class="typeGroup">
-				<p>
-					<input type="radio" name="objType" id="ot_surface" value="0" >
-					<label for="ot_surface">Поверхности</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_equipment" value="1">
-					<label for="ot_equipment">Сантехническое оборудование</label>
-				</p>
-				<div class="v_shift50"></div>
-				<p>
-					<input type="radio" name="objType" id="ot_disinfection_imn" value="2">
-					<label for="ot_disinfection_imn">Дезинфекция ИМН</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_pso_imn" value="3">
-					<label for="ot_pso_imn">ПСО ИМН</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_dis_pso_imn" value="4">
-					<label for="ot_dis_pso_imn">Дезинфекция + ПСО ИМН</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_dvu" value="5">
-					<label for="ot_dvu">ДВУ ИМН</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_sterilization" value="6">
-					<label for="ot_sterilization">Стерилизация ИМН</label>
-				</p>
-				<div class="v_shift50"></div>
-				<p>
-					<input type="radio" name="objType" id="ot_lab_utensil" value="7">
-					<label for="ot_lab_utensil">Лабораторная посуда</label>
-				</p>
-				<div class="v_shift50"></div>
+			<div class="typeGroup col-lg-12">
+				<div class="col-lg-6">
+					<p>
+						<input type="radio" name="objType" id="ot_surface" value="0" >
+						<label for="ot_surface">Поверхности</label>
+					</p>
+					<p>
+						<input type="radio" name="objType" id="ot_equipment" value="1">
+						<label for="ot_equipment">Сантехническое оборудование</label>
+					</p>
+					<div class="v_shift50"></div>
+					
+					<p>
+						<input type="radio" name="objType" id="ot_disinfection_imn" value="2">
+						<label for="ot_disinfection_imn">Дезинфекция ИМН</label>
+					</p>
+					<p>
+						<input type="radio" name="objType" id="ot_pso_imn" value="3">
+						<label for="ot_pso_imn">ПСО ИМН</label>
+					</p>
+				</div>
+
+				<div class="col-lg-6">
+					<p>
+						<input type="radio" name="objType" id="ot_dis_pso_imn" value="4">
+						<label for="ot_dis_pso_imn">Дезинфекция + ПСО ИМН</label>
+					</p>
+					
+					<p>
+						<input type="radio" name="objType" id="ot_dvu" value="5">
+						<label for="ot_dvu">ДВУ ИМН</label>
+					</p>
+					<p>
+						<input type="radio" name="objType" id="ot_sterilization" value="6">
+						<label for="ot_sterilization">Стерилизация ИМН</label>
+					</p>
+					<div class="v_shift50"></div>
+					<p>
+						<input type="radio" name="objType" id="ot_lab_utensil" value="7">
+						<label for="ot_lab_utensil">Лабораторная посуда</label>
+					</p>
+					<div class="v_shift50"></div>
+				</div>
 			</div>
-			<div class="typeGroup">
-				<p>
-					<input type="radio" name="objType" id="ot_utensil_feed" value="8">
-					<label for="ot_utensil_feed">Столовая посуда с остатками пищи</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_utensil" value="9">
-					<label for="ot_utensil">Столовая посуда без остатков пищи</label>
-				</p>
-				<div class="v_shift50"></div>
-				<p>
-					<input type="radio" name="objType" id="ot_linen_dirty" value="10">
-					<label for="ot_linen_dirty">Белье загрязненное</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_linen" value="11">
-					<label for="ot_linen">Белье незагрязненное</label>
-				</p>
-				<div class="v_shift50"></div>
-				<p>
-					<input type="radio" name="objType" id="ot_medical_waste" value="12">
-					<label for="ot_medical_waste">Медицинские отходы</label>
-				</p>
-				<p>
-					<input type="radio" name="objType" id="ot_facilities" value="13">
-					<label for="ot_facilities">Уборочный инвентарь</label>
-				</p>
+
+			<div class="typeGroup col-lg-12">
+				<div class="col-lg-6">
+					<p>
+						<input type="radio" name="objType" id="ot_utensil_feed" value="8">
+						<label for="ot_utensil_feed">Столовая посуда с остатками пищи</label>
+					</p>
+					<p>
+						<input type="radio" name="objType" id="ot_utensil" value="9">
+						<label for="ot_utensil">Столовая посуда без остатков пищи</label>
+					</p>
+					<div class="v_shift50"></div>
+					<p>
+						<input type="radio" name="objType" id="ot_linen_dirty" value="10">
+						<label for="ot_linen_dirty">Белье загрязненное</label>
+					</p>
+				</div>
+
+				<div class="col-lg-6">
+					<p>
+						<input type="radio" name="objType" id="ot_linen" value="11">
+						<label for="ot_linen">Белье незагрязненное</label>
+					</p>
+					<div class="v_shift50"></div>
+					<p>
+						<input type="radio" name="objType" id="ot_medical_waste" value="12">
+						<label for="ot_medical_waste">Медицинские отходы</label>
+					</p>
+					<p>
+						<input type="radio" name="objType" id="ot_facilities" value="13">
+						<label for="ot_facilities">Уборочный инвентарь</label>
+					</p>
+				</div>
 			</div>
 		</div>
 		
@@ -91,67 +104,99 @@
 			<label for="objectName"><p class="calc_form_sample">например: процедурный кабинет</p></label>
 		</div>
 		
-		<div class="calcstep step2 ot_1">
+		<div class="calcstep step2 ot_1 col-lg-12">
 			<h2>2. Какое сантехническое оборудование у вас размещенно?</h2>
-			<div class="equipment">
-				<label for="bathCount">ванны, шт. (S=3м<sup>2</sup>)</label>
-				<input type="text" id="bathCount" name="bathCount">
-			</div>
-			<div class="equipment">
-				<label for="sinkCount">раковины, шт. (S=0,5м<sup>2</sup>)</label>
-				<input type="text" id="sinkCount" name="sinkCount">
-			</div>
-			<div class="equipment">
-				<label for="panCount">унитазы, шт. (S=1м<sup>2</sup>)</label>
-				<input type="text" id="panCount" name="panCount">
-			</div>
-			<div class="equipment last_hor">
-				<label for="trayCount">душевые поддоны, шт. (S=0,5м<sup>2</sup>)</label>
-				<input type="text" id="trayCount" name="trayCount">
-			</div>
-			<p id="sSan">Sсантех = 0 м<sup>2</sup></p>
+
+			
+
+				<div class="equipment">
+					<div class="col-lg-6 text-right">
+						<label for="bathCount">ванны, шт. (S=3м<sup>2</sup>)</label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text" id="bathCount" name="bathCount">
+					</div>
+				</div>
+
+				<div class="equipment">
+					<div class="col-lg-6 text-right">
+						<label for="sinkCount">раковины, шт. (S=0,5м<sup>2</sup>)</label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text" id="sinkCount" name="sinkCount">
+					</div>
+				</div>
+				<div class="equipment">
+					<div class="col-lg-6 text-right">
+						<label for="panCount">унитазы, шт. (S=1м<sup>2</sup>)</label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text" id="panCount" name="panCount">
+					</div>
+				</div>
+				<div class="equipment last_hor">
+					<div class="col-lg-6 text-right">
+						<label for="trayCount">душевые поддоны, шт. (S=0,5м<sup>2</sup>)</label>
+					</div>
+					<div class="col-lg-6">
+						<input type="text" id="trayCount" name="trayCount">
+					</div>
+				</div>
+				{#
+				<p id="sSan">Sсантех = 0 м<sup>2</sup></p>
+				#}
 		</div>
 		
-		<div class="calcstep step2 ot_2 ot_3 ot_4 ot_5 ot_6 ot_7 ot_8 ot_9 ot_10 ot_11 ot_12 ot_13">
+		<div class="calcstep col-lg-12">
 			<h2>2. Объем емкости для погружения ИМН</h2>
-			<label for="volumeIMN"><p class="calc_form_label">Объем емкости, л</p></label>
-			<input type="text" id="volumeIMN" name="volumeIMN">
+			<div class="col-lg-6 text-right">
+				<label for="volumeIMN"><p class="calc_form_label">Объем емкости, л</p></label>
+			</div>
+			<div class="col-lg-6">
+				<input type="text" id="volumeIMN" name="volumeIMN">
+			</div>
 		</div>
 		
 		<!-- Step 3 -->
-		<div class="calcstep step3 ot_0">
+		<div class="calcstep step3 col-lg-12">
 			<h2>3. Сколько у Вас таких объектов</h2>
-			<label for="objectCount"><p class="calc_form_label">Количество объектов, шт</p></label>
-			<input type="text" id="objectCount" name="objectCount">
+			<div class="col-lg-6 text-right">
+				<label for="objectCount"><p class="calc_form_label">Количество объектов, шт</p></label>
+			</div>
+			<div class="col-lg-6">
+				<input type="text" id="objectCount" name="objectCount">
+			</div>
 		</div>
 		
-		<div class="calcstep step3 ot_1 ot_7 ot_8 ot_9 ot_10 ot_11 ot_13">
+		<div class="calcstep step3 col-lg-12">
 			<h2>3. Выберите режим обработки</h2>
-			<p>
+			
+			<div class="col-lg-3">
 				<input type="radio" name="regimeTreatment" id="bacteria3" value="0" checked="checked">
 				<label for="bacteria3">бактерии</label>
-			</p>
-			<p>
+			</div>
+			<div class="col-lg-3">
 				<input type="radio" name="regimeTreatment" id="virus3" value="1">
 				<label for="virus3">вирусы</label>
-			</p>
-			<p>
+			</div>
+
+			<div class="col-lg-3">
 				<input type="radio" name="regimeTreatment" id="fungus3" value="2">
 				<label for="fungus3">грибы</label>
-			</p>
-			<p>
+			</div>
+			<div class="col-lg-3">
 				<input type="radio" name="regimeTreatment" id="tuberculosis3" value="3">
 				<label for="tuberculosis3">туберкулез</label>
-			</p>
+			</div>
 		</div>
 		
-		<div class="calcstep step3 ot_2 ot_3 ot_4 ot_5 ot_6 ot_12">
+		<div class="calcstep step3 col-lg-12">
 			<h2>3. Выберите препарат</h2>
 			<div class="cont_step3"></div>
 		</div>
 		
 		<!-- Step 4 -->
-		<div class="calcstep step4 ot_0">
+		<div class="calcstep step4 col-lg-12">
 			<h2>4. Какова площадь объекта?</h2>
 			<label for="objectArea"><p class="calc_form_label">Общая площадь объекта, м<sup>2</sup></p></label>
 			<input type="text" id="objectArea" name="objectArea">
@@ -159,18 +204,18 @@
 			<p id="sObject4">Площадь объектов = 0 м<sup>2</sup></p>
 		</div>
 		
-		<div class="calcstep step4 ot_1 ot_7 ot_8 ot_9 ot_10 ot_11 ot_13">
+		<div class="calcstep step4 col-lg-12">
 			<h2>4. Выберите препарат</h2>
 			<div class="cont_step4"></div>
 		</div>
 		
-		<div class="calcstep step4 ot_2 ot_3 ot_4 ot_5 ot_6 ot_12">
+		<div class="calcstep step4 col-lg-12">
 			<h2>4. Выберите концентрацию/время экспозиции:</h2>
 			<div class="cont_step4"></div>
 		</div>
 		
 		<!-- Step 5 -->
-		<div class="calcstep step5 ot_0">
+		<div class="calcstep step5 col-lg-12">
 			<h2>5. Есть ли у вас мебель или оборудование на объекте?</h2>									
 			<div class="countFurnitures"></div>
 			
@@ -180,12 +225,12 @@
 			<p id="sTotal">Общая площадь = 0 м<sup>2</sup></p>
 		</div>
 		
-		<div class="calcstep step5 ot_1 ot_7 ot_8 ot_9 ot_10 ot_11 ot_13">
+		<div class="calcstep step5 col-lg-12">
 			<h2>5. Выберите концентрацию/время экспозиции:</h2>
 			<div class="cont_step5"></div>
 		</div>
 		
-		<div class="calcstep step5 ot_2 ot_3 ot_4 ot_5 ot_6">
+		<div class="calcstep step5 col-lg-12">
 			<h2>5. Количество обработок</h2>
 			<p>
 				<input type="radio" name="yearRatio5" id="yr_year" value="0" checked>
@@ -199,7 +244,7 @@
 			<input type="text" id="cleanCount5" name="cleanCount5">
 		</div>
 		
-		<div class="calcstep step5 ot_12">
+		<div class="calcstep step5 col-lg-12">
 			<h2>5. Кратность обработки в сутки и количество рабочих дней в месяц</h2>
 			<div class="cleaning">
 				<label for="curCleanCount5">Кратность в сутки, шт.</label>
@@ -213,7 +258,7 @@
 		</div>
 		
 		<!-- Step 6 -->
-		<div class="calcstep step6 ot_0">
+		<div class="calcstep step6 col-lg-12">
 			<h2>6. Выберите вид уборки</h2>
 			<p>
 				<input type="radio" name="typeOfCleaning" id="current" value="0" checked>
@@ -225,7 +270,7 @@
 			</p>
 		</div>
 		
-		<div class="calcstep step6 ot_1">
+		<div class="calcstep step6  col-lg-12">
 			<h2>6. Кратность обработки в сутки и количество рабочих дней в месяц</h2>
 			<div class="cleaning">
 				<label for="curCleanCount6">Кратность в сутки, шт.</label>
@@ -238,7 +283,7 @@
 			<label id="cccMonth6"><p class="calc_form_label"></p></label>
 		</div>
 		
-		<div class="calcstep step6 ot_2 ot_3 ot_4 ot_5 ot_6 ot_12">
+		<div class="calcstep step6 col-lg-12">
 			<h2>6. Расчет для текущего объекта завершен, что дальше?</h2>								
 		</div>
 		
@@ -257,7 +302,7 @@
 		</div>
 		
 		<!-- Step 7 -->
-		<div class="calcstep step7 ot_0 clean0">
+		<div class="calcstep step7 col-lg-12">
 			<h2>7. Выберите режим обработки</h2>
 			<p>
 				<input type="radio" name="regimeTreatment" id="bacteria7" value="0" checked>
@@ -277,7 +322,7 @@
 			</p>
 		</div>
 		
-		<div class="calcstep step7 ot_0 clean1">
+		<div class="calcstep step7 col-lg-12">
 			<h2>7. Выберите профиль учреждения</h2>
 			<p>
 				<input type="radio" name="profile" id="offices" value="0" checked>
@@ -303,19 +348,19 @@
 		</div>
 		
 		<!-- Step 8 -->
-		<div class="calcstep step8 ot_0">
+		<div class="calcstep step8 col-lg-12">
 			<h2>8. Выберите препарат</h2>
 			<div class="cont_step8"></div>
 		</div>
 		
 		<!-- Step 9 -->
-		<div class="calcstep step9 ot_0">
+		<div class="calcstep step9 col-lg-12">
 			<h2>9. Выберите концентрацию/время экспозиции:</h2>	
 			<div class="cont_step9"></div>
 		</div>
 		
 		<!-- Step 10 -->
-		<div class="calcstep step10 ot_0 clean0">
+		<div class="calcstep step10 col-lg-12">
 			<h2>10. Кратность обработки в сутки и количество рабочих дней в месяц</h2>
 			<div class="cleaning">
 				<label for="curCleanCount10">Кратность в сутки, шт.</label>
@@ -328,7 +373,7 @@
 			<label id="cccMonth10"><p class="calc_form_label"></p></label>
 		</div>
 		
-		<div class="calcstep step10 ot_0 clean1">
+		<div class="calcstep step10  col-lg-12">
 			<h2>9. Количество генеральных уборок</h2>	
 			<p>
 				<input type="radio" name="yearRatio10" id="yr_year10" value="0" checked>
@@ -343,16 +388,22 @@
 		</div>
 		
 		<!-- Step 11 -->
-		<div class="calcstep step11 ot_0">
+		<div class="calcstep step11 col-lg-12">
 			<h2>11. Расчет для текущего объекта завершен, что дальше?</h2>								
 		</div>
 		
-		<!-- Step result -->
-		<div class="calcstep stepResult">
-			<h2>В каком виде Вы хотите получить результат?</h2>								
+	</div>
+
+	<div class="calcstep step12 col-lg-12">
+
+		<div class="col-lg-6">
+			<input type="button" class="btn btn-primary btn-block" value="Получить результат на email XLS" name="get_xls"></button>
+		</div>
+		<div class="col-lg-6">
+			<input type="button" class="btn btn-success btn-block" value="Получить результат на email PDF" name="get_pdf"></button>		
 		</div>
 	</div>
-	
+	{#
 	<div class="calc_but_area">
 		<div class="wrap_form">
 			<input type="button" value="Сделать новый расчет с другим дез. средством для введенной площади" class="calc_button white-button marg_but" name="new_remedy" id="new_remedy">
@@ -368,6 +419,7 @@
 			<input type="button" value="Дальше" class="calc_button white-button width150" name="but_next" id="but_next">
 		</div>
 	</div>
+	#}
 </form>
 
 {{ footer }}
