@@ -24,6 +24,8 @@ class ControllerInformationArticlelist extends Controller {
 			$iLimit = 20;
 		}
 
+		$iLimit = 12;
+
 		$iOffset = ( $page - 1 ) * $iLimit;
 
 		/* получить нужные данные для формирования последних новостей из шаблона */

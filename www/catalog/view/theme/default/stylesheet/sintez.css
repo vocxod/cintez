@@ -1401,6 +1401,7 @@ p {
 .img-anonce > img {
   width:100%;
   vertical-align: top !important;
+  padding-left: 0px !important; 
 }
 
 .anonce-description {

@@ -17,7 +17,7 @@
       {% if item.information_id > 0 %}         
           <div class="col-sm-6">
               <div class="row news-anonce" style="height:182px; overflow: hidden; background:rgb(240,244,245); margin-bottom:5px; ">
-                <div class="col-sm-6 img-anonce ">
+                <div class="col-sm-6 img-anonce" style="padding:0px;">
                   {% if item.foreground_image|length > 1 %}
                     <img src="{{ item.foreground_image }}" alt="SpecSyntez News Article" />
                   {% else %}
