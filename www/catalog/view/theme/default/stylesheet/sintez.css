@@ -2850,6 +2850,7 @@ table.gsc-search-box {
   padding: 0 !important;
   background: #fff;
   margin-top: 1px !important;
+  margin-right: 2px !important;
 }
 
 .gsc-search-button {
@@ -2890,4 +2891,6 @@ table.gsc-search-box {
     vertical-align: top !important;
 }
 
-
+.gsc-adBlock,.gsc-adBlockVertical,.gsc-adBlockInvisible {
+  display:none !important;
+}
