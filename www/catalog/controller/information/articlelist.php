@@ -25,6 +25,7 @@ class ControllerInformationArticlelist extends Controller {
 		}
 
 		$iLimit = 12;
+		
 
 		$iOffset = ( $page - 1 ) * $iLimit;
 
