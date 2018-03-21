@@ -2895,3 +2895,11 @@ table.gsc-search-box {
 .gsc-adBlock,.gsc-adBlockVertical,.gsc-adBlockInvisible {
   display:none !important;
 }
+
+a.disabled {
+  /* Make the disabled links grayish*/
+  color: gray !important;
+  /* And disable the pointer events */
+  pointer-events: none !important;
+}
+
