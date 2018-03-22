@@ -2909,7 +2909,7 @@ a.disabled {
 }
 #gsc-i-id1 {
   font-family: 'Cuprum', sans-serif !important;
-  font-size: 12px;
+  font-size: 14px;
   color: #222;
   background: rgb(240, 244, 245) !important;
   border: 0px dashed red;
@@ -2944,4 +2944,7 @@ a.disabled {
   background: red;
   display: none;
   /*outline: 1px solid rgb(54,154,56);*/
+}
+.gsc-search-box {
+  margin-bottom: 0px !important;
 }
