@@ -2915,6 +2915,7 @@ a.disabled {
   border: 0px dashed red;
   padding-bottom: 0px;
   padding-top: 1px;
+  border-bottom: 1px solid #111 !important;
 }
 .gsc-input {
   font-family: 'Cuprum', sans-serif !important;
@@ -2949,5 +2950,5 @@ a.disabled {
   margin-bottom: 0px !important;
 }
 td.gsc-input{
-  border-bottom: 1px solid #111 !important;
+
 }
