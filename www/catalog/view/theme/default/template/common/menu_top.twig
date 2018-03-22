@@ -133,22 +133,6 @@
 
 </style>
 
-{#
-
-<script>
-  (function() {
-    var cx = '005548719113346751107:659k6q-q7jq';
-    var gcse = document.createElement('script');
-    gcse.type = 'text/javascript';
-    gcse.async = true;
-    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-    var s = document.getElementsByTagName('script')[0];
-    s.parentNode.insertBefore(gcse, s);
-  })();
-</script>
-<gcse:search></gcse:search> 
-
-#}
 
 <div class="row" >
   <div class="container show-form" id="search_form">
@@ -170,16 +154,20 @@
 
       <nav id="id1" class="navbar-inverse nav-upper">
         {#<div class="container-fluid">#}
+
+
+
           <script type="text/javascript">
               var iPosition = "700px";
               var toggleSearch = function(){
                 
                 if( $("#upper_line").css("margin-right") == "0px" ){
                   $("#upper_line").animate({ "margin-right":"223px" } );
+                  $("#li-search").animate({ "display":"block" } );
 
                 } else {
                   $("#upper_line").animate({ "margin-right":"0px" } );
-
+                  $("#li-search").animate({ "display":"none" } );
                 }
               } 
           </script>
@@ -204,11 +192,22 @@
                 </a>
               </li>
             {% endfor %}
-            {#
-            <li>
-              <a id="start_search" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+
+            <li id="li-search" >
+              <script>
+                (function() {
+                  var cx = '005548719113346751107:659k6q-q7jq';
+                  var gcse = document.createElement('script');
+                  gcse.type = 'text/javascript';
+                  gcse.async = true;
+                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                  var s = document.getElementsByTagName('script')[0];
+                  s.parentNode.insertBefore(gcse, s);
+                })();
+              </script>
+              <gcse:search></gcse:search>
             </li>
-            #}
+
           </ul>
 
         {#</div>#}
