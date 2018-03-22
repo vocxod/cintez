@@ -2907,3 +2907,32 @@ a.disabled {
   /* display: none; */
   width: 356px;
 }
+#gsc-i-id1 {
+  font-family: 'Cuprum', sans-serif !important;
+  font-size: 12px;
+  color: #222;
+  background: rgb(240, 244, 245) !important;
+  border: 1px dashed red;
+}
+.gsc-input {
+  font-family: 'Cuprum', sans-serif !important;
+  font-size: 12px;
+  color: #222;
+  background: rgb(240, 244, 245) !important;
+}
+.gsc-clear-button {
+  font-family: 'Cuprum', sans-serif !important;
+  font-size: 12px;
+  color: #222;
+  background: rgb(240, 244, 245) !important;  
+}
+.gsc-search-button {
+  font-family: 'Cuprum', sans-serif !important;
+  font-size: 12px;
+  color: #222;
+  background: rgb(240, 244, 245) !important;   
+}
+.gsc-control-cse.gsc-control-cse-ru {
+  background: none !important;
+  border-bottom: 2px solid #111 !important;
+}
