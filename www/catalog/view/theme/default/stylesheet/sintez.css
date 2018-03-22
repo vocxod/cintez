@@ -2904,7 +2904,7 @@ a.disabled {
 }
 
 #li-search {
-  /* display: none; */
+  display: none;
   width: 356px;
 }
 #gsc-i-id1 {
