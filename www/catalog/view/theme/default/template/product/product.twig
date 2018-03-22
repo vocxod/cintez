@@ -606,6 +606,25 @@
             </div>
             {% endif %}
 
+            {% if option.type == 'checkbox' and option.name == 'Ёмкость'  %}
+            <div class="form-group{% if option.required %} required {% endif %}">
+              <label class="control-label">{{ option.name }}</label>
+              <div id="input-option{{ option.product_option_id }}"> {% for option_value in option.product_option_value %}
+                <div style="outline: 0px dashed red; float:left; margin-right:10px; text-align:center;" >
+                  <label>
+                    {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" style="border:none;" /> {% endif %}
+                    <br/>
+                    {{ option_value.name }}
+                    {% if option_value.price %}
+                    ({{ option_value.price_prefix }}{{ option_value.price }})
+                    {% endif %} </label>
+                </div>
+                {% endfor %} </div>
+            </div>
+            <br/>
+            {% endif %}
+
+{#
             {% if option.type == 'checkbox' %}
             <div class="form-group{% if option.required %} required {% endif %}">
               <label class="control-label">{{ option.name }}</label>
@@ -613,6 +632,7 @@
                 <div class="checkbox">
                   <label>
                     <input type="checkbox" name="option[{{ option.product_option_id }}][]" value="{{ option_value.product_option_value_id }}" />
+
                     {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" /> {% endif %}
                     {{ option_value.name }}
                     {% if option_value.price %}
@@ -622,6 +642,7 @@
                 {% endfor %} </div>
             </div>
             {% endif %}
+#}
 
             {% if option.type == 'text' %}
             <div class="form-group{% if option.required %} required {% endif %}">
