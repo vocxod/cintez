@@ -120,10 +120,49 @@
   }
 }
 
+/* search rows */
+.show-form {
+  display: none;
+}
+.search-form-div {
+  margin-top:2px;
+}
+.search-form-div > input {
+  width: 100%
+}
 
 </style>
 
+{#
+
+<script>
+  (function() {
+    var cx = '005548719113346751107:659k6q-q7jq';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search> 
+
+#}
+
+<div class="row" >
+  <div class="container show-form" id="search_form">
+    <div class="col-md-10 search-form-div">
+      <input type="text" id="search_field">
+    </div>
+    <div class="col-md-2 search-form-div">
+      <input style="width: 100%" type="submit" class="btn btn-warning"  id="search_baton" value="Найти">
+    </div>
+  </div>
+</div>
+
 <div class="container" style="margin-bottom:20px;">
+  
   <div class="row" >
     <div id="menu2" class="col-md-12">
 
@@ -131,7 +170,17 @@
 
       <nav id="id1" class="navbar-inverse nav-upper">
         {#<div class="container-fluid">#}
-          <ul class="nav navbar-upper">
+          <script type="text/javascript">
+              var toggleSearch = function(){
+                console.log("search");
+              } 
+          </script>
+          
+          <ul class="nav navbar-upper" style="float:right; padding-left:10px;">
+            <a id="start_search" href="#" onclick="toggleSearch(); return false;"><i class="fa fa-search" aria-hidden="true"></i></a>
+          </ul>
+
+          <ul class="nav navbar-upper" id="upper_line">
 
             {% for item in up_line %}
               <li>
@@ -147,7 +196,13 @@
                 </a>
               </li>
             {% endfor %}
+            {#
+            <li>
+              <a id="start_search" href="#"><i class="fa fa-search" aria-hidden="true"></i></a>
+            </li>
+            #}
           </ul>
+
         {#</div>#}
       </nav>
 
