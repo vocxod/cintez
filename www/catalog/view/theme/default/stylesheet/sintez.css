@@ -2938,7 +2938,7 @@ a.disabled {
 }
 .gsc-control-cse.gsc-control-cse-ru {
   background: none !important;
-  border-bottom: 1px solid #111 !important;
+  border-bottom: 0px solid #111 !important;
 }
 .gsc-clear-button {
   background: red;
@@ -2947,4 +2947,7 @@ a.disabled {
 }
 .gsc-search-box {
   margin-bottom: 0px !important;
+}
+td.gsc-input{
+  border-bottom: 1px solid #111 !important;
 }
