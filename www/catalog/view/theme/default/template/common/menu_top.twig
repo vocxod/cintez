@@ -160,14 +160,13 @@
           <script type="text/javascript">
               var iPosition = "700px";
               var toggleSearch = function(){
-                
                 if( $("#upper_line").css("margin-right") == "0px" ){
-                  $("#upper_line").animate({ "margin-right":"223px" } );
-                  $("#li-search").animate({ "display":"block" } );
+                  $("#upper_line").animate({ "margin-right":"1px" } );
+                  $("#li-search").show(500);
 
                 } else {
                   $("#upper_line").animate({ "margin-right":"0px" } );
-                  $("#li-search").animate({ "display":"none" } );
+                  $("#li-search").hide(500);
                 }
               } 
           </script>
@@ -194,18 +193,18 @@
             {% endfor %}
 
             <li id="li-search" >
-              <script>
-                (function() {
-                  var cx = '005548719113346751107:659k6q-q7jq';
-                  var gcse = document.createElement('script');
-                  gcse.type = 'text/javascript';
-                  gcse.async = true;
-                  gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
-                  var s = document.getElementsByTagName('script')[0];
-                  s.parentNode.insertBefore(gcse, s);
-                })();
-              </script>
-              <gcse:search></gcse:search>
+<script>
+  (function() {
+    var cx = '005548719113346751107:659k6q-q7jq';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
             </li>
 
           </ul>

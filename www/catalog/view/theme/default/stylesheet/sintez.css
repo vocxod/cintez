@@ -2903,3 +2903,7 @@ a.disabled {
   pointer-events: none !important;
 }
 
+#li-search {
+  /* display: none; */
+  width: 356px;
+}
