@@ -171,8 +171,16 @@
       <nav id="id1" class="navbar-inverse nav-upper">
         {#<div class="container-fluid">#}
           <script type="text/javascript">
+              var iPosition = "700px";
               var toggleSearch = function(){
-                console.log("search");
+                
+                if( $("#upper_line").css("margin-right") == "0px" ){
+                  $("#upper_line").animate({ "margin-right":"700px" } );
+                  console.log("700");
+                } else {
+                  $("#upper_line").animate({ "margin-right":"0px" } );
+                  console.log("0");
+                }
               } 
           </script>
           
