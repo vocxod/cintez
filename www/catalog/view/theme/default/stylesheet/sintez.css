@@ -2956,5 +2956,6 @@ td.gsc-input{
 }
 
 .gsc-results-wrapper-overlay.gsc-results-wrapper-visible {
-  width: 960px !important;
+  width: 960px;
+  left: 489px;
 }
