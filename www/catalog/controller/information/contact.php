@@ -6,7 +6,7 @@ class ControllerInformationContact extends Controller {
 		$this->load->language('information/contact');
 
 		$this->document->setTitle($this->language->get('heading_title'));
-
+/*
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
 			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
@@ -26,7 +26,7 @@ class ControllerInformationContact extends Controller {
 
 			$this->response->redirect($this->url->link('information/contact/success'));
 		}
-
+*/
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
@@ -107,30 +107,22 @@ class ControllerInformationContact extends Controller {
 			}
 		}
 
-		if (isset($this->request->post['name'])) {
-			$data['name'] = $this->request->post['name'];
-		} else {
-			$data['name'] = $this->customer->getFirstName();
+/* start SEND MEFFAGE */
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			$sMyName = $this->request->post['myname'];
+			$sMyPhone = $this->request->post['myphone'];
+			$sMyMessage = $this->request->post['mymessage'];
+			$sCaptcha = $this->request->post['g-recaptcha-response'];
+			$data['hint'] = $this->language->get('text_send_success'); // . $sMyName . $sMyPhone . $sMyMessage;
+			$this->load->model('catalog/review');
+		/*
+		INSERT INTO oc_review ( `product_id`, `customer_id`, `author`, `text`, `rating`, `status`, `date_added` ) VALUES (  997,  1, "обратная связь", "сообщение из формы обратной связи ", 5, 0, "2017-11-20 09:00:00" )
+*/
+			$aReviewData = ['customer_id' => 1, 'author' => $sMyName, 'text' => $sMyPhone . " \n<br>" . $sMyMessage, 'name' => $sMyName, 'rating' => 5, 'status' => 0, 'date_added' => date( "Y-m-d H:i:s",  time()) ];
+			$this->model_catalog_review->addReview(997, $aReviewData);
 		}
+		/* end SEND MESSAGE */
 
-		if (isset($this->request->post['email'])) {
-			$data['email'] = $this->request->post['email'];
-		} else {
-			$data['email'] = $this->customer->getEmail();
-		}
-
-		if (isset($this->request->post['enquiry'])) {
-			$data['enquiry'] = $this->request->post['enquiry'];
-		} else {
-			$data['enquiry'] = '';
-		}
-
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
-		} else {
-			$data['captcha'] = '';
-		}
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -149,29 +141,8 @@ class ControllerInformationContact extends Controller {
 		$this->response->setOutput($this->load->view('information/contact', $data));
 	}
 
-	protected function validate() {
-		if ((utf8_strlen($this->request->post['name']) < 3) || (utf8_strlen($this->request->post['name']) > 32)) {
-			$this->error['name'] = $this->language->get('error_name');
-		}
-
-		if (!filter_var($this->request->post['email'], FILTER_VALIDATE_EMAIL)) {
-			$this->error['email'] = $this->language->get('error_email');
-		}
-
-		if ((utf8_strlen($this->request->post['enquiry']) < 10) || (utf8_strlen($this->request->post['enquiry']) > 3000)) {
-			$this->error['enquiry'] = $this->language->get('error_enquiry');
-		}
-
-		// Captcha
-		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('contact', (array)$this->config->get('config_captcha_page'))) {
-			$captcha = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha') . '/validate');
-
-			if ($captcha) {
-				$this->error['captcha'] = $captcha;
-			}
-		}
-
-		return !$this->error;
+	protected function validate() {	
+		return true;
 	}
 
 	public function success() {
