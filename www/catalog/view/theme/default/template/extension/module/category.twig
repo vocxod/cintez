@@ -52,7 +52,10 @@ $(document).ready(function(){
     }
     console.log( e );
     console.log( e.currentTarget.href );
-    console.log( e.currentTarget.className );
+    if( e.currentTarget.className == "start_products"){
+      e.preventDefault();
+      window.location.href = e.currentTarget.href;       
+    }
     e.preventDefault();
   }); 
 
