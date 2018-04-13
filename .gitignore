@@ -1,6 +1,8 @@
 # Config and Htaccess Files
 
 .htaccess
+/www/.htaccess
+
 
 old/
 /old

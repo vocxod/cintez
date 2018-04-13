@@ -1,16 +1,5 @@
-
-
-
-
-# 1.To use URL Alias you need to be running apache with mod_rewrite enabled.
-
-# 2. In your opencart directory rename htaccess.txt to .htaccess.
-
-# For any support issues please visit: http://www.opencart.com
-
 Options +SymLinksIfOwnerMatch
 
-# Prevent Directoy listing
 Options -Indexes
 
 # Prevent Direct Access to files
@@ -33,8 +22,8 @@ RewriteCond %{HTTPS} !=on
 RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 
 # без www на www 
-#RewriteCond %{HTTP_HOST} ^([^www].*)$
-#RewriteRule ^(.*)$ https://www.%1/$1 [L,R=301]
+RewriteCond %{HTTP_HOST} ^([^www].*)$
+RewriteRule ^(.*)$ https://www.%1/$1 [L,R=301]
 
 # с www к без www
 #RewriteCond %{HTTP_HOST} ^www\.(.*)$
