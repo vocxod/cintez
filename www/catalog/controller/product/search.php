@@ -9,6 +9,13 @@ class ControllerProductSearch extends Controller {
 
 		$this->load->model('tool/image');
 
+		if (isset($this->request->get['alaska'])) {
+			$alaska = $this->request->get['alaska'];
+			// var_dump( $alaska ); die();
+		} else {
+			$alaska = '';
+		}
+
 		if (isset($this->request->get['search'])) {
 			$search = $this->request->get['search'];
 		} else {
@@ -64,6 +71,8 @@ class ControllerProductSearch extends Controller {
 		} else {
 			$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit');
 		}
+
+		// $limit=4;
 
 		if (isset($this->request->get['search'])) {
 			$this->document->setTitle($this->language->get('heading_title') .  ' - ' . $this->request->get['search']);
@@ -188,7 +197,13 @@ class ControllerProductSearch extends Controller {
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
-			$results = $this->model_catalog_product->getProducts($filter_data);
+			$results = $this->model_catalog_product->getSearchProducts($filter_data);
+/*
+var_dump( $filter_data ); 
+var_dump( $product_total );
+var_dump( $results );
+die();
+*/
 
 			foreach ($results as $result) {
 				if ($result['image']) {

@@ -172,11 +172,11 @@
                 }
               } 
           </script>
-          
+          {#
           <ul class="nav navbar-upper" style="float:right; padding-left:10px;">
             <a id="start_search" href="#" onclick="toggleSearch(); return false;"><i class="fa fa-search" aria-hidden="true"></i></a>
           </ul>
-
+#}
           <ul class="nav navbar-upper" id="upper_line">
 
             {% for item in up_line %}
@@ -193,7 +193,7 @@
                 </a>
               </li>
             {% endfor %}
-
+{#
             <li id="li-search" >
 <script>
   (function() {
@@ -208,7 +208,7 @@
 </script>
 <gcse:search></gcse:search>
             </li>
-
+#}
           </ul>
 
         {#</div>#}

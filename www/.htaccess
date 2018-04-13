@@ -28,9 +28,15 @@ RewriteEngine On
 RewriteBase /
 RewriteRule ^sitemap.xml$ index.php?route=extension/feed/google_sitemap [L]
 
-RewriteCond %{HTTP_HOST} ^([^www].*)$
-RewriteRule ^(.*)$ http://www.%1/$1 [L,R=301]
+# принудительно на https
+RewriteCond %{HTTPS} !=on
+RewriteRule ^.*$ https://%{SERVER_NAME}%{REQUEST_URI} [R,L]
 
+# без www на www 
+#RewriteCond %{HTTP_HOST} ^([^www].*)$
+#RewriteRule ^(.*)$ https://www.%1/$1 [L,R=301]
+
+# с www к без www
 #RewriteCond %{HTTP_HOST} ^www\.(.*)$
 #RewriteRule ^(.*)$ http://%1/$1 [L,R=301]
 

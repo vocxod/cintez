@@ -1,11 +1,11 @@
 <?php
 // HTTP
-define('HTTP_SERVER', 'http://vkartel.ru/admin/');
-define('HTTP_CATALOG', 'http://vkartel.ru/');
+define('HTTP_SERVER', 'https://vkartel.dev/admin/');
+define('HTTP_CATALOG', 'https://vkartel.dev/');
 
 // HTTPS
-define('HTTPS_SERVER', 'https://vkartel.ru/admin/');
-define('HTTPS_CATALOG', 'https://vkartel.ru/');
+define('HTTPS_SERVER', 'https://vkartel.dev/admin/');
+define('HTTPS_CATALOG', 'https://vkartel.dev/');
 
 // DIR
 define('DIR_APPLICATION', '/var/www/html/vkartel.ru/opencart/upload/admin/');
