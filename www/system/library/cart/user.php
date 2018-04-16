@@ -37,6 +37,7 @@ class User {
 	}
 
 	public function login($username, $password) {
+		//var_dump( $username ); die();
 		$user_query = $this->db->query("SELECT * FROM " . DB_PREFIX . "user WHERE username = '" . $this->db->escape($username) . "' AND status = '1'");
 
 		if ($user_query->num_rows) {
