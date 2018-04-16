@@ -176,7 +176,7 @@ class ControllerProductFiltered extends Controller {
 
 			$product_total = $this->model_catalog_product->getTotalProducts($filter_data);
 
-			$results = $this->model_catalog_product->getProducts($filter_data);
+			$results = $this->model_catalog_product->getProductsForDezcalc($filter_data);
 
 			// var_dump($product_total); var_dump($filter_data); die();
 
