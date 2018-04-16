@@ -625,7 +625,7 @@ class ModelCatalogProduct extends Model {
 						GROUP BY p.product_id 
 							ORDER BY weight DESC,  p.sort_order ASC, LCASE(pd.name) ASC 
 								LIMIT 0,50";
-echo $sql; die();
+		// echo $sql; die();
 
 		$query = $this->db->query($sql);
 
