@@ -155,18 +155,50 @@
                   <input type="text" name="ean" value="{{ ean }}" placeholder="{{ entry_ean }}" id="input-ean" class="form-control"/>
                 </div>
               </div>
+              
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="{{ help_jan }}">{{ entry_jan }}</span></label>
+                <label class="col-sm-2 control-label" for="input-jan"><span data-toggle="tooltip" title="Включить товар в подбор (1=да/0=нет)">{#{ entry_jan }#}Включить в подбор?</span></label>
                 <div class="col-sm-10">
-                  <input type="text" name="jan" value="{{ jan }}" placeholder="{{ entry_jan }}" id="input-jan" class="form-control"/>
+                  <input type="text" name="jan" value="{{ jan }}" placeholder="Включить в подбор (1=да/0=нет)" id="input-jan" class="form-control"/>
                 </div>
               </div>
+
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="{{ help_isbn }}">{{ entry_isbn }}</span></label>
+                <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="Включить в дезкалкулятор (1=да/0=нет)">Включить в ДЕЗКАЛЬКУЛЯТОР?</span></label>
                 <div class="col-sm-10">
-                  <input type="text" name="isbn" value="{{ isbn }}" placeholder="{{ entry_isbn }}" id="input-isbn" class="form-control"/>
+                  <input type="text" name="isbn" value="{{ isbn }}" placeholder="Включить в дезкалкулятор (1=да/0=нет)" id="input-yisbn" class="form-control"/>
                 </div>
               </div>
+
+{#
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Включить в ДЕЗКАЛЬКУЛЯТОР?</label>
+                <div class="col-sm-10">
+                  <label class="radio-inline"> {% if isbn %}
+                      <input type="radio" name="isbn" value="1" checked="checked"/>
+                      {{ text_yes }}
+                    {% else %}
+                      <input type="radio" name="isbn" value="1"/>
+                      {{ text_yes }}
+                    {% endif %} </label>
+                  <label class="radio-inline"> {% if not isbn %}
+                      <input type="radio" name="isbn" value="0" checked="checked"/>
+                      {{ text_no }}
+                    {% else %}
+                      <input type="radio" name="isbn" value="0"/>
+                      {{ text_no }}
+                    {% endif %} </label>
+                </div>
+              </div>
+
+{#
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-isbn"><span data-toggle="tooltip" title="Включить в дезкалкулятор (1=да/0=нет)">Включить в ДЕЗКАЛЬКУЛЯТОР?</span></label>
+                <div class="col-sm-10">
+                  <input type="text" name="isbn" value="{{ isbn }}" placeholder="Включить в дезкалкулятор (1=да/0=нет)" id="input-isbn" class="form-control"/>
+                </div>
+              </div>
+#}
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-mpn"><span data-toggle="tooltip" title="{{ help_mpn }}">{{ entry_mpn }}</span></label>
                 <div class="col-sm-10">

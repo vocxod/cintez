@@ -178,7 +178,7 @@ class ControllerProductFiltered extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
-			//var_dump($results); die();
+			// var_dump($product_total); var_dump($filter_data); die();
 
 			foreach ($results as $result) {
 				if ($result['image']) {
