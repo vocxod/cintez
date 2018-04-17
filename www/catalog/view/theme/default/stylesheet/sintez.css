@@ -204,19 +204,23 @@ a.zone-select {
 }
 
 .run_bottom {
-  height: 80px;
+  /* height: 80px; */
   overflow: hidden;
 }
+
 .run_string {
   margin:0px;
   padding: 0px;
   padding-right: 10px;
+/*
   line-height: 1.4em;
   height: 1.6em;
   overflow: hidden;
   width:90%;
+*/
   outline: 0px dashed red;
 }
+
 .runlineone {
   font-weight: bold;
 }
