@@ -211,7 +211,18 @@ class ControllerProductCategory extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '...',
+// 'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '...',
+
+'description' => utf8_substr(
+	trim(
+		strip_tags(
+			html_entity_decode(
+				$result['description'], ENT_QUOTES, 'UTF-8'
+				)
+			)
+		), 0, 174
+	) . '...',
+
 					'small_description' => $result['small_description'],				
 					'packing' => $this->getOption(10, $result['product_id']),
 					'ingridient' => $this->getOption(11, $result['product_id']),
