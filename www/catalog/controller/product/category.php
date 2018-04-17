@@ -220,7 +220,7 @@ class ControllerProductCategory extends Controller {
 				$result['description'], ENT_QUOTES, 'UTF-8'
 				)
 			)
-		), 0, 174
+		), 0, 142
 	) . '...',
 
 					'small_description' => $result['small_description'],				
