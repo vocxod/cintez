@@ -68,7 +68,7 @@
       <input type="button" value="{{ button_search }}" id="button-search" class="btn btn-success" />
       <h2>{{ text_search }}</h2>
       {% if products %}
-{#
+
       <div class="row">
         <div class="col-md-2 col-sm-6 hidden-xs">
           <div class="btn-group btn-group-sm">
@@ -79,7 +79,7 @@
 
         <div class="col-md-3 col-sm-6">
           <div class="form-group">
-            <a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a>
+            {# <a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a> #}
           </div>
         </div>
         <div class="col-md-4 col-xs-6">
@@ -111,7 +111,7 @@
           </div>
         </div>
       </div>
-#}
+
       <div class="row">
         {% for product in products %}
         <div class="product-layout product-list col-xs-12">
