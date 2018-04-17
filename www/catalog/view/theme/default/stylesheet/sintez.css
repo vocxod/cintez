@@ -222,7 +222,9 @@ a.zone-select {
 }
 
 .runlineone {
-  font-weight: bold;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 0.9em;
 }
 .run_packing {
   margin:0px;
