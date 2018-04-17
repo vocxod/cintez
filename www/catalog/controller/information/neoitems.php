@@ -85,6 +85,7 @@ class ControllerInformationNeoitems extends Controller {
 			// расставим страницу 
 			$pagination = new Pagination();
 			$product_total = $this->model_catalog_information->getNewsCount();
+$product_total = 12;			
 			$pagination->total = $product_total;
 			$pagination->page = $page;
 			$pagination->limit = $iLimit;
