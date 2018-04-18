@@ -9,6 +9,9 @@ class ControllerInformationAbout extends Controller {
 
 		$data['breadcrumbs'] = array();
 
+		$data['svg'] = '<svg width="100" height="100"><circle cx="50" cy="50" r="40" stroke="green" stroke-width="4" fill="yellow" /></svg>';
+		$data['svg'] = file_get_contents('image/catalog/pages/departments.svg');
+
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
 			'href' => $this->url->link('common/home')
