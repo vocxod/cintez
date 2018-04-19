@@ -4,11 +4,33 @@
   </h4>
   <div class="row">
    {% for product in products %}
-    <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12">
-      <div class="product-thumb transition feature-image">
-        <div class="image "><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
-        <div class="caption" style="background:white;">
-          <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+
+    <div class="product-layout col-lg-3 col-md-4 col-sm-6 col-xs-12" style="z-index:100;">
+
+
+
+      <div class="product-thumb transition feature-image" style="z-index:101;">
+        
+        <div class="image " style="z-index:102;">
+        
+          <a href="{{ product.href }}" style="z-index:1000;">
+            <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+          </a>
+        
+        </div>
+        
+        <div class="caption" style="background:white; z-index:100;">
+          
+          <h4 style="z-index:101;">
+          
+            <a href="{{ product.href }}" style="z-index:1001;">
+          
+              {{ product.name }}
+          
+            </a>
+          
+          </h4>
+          
           <p>{{ product.description }}</p>
           {#
           {% if product.rating %}
@@ -46,6 +68,9 @@
         </div>
         #}
       </div>
+
+
+
     </div>
     {% endfor %}
     <div class="col-lg-12  block-center text-center">
