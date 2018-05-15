@@ -44,7 +44,7 @@ class ControllerCommonPanelMenu extends Controller {
 				);
 			}
 		}
-		 
+		// var_dump( $data ); die(); 
 		//
 		// $data['information_description'] =  html_entity_decode( $info_page['description'] );
 		$data['lang'] = $this->language->get('code');

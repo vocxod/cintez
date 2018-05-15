@@ -773,13 +773,18 @@
             <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
             {% if attribute_groups %}
             <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
+            <li><a href="#tab-docs" data-toggle="tab">Документы</a></li>
             {% endif %}
             {% if review_status %}
             <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
             {% endif %}
           </ul>
           <div class="tab-content">
-            <div class="tab-pane active" id="tab-description">{{ description }}</div>
+            
+            <div class="tab-pane active" id="tab-description">
+              {{ description }}
+            </div>
+            
             {% if attribute_groups %}
             <div class="tab-pane" id="tab-specification">
               <table class="table table-bordered">
@@ -801,6 +806,16 @@
               </table>
             </div>
             {% endif %}
+
+            <div class="tab-pane" id="tab-docs">
+              <ul>
+                <li><a fref="#">Инструкция. Скачать</a></li>
+                <li><a fref="#">Свидетельство о государственной регистрации. Скачать</a></li>
+                <li><a fref="#">Декларация о соответствии. Скачать</a></li>
+              </ul>
+            </div>
+
+
             {% if review_status  %}
             <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">
               <form class="form-horizontal" id="form-review">
