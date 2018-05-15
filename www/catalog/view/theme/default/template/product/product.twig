@@ -771,13 +771,20 @@
           {# Описание*Характеристики/Отзывы #}
           <ul class="nav nav-tabs">
             <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
+            
             {% if attribute_groups %}
-            <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
-            <li><a href="#tab-docs" data-toggle="tab">Документы</a></li>
+              <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
             {% endif %}
+
+            {% if docs_status %}
+              <li><a href="#tab-docs" data-toggle="tab">Документы</a></li>
+            {% endif %}
+
+
             {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
+              <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
             {% endif %}
+
           </ul>
           <div class="tab-content">
             
@@ -807,14 +814,25 @@
             </div>
             {% endif %}
 
+            {% if docs_status %}
             <div class="tab-pane" id="tab-docs">
+
               <ul>
-                <li><a fref="#">Инструкция. Скачать</a></li>
-                <li><a fref="#">Свидетельство о государственной регистрации. Скачать</a></li>
-                <li><a fref="#">Декларация о соответствии. Скачать</a></li>
+                {% if docs_instruction %}
+                  <li>Инструкция. <a href="{{ docs_instruction }}">Скачать</a></li>
+                {% endif %}
+
+                {% if docs_declaration %}
+                  <li>Свидетельство о государственной регистрации.<a href="{{ docs_declaration }}">Скачать</a></li>
+                {% endif %}
+
+                {% if docs_svid %}
+                  <li>Декларация о соответствии.<a href="{{ docs_svid }}">Скачать</a></li>
+                {% endif %}
+
               </ul>
             </div>
-
+            {% endif %}
 
             {% if review_status  %}
             <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">

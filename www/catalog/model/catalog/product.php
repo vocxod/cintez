@@ -1,5 +1,30 @@
 <?php
 class ModelCatalogProduct extends Model {
+
+	public function getDocFilename( $s_doc_type, $i_product_id ){
+		// scandir();
+		$s_sql_select = "SELECT * FROM " . DB_PREFIX . "download WHERE `filename` LIKE '" . $i_product_id . "_" . $s_doc_type . "%' ";
+		//echo $s_sql_select; die();
+
+		$s_row = '';
+
+		$query = $this->db->query( $s_sql_select );
+		if ($query->num_rows) {
+			$s_row = $query->row['filename'];
+			
+			$s_cwd = getcwd() . "/../storage/download"; 
+			$a_doc_files = scandir( $s_cwd );
+			// var_dump( $a_doc_files ); die();
+			foreach ($a_doc_files as $s_filename ) {
+				if( $s_row == $s_filename ){
+					$s_row = "download.php?doc=" . $query->row['filename'];
+				}
+			}
+		}
+
+		return $s_row;
+	}
+
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}

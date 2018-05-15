@@ -445,7 +445,21 @@ class ControllerProductProduct extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-//var_dump($data['breadcrumbs']); die();
+
+
+
+			// TAB for documents
+			$data['docs_status'] = 1;
+			// $this->request->get['product_id']
+			// var_dump( $this->request->get['product_id'] );
+			//var_dump( $data ); 
+			//die();
+			$this->model_catalog_product->getDocFilename( 'instruction', $this->request->get['product_id'] );
+			$data['docs_instruction'] = $this->model_catalog_product->getDocFilename( 'instruction', $this->request->get['product_id'] );
+			$data['docs_declaration'] = $this->model_catalog_product->getDocFilename( 'declaration', $this->request->get['product_id'] );;
+			$data['docs_svid']		= $this->model_catalog_product->getDocFilename( 'svid', $this->request->get['product_id'] );;
+
+
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';
@@ -515,6 +529,7 @@ class ControllerProductProduct extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
+
 
 			$this->response->setOutput($this->load->view('error/not_found', $data));
 		}
