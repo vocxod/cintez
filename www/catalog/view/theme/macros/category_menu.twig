@@ -1,6 +1,7 @@
 {% macro menuItem( category_id, cat_path, category_name, category_children, category_css, category_class ) %}
 
-{% if category_children|length > 0 %}
+
+{% if category_children|length > 0 and ( category_id!=1600 and category_id!=1601 and category_id!=1602 and category_id!=1603 and category_id!=1604 and category_id!=1605) %}
 
     <li> 
         <a  {#href="index.php?route=product/category&path={{cat_path}}" #}

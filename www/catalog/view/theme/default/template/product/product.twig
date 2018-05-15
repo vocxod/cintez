@@ -730,6 +730,7 @@
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               
               <br />
+              {#{ dump(product) }#}
               <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#my_order_dialog">{{ button_cart }}</button>
 {#
 <a class="btn btn-info  btn-block" href="index.php?route=information/dezcalc&product_id={{ product_id }}">
