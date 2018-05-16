@@ -78,3 +78,51 @@ Stack trace:
 #10 /var/www/html/vkartel/www/index.php(19): start('catalog')
 #11 {main}
   thrown in /var/www/html/vkartel/www/catalog/model/catalog/product.php on line 11
+[16-May-2018 06:02:43 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Cart\Customer::getCustomerGroupId() in /var/www/html/vkartel/www/catalog/controller/product/product.php:452
+Stack trace:
+#0 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerProductProduct->index()
+#1 /var/www/html/vkartel/www/catalog/controller/startup/router.php(25): Action->execute(Object(Registry))
+#2 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupRouter->index()
+#3 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#4 /var/www/html/vkartel/www/system/engine/router.php(56): Router->execute(Object(Action))
+#5 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#6 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#7 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#8 {main}
+  thrown in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 452
+[16-May-2018 06:27:28 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Cart\Customer::getCustomerGroupId() in /var/www/html/vkartel/www/catalog/controller/product/product.php:452
+Stack trace:
+#0 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerProductProduct->index()
+#1 /var/www/html/vkartel/www/catalog/controller/startup/router.php(25): Action->execute(Object(Registry))
+#2 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupRouter->index()
+#3 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#4 /var/www/html/vkartel/www/system/engine/router.php(56): Router->execute(Object(Action))
+#5 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#6 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#7 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#8 {main}
+  thrown in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 452
+[16-May-2018 06:30:14 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getMethods() on null in /var/www/html/vkartel/www/catalog/controller/product/product.php:452
+Stack trace:
+#0 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerProductProduct->index()
+#1 /var/www/html/vkartel/www/catalog/controller/startup/router.php(25): Action->execute(Object(Registry))
+#2 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupRouter->index()
+#3 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#4 /var/www/html/vkartel/www/system/engine/router.php(56): Router->execute(Object(Action))
+#5 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#6 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#7 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#8 {main}
+  thrown in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 452
+[16-May-2018 06:31:25 UTC] PHP Fatal error:  Uncaught Error: Call to undefined method Cart\Customer::get_class_methods() in /var/www/html/vkartel/www/catalog/controller/product/product.php:452
+Stack trace:
+#0 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerProductProduct->index()
+#1 /var/www/html/vkartel/www/catalog/controller/startup/router.php(25): Action->execute(Object(Registry))
+#2 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupRouter->index()
+#3 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#4 /var/www/html/vkartel/www/system/engine/router.php(56): Router->execute(Object(Action))
+#5 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#6 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#7 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#8 {main}
+  thrown in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 452
