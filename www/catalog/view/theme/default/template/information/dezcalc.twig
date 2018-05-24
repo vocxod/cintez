@@ -1,0 +1,970 @@
+{{ header }}
+
+<div id="information-dezcalculator" class="container">
+  <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+
+    
+    {# content page #}
+  <div class="row">
+    <div class="col-sm-12 ">
+      <h4 class="h2">
+        <span class="green-uline">{{ heading_title }}</span>
+{% if product %} : {{ product.name }} {% endif %}      
+      </h4>
+        <br/>
+      <div class="col-sm-6">
+        <form>
+          <div class="form-group">
+            <label for="categories">Выберите категорию</label>
+            <select id="categories" name="field_id_1" class="form-control">
+              <option value="0">--- Все товары ---</option>
+              {% for category in categories %}
+                <option value="{{category.id}}"
+                {% if category.category_id == category_id %}selected="selected"{% endif %}
+                >{{category.name}}</option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="products">Выберите средство</label>
+            <select id="products" name="field_id_3" class="form-control">
+              <option value="0">--- Выберите ---</option>
+              {% for product in products %}
+                <option value="{{ product.product_id }}" 
+                {% if product.product_id == product_id %}selected="selected"{% endif %}>
+                {# {{ product.product_id}} : {{product_id}} : #}{{ product.name }}
+                </option>
+              {% endfor %}
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="dez_type">Выберите вид обработки</label>
+            <select id="dez_type" name="dez_type" class="form-control">
+              <option value="0" selected="selected">--- Выберите режим ---</option>
+              <option value="100501">Дезинфекция поверхностей способом протирания</option>
+              <option value="100511">Дезинфекция санитарно-технического оборудования способом протирания</option>
+              <option value="100521">Дезинфекция уборочного материала</option>
+              <option value="100531">Дезинфекция поверхностей в помещении и санитарно-технического оборудования способом протирания</option>
+              <option value="100541">Дезинфекция уборочного материала</option>
+              <option value="100551">Обработка кожных покровов при выполнении хирургических операций</option>
+              <option value="100561">Обработка кожных покровов при выполнении перевязок</option>
+              <option value="100571">Обработка кожных покровов при выполнении инъекций</option>
+              <option value="100581">Дезинфекция изделий медицинского назначения</option>
+              <option value="100591">Дезинфекция высокого уровня эндоскопов:</option>
+              <option value="100601">Стерилизация изделий медицинского назначения:</option>
+            </select>
+          </div>
+        </form>        
+      </div>
+      <div class="col-sm-6">
+          <div class="panel panel-default">
+              <div class="panel-heading">
+                  <h3 class="panel-title">
+                    Не знаете, как подобрать продукт? Нажмите кнопку, и мы Вам поможем.
+                  </h3>
+              </div>
+              <div class="panel-body text-center">
+                  <a class="btn btn-success" href="index.php?route=information/productselection">ПОДОБРАТЬ ПРОДУКТ</a>
+              </div>
+          </div>
+      </div>
+    </div>  
+
+  </div>{# ROW #}
+
+  <div class="row">
+    <div class="col-sm-12">
+      {{ filtered_products }}
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12 ">
+      <h3 id="tabname">
+        Дезинфекция поверхностей способом протирания
+        {#{ heading_title_second_form }#}
+      </h3>
+    </div>
+  </div>
+    {# form 1 #}
+  <div class="row">
+      <div class="col-sm-12 ">
+        <div class="col-lg-8">Площадь поверхностей в помещении (S, м2)</div>
+        <div class="col-lg-4"><input type="text"></div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-12 ">
+        <div class="col-lg-4">Режим обработки:</div>
+        <div class="col-lg-4">бактерии</div>
+        <div class="col-lg-4"><input type="checkbox"></div> 
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">вирусы</div>
+        <div class="col-lg-4"><input type="checkbox"></div>   
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">кандида</div>
+        <div class="col-lg-4"><input type="checkbox"></div>
+      </div>
+  </div>
+
+  <div class="row">
+      <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">дерматофитон</div>
+        <div class="col-lg-4"><input type="checkbox"></div>
+      </div>   
+  </div>
+
+  <div class="row">    
+      <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+        <div class="col-lg-4">микобактерия туберкулеза</div>
+        <div class="col-lg-4"><input type="checkbox"></div>
+      </div>   
+  </div>
+
+  <div class="row">    
+      <div class="col-sm-12 ">
+        <div class="col-lg-8">Желаемое время экспозиции (t, мин)</div>
+        <div class="col-lg-4"><input type="text"></div>
+      </div>   
+  </div>
+
+  <div class="row">    
+      <div class="col-sm-12 ">
+        <div class="col-lg-8">Кратность обработки в сутки (KRc):</div>
+        <div class="col-lg-4"><input type="text"></div>    
+      </div>   
+  </div>
+
+  <div class="row">    
+      <div class="col-sm-12 ">
+        <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
+        <div class="col-lg-4"><input type="text"></div>   
+      </div>   
+  </div>
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div>
+
+
+  {# form 2#} 
+  <div class="row">    
+      <div class="col-sm-12 ">
+      <h3>Дезинфекция санитарно-технического оборудования способом протирания</h3>
+      </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4">Количество санитарно-технического оборудования:</div>
+    <div class="col-lg-4">ванны (S= 3м2)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">унитазы и биде (S= 0,5м2)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">раковины (S= 0,5м2)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">душевые поддоны (S= 1м2)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4">Режим обработки:</div>
+    <div class="col-lg-4">бактерии</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+    <div class="col-lg-4">вирусы</div>
+    <div class="col-lg-3"><input type="checkbox"></div>   
+  
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+    <div class="col-lg-4">кандида</div>
+    <div class="col-lg-3"><input type="checkbox"></div>   
+  
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+    <div class="col-lg-4">дерматофитон</div>
+    <div class="col-lg-3"><input type="checkbox"></div>   
+  
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <div class="col-lg-4"></div>
+    <div class="col-lg-4">микобактерия туберкулеза</div>
+    <div class="col-lg-3"><input type="checkbox"></div>   
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Желаемое время экспозиции (t, мин)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <h4>Под заданный параметр не подходит ни одно средство</h4>
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+        <div class="col-lg-8">Кратность обработки в сутки (KRc)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+
+<div class="row">    
+    <div class="col-sm-12 "> 
+      <div class="text-left">
+          <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+      </div>
+    </div>
+</div>
+
+  {# form 2#} 
+  <div class="row">    
+      <div class="col-sm-12 ">
+      <h3>Дезинфекция уборочного материала</h3>
+      </div>
+  </div> 
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Масса одного комплекта уборочного материала (Мум, кг)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div>
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Количество комплектов уборочного материала (Кум)</div>
+    <div class="col-lg-3"><input type="text"></div>
+  </div>
+  </div> 
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4">Режим обработки:</div>
+    <div class="col-lg-4">бактерии</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+   
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">вирусы</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">кандида</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">дерматофитон</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div>
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-4"></div>
+    <div class="col-lg-4">микобактерия туберкулеза</div>
+    <div class="col-lg-3"><input type="checkbox"></div>    
+  </div>
+  </div> 
+
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Желаемое время экспозиции (t, мин)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+<div class="row">    
+  <div class="col-sm-12 ">
+    <h4>Под заданный параметр не подходит ни одно средство</h4>  
+  </div>
+  </div> 
+
+
+  <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Кратность обработки в сутки (KRc)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+    <div class="row">    
+  <div class="col-sm-12 ">
+    <div class="col-lg-8">Количество суток в расчетном периоде (С, сутки)</div>
+    <div class="col-lg-3"><input type="input"></div>    
+  </div>
+  </div> 
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+{# раздел 2 #} 
+Генеральная уборка
+Профиль учреждения:
+- соматические отделения
+- хирургические отделения, процедурные кабинеты
+- противотуберкулезные отделения
+- кожно-венерологические отделения
+- детские учреждения, коммунальные объекты
+
+{# form 4 #}
+Дезинфекция поверхностей в помещении и санитарно-технического оборудования способом протирание
+
+ Площадь поверхностей в помещении (S, м2)
+
+ Количество
+санитарно-технического
+оборудования:
+- ванны (S= 3м2)
+
+
+- унитазы и биде (S= 0,5м2)
+
+
+- раковины (S= 0,5м2)
+
+
+- душевые поддоны (S= 1м2)
+
+ Желаемое время экспозиции (t, мин)
+
+Под заданный параметр не подходит ни одно средство
+ Количество генеральных уборок в месяц (Н)
+
+ Количество месяцев в расчетном периоде (М, месяц)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+{# form 5 #}
+Дезинфекция уборочного материала
+ Масса одного комплекта уборочного материала (Мум, кг)
+
+ Количество комплектов уборочного материала (Кум)
+
+ Желаемое время экспозиции (t, мин)
+
+Под заданный параметр не подходит ни одно средство
+ Количество генеральных уборок в месяц (Н)
+
+ Количество месяцев в расчетном периоде (М, месяц)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+{# Раздел 3 #}
+Обработка кожных покровов
+{# form 6 #}
+Обработка кожных покровов при выполнении хирургических операций 
+
+ Среднее количество операций в месяц (Qом)
+
+ Среднее количество членов операционной бригады (Qоб)
+
+ Среднее количество антисептика на операционное поле (W, мл)
+
+ Количество месяцев в расчетном периоде (М, месяц)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+{# form 7 #}
+Обработка кожных покровов при выполнении перевязок
+
+ Среднее количество операций в месяц (Qом)
+
+ Среднее количество членов перевязочной бригады (Qоб)
+
+ Среднее количество антисептика на обработку послеоперационной
+раны (W, мл)
+
+ Количество месяцев в расчетном периоде (М, месяц)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+{# form 8 #}
+Обработка кожных покровов при выполнении инъекций
+
+ Среднее количество инъекций в сутки (Си)
+
+ Количество суток в расчетном периоде (С)
+
+<select name="" id="">
+  <option value="">Выбрать кожный антисептик</option>
+  <option value=""></option>
+  <option value=""></option>
+</select>
+
+<select name="" id="">
+  <option value="">Выбрать жидкое мыло</option>
+  <option value=""></option>
+  <option value=""></option>
+</select>
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+{# Раздел 4#}
+Обработка изделий медицинского назначения
+
+{# form 9 #}
+Дезинфекция изделий медицинского назначения
+ Объем емкости для погружения ИМН(Vемк, л)
+
+ Количество емкостей для погружения (Nемк) (Nемк)
+
+ Режим обработки:
+- бактерии
+
+
+- вирусы
+
+
+- кандида
+
+
+- дерматофитон
+
+
+- микобактерия туберкулеза
+
+ Желаемое время экспозиции (t, мин)
+
+Под заданный параметр не подходит ни одно средство
+ Количество суток в расчетном периоде (С, сутки)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+{# form 10 #}
+Дезинфекция высокого уровня эндоскопов
+
+ Объем емкости для погружения ИМН(Vемк, л)
+
+ Количество емкостей для погружения (Nемк)
+
+ Желаемое время экспозиции (t, мин)
+
+Под заданный параметр не подходит ни одно средство
+ Количество суток в расчетном периоде (С, сутки)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+{# form 11 #}
+Стерилизация изделий медицинского назначения
+ Объем емкости для погружения ИМН(Vемк, л)
+
+ Количество емкостей для погружения (Nемк)
+
+ Желаемое время экспозиции (t, мин)
+
+Под заданный параметр не подходит ни одно средство
+ Количество суток в расчетном периоде (С, сутки)
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+{# раздел #}
+{# Быстрый подбор по режимам #}
+<h3>Быстрый подбор по режимам</h3>
+<h4>Этап 1. Выберите необходимые режимы применения</h4>
+Режим
+Концентрация (макс)
+Экспозиция (макс)
+ Дезинфекция поверхностей по бактериям (исключая туберкулез)
+
+
+ Дезинфекция поверхностей по вирусным инфекциям
+
+
+ Дезинфекция поверхностей по кандидозу
+
+
+ Дезинфекция поверхностей по дерматофитам
+
+
+ Дезинфекция поверхностей по туберкулезу
+
+
+ Дезинфекция ИМН при бактериальных, вирусных инфекциях и кандидозе
+
+
+ Дезинфекция, совмещенная с ПСО ИМН при бактериальных, вирусных инфекциях и кандидозе
+
+
+ Предстерилизационная очистка ИМН
+
+
+ ДВУ эндоскопов
+
+
+ Стерилизация изделий медицинского назначения
+
+
+ Дезинфекция крови
+
+
+ Дезинфекция мокроты
+
+
+ Дезинфекция фекалий
+
+
+ Гигиеническая обработка рук
+
+
+ Обработка рук хирургов
+
+
+ Обработка операционного поля
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+<h4>Этап 2. Выберите тип действующего вещества</h4>
+Действующее вещество
+Содержится
+Не содержится
+Не важно
+Содержится
+
+Применить
+для всех
+
+Применить
+для всех
+
+Применить
+для всех
+
+От
+До
+ЧАС
+
+
+
+
+
+Хлоркислородные соединения (Анолит)
+
+
+
+
+
+Серебро и его соединения
+
+
+
+
+
+Кислоты
+
+
+
+
+
+Ферменты
+
+
+
+
+
+Производные фенолов
+
+
+
+
+
+Хлорсодержащие (выделяющие активный хлор)
+
+
+
+
+
+Спирты
+
+
+
+
+
+Кислородосодержащие
+
+
+
+
+
+Гуанидин
+
+
+
+
+
+Третичный амин
+
+
+
+
+
+Альдегид
+
+
+
+
+
+Йодосодержащие
+
+
+
+
+
+Поверхностно-активные вещества (ПАВ)
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+<h4>Этап 3. Выберите форму выпуска препарата</h4>
+таблетка
+
+жидкий концентрат
+
+порошок
+
+готовое средство
+
+гранулы
+
+кожный антисептик
+
+жидкое мыло
+
+салфетка антисептическая
+
+двухкомпонентная система
+
+паста
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+<h4>Этап 4. Подберите срок годности</h4>
+Срок годности в фабричной упаковке (год)
+
+Срок годности рабочего раствора (день)
+
+
+  <div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+            <button type="submit" class="btn btn-success">{{ heading_button_calc }}</button>  
+        </div>
+      </div>
+  </div> 
+
+<div class="row">    
+      <div class="col-sm-12 "> 
+        <div class="text-left">
+        <h4>Вспомогательные критерии:</h4>
+НЕЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:<br/>
+
+1. Текущая уборка  неэпидзначимых помещений (бактериальный режим): <br/>
+
+2. Генеральная уборка неэпидзначимых помещений (вирусный режим):<br/>
+ ( 1 раз в месяц):
+
+ЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:<br/>
+
+3. Текущая уборка  эпидзначимых помещений (вирусный режим)<br/>
+
+4. Генеральная уборка эпидзначимых помещений (вирусный режим):<br/>
+ ( 1 раз в месяц):
+5. Дезинфекция уборочного материала (бактериальный режим) для текущих уборок<br/>
+ (вирусный режим) для генеральных уборок в неэпидзначимых и эпидзначимых помещениях:<br/>
+6. Дезинфекция ванн (режим по грибковой инфекции)(после каждого пациента)<br/>
+7.Дезинфекция раковин (бактериальный режим<br/>
+8. Дезинфекция унитазов (бактериальный режим)<br/>
+9. Дезинфекция душевых поддонов (бактериальный режим)<br/>
+10. Дезинфекция, совмещенная с предстерилизационной очисткой ИМН (вирусный режим) <br/>
+
+11.Дезинфекция медотходов х на 2 смены:<br/>
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин<br/>
+Расчет осуществляется по формуле:<br/>
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин= 0,01х 0,25%х4лх30 кг(в день)х21 р.д.=6,3л рабочего раствора в месяц.<br/> Соответственно- 0,3л рабочего раствора в день, 75,6л рабочего раствора в год.<br/><br/>
+12. Расход антисептика:<br/>
+- при взятии крови из вены,<br/>
+- при в/в инъекции<br/>
+- при постановке капельницы<br/>
+- при перевязке<br/>
+13. Обработка операционного поля<br/>
+14. Экспресс обработка <br/>
+15. Предварительная, окончательная очистка+ДВУ:<br/>
+  </div>
+</div>
+      {# @TODO загружаем контент в соответствии с выбранным режимом и способом дезинфекции #}    
+      {# Быстрый подбор по режимам #}
+
+{# Этап 2. Выберите тип действующего вещества #}
+{#
+ЧАС
+Хлоркислородные соединения (Анолит)
+Серебро и его соединения
+Кислоты
+Ферменты
+Производные фенолов
+Хлорсодержащие (выделяющие активный хлор)
+Спирты
+Кислородосодержащие
+Гуанидин
+Третичный амин
+Альдегид
+Йодосодержащие
+Поверхностно-активные вещества (ПАВ)
+#}
+{# Этап 3. Выберите форму выпуска препарата #}
+{#
+таблетка
+жидкий концентрат
+порошок
+готовое средство
+гранулы
+кожный антисептик
+жидкое мыло
+салфетка антисептическая
+двухкомпонентная система
+паста
+#}
+{# Этап 4. Подберите срок годности #}
+{#
+Срок годности в фабричной упаковке (год)
+Срок годности рабочего раствора (день)
+#}
+
+{# Поправки по классу помещения 3#}
+{#
+НЕЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:
+
+1. Текущая уборка  неэпидзначимых помещений (бактериальный режим): 
+
+2. Генеральная уборка неэпидзначимых помещений (вирусный режим):
+ ( 1 раз в месяц):
+
+ЭПИДЗНАЧИМЫЕ ПОМЕЩЕНИЯ:
+
+3. Текущая уборка  эпидзначимых помещений (вирусный режим)
+
+4. Генеральная уборка эпидзначимых помещений (вирусный режим):
+ ( 1 раз в месяц):
+5. Дезинфекция уборочного материала (бактериальный режим) для текущих уборок
+ (вирусный режим) для генеральных уборок в неэпидзначимых и эпидзначимых помещениях:
+6. Дезинфекция ванн (режим по грибковой инфекции)(после каждого пациента)
+7.Дезинфекция раковин (бактериальный режим
+8. Дезинфекция унитазов (бактериальный режим)
+9. Дезинфекция душевых поддонов (бактериальный режим)
+10. Дезинфекция, совмещенная с предстерилизационной очисткой ИМН (вирусный режим) 
+
+11.Дезинфекция медотходов х на 2 смены:
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин
+Расчет осуществляется по формуле:
+Дез.средство- Триосепт-Люкс 0,25%- 60 мин= 0,01х 0,25%х4лх30 кг(в день)х21 р.д.=6,3л рабочего раствора в месяц. Соответственно- 0,3л рабочего раствора в день, 75,6л рабочего раствора в год.
+12. Расход антисептика:
+- при взятии крови из вены,
+- при в/в инъекции
+- при постановке капельницы
+- при перевязке
+13. Обработка операционного поля
+14. Экспресс обработка 
+15. Предварительная, окончательная очистка+ДВУ:
+#}    
+
+
+
+      {# 
+      <div class="list-group">
+        {% for detail in details %}
+        <a onclick="return false;" href="#" class="list-group-item list-group-item-action flex-column align-items-start ">
+          <div class="d-flex w-100 justify-content-between ">
+            <div class="text-left " style="height:40px;float:left;padding-top:10px;margin-right:10px;margin-left:10px;" onclick="alert("Показываем хэлп");">
+                <img class="" src="/image/catalog/pages/dezcalc/question-sign.png" style="width:20px; height:20px;" alt=""/>
+            </div>
+            <div class="outline:1px solid red;">
+              <h4 class="mb-1" style="font-weight:bold;font-size:20px;">{{ detail.title }}
+                  <span style="" class="pull-right">
+                    {% for field in detail.fields %}  
+                        {% if field.type == 'checkbox' %}
+                        <label class="form-check-label" style="font-weight:500;font-size:18px;margin-right:10px;">
+                            <input class="form-check-input" type="checkbox"> {{ field.title }}
+                        </label>
+                        {% endif %}  
+                        {% if field.type == 'input' %}
+                        <label class="form-check-label">
+                            <input class="form-check-input" type="text"> 
+                        </label>
+                        {% endif %}  
+                    {% endfor %}
+                  </span>
+              </h4>
+              <small class="">{{ detail.subtitle }}</small>
+              &nbsp;
+            </div>
+          </div>
+        </a>
+        {% endfor %}
+      </div>
+      #}
+
+
+    {# //content page #}
+
+    {#{ contact_content|raw }#}
+
+
+</div>{# information-contact #}
+
+<script type="text/javascript">
+  $( document ).ready(function() {
+      $('#products').on('change', function(){
+        window.location.href="index.php?route=information/dezcalc&product_id=" + $('#products').val();
+      })
+/*
+      $('#categories').on('change', function(){
+        window.location.href="index.php?route=information/dezcalc&category_id=" + $('#categories').val();
+      })
+*/
+      $("#dez_type option:selected").text();
+      //$("#tabname");
+      $("#dez_type").on('change', function(){
+        //console.log( $("#dez_type option:selected").text() );
+        $("#tabname").text( $("#dez_type option:selected").text() );
+      })
+  })
+</script>
+
+{{ footer }}
+

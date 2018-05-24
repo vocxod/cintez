@@ -57,13 +57,14 @@ class CategoriesToProduct {
 	private function parseOneProduct( $aData ){
 		$iProductId = $aData[0];
 		if( $iProductId > 0 ){
-			echo "iProductId $iProductId ";
+			echo "$iProductId ";
 			// проставим этому товару категории
 			for( $i = 2; $i < count($aData); $i++){
 				
 				echo $aData[ $i ] . " : ";
 
 				if( $aData[$i] > 0 ){
+					
 					$iMyCategory = $this->aCategories[ $i ]; // вес (значимость) товара игнорируется
 					$aCats = $this->getCategoryPath( $iMyCategory );
 					//var_dump( $aCats ); die();
@@ -74,12 +75,14 @@ class CategoriesToProduct {
 						->findOne();
 						if($oObj == null){
 							$oObj = new OcProductToCategory();
-							$oObj->setCategoryId( $iCategoryId );
-							$oObj->setProductId( $iProductId );
-							$oObj->save();
-							echo $aData[$i] . ":";
-						}
+						} 
+						$oObj->setCategoryId( $iCategoryId );
+						$oObj->setProductId( $iProductId );
+						$oObj->setWeight( $aData[ $i ] );
+						$oObj->save();
+						echo ".";
 					}
+					
 				}
 			} 
 			echo "\n";

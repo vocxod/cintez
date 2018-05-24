@@ -1,0 +1,332 @@
+{#
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+#}
+<style type="text/css">
+  .navbar-inverse.nav-upper {
+    height: 50px;
+  }
+  .navbar-inverse.nav-upper ul {
+    float: right;
+    display: table;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li {
+    display: table-cell;
+    font-size: 14px;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li > a {
+    color: #111;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li > a:hover {
+    color: rgb(54,154,56);
+  }
+
+  .navbar-inverse .navbar-nav > li > a:hover, 
+  .navbar-inverse .navbar-nav > li > a:focus {
+      color: rgb(54,154,56);
+      /*font-weight: bold;*/
+      background-color: transparent;
+  }
+
+  @media (min-width: 768px) {
+    .navbar.navbar-lower .navbar-nav {
+      margin-left: 330px;
+    }
+  }
+  .navbar-logo {
+    outline: 0px dashed red;
+    background-image: url('/image/catalog/logo-325x160.png');
+    width: 345px;
+    height: 120px;
+    /*background-size: cover;*/
+    {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
+      width: 359px;
+      background-position: 33px -20px;
+    {% else %}
+      background-position: 19px -20px;
+    {% endif %}
+    {% if route == "information/dealers" or route == "product/category" or route == "product/product" %}
+      background-position: 0px -20px;
+    {% endif %}
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    z-index: 1049;
+  }
+  
+  .navbar-inverse {
+      background-color: rgb(240,244,245);
+      background-image: linear-gradient(to bottom, rgb(240,244,245) 0%, rgb(240,244,245) 100%);
+      color: #111;
+      border: 0px solid green;
+      font-size: 18px;
+  }
+
+  .up_line {
+    color: #111;
+  }
+  .navhover:hover {
+    color: rgb(54,154,56);
+  }
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+@media (min-width: 480px) and (max-width: 766px) {
+  #menu2 > .navbar-logo {
+    left:74px;
+    top:12px;
+    outline: 0px dashed green;
+  }
+  .row-menu-2{
+    display: none;
+  }
+  .navbar-logo {
+    background-size: 90%;
+    background-position: 17px -35px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 479px) {
+  .row-menu-2{
+    display: none;
+  }
+  .up_menu_span {
+    display: none;
+  }
+  .navbar-logo {
+    background-position: 24px -25px;
+    background-size: 90%;
+  }
+}
+
+/* search rows */
+.show-form {
+  display: none;
+}
+.search-form-div {
+  margin-top:2px;
+}
+.search-form-div > input {
+  width: 100%
+}
+
+</style>
+
+
+<div class="row" >
+  <div class="container show-form" id="search_form">
+    <div class="col-md-10 search-form-div">
+      <input type="text" id="search_field">
+    </div>
+    <div class="col-md-2 search-form-div">
+      <input style="width: 100%" type="submit" class="btn btn-warning"  id="search_baton" value="Найти">
+    </div>
+  </div>
+</div>
+
+<div class="container" style="margin-bottom:20px;">
+  
+  <div class="row" >
+    <div id="menu2" class="col-md-12">
+
+      <a class="navbar-logo" href="index.php"></a>
+
+      <nav id="id1" class="navbar-inverse nav-upper">
+        {#<div class="container-fluid">#}
+
+
+
+          <script type="text/javascript">
+              var iPosition = "700px";
+              var toggleSearch = function(){
+                if( $("#upper_line").css("margin-right") == "0px" ){
+                  $("#upper_line").animate({ "margin-right":"1px" } );
+                  $("#gsc-i-id1").attr("placeholder", "");
+                  $(".gsc-search-button").attr("value", "Найти");
+                  $("#li-search").show(500);
+
+                } else {
+                  $("#upper_line").animate({ "margin-right":"0px" } );
+                  $("#li-search").hide(500);
+                }
+              } 
+          </script>
+          {#
+          <ul class="nav navbar-upper" style="float:right; padding-left:10px;">
+            <a id="start_search" href="#" onclick="toggleSearch(); return false;"><i class="fa fa-search" aria-hidden="true"></i></a>
+          </ul>
+#}
+          <ul class="nav navbar-upper" id="upper_line">
+
+            {% for item in up_line %}
+              <li style="padding-right: 6px;" >
+                <a class="up_line {{ item.class }}" href="{{item.href}}"> 
+                  <i class="{{item.awesome}}"></i>
+                  
+                  {% if item.tel == 0 %}
+                    <span class="up_menu_span">&nbsp;{{ item.title }}</span>
+                  {% else %}
+                    <span class="block-left">&nbsp;{{ item.title }}</span>
+                  {% endif %}
+
+                </a>
+              </li>
+            {% endfor %}
+{#
+            <li id="li-search" >
+<script>
+  (function() {
+    var cx = '005548719113346751107:659k6q-q7jq';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>
+            </li>
+#}
+          </ul>
+
+        {#</div>#}
+      </nav>
+
+      <nav id="id2" class="navbar navbar-inverse navbar-static-top navbar-lower" >
+        {#<div class="container-fluid">#}
+          <nav id="row-menu-2" class="navbar navbar-default row-menu-2  ">
+              <div class="navbar-header">
+                <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".js-navbar-collapse">
+                  <span class="sr-only">Toggle navigation</span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                  <span class="icon-bar"></span>
+                </button>
+                {#<a class="navbar-brand" href="#">Главная</a>#}
+              </div>
+
+              <div class="collapse navbar-collapse js-navbar-collapse" style="background:rgb(240,244,245);float:right;margin-left:0px;">
+                <ul id="id22" class="nav navbar-nav">
+                  {% for item in down_line %}
+                      {% if loop.index == 1 %}
+
+                          <li>
+<a data-target="id3" id="product_button" class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
+                          </li>
+
+                      {% else %}
+                          <li>
+                            <a class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
+                          </li>
+                      {% endif %}
+                  {% endfor %}
+                </ul>
+              </div>
+              <!-- /.nav-collapse -->
+            </nav>
+        {#</div>#}
+      </nav>
+
+
+    </div>
+  </div>
+</div>
+
+      {# выплывающее меню #} 
+      {#
+      <nav id="100500id3" class="navbar-inverse nav-upper row " style="float:left; position: absolute; z-index:1060; top:178px;">
+        
+        <div class="row">
+        <div class="col-lg-2 ">&nbsp;</div>
+        <div class="col-lg-8">
+        <ul id="ulid3" class="drapdawn-menu miga-dropdown-menu " >
+
+          <li class="col-sm-3">
+            <ul style="list-style-type:none;float:left;">
+            {% for item in 0..1 %}
+                <li class="dropdown-header" style="list-style-type:none;"><a href="#">{{filters[item].name}}</a></li>
+                {% for yfon in filters[item].filter %}
+                  <li>
+                  <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{ yfon.name}}</a>
+                  </li>  
+                {% endfor %}
+
+            {% endfor %}
+            </ul>
+
+          </li>
+          <li class="col-sm-3">
+            <ul style="list-style-type:none;float:left;">
+            {% for item in 2..3 %}
+                <li class="dropdown-header" style="list-style-type:none;">
+                <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{filters[item].name}}</a></li>
+                {% for yfon in filters[item].filter %}
+                  <li>
+                      <a href="#">{{ yfon.name}}</a>
+                  </li>  
+                {% endfor %}
+
+            {% endfor %}
+            </ul>
+          </li>
+          <li class="col-sm-3">
+            <ul style="list-style-type:none;float:left;">
+            {% set item = 4 %}
+                <li class="dropdown-header" style="list-style-type:none;"><a href="#">{{filters[item].name}}</a></li>
+                {% for yfon in filters[item].filter %}
+                  <li>
+                      <a href="index.php?route=product/category&path=10&filter={{yfon.filter_id}}">{{ yfon.name}}</a>
+                  </li>  
+                {% endfor %}
+            </ul>
+          </li>
+          <li class="col-sm-3">
+            <ul>
+              <li class="dropdown-header"></li>                            
+                  <div>
+                    <div class="item active">
+                        <img src="/image/catalog/slider/popup-menu-image.png" class="img-responsive" alt="product 1">
+                        <h3>{{ text_products }}</h3>
+                        <p>
+                          {{ text_description }}
+                        </p>
+                        <br>
+                        <a href="index.php?route=product/category&path=10" class="btn btn-success square">
+                          {{text_to_catalog}}
+                        </a>       
+                    </div><!-- End Item -->                              
+                  </div><!-- End Carousel Inner -->
+                  <!-- Controls -->
+            </ul>
+          </li>
+        </ul>  
+        </div><!-- col 8 -->
+        <div class="col-lg-2 ">&nbsp;</div>
+
+        </div>
+      </nav>
+      #}
+
+

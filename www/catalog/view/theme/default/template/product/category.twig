@@ -1,0 +1,298 @@
+{{ header }}
+<div id="product-category" class="container">
+  <div class="row">
+    <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
+      {% for breadcrumb in breadcrumbs %}
+      <li>
+        <a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a>
+      </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class="row">
+    {#  боковое меню #}
+{{ column_left }}
+    {#  // боковое меню #}
+
+    <div id="content" class="col-lg-9 col-md-6 col-sm-4 col-xs-12">{{ content_top }}
+
+      {% if products %}
+
+      <div class="row">
+
+        <div class="row"> 
+          <div class="col-md-12">
+            <br>
+            <div class="col-md-3 column-head"></div>
+            <div class="col-md-6"></div>
+            <div class="col-md-3 how-match-items-on-page">Показано {{ products_start }} - {{ products_start + products|length - 1 }} из {{ products_count }}</div>
+          </div>
+        </div>
+
+        {# кнопки сортировки и числа товаров на странице  #}
+        <div class="col-md-2 col-sm-6 hidden-xs hidden-sm hidden-md hidden-lg">{# hidden-sm hidden-md hidden-lg #}
+          <div class="btn-group btn-group-sm">
+            <button type="button" id="list-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_list }}"><i class="fa fa-th-list"></i></button>
+            <button type="button" id="grid-view" class="btn btn-default" data-toggle="tooltip" title="{{ button_grid }}"><i class="fa fa-th"></i></button>
+          </div>
+        </div>
+        
+        <div class="col-md-3 col-sm-6 hidden-sm hidden-md hidden-lg">{# hidden-sm hidden-md hidden-lg #}
+          <div class="form-group"><a href="{{ compare }}" id="compare-total" class="btn btn-link">{{ text_compare }}</a></div>
+        </div>
+        <div class="col-md-4 col-xs-6 hidden-sm hidden-md hidden-lg">{##}
+          <div class="form-group input-group input-group-sm">
+            <label class="input-group-addon" for="input-sort">{{ text_sort }}</label>
+            <select id="input-sort" class="form-control" onchange="location = this.value;">
+              {% for sorts in sorts %}
+              {% if sorts.value == '%s-%s'|format(sort, order) %}
+              <option value="{{ sorts.href }}" selected="selected">{{ sorts.text }}</option>
+              {% else %}
+              <option value="{{ sorts.href }}">{{ sorts.text }}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+        <div class="col-md-3 col-xs-6 hidden-sm hidden-md hidden-lg">{##}
+          <div class="form-group input-group input-group-sm">
+            <label class="input-group-addon" for="input-limit">{{ text_limit }}</label>
+            <select id="input-limit" class="form-control" onchange="location = this.value;">
+              {% for limits in limits %}
+              {% if limits.value == limit %}
+              <option value="{{ limits.href }}" selected="selected">{{ limits.text }}</option>
+              {% else %}
+              <option value="{{ limits.href }}">{{ limits.text }}</option>
+              {% endif %}
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">{% for product in products %}
+        
+        {# скрытый див #}
+        {% set num_column = loop.index0 % 3 %}
+        {% set num_row = loop.index0 // 3 %}
+
+        <div class="big-product product-layout col-lg-4 big-col-{{ num_column }} big-row-{{ num_row }}" id="big_{{ product.product_id }}" data="big_{{ product.product_id }}" >
+            <div style="margin-top:10px;">
+                <div class="image product-tile-image-background">
+                  <a href="{{ product.href }}">
+                    <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                  </a>
+                </div>
+                
+                <div>
+                  <div class="caption">
+                    <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name[0:48] }}</a></h4>
+                    <a class="run_link" href="{{ product.href }}">
+                      
+                      <div class="">
+                        <div class="">
+                          <span class="">{{ product.description }}</span>
+                        </div>  
+                        {#
+                        <div class="">
+                          <span style="font-weight:bold">{{ product_packing }}</span>
+                          <span class="">{{ product.packing }}</span>
+                        </div> 
+                        #}
+                        
+                        {#
+                        <div class="">
+                          <span style="font-weight:bold">{{ product_ingridient }}</span>
+                          <span class="">{{ product.ingridient }}</span>
+                        </div>
+                        #}
+
+                      </div>
+                    </a>
+                    {# цены и кнопки на товаре скрываем #}
+                    {# @TODO - показыватьуголок для спец предложений #}
+                    {% if product.price == 100500 %}                
+                    <p class="price"> {% if not product.special %}
+                      {#{ product.price }#}
+                      {% else %} <span class="price-new">{#{ product.special }#}</span> 
+                        <span class="price-old">{#{ product.price }#}</span> {% endif %}
+                      {% if product.tax %} <span class="price-tax">{#{ text_tax }#} 
+                        {#{ product.tax }#}</span> {% endif %} 
+                    </p>
+                    {% endif %}
+
+                    {% if product.rating == 100500 %} {# подавим несуществующим условием #}
+                    <div class="rating"> {% for i in 1..5 %}
+                      {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                      {% endfor %} </div>
+                    {% endif %} </div>
+                  {# кнопки действий #}
+                  <div class="button-group">
+                  </div>
+                </div>
+
+            </div>
+        </div>
+        {# //скрытый див #}
+        <div class="product-layout product-list col-xs-12" style="margin-top:10px;">
+
+          <div class="product-thumb run_card" id="small-thumb-{{ product.product_id }}" 
+          data="big_{{ product.product_id }}">
+            
+            <div class="image product-tile-image-background">
+              <a href="{{ product.href }}">
+<img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+              </a>
+            </div>
+            
+            <div>
+              <div class="caption">
+                <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+                <a class="run_link" href="{{ product.href }}">
+                  <div class="run_bottom">
+                    <div class="run_string">
+                      <span class="runlineone">{{ product.description }}</span>
+                    </div>  
+                    
+                    {#
+                    <div class="run_packing">
+                      <span style="font-weight:bold">{{ product_packing }}</span>
+                      <span class="run_packing_content">{{ product.packing }}</span>
+                    </div> 
+                    <div class="run_ingridient">
+                      <span style="font-weight:bold">{{ product_ingridient }}</span>
+                      <span class="run_ingridient_content">{{ product.ingridient }}</span>
+                    </div>
+                    #}
+
+                  </div>
+                </a>
+                {# цены и кнопки на товаре скрываем #}
+                {# @TODO - показыватьуголок для спец предложений #}
+                {% if product.price == 100500 %}                
+                <p class="price"> {% if not product.special %}
+                  {#{ product.price }#}
+                  {% else %} <span class="price-new">{#{ product.special }#}</span> 
+                    <span class="price-old">{#{ product.price }#}</span> {% endif %}
+                  {% if product.tax %} <span class="price-tax">{#{ text_tax }#} 
+                    {#{ product.tax }#}</span> {% endif %} 
+                </p>
+                {% endif %}
+
+                {% if product.rating == 100500 %} {# подавим несуществующим условием #}
+                <div class="rating"> {% for i in 1..5 %}
+                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                  {% endfor %} </div>
+                {% endif %} </div>
+              {# кнопки действий #}
+              <div class="button-group">
+              </div>
+            </div>
+          </div>
+        </div>
+        {% endfor %} </div>
+      <div class="row">
+        <div class="col-sm-12 text-center">{{ pagination }}</div>
+        {# <div class="col-sm-6 text-right">{ results }</div>#}
+      </div>
+      {% endif %}
+      {% if not categories and not products %}
+      <p>{{ text_empty }}</p>
+      <div class="buttons">
+        <div class="pull-right"><a href="{{ continue }}" class="btn btn-primary">{{ button_continue }}</a></div>
+      </div>
+      {% endif %}
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+
+<script type="text/javascript"> 
+  $(document).ready(function(){
+    $('.start_products').each( function(index, item) {  
+       $(this).on( "click", function(){
+          //console.log( "to " + $(this).attr('href') + " go " );
+          window.location.href = $(this).attr('href');
+       })
+    })
+  })
+</script>
+
+{#
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('#id_10').collapse({
+    toggle: false
+  })
+
+  $('#id_10 a').click(function(e){
+    sData = e.currentTarget.lastElementChild;
+    if( sData.className == "fa fa-chevron-down pull-right"){
+      sData.className = "fa fa-chevron-right pull-right";
+    } else {
+      if( sData.className == "fa fa-chevron-right pull-right" ){
+        sData.className = "fa fa-chevron-down pull-right";
+      }
+    }
+    console.log( e );
+    console.log( e.currentTarget.href );
+    if( e.currentTarget.className == "start_products"){
+      e.preventDefault();
+      window.location.href = e.currentTarget.href;       
+    }
+    e.preventDefault();
+  }); 
+
+});
+</script>
+#}
+
+{{ footer }} 
+
+{#
+/*
+$(document).ready( function(){
+  var sFullString = '';
+  var sStart1 = '';
+  var sStart2 = '';
+  var sStart3 = '';
+  var iSetIntervalID = 0;
+
+  $(".run_card").mouseenter(function(event) {
+    // найти все внутренние элементы с классами:
+    // runlineone run_packing_content run_ingridient_content
+    var oElement = $(this).find(".runlineone"); 
+    var oElement2 = $(this).find(".run_packing_content");
+    var oElement3 = $(this).find(".run_ingridient_content");
+    sFullString = oElement.text() + " ";
+    sFullString2 = oElement2.text() + " ";
+    sFullString3 = oElement3.text() + " ";
+
+    sStart1 = sFullString; sStart2 = sFullString2; sStart3 = sFullString3;
+
+    function shiftString(iShift){
+        sFullString = sFullString.slice( iShift + 1) + sFullString.slice(0, iShift + 1 );
+        oElement.text( sFullString );
+
+        sFullString2 = sFullString2.slice( iShift ) + sFullString2.slice(0, iShift  );
+        oElement2.text( sFullString2 );
+
+        sFullString3 = sFullString3.slice( iShift + 2 ) + sFullString3.slice(0, iShift + 2);
+        oElement3.text( sFullString3 );
+      }
+      iSetIntervalID = window.setInterval( function(){ 
+        shiftString(1); // по сколько символом сдвигать 
+      }, 200);
+    })
+    .mouseleave(function() {
+        var oElement = $(this).find(".runlineone"); 
+        var oElement2 = $(this).find(".run_packing_content");
+        var oElement3 = $(this).find(".run_ingridient_content");
+        // todo - установить на начальное значение строки
+        oElement.text( sStart1 ); oElement2.text( sStart2 ); oElement3.text( sStart3 );
+        window.clearInterval( iSetIntervalID )
+    });
+  })
+*/
+#}

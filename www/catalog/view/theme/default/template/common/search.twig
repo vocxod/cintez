@@ -1,0 +1,43 @@
+
+<form class="navbar-form navbar-right" role="search" style="margin-top:2px; " action="index.php">
+    <div id="search" class="form-group" style="padding:0px; margin:0px; outline:0px solid blue; margin-right:-13px;">
+      
+      <input type="text" name="search" value="{{ search }}" class="form-control" placeholder="{{ text_search }}" style="padding-top:0px; padding-bottom:0px;border-radius:0px; height:20px;">
+      
+      <input type="submit" class="btn btn-default" value='' style="margin-left: -27px; outline:0px dashed red;
+    height: 18px; width: 20px; border: 0; -webkit-appearance: none; background:url('/image/search-button.png') no-repeat center;">
+      <input type="hidden" name='route' value="product/search" />
+    </div>
+</form>
+
+
+{#
+<div id="search-wrap" style="float:right; width:150px !important; height:30px !important; overflow: hidden !important;">
+<script>
+  (function() {
+    var cx = '005548719113346751107:659k6q-q7jq';
+    var gcse = document.createElement('script');
+    gcse.type = 'text/javascript';
+    gcse.async = true;
+    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(gcse, s);
+  })();
+</script>
+<gcse:search></gcse:search>	
+</div>
+#}
+
+{# original search form #}
+{#
+<form name="search-form" action="index.php" method="GET">
+<div id="search" class="input-group">
+  <input type="text" name="search" value="{{ search }}" placeholder="{{ text_search }}" class="form-control input-lg" />
+  <span class="input-group-btn">
+    <button type="button" class="btn btn-default btn-lg"><i class="fa fa-search"></i></button>
+    <input type="submit" class="btn btn-primary btn-lg"><i class="fa fa-search"></i></button>
+    <input type="hidden" name='route' value="product/search" />
+  </span>
+</div>
+</form>
+#}

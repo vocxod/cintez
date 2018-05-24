@@ -1,0 +1,234 @@
+<div class="container-1">
+  {#
+  <div class="row">
+    <div class="col-lg-12 hidden-xs hidden-sm hidden-md"> 
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 1</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 2</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 3</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 4</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 5</button>
+      </div>
+    </div>
+    <div class="col-lg-12 hidden-xs hidden-sm hidden-md"> 
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 6</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 7</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 8</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 9</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-md"> 
+        <button class="btn btn-primary btn-block">LG 0</button>
+      </div>
+    </div>
+
+    <div class="col-md-12 hidden-xs hidden-sm hidden-lg"> 
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 1</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg">
+        <button class="btn btn-primary btn-block">MD 2</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 3</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 4</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 5</button>
+      </div>
+    </div>
+    <div class="col-md-12 hidden-xs hidden-sm hidden-lg">  
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 6</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 7</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 8</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 9</button>
+      </div>
+      <div class="col-md-1-5 hidden-xs hidden-sm hidden-lg"> 
+        <button class="btn btn-primary btn-block">MD 0</button>
+      </div>
+    </div>
+
+    <div class="col-sm-12 hidden-xs hidden-md hidden-lg">    
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg"> 
+        <button class="btn btn-primary btn-block">SM 1</button>
+        <button class="btn btn-primary btn-block">SM 2</button>
+        <button class="btn btn-primary btn-block">SM 3</button>
+      </div>
+
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg">
+        <button class="btn btn-primary btn-block">SM 4</button>
+        <button class="btn btn-primary btn-block">SM 5</button>
+        <button class="btn btn-primary btn-block">SM 6</button>
+      </div>
+
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg">      
+        <button class="btn btn-primary btn-block">SM 7</button>
+        <button class="btn btn-primary btn-block">SM 8</button>
+        <button class="btn btn-primary btn-block">SM 9</button>
+      </div>
+    </div>     
+    <div style="height:6px; clear:both;"></div> 
+    <div class="col-sm-12 hidden-xs hidden-md hidden-lg">
+
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg">
+        <button class="btn btn-primary btn-block">SM 0</button>
+      </div>
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg">&nbsp;</div>
+      <div class="col-sm-4 hidden-xs hidden-md hidden-lg">&nbsp;</div>
+    </div>
+
+    <div class="col-xs-6 hidden-sm hidden-md hidden-lg"> 
+      <button class="btn btn-primary btn-block">XS 1</button>
+      <button class="btn btn-primary btn-block">XS 2</button>
+      <button class="btn btn-primary btn-block">XS 3</button>
+      <button class="btn btn-primary btn-block">XS 4</button>
+      <button class="btn btn-primary btn-block">XS 5</button>
+    </div>
+
+    <div class="col-xs-6 hidden-sm hidden-md hidden-lg">
+      <button class="btn btn-primary btn-block">XS 6</button>
+      <button class="btn btn-primary btn-block">XS 7</button>
+      <button class="btn btn-primary btn-block">XS 8</button>
+      <button class="btn btn-primary btn-block">XS 9</button>
+      <button class="btn btn-primary btn-block">XS 0</button>
+    </div>
+
+  </div>
+#}
+
+  <div class="row-1">
+    <div class="col-lg-12">
+      {% for item in categories %}
+
+        {% if loop.index == 1 or loop.index == 6 %}
+            <div class="row">
+        {% endif %}
+
+        {% if loop.index < 11 %}
+
+            <div data="{{ item.category_id }}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
+                <div id="menu_{{ item.category_id }}" class="panel_menu" >
+                </div>
+                <a id="panel_link_{{ item.category_id }}" href="{{ item.href }}">{{ item.name }}</a>
+            </div>
+        {% endif %}
+
+        {% if loop.index % 5 == 0 %}
+            </div>
+        {% endif %}
+
+      {% endfor %}
+      </div>
+  </div>
+
+
+{# страница из БД с ИД=11 как главная - замещаем кодированием  
+  <div class="row" id="information">   
+    {{ information_description | raw }}
+  </div> 
+#}
+
+<div style="clear:both;"/>
+
+{% if lang == 'ru' %}
+  <div class="row">
+    <h4 class="h4-info" style="margin-left:14px;padding-top:20px;">
+      <span class="green-uline">Производитель профессиональной химии</span>
+    </h4>
+    <div class="col-md-8">
+
+        <div>
+        <p>Действуя оперативно и гибко, предвидя потребности наших клиентов, мы стараемся максимально удовлетворять их запросы и находить пути решения нестандартных задач.</p><p>Любая серъезная и ответственная задача - будь то дезинфекция ресторана, мойка вагонов, обезжиривание деталей, уборка бассейнов, дезинфекция и стерилизация медицинских инструментов, гигиена рук персонала - успешно выполняется с использованием нашей продукции.</p><p>Главная идея нашей компании - максимально полно удовлетворять потребности наших клиентов в эффективных моющих средствах, в постоянном совершенствовании, внедрении в наши разработки технологий будущего отечественной и мировой химии.</p>
+        </div>
+
+        <div>
+          <div class="col-md-12" style="padding-left:0px; padding-right:0px;">  
+            <div class="col-md-4" style="padding-left:0px;">
+            <h3><span class="spanbold">Мы разрабатываем</span></h3>
+              <p>Специалистами научной лаборатории НПО "СпецСинтез" создан широкий ассортимент современных химических продуктов высокого качества. В основе - собственные инновационные разработки, предназначенные для профессиональной уборки и дезинфекции. </p>
+            </div>
+            <div class="col-md-4">
+              <h3><span class="spanbold">Мы производим </span></h3>
+            <p>Мы гордимся собственной научно - производственной базой, использующей передовые технологии, высококачественное сырье и современное оборудование, позволяющей выпускать качественную, конкурентноспособную продукцию для обеспечения чистоты и дезинфекции. </p>
+              </div>
+            <div class="col-md-4" style="padding-right:0px;">
+              <h3><span class="spanbold">Мы внедряем</span></h3>
+              <p>Продажа промышленной и бытовой химии, средств дезинфекции и индивидуальной защиты - ключевой этап деятельности нашего предприятия. Моющие средства от производителя - это гарантия приобретения качественной продукции по оптимальным ценам. </p>
+            </div>  
+          </div>          
+        </div>
+
+    </div>
+
+    <div class="col-md-4 text-right">&nbsp;
+      <img style="width: 100%;" src="/image/catalog/to-main-page.png">
+    </div>
+
+  </div>
+
+{% endif %}
+
+{% if lang == 'en' %}
+  <div class="row">
+    <h4 class="h4-info" style="margin-left:14px;padding-top:20px;">
+      <span class="green-uline">Professional manufacturer of Cheme</span>
+    </h4>
+    <div class="col-md-8">
+
+        <div>
+        <p>Действуя оперативно и гибко, предвидя потребности наших клиентов, мы стараемся максимально удовлетворять их запросы и находить пути решения нестандартных задач.</p><p>Любая серъезная и ответственная задача - будь то дезинфекция ресторана, мойка вагонов, обезжиривание деталей, уборка бассейнов, дезинфекция и стерилизация медицинских инструментов, гигиена рук персонала - успешно выполняется с использованием нашей продукции.</p><p>Главная идея нашей компании - максимально полно удовлетворять потребности наших клиентов в эффективных моющих средствах, в постоянном совершенствовании, внедрении в наши разработки технологий будущего отечественной и мировой химии.</p>
+        </div>
+
+        <div>
+          <div class="col-md-12" style="padding-left:0px; padding-right:0px;">  
+            <div class="col-md-4" style="padding-left:0px;">
+            <h3><span class="spanbold">Мы разрабатываем</span></h3>
+              <p>Специалистами научной лаборатории НПО "СпецСинтез" создан широкий ассортимент современных химических продуктов высокого качества. В основе - собственные инновационные разработки, предназначенные для профессиональной уборки и дезинфекции. </p>
+            </div>
+            <div class="col-md-4">
+              <h3><span class="spanbold">Мы производим </span></h3>
+            <p>Мы гордимся собственной научно - производственной базой, использующей передовые технологии, высококачественное сырье и современное оборудование, позволяющей выпускать качественную, конкурентноспособную продукцию для обеспечения чистоты и дезинфекции. </p>
+              </div>
+            <div class="col-md-4" style="padding-right:0px;">
+              <h3><span class="spanbold">Мы внедряем</span></h3>
+              <p>Продажа промышленной и бытовой химии, средств дезинфекции и индивидуальной защиты - ключевой этап деятельности нашего предприятия. Моющие средства от производителя - это гарантия приобретения качественной продукции по оптимальным ценам. </p>
+            </div>  
+          </div>          
+        </div>
+
+    </div>
+
+    <div class="col-md-4 text-right">&nbsp;
+      <img style="width: 100%;" src="/image/catalog/to-main-page.png">
+    </div>
+
+  </div>
+
+
+{% endif %}
+
+</div>
+

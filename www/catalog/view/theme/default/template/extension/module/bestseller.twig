@@ -1,0 +1,82 @@
+<div class="hidden-xs hidden-sm hidden-md">
+
+<h3 class="module_title">{{ heading_title }}</h3>
+<div class="row" style="outline:0px dashed red;">
+ {% for product in products %}
+  <div class="product-layout col-lg-3 col-md-3 col-sm-6 col-xs-12" style="outline:0px dashed green;background:white;">
+    
+    <div class="product-thumb transition">
+      
+      <div class="image" style="background:rgb(240,244,245);">
+        <a href="{{ product.href }}">
+          <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+        </a>
+      </div>
+      
+      <div class="caption">
+        <h4 style="text-align:center;"><a style="color:#111;" href="{{ product.href }}">{{ product.name }}</a></h4>
+        <p>{{ product.description }}</p>
+{#
+        {% if product.rating %}
+        <div class="rating">
+          {% for i in 1..5 %}
+          {% if product.rating < i %}
+          <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span>
+          {% else %}
+          <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>
+          {% endif %}
+          {% endfor %}
+        </div>
+        {% endif %}
+#}
+
+{#
+        {% if product.price %}
+        <p class="price">
+          {% if not product.special %}
+          {{ product.price }}
+          {% else %}
+          <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span>
+          {% endif %}
+          {% if product.tax %}
+          <span class="price-tax">{{ text_tax }} {{ product.tax }}</span>
+          {% endif %}
+        </p>
+        {% endif %}
+  #}
+      </div>
+{#
+      <div class="button-group" style="border:none; background:none;">
+
+          <button style="width:35%;color:#111;" type="button">
+            <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+          </button>
+
+          <button style="width:10%; margin-left:10px;" type="button" title="{{ button_wishlist }}">
+            <i class="fa fa-vk"></i>
+          </button>
+
+          <button style="width:10%;" type="button"  title="{{ button_wishlist }}">
+            <i class="fa fa-twitter"></i>
+          </button>
+          
+          <button style="width:10%;" type="button"  title="{{ button_compare }}">
+            <i class="fa fa-facebook"></i>
+          </button>
+      </div>
+#}
+
+      {#  
+      <div class="button-group">
+        <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+        <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+        <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+      </div>
+      #}
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+</div>

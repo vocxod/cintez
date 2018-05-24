@@ -1,0 +1,51 @@
+{#
+Это ПАРТИАЛ а не СТРАНИЦА!!!
+Выводит результат для ПОДБОРА ТОВАРА и ДЕЗКАЛЬКУЛЯТОРа
+#}
+
+<div id="product-category" class="container">
+  <div class="row">
+    <div id="content" class='col-sm-12'>
+      {% if products %}
+        <div class="row">{% for product in products %}
+          <div class="product-layout product-list col-lg-3 col-xs-12" style="margin-top:10px;">
+            <div class="product-thumb">
+              <div class="image product-tile-image-background">
+                <a href="index.php?route=information/dezcalc&product_id={{ product.product_id }}">
+                  <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+                </a>
+              </div>
+              <div>
+                <div class="caption">
+                   <h4 class="product-caption text-center">
+                    
+                    <div style="margin-bottom:8px; font-weight:bold;">
+                    {{ product.name }}
+                    </div>
+
+                    <a class="btn btn-primary btn-block" href="index.php?route=product/product&product_id={{ product.product_id }}">
+                      Подробнее
+                    </a>
+                    {#
+                    <div style="height:8px;"/>
+                    <a class="btn btn-info  btn-block" href="index.php?route=information/dezcalc&product_id={{ product.product_id }}">
+                      В ДезКалькулятор
+                    </a>
+                    #}
+                    
+                  </h4>
+                </div>
+              </div>
+            </div>
+          </div>
+          {% endfor %} 
+        </div>
+      {% else %}
+      <div class="alert alert-info text-center">
+        Товары, отвечающие заданным критериям, не найдены.
+      </div>
+      {% endif %}   
+      {#{ content_bottom }#}</div>
+    {#{ column_right }#}</div>
+</div>
+

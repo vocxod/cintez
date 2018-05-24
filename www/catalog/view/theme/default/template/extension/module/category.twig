@@ -1,0 +1,65 @@
+<div id="sidebar_10" class="list-group category-list">
+  {% if lang == 'ru' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1590px -10px; width:291px; overflow:hidden;">{{ where_use }}
+      </h3>
+  {% endif %}
+
+  {% if lang == 'en' %}
+      <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1630px -10px; width:291px; overflow:hidden;">{{ where_use }}
+      </h3>
+  {% endif %}
+
+
+{% import "macros/category_menu.twig" as catmenu %}
+
+  <div id="id_10" class="sidebar left">
+    <ul id="id_1010" class="list-sidebar bg-defoult">
+
+    {% for category in category_tree %}
+        {{ 
+          catmenu.menuItem( 
+          category.category_id, 
+          category.cat_path, 
+          category.name, 
+          category.children, 
+          "0", 
+          category.class, 
+          category.count ) 
+        }}
+    {% endfor %}  
+
+    </ul>
+  </div>
+</div>
+
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+  $('#id_10').collapse({
+    toggle: false
+  })
+
+
+  $('#id_10 a').click(function(e){
+    sData = e.currentTarget.lastElementChild;
+    if( sData.className == "fa fa-chevron-down pull-right"){
+      sData.className = "fa fa-chevron-right pull-right";
+    } else {
+      if( sData.className == "fa fa-chevron-right pull-right" ){
+        sData.className = "fa fa-chevron-down pull-right";
+      }
+    }
+    console.log( e );
+    console.log( e.currentTarget.href );
+    if( e.currentTarget.className == "start_products"){
+      e.preventDefault();
+      window.location.href = e.currentTarget.href;       
+    }
+    e.preventDefault();
+  }); 
+
+});
+</script>
+
+

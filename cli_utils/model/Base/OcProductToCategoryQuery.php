@@ -21,9 +21,11 @@ use Propel\Runtime\Exception\PropelException;
  *
  * @method     ChildOcProductToCategoryQuery orderByProductId($order = Criteria::ASC) Order by the product_id column
  * @method     ChildOcProductToCategoryQuery orderByCategoryId($order = Criteria::ASC) Order by the category_id column
+ * @method     ChildOcProductToCategoryQuery orderByWeight($order = Criteria::ASC) Order by the weight column
  *
  * @method     ChildOcProductToCategoryQuery groupByProductId() Group by the product_id column
  * @method     ChildOcProductToCategoryQuery groupByCategoryId() Group by the category_id column
+ * @method     ChildOcProductToCategoryQuery groupByWeight() Group by the weight column
  *
  * @method     ChildOcProductToCategoryQuery leftJoin($relation) Adds a LEFT JOIN clause to the query
  * @method     ChildOcProductToCategoryQuery rightJoin($relation) Adds a RIGHT JOIN clause to the query
@@ -37,17 +39,20 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcProductToCategory findOneOrCreate(ConnectionInterface $con = null) Return the first ChildOcProductToCategory matching the query, or a new ChildOcProductToCategory object populated from the query conditions when no match is found
  *
  * @method     ChildOcProductToCategory findOneByProductId(int $product_id) Return the first ChildOcProductToCategory filtered by the product_id column
- * @method     ChildOcProductToCategory findOneByCategoryId(int $category_id) Return the first ChildOcProductToCategory filtered by the category_id column *
+ * @method     ChildOcProductToCategory findOneByCategoryId(int $category_id) Return the first ChildOcProductToCategory filtered by the category_id column
+ * @method     ChildOcProductToCategory findOneByWeight(int $weight) Return the first ChildOcProductToCategory filtered by the weight column *
 
  * @method     ChildOcProductToCategory requirePk($key, ConnectionInterface $con = null) Return the ChildOcProductToCategory by primary key and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductToCategory requireOne(ConnectionInterface $con = null) Return the first ChildOcProductToCategory matching the query and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcProductToCategory requireOneByProductId(int $product_id) Return the first ChildOcProductToCategory filtered by the product_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  * @method     ChildOcProductToCategory requireOneByCategoryId(int $category_id) Return the first ChildOcProductToCategory filtered by the category_id column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
+ * @method     ChildOcProductToCategory requireOneByWeight(int $weight) Return the first ChildOcProductToCategory filtered by the weight column and throws \Propel\Runtime\Exception\EntityNotFoundException when not found
  *
  * @method     ChildOcProductToCategory[]|ObjectCollection find(ConnectionInterface $con = null) Return ChildOcProductToCategory objects based on current ModelCriteria
  * @method     ChildOcProductToCategory[]|ObjectCollection findByProductId(int $product_id) Return ChildOcProductToCategory objects filtered by the product_id column
  * @method     ChildOcProductToCategory[]|ObjectCollection findByCategoryId(int $category_id) Return ChildOcProductToCategory objects filtered by the category_id column
+ * @method     ChildOcProductToCategory[]|ObjectCollection findByWeight(int $weight) Return ChildOcProductToCategory objects filtered by the weight column
  * @method     ChildOcProductToCategory[]|\Propel\Runtime\Util\PropelModelPager paginate($page = 1, $maxPerPage = 10, ConnectionInterface $con = null) Issue a SELECT query based on the current ModelCriteria and uses a page and a maximum number of results per page to compute an offset and a limit
  *
  */
@@ -146,7 +151,7 @@ abstract class OcProductToCategoryQuery extends ModelCriteria
      */
     protected function findPkSimple($key, ConnectionInterface $con)
     {
-        $sql = 'SELECT product_id, category_id FROM oc_product_to_category WHERE product_id = :p0 AND category_id = :p1';
+        $sql = 'SELECT product_id, category_id, weight FROM oc_product_to_category WHERE product_id = :p0 AND category_id = :p1';
         try {
             $stmt = $con->prepare($sql);
             $stmt->bindValue(':p0', $key[0], PDO::PARAM_INT);
@@ -328,6 +333,47 @@ abstract class OcProductToCategoryQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcProductToCategoryTableMap::COL_CATEGORY_ID, $categoryId, $comparison);
+    }
+
+    /**
+     * Filter the query on the weight column
+     *
+     * Example usage:
+     * <code>
+     * $query->filterByWeight(1234); // WHERE weight = 1234
+     * $query->filterByWeight(array(12, 34)); // WHERE weight IN (12, 34)
+     * $query->filterByWeight(array('min' => 12)); // WHERE weight > 12
+     * </code>
+     *
+     * @param     mixed $weight The value to use as filter.
+     *              Use scalar values for equality.
+     *              Use array values for in_array() equivalent.
+     *              Use associative array('min' => $minValue, 'max' => $maxValue) for intervals.
+     * @param     string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return $this|ChildOcProductToCategoryQuery The current query, for fluid interface
+     */
+    public function filterByWeight($weight = null, $comparison = null)
+    {
+        if (is_array($weight)) {
+            $useMinMax = false;
+            if (isset($weight['min'])) {
+                $this->addUsingAlias(OcProductToCategoryTableMap::COL_WEIGHT, $weight['min'], Criteria::GREATER_EQUAL);
+                $useMinMax = true;
+            }
+            if (isset($weight['max'])) {
+                $this->addUsingAlias(OcProductToCategoryTableMap::COL_WEIGHT, $weight['max'], Criteria::LESS_EQUAL);
+                $useMinMax = true;
+            }
+            if ($useMinMax) {
+                return $this;
+            }
+            if (null === $comparison) {
+                $comparison = Criteria::IN;
+            }
+        }
+
+        return $this->addUsingAlias(OcProductToCategoryTableMap::COL_WEIGHT, $weight, $comparison);
     }
 
     /**

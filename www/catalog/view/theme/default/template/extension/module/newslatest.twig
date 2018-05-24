@@ -1,0 +1,142 @@
+<h4 class="h4-info"><span class="green-uline">{{ heading_title }}&nbsp;&nbsp;</span></h4>
+<div class="row">
+  {% for article in top_news %}
+    <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+      {#
+      <div>
+        {{ article.title }}
+      </div>
+      #}
+      <div class="news_anonce">
+          {#<span style="color:#FEFAEA;">{{ article.information_id }}</span>#}
+          {% if article.foreground_image != "" %}
+            <img src="{{ article.foreground_image }}" alt=""/>
+          {% else %}
+            <img src="/image/catalog/logo-325x325.png" alt=""/>
+          {% endif %}
+          <p class="news_anonce_title">{{ article.title }}</p>
+          <p class="news_anonce_date">{{ article.date_added }}</p>
+          <p class="foreground_text">{{ article.foreground_text }}</p>
+      </div>
+      <div class="button-group" style="margin-top:0px; padding-bottom:20px; border:none; background: rgb(240,244,245);">
+        
+        <div class="col-sm-12" style="width:100%; padding-bottom:20px; background: rgb(240,244,245);">    
+          <div class="col-sm-6" style="margin:0; padding:0;">
+          <a href="index.php?route=information/onenews&information_id={{ article.information_id }}">
+            <button class="btn btn-success shownews" style="width:100%;color:#FEFAEA;">ПОДРОБНЕЕ &nbsp;
+              <i class="fa fa-angle-right" aria-hidden="true"></i>
+            </button>
+          </a>
+          </div>
+
+          <div class="col-sm-6 text-right">
+<script type="text/javascript" src="https://vk.com/js/api/share.js?95" charset="windows-1251"></script>
+<!-- Put this script tag to the place, where the Share button will be -->
+<script type="text/javascript"><!--
+document.write(VK.Share.button(false,{type: "link_noicon", text: "<i class='fa fa-vk latestnews' style='font-size:16px;'></i>"}));
+--></script>
+
+          <a href="#"><i class="fa fa-twitter latestnews"></i></a>
+          <a href="#"><i class="fa fa-facebook latestnews"></i></a>
+          </div>
+        </div>
+      </div>
+
+
+{#
+          <a href="index.php?route=information/onenews&information_id={{ article.information_id }}">
+            <button class="" style="width:45%;color:#111;" type="button">
+              <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+            </button>  
+          </a>
+
+          <button style="width:15%; margin-left:15px;" type="button" title="">
+            <i class="fa fa-vk"></i>
+          </button>
+          <button style="width:15%;" type="button"  title="">
+            <i class="fa fa-twitter"></i>
+          </button>         
+          <button style="width:15%;" type="button"  title="">
+            <i class="fa fa-facebook"></i>
+          </button>
+#}
+
+    </div>
+  {% endfor %}
+
+  <div class="row">
+    <div class="col-md-12 center-block text-center" >&nbsp;</div>
+    <div class="col-md-12 center-block text-center" >
+      <a href="index.php?route=information/neoitems">
+        <button class="btn btn-success" style="width:25%;color:#FEFAEA;">ВСЕ НОВОСТИ</button>
+      </a>
+    </div>
+  </div>
+  
+</div>
+
+{#
+
+<h3>{{ heading_title }}</h3>
+<div class="row"> {% for product in products %}
+
+  <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
+    <div class="product-thumb transition" >
+      <div class="image"><a href="{{ product.href }}"><img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" /></a></div>
+      
+      <div class="caption">
+        <h4><a href="{{ product.href }}">{{ product.name }}</a></h4>
+        <p>{{ product.date_added|date("m/d/Y") }}</p>
+        {% if product.show_newslatest %}
+          <p style="min-height:120px; max-height:120px; overflow:hidden;">{{ product.newslatest }}</p>
+        {% endif %}
+
+        {% if product.rating and product.name == '123' %}
+        <div class="rating">{% for i in 1..5 %}
+          {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span> {% endif %}
+          {% endfor %}</div>
+        {% endif %}
+        
+        {% if product.price and product.name == '123' %}
+        <p class="price"> {% if not product.special %}
+          {{ product.price }}
+          {% else %} <span class="price-new">{{ product.special }}</span> <span class="price-old">{{ product.price }}</span> {% endif %}
+          {% if product.tax %} <span class="price-tax">{{ text_tax }} {{ product.tax }}</span> {% endif %} </p>
+        {% endif %}
+
+      </div>
+      
+      {% if product.name == '123' %}
+        <div class="button-group">
+          <button type="button" onclick="cart.add('{{ product.product_id }}');"><i class="fa fa-shopping-cart"></i> <span class="hidden-xs hidden-sm hidden-md">{{ button_cart }}</span></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product.product_id }}');"><i class="fa fa-heart"></i></button>
+          <button type="button" data-toggle="tooltip" title="{{ button_compare }}" onclick="compare.add('{{ product.product_id }}');"><i class="fa fa-exchange"></i></button>
+        </div>
+      {% endif %}
+
+        <div class="button-group" style="border:none; background:none;">
+          <button style="width:50%; color: #ffffff; text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25); background-color:#229ac8; background-color: rgb(85, 131, 203); background-image: linear-gradient(to bottom, #23a1d1, #1f90bb); background-image: linear-gradient(to bottom, rgb(85, 131, 203), rgb(85, 131, 203) ); background-repeat: repeat-x;" type="button">
+            <i class="fa fa-shopping-cart"></i> 
+            <span class="hidden-xs hidden-sm hidden-md" style="color:#FEFAEA">ПОДРОБНЕЕ</span>
+          </button>
+
+          <button style="width:15%; margin-left:15px;" type="button" title="{{ button_wishlist }}">
+            <i class="fa fa-vk"></i>
+          </button>
+
+          <button style="width:15%;" type="button"  title="{{ button_wishlist }}">
+            <i class="fa fa-twitter"></i>
+          </button>
+          
+          <button style="width:15%;" type="button"  title="{{ button_compare }}">
+            <i class="fa fa-facebook"></i>
+          </button>
+
+        </div>
+
+    </div>
+  </div>
+  
+  {% endfor %} </div>
+#}
+

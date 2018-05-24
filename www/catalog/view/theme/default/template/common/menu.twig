@@ -1,0 +1,93 @@
+{% if categories %}
+    {% if mobile == 1 %}
+    <div id="verytop" class="container">
+
+      <nav id="menu" class="navbar">
+
+          <button type="button" class="btn btn-navbar navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <i class="fa fa-bars"></i>
+          </button>
+
+          <button type="button" class="btn btn-navbar navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-ex2-collapse">
+            <i class="fa fa-map-marker"></i>
+          </button>
+
+
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex2-collapse">
+        <ul class="nav navbar-nav">
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Санкт-Петербург</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Новосибирск</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Москва</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Курск</a>
+          </li>
+          <li class="dropdown line-item-one">
+            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ростов-на-Дону</a>
+          </li>
+        </ul>
+        </div>
+
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+          
+          <ul id="ul-category" class="nav navbar-nav">
+            
+            <li style="text-align:center; font-weight:bold; font-size:16px; background: #FEFAEA;">
+Каталог нашей продукции
+            </li>
+
+            {% for category in categories %}
+            
+                {% if category.children %}
+                <li class="dropdown line-item-one">
+                  
+                  <a href="{{ category.href }}" class="dropdown-toggle dropdown-item" data-toggle="dropdown">
+                      {{ category.name }}
+                  </a>
+                  
+                  <div class="dropdown-menu line-item-two">
+                    
+                    <div class="dropdown-inner line-item-tree">
+
+                      {% for children in category.children|batch(category.children|length / category.column|round(1, 'ceil')) %}
+                          
+                          <ul class="list-unstyled">
+
+                            {% for child in children %}
+                                <li>
+                                      <a class="children-item" href="{{ child.href }}">{{ child.name }}</a>
+                                </li>
+                            {% endfor %}
+
+                          </ul>
+
+                      {% endfor %}
+                    </div>
+
+                    <a href="{{ category.href }}" class="see-all">{{ text_all }} {{ category.name }}</a> 
+
+                  </div>
+
+                </li>
+                {% else %}
+                    <li><a class="else-item" href="{{ category.href }}">{{ category.name }}</a></li>
+                {% endif %}
+
+            {% endfor %}
+          </ul>
+        </div>
+
+      </nav>
+
+    </div>
+    {% endif %}
+{% endif %} 
+
+

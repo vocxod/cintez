@@ -3,6 +3,7 @@
 namespace Base;
 
 use \OcInformationQuery as ChildOcInformationQuery;
+use \DateTime;
 use \Exception;
 use \PDO;
 use Map\OcInformationTableMap;
@@ -17,6 +18,7 @@ use Propel\Runtime\Exception\LogicException;
 use Propel\Runtime\Exception\PropelException;
 use Propel\Runtime\Map\TableMap;
 use Propel\Runtime\Parser\AbstractParser;
+use Propel\Runtime\Util\PropelDateTime;
 
 /**
  * Base class that represents a row from the 'oc_information' table.
@@ -105,6 +107,14 @@ abstract class OcInformation implements ActiveRecordInterface
      * @var        int
      */
     protected $onhome;
+
+    /**
+     * The value for the date_added field.
+     *
+     * Note: this column has a database default value of: (expression) CURRENT_TIMESTAMP
+     * @var        DateTime
+     */
+    protected $date_added;
 
     /**
      * The value for the artice_id field.
@@ -436,6 +446,26 @@ abstract class OcInformation implements ActiveRecordInterface
     }
 
     /**
+     * Get the [optionally formatted] temporal [date_added] column value.
+     *
+     *
+     * @param      string $format The date/time format string (either date()-style or strftime()-style).
+     *                            If format is NULL, then the raw DateTime object will be returned.
+     *
+     * @return string|DateTime Formatted date/time value as string or DateTime object (if format is NULL), NULL if column is NULL, and 0 if column value is 0000-00-00 00:00:00
+     *
+     * @throws PropelException - if unable to parse/validate the date/time value.
+     */
+    public function getDateAdded($format = NULL)
+    {
+        if ($format === null) {
+            return $this->date_added;
+        } else {
+            return $this->date_added instanceof \DateTimeInterface ? $this->date_added->format($format) : null;
+        }
+    }
+
+    /**
      * Get the [artice_id] column value.
      *
      * @return int
@@ -574,6 +604,26 @@ abstract class OcInformation implements ActiveRecordInterface
     } // setOnhome()
 
     /**
+     * Sets the value of [date_added] column to a normalized version of the date/time value specified.
+     *
+     * @param  mixed $v string, integer (timestamp), or \DateTimeInterface value.
+     *               Empty strings are treated as NULL.
+     * @return $this|\OcInformation The current object (for fluent API support)
+     */
+    public function setDateAdded($v)
+    {
+        $dt = PropelDateTime::newInstance($v, null, 'DateTime');
+        if ($this->date_added !== null || $dt !== null) {
+            if ($this->date_added === null || $dt === null || $dt->format("Y-m-d H:i:s.u") !== $this->date_added->format("Y-m-d H:i:s.u")) {
+                $this->date_added = $dt === null ? null : clone $dt;
+                $this->modifiedColumns[OcInformationTableMap::COL_DATE_ADDED] = true;
+            }
+        } // if either are not null
+
+        return $this;
+    } // setDateAdded()
+
+    /**
      * Set the value of [artice_id] column.
      *
      * @param int $v new value
@@ -671,7 +721,13 @@ abstract class OcInformation implements ActiveRecordInterface
             $col = $row[TableMap::TYPE_NUM == $indexType ? 5 + $startcol : OcInformationTableMap::translateFieldName('Onhome', TableMap::TYPE_PHPNAME, $indexType)];
             $this->onhome = (null !== $col) ? (int) $col : null;
 
-            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcInformationTableMap::translateFieldName('ArticeId', TableMap::TYPE_PHPNAME, $indexType)];
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 6 + $startcol : OcInformationTableMap::translateFieldName('DateAdded', TableMap::TYPE_PHPNAME, $indexType)];
+            if ($col === '0000-00-00 00:00:00') {
+                $col = null;
+            }
+            $this->date_added = (null !== $col) ? PropelDateTime::newInstance($col, null, 'DateTime') : null;
+
+            $col = $row[TableMap::TYPE_NUM == $indexType ? 7 + $startcol : OcInformationTableMap::translateFieldName('ArticeId', TableMap::TYPE_PHPNAME, $indexType)];
             $this->artice_id = (null !== $col) ? (int) $col : null;
             $this->resetModified();
 
@@ -681,7 +737,7 @@ abstract class OcInformation implements ActiveRecordInterface
                 $this->ensureConsistency();
             }
 
-            return $startcol + 7; // 7 = OcInformationTableMap::NUM_HYDRATE_COLUMNS.
+            return $startcol + 8; // 8 = OcInformationTableMap::NUM_HYDRATE_COLUMNS.
 
         } catch (Exception $e) {
             throw new PropelException(sprintf('Error populating %s object', '\\OcInformation'), 0, $e);
@@ -900,6 +956,9 @@ abstract class OcInformation implements ActiveRecordInterface
         if ($this->isColumnModified(OcInformationTableMap::COL_ONHOME)) {
             $modifiedColumns[':p' . $index++]  = 'onhome';
         }
+        if ($this->isColumnModified(OcInformationTableMap::COL_DATE_ADDED)) {
+            $modifiedColumns[':p' . $index++]  = 'date_added';
+        }
         if ($this->isColumnModified(OcInformationTableMap::COL_ARTICE_ID)) {
             $modifiedColumns[':p' . $index++]  = 'artice_id';
         }
@@ -931,6 +990,9 @@ abstract class OcInformation implements ActiveRecordInterface
                         break;
                     case 'onhome':
                         $stmt->bindValue($identifier, $this->onhome, PDO::PARAM_INT);
+                        break;
+                    case 'date_added':
+                        $stmt->bindValue($identifier, $this->date_added ? $this->date_added->format("Y-m-d H:i:s.u") : null, PDO::PARAM_STR);
                         break;
                     case 'artice_id':
                         $stmt->bindValue($identifier, $this->artice_id, PDO::PARAM_INT);
@@ -1016,6 +1078,9 @@ abstract class OcInformation implements ActiveRecordInterface
                 return $this->getOnhome();
                 break;
             case 6:
+                return $this->getDateAdded();
+                break;
+            case 7:
                 return $this->getArticeId();
                 break;
             default:
@@ -1053,8 +1118,13 @@ abstract class OcInformation implements ActiveRecordInterface
             $keys[3] => $this->getStatus(),
             $keys[4] => $this->getIsnews(),
             $keys[5] => $this->getOnhome(),
-            $keys[6] => $this->getArticeId(),
+            $keys[6] => $this->getDateAdded(),
+            $keys[7] => $this->getArticeId(),
         );
+        if ($result[$keys[6]] instanceof \DateTime) {
+            $result[$keys[6]] = $result[$keys[6]]->format('c');
+        }
+
         $virtualColumns = $this->virtualColumns;
         foreach ($virtualColumns as $key => $virtualColumn) {
             $result[$key] = $virtualColumn;
@@ -1112,6 +1182,9 @@ abstract class OcInformation implements ActiveRecordInterface
                 $this->setOnhome($value);
                 break;
             case 6:
+                $this->setDateAdded($value);
+                break;
+            case 7:
                 $this->setArticeId($value);
                 break;
         } // switch()
@@ -1159,7 +1232,10 @@ abstract class OcInformation implements ActiveRecordInterface
             $this->setOnhome($arr[$keys[5]]);
         }
         if (array_key_exists($keys[6], $arr)) {
-            $this->setArticeId($arr[$keys[6]]);
+            $this->setDateAdded($arr[$keys[6]]);
+        }
+        if (array_key_exists($keys[7], $arr)) {
+            $this->setArticeId($arr[$keys[7]]);
         }
     }
 
@@ -1219,6 +1295,9 @@ abstract class OcInformation implements ActiveRecordInterface
         }
         if ($this->isColumnModified(OcInformationTableMap::COL_ONHOME)) {
             $criteria->add(OcInformationTableMap::COL_ONHOME, $this->onhome);
+        }
+        if ($this->isColumnModified(OcInformationTableMap::COL_DATE_ADDED)) {
+            $criteria->add(OcInformationTableMap::COL_DATE_ADDED, $this->date_added);
         }
         if ($this->isColumnModified(OcInformationTableMap::COL_ARTICE_ID)) {
             $criteria->add(OcInformationTableMap::COL_ARTICE_ID, $this->artice_id);
@@ -1314,6 +1393,7 @@ abstract class OcInformation implements ActiveRecordInterface
         $copyObj->setStatus($this->getStatus());
         $copyObj->setIsnews($this->getIsnews());
         $copyObj->setOnhome($this->getOnhome());
+        $copyObj->setDateAdded($this->getDateAdded());
         $copyObj->setArticeId($this->getArticeId());
         if ($makeNew) {
             $copyObj->setNew(true);
@@ -1356,6 +1436,7 @@ abstract class OcInformation implements ActiveRecordInterface
         $this->status = null;
         $this->isnews = null;
         $this->onhome = null;
+        $this->date_added = null;
         $this->artice_id = null;
         $this->alreadyInSave = false;
         $this->clearAllReferences();
