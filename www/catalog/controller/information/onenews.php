@@ -58,8 +58,8 @@ class ControllerInformationOnenews extends Controller {
 			$this->document->setDescription('meta_description');
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/onenews' . '') //@TODO!!!
+				'text' => "Новости", //$this->language->get('heading_title'),
+				'href' => $this->url->link('information/neoitems' . '') //@TODO!!!
 			);
 			$data['breadcrumbs'][] = array(
 				'text' => $aResult['title'], //@TODO from meta (url)
