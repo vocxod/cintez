@@ -31,8 +31,9 @@
         </div>
         <div class="col-sm-6">
           <div class="well">
-            <h2>{{ text_returning_customer }}</h2>
-            <p><strong>{{ text_i_am_returning_customer }}</strong></p>
+            <h2>{{ text_i_am_returning_customer }}</h2>
+            {#<h2>{{ text_returning_customer }}</h2>#}
+            {#<p><strong>{{ text_i_am_returning_customer }}</strong></p>#}
             <form action="{{ action }}" method="post" enctype="multipart/form-data">
               <div class="form-group">
                 <label class="control-label" for="input-email">{{ entry_email }}</label>
