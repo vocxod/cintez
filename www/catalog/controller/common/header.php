@@ -94,6 +94,21 @@ class ControllerCommonHeader extends Controller {
 
 		$data['menu_top'] = $this->load->controller('common/menu_top', $sRoute );
 
+		$this->load->model('account/customer_group');
+		if($this->customer->isLogged()) {
+		    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+		    $data['user_id'] = $this->customer->isLogged();
+		    $data['group_id'] = $this->customer->getGroupId();
+			$data['group_name'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+		    //var_dump( $this->customer->getFirstName() );
+		    //var_dump( get_class_methods($this->customer) );
+		} else {
+			$data['user_id'] = 0;
+			$data['group_id'] = 0;
+			$data['group_name'] = "";
+			$data['username'] = "";		
+		}
 
 		return $this->load->view('common/header', $data);
 	}

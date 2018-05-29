@@ -145,10 +145,23 @@
               <span style="color:#FEFAEA; font-size:14px;"> Контакты</span> 
             </a>
           </li>
+          {% if user_id == 0 %}
+          <li>
+            <a class="pull-right menu-space" href="index.php?route=account/login"> 
+              <span style="color:#FEFAEA; font-size:14px;"> Вход</span> 
+            </a>
+          </li>
+          {% else %}
+          <li>
+            <a class="pull-right menu-space" href="index.php?route=account/logout"> 
+              <span style="color:#FEFAEA; font-size:14px;"> Выход</span> 
+            </a>
+          </li>
+          {% endif %}
 
           <li class="sxs-hidden" >
             
-            <a target="_blank" href="http://old.specsintez.com" class="pull-right menu-space" style="margin-right: 360px;"> 
+            <a target="_blank" href="http://old.specsintez.com" class="pull-right menu-space" style="margin-right: 229px;"> 
               <span style="color:#FEFEE0; font-size:14px;outline:0px dashed red;"> Прежняя версия сайта</span> 
             </a>
             
