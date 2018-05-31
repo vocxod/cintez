@@ -31,6 +31,7 @@ $_['entry_password']       = 'Пароль';
 $_['entry_confirm']        = 'Подтверждение пароля';
 
 $_['entry_company']       = 'Компания';
+
 $_['entry_industry']      = 'Основная отрасль';
 
 // Error
