@@ -12,6 +12,8 @@ $_['text_newsletter']      = 'Рассылка новостей';
 $_['text_your_password']   = 'Ваш пароль';
 $_['text_agree']           = 'Я прочитал(а) <a href="%s" class="agree"><b>%s</b></a> и согласен(а) с условиями';
 
+$_['text_newsoffers']      = 'Рассылка уведомлений';
+
 // Entry
 $_['entry_customer_group'] = 'Тип учетной записи';
 $_['entry_firstname']      = 'Имя';
@@ -34,6 +36,7 @@ $_['entry_company']       = 'Компания';
 $_['entry_company_placeholder']       = 'Название вашей организации.';
 $_['entry_industry']      = 'Основная отрасль';
 
+$_['entry_newsoffers']      ="Уведомлять о новых товарах и изменениях цен?";
 // Error
 
 $_['error_exists']         = 'Данный E-Mail уже зарегистрирован!';

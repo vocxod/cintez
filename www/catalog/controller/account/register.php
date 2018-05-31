@@ -180,6 +180,12 @@ class ControllerAccountRegister extends Controller {
 			$data['newsletter'] = '';
 		}
 
+		if (isset($this->request->post['newsoffers'])) {
+			$data['newsoffers'] = $this->request->post['newsoffers'];
+		} else {
+			$data['newsoffers'] = '';
+		}
+
 		// Captcha
 		if ($this->config->get('captcha_' . $this->config->get('config_captcha') . '_status') && in_array('register', (array)$this->config->get('config_captcha_page'))) {
 			$data['captcha'] = $this->load->controller('extension/captcha/' . $this->config->get('config_captcha'), $this->error);
