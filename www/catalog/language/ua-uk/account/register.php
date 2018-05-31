@@ -30,6 +30,9 @@ $_['entry_newsletter'] = 'Підписка на новини';
 $_['entry_password'] = 'Пароль';
 $_['entry_confirm'] = 'Підтвердження пароля';
 
+$_['entry_company']       = 'Компания';
+$_['entry_industry']      = 'Основная отрасль';
+
 // Error
 $_['error_exists'] = 'Цей E-Mail вже зареєстрований!';
 $_['error_firstname'] = 'Ім&#39;я повинно містити від 1 до 32 символів!';

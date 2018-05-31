@@ -13,7 +13,7 @@ $_['text_your_password']   = 'Ваш пароль';
 $_['text_agree']           = 'Я прочитал <a href="%s" class="agree"><b>%s</b></a> и согласен с условиями';
 
 // Entry
-$_['entry_customer_group'] = 'Направление бизнеса';
+$_['entry_customer_group'] = 'Тип учетной записи';
 $_['entry_firstname']      = 'Имя';
 $_['entry_lastname']       = 'Фамилия';
 $_['entry_email']          = 'E-Mail';
@@ -29,6 +29,9 @@ $_['entry_zone']           = 'Регион / Область';
 $_['entry_newsletter']     = 'Подписка на новости';
 $_['entry_password']       = 'Пароль';
 $_['entry_confirm']        = 'Подтверждение пароля';
+
+$_['entry_company']       = 'Компания';
+$_['entry_industry']      = 'Основная отрасль';
 
 // Error
 $_['error_exists']         = 'Данный E-Mail уже зарегистрирован!';

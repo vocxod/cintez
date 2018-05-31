@@ -9,7 +9,7 @@ class ControllerAccountRegister extends Controller {
 
 		$this->load->language('account/register');
 
-		$this->document->setTitle($this->language->get('heading_title'));
+		$this->document->setTitle( $this->language->get('heading_title') );
 
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment.min.js');
 		$this->document->addScript('catalog/view/javascript/jquery/datetimepicker/moment/moment-with-locales.min.js');
@@ -206,6 +206,12 @@ class ControllerAccountRegister extends Controller {
 		} else {
 			$data['agree'] = false;
 		}
+
+		$this->load->model('catalog/industry');
+
+		$data['select_industry'] = $this->model_catalog_industry->getIndustry();
+
+		// var_dump( $data['select_industry'] ); die();
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
