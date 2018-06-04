@@ -34,12 +34,12 @@
       margin-left: 330px;
     }
   }
+
   .navbar-logo {
     outline: 0px dashed red;
     background-image: url('/image/catalog/logo-325x160.png');
     width: 345px;
     height: 120px;
-    /*background-size: cover;*/
     {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
       width: 359px;
       background-position: 33px -20px;
@@ -114,10 +114,36 @@
   .up_menu_span {
     display: none;
   }
+
   .navbar-logo {
-    background-position: 24px -25px;
-    background-size: 90%;
-  }
+    outline: 0px dashed red;
+    background-image: url('/image/catalog/logo-300x160.png');
+    width: 345px;
+    height: 120px;
+    
+    {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
+      width: 359px;
+      background-position: 33px -20px;
+    {% else %}
+      background-position: 19px -20px;
+    {% endif %}
+
+    {% if route == "information/dealers" or route == "product/category" or route == "product/product" %}
+      background-position: 0px -20px;
+    {% endif %}
+    
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    z-index: 1049;
+
+    background-position: 14px -25px;
+    background-size: 85%;
+
+  }   
+
+
 }
 
 /* search rows */

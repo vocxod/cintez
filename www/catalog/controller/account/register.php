@@ -119,6 +119,20 @@ class ControllerAccountRegister extends Controller {
 			$data['customer_group_id'] = $this->config->get('config_customer_group_id');
 		}
 
+		// company
+		if (isset($this->request->post['companyname'])) {
+			$data['companyname'] = $this->request->post['companyname'];
+		} else {
+			$data['companyname'] = '';
+		}
+
+		// industry
+		if (isset($this->request->post['industry_id'])) {
+			$data['industry_id'] = $this->request->post['industry_id'];
+		} else {
+			$data['industry'] = '15';
+		}
+
 		if (isset($this->request->post['firstname'])) {
 			$data['firstname'] = $this->request->post['firstname'];
 		} else {
@@ -230,6 +244,17 @@ class ControllerAccountRegister extends Controller {
 	}
 
 	private function validate() {
+
+		if ((utf8_strlen(trim($this->request->post['companyname'])) < 2) || (utf8_strlen(trim($this->request->post['companyname'])) > 128)) {
+			var_dump( "companyname" ); //die();
+			$this->error['companyname'] = $this->language->get('error_company');
+			$this->error['error_companyname'] = $this->language->get('error_company');
+		}
+
+		if ((utf8_strlen(trim($this->request->post['firstname2'])) < 2) || (utf8_strlen(trim($this->request->post['firstname2'])) > 32)) {
+			$this->error['firstname2'] = $this->language->get('error_firstname2');
+		}
+
 		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 			$this->error['firstname'] = $this->language->get('error_firstname');
 		}
@@ -299,7 +324,7 @@ class ControllerAccountRegister extends Controller {
 				$this->error['warning'] = sprintf($this->language->get('error_agree'), $information_info['title']);
 			}
 		}
-		
+		//var_dump( $this->error ); die();
 		return !$this->error;
 	}
 
