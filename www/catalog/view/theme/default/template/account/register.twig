@@ -51,7 +51,7 @@
             <label class="col-sm-2 control-label" for="input-companyname">{{ entry_companyname }}</label>
             <div class="col-sm-10">
               <input type="text" name="companyname" value="{{ firstname2 }}" placeholder="{{ entry_company_placeholder }}" id="input-companyname" class="form-control" />
-              <hr/>{{ dump(error_companyname) }}<hr/>
+              {#<hr/>{{ dump(error_companyname) }}<hr/>#}
               {% if error_companyname %}
               <div class="text-danger">{{ error_companyname }}</div>
               {% endif %} </div>
