@@ -447,7 +447,7 @@ class ControllerProductProduct extends Controller {
 			$data['header'] = $this->load->controller('common/header');
 
 			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
-			//var_dump($data['documents']); die();
+			// var_dump($data['documents']); die();
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';
