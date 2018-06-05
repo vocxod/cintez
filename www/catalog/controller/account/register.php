@@ -245,6 +245,7 @@ class ControllerAccountRegister extends Controller {
 
 	private function validate() {
 
+/*
 		if ((utf8_strlen(trim($this->request->post['companyname'])) < 2) || (utf8_strlen(trim($this->request->post['companyname'])) > 128)) {
 			var_dump( "companyname" ); //die();
 			$this->error['companyname'] = $this->language->get('error_company');
@@ -254,7 +255,7 @@ class ControllerAccountRegister extends Controller {
 		if ((utf8_strlen(trim($this->request->post['firstname2'])) < 2) || (utf8_strlen(trim($this->request->post['firstname2'])) > 32)) {
 			$this->error['firstname2'] = $this->language->get('error_firstname2');
 		}
-
+*/
 		if ((utf8_strlen(trim($this->request->post['firstname'])) < 1) || (utf8_strlen(trim($this->request->post['firstname'])) > 32)) {
 			$this->error['firstname'] = $this->language->get('error_firstname');
 		}
