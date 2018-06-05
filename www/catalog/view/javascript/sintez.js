@@ -26,7 +26,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 		$('#form-zone input[name=\'code\']').val($(this).attr('name'));
-		//console.log( "FORM-ZONE: ", val($(this).attr('name')) );
+		console.log( "FORM-ZONE: ", $('#form-zone input[name=\'code\']').val($(this).attr('name')) );
 		$('#form-zone').submit();
 	});   
 });
