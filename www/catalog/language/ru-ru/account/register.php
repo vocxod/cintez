@@ -8,11 +8,11 @@ $_['text_register']        = 'Регистрация';
 $_['text_account_already'] = 'Если Вы уже зарегистрированы, перейдите на страницу <a href="%s">авторизации</a>.';
 $_['text_your_details']    = 'Основные данные';
 $_['text_your_address']    = 'Ваш адрес';
-$_['text_newsletter']      = 'Рассылка новостей';
+$_['text_newsletter']      = 'Email подписка';
 $_['text_your_password']   = 'Ваш пароль';
 $_['text_agree']           = 'Я прочитал(а) <a href="%s" class="agree"><b>%s</b></a> и согласен(а) с условиями';
 
-$_['text_newsoffers']      = 'Рассылка уведомлений';
+$_['text_newsoffers']      = 'Изменения ассортимента и цен';
 
 // Entry
 $_['entry_customer_group'] = 'Тип учетной записи';
@@ -37,7 +37,7 @@ $_['entry_company']       = 'Компания';
 $_['entry_company_placeholder']       = 'Название вашей организации.';
 $_['entry_industry']      = 'Основная отрасль';
 
-$_['entry_newsoffers']      ="Уведомлять о новых товарах и изменениях цен?";
+$_['entry_newsoffers']      ="Ассортимент и цены";
 // Error
 
 $_['error_exists']         = 'Данный E-Mail уже зарегистрирован!';
