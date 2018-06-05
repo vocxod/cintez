@@ -1,5 +1,16 @@
 <?php
 class ModelCatalogProduct extends Model {
+
+	/*
+	вернуть массив документов товара для пользователя 
+	*/
+	public function getDocuments( $product_id = 0 ){
+		$s_sql_select = "SELECT * FROM oc_download WHERE filename LIKE '" . $product_id . "_%' ";
+		// echo $s_sql_select ; 
+		$query = $this->db->query( $s_sql_select );
+		return $query->rows;
+	}
+
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
