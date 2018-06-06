@@ -64,3 +64,16 @@ Stack trace:
 #12 /var/www/html/vkartel/www/index.php(19): start('catalog')
 #13 {main}
   thrown in /var/www/html/vkartel/www/system/library/db/mysqli.php on line 40
+[06-Jun-2018 10:30:08 UTC] PHP Parse error:  syntax error, unexpected '"', expecting ',' or ')' in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 22
+[06-Jun-2018 10:45:31 UTC] PHP Fatal error:  Uncaught Error: Call to a member function getDocuments() on null in /var/www/html/vkartel/www/catalog/controller/product/product.php:25
+Stack trace:
+#0 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerProductProduct->review2()
+#1 /var/www/html/vkartel/www/catalog/controller/startup/router.php(25): Action->execute(Object(Registry))
+#2 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupRouter->index()
+#3 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#4 /var/www/html/vkartel/www/system/engine/router.php(56): Router->execute(Object(Action))
+#5 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#6 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#7 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#8 {main}
+  thrown in /var/www/html/vkartel/www/catalog/controller/product/product.php on line 25

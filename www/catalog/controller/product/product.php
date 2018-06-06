@@ -2,6 +2,106 @@
 class ControllerProductProduct extends Controller {
 	private $error = array();
 
+	public function review2(  ) {
+		
+		$data = [];
+
+		if (isset($this->request->get['product_id'])) {
+			$i_product_id = $this->request->get['product_id'];
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			$this->response->setOutput($this->load->view('error/not_found', $data));
+			return;
+		}
+
+		if (isset($this->request->get['doctype'])) {
+			$s_doc_type= $this->request->get['doctype'];
+
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			// $this->response->setOutput($this->load->view('error/not_found', [] ) );
+			$this->response->setOutput('<h1>Отсутствует тип документа!</h1>');
+			return;
+		}
+
+		$this->load->language('product/product');
+		$this->load->model('catalog/review');
+
+		$this->load->model('catalog/product');
+		$this->load->model('account/customer_group');
+		if($this->customer->isLogged()) {
+		    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+		    $data['user_id'] = $this->customer->isLogged();
+		    $data['group_id'] = $this->customer->getGroupId();
+			$data['usergroup'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+		    
+			if( $data['usergroup']['name'] == 'Дилер' ){
+    			$data['documents'] = $this->model_catalog_product->getDocuments( $i_product_id );
+    			if(count($data['documents'])>0){
+    				// находим документ по типу s_doc_type
+    				var_dump( $data['documents'] ); die();
+    				$s_downloadfile = '';
+    				foreach ($data['documents'] as $a_item) {
+    					if( $a_item['mask'] == $i_product_id . '_' . $s_doc_type . '.pdf' ){
+    						$s_downloadfile = $a_item['filename'];
+    					}
+    				}
+    				var_dump( $s_downloadfile ); die();
+
+					$file = "product.pdf";
+					// Quick check to verify that the file exists
+					if( !file_exists($file) ) {
+						$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+						
+						$this->response->setOutput( '<h1>Документ не обнаружен!</h1>' );
+						return;
+					}
+					// die("File not found");
+					// Force the download
+					header("Content-Disposition: attachment; filename=" . basename($file) . " ");
+					header("Content-Length: " . filesize($file));
+					header("Content-Type: application/octet-stream;");
+					readfile($file);			    				
+    			} else {
+					$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+					$this->response->setOutput( '<h1>Запрашиваемый документ не найден</h1>' );
+					return;
+    			}
+
+			}
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			$this->response->setOutput( '<h1>Документация доступна только зарегистрированным пользователям</h1>' );
+			return;
+		}
+/*
+		$data['reviews'] = array();
+		$review_total = $this->model_catalog_review->getTotalReviewsByProductId($this->request->get['product_id']);
+		$results = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5);
+		foreach ($results as $result) {
+			$data['reviews'][] = array(
+				'author'     => $result['author'],
+				'text'       => nl2br($result['text']),
+				'rating'     => (int)$result['rating'],
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+			);
+		}
+
+		$pagination = new Pagination();
+		$pagination->total = $review_total;
+		$pagination->page = $page;
+		$pagination->limit = 5;
+		$pagination->url = $this->url->link('product/product/review', 'product_id=' . $this->request->get['product_id'] . '&page={page}');
+
+		$data['pagination'] = $pagination->render();
+
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
+
+		$this->response->setOutput($this->load->view('product/review', $data));
+*/
+	}
+
 	public function index() {
 		$this->load->language('product/product');
 
