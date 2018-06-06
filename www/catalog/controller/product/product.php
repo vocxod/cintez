@@ -40,29 +40,29 @@ class ControllerProductProduct extends Controller {
     			$data['documents'] = $this->model_catalog_product->getDocuments( $i_product_id );
     			if(count($data['documents'])>0){
     				// находим документ по типу s_doc_type
-    				var_dump( $data['documents'] ); die();
+    				// var_dump( $data['documents'] ); die();
     				$s_downloadfile = '';
     				foreach ($data['documents'] as $a_item) {
     					if( $a_item['mask'] == $i_product_id . '_' . $s_doc_type . '.pdf' ){
     						$s_downloadfile = $a_item['filename'];
     					}
     				}
-    				var_dump( $s_downloadfile ); die();
-
-					$file = "product.pdf";
-					// Quick check to verify that the file exists
-					if( !file_exists($file) ) {
-						$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
-						
+    				// echo getcwd() . "\n";
+    				if( !file_exists( getcwd() . "/../" . "storage/download/" . $s_downloadfile ) ){
+    					$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
 						$this->response->setOutput( '<h1>Документ не обнаружен!</h1>' );
 						return;
-					}
+    				}
+    				//var_dump( $s_downloadfile ); die();
+
+					$file = "product.pdf";
+
 					// die("File not found");
 					// Force the download
 					header("Content-Disposition: attachment; filename=" . basename($file) . " ");
-					header("Content-Length: " . filesize($file));
+					header("Content-Length: " . filesize( getcwd() . "/../" . "storage/download/" . $s_downloadfile ));
 					header("Content-Type: application/octet-stream;");
-					readfile($file);			    				
+					readfile( getcwd() . "/../" . "storage/download/" . $s_downloadfile );			    				
     			} else {
 					$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
 					$this->response->setOutput( '<h1>Запрашиваемый документ не найден</h1>' );
