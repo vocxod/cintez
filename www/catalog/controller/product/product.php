@@ -446,7 +446,29 @@ class ControllerProductProduct extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
-			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
+			$data['documents'] = 0;
+
+			$this->load->model('account/customer_group');
+			if($this->customer->isLogged()) {
+			    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+			    $data['user_id'] = $this->customer->isLogged();
+			    $data['group_id'] = $this->customer->getGroupId();
+				$data['usergroup'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+			    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+			    
+			    //var_dump( $data['usergroup']['name'] ); die();
+			    //var_dump( get_class_methods($this->customer) );
+    			if( $data['usergroup']['name'] == 'Дилер' ){
+	    			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
+    			}
+			} else {
+				$data['user_id'] = 0;
+				$data['group_id'] = 0;
+				$data['group_name'] = "";
+				$data['username'] = "";		
+			}
+
+
 			// var_dump($data['documents']); die();
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
