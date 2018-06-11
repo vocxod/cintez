@@ -1,5 +1,6 @@
-User-agent: Yandex
-Disallow: /
+User-agent: * 
+Disallow: 
 
-User-agent: Googlebot
-Disallow: /
+
+
+Disallow: /admin
