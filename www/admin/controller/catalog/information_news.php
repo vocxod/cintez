@@ -3,24 +3,24 @@ class ControllerCatalogInformationNews extends Controller {
 	private $error = array();
 
 	public function index() {
-		$this->load->language('catalog/information');
+		$this->load->language('catalog/information_news');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/information');
+		$this->load->model('catalog/information_news');
 
 		$this->getList();
 	}
 
 	public function add() {
-		$this->load->language('catalog/information');
+		$this->load->language('catalog/information_news');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/information');
+		$this->load->model('catalog/information_news');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_information->addInformation($this->request->post);
+			$this->model_catalog_information_news->addInformation($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -42,21 +42,21 @@ class ControllerCatalogInformationNews extends Controller {
 				$url .= '&isnews=' . $this->request->get['isnews'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function edit() {
-		$this->load->language('catalog/information');
+		$this->load->language('catalog/information_news');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/information');
+		$this->load->model('catalog/information_news');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
-			$this->model_catalog_information->editInformation($this->request->get['information_id'], $this->request->post);
+			$this->model_catalog_information_news->editInformation($this->request->get['information_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
 
@@ -74,22 +74,22 @@ class ControllerCatalogInformationNews extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getForm();
 	}
 
 	public function delete() {
-		$this->load->language('catalog/information');
+		$this->load->language('catalog/information_news');
 
 		$this->document->setTitle($this->language->get('heading_title'));
 
-		$this->load->model('catalog/information');
+		$this->load->model('catalog/information_news');
 
 		if (isset($this->request->post['selected']) && $this->validateDelete()) {
 			foreach ($this->request->post['selected'] as $information_id) {
-				$this->model_catalog_information->deleteInformation($information_id);
+				$this->model_catalog_information_news->deleteInformation($information_id);
 			}
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -108,13 +108,14 @@ class ControllerCatalogInformationNews extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			$this->response->redirect($this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true));
 		}
 
 		$this->getList();
 	}
 
 	protected function getList() {
+		// @todo - если есть портировка - то четко указать, какая именно, а не как здесь в ОК
 		if (isset($this->request->get['sort'])) {
 			$sort = $this->request->get['sort'];
 		} else {
@@ -156,33 +157,38 @@ class ControllerCatalogInformationNews extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
-		$data['add'] = $this->url->link('catalog/information/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
-		$data['delete'] = $this->url->link('catalog/information/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['add'] = $this->url->link('catalog/information_news/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['delete'] = $this->url->link('catalog/information_news/delete', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
 		$data['informations'] = array();
+
+		// scard
+		$date = '';
 
 		$filter_data = array(
 			'sort'  => $sort,
 			'order' => $order,
+			'date'	=> $date,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
 
-		$information_total = $this->model_catalog_information->getTotalInformations();
+		$information_total = $this->model_catalog_information_news->getTotalInformations();
 
-		$results = $this->model_catalog_information->getInformations($filter_data);
+		$results = $this->model_catalog_information_news->getInformations($filter_data);
 
 		foreach ($results as $result) {
 			$data['informations'][] = array(
 				'information_id' => $result['information_id'],
 				'title'          => $result['title'],
+				'date'			=> $result['date_added'],
 				'sort_order'     => $result['sort_order'],
 				'isnews'         => $result['isnews'],
 				'onhome'     	 => $result['onhome'],
-				'edit'           => $this->url->link('catalog/information/edit', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $result['information_id'] . $url, true)
+				'edit'           => $this->url->link('catalog/information_news/edit', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $result['information_id'] . $url, true)
 			);
 		}
 
@@ -218,8 +224,11 @@ class ControllerCatalogInformationNews extends Controller {
 			$url .= '&page=' . $this->request->get['page'];
 		}
 
-		$data['sort_title'] = $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . '&sort=id.title' . $url, true);
-		$data['sort_sort_order'] = $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . '&sort=i.sort_order' . $url, true);
+		$data['sort_title'] = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . '&sort=id.title' . $url, true);
+		
+		$data['sort_sort_order'] = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . '&sort=i.sort_order' . $url, true);
+
+		$data['sort_date'] = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . '&sort=i.date_added' . $url, true);
 
 		$url = '';
 
@@ -235,7 +244,7 @@ class ControllerCatalogInformationNews extends Controller {
 		$pagination->total = $information_total;
 		$pagination->page = $page;
 		$pagination->limit = $this->config->get('config_limit_admin');
-		$pagination->url = $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
+		$pagination->url = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url . '&page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
@@ -248,7 +257,7 @@ class ControllerCatalogInformationNews extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/information_list', $data));
+		$this->response->setOutput($this->load->view('catalog/information_news_list', $data));
 	}
 
 	protected function getForm() {
@@ -307,19 +316,19 @@ class ControllerCatalogInformationNews extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true)
+			'href' => $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true)
 		);
 
 		if (!isset($this->request->get['information_id'])) {
-			$data['action'] = $this->url->link('catalog/information/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
+			$data['action'] = $this->url->link('catalog/information_news/add', 'user_token=' . $this->session->data['user_token'] . $url, true);
 		} else {
-			$data['action'] = $this->url->link('catalog/information/edit', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $this->request->get['information_id'] . $url, true);
+			$data['action'] = $this->url->link('catalog/information_news/edit', 'user_token=' . $this->session->data['user_token'] . '&information_id=' . $this->request->get['information_id'] . $url, true);
 		}
 
-		$data['cancel'] = $this->url->link('catalog/information', 'user_token=' . $this->session->data['user_token'] . $url, true);
+		$data['cancel'] = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
 		if (isset($this->request->get['information_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
-			$information_info = $this->model_catalog_information->getInformation($this->request->get['information_id']);
+			$information_info = $this->model_catalog_information_news->getInformation($this->request->get['information_id']);
 		}
 
 		$data['user_token'] = $this->session->data['user_token'];
@@ -331,7 +340,7 @@ class ControllerCatalogInformationNews extends Controller {
 		if (isset($this->request->post['information_description'])) {
 			$data['information_description'] = $this->request->post['information_description'];
 		} elseif (isset($this->request->get['information_id'])) {
-			$data['information_description'] = $this->model_catalog_information->getInformationDescriptions($this->request->get['information_id']);
+			$data['information_description'] = $this->model_catalog_information_news->getInformationDescriptions($this->request->get['information_id']);
 		} else {
 			$data['information_description'] = array();
 		}
@@ -357,7 +366,7 @@ class ControllerCatalogInformationNews extends Controller {
 		if (isset($this->request->post['information_store'])) {
 			$data['information_store'] = $this->request->post['information_store'];
 		} elseif (isset($this->request->get['information_id'])) {
-			$data['information_store'] = $this->model_catalog_information->getInformationStores($this->request->get['information_id']);
+			$data['information_store'] = $this->model_catalog_information_news->getInformationStores($this->request->get['information_id']);
 		} else {
 			$data['information_store'] = array(0);
 		}
@@ -389,7 +398,7 @@ class ControllerCatalogInformationNews extends Controller {
 		if (isset($this->request->post['information_seo_url'])) {
 			$data['information_seo_url'] = $this->request->post['information_seo_url'];
 		} elseif (isset($this->request->get['information_id'])) {
-			$data['information_seo_url'] = $this->model_catalog_information->getInformationSeoUrls($this->request->get['information_id']);
+			$data['information_seo_url'] = $this->model_catalog_information_news->getInformationSeoUrls($this->request->get['information_id']);
 		} else {
 			$data['information_seo_url'] = array();
 		}
@@ -397,7 +406,7 @@ class ControllerCatalogInformationNews extends Controller {
 		if (isset($this->request->post['information_layout'])) {
 			$data['information_layout'] = $this->request->post['information_layout'];
 		} elseif (isset($this->request->get['information_id'])) {
-			$data['information_layout'] = $this->model_catalog_information->getInformationLayouts($this->request->get['information_id']);
+			$data['information_layout'] = $this->model_catalog_information_news->getInformationLayouts($this->request->get['information_id']);
 		} else {
 			$data['information_layout'] = array();
 		}
@@ -410,11 +419,11 @@ class ControllerCatalogInformationNews extends Controller {
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['footer'] = $this->load->controller('common/footer');
 
-		$this->response->setOutput($this->load->view('catalog/information_form', $data));
+		$this->response->setOutput($this->load->view('catalog/information_news_form', $data));
 	}
 
 	protected function validateForm() {
-		if (!$this->user->hasPermission('modify', 'catalog/information')) {
+		if (!$this->user->hasPermission('modify', 'catalog/information_news')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
@@ -462,7 +471,7 @@ class ControllerCatalogInformationNews extends Controller {
 	}
 
 	protected function validateDelete() {
-		if (!$this->user->hasPermission('modify', 'catalog/information')) {
+		if (!$this->user->hasPermission('modify', 'catalog/information_news')) {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
