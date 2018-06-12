@@ -10,13 +10,15 @@ class ModelCatalogInformationNews extends Model {
 			onhome = '" . (int)$data['onhome'] . "',
 			isnews = '" . (int)$data['isnews'] . "' "
 			;
-		var_dump( $s_sql_insert ); die();
+		// var_dump( $s_sql_insert ); die();
 		$this->db->query( $s_sql_insert );
 
 		$information_id = $this->db->getLastId();
 
 		foreach ($data['information_description'] as $language_id => $value) {
-			$this->db->query("INSERT INTO " . DB_PREFIX . "information_description SET information_id = '" . (int)$information_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "'");
+
+			$this->db->query("INSERT INTO " . DB_PREFIX . "information_description SET information_id = '" . (int)$information_id . "', language_id = '" . (int)$language_id . "', title = '" . $this->db->escape($value['title']) . "', description = '" . $this->db->escape($value['description']) . "', meta_title = '" . $this->db->escape($value['meta_title']) . "', meta_description = '" . $this->db->escape($value['meta_description']) . "', meta_keyword = '" . $this->db->escape($value['meta_keyword']) . "', foreground_image='" . $this->db->escape($value['foreground_image']) . "', foreground_text='" . $this->db->escape($value['foreground_text']) . "' " );
+
 		}
 
 		if (isset($data['information_store'])) {
