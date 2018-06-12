@@ -57,6 +57,7 @@ class ControllerCatalogInformationNews extends Controller {
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
 			// сохранить переданные данные в базе
+			// var_dump( $this->request->post ); die();
 			$this->model_catalog_information_news->editInformation($this->request->get['information_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -75,7 +76,16 @@ class ControllerCatalogInformationNews extends Controller {
 				$url .= '&page=' . $this->request->get['page'];
 			}
 
-			$this->response->redirect($this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			if( $this->request->post['continue_edit'] == 1 ){
+				
+				$url .=  '&information_id=' . $this->request->get['information_id'];
+
+				$this->response->redirect($this->url->link('catalog/information_news/edit', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			} else {
+				$this->response->redirect($this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true));
+			}
+
+
 		}
 
 		$this->getForm();
@@ -460,8 +470,11 @@ class ControllerCatalogInformationNews extends Controller {
 			$this->error['warning'] = $this->language->get('error_permission');
 		}
 
+		//var_dump($this->request->post['continue_edit']); die();
+
 		foreach ($this->request->post['information_description'] as $language_id => $value) {
-			if ((utf8_strlen($value['title']) < 1) || (utf8_strlen($value['title']) > 64)) {
+			echo $language_id . " : " . utf8_strlen( $value['title'] ) . " \n<br/>";
+			if ((utf8_strlen($value['title']) < 1) || (utf8_strlen($value['title']) > 164)) {
 				$this->error['title'][$language_id] = $this->language->get('error_title');
 			}
 
@@ -473,6 +486,8 @@ class ControllerCatalogInformationNews extends Controller {
 				$this->error['meta_title'][$language_id] = $this->language->get('error_meta_title');
 			}
 		}
+
+// var_dump( $this->error ); die();
 
 		if ($this->request->post['information_seo_url']) {
 			$this->load->model('design/seo_url');
