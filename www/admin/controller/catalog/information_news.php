@@ -56,6 +56,7 @@ class ControllerCatalogInformationNews extends Controller {
 		$this->load->model('catalog/information_news');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+			// сохранить переданные данные в базе
 			$this->model_catalog_information_news->editInformation($this->request->get['information_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -171,7 +172,7 @@ class ControllerCatalogInformationNews extends Controller {
 		$filter_data = array(
 			'sort'  => $sort,
 			'order' => $order,
-			'date'	=> $date,
+			'date_added'	=> $date,
 			'start' => ($page - 1) * $this->config->get('config_limit_admin'),
 			'limit' => $this->config->get('config_limit_admin')
 		);
@@ -327,8 +328,10 @@ class ControllerCatalogInformationNews extends Controller {
 
 		$data['cancel'] = $this->url->link('catalog/information_news', 'user_token=' . $this->session->data['user_token'] . $url, true);
 
+		// получить данные если мы только открыли новость
 		if (isset($this->request->get['information_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			$information_info = $this->model_catalog_information_news->getInformation($this->request->get['information_id']);
+			// var_dump( $information_info ); die();
 		}
 
 		$data['user_token'] = $this->session->data['user_token'];
@@ -338,10 +341,13 @@ class ControllerCatalogInformationNews extends Controller {
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
 		if (isset($this->request->post['information_description'])) {
+			// пишем новый товар - данные из ПОСТ от формы
 			$data['information_description'] = $this->request->post['information_description'];
 		} elseif (isset($this->request->get['information_id'])) {
+			// эдитим товар - данные по ИД товара
 			$data['information_description'] = $this->model_catalog_information_news->getInformationDescriptions($this->request->get['information_id']);
 		} else {
+			// чистая форма - новый товар
 			$data['information_description'] = array();
 		}
 
@@ -371,6 +377,31 @@ class ControllerCatalogInformationNews extends Controller {
 			$data['information_store'] = array(0);
 		}
 
+		// это новость
+		if (isset($this->request->post['isnews'])) {
+			$data['isnews'] = $this->request->post['isnews'];
+		} else {
+			$data['isnews'] = 1;
+		}
+		// публиковать на главной?
+		if ( isset($this->request->post['onhome']) ) {
+			$data['onhome'] = $this->request->post['onhome'];
+		} elseif (!empty($information_info)) {
+			$data['onhome'] = $information_info['onhome'];
+		} else {
+			$data['onhome'] = 0;
+		}
+		// дата публикации
+		// var_dump( $information_info ); die();
+		if ( isset($this->request->post['date_added']) ) {
+			$data['date_added'] = $this->request->post['date_added'];
+		} elseif (!empty($information_info)) {
+			$data['date_added'] = $information_info['date_added'];
+		} else {
+			$data['date_added'] = '2018-01-01';
+		}
+
+		// выводим ссылку в футере?
 		if (isset($this->request->post['bottom'])) {
 			$data['bottom'] = $this->request->post['bottom'];
 		} elseif (!empty($information_info)) {
@@ -410,6 +441,8 @@ class ControllerCatalogInformationNews extends Controller {
 		} else {
 			$data['information_layout'] = array();
 		}
+
+		// var_dump( $data ); die();
 
 		$this->load->model('design/layout');
 

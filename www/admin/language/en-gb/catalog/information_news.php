@@ -29,6 +29,9 @@ $_['entry_status']           = 'Status';
 $_['entry_sort_order']       = 'Sort Order';
 $_['entry_layout']           = 'Layout Override';
 
+$_['entry_foreground_text']            = 'Annonce text';
+$_['entry_foreground_image'] = 'Foreground Image';
+
 // Help
 $_['help_bottom']            = 'Display in the bottom footer.';
 
@@ -45,3 +48,6 @@ $_['error_checkout']         = 'Warning: This information page cannot be deleted
 $_['error_affiliate']        = 'Warning: This information page cannot be deleted as it is currently assigned as the store affiliate terms!';
 $_['error_return']           = 'Warning: This information page cannot be deleted as it is currently assigned as the store return terms!';
 $_['error_store']            = 'Warning: This information page cannot be deleted as it is currently used by %s stores!';
+
+$_['error_foreground_text']          = 'Fill the text annonce.';
+$_['error_foreground_image']          = 'Set image path for annonse 360*240 px';

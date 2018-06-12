@@ -169,10 +169,13 @@ class ModelCatalogInformationNews extends Model {
 				'description'      => $result['description'],
 				'meta_title'       => $result['meta_title'],
 				'meta_description' => $result['meta_description'],
-				'meta_keyword'     => $result['meta_keyword']
+				'meta_keyword'     => $result['meta_keyword'],
+				// анонс для разных языков разный, что ессно
+				'foreground_image'	=> $result['foreground_image'],
+				'foreground_text'	=> $result['foreground_text'],
 			);
 		}
-
+		// var_dump( $information_description_data ); die(); 
 		return $information_description_data;
 	}
 

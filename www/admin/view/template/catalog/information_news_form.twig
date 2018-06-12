@@ -39,6 +39,7 @@
               </ul>
               <div class="tab-content">{% for language in languages %}
                   <div class="tab-pane" id="language{{ language.language_id }}">
+                    
                     <div class="form-group required">
                       <label class="col-sm-2 control-label" for="input-title{{ language.language_id }}">{{ entry_title }}</label>
                       <div class="col-sm-10">
@@ -47,6 +48,25 @@
                           <div class="text-danger">{{ error_title[language.language_id] }}</div>
                         {% endif %} </div>
                     </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-foreground-text{{ language.language_id }}">{{ entry_foreground_image }}</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="information_description[{{ language.language_id }}][foreground_image]" value="{{ information_description[language.language_id] ? information_description[language.language_id].foreground_image }}" placeholder="{{ entry_foreground_image }}" id="input-foreground-image{{ language.language_id }}" class="form-control"/>
+                        {% if error_fereground_image[language.language_id] %}
+                          <div class="text-danger">{{ error_foreground_image[language.language_id] }}</div>
+                        {% endif %} </div>
+                    </div>
+
+                    <div class="form-group">
+                      <label class="col-sm-2 control-label" for="input-foreground-text{{ language.language_id }}">{{ entry_foreground_text }}</label>
+                      <div class="col-sm-10">
+                        <input type="text" name="information_description[{{ language.language_id }}][foreground_text]" value="{{ information_description[language.language_id] ? information_description[language.language_id].foreground_text }}" placeholder="{{ entry_foreground_text }}" id="input-foreground-text{{ language.language_id }}" class="form-control"/>
+                        {% if error_fereground_text[language.language_id] %}
+                          <div class="text-danger">{{ error_foreground_text[language.language_id] }}</div>
+                        {% endif %} </div>
+                    </div>
+
                     <div class="form-group required">
                       <label class="col-sm-2 control-label" for="input-description{{ language.language_id }}">{{ entry_description }}</label>
                       <div class="col-sm-10">
@@ -95,6 +115,9 @@
                     {% endfor %}</div>
                 </div>
               </div>
+
+              <input type="hidden" name="bottom" value="0" id="input-bottom">              
+              {#
               <div class="form-group">
                 <label class="col-sm-2 control-label" for="input-bottom"><span data-toggle="tooltip" title="{{ help_bottom }}">{{ entry_bottom }}</span></label>
                 <div class="col-sm-10">
@@ -108,9 +131,12 @@
                   </div>
                 </div>
               </div>
+              #}
 
+              <input type="hidden" name="isnews" id="input-isnews" value="1">
+{#
               <div class="form-group">
-                <label class="col-sm-2 control-label" for="input-isnews">is news</label>
+                <label class="col-sm-2 control-label" for="input-isnews">Новость (1-да)</label>
                 <div class="col-sm-10">
                   <select name="isnews" id="input-isnews" class="form-control">
                     {% if isnews %}
@@ -121,6 +147,14 @@
                       <option value="0" selected="selected">Article</option>
                     {% endif %}
                   </select>
+                </div>
+              </div>
+#}
+
+              <div class="form-group">
+                <label class="col-sm-2 control-label" for="input-date-added">Дата публикации</label>
+                <div class="col-sm-10">
+                  <input type="text" name="date_added" id="input-date-added" value="{{date_added}}">
                 </div>
               </div>
 
