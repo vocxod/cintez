@@ -6,9 +6,10 @@ class ModelCatalogInformation extends Model {
 		return $query->row;
 	}
 
-	public function getTopNews( $iOffset = 0, $iLimit = 3 ){
+	public function getTopNews( $iOffset = 0, $iLimit = 3, $i_without_news_id = 0 ){
 		$iLanguageId = (int)$this->config->get('config_language_id');
-		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset ";
+		$sSqlSelect = "SELECT * FROM " . DB_PREFIX .  "information i LEFT JOIN " . DB_PREFIX . "information_description id ON (i.information_id = id.information_id) WHERE i.status=1 AND i.isnews=1 AND id.language_id='" . $iLanguageId . "' AND i.information_id<>'" . $i_without_news_id . "' ORDER BY i.information_id DESC LIMIT $iLimit OFFSET $iOffset ";
+		//var_dump( $sSqlSelect ); die();
 		$query = $this->db->query( $sSqlSelect );
 		return $query->rows;
 	}
