@@ -52,6 +52,7 @@ class ControllerProductCategory extends Controller {
 		} else {
 			$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit');
 		}
+		$limit = 12; // scard
 
 		$data['breadcrumbs'] = array();
 
@@ -235,7 +236,7 @@ class ControllerProductCategory extends Controller {
 				);
 			}
 
-// var_dump( $data['products'] ); die();
+//var_dump( $data['products'] ); die();
 
 			$url = '';
 
@@ -361,10 +362,13 @@ class ControllerProductCategory extends Controller {
 			$data['products_count'] = $product_total;
 			$data['products_start'] = ($page - 1) * $limit + 1;
 			$data['products_finish'] = ($page + 1 ) * $limit;
-			// var_dump( $pagination ); die();
+			
+			//var_dump( $pagination ); die();
+			
+			// Строка типа такой: 'Показано с 49 по 52 из 52 (всего 5 страниц)' 
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
+			// var_dump( $data['results'] ); die();
 
-			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 			if ($page == 1) {
 			    $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id']), 'canonical');
 			} else {
@@ -393,7 +397,10 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+			$data['products'] = array_slice($data['products'], ($page-1) * $limit, $limit ) ;
+
 			$this->response->setOutput($this->load->view('product/category', $data));
+
 		} else {
 			$url = '';
 
