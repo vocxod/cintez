@@ -24,8 +24,8 @@ $_['text_transactions']			= 'Транзакции';
 $_['text_all_docs'] = 'Все документы';
 $_['text_empty'] = 'Документы для скачивания отсутвуют';
 
-$_['column_download_id'] = 'id документа' ;
-$_['column_date_added'] = 'Дата добавления';
-$_['column_filename'] = 'Имя файла';
+$_['column_download_id'] = 'ID' ;
+$_['column_date_added'] = 'Дата изменения';
+$_['column_filename'] = 'Файл';
 
 
