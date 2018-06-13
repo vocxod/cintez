@@ -11,6 +11,21 @@ class ModelCatalogProduct extends Model {
 		return $query->rows;
 	}
 
+	public function getAllDocuments($i_offset, $i_limit){
+		$s_sql_select = "SELECT * FROM oc_download WHERE filename LIMIT " . $i_offset . ", " . $i_limit;
+		// echo $s_sql_select ; die(); 
+		$query = $this->db->query( $s_sql_select );
+		return $query->rows;
+	}
+
+	public function getTotalDocuments( ){
+		$s_sql_select = "SELECT count(*) as all_docs FROM oc_download ";
+		// echo $s_sql_select ; 
+		$query = $this->db->query( $s_sql_select );
+		//var_dump( $query->row['all_docs'] ); die();
+		return $query->row['all_docs'];
+	}
+
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}

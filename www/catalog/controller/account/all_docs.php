@@ -31,7 +31,7 @@ class ControllerAccountAllDocs extends Controller {
 		
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('heading_title'),
-			'href' => $this->url->link('account/order', $url, true)
+			'href' => $this->url->link('account/all_docs', $url, true)
 		);
 
 		if (isset($this->request->get['page'])) {
@@ -40,40 +40,38 @@ class ControllerAccountAllDocs extends Controller {
 			$page = 1;
 		}
 
-		$data['orders'] = array();
+		$data['docs'] = array();
 
-		$this->load->model('account/order');
+		$this->load->model('catalog/product');
 
-		$order_total = $this->model_account_order->getTotalOrders();
+		$docs_total = $this->model_catalog_product->getTotalDocuments();
 
-		$results = $this->model_account_order->getOrders(($page - 1) * 10, 10);
+		$results = $this->model_catalog_product->getAllDocuments( ($page - 1) * 10, 10);
+
+		// var_dump( $results ); die();
 
 		foreach ($results as $result) {
-			$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
-			$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
-
-			$data['orders'][] = array(
-				'order_id'   => $result['order_id'],
-				'name'       => $result['firstname'] . ' ' . $result['lastname'],
-				'status'     => $result['status'],
-				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added'])),
-				'products'   => ($product_total + $voucher_total),
-				'total'      => $this->currency->format($result['total'], $result['currency_code'], $result['currency_value']),
-				'view'       => $this->url->link('account/order/info', 'order_id=' . $result['order_id'], true),
-			);
+			//$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
+			//$voucher_total = $this->model_account_order->getTotalOrderVouchersByOrderId($result['order_id']);
+			$data['docs'][] = [
+				'download_id' => $result['download_id'],
+				'filename'	=> 	$result['mask'],
+				'date_added' => $result['date_added'],
+				'view'	=> '#', //ссыль на скачивание
+				];
 		}
 
 		$pagination = new Pagination();
-		$pagination->total = $order_total;
+		$pagination->total = $docs_total;
 		$pagination->page = $page;
 		$pagination->limit = 10;
-		$pagination->url = $this->url->link('account/order', 'page={page}', true);
+		$pagination->url = $this->url->link('account/all_docs', 'page={page}', true);
 
 		$data['pagination'] = $pagination->render();
 
-		$data['results'] = sprintf($this->language->get('text_pagination'), ($order_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($order_total - 10)) ? $order_total : ((($page - 1) * 10) + 10), $order_total, ceil($order_total / 10));
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($docs_total) ? (($page - 1) * 10) + 1 : 0, ((($page - 1) * 10) > ($docs_total - 10)) ? $docs_total : ((($page - 1) * 10) + 10), $docs_total, ceil($docs_total / 10));
 
-		$data['continue'] = $this->url->link('account/account', '', true);
+		$data['continue'] = $this->url->link('account/all_docs', '', true);
 
 		$data['column_left'] = $this->load->controller('common/column_left');
 		$data['column_right'] = $this->load->controller('common/column_right');
@@ -82,7 +80,7 @@ class ControllerAccountAllDocs extends Controller {
 		$data['footer'] = $this->load->controller('common/footer');
 		$data['header'] = $this->load->controller('common/header');
 
-		$this->response->setOutput($this->load->view('account/order_list', $data));
+		$this->response->setOutput($this->load->view('account/all_docs', $data));
 	}
 
 	public function info() {

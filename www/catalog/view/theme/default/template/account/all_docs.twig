@@ -15,30 +15,31 @@
     {% endif %}
     <div id="content" class="{{ class }}">{{ content_top }}
       <h1>{{ heading_title }}</h1>
-      {% if orders %}
+      {% if docs %}
       <div class="table-responsive">
         <table class="table table-bordered table-hover">
           <thead>
             <tr>
-              <td class="text-right">{{ column_order_id }}</td>
-              <td class="text-left">{{ column_customer }}</td>
-              <td class="text-right">{{ column_product }}</td>
-              <td class="text-left">{{ column_status }}</td>
-              <td class="text-right">{{ column_total }}</td>
+              <td class="text-right">{{ column_download_id }}</td>
+              <td class="text-left"> {{ column_filename }}</td>
+              <td class="text-right">{#{ column_product }#}</td>
+              <td class="text-left"> {#{ column_status }#}</td>
+              <td class="text-right">{#{ column_total }#}</td>
               <td class="text-left">{{ column_date_added }}</td>
               <td></td>
             </tr>
           </thead>
           <tbody>
-           {% for order in orders %}
+           {% for doc in docs %}
             <tr>
-              <td class="text-right">#{{ order.order_id }}</td>
-              <td class="text-left">{{ order.name }}</td>
-              <td class="text-right">{{ order.products }}</td>
-              <td class="text-left">{{ order.status }}</td>
-              <td class="text-right">{{ order.total }}</td>
-              <td class="text-left">{{ order.date_added }}</td>
-              <td class="text-right"><a href="{{ order.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-eye"></i></a></td>
+              <td class="text-right">#{{ doc.download_id }}</td>
+              <td class="text-left">{{ doc.filename }}</td>
+              <td class="text-right"></td>
+              <td class="text-left"></td>
+              <td class="text-right"></td>
+              <td class="text-left">{{ doc.date_added }}</td>
+              <td class="text-right">
+                <a href="{{ doc.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-download"></i></a></td>
             </tr>
             {% endfor %}
           </tbody>
@@ -52,7 +53,9 @@
       <p>{{ text_empty }}</p>
       {% endif %}
       <div class="buttons clearfix">
-        <div class="pull-right"><a href="{{ continue }}" class="btn btn-success">{{ button_continue }}</a></div>
+        <div class="pull-right">
+          <a href="{{ continue }}" class="btn btn-success">{{ button_continue }}</a>
+        </div>
       </div>
       {{ content_bottom }}</div>
     {{ column_right }}</div>
