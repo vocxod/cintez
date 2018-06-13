@@ -9,7 +9,8 @@ class ControllerExtensionModuleBestSeller extends Controller {
 
 		$data['products'] = array();
 
-		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit']);
+		// второй параметр - исключаемые товары
+		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit'], [940] );
 
 		if ($results) {
 			foreach ($results as $result) {
