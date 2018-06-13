@@ -25,6 +25,7 @@ $_['text_all_docs'] = 'Все документы';
 $_['text_empty'] = 'Документы для скачивания отсутвуют';
 
 $_['column_download_id'] = 'ID' ;
+$_['column_product_title'] = 'Наименование товара';
 $_['column_date_added'] = 'Дата изменения';
 $_['column_filename'] = 'Файл';
 
