@@ -1,6 +1,6 @@
 <?php
 // Heading
-$_['heading_title']					= 'Личный Кабинет';
+$_['heading_title']					= 'Все документы';
 
 // Text
 $_['text_account']					= 'Личный Кабинет';
@@ -22,4 +22,5 @@ $_['text_recurring']					= 'Периодические платежи';
 $_['text_transactions']			= 'Транзакции';
 
 $_['text_all_docs'] = 'Все документы';
+$_['text_empty'] = 'Документы для скачивания отсутвуют';
 
