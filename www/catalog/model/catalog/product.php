@@ -12,7 +12,7 @@ class ModelCatalogProduct extends Model {
 	}
 
 	public function getAllDocuments($i_offset, $i_limit){
-		$s_sql_select = "SELECT * FROM oc_download WHERE filename LIMIT " . $i_offset . ", " . $i_limit;
+		$s_sql_select = "SELECT a.*, dd.name AS name, ad.name AS attribute_name FROM oc_download AS a LEFT JOIN oc_download_description AS dd ON a.download_id=dd.download_id LEFT JOIN oc_attribute_description AS ad ON a.attribute_id=ad.attribute_id WHERE a.filename IS NOT NULL AND dd.language_id=4 AND ad.language_id=4 LIMIT " . $i_offset . ", " . $i_limit;
 		// echo $s_sql_select ; die(); 
 		$query = $this->db->query( $s_sql_select );
 		return $query->rows;

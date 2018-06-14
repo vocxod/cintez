@@ -25,7 +25,8 @@ $_['text_all_docs'] = 'Все документы';
 $_['text_empty'] = 'Документы для скачивания отсутвуют';
 
 $_['column_download_id'] = 'ID' ;
-$_['column_product_title'] = 'Наименование товара';
+$_['column_product_id'] = 'Product ID' ;
+$_['column_product_title'] = 'Наименование документа';
 $_['column_doc_type'] = 'Тип документа';
 $_['column_indeustry'] = 'Основная отрасль';
 $_['column_date_added'] = 'Дата изменения';

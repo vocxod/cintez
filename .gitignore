@@ -11,6 +11,9 @@ www/old/
 
 www/fname.txt
 
+www/php_errors.log
+
+
 storage/logs/error.log
 /storage/logs/error.log
 

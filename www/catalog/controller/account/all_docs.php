@@ -48,7 +48,7 @@ class ControllerAccountAllDocs extends Controller {
 
 		$results = $this->model_catalog_product->getAllDocuments( ($page - 1) * 10, 10);
 
-		// var_dump( $results ); die();
+		//var_dump( $results ); die();
 
 		foreach ($results as $result) {
 			//$product_total = $this->model_account_order->getTotalOrderProductsByOrderId($result['order_id']);
@@ -56,6 +56,9 @@ class ControllerAccountAllDocs extends Controller {
 			$data['docs'][] = [
 				'download_id' => $result['download_id'],
 				'filename'	=> 	$result['mask'],
+				'name'	=> $result['name'],
+				'product_id' => $result['product_id'],
+				'attribute_name' => $result['attribute_name'],
 				'date_added' => $result['date_added'],
 				'view'	=> '#', //ссыль на скачивание
 				];
