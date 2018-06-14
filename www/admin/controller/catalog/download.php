@@ -311,6 +311,7 @@ class ControllerCatalogDownload extends Controller {
 		$data['languages'] = $this->model_localisation_language->getLanguages();
 
 		if (isset($this->request->get['download_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
+			// получить информацию по загрузке
 			$download_info = $this->model_catalog_download->getDownload($this->request->get['download_id']);
 		}
 
