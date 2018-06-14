@@ -18,6 +18,9 @@ $_['column_action']     = 'Действие';
 $_['entry_name']        = 'Название загрузки';
 $_['entry_filename']    = 'Имя файла';
 $_['entry_mask']        = 'Маска';
+$_['entry_industry']	= 'Отрасль';
+$_['entry_select_inductry'] = 'Укажите отрасль';
+$_['entry_product_id']	= 'ID товара';
 
 // Help
 $_['help_filename']     = 'Вы можете загрузить файл с помощью кнопки загрузки, либо через FTP, указав детали ниже.';

@@ -20,6 +20,10 @@ class ControllerCatalogDownload extends Controller {
 		$this->load->model('catalog/download');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
+			//industry
+			// var_dump( $this->request->post ); die();
+
 			$this->model_catalog_download->addDownload($this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -52,6 +56,10 @@ class ControllerCatalogDownload extends Controller {
 		$this->load->model('catalog/download');
 
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validateForm()) {
+
+			//industry
+			//var_dump( $this->request->post ); die();
+
 			$this->model_catalog_download->editDownload($this->request->get['download_id'], $this->request->post);
 
 			$this->session->data['success'] = $this->language->get('text_success');
@@ -312,8 +320,14 @@ class ControllerCatalogDownload extends Controller {
 
 		if (isset($this->request->get['download_id']) && ($this->request->server['REQUEST_METHOD'] != 'POST')) {
 			// получить информацию по загрузке
-			$download_info = $this->model_catalog_download->getDownload($this->request->get['download_id']);
+			$data['download_info'] = $this->model_catalog_download->getDownload($this->request->get['download_id']);
 		}
+
+		// получить информацию по атрибутам
+		$this->load->model('catalog/attribute');
+		// группа - индустрия
+		$data['attribute_select'] = $this->model_catalog_attribute->getAttributes( ['filter_attribute_group_id' => 8] );
+		//var_dump( $data['attribute_select'] ); die();
 
 		$data['user_token'] = $this->session->data['user_token'];
 
