@@ -1,6 +1,12 @@
 <?php
 class ModelCatalogProduct extends Model {
 
+	public function getDownload($download_id) {
+		$s_sql_select = "SELECT d.filename, d.mask FROM `" . DB_PREFIX . "download` AS d WHERE d.download_id = '" . (int)$download_id . "'";
+		$query = $this->db->query( $s_sql_select );
+		return $query->row;
+	}
+
 	/*
 	вернуть массив документов товара для пользователя 
 	*/

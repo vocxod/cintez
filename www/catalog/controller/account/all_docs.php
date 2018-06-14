@@ -1,5 +1,28 @@
 <?php
 class ControllerAccountAllDocs extends Controller {
+	
+	public function getdoc(){
+		
+		if (isset($this->request->get['download_id'])) {
+			$i_download_id = $this->request->get['download_id'];
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			$this->response->setOutput($this->load->view('error/not_found', ['Документ не найден'] ));
+			return;
+		}
+		$this->load->model('catalog/product');
+		$result = $this->model_catalog_product->getDownload( $i_download_id );
+		$s_downloadfile = $result['filename'];	
+		//var_dump( $s_downloadfile ); die();
+
+		$file = "product_document.pdf";
+		// Force the download
+		header("Content-Disposition: attachment; filename=" . basename($file) . " ");
+		header("Content-Length: " . filesize( getcwd() . "/../" . "storage/download/" . $s_downloadfile ));
+		header("Content-Type: application/octet-stream;");
+		readfile( getcwd() . "/../" . "storage/download/" . $s_downloadfile );	
+	}
+
 	public function index() {
 		if (!$this->customer->isLogged()) {
 			$this->session->data['redirect'] = $this->url->link('account/order', '', true);

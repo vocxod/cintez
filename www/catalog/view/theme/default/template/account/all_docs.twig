@@ -47,7 +47,7 @@
               </td>
               <td class="text-left">{{ doc.date_added }}</td>
               <td class="text-right">
-                <a href="{{ doc.view }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-download"></i></a></td>
+                <a href="index.php?route=account/all_docs/getdoc&download_id={{ doc.download_id }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-download"></i></a></td>
             </tr>
             {% endfor %}
           </tbody>
