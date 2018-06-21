@@ -1,12 +1,12 @@
 <h4 class="h4-info"><span class="green-uline">{{ heading_title }}&nbsp;&nbsp;</span></h4>
 <div class="row">
   {% for article in top_news %}
+  {#
+    <a id="show_news_{{ article.information_id }}" class="btn btn-success shownews" style="width:100%;color:#FEFAEA;z-index:65500 !important; cursor:pointer !important;" href="index.php?route=information/onenews&information_id={{ article.information_id }}" target="_self">
+    ПОДРОБНЕЕ &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
+    </a>
+#}
     <div class="product-layout col-lg-4 col-md-4 col-sm-6 col-xs-12">
-      {#
-      <div>
-        {{ article.title }}
-      </div>
-      #}
       <div class="news_anonce">
           {#<span style="color:#FEFAEA;">{{ article.information_id }}</span>#}
           {% if article.foreground_image != "" %}
@@ -22,10 +22,10 @@
         
         <div class="col-sm-12" style="width:100%; padding-bottom:20px; background: rgb(240,244,245);">    
           <div class="col-sm-6" style="margin:0; padding:0;">
-          <a class="btn btn-success shownews" style="width:100%;color:#FEFAEA;" href="index.php?route=information/onenews&information_id={{ article.information_id }}" target="_self">ПОДРОБНЕЕ &nbsp;<i class="fa fa-angle-right" aria-hidden="true"></i>
-            {#<button class="btn btn-success shownews" style="width:100%;color:#FEFAEA;">ПОДРОБНЕЕ &nbsp;
+          <a href="index.php?route=information/onenews&information_id={{ article.information_id }}">
+            <button class="btn btn-success shownews" style="width:100%;color:#FEFAEA;">ПОДРОБНЕЕ &nbsp;
               <i class="fa fa-angle-right" aria-hidden="true"></i>
-            </button>#}
+            </button>
           </a>
           </div>
 
@@ -42,27 +42,25 @@ document.write(VK.Share.button(false,{type: "link_noicon", text: "<i class='fa f
         </div>
       </div>
 
+      <a href="index.php?route=information/onenews&information_id={{ article.information_id }}">
+        <button class="" style="width:45%;color:#111;" type="button">
+          <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
+        </button>  
+      </a>
 
-{#
-          <a href="index.php?route=information/onenews&information_id={{ article.information_id }}">
-            <button class="" style="width:45%;color:#111;" type="button">
-              <span class="hidden-xs hidden-sm hidden-md" style="color:#111">ПОДРОБНЕЕ</span>
-            </button>  
-          </a>
-
-          <button style="width:15%; margin-left:15px;" type="button" title="">
-            <i class="fa fa-vk"></i>
-          </button>
-          <button style="width:15%;" type="button"  title="">
-            <i class="fa fa-twitter"></i>
-          </button>         
-          <button style="width:15%;" type="button"  title="">
-            <i class="fa fa-facebook"></i>
-          </button>
-#}
+      <button style="width:15%; margin-left:15px;" type="button" title="">
+        <i class="fa fa-vk"></i>
+      </button>
+      <button style="width:15%;" type="button"  title="">
+        <i class="fa fa-twitter"></i>
+      </button>         
+      <button style="width:15%;" type="button"  title="">
+        <i class="fa fa-facebook"></i>
+      </button>
 
     </div>
   {% endfor %}
+</div>
 
   <div class="row">
     <div class="col-md-12 center-block text-center" >&nbsp;</div>
@@ -73,7 +71,7 @@ document.write(VK.Share.button(false,{type: "link_noicon", text: "<i class='fa f
     </div>
   </div>
   
-</div>
+
 
 {#
 
