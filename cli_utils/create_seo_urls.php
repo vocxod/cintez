@@ -28,7 +28,7 @@ class CreateSeoUrls {
 			->find();
 			if( $a_descriptions != null ){
 				foreach ($a_descriptions as $a_description) {
-					$s_seo_keyword = "product/" . $this->slugify($a_description->getName());
+					$s_seo_keyword = "product-" . $this->slugify($a_description->getName());
 					$a_seo_keys[] = $s_seo_keyword;
 					// $a_seo_keys[] =  trim(mb_strtolower( preg_replace("/[\".,+{}()\s]/", "-" , htmlspecialchars_decode($a_description->getName())  ))) . "\n";
 					$obj = OcSeoUrlQuery::create()
