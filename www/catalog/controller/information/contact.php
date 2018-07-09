@@ -112,7 +112,7 @@ class ControllerInformationContact extends Controller {
 			$sMyName = $this->request->post['myname'];
 			$sMyPhone = $this->request->post['myphone'];
 			$sMyMessage = $this->request->post['mymessage'];
-			$sCaptcha = $this->request->post['g-recaptcha-response'];
+			$sCaptcha = '';// $this->request->post['g-recaptcha-response'];
 			$data['hint'] = $this->language->get('text_send_success'); // . $sMyName . $sMyPhone . $sMyMessage;
 			$this->load->model('catalog/review');
 		/*
