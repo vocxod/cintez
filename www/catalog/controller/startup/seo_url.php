@@ -1,13 +1,20 @@
 <?php
 class ControllerStartupSeoUrl extends Controller {
+
 	public function index() {
 		// Add rewrite to url class
-		if ($this->config->get('config_seo_url')) {
+		if ( $this->config->get('config_seo_url') ) {
+			// var_dump( $this->config->get('config_seo_url') ); die();
 			$this->url->addRewrite($this);
 		}
 
+		// var_dump("startup"); die();
+
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
+
+			//var_dump( $this->request->get['_route_'] ); die();
+
 			$parts = explode('/', $this->request->get['_route_']);
 
 			// remove any empty arrays from trailing
@@ -17,6 +24,8 @@ class ControllerStartupSeoUrl extends Controller {
 
 			foreach ($parts as $part) {
 				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
+
+				// var_dump($query); die();
 
 				if ($query->num_rows) {
 					$url = explode('=', $query->row['query']);
@@ -66,6 +75,7 @@ class ControllerStartupSeoUrl extends Controller {
 	}
 
 	public function rewrite($link) {
+
 		$url_info = parse_url(str_replace('&amp;', '&', $link));
 
 		$url = '';
