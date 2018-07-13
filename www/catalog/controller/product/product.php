@@ -340,7 +340,83 @@ class ControllerProductProduct extends Controller {
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
-			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+			$s_page = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+			
+			/* анализируем хвост описания */
+			$s_pattern = '|<!-- /url/(.*) -->(.*)<!-- /url/ -->|Uis';
+			
+			$a_out = [];
+			$s_part = '';
+			
+			if( preg_match_all($s_pattern, $s_page, $a_out)){
+				
+				//var_dump( $a_out ); die();
+				
+				foreach ($a_out[1] as $key => $s_tag) {
+					$s_replace_pattern = "|<!-- /url/" . $s_tag . " -->(.*)<!-- /url/ -->|Uis";
+					
+					//var_dump( $s_replace_pattern );
+					// формируем ссылки из тегов
+					
+					$a_part = explode(";", $a_out[2][$key]);
+					$s_new_url = '';
+					foreach ($a_part as $s_source) {
+						//echo $s_source . "<br/>";
+						$s_new_url .= '<a href="#url#">' . $s_source . '&nbsp;</a>';
+					}
+					//var_dump( $s_new_url ); 
+					// производим замену: теги на ссылки
+					//$s_replace_pattern = "|<!-- /url/bakterii -->(.*)<!-- /url/ -->|";
+					$s_page = preg_replace($s_replace_pattern, $s_new_url, $s_page);
+					//file_put_contents("filename", "### " . $key . "\n", FILE_APPEND);
+					//file_put_contents("filename", $s_page. "\n", FILE_APPEND );
+
+				}
+		
+
+
+			}
+
+
+			
+			//var_dump( $a_out );
+			$data['description'] = $s_page;
+//die();
+/*
+сценарий УРЛизации тегов
+
+<p data="block_1">
+
+<label>
+<span data="section" data-name="aktivnost">Активно в отношении:</span>
+</label>
+<br>
+<span data="sub_section_1" data-name="bakterii">Бактерии</span> - 
+<span data="sub_section_2" data-name="list">
+<i>
+	<!-- /url/bakterii -->Mycobacterium tuberculosi; Возбудители ВБИ; Грамотрицательные бактерии; Грамположительные бактерии;<!-- /url/ -->
+</i>
+</span>
+  
+<br>
+<span data="sub_section_1" data-name="virus">Вирусы</span> - 
+<span data="sub_section_2" data-name="list">
+	<i>Аденовирусы; Атипичной пневмонии; ВИЧ; Грипп; Парагрипп; Парентеральных гепатитов; Полиомиелит; Прочие возбудители ОРВИ; Птичьего гриппа (H5N1); 
+	Ротавирусы; Свиной грипп (H1N1); Энтеральных гепатитов; Энтеровирусы;
+	</i>
+</span>
+  
+<br>
+<span data="sub_section_1" data-name="grib">Патогенные грибы</span> - 
+<span data="section" data-name="aktivnost">
+	<i>Дерматофитон; Кандида;</i>
+</span>
+<br>
+  
+</p>
+
+*/
+			/* */
 
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
