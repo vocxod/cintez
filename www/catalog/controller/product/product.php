@@ -368,8 +368,8 @@ class ControllerProductProduct extends Controller {
 					// производим замену: теги на ссылки
 					//$s_replace_pattern = "|<!-- /url/bakterii -->(.*)<!-- /url/ -->|";
 					$s_page = preg_replace($s_replace_pattern, $s_new_url, $s_page);
-					file_put_contents("filename", "### " . $key . "\n", FILE_APPEND);
-					file_put_contents("filename", $s_page. "\n", FILE_APPEND );
+					//file_put_contents("filename", "### " . $key . "\n", FILE_APPEND);
+					//file_put_contents("filename", $s_page. "\n", FILE_APPEND );
 
 				}
 		
