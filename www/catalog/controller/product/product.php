@@ -348,6 +348,7 @@ class ControllerProductProduct extends Controller {
 			$a_out = [];
 			$s_part = '';
 			
+
 			if( preg_match_all($s_pattern, $s_page, $a_out)){
 				
 				//var_dump( $a_out ); die();
@@ -362,7 +363,8 @@ class ControllerProductProduct extends Controller {
 					$s_new_url = '';
 					foreach ($a_part as $s_source) {
 						//echo $s_source . "<br/>";
-						$s_new_url .= '<a href="#url#">' . $s_source . '&nbsp;</a>';
+						$s_slug = $this->model_catalog_product->slugify( $s_source );
+						$s_new_url .= '<a href="/'.$s_tag.'/' . $s_slug . '">' . $s_source . '&nbsp;</a>';
 					}
 					//var_dump( $s_new_url ); 
 					// производим замену: теги на ссылки
