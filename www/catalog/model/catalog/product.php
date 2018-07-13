@@ -1036,4 +1036,57 @@ class ModelCatalogProduct extends Model {
     	return trim($s_result, '-');
 	}
 
+	// upsert_seo_list
+	/*
+mysql> DESCRIBE oc_seo_super;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| seo_super_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| prefix       | varchar(255) | YES  |     | NULL    |                |
+| tag          | varchar(255) | YES  |     | NULL    |                |
+| h1_page      | varchar(255) | YES  |     | NULL    |                |
+| description  | varchar(255) | YES  |     | NULL    |                |
+| keyword      | varchar(255) | YES  |     | NULL    |                |
+| enabled      | int(11)      | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+mysql> DESCRIBE oc_seo_super_product;
++----------------------+---------+------+-----+---------+----------------+
+| Field                | Type    | Null | Key | Default | Extra          |
++----------------------+---------+------+-----+---------+----------------+
+| seo_super_product_id | int(11) | NO   | PRI | NULL    | auto_increment |
+| seo_super_id         | int(11) | YES  |     | NULL    |                |
+| product_id           | int(11) | YES  |     | NULL    |                |
++----------------------+---------+------+-----+---------+----------------+
+	@param a_data
+	a_data['prefix']
+	a_data['tag'] //это же слугифи
+	a_data['product_id']
+	*/
+	public function upsert_seo_list( $a_data ){
+		// убеждаемся в наличии нужного списка
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE prefix='" . $a_data['prefix'] . "' AND tag='" . $a_data['tag'] . "' AND enabled=1 ";
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if($a_row == null){
+			$s_sql_insert = "INSERT INTO oc_seo_super (prefix, tag, h1_page, description, keyword, enabled) VALUES ('".$a_data['prefix']."', '".$a_data['tag']."', 'h1_page', 'description1', 'keyword1', 1)";
+			$i_result = $this->db->query( $s_sql_insert );
+			$i_seo_super = $this->db->getLastId();
+			//var_dump( $i_result );
+		} else {
+			$i_seo_super = $a_row['seo_super_id'];
+		}
+		$s_sql_select = "SELECT * FROM oc_seo_super_product WHERE seo_super_id='" . $i_seo_super . "' AND product_id='" . $a_data['product_id'] . "' ";
+		// echo $s_sql_select ; die();
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if( $a_row==null ){
+			$s_sql_insert = "INSERT INTO oc_seo_super_product (seo_super_id, product_id) VALUES ($i_seo_super, " . $a_data['product_id'] . " ) ";
+			$this->db->query( $s_sql_insert );
+		} else {
+
+		}
+		//var_dump( $a_rows );
+	}
+
 }

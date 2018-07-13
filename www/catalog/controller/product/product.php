@@ -365,13 +365,23 @@ class ControllerProductProduct extends Controller {
 						//echo $s_source . "<br/>";
 						$s_slug = $this->model_catalog_product->slugify( $s_source );
 						$s_new_url .= '<a href="/'.$s_tag.'/' . $s_slug . '">' . $s_source . '&nbsp;</a>';
+						if( $s_slug != ""){
+							$i_result = $this->model_catalog_product->upsert_seo_list( 
+								[
+									'prefix'=>$s_tag, 
+									'tag'=>$s_slug, 
+									'product_id'=>$this->request->get['product_id'] 
+								] 
+							);
+						}
+
 					}
 					//var_dump( $s_new_url ); 
 					// производим замену: теги на ссылки
 					//$s_replace_pattern = "|<!-- /url/bakterii -->(.*)<!-- /url/ -->|";
 					$s_page = preg_replace($s_replace_pattern, $s_new_url, $s_page);
-					//file_put_contents("filename", "### " . $key . "\n", FILE_APPEND);
-					//file_put_contents("filename", $s_page. "\n", FILE_APPEND );
+					
+
 
 				}
 		
