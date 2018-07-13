@@ -1028,4 +1028,12 @@ class ModelCatalogProduct extends Model {
 			return 0;
 		}
 	}
+
+	public function slugify( $s_data ){
+		$s_result = '';
+		$s_result = transliterator_transliterate("Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();", $s_data);
+    	$s_result = preg_replace('/[-\s]+/', '-', $s_result);
+    	return trim($s_result, '-');
+	}
+
 }
