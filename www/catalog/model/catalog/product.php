@@ -334,6 +334,8 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		// $data['filter_tag'] = "dezinnfekciya";
+
 		if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
 			$sql .= " AND (";
 
@@ -437,6 +439,8 @@ class ModelCatalogProduct extends Model {
 		// echo $sql; die("<br/>\n\nshow SQL");
 		// пока так, жестко впаиваем признание веса товара в категории
 				// @TODO внести вес в построение SQL выражения выше
+		// echo( $sql ); die();
+
 		$sql = "SELECT p.product_id, 
 
 		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
@@ -628,6 +632,8 @@ class ModelCatalogProduct extends Model {
 		// echo $sql; die("<br/>\n\nshow SQL");
 		// пока так, жестко впаиваем признание веса товара в категории
 				// @TODO внести вес в построение SQL выражения выше
+		//var_dump( $sql ); die();
+
 		$sql = "SELECT p.product_id, 
 
 		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
@@ -657,7 +663,7 @@ class ModelCatalogProduct extends Model {
 						GROUP BY p.product_id 
 							ORDER BY weight DESC,  p.sort_order ASC, LCASE(pd.name) ASC 
 								LIMIT 0,50";
-		// echo $sql; die();
+		//echo $sql; die();
 
 		$query = $this->db->query($sql);
 
@@ -1034,6 +1040,72 @@ class ModelCatalogProduct extends Model {
 		$s_result = transliterator_transliterate("Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();", $s_data);
     	$s_result = preg_replace('/[-\s]+/', '-', $s_result);
     	return trim($s_result, '-');
+	}
+
+	public function getTagTotalProducts( $a_filter ){
+		$s_sql_select = "SELECT COUNT(*) all_items FROM oc_seo_super_product WHERE seo_super_id=" . $a_filter['filter_seo_super_id'];
+		//echo $s_sql_select . "\n";
+		$query = $this->db->query( $s_sql_select );
+		$a_result = $query->row;
+		//var_dump( $a_result ); die();
+		return $a_result['all_items'];
+	}
+
+	public function getTagProducts( $a_filter ){
+		$s_sql_select = "";
+	/*
+	$sql = "SELECT 
+	p.product_id, 
+	(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
+	(SELECT price FROM oc_product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '1' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special 
+	FROM oc_product_to_category p2c LEFT JOIN oc_product p ON (p2c.product_id = p.product_id) LEFT JOIN oc_product_description pd ON (p.product_id = pd.product_id) LEFT JOIN oc_product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '4' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '0' AND ( pd.tag LIKE '%dezinnfekciya%') GROUP BY p.product_id ORDER BY p.sort_order ASC, LCASE(pd.name) ASC LIMIT 0,12";
+*/
+		// store_id
+		// language_id
+
+		$s_and_seo_super = ''; 
+		if( array_key_exists('filter_seo_super_id', $a_filter) ){
+			$s_and_seo_super = "AND p2c.seo_super_id = " . $a_filter['filter_seo_super_id'];
+ 		}
+		$sql = "SELECT 
+		p.product_id, 
+		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
+		(SELECT price FROM oc_product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '1' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special 
+		FROM oc_seo_super_product p2c 
+			LEFT JOIN oc_product p ON (p2c.product_id = p.product_id) 
+			LEFT JOIN oc_product_description pd ON (p.product_id = pd.product_id) 
+			LEFT JOIN oc_product_to_store p2s ON (p.product_id = p2s.product_id)
+				WHERE pd.language_id = '4' 
+					AND p.status = '1' 
+					AND p.date_available <= NOW() 
+					AND p2s.store_id = '0'
+					" . $s_and_seo_super . "  
+					GROUP BY p.product_id 
+						ORDER BY p.sort_order ASC, LCASE(pd.name) ASC 
+							LIMIT 0,12";
+		
+		//echo $sql;
+
+		$query = $this->db->query($sql);
+
+		foreach ($query->rows as $result) {
+			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+		}
+
+		return $product_data;
+
+	}
+
+	public function getTagCategory($i_tag_id){
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE seo_super_id=" . $i_tag_id;
+		$query = $this->db->query( $s_sql_select );
+		$a_result = $query->row;
+		return $a_result;
+	}
+
+	public function getTagCategories($i_tag_id){
+		$a_result = [];
+		return $a_result;
 	}
 
 	// upsert_seo_list
