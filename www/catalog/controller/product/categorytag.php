@@ -104,20 +104,11 @@ class ControllerProductCategorytag extends Controller {
 		// @todo из seo_super_products
 		$category_info = $this->model_catalog_product->getTagCategory($tag_id);
 
+		
+
 		if ($category_info) {
-			$this->document->setTitle($category_info['h1_page']);
-			$this->document->setDescription($category_info['description']);
-			$this->document->setKeywords($category_info['keyword']);
-
-			$data['heading_title'] = $category_info['h1_page'];
-
+			
 			$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
-
-			// Set the last category breadcrumb
-			$data['breadcrumbs'][] = array(
-				'text' => $category_info['tag'],
-				'href' => $this->url->link('product/categorytag', 'tag=' . $this->request->get['tag'])
-			);
 
 			$data['description'] = html_entity_decode($category_info['description'], ENT_QUOTES, 'UTF-8');
 			$data['compare'] = $this->url->link('product/compare');
@@ -169,12 +160,29 @@ class ControllerProductCategorytag extends Controller {
 				'start'              => ($page - 1) * $limit,
 				'limit'              => $limit
 			);
+			// SEO params
+			$a_seo_data = $this->model_catalog_product->getSeoData( $filter_data , 4);
+			$this->document->setTitle( $a_seo_data['h1_page'] );
+			$this->document->setDescription($a_seo_data['description']);
+			$this->document->setKeywords($a_seo_data['keyword']);
+			$data['heading_title'] = $a_seo_data['h1_page'];
+			// Set the last category breadcrumb
+			$data['breadcrumbs'][] = array(
+				'text' => $a_seo_data['prefix'],
+				'href' => $this->url->link('product/categorytag', 'tag=' . $this->request->get['tag'])
+			);
 
-			//var_dump( $filter_data ); die();
+			$data['breadcrumbs'][] = array(
+				'text' => $a_seo_data['tag'],
+				'href' => $this->url->link('product/categorytag', 'tag=' . $this->request->get['tag'])
+			);
+
 
 			$product_total = $this->model_catalog_product->getTagTotalProducts($filter_data);
 			//var_dump($product_total); die();
 			$results = $this->model_catalog_product->getTagProducts($filter_data);
+
+
 
 			foreach ($results as $result) {
 				if ($result['image']) {
@@ -395,8 +403,8 @@ class ControllerProductCategorytag extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-
 			$data['products'] = array_slice($data['products'], ($page-1) * $limit, $limit ) ;
+			$data['seo_data'] = $a_seo_data;
 
 			$this->response->setOutput($this->load->view('product/categorytag', $data));
 

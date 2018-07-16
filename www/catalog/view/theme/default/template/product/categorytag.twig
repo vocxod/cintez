@@ -1,4 +1,17 @@
 {{ header }}
+
+{#
+array (size=8)
+  'seo_super_description_id' => string '19' (length=2)
+  'language_id' => string '4' (length=1)
+  'prefix' => string 'Грибы' (length=10)
+  'tag' => string ' Кандида' (length=15)
+  'h1_page' => string 'Средства борьбы с грибками: кандида' (length=65)
+  'description' => string 'препараты для активной борьбы с грибками' (length=75)
+  'keyword' => string 'грибы,средство борьбы,дезинфекция' (length=63)
+  'seo_super_id' => string '19' (length=2)
+#}
+
 <div id="product-category" class="container">
   <div class="row">
     <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
@@ -8,6 +21,9 @@
       </li>
       {% endfor %}
     </ul>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+      <h1>{{ seo_data.h1_page }}</h1>
+    </div>
   </div>
 
   <div class="row">

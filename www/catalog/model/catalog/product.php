@@ -1053,16 +1053,8 @@ class ModelCatalogProduct extends Model {
 
 	public function getTagProducts( $a_filter ){
 		$s_sql_select = "";
-	/*
-	$sql = "SELECT 
-	p.product_id, 
-	(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
-	(SELECT price FROM oc_product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '1' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special 
-	FROM oc_product_to_category p2c LEFT JOIN oc_product p ON (p2c.product_id = p.product_id) LEFT JOIN oc_product_description pd ON (p.product_id = pd.product_id) LEFT JOIN oc_product_to_store p2s ON (p.product_id = p2s.product_id) WHERE pd.language_id = '4' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '0' AND ( pd.tag LIKE '%dezinnfekciya%') GROUP BY p.product_id ORDER BY p.sort_order ASC, LCASE(pd.name) ASC LIMIT 0,12";
-*/
 		// store_id
 		// language_id
-
 		$s_and_seo_super = ''; 
 		if( array_key_exists('filter_seo_super_id', $a_filter) ){
 			$s_and_seo_super = "AND p2c.seo_super_id = " . $a_filter['filter_seo_super_id'];
@@ -1083,17 +1075,11 @@ class ModelCatalogProduct extends Model {
 					GROUP BY p.product_id 
 						ORDER BY p.sort_order ASC, LCASE(pd.name) ASC 
 							LIMIT 0,12";
-		
-		//echo $sql;
-
 		$query = $this->db->query($sql);
-
 		foreach ($query->rows as $result) {
 			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
 		}
-
 		return $product_data;
-
 	}
 
 	public function getTagCategory($i_tag_id){
@@ -1148,6 +1134,24 @@ mysql> DESCRIBE oc_seo_super_product;
 		} else {
 			$i_seo_super = $a_row['seo_super_id'];
 		}
+
+		$s_sql_select = "SELECT * FROM oc_seo_super_description WHERE seo_super_id='" . $i_seo_super . "' AND language_id='". $a_data['language_id'] . "' ";
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if( $a_row == null ){
+			$s_sql_insert = "INSERT INTO oc_seo_super_description (language_id, prefix, tag, seo_super_id) VALUES ('" . $a_data['language_id'] . "', '". $a_data['lang_prefix'] ."', '". $a_data['lang_tag'] . "', '". $i_seo_super ."' )";
+		} else {
+			$i_seo_super_description_id = $a_row["seo_super_description_id"];
+			$s_sql_insert = "UPDATE oc_seo_super_description SET prefix='" . $a_data['lang_prefix'] . "', tag='" . $a_data['lang_tag'] . "' WHERE seo_super_id='" . $i_seo_super . "' AND seo_super_description_id='" . $i_seo_super_description_id . "'";
+		}
+		// echo $s_sql_insert . "<br/>"; //die();
+		$query = $this->db->query( $s_sql_insert );
+/*
+		$s_sql_delete = "DELETE FROM oc_seo_super_product WHERE product_id='" . $a_data['product_id'] . "' AND " ;
+		$this->db->query( $s_sql_delete );
+*/
+//		echo($i_seo_super."<br/>"); //die();
+
 		$s_sql_select = "SELECT * FROM oc_seo_super_product WHERE seo_super_id='" . $i_seo_super . "' AND product_id='" . $a_data['product_id'] . "' ";
 		// echo $s_sql_select ; die();
 		$query = $this->db->query( $s_sql_select );
@@ -1159,6 +1163,18 @@ mysql> DESCRIBE oc_seo_super_product;
 
 		}
 		//var_dump( $a_rows );
+	}
+
+	/*
+	выдать всю правильную информацию для СЕО
+	*/
+	public function getSeoData( $a_data, $i_language_id ){
+		$i_seo_super_id = $a_data['filter_seo_super_id'];
+		$s_sql_select = "SELECT * FROM oc_seo_super_description WHERE seo_super_id='" . $i_seo_super_id . "' AND language_id='" . $i_language_id . "'";
+		$query = $this->db->query( $s_sql_select );
+		$row = $query->row;
+		//var_dump($row); die();
+		return $row;
 	}
 
 }
