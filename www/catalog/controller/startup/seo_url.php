@@ -2,9 +2,11 @@
 class ControllerStartupSeoUrl extends Controller {
 
 	public function index() {
+
+		//var_dump( $this->config->get('config_seo_url') ); die();
+
 		// Add rewrite to url class
 		if ( $this->config->get('config_seo_url') ) {
-			// var_dump( $this->config->get('config_seo_url') ); die();
 			$this->url->addRewrite($this);
 		}
 
@@ -23,9 +25,14 @@ class ControllerStartupSeoUrl extends Controller {
 			}
 
 			foreach ($parts as $part) {
-				$query = $this->db->query("SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'");
+				
+				$s_sql_select = "SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'";
+				
+				// var_dump( $s_sql_select ); die();
 
-				// var_dump($query); die();
+				$query = $this->db->query( $s_sql_select );
+
+				//var_dump($query); die();
 
 				if ($query->num_rows) {
 					$url = explode('=', $query->row['query']);

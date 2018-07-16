@@ -370,7 +370,16 @@ class ControllerProductProduct extends Controller {
 								[
 									'prefix'=>$s_tag, 
 									'tag'=>$s_slug, 
-									'product_id'=>$this->request->get['product_id'] 
+									'product_id'=>$this->request->get['product_id'],
+									'language_id' => 4,
+									'lang_prefix'=>$s_tag, //@todo need to russian 
+									'lang_tag'	=> $s_source,
+									/*
+									'lang_h1'	=> "h1",
+									'lang_description'	=> $s_source,
+									'lang_keyword' => "",
+									
+									*/
 								] 
 							);
 						}
