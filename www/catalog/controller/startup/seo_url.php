@@ -14,70 +14,101 @@ class ControllerStartupSeoUrl extends Controller {
 
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
-
-			//var_dump( $this->request->get['_route_'] ); die();
-
+		
 			$parts = explode('/', $this->request->get['_route_']);
-
+//var_dump($parts);
 			// remove any empty arrays from trailing
 			if (utf8_strlen(end($parts)) == 0) {
 				array_pop($parts);
 			}
 
-			foreach ($parts as $part) {
-				
-				$s_sql_select = "SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'";
-				
-				// var_dump( $s_sql_select ); die();
+			// ищем наши префикс/теги урлы
+			$this->load->model('catalog/product');
 
-				$query = $this->db->query( $s_sql_select );
-
-				//var_dump($query); die();
-
-				if ($query->num_rows) {
-					$url = explode('=', $query->row['query']);
-
-					if ($url[0] == 'product_id') {
-						$this->request->get['product_id'] = $url[1];
+			$i_is_seo_super_url = 0;
+			$a_seo_super_prefixes = $this->model_catalog_product->getPrefixes();
+			//var_dump( $key, $part ); //die();
+			if( array_key_exists(0, $parts) ){
+				foreach ($a_seo_super_prefixes as $a_prefix ) {
+					//echo "status " . ($parts[0] == $a_prefix['prefix']?"wasya":"0") . "<hr/>";
+					if( $parts[0] == $a_prefix['prefix'] ){
+						$i_is_seo_super_url = 1;
+						break;
 					}
+				}
+			}
+			if( $i_is_seo_super_url ){
+				// обрабатываем как seo-super сущность
+				if( array_key_exists(1, $parts)){
+					$a_data = $this->model_catalog_product->getSeoSuperUrls( $parts );
+					// var_dump( $a_data['seo_super_id'] );
+					$this->request->get['tag'] = $a_data['seo_super_id'];
+					$this->request->get['route'] = 'product/categorytag';
+				}
+			} else {
+				// обрабатываем как стандартный seo подход в опенкарте
+				// ищем стандартные сео урлы 
+				foreach ($parts as $key=>$part) {
+				
+					$s_sql_select = "SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
-					if ($url[0] == 'category_id') {
-						if (!isset($this->request->get['path'])) {
-							$this->request->get['path'] = $url[1];
-						} else {
-							$this->request->get['path'] .= '_' . $url[1];
+					$query = $this->db->query( $s_sql_select );
+
+					// var_dump($query->rows);
+
+					if ($query->num_rows) {
+						$url = explode('=', $query->row['query']);
+
+						if ($url[0] == 'product_id') {
+							$this->request->get['product_id'] = $url[1];
 						}
-					}
 
-					if ($url[0] == 'manufacturer_id') {
-						$this->request->get['manufacturer_id'] = $url[1];
-					}
+						if ($url[0] == 'category_id') {
+							if (!isset($this->request->get['path'])) {
+								$this->request->get['path'] = $url[1];
+							} else {
+								$this->request->get['path'] .= '_' . $url[1];
+							}
+						}
 
-					if ($url[0] == 'information_id') {
-						$this->request->get['information_id'] = $url[1];
-					}
+						if ($url[0] == 'manufacturer_id') {
+							$this->request->get['manufacturer_id'] = $url[1];
+						}
 
-					if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
-						$this->request->get['route'] = $query->row['query'];
-					}
-				} else {
-					$this->request->get['route'] = 'error/not_found';
+						if ($url[0] == 'information_id') {
+							$this->request->get['information_id'] = $url[1];
+						}
 
-					break;
+						if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
+							$this->request->get['route'] = $query->row['query'];
+						}
+/*
+var_dump( $url );
+var_dump( $this->request->get['path'] );
+die();
+*/
+					} else {
+						$this->request->get['route'] = 'error/not_found';
+
+						break;
+					}
 				}
+
+				if (!isset($this->request->get['route'])) {
+					if (isset($this->request->get['product_id'])) {
+						$this->request->get['route'] = 'product/product';
+					} elseif (isset($this->request->get['path'])) {
+						$this->request->get['route'] = 'product/category';
+					} elseif (isset($this->request->get['manufacturer_id'])) {
+						$this->request->get['route'] = 'product/manufacturer/info';
+					} elseif (isset($this->request->get['information_id'])) {
+						$this->request->get['route'] = 'information/information';
+					}
+				}				
+				//				
 			}
 
-			if (!isset($this->request->get['route'])) {
-				if (isset($this->request->get['product_id'])) {
-					$this->request->get['route'] = 'product/product';
-				} elseif (isset($this->request->get['path'])) {
-					$this->request->get['route'] = 'product/category';
-				} elseif (isset($this->request->get['manufacturer_id'])) {
-					$this->request->get['route'] = 'product/manufacturer/info';
-				} elseif (isset($this->request->get['information_id'])) {
-					$this->request->get['route'] = 'information/information';
-				}
-			}
+
 		}
 	}
 

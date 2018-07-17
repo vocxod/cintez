@@ -1177,4 +1177,23 @@ mysql> DESCRIBE oc_seo_super_product;
 		return $row;
 	}
 
+	/*
+	вернуть все префиксы
+	*/
+	public function getPrefixes(){
+		$s_sql_select = "SELECT DISTINCT(a.prefix) FROM oc_seo_super AS a ";;
+		$query = $this->db->query( $s_sql_select );
+		$rows = $query->rows;
+		return $rows;
+	}
+
+	/*
+вернуть все нужные данные для построение настоящего урла
+	*/
+	public function getSeoSuperUrls( $parts ){
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE prefix='".$parts[0]."' AND tag='".$parts[1]."' ";
+		$query = $this->db->query( $s_sql_select );
+		$row = $query->row;
+		return $row;
+	}
 }
