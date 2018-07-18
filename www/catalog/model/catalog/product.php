@@ -1196,4 +1196,29 @@ mysql> DESCRIBE oc_seo_super_product;
 		$row = $query->row;
 		return $row;
 	}
+
+	public function getProductSeoLink( $i_product_id, $s_place, $i_language_id=4, $i_store_id=0 ){
+		
+		$s_result = '';
+
+		if($s_place == "tag"){
+			$s_sql_select = "SELECT * FROM oc_seo_url WHERE `query` = 'product_id=" . $i_product_id . "' AND store_id='".$i_store_id."' AND language_id='".$i_language_id."' ";
+			$query = $this->db->query( $s_sql_select );
+			$row = $query->row;
+			if( $row ){
+				$s_result = $row['keyword'];
+			}
+		}
+		
+		if($s_place == "product"){
+			$s_sql_select = "SELECT * FROM oc_seo_url WHERE `query` = 'product_id=" . $i_product_id . "' AND store_id='".$i_store_id."' AND language_id='".$i_language_id."' ";
+			$query = $this->db->query( $s_sql_select );
+			$row = $query->row;
+			if( $row ){
+				$s_result = $row['keyword'];
+			}
+		}
+
+		return $s_result;
+	}
 }

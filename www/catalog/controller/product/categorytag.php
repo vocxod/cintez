@@ -181,9 +181,15 @@ class ControllerProductCategorytag extends Controller {
 			$product_total = $this->model_catalog_product->getTagTotalProducts($filter_data);
 			//var_dump($product_total); die();
 			$results = $this->model_catalog_product->getTagProducts($filter_data);
-
-
-
+			
+			// 'product/product', 'tag=' . $this->request->get['tag'] . '&product_id=' . $result['product_id'] . $url
+			/*
+			var_dump( $this->url->link ); 
+			$this->url->link = function( $s_segment, $s_gets_to_link  ){
+				return $s_segment . $s_gets_to_link . "&data=chmod";
+			};
+			var_dump( $this->url->link ); die();
+*/
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
@@ -214,7 +220,7 @@ class ControllerProductCategorytag extends Controller {
 				} else {
 					$rating = false;
 				}
-
+				
 				$data['products'][] = array(
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
@@ -239,8 +245,23 @@ class ControllerProductCategorytag extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
+					// @todo перекрыть метод $this->url->link
 					'href'        => $this->url->link('product/product', 'tag=' . $this->request->get['tag'] . '&product_id=' . $result['product_id'] . $url)
 				);
+
+				// var_dump(  get_class_methods($this->url) ); die();
+
+				$s_seo_href= $this->model_catalog_product->getProductSeoLink( $result['product_id'], "tag" );
+				end($data['products']);
+				$key = key( $data['products'] );
+				reset( $data['products'] );
+				//var_dump($key); die();
+				if( $s_seo_href ){
+					$data['products'][$key]['href'] = "/" . $s_seo_href;
+				} else {
+					$data['products'][$key]['href'] = $this->url->link( 'product/product', '&product_id=' . $result['product_id'] );
+				}
+				//var_dump( $data['products'][$key]['href'] );
 			}
 
 			//var_dump( $data['products'] ); die();

@@ -3,20 +3,17 @@ class ControllerStartupSeoUrl extends Controller {
 
 	public function index() {
 
-		//var_dump( $this->config->get('config_seo_url') ); die();
-
 		// Add rewrite to url class
 		if ( $this->config->get('config_seo_url') ) {
 			$this->url->addRewrite($this);
+			//var_dump( get_class_methods($this) ); die();
 		}
-
-		// var_dump("startup"); die();
 
 		// Decode URL
 		if (isset($this->request->get['_route_'])) {
 		
 			$parts = explode('/', $this->request->get['_route_']);
-//var_dump($parts);
+
 			// remove any empty arrays from trailing
 			if (utf8_strlen(end($parts)) == 0) {
 				array_pop($parts);
@@ -30,7 +27,6 @@ class ControllerStartupSeoUrl extends Controller {
 			//var_dump( $key, $part ); //die();
 			if( array_key_exists(0, $parts) ){
 				foreach ($a_seo_super_prefixes as $a_prefix ) {
-					//echo "status " . ($parts[0] == $a_prefix['prefix']?"wasya":"0") . "<hr/>";
 					if( $parts[0] == $a_prefix['prefix'] ){
 						$i_is_seo_super_url = 1;
 						break;
@@ -41,7 +37,6 @@ class ControllerStartupSeoUrl extends Controller {
 				// обрабатываем как seo-super сущность
 				if( array_key_exists(1, $parts)){
 					$a_data = $this->model_catalog_product->getSeoSuperUrls( $parts );
-					// var_dump( $a_data['seo_super_id'] );
 					$this->request->get['tag'] = $a_data['seo_super_id'];
 					$this->request->get['route'] = 'product/categorytag';
 				}
@@ -53,8 +48,6 @@ class ControllerStartupSeoUrl extends Controller {
 					$s_sql_select = "SELECT * FROM " . DB_PREFIX . "seo_url WHERE keyword = '" . $this->db->escape($part) . "' AND store_id = '" . (int)$this->config->get('config_store_id') . "'";
 
 					$query = $this->db->query( $s_sql_select );
-
-					// var_dump($query->rows);
 
 					if ($query->num_rows) {
 						$url = explode('=', $query->row['query']);
@@ -82,11 +75,7 @@ class ControllerStartupSeoUrl extends Controller {
 						if ($query->row['query'] && $url[0] != 'information_id' && $url[0] != 'manufacturer_id' && $url[0] != 'category_id' && $url[0] != 'product_id') {
 							$this->request->get['route'] = $query->row['query'];
 						}
-/*
-var_dump( $url );
-var_dump( $this->request->get['path'] );
-die();
-*/
+
 					} else {
 						$this->request->get['route'] = 'error/not_found';
 
@@ -104,11 +93,8 @@ die();
 					} elseif (isset($this->request->get['information_id'])) {
 						$this->request->get['route'] = 'information/information';
 					}
-				}				
-				//				
+				}							
 			}
-
-
 		}
 	}
 
