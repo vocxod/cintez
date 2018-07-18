@@ -70,6 +70,20 @@ class ControllerExtensionModuleFeatured extends Controller {
 						'rating'      => $rating,
 						'href'        => $this->url->link('product/product', 'product_id=' . $product_info['product_id'])
 					);
+
+					//SEO link for product
+					$s_seo_href= $this->model_catalog_product->getProductSeoLink( $product_info['product_id'], "product" );
+					end($data['products']);
+					$key = key( $data['products'] );
+					reset( $data['products'] );
+					//var_dump($key); die();
+					if( $s_seo_href ){
+						$data['products'][$key]['href'] = "/" . $s_seo_href;
+					} else {
+						$data['products'][$key]['href'] = $this->url->link( 'product/product', '&product_id=' . $result['product_id'] );
+					}
+					//SEO link for product
+
 				} else {
 					// error data
 					// var_dump( $product_id ); 
