@@ -56,6 +56,48 @@ class CreateSeoUrls {
 				# code...
 				break;
 			case 'category':
+				$a_categories = OcCategoryQuery::create()
+				->filterByStatus( 1 )
+				->find();
+				foreach ($a_categories as $a_category ) {
+					$a_description = OcCategoryDescriptionQuery::create()
+					->filterByCategoryId( $a_category->getCategoryId())
+					->filterByLanguageId( $this->language )
+					->findOne();
+					// получить полный ПУТЬ категории
+					$s_path_line = '';
+					$a_path_line = [];
+					$a_path = OcCategoryPathQuery::create()
+					->filterByCategoryId( $a_category->getCategoryId() )
+					->orderByLevel()
+					->find();
+
+					//if(count($a_path)<3) continue;
+					foreach ($a_path as $a_item ) {
+						$a_path_line[] = $a_item->getPathId();
+					}
+					$s_path_line = implode("_", $a_path_line);
+					//echo "path line:" . implode("_", $a_path_line) . "\n";
+					//die();
+					//
+					if( $a_description != null ){
+						$s_seo_keyword = $a_param['prefix'] . $this->slugify( $a_description->getName() );
+						$obj = OcSeoUrlQuery::create()
+						->filterByQuery( "category_id=" . $s_path_line )
+						->filterByKeyword( $s_seo_keyword )
+						->filterByLanguageId( $a_param['language'] )
+						->findOne();	
+						if($obj == null){
+							$obj = new OcSeoUrl();
+						}
+						$obj->setQuery( "category_id=" . $s_path_line );
+						$obj->setKeyword( $s_seo_keyword );
+						$obj->setStoreId( $a_param['store_id'] );
+						$obj->setLanguageId( $a_param['language'] );
+						$obj->save();
+					}
+					echo ".";
+				}
 				# code...
 				break;
 			default:
