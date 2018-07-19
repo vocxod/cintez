@@ -48,7 +48,7 @@ class CreateSeoUrls {
 							$obj->save();
 						}
 					}
-					// echo ".";
+					echo ".";
 				}
 				if( count( array_unique($a_seo_keys)) == count($a_products) ){
 
