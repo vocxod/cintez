@@ -343,22 +343,14 @@ class ControllerProductProduct extends Controller {
 			$s_page = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
 			
 			/* анализируем хвост описания */
-			$s_pattern = '|<!-- /url/(.*) -->(.*)<!-- /url/ -->|Uis';
-			
+			/*
+			$s_pattern = '|<!-- /url/(.*) -->(.*)<!-- /url/ -->|Uis';		
 			$a_out = [];
 			$s_part = '';
-			
-
 			if( preg_match_all($s_pattern, $s_page, $a_out)){
-				
-				//var_dump( $a_out ); die();
-				
 				foreach ($a_out[1] as $key => $s_tag) {
 					$s_replace_pattern = "|<!-- /url/" . $s_tag . " -->(.*)<!-- /url/ -->|Uis";
-					
-					//var_dump( $s_replace_pattern );
-					// формируем ссылки из тегов
-					
+					// формируем ссылки из тегов	
 					$a_part = explode(";", $a_out[2][$key]);
 					$s_new_url = '';
 					foreach ($a_part as $s_source) {
@@ -374,69 +366,95 @@ class ControllerProductProduct extends Controller {
 									'language_id' => 4,
 									'lang_prefix'=>$s_tag, //@todo need to russian 
 									'lang_tag'	=> $s_source,
-									/*
-									'lang_h1'	=> "h1",
-									'lang_description'	=> $s_source,
-									'lang_keyword' => "",
-									
-									*/
 								] 
 							);
 						}
 
 					}
-					//var_dump( $s_new_url ); 
-					// производим замену: теги на ссылки
-					//$s_replace_pattern = "|<!-- /url/bakterii -->(.*)<!-- /url/ -->|";
 					$s_page = preg_replace($s_replace_pattern, $s_new_url, $s_page);
-					
-
-
 				}
-		
+			}
+			*/
 
+			// вторая версия изменения
+			/*
+			<!-- start -->
+<!-- /section_1/sfera -->сфера<!-- /section_1/ -->
+<!-- /section_2/primenemiya -->применения<!-- /section_2/ -->:
+<!-- /section_3/mojka -->мойка<!-- /section_3/ -->
+<!-- /section_4/sanitarnyh -->санитарных<!-- /section_4/ -->
+<!-- /section_5/kabinik -->кабинок<!-- /section_5/ --> 
+<!-- /prefix_1/sip -->(SIP)<!-- /prefix_1/ -->, а также:
+<!-- /prefix_2/bistro -->быстрая<!-- /prefix_1/ -->
+<!-- /prefix_3/ -->нежно<!-- /prefix_1/ --> 
+<!-- /tags_1/ -->
+lorem; ipsum; dolor; sit; atmet; blabla; bla;
+<!-- /tags_1/ -->
+<!-- /start/ -->
+			*/
+			//echo $s_page;
 
+			// нарезаем на секции
+			$s_pattern = '|<!-- start -->(.*)<!-- /start/ -->|Uis';
+			$a_part = [];
+			if( preg_match_all($s_pattern, $s_page, $a_part)){
+				foreach ($a_part[1] as $i_part_key=>$s_part){
+					$a_section = [];
+					$a_prefix = [];
+					$a_tags	=	[]; 
+					$s_pattern = "|<!-- /section_(\d*)/(.*) -->(.*)<!-- /section_(\d*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка секций
+						foreach ($a_out[2] as $i_key => $s_slug){
+							$a_section[] = [ "slug"=>$s_slug, "name"=>$a_out[3][ $i_key ]];
+						}
+					}
+					$s_pattern = "|<!-- /prefix_(\d*)/(.*) -->(.*)<!-- /prefix_(\d*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка префиксов
+						foreach ($a_out[2] as $i_key => $s_slug){
+							$a_prefix[] = [ "slug"=>$s_slug, "name"=>$a_out[3][ $i_key ]];
+						}
+					}
+					$s_pattern = "|<!-- /tags_(\d*)/ -->(.*)<!-- /tags_(.*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка тегов
+						$a_tags = explode(";", $a_out[2][0] );
+					}
+					// var_dump( $a_section, $a_prefix, $a_tags );
+					$s_result = '';
+					$s_url = '';
+					foreach ($a_section as $a_item) {
+						if( $a_item['slug'] != ''){
+							$s_url .= $a_item['slug'] . "/";
+						} else {
+							$s_url .= $this->slugify( $a_item['name'] ) . "/";
+						}
+					}
+					foreach ($a_prefix as $a_item) {
+						if( $a_item['slug'] != ''){
+							$s_url .= $a_item['slug'] . "-";
+						} else {
+							$s_url .= $this->slugify( $a_item['name'] ) . "-";
+						}
+					}
+
+					foreach ($a_tags as $s_tag){
+						$s_tag_slug = $this->slugify( $s_tag );
+						$s_result .= "<a href='" . $s_url . $s_tag_slug . "' >" . $s_tag . "</a>&nbsp;";
+					}
+					$s_page .= $s_result . "<hr/>";
+				}
 			}
 
-
-			
-			//var_dump( $a_out );
+			$s_page = preg_replace("|<!-- start -->(.*)<!-- /start/ -->|", "", $s_page);
+		
+			//die();
 			$data['description'] = $s_page;
-//die();
-/*
-сценарий УРЛизации тегов
 
-<p data="block_1">
-
-<label>
-<span data="section" data-name="aktivnost">Активно в отношении:</span>
-</label>
-<br>
-<span data="sub_section_1" data-name="bakterii">Бактерии</span> - 
-<span data="sub_section_2" data-name="list">
-<i>
-	<!-- /url/bakterii -->Mycobacterium tuberculosi; Возбудители ВБИ; Грамотрицательные бактерии; Грамположительные бактерии;<!-- /url/ -->
-</i>
-</span>
-  
-<br>
-<span data="sub_section_1" data-name="virus">Вирусы</span> - 
-<span data="sub_section_2" data-name="list">
-	<i>Аденовирусы; Атипичной пневмонии; ВИЧ; Грипп; Парагрипп; Парентеральных гепатитов; Полиомиелит; Прочие возбудители ОРВИ; Птичьего гриппа (H5N1); 
-	Ротавирусы; Свиной грипп (H1N1); Энтеральных гепатитов; Энтеровирусы;
-	</i>
-</span>
-  
-<br>
-<span data="sub_section_1" data-name="grib">Патогенные грибы</span> - 
-<span data="section" data-name="aktivnost">
-	<i>Дерматофитон; Кандида;</i>
-</span>
-<br>
-  
-</p>
-
-*/
 			/* */
 
 			if ($product_info['quantity'] <= 0) {
@@ -880,4 +898,11 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	function slugify($string) {
+	    $string = transliterator_transliterate("Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();", $string);
+    	$string = preg_replace('/[-\s]+/', '-', $string);
+    	return trim($string, '-');
+	}
+
 }
