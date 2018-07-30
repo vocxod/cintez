@@ -57,9 +57,9 @@ class ControllerCommonMenuTop extends Controller {
 				['tel'	=> 0, 'class'=>'menu-space menu-bold disabled', 'title'=>'ДЕЗКАЛЬКУЛЯТОР' , 'awesome' => 'fa fa-calculator', 'img' => '', 'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => false, 'route' => 'information/dezcalc'], 
 
 			];
-
+// index.php?route=product/category&path=1606
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=1606', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
+				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
 				
 				['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 
@@ -90,7 +90,7 @@ class ControllerCommonMenuTop extends Controller {
 			];
 
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'PRODUCTS', 'href' => 'index.php?route=product/category&path=1606', 'target'=>'_self', 'active' => true, 'route' => ''],
+				['class'=>'menu-bold ', 'title'=>'PRODUCTS', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => ''],
 				
 				['class'=>'menu-bold ', 'title'=>'ABOUT', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 				

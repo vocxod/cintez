@@ -92,9 +92,10 @@ class ControllerProductCategory extends Controller {
 				$category_info = $this->model_catalog_category->getCategory($path_id);
 
 				if ($category_info) {
+					$s_seo_path = $this->model_catalog_category->getCategorySeoLink( $path, 'category' );
 					$data['breadcrumbs'][] = array(
 						'text' => $category_info['name'],
-						'href' => $this->url->link('product/category', 'path=' . $path . $url)
+						'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $path . $url):$s_seo_path
 					);
 				}
 			}
