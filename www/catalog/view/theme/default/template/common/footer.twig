@@ -529,8 +529,13 @@ $( document ).ready(function() {
     $('#panel_link_' + dataid).css('color', '#111');
   })
   $('.panel-menu-item').on( "click", function(){
-    dataid = $(this).attr('data')
-    location = "index.php?route=product/category&path=" + dataid
+    dataid = $(this).attr('data');
+    if( $(this).attr('data-seo') != '' ){
+      location = $(this).attr('data-seo');
+    } else {
+      location = "index.php?route=product/category&path=" + dataid;  
+    }
+    
   })
 });
 </script>

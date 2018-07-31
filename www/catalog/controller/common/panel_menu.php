@@ -37,6 +37,7 @@ class ControllerCommonPanelMenu extends Controller {
 					'name'     => $category['name'],
 					'children' => $children_data,
 					'column'   => $category['column'] ? $category['column'] : 1,	
+					'seo_url'  => $s_seo_path,
 					'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $category['category_id']):$s_seo_path,					
 					//'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
 					'image'	=> $category['image'],
