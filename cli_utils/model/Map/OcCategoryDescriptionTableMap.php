@@ -161,7 +161,7 @@ class OcCategoryDescriptionTableMap extends TableMap
         $this->setPackage('');
         $this->setUseIdGenerator(false);
         // columns
-        $this->addPrimaryKey('category_id', 'CategoryId', 'INTEGER', true, null, null);
+        $this->addForeignPrimaryKey('category_id', 'CategoryId', 'INTEGER' , 'oc_category', 'category_id', true, null, null);
         $this->addPrimaryKey('language_id', 'LanguageId', 'INTEGER', true, null, null);
         $this->addColumn('name', 'Name', 'VARCHAR', true, 255, null);
         $this->addColumn('description', 'Description', 'LONGVARCHAR', true, null, null);
@@ -176,6 +176,13 @@ class OcCategoryDescriptionTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('OcCategory', '\\OcCategory', RelationMap::MANY_TO_ONE, array (
+  0 =>
+  array (
+    0 => ':category_id',
+    1 => ':category_id',
+  ),
+), null, null, null, false);
     } // buildRelations()
 
     /**

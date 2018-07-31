@@ -58,7 +58,8 @@ class ControllerProductCategory extends Controller {
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
+			//'href' => $this->url->link('common/home')
+			'href'=>'/'
 		);
 
 		if (isset($this->request->get['path'])) {
@@ -115,9 +116,12 @@ class ControllerProductCategory extends Controller {
 			$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
 			// Set the last category breadcrumb
+
+			$s_seo_path = $this->model_catalog_category->getCategorySeoLink( $this->request->get['path'], 'category' );
 			$data['breadcrumbs'][] = array(
 				'text' => $category_info['name'],
-				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
+				//'href' => $this->url->link('product/category', 'path=' . $this->request->get['path']),
+				'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $path . $url):$s_seo_path
 			);
 
 			if ($category_info['image']) {
