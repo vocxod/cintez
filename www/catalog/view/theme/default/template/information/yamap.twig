@@ -13,7 +13,7 @@
     {# SPB-RU start #}   
     {% if lang == 'ru' and current_zone == 2785 %}
     <div id="center_content" class="col-sm-12">
-      <div id="map" style="min-height:600px;">
+      <div id="map" style="min-height:640px;">
           <div id="mapcontent">
             <h4>Контакты</h4>
             <p>
@@ -28,22 +28,24 @@
               </span>&nbsp;
               mail@specsintez.com 
             </p>
-              <h4>Адрес</h4>
+              <h4>Адреса</h4>
               <p>
                 <span class="txt24">
                 <i class="fa fa-address-card" aria-hidden="true"></i>
                 </span>
+                Офис:<br/>
                 195030 Санкт-Петербург,<br>
                 Потапова ул. дом 2 
-              </p>
-              <h4>Склад</h4>
-              <p>
+                <br/>
                 <span class="txt24">
                 <i class="fa fa-truck" aria-hidden="true"></i>
                 </span>
+                Склад:<br/>
+                195279, г. Санкт-Петербург, Индустриальный пр-кт, дом № 43, литер К<br/>
+                <i>
                 Подъезд под погрузку осуществляется с<br>
                 правой стороны здания.<br>
-                Оформление документов внутри здания 
+                <b>Оформление документов производится внутри здания</b></i> 
               </p>
           </div>
       </div>
@@ -905,11 +907,13 @@ KURSK
         }),
 
         // Создаём макет содержимого.
+        {% if current_zone != 2785 %}
+        {# все города кроме СПб#}
         MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
             '<div style="background:rgb(54,154,56);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
         ),
-
         myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
+
             hintContent: 'Головной офис',
             balloonContent: '"СпецСинтез" <br/> Время работы: <br/> С 9:00 до 18:00 <br/> Выходные дни: Суббота, Воскресенье'
         }, {
@@ -923,16 +927,61 @@ KURSK
             // Смещение левого верхнего угла иконки относительно
             // её "ножки" (точки привязки).
             iconImageOffset: [-5, -38]
-        })
-        ;
-        /*
+        });
+
+        myMap.geoObjects
+            .add(myPlacemark)
+
+        {% else %}
+        MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
+            '<div style="background:rgb(54,154,56);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+        ),
+        myPlacemark = new ymaps.Placemark( [ {{office_map }} ], {
+
+            hintContent: 'Головной офис',
+            balloonContent: '"СпецСинтез" <br/> Время работы: <br/> С 9:00 до 18:00 <br/> Выходные дни: Суббота, Воскресенье'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: '/image/catalog/pages/contacts/yamap-maker.png',
+            // Размеры метки.
+            iconImageSize: [52, 70],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38]
+        });
+        myMap.geoObjects.add(myPlacemark)
+
+        myPlacemark2 = new ymaps.Placemark( [ {{store_map}} ], {
+
+            hintContent: 'Склад',
+            balloonContent: '"СпецСинтез" <br/> Время работы: <br/> С 9:00 до 18:00 <br/> Выходные дни: Суббота, Воскресенье'
+        }, {
+            // Опции.
+            // Необходимо указать данный тип макета.
+            iconLayout: 'default#image',
+            // Своё изображение иконки метки.
+            iconImageHref: '/image/catalog/pages/contacts/yamap-maker.png',
+            // Размеры метки.
+            iconImageSize: [52, 70],
+            // Смещение левого верхнего угла иконки относительно
+            // её "ножки" (точки привязки).
+            iconImageOffset: [-5, -38]
+        });
+
+        myMap.geoObjects.add(myPlacemark2)
+
+        {% endif %}
+{#
+/*
         // Получим ссылку на элемент управления.
         control = myMap.controls.get('routeButtonControl');
         // Программно установим начальную точку маршрута.
         control.routePanel.state.set('to', 'чернышевская');
-  */
-    myMap.geoObjects
-        .add(myPlacemark)
+*/
+#}      
 });
 
 </script>
