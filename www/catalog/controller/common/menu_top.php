@@ -59,18 +59,18 @@ class ControllerCommonMenuTop extends Controller {
 			];
 // index.php?route=product/category&path=1606
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
-				
-				['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
-
-				['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
-				
-				['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
-				
-				['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'index.php?route=information/neoitems', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
-				
-				['class'=>'menu-bold ', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
-				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
+//index.php?route=information/about
+['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
+// index.php?route=information/dealers
+['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
+// index.php?route=information/articlelist
+['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
+// index.php?route=information/neoitems
+['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'news', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
+// index.php?route=information/contact
+['class'=>'menu-bold ', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'feedback', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
+//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 			];
 			$data['apply_menu_list'] = [ 
 				["name"=>"товарная группа 1", "href"=>"index.php"],
