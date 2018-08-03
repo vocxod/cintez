@@ -9,14 +9,13 @@ class SetSeoToEachProduct {
 
 
 	public function run($i_language_id){
+		/*
 		$a_titles = OcProductDescriptionQuery::create()
 		->filterByLanguageId( $i_language_id )
 		->find();
 		foreach ($a_titles as $obj ) {
 			$s_name = $obj->getName();
 			$s_seo_name = $this->seoUrl( $s_name ); //preg_replace("[\s\n-+/\`\'\"\*]", "-", $s_name);
-			//echo "[" . $s_seo_name . "]\n";
-			//die();
 			$seo_obj = OcSeoUrlQuery::create()
 			->filterByLanguageId( $i_language_id )
 			->filterByStoreId( 0 )
@@ -31,6 +30,17 @@ class SetSeoToEachProduct {
 			$seo_obj->setKeyword( $s_seo_name );	
 			$seo_obj->save();
 		}
+*/
+		$a_titles = OcCategoryQuery::create()
+		->filterByStatus( 1 )
+			->useOcCategoryDescriptionQuery()
+				->filterByLanguageId( $i_language_id )
+			->endUse()
+		->find();
+		foreach ($a_titles as $obj) {
+			$s_name = $obj->getParentId(); // надо склеить со всеми предками
+		}
+
 	}
 
 	private function seoUrl($string) {
