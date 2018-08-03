@@ -20,6 +20,7 @@ class Sitemap {
 		
 		$a_seo = OcSeoUrlQuery::create()
 		//->filterByQuery( "product_id%" )
+		->filterByLanguageId(4)
 		->where('oc_seo_url.query LIKE ?', 'product_id=%')
 		//->toString();
 		->find();
