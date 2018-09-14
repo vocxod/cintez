@@ -22,18 +22,22 @@ class ControllerCommonMenuTop extends Controller {
 			// MSK
 			case '2761':
 				$sLocatPhone = '+7 495 665-02-53';
+				$sLocatPhone = '+7 812 318-47-17';
 				break;
 			// NSK
 			case '2768':
 				$sLocatPhone = '+7 383 363-09-88';
+				$sLocatPhone = '+7 812 318-47-17';
 				break;
 			// RnD
 			case '2778':
 				$sLocatPhone = '+7 863 201-43-44';
+				$sLocatPhone = '+7 812 318-47-17';
 				break;
 			// Kursk
 			case '2755':
 				$sLocatPhone = '+7 471 244-60-18';
+				$sLocatPhone = '+7 812 318-47-17';
 				break;			
 			default:
 				$sLocatPhone = '+7 812 318-47-17';
