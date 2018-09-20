@@ -6,6 +6,7 @@
   {% endfor %}
   </ul>
 
+
   <div class="row">
       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
       <h4>ООО «НПО «СпецСинтез»</h4> 
@@ -13,9 +14,9 @@
         Экспресс - рассчет потребности средств, необходимых для проведения мероприятий по дезинфекции.
       </p> 
       
-      <a class="btn btn-success btn-block" href="#">Общие настройки расчета</a>
-      <a class="btn btn-success btn-block" href="#">Помещения и объекты</a>
-      <a class="btn btn-success btn-block" href="#">Виды дезинфекции</a>
+      <a id="calc_setting0" class="btn btn-success btn-block" href="#">Общие настройки расчета</a>
+      <a id="calc_setting1" class="btn btn-success btn-block" href="#">Помещения и объекты</a>
+      <a id="calc_setting2" class="btn btn-success btn-block" href="#">Виды дезинфекции</a>
       
       </div>
 
@@ -24,16 +25,36 @@
       <h4 class="hidden-xs">&nbsp;</h4>
       <p  class="hidden-xs-12">&nbsp;</p>
       
-      <a class="btn btn-success btn-block" href="#">Дез средства, рабочие концентрации</a>
-      <a class="btn btn-success btn-block" href="#">Расчет дезсредств на отделение</a>
+      <a id="calc_setting3" class="btn btn-success btn-block" href="#">Дез средства, рабочие концентрации</a>
+      <a id="calc_setting4" class="btn btn-success btn-block" href="#">Расчет дезсредств на отделение</a>
       
-      <a class="btn btn-success btn-block" href="#">Отчет на email</a>
-      <a class="btn btn-success btn-block" href="#">Отчет как PDF документ</a>
+      <a id="calc_setting5" class="btn btn-success btn-block" disabled="disabled" href="#">Отчет на email</a>
+      <a id="calc_setting6" class="btn btn-success btn-block" disabled="disabled" href="#">Отчет как PDF документ</a>
     </div>
 
   </div>
 
 </div>
+
+<script type="text/javascript">
+  <!--
+  $(document).ready(function(){
+    console.log("Processing...");
+
+    const open_setting = function ( name, obj ){
+      console.log("Open dialog (window) " + name);
+    }
+    
+    $(".btn").on('click', function(e){
+      //console.log( e.currentTarget.text );
+      //console.log( this );
+      open_setting( e.currentTarget.text, this )
+      return false;
+    })
+  });
+  -->
+</script>
+
 
 {{ footer }}
 
