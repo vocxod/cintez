@@ -1,0 +1,39 @@
+{{ header }}
+<div id="information-contact" class="container">
+  <ul class="breadcrumb" style="padding-left:0px; margin-left:0px;">
+  {% for breadcrumb in breadcrumbs %}
+  <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+  {% endfor %}
+  </ul>
+
+  <div class="row">
+      <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      <h4>ООО «НПО «СпецСинтез»</h4> 
+      <p>
+        Экспресс - рассчет потребности средств, необходимых для проведения мероприятий по дезинфекции.
+      </p> 
+      
+      <a class="btn btn-success btn-block" href="#">Общие настройки расчета</a>
+      <a class="btn btn-success btn-block" href="#">Помещения и объекты</a>
+      <a class="btn btn-success btn-block" href="#">Виды дезинфекции</a>
+      
+      </div>
+
+    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+      
+      <h4 class="hidden-xs">&nbsp;</h4>
+      <p  class="hidden-xs-12">&nbsp;</p>
+      
+      <a class="btn btn-success btn-block" href="#">Дез средства, рабочие концентрации</a>
+      <a class="btn btn-success btn-block" href="#">Расчет дезсредств на отделение</a>
+      
+      <a class="btn btn-success btn-block" href="#">Отчет на email</a>
+      <a class="btn btn-success btn-block" href="#">Отчет как PDF документ</a>
+    </div>
+
+  </div>
+
+</div>
+
+{{ footer }}
+
