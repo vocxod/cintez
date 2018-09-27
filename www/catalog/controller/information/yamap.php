@@ -111,7 +111,7 @@ class ControllerInformationYamap extends Controller {
 			case '2785':
 				// SPB
 				$data['office_map'] = '59.960692, 30.469246';
-				$data['store_map'] =  '59.958733, 30.470011';
+				$data['store_map'] =  '59.958747, 30.469831';
 				$data['center_map'] = '59.959299, 30.470037';
 				break;
 			case '2761':
