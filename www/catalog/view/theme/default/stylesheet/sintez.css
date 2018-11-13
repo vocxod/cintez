@@ -2965,3 +2965,18 @@ td.gsc-input{
   width: 960px;
   left: 489px;
 }
+
+
+.download-file-list {
+  list-style-type: none;
+  padding-left: 0px;
+  outline: 1ps dashed #567878;
+}
+
+.download-file-list > a > i {
+  color: #111;
+}
+
+.download-file-list  a  i {
+  color: #CF4037;
+}

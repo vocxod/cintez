@@ -754,6 +754,30 @@ class ControllerSettingSetting extends Controller {
 			$data['config_mail_smtp_timeout'] = 5;
 		}
 
+		// addition emails
+		if (isset($this->request->post['config_email_manuf'])) {
+			$data['config_email_manuf'] = $this->request->post['config_email_manuf'];
+		} elseif ($this->config->has('config_email_manuf')) {
+			$data['config_email_manuf'] = $this->config->get('config_email_manuf');
+		} else {
+			$data['config_email_manuf'] = '';
+		}
+		if (isset($this->request->post['config_email_veterinar'])) {
+			$data['config_email_veterinar'] = $this->request->post['config_email_veterinar'];
+		} elseif ($this->config->has('config_email_veterinar')) {
+			$data['config_email_veterinar'] = $this->config->get('config_email_veterinar');
+		} else {
+			$data['config_email_veterinar'] = '';
+		}
+		if (isset($this->request->post['config_email_med'])) {
+			$data['config_email_med'] = $this->request->post['config_email_med'];
+		} elseif ($this->config->has('config_email_med')) {
+			$data['config_email_med'] = $this->config->get('config_email_med');
+		} else {
+			$data['config_email_med'] = '';
+		}
+		// end adds emails
+
 		if (isset($this->request->post['config_mail_alert'])) {
 			$data['config_mail_alert'] = $this->request->post['config_mail_alert'];
 		} elseif ($this->config->has('config_mail_alert')) {

@@ -32,11 +32,14 @@ class ControllerCommonPanelMenu extends Controller {
 				}
 
 				// Level 1
+				$s_seo_path = $this->model_catalog_category->getCategorySeoLink( $category['category_id'], 'category' );
 				$data['categories'][] = array(
 					'name'     => $category['name'],
 					'children' => $children_data,
-					'column'   => $category['column'] ? $category['column'] : 1,
-					'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
+					'column'   => $category['column'] ? $category['column'] : 1,	
+					'seo_url'  => $s_seo_path,
+					'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $category['category_id']):$s_seo_path,					
+					//'href'     => $this->url->link('product/category', 'path=' . $category['category_id']),
 					'image'	=> $category['image'],
 					'category_id' => $category['category_id'],
 					'status'	=> $category['status'],

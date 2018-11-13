@@ -14,10 +14,7 @@
 
     {% set class = 'col-sm-4' %}
     <div id="content" class="{{ class }}" style="background:#F0FFF0;">
-      {#
-      <h3><span class="sub-title green-uline">Публикации</span></h3>
-      {{ toparticles }}
-      #}
+
           <h4 class="h4-info" style="margin-top:19px; padding-left:16px;"><span class="green-uline">Начать сотрудничество </span></h4>
           <div class="col-sm-12">
 
@@ -47,8 +44,15 @@
               <label><i class="fa fa-pencil bigicon" aria-hidden="true"></i>&nbsp;Ваше сообщение</label>
           </div>
 
-          <div class="g-recaptcha" data-sitekey="6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq"></div>
-
+          <div class="md-input">
+              <select  class="form-control" name="department" id="department">
+                <option value="0">Укажите отдел компании</option>
+                <option value="1">Промышленность</option>
+                <option value="2">Сельское хозяйство</option>
+                <option value="3">Медицина</option>
+              </select>
+          </div>
+          
           <p class="block-center text-center block-center">
             <br/>
             <input type="submit" class="btn btn-success btn-block" value="ОТПРАВИТЬ">

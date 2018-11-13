@@ -129,7 +129,7 @@
 
         {% if loop.index < 11 %}
 
-            <div data="{{ item.category_id }}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
+            <div data="{{ item.category_id }}" data-seo="{{item.seo_url}}" id="panel_outer_{{ item.category_id }}" class="col-md-1-5 panel-menu-item" onclick="location={{ item.href }}">
                 <div id="menu_{{ item.category_id }}" class="panel_menu" >
                 </div>
                 <a id="panel_link_{{ item.category_id }}" href="{{ item.href }}">{{ item.name }}</a>

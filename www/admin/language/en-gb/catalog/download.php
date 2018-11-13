@@ -18,6 +18,9 @@ $_['column_action']     = 'Action';
 $_['entry_name']        = 'Download Name';
 $_['entry_filename']    = 'Filename';
 $_['entry_mask']        = 'Mask';
+$_['entry_industry']	= 'Industry';
+$_['entry_select_inductry'] = 'Select base INDUSCTRY target pls';
+$_['entry_product_id'] = 'Product ID';
 
 // Help
 $_['help_filename']     = 'You can upload via the upload button or use FTP to upload to the download directory and enter the details below.';

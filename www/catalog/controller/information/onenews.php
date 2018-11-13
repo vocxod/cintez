@@ -58,8 +58,8 @@ class ControllerInformationOnenews extends Controller {
 			$this->document->setDescription('meta_description');
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
-				'text' => $this->language->get('heading_title'),
-				'href' => $this->url->link('information/onenews' . '') //@TODO!!!
+				'text' => "Новости", //$this->language->get('heading_title'),
+				'href' => $this->url->link('information/neoitems' . '') //@TODO!!!
 			);
 			$data['breadcrumbs'][] = array(
 				'text' => $aResult['title'], //@TODO from meta (url)
@@ -79,7 +79,8 @@ class ControllerInformationOnenews extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 			// забираем новости
-			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8] );
+			//var_dump( $information_id );
+			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8, 'without'=>$information_id] );
 			// новости забираем
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/onenews', $data);

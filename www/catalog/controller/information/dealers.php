@@ -80,6 +80,27 @@ INSERT INTO oc_review ( `product_id`, `customer_id`, `author`, `text`, `rating`,
 		$data['lang'] = $this->language->get('code');
 		//var_dump($data['lang']); die();
 		$data['page_route'] = 'information/vacancy';
+
+
+		$this->load->model('account/customer_group');
+
+		if($this->customer->isLogged()) {
+		    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+		    $data['user_id'] = $this->customer->isLogged();
+		    $data['group_id'] = $this->customer->getGroupId();
+			$data['group_name'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+		    //var_dump( $this->customer->getFirstName() );
+		    //var_dump( get_class_methods($this->customer) );
+		} else {
+			$data['user_id'] = 0;
+			$data['group_id'] = 0;
+			$data['group_name'] = "";
+			$data['username'] = "";		
+		}
+
+		//die();
+
 		$this->response->setOutput($this->load->view('information/dealers', $data));
 	}
 
@@ -92,31 +113,35 @@ INSERT INTO oc_review ( `product_id`, `customer_id`, `author`, `text`, `rating`,
 		$sMyName = $this->request->post['myname'];
 		$sMyPhone = $this->request->post['myphone'];
 		$sMyMessage = $this->request->post['mymessage'];
-
-		if( strlen($sMyName) > 3 && strlen($sMyPhone) > 6 && strlen($sMyMessage)>10){
-			$sCaptcha = $this->request->post['g-recaptcha-response'];
-			$sUrl = 'https://www.google.com/recaptcha/api/siteverify';
+		$iDepartment = $this->request->post['department'];
+		
+		if( strlen($sMyName) > 3 && strlen($sMyPhone) > 6 && strlen($sMyMessage)>10 && $iDepartment!=0 ){
 			
-	 		$ip = $_SERVER['REMOTE_ADDR'];
-	 		$url_data = $sUrl.'?secret='.$sSecret.'&response='.$sCaptcha.'&remoteip='.$ip;
-			$curl = curl_init();
+			$iResult = 0;
 
-			curl_setopt($curl,CURLOPT_URL,$url_data);
-			curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,FALSE);
-			curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
+			$sCaptcha = '';
+			if( array_key_exists('g-recaptcha-response', $this->request->post)){
+				$sCaptcha = $this->request->post['g-recaptcha-response'];
+				$sUrl = 'https://www.google.com/recaptcha/api/siteverify';
+				
+		 		$ip = $_SERVER['REMOTE_ADDR'];
+		 		$url_data = $sUrl.'?secret='.$sSecret.'&response='.$sCaptcha.'&remoteip='.$ip;
+				$curl = curl_init();
 
-			$res = curl_exec($curl);
-			curl_close($curl);
+				curl_setopt($curl,CURLOPT_URL,$url_data);
+				curl_setopt($curl,CURLOPT_SSL_VERIFYPEER,FALSE);
+				curl_setopt($curl,CURLOPT_RETURNTRANSFER,1);
 
-			$res = json_decode($res);
+				$res = curl_exec($curl);
+				curl_close($curl);
 
-			if($res->success) {
-				$iResult = 1;
-			}
-			else {
-				$iResult = 0;
-			}
+				$res = json_decode($res);
 
+				if($res->success) {
+					$iResult = 1;
+				}
+			}	
+			
 			return $iResult;
 		} else {
 			return 0;

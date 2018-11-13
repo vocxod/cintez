@@ -200,6 +200,13 @@ class OcCategoryTableMap extends TableMap
      */
     public function buildRelations()
     {
+        $this->addRelation('OcCategoryDescription', '\\OcCategoryDescription', RelationMap::ONE_TO_MANY, array (
+  0 =>
+  array (
+    0 => ':category_id',
+    1 => ':category_id',
+  ),
+), null, null, 'OcCategoryDescriptions', false);
     } // buildRelations()
 
     /**

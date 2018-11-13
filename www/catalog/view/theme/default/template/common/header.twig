@@ -7,7 +7,7 @@
 <!--<![endif]-->
 <head>
 <meta charset="UTF-8" />
-<meta name="robots" content="noindex,follow" />
+{#<meta name="robots" content="noindex,follow" />#}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <title>{{ title }}</title>
@@ -16,6 +16,8 @@
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="apple-touch-icon" type="image/png" href="/apple-touch-icon.png">
 <link rel="apple-touch-icon-precomposed" type="image/png" href="/apple-touch-icon.png">
+
+<meta name="yandex-verification" content="03a3a4979117bc70" />
 
 <base href="{{ base }}" />
 {% if description %}
@@ -39,15 +41,13 @@
 <link href="catalog/view/theme/default/stylesheet/sintez.css" rel="stylesheet">
 <link href="catalog/view/theme/default/stylesheet/column_5.css" rel="stylesheet">
 
-<link href="catalog/view/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.css"rel="stylesheet" media="screen" />
+<link href="catalog/view/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.css" rel="stylesheet" media="screen" />
 
 <link href="catalog/view/theme/default/stylesheet/syntezfont.css" rel="stylesheet">
 
 {% for style in styles %}
   <link href="{{ style.href }}" type="text/css" rel="{{ style.rel }}" media="{{ style.media }}" />
 {% endfor %}
-
-<script type="text/javascript" src="//consultsystems.ru/script/2942/"></script>
 
 {% for script in scripts %}
   <script src="{{ script }}" type="text/javascript"></script>
@@ -143,17 +143,30 @@
           </li>
 
           <li>
-            <a class="pull-right menu-space" href="index.php?route=information/yamap"> 
+            <a class="pull-right menu-space" href="/yamap"> 
               <span style="color:#FEFAEA; font-size:14px;"> Контакты</span> 
             </a>
           </li>
+          {% if user_id == 0 %}
+          <li>
+            <a class="pull-right menu-space" href="index.php?route=account/login"> 
+              <span style="color:#FEFAEA; font-size:14px;"> Вход</span> 
+            </a>
+          </li>
+          {% else %}
+          <li>
+            <a class="pull-right menu-space" href="index.php?route=account/logout"> 
+              <span style="color:#FEFAEA; font-size:14px;"> Выход</span> 
+            </a>
+          </li>
+          {% endif %}
 
           <li class="sxs-hidden" >
-            
-            <a target="_blank" href="http://old.specsintez.com" class="pull-right menu-space" style="margin-right: 360px;"> 
+           {# 
+            <a target="_blank" href="http://old.specsintez.com" class="pull-right menu-space" style="margin-right: 229px;"> 
               <span style="color:#FEFEE0; font-size:14px;outline:0px dashed red;"> Прежняя версия сайта</span> 
             </a>
-            
+            #}
           </li>
 
         </ul>  

@@ -5,34 +5,48 @@
       <nav id="menu" class="navbar">
 
           <button type="button" class="btn btn-navbar navbar-toggle pull-right" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-            <i class="fa fa-bars"></i>
+            <i class="fa fa-bars" style="color:#FEFAEA;"></i>
           </button>
 
           <button type="button" class="btn btn-navbar navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-ex2-collapse">
-            <i class="fa fa-map-marker"></i>
+            <i class="fa fa-map-marker" style="color:#FEFAEA;"></i>
+            <span style="color:#FEFAEA;">{{ current_zone.name }}</span>
           </button>
 
 
         </div>
 
+      <script type="text/javascript">
+        function changeZone( code_value ){
+          $('#form-zone input[name=\'code\']').val( code_value );
+          console.log("changeZone data= ", $('#form-zone input[name=\'code\']').val() );
+          $('#form-zone').submit();
+        }
+      </script>
+
         <div class="collapse navbar-collapse navbar-ex2-collapse">
-        <ul class="nav navbar-nav">
-          <li class="dropdown line-item-one">
-            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Санкт-Петербург</a>
-          </li>
-          <li class="dropdown line-item-one">
-            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Новосибирск</a>
-          </li>
-          <li class="dropdown line-item-one">
-            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Москва</a>
-          </li>
-          <li class="dropdown line-item-one">
-            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Курск</a>
-          </li>
-          <li class="dropdown line-item-one">
-            <a href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown">Ростов-на-Дону</a>
-          </li>
-        </ul>
+          <form action="index.php?route=common/zone/zone" method="post" enctype="multipart/form-data" id="form-zone">
+            
+            <input type="hidden" name="code" value=""/>
+
+            <ul class="nav navbar-nav">
+              <li class="dropdown line-item-one">
+                <a onclick="changeZone('SP');" href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2782" id="s2782">Санкт-Петербург</a>
+              </li>
+              <li class="dropdown line-item-one">
+                <a onclick="changeZone('NV');" href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2768" id="s2768">Новосибирск</a>
+              </li>
+              <li class="dropdown line-item-one">
+                <a onclick="changeZone('MO');"  href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2761" id="s2761">Москва</a>
+              </li>
+              <li class="dropdown line-item-one">
+                <a onclick="changeZone('KK');"  href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2775" id="s2755">Курск</a>
+              </li>
+              <li class="dropdown line-item-one">
+                <a onclick="changeZone('RO');"  href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2778" id="s2778">Ростов-на-Дону</a>
+              </li>
+            </ul>
+          </form>
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -40,7 +54,7 @@
           <ul id="ul-category" class="nav navbar-nav">
             
             <li style="text-align:center; font-weight:bold; font-size:16px; background: #FEFAEA;">
-Каталог нашей продукции
+{#Каталог продукции#} {{ text_our_production }}
             </li>
 
             {% for category in categories %}

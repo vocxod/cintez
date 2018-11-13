@@ -10,7 +10,13 @@ class ControllerCommonTopnews extends Controller {
 		} else {
 			$iLimit = 6;
 		}
-		$aTopArticles = $this->model_catalog_information->getTopNews( 0, $iLimit );
+
+		$i_without_news_id = 0;
+		if( array_key_exists('without', $aOption) ){
+			$i_without_news_id = $aOption['without'];
+		}
+
+		$aTopArticles = $this->model_catalog_information->getTopNews( 0, $iLimit, $i_without_news_id );
 		/* get first image for each news */
 		$aResult = [];
 		foreach ($aTopArticles as $key => $value) {

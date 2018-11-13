@@ -769,14 +769,20 @@
         <div class="col-sm-12">
           {# Описание*Характеристики/Отзывы #}
           <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
-            {% if attribute_groups %}
-            <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
+            <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}&nbsp;&nbsp;&nbsp;</a></li>
+            {% if attribute_groups == 100500 %}
+            <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}&nbsp;&nbsp;&nbsp;</a></li>
             {% endif %}
+
+            {% if documents %}
+            <li><a href="#tab-documents" data-toggle="tab">{{ tab_documents }}&nbsp;&nbsp;&nbsp;</a></li>
+            {% endif %}
+
             {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
+            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}&nbsp;&nbsp;&nbsp;</a></li>
             {% endif %}
           </ul>
+
           <div class="tab-content">
             <div class="tab-pane active" id="tab-description">{{ description }}</div>
             {% if attribute_groups %}
@@ -800,6 +806,27 @@
               </table>
             </div>
             {% endif %}
+
+{##}
+          {% if documents %}
+            <div class="tab-pane" id="tab-documents">
+<p>
+  Вы можете просмотреть и/или скачать сопроводительную документацию к продукту.
+</p>
+<script type="text/javascript">
+  function download_doc( doc_id ){
+    console.log( doc_id );
+  }
+</script>
+<ul class="download-file-list" style="">
+  <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=instruction"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;</i>Инструкция</a></li>
+  <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=declaration"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;</i>Декларация</a></li>
+  <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=svid"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Свидетельство</a></li>
+</ul>
+            </div>
+            {% endif %}
+{##}
+
             {% if review_status  %}
             <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">
               <form class="form-horizontal" id="form-review">

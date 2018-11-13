@@ -286,6 +286,9 @@
     <column name="meta_description" phpName="MetaDescription" type="VARCHAR" size="255" required="true"/>
     <column name="meta_keyword" phpName="MetaKeyword" type="VARCHAR" size="255" required="true"/>
     <column name="sidebar_title" phpName="SidebarTitle" type="VARCHAR" size="255" required="true" defaultValue=""/>
+    <foreign-key foreignTable="oc_category">
+      <reference local="category_id" foreign="category_id"/>
+    </foreign-key>
     <index name="name">
       <index-column name="name"/>
     </index>

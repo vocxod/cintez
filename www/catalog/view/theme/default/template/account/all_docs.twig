@@ -1,0 +1,71 @@
+{{ header }}
+<div id="account-order" class="container">
+  <ul class="breadcrumb">
+    {% for breadcrumb in breadcrumbs %}
+    <li><a href="{{ breadcrumb.href }}">{{ breadcrumb.text }}</a></li>
+    {% endfor %}
+  </ul>
+  <div class="row">{{ column_left }}
+    {% if column_left and column_right %}
+    {% set class = 'col-sm-6' %}
+    {% elseif column_left or column_right %}
+    {% set class = 'col-sm-9' %}
+    {% else %}
+    {% set class = 'col-sm-12' %}
+    {% endif %}
+    <div id="content" class="{{ class }}">{{ content_top }}
+      <h1>{{ heading_title }}</h1>
+      {% if docs %}
+      <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+          <thead>
+            <tr>
+              <td class="text-right"><b>{{ column_download_id }}</b></td>
+              <td class="text-left"><b> {{ column_filename }}</b></td>
+              <td class="text-right"><b>{{ column_product_title }}</b></td>
+              <td class="text-left"><b> {{ column_product_id }}</b></td>#}
+              <td class="text-right"><b>{{ column_indeustry }}</b></td>
+              <td class="text-left"><b>{{ column_date_added }}</b></td>
+              <td></td>
+            </tr>
+          </thead>
+          <tbody>
+           {% for doc in docs %}
+            <tr>
+              <td class="text-right">#{{ doc.download_id }}</td>
+              <td class="text-left">{{ doc.filename }}</td>
+              <td class="text-right">{{ doc.name }}</td>
+              <td class="text-left">
+                {% if doc.product_id != 0 %}
+                {{ doc.product_id}}
+                {% else %}
+                *
+                {% endif %}
+              </td>
+              <td class="text-right">
+                {{ doc.attribute_name }}
+              </td>
+              <td class="text-left">{{ doc.date_added }}</td>
+              <td class="text-right">
+                <a href="index.php?route=account/all_docs/getdoc&download_id={{ doc.download_id }}" data-toggle="tooltip" title="{{ button_view }}" class="btn btn-info"><i class="fa fa-download"></i></a></td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="row">
+        <div class="col-sm-6 text-left">{{ pagination }}</div>
+        <div class="col-sm-6 text-right">{{ results }}</div>
+      </div>
+      {% else %}
+      <p>{{ text_empty }}</p>
+      {% endif %}
+      <div class="buttons clearfix">
+        <div class="pull-right">
+          <a href="{{ continue }}" class="btn btn-success">{{ button_continue }}</a>
+        </div>
+      </div>
+      {{ content_bottom }}</div>
+    {{ column_right }}</div>
+</div>
+{{ footer }}

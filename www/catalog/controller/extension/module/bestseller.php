@@ -9,7 +9,8 @@ class ControllerExtensionModuleBestSeller extends Controller {
 
 		$data['products'] = array();
 
-		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit']);
+		// второй параметр - исключаемые товары
+		$results = $this->model_catalog_product->getBestSellerProducts($setting['limit'], [904] );
 
 		if ($results) {
 			foreach ($results as $result) {
@@ -54,6 +55,18 @@ class ControllerExtensionModuleBestSeller extends Controller {
 					'rating'      => $rating,
 					'href'        => $this->url->link('product/product', 'product_id=' . $result['product_id'])
 				);
+				//SEO link for product
+				$s_seo_href= $this->model_catalog_product->getProductSeoLink( $result['product_id'], "product" );
+				end($data['products']);
+				$key = key( $data['products'] );
+				reset( $data['products'] );
+				//var_dump($key); die();
+				if( $s_seo_href ){
+					$data['products'][$key]['href'] = "/" . $s_seo_href;
+				} else {
+					$data['products'][$key]['href'] = $this->url->link( 'product/product', '&product_id=' . $result['product_id'] );
+				}
+				//SEO link for product
 			}
 
 			return $this->load->view('extension/module/bestseller', $data);

@@ -2,7 +2,9 @@
 
 namespace Base;
 
+use \OcCategory as ChildOcCategory;
 use \OcCategoryDescriptionQuery as ChildOcCategoryDescriptionQuery;
+use \OcCategoryQuery as ChildOcCategoryQuery;
 use \Exception;
 use \PDO;
 use Map\OcCategoryDescriptionTableMap;
@@ -115,6 +117,11 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
      * @var        string
      */
     protected $sidebar_title;
+
+    /**
+     * @var        ChildOcCategory
+     */
+    protected $aOcCategory;
 
     /**
      * Flag to prevent endless save loop, if this object is referenced
@@ -459,6 +466,10 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
             $this->modifiedColumns[OcCategoryDescriptionTableMap::COL_CATEGORY_ID] = true;
         }
 
+        if ($this->aOcCategory !== null && $this->aOcCategory->getCategoryId() !== $v) {
+            $this->aOcCategory = null;
+        }
+
         return $this;
     } // setCategoryId()
 
@@ -695,6 +706,9 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
      */
     public function ensureConsistency()
     {
+        if ($this->aOcCategory !== null && $this->category_id !== $this->aOcCategory->getCategoryId()) {
+            $this->aOcCategory = null;
+        }
     } // ensureConsistency
 
     /**
@@ -734,6 +748,7 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
+            $this->aOcCategory = null;
         } // if (deep)
     }
 
@@ -836,6 +851,18 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         $affectedRows = 0; // initialize var to track total num of affected rows
         if (!$this->alreadyInSave) {
             $this->alreadyInSave = true;
+
+            // We call the save method on the following object(s) if they
+            // were passed to this object by their corresponding set
+            // method.  This object relates to these object(s) by a
+            // foreign key reference.
+
+            if ($this->aOcCategory !== null) {
+                if ($this->aOcCategory->isModified() || $this->aOcCategory->isNew()) {
+                    $affectedRows += $this->aOcCategory->save($con);
+                }
+                $this->setOcCategory($this->aOcCategory);
+            }
 
             if ($this->isNew() || $this->isModified()) {
                 // persist changes
@@ -1025,10 +1052,11 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['OcCategoryDescription'][$this->hashCode()])) {
@@ -1051,6 +1079,23 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->aOcCategory) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'ocCategory';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'oc_category';
+                        break;
+                    default:
+                        $key = 'OcCategory';
+                }
+
+                $result[$key] = $this->aOcCategory->toArray($keyType, $includeLazyLoadColumns,  $alreadyDumpedObjects, true);
+            }
+        }
 
         return $result;
     }
@@ -1257,8 +1302,15 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         $validPk = null !== $this->getCategoryId() &&
             null !== $this->getLanguageId();
 
-        $validPrimaryKeyFKs = 0;
+        $validPrimaryKeyFKs = 1;
         $primaryKeyFKs = [];
+
+        //relation oc_category_description_fk_f314af to table oc_category
+        if ($this->aOcCategory && $hash = spl_object_hash($this->aOcCategory)) {
+            $primaryKeyFKs[] = $hash;
+        } else {
+            $validPrimaryKeyFKs = false;
+        }
 
         if ($validPk) {
             return crc32(json_encode($this->getPrimaryKey(), JSON_UNESCAPED_UNICODE));
@@ -1353,12 +1405,66 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
     }
 
     /**
+     * Declares an association between this object and a ChildOcCategory object.
+     *
+     * @param  ChildOcCategory $v
+     * @return $this|\OcCategoryDescription The current object (for fluent API support)
+     * @throws PropelException
+     */
+    public function setOcCategory(ChildOcCategory $v = null)
+    {
+        if ($v === null) {
+            $this->setCategoryId(NULL);
+        } else {
+            $this->setCategoryId($v->getCategoryId());
+        }
+
+        $this->aOcCategory = $v;
+
+        // Add binding for other direction of this n:n relationship.
+        // If this object has already been added to the ChildOcCategory object, it will not be re-added.
+        if ($v !== null) {
+            $v->addOcCategoryDescription($this);
+        }
+
+
+        return $this;
+    }
+
+
+    /**
+     * Get the associated ChildOcCategory object
+     *
+     * @param  ConnectionInterface $con Optional Connection object.
+     * @return ChildOcCategory The associated ChildOcCategory object.
+     * @throws PropelException
+     */
+    public function getOcCategory(ConnectionInterface $con = null)
+    {
+        if ($this->aOcCategory === null && ($this->category_id !== null)) {
+            $this->aOcCategory = ChildOcCategoryQuery::create()->findPk($this->category_id, $con);
+            /* The following can be used additionally to
+                guarantee the related object contains a reference
+                to this object.  This level of coupling may, however, be
+                undesirable since it could result in an only partially populated collection
+                in the referenced object.
+                $this->aOcCategory->addOcCategoryDescriptions($this);
+             */
+        }
+
+        return $this->aOcCategory;
+    }
+
+    /**
      * Clears the current object, sets all attributes to their default values and removes
      * outgoing references as well as back-references (from other objects to this one. Results probably in a database
      * change of those foreign objects when you call `save` there).
      */
     public function clear()
     {
+        if (null !== $this->aOcCategory) {
+            $this->aOcCategory->removeOcCategoryDescription($this);
+        }
         $this->category_id = null;
         $this->language_id = null;
         $this->name = null;
@@ -1388,6 +1494,7 @@ abstract class OcCategoryDescription implements ActiveRecordInterface
         if ($deep) {
         } // if ($deep)
 
+        $this->aOcCategory = null;
     }
 
     /**

@@ -56,6 +56,7 @@ class ControllerCommonMenu extends Controller {
 				);
 			}
 		}
+		$data['current_zone'] = $this->session->data['current_zone'];
 		return $this->load->view('common/menu', $data);
 	}
 }

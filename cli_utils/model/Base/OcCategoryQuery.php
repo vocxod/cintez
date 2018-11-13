@@ -10,6 +10,7 @@ use Map\OcCategoryTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
+use Propel\Runtime\ActiveQuery\ModelJoin;
 use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\PropelException;
@@ -52,6 +53,18 @@ use Propel\Runtime\Exception\PropelException;
  * @method     ChildOcCategoryQuery leftJoinWith($relation) Adds a LEFT JOIN clause and with to the query
  * @method     ChildOcCategoryQuery rightJoinWith($relation) Adds a RIGHT JOIN clause and with to the query
  * @method     ChildOcCategoryQuery innerJoinWith($relation) Adds a INNER JOIN clause and with to the query
+ *
+ * @method     ChildOcCategoryQuery leftJoinOcCategoryDescription($relationAlias = null) Adds a LEFT JOIN clause to the query using the OcCategoryDescription relation
+ * @method     ChildOcCategoryQuery rightJoinOcCategoryDescription($relationAlias = null) Adds a RIGHT JOIN clause to the query using the OcCategoryDescription relation
+ * @method     ChildOcCategoryQuery innerJoinOcCategoryDescription($relationAlias = null) Adds a INNER JOIN clause to the query using the OcCategoryDescription relation
+ *
+ * @method     ChildOcCategoryQuery joinWithOcCategoryDescription($joinType = Criteria::INNER_JOIN) Adds a join clause and with to the query using the OcCategoryDescription relation
+ *
+ * @method     ChildOcCategoryQuery leftJoinWithOcCategoryDescription() Adds a LEFT JOIN clause and with to the query using the OcCategoryDescription relation
+ * @method     ChildOcCategoryQuery rightJoinWithOcCategoryDescription() Adds a RIGHT JOIN clause and with to the query using the OcCategoryDescription relation
+ * @method     ChildOcCategoryQuery innerJoinWithOcCategoryDescription() Adds a INNER JOIN clause and with to the query using the OcCategoryDescription relation
+ *
+ * @method     \OcCategoryDescriptionQuery endUse() Finalizes a secondary criteria and merges it with its primary Criteria
  *
  * @method     ChildOcCategory findOne(ConnectionInterface $con = null) Return the first ChildOcCategory matching the query
  * @method     ChildOcCategory findOneOrCreate(ConnectionInterface $con = null) Return the first ChildOcCategory matching the query, or a new ChildOcCategory object populated from the query conditions when no match is found
@@ -718,6 +731,79 @@ abstract class OcCategoryQuery extends ModelCriteria
         }
 
         return $this->addUsingAlias(OcCategoryTableMap::COL_CLASS, $class, $comparison);
+    }
+
+    /**
+     * Filter the query by a related \OcCategoryDescription object
+     *
+     * @param \OcCategoryDescription|ObjectCollection $ocCategoryDescription the related object to use as filter
+     * @param string $comparison Operator to use for the column comparison, defaults to Criteria::EQUAL
+     *
+     * @return ChildOcCategoryQuery The current query, for fluid interface
+     */
+    public function filterByOcCategoryDescription($ocCategoryDescription, $comparison = null)
+    {
+        if ($ocCategoryDescription instanceof \OcCategoryDescription) {
+            return $this
+                ->addUsingAlias(OcCategoryTableMap::COL_CATEGORY_ID, $ocCategoryDescription->getCategoryId(), $comparison);
+        } elseif ($ocCategoryDescription instanceof ObjectCollection) {
+            return $this
+                ->useOcCategoryDescriptionQuery()
+                ->filterByPrimaryKeys($ocCategoryDescription->getPrimaryKeys())
+                ->endUse();
+        } else {
+            throw new PropelException('filterByOcCategoryDescription() only accepts arguments of type \OcCategoryDescription or Collection');
+        }
+    }
+
+    /**
+     * Adds a JOIN clause to the query using the OcCategoryDescription relation
+     *
+     * @param     string $relationAlias optional alias for the relation
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return $this|ChildOcCategoryQuery The current query, for fluid interface
+     */
+    public function joinOcCategoryDescription($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        $tableMap = $this->getTableMap();
+        $relationMap = $tableMap->getRelation('OcCategoryDescription');
+
+        // create a ModelJoin object for this join
+        $join = new ModelJoin();
+        $join->setJoinType($joinType);
+        $join->setRelationMap($relationMap, $this->useAliasInSQL ? $this->getModelAlias() : null, $relationAlias);
+        if ($previousJoin = $this->getPreviousJoin()) {
+            $join->setPreviousJoin($previousJoin);
+        }
+
+        // add the ModelJoin to the current object
+        if ($relationAlias) {
+            $this->addAlias($relationAlias, $relationMap->getRightTable()->getName());
+            $this->addJoinObject($join, $relationAlias);
+        } else {
+            $this->addJoinObject($join, 'OcCategoryDescription');
+        }
+
+        return $this;
+    }
+
+    /**
+     * Use the OcCategoryDescription relation OcCategoryDescription object
+     *
+     * @see useQuery()
+     *
+     * @param     string $relationAlias optional alias for the relation,
+     *                                   to be used as main alias in the secondary query
+     * @param     string $joinType Accepted values are null, 'left join', 'right join', 'inner join'
+     *
+     * @return \OcCategoryDescriptionQuery A secondary query class using the current class as primary query
+     */
+    public function useOcCategoryDescriptionQuery($relationAlias = null, $joinType = Criteria::INNER_JOIN)
+    {
+        return $this
+            ->joinOcCategoryDescription($relationAlias, $joinType)
+            ->useQuery($relationAlias ? $relationAlias : 'OcCategoryDescription', '\OcCategoryDescriptionQuery');
     }
 
     /**

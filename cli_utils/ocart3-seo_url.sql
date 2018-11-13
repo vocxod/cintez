@@ -1,0 +1,56 @@
+-- MySQL dump 10.13  Distrib 5.7.22, for Linux (x86_64)
+--
+-- Host: localhost    Database: ocart3
+-- ------------------------------------------------------
+-- Server version	5.7.22
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+--
+-- Table structure for table `oc_seo_url`
+--
+
+DROP TABLE IF EXISTS `oc_seo_url`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!40101 SET character_set_client = utf8 */;
+CREATE TABLE `oc_seo_url` (
+  `seo_url_id` int(11) NOT NULL AUTO_INCREMENT,
+  `store_id` int(11) NOT NULL,
+  `language_id` int(11) NOT NULL,
+  `query` varchar(255) NOT NULL,
+  `keyword` varchar(255) NOT NULL,
+  PRIMARY KEY (`seo_url_id`),
+  KEY `query` (`query`),
+  KEY `keyword` (`keyword`)
+) ENGINE=MyISAM AUTO_INCREMENT=1820 DEFAULT CHARSET=utf8;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `oc_seo_url`
+--
+
+LOCK TABLES `oc_seo_url` WRITE;
+/*!40000 ALTER TABLE `oc_seo_url` DISABLE KEYS */;
+INSERT INTO `oc_seo_url` VALUES (1677,0,4,'product_id=909','product-sajnd'),(1600,0,4,'product_id=996','product-septiboks'),(1601,0,4,'product_id=995','product-larussoft'),(1602,0,4,'product_id=994','product-hozluks'),(1603,0,4,'product_id=993','product-kornumpena'),(1604,0,4,'product_id=992','product-kornum'),(1605,0,4,'product_id=991','product-skinlajf-mk'),(1606,0,4,'product_id=990','product-stokmaster'),(1607,0,4,'product_id=989','product-specenzim'),(1608,0,4,'product_id=988','product-opersept'),(1609,0,4,'product_id=987','product-skinlajflakto-calfetki'),(1610,0,4,'product_id=984','product-trioseptendo-vet'),(1700,0,4,'product_id=983','product-3dsept'),(1612,0,4,'product_id=982','product-stopseptikum'),(1613,0,4,'product_id=981','product-velur'),(1708,0,4,'product_id=979','product-trioseptendo'),(1615,0,4,'product_id=978','product-murena-3'),(1616,0,4,'product_id=975','product-specoksajd-marki-k'),(1617,0,4,'product_id=974','product-specoksajd'),(1618,0,4,'product_id=973','product-smartprofi'),(1619,0,4,'product_id=972','product-aktiv'),(1620,0,4,'product_id=971','product-specaktiv-d'),(1621,0,4,'product_id=970','product-aktivd'),(1622,0,4,'product_id=969','product-antejmc'),(1623,0,4,'product_id=968','product-antejpena'),(1624,0,4,'product_id=967','product-antej'),(1625,0,4,'product_id=966','product-lajtluks'),(1626,0,4,'product_id=965','product-lajt'),(1627,0,4,'product_id=964','product-spektrprofi'),(1628,0,4,'product_id=963','product-spektr'),(1703,0,4,'product_id=962','product-trioseptakva'),(1630,0,4,'product_id=961','product-salfetki-cistar'),(1631,0,4,'product_id=960','product-kontaktekspress'),(1632,0,4,'product_id=959','product-kontakt'),(1633,0,4,'product_id=958','product-tor'),(1634,0,4,'product_id=957','product-trioseptin'),(1635,0,4,'product_id=956','product-torhs'),(1636,0,4,'product_id=955','product-torlokomotiv'),(1637,0,4,'product_id=954','product-rejs'),(1638,0,4,'product_id=953','product-smartsuper'),(1639,0,4,'product_id=952','product-oksajd'),(1640,0,4,'product_id=951','product-specoksajd-ufs'),(1641,0,4,'product_id=950','product-specoksajd-pto'),(1642,0,4,'product_id=946','product-selkbalʹzam'),(1643,0,4,'product_id=945','product-selk-s-antiseptikom'),(1644,0,4,'product_id=944','product-selk'),(1645,0,4,'product_id=943','product-specaktiv'),(1646,0,4,'product_id=942','product-lajmantigrafiti'),(1647,0,4,'product_id=941','product-sajnmiks'),(1648,0,4,'product_id=940','product-sajn'),(1649,0,4,'product_id=939','product-3dklin'),(1650,0,4,'product_id=938','product-trioseptluks'),(1704,0,4,'product_id=937','product-trioseptmiks'),(1652,0,4,'product_id=936','product-lajmakva'),(1653,0,4,'product_id=935','product-lajmekstra'),(1654,0,4,'product_id=934','product-lajm'),(1655,0,4,'product_id=932','product-lajtluks-d'),(1656,0,4,'product_id=931','product-specoksajd-marki-b'),(1657,0,4,'product_id=930','product-antejavtomat'),(1658,0,4,'product_id=929','product-antejpena-plus'),(1659,0,4,'product_id=928','product-antejpena-d'),(1660,0,4,'product_id=927','product-skinlajfjod'),(1661,0,4,'product_id=925','product-skinlajf'),(1662,0,4,'product_id=924','product-skinlajflakto'),(1663,0,4,'product_id=923','product-trioseptvet'),(1664,0,4,'product_id=922','product-specdelit-osnovnoj'),(1665,0,4,'product_id=921','product-specdelit-osnovnoj'),(1666,0,4,'product_id=920','product-specdelit'),(1667,0,4,'product_id=919','product-specdelit-profi'),(1668,0,4,'product_id=918','product-trioseptnuk-15'),(1669,0,4,'product_id=917','product-trioseptnuk-15-teh'),(1670,0,4,'product_id=916','product-klinoksajd'),(1671,0,4,'product_id=915','product-vorsolekstra'),(1672,0,4,'product_id=914','product-vorsolpena'),(1673,0,4,'product_id=913','product-larusuniversal'),(1674,0,4,'product_id=912','product-larusoksi'),(1675,0,4,'product_id=911','product-metallblik'),(1676,0,4,'product_id=910','product-lajtblesk-k'),(1678,0,4,'product_id=908','product-smartsuper-m'),(1679,0,4,'product_id=907','product-smart'),(1680,0,4,'product_id=906','product-pasta-master'),(1681,0,4,'product_id=905','product-krem-nʹugardrenova'),(1682,0,4,'product_id=904','product-krem-nʹugardulʹtra'),(1706,0,4,'product_id=903','product-trioseptol'),(1705,0,4,'product_id=901','product-trioseptoksi'),(1701,0,4,'product_id=900','product-triosept'),(1687,0,4,'product_id=899','product-aktivluks-d'),(1688,0,4,'product_id=898','product-lajtavtomat'),(1689,0,4,'product_id=897','product-murena-1'),(1690,0,4,'product_id=896','product-sipred-4'),(1691,0,4,'product_id=895','product-sipred-3'),(1692,0,4,'product_id=894','product-sipred-1'),(1693,0,4,'product_id=893','product-sipblu-5'),(1694,0,4,'product_id=892','product-sipblu-4'),(1695,0,4,'product_id=890','product-trioseptmiks-p'),(1696,0,4,'product_id=891','product-sipblu-1'),(1697,0,4,'product_id=1015','product-mousee-sredstvo-quot3dklinquot'),(1699,0,4,'path=54_55_1389','сельское-хозяйство-птицеводство-безразборная-мойка-сип'),(1721,0,4,'product_id=902','akusherskie-stacianary'),(1717,0,4,'category_id=74','dealer-11'),(1718,0,1,'category_id=1600','dealer-2'),(1719,0,45,'category_id=1600','dealer-3'),(1722,0,4,'product_id=996','septiboks'),(1723,0,4,'product_id=995','larussoft'),(1724,0,4,'product_id=994','hozluks'),(1725,0,4,'product_id=993','kornumpena'),(1726,0,4,'product_id=992','kornum'),(1727,0,4,'product_id=991','skinlajf-mk'),(1728,0,4,'product_id=990','stokmaster'),(1729,0,4,'product_id=989','specenzim'),(1730,0,4,'product_id=988','opersept'),(1731,0,4,'product_id=987','skinlajflakto-calfetki'),(1732,0,4,'product_id=984','trioseptendo-vet'),(1733,0,4,'product_id=983','3dsept'),(1734,0,4,'product_id=982','stopseptikum'),(1735,0,4,'product_id=981','velur'),(1736,0,4,'product_id=979','trioseptendo'),(1737,0,4,'product_id=978','murena-3'),(1738,0,4,'product_id=975','specoksajd-marki-k'),(1739,0,4,'product_id=974','specoksajd'),(1740,0,4,'product_id=973','smartprofi'),(1741,0,4,'product_id=972','aktiv'),(1742,0,4,'product_id=971','specaktiv-d'),(1743,0,4,'product_id=970','aktivd'),(1744,0,4,'product_id=969','antejmc'),(1745,0,4,'product_id=968','antejpena'),(1746,0,4,'product_id=967','antej'),(1747,0,4,'product_id=966','lajtluks'),(1748,0,4,'product_id=965','lajt'),(1749,0,4,'product_id=964','spektrprofi'),(1750,0,4,'product_id=963','spektr'),(1751,0,4,'product_id=962','trioseptakva'),(1752,0,4,'product_id=961','salfetki-cistar'),(1753,0,4,'product_id=960','kontaktekspress'),(1754,0,4,'product_id=959','kontakt'),(1755,0,4,'product_id=958','tor'),(1756,0,4,'product_id=957','trioseptin'),(1757,0,4,'product_id=956','torhs'),(1758,0,4,'product_id=955','torlokomotiv'),(1759,0,4,'product_id=954','rejs'),(1760,0,4,'product_id=953','smartsuper'),(1761,0,4,'product_id=952','oksajd'),(1762,0,4,'product_id=951','specoksajd-ufs'),(1763,0,4,'product_id=950','specoksajd-pto'),(1764,0,4,'product_id=946','selkbalʹzam'),(1765,0,4,'product_id=945','selk-s-antiseptikom'),(1766,0,4,'product_id=944','selk'),(1767,0,4,'product_id=943','specaktiv'),(1768,0,4,'product_id=942','lajmantigrafiti'),(1769,0,4,'product_id=941','sajnmiks'),(1770,0,4,'product_id=940','sajn'),(1771,0,4,'product_id=939','3dklin'),(1772,0,4,'product_id=938','trioseptluks'),(1773,0,4,'product_id=937','trioseptmiks'),(1774,0,4,'product_id=936','lajmakva'),(1775,0,4,'product_id=935','lajmekstra'),(1776,0,4,'product_id=934','lajm'),(1777,0,4,'product_id=932','lajtluks-d'),(1778,0,4,'product_id=931','specoksajd-marki-b'),(1779,0,4,'product_id=930','antejavtomat'),(1780,0,4,'product_id=929','antejpena-plus'),(1781,0,4,'product_id=928','antejpena-d'),(1782,0,4,'product_id=927','skinlajfjod'),(1783,0,4,'product_id=925','skinlajf'),(1784,0,4,'product_id=924','skinlajflakto'),(1785,0,4,'product_id=923','trioseptvet'),(1786,0,4,'product_id=922','specdelit-osnovnoj'),(1787,0,4,'product_id=921','specdelit-osnovnoj'),(1788,0,4,'product_id=920','specdelit'),(1789,0,4,'product_id=919','specdelit-profi'),(1790,0,4,'product_id=918','trioseptnuk-15'),(1791,0,4,'product_id=917','trioseptnuk-15-teh'),(1792,0,4,'product_id=916','klinoksajd'),(1793,0,4,'product_id=915','vorsolekstra'),(1794,0,4,'product_id=914','vorsolpena'),(1795,0,4,'product_id=913','larusuniversal'),(1796,0,4,'product_id=912','larusoksi'),(1797,0,4,'product_id=911','metallblik'),(1798,0,4,'product_id=910','lajtblesk-k'),(1799,0,4,'product_id=909','sajnd'),(1800,0,4,'product_id=908','smartsuper-m'),(1801,0,4,'product_id=907','smart'),(1802,0,4,'product_id=906','pasta-master'),(1803,0,4,'product_id=905','krem-nʹugardrenova'),(1804,0,4,'product_id=904','krem-nʹugardulʹtra'),(1805,0,4,'product_id=903','trioseptol'),(1806,0,4,'product_id=902','trioseptekspress'),(1807,0,4,'product_id=901','trioseptoksi'),(1808,0,4,'product_id=900','triosept'),(1809,0,4,'product_id=899','aktivluks-d'),(1810,0,4,'product_id=898','lajtavtomat'),(1811,0,4,'product_id=897','murena-1'),(1812,0,4,'product_id=896','sipred-4'),(1813,0,4,'product_id=895','sipred-3'),(1814,0,4,'product_id=894','sipred-1'),(1815,0,4,'product_id=893','sipblu-5'),(1816,0,4,'product_id=892','sipblu-4'),(1817,0,4,'product_id=890','trioseptmiks-p'),(1818,0,4,'product_id=891','sipblu-1'),(1819,0,4,'product_id=1015','mousee-sredstvo-quot3dklinquot');
+/*!40000 ALTER TABLE `oc_seo_url` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
+
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2018-07-19  9:15:26

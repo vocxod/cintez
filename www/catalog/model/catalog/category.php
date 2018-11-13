@@ -122,4 +122,22 @@ class ModelCatalogCategory extends Model {
 
 		return $query->row['total'];
 	}
+
+	public function getCategorySeoLink( $s_path, $s_place, $i_language_id=4, $i_store_id=0 ){
+		
+		$s_result = '';
+	
+		if($s_place == "category"){
+			$s_sql_select = "SELECT * FROM oc_seo_url WHERE `query` = 'category_id=" . $s_path . "' AND store_id='".$i_store_id."' AND language_id='".$i_language_id."' ";
+			$query = $this->db->query( $s_sql_select );
+			$row = $query->row;
+			if( $row ){
+				$s_result = $row['keyword'];
+			}
+		}
+
+		return $s_result;
+	}	
+
+
 }

@@ -2,16 +2,21 @@
 
 namespace Base;
 
+use \OcCategory as ChildOcCategory;
+use \OcCategoryDescription as ChildOcCategoryDescription;
+use \OcCategoryDescriptionQuery as ChildOcCategoryDescriptionQuery;
 use \OcCategoryQuery as ChildOcCategoryQuery;
 use \DateTime;
 use \Exception;
 use \PDO;
+use Map\OcCategoryDescriptionTableMap;
 use Map\OcCategoryTableMap;
 use Propel\Runtime\Propel;
 use Propel\Runtime\ActiveQuery\Criteria;
 use Propel\Runtime\ActiveQuery\ModelCriteria;
 use Propel\Runtime\ActiveRecord\ActiveRecordInterface;
 use Propel\Runtime\Collection\Collection;
+use Propel\Runtime\Collection\ObjectCollection;
 use Propel\Runtime\Connection\ConnectionInterface;
 use Propel\Runtime\Exception\BadMethodCallException;
 use Propel\Runtime\Exception\LogicException;
@@ -154,12 +159,24 @@ abstract class OcCategory implements ActiveRecordInterface
     protected $class;
 
     /**
+     * @var        ObjectCollection|ChildOcCategoryDescription[] Collection to store aggregation of ChildOcCategoryDescription objects.
+     */
+    protected $collOcCategoryDescriptions;
+    protected $collOcCategoryDescriptionsPartial;
+
+    /**
      * Flag to prevent endless save loop, if this object is referenced
      * by another object which falls in this transaction.
      *
      * @var boolean
      */
     protected $alreadyInSave = false;
+
+    /**
+     * An array of objects scheduled for deletion.
+     * @var ObjectCollection|ChildOcCategoryDescription[]
+     */
+    protected $ocCategoryDescriptionsScheduledForDeletion = null;
 
     /**
      * Applies default values to this object.
@@ -979,6 +996,8 @@ abstract class OcCategory implements ActiveRecordInterface
 
         if ($deep) {  // also de-associate any related objects?
 
+            $this->collOcCategoryDescriptions = null;
+
         } // if (deep)
     }
 
@@ -1091,6 +1110,23 @@ abstract class OcCategory implements ActiveRecordInterface
                     $affectedRows += $this->doUpdate($con);
                 }
                 $this->resetModified();
+            }
+
+            if ($this->ocCategoryDescriptionsScheduledForDeletion !== null) {
+                if (!$this->ocCategoryDescriptionsScheduledForDeletion->isEmpty()) {
+                    \OcCategoryDescriptionQuery::create()
+                        ->filterByPrimaryKeys($this->ocCategoryDescriptionsScheduledForDeletion->getPrimaryKeys(false))
+                        ->delete($con);
+                    $this->ocCategoryDescriptionsScheduledForDeletion = null;
+                }
+            }
+
+            if ($this->collOcCategoryDescriptions !== null) {
+                foreach ($this->collOcCategoryDescriptions as $referrerFK) {
+                    if (!$referrerFK->isDeleted() && ($referrerFK->isNew() || $referrerFK->isModified())) {
+                        $affectedRows += $referrerFK->save($con);
+                    }
+                }
             }
 
             $this->alreadyInSave = false;
@@ -1317,10 +1353,11 @@ abstract class OcCategory implements ActiveRecordInterface
      *                    Defaults to TableMap::TYPE_PHPNAME.
      * @param     boolean $includeLazyLoadColumns (optional) Whether to include lazy loaded columns. Defaults to TRUE.
      * @param     array $alreadyDumpedObjects List of objects to skip to avoid recursion
+     * @param     boolean $includeForeignObjects (optional) Whether to include hydrated related objects. Default to FALSE.
      *
      * @return array an associative array containing the field names (as keys) and field values
      */
-    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array())
+    public function toArray($keyType = TableMap::TYPE_PHPNAME, $includeLazyLoadColumns = true, $alreadyDumpedObjects = array(), $includeForeignObjects = false)
     {
 
         if (isset($alreadyDumpedObjects['OcCategory'][$this->hashCode()])) {
@@ -1355,6 +1392,23 @@ abstract class OcCategory implements ActiveRecordInterface
             $result[$key] = $virtualColumn;
         }
 
+        if ($includeForeignObjects) {
+            if (null !== $this->collOcCategoryDescriptions) {
+
+                switch ($keyType) {
+                    case TableMap::TYPE_CAMELNAME:
+                        $key = 'ocCategoryDescriptions';
+                        break;
+                    case TableMap::TYPE_FIELDNAME:
+                        $key = 'oc_category_descriptions';
+                        break;
+                    default:
+                        $key = 'OcCategoryDescriptions';
+                }
+
+                $result[$key] = $this->collOcCategoryDescriptions->toArray(null, false, $keyType, $includeLazyLoadColumns, $alreadyDumpedObjects);
+            }
+        }
 
         return $result;
     }
@@ -1660,6 +1714,20 @@ abstract class OcCategory implements ActiveRecordInterface
         $copyObj->setCategorySiteId($this->getCategorySiteId());
         $copyObj->setCss($this->getCss());
         $copyObj->setClass($this->getClass());
+
+        if ($deepCopy) {
+            // important: temporarily setNew(false) because this affects the behavior of
+            // the getter/setter methods for fkey referrer objects.
+            $copyObj->setNew(false);
+
+            foreach ($this->getOcCategoryDescriptions() as $relObj) {
+                if ($relObj !== $this) {  // ensure that we don't try to copy a reference to ourselves
+                    $copyObj->addOcCategoryDescription($relObj->copy($deepCopy));
+                }
+            }
+
+        } // if ($deepCopy)
+
         if ($makeNew) {
             $copyObj->setNew(true);
             $copyObj->setCategoryId(NULL); // this is a auto-increment column, so set to default value
@@ -1686,6 +1754,250 @@ abstract class OcCategory implements ActiveRecordInterface
         $this->copyInto($copyObj, $deepCopy);
 
         return $copyObj;
+    }
+
+
+    /**
+     * Initializes a collection based on the name of a relation.
+     * Avoids crafting an 'init[$relationName]s' method name
+     * that wouldn't work when StandardEnglishPluralizer is used.
+     *
+     * @param      string $relationName The name of the relation to initialize
+     * @return void
+     */
+    public function initRelation($relationName)
+    {
+        if ('OcCategoryDescription' == $relationName) {
+            return $this->initOcCategoryDescriptions();
+        }
+    }
+
+    /**
+     * Clears out the collOcCategoryDescriptions collection
+     *
+     * This does not modify the database; however, it will remove any associated objects, causing
+     * them to be refetched by subsequent calls to accessor method.
+     *
+     * @return void
+     * @see        addOcCategoryDescriptions()
+     */
+    public function clearOcCategoryDescriptions()
+    {
+        $this->collOcCategoryDescriptions = null; // important to set this to NULL since that means it is uninitialized
+    }
+
+    /**
+     * Reset is the collOcCategoryDescriptions collection loaded partially.
+     */
+    public function resetPartialOcCategoryDescriptions($v = true)
+    {
+        $this->collOcCategoryDescriptionsPartial = $v;
+    }
+
+    /**
+     * Initializes the collOcCategoryDescriptions collection.
+     *
+     * By default this just sets the collOcCategoryDescriptions collection to an empty array (like clearcollOcCategoryDescriptions());
+     * however, you may wish to override this method in your stub class to provide setting appropriate
+     * to your application -- for example, setting the initial array to the values stored in database.
+     *
+     * @param      boolean $overrideExisting If set to true, the method call initializes
+     *                                        the collection even if it is not empty
+     *
+     * @return void
+     */
+    public function initOcCategoryDescriptions($overrideExisting = true)
+    {
+        if (null !== $this->collOcCategoryDescriptions && !$overrideExisting) {
+            return;
+        }
+
+        $collectionClassName = OcCategoryDescriptionTableMap::getTableMap()->getCollectionClassName();
+
+        $this->collOcCategoryDescriptions = new $collectionClassName;
+        $this->collOcCategoryDescriptions->setModel('\OcCategoryDescription');
+    }
+
+    /**
+     * Gets an array of ChildOcCategoryDescription objects which contain a foreign key that references this object.
+     *
+     * If the $criteria is not null, it is used to always fetch the results from the database.
+     * Otherwise the results are fetched from the database the first time, then cached.
+     * Next time the same method is called without $criteria, the cached collection is returned.
+     * If this ChildOcCategory is new, it will return
+     * an empty collection or the current collection; the criteria is ignored on a new object.
+     *
+     * @param      Criteria $criteria optional Criteria object to narrow the query
+     * @param      ConnectionInterface $con optional connection object
+     * @return ObjectCollection|ChildOcCategoryDescription[] List of ChildOcCategoryDescription objects
+     * @throws PropelException
+     */
+    public function getOcCategoryDescriptions(Criteria $criteria = null, ConnectionInterface $con = null)
+    {
+        $partial = $this->collOcCategoryDescriptionsPartial && !$this->isNew();
+        if (null === $this->collOcCategoryDescriptions || null !== $criteria  || $partial) {
+            if ($this->isNew() && null === $this->collOcCategoryDescriptions) {
+                // return empty collection
+                $this->initOcCategoryDescriptions();
+            } else {
+                $collOcCategoryDescriptions = ChildOcCategoryDescriptionQuery::create(null, $criteria)
+                    ->filterByOcCategory($this)
+                    ->find($con);
+
+                if (null !== $criteria) {
+                    if (false !== $this->collOcCategoryDescriptionsPartial && count($collOcCategoryDescriptions)) {
+                        $this->initOcCategoryDescriptions(false);
+
+                        foreach ($collOcCategoryDescriptions as $obj) {
+                            if (false == $this->collOcCategoryDescriptions->contains($obj)) {
+                                $this->collOcCategoryDescriptions->append($obj);
+                            }
+                        }
+
+                        $this->collOcCategoryDescriptionsPartial = true;
+                    }
+
+                    return $collOcCategoryDescriptions;
+                }
+
+                if ($partial && $this->collOcCategoryDescriptions) {
+                    foreach ($this->collOcCategoryDescriptions as $obj) {
+                        if ($obj->isNew()) {
+                            $collOcCategoryDescriptions[] = $obj;
+                        }
+                    }
+                }
+
+                $this->collOcCategoryDescriptions = $collOcCategoryDescriptions;
+                $this->collOcCategoryDescriptionsPartial = false;
+            }
+        }
+
+        return $this->collOcCategoryDescriptions;
+    }
+
+    /**
+     * Sets a collection of ChildOcCategoryDescription objects related by a one-to-many relationship
+     * to the current object.
+     * It will also schedule objects for deletion based on a diff between old objects (aka persisted)
+     * and new objects from the given Propel collection.
+     *
+     * @param      Collection $ocCategoryDescriptions A Propel collection.
+     * @param      ConnectionInterface $con Optional connection object
+     * @return $this|ChildOcCategory The current object (for fluent API support)
+     */
+    public function setOcCategoryDescriptions(Collection $ocCategoryDescriptions, ConnectionInterface $con = null)
+    {
+        /** @var ChildOcCategoryDescription[] $ocCategoryDescriptionsToDelete */
+        $ocCategoryDescriptionsToDelete = $this->getOcCategoryDescriptions(new Criteria(), $con)->diff($ocCategoryDescriptions);
+
+
+        //since at least one column in the foreign key is at the same time a PK
+        //we can not just set a PK to NULL in the lines below. We have to store
+        //a backup of all values, so we are able to manipulate these items based on the onDelete value later.
+        $this->ocCategoryDescriptionsScheduledForDeletion = clone $ocCategoryDescriptionsToDelete;
+
+        foreach ($ocCategoryDescriptionsToDelete as $ocCategoryDescriptionRemoved) {
+            $ocCategoryDescriptionRemoved->setOcCategory(null);
+        }
+
+        $this->collOcCategoryDescriptions = null;
+        foreach ($ocCategoryDescriptions as $ocCategoryDescription) {
+            $this->addOcCategoryDescription($ocCategoryDescription);
+        }
+
+        $this->collOcCategoryDescriptions = $ocCategoryDescriptions;
+        $this->collOcCategoryDescriptionsPartial = false;
+
+        return $this;
+    }
+
+    /**
+     * Returns the number of related OcCategoryDescription objects.
+     *
+     * @param      Criteria $criteria
+     * @param      boolean $distinct
+     * @param      ConnectionInterface $con
+     * @return int             Count of related OcCategoryDescription objects.
+     * @throws PropelException
+     */
+    public function countOcCategoryDescriptions(Criteria $criteria = null, $distinct = false, ConnectionInterface $con = null)
+    {
+        $partial = $this->collOcCategoryDescriptionsPartial && !$this->isNew();
+        if (null === $this->collOcCategoryDescriptions || null !== $criteria || $partial) {
+            if ($this->isNew() && null === $this->collOcCategoryDescriptions) {
+                return 0;
+            }
+
+            if ($partial && !$criteria) {
+                return count($this->getOcCategoryDescriptions());
+            }
+
+            $query = ChildOcCategoryDescriptionQuery::create(null, $criteria);
+            if ($distinct) {
+                $query->distinct();
+            }
+
+            return $query
+                ->filterByOcCategory($this)
+                ->count($con);
+        }
+
+        return count($this->collOcCategoryDescriptions);
+    }
+
+    /**
+     * Method called to associate a ChildOcCategoryDescription object to this object
+     * through the ChildOcCategoryDescription foreign key attribute.
+     *
+     * @param  ChildOcCategoryDescription $l ChildOcCategoryDescription
+     * @return $this|\OcCategory The current object (for fluent API support)
+     */
+    public function addOcCategoryDescription(ChildOcCategoryDescription $l)
+    {
+        if ($this->collOcCategoryDescriptions === null) {
+            $this->initOcCategoryDescriptions();
+            $this->collOcCategoryDescriptionsPartial = true;
+        }
+
+        if (!$this->collOcCategoryDescriptions->contains($l)) {
+            $this->doAddOcCategoryDescription($l);
+
+            if ($this->ocCategoryDescriptionsScheduledForDeletion and $this->ocCategoryDescriptionsScheduledForDeletion->contains($l)) {
+                $this->ocCategoryDescriptionsScheduledForDeletion->remove($this->ocCategoryDescriptionsScheduledForDeletion->search($l));
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @param ChildOcCategoryDescription $ocCategoryDescription The ChildOcCategoryDescription object to add.
+     */
+    protected function doAddOcCategoryDescription(ChildOcCategoryDescription $ocCategoryDescription)
+    {
+        $this->collOcCategoryDescriptions[]= $ocCategoryDescription;
+        $ocCategoryDescription->setOcCategory($this);
+    }
+
+    /**
+     * @param  ChildOcCategoryDescription $ocCategoryDescription The ChildOcCategoryDescription object to remove.
+     * @return $this|ChildOcCategory The current object (for fluent API support)
+     */
+    public function removeOcCategoryDescription(ChildOcCategoryDescription $ocCategoryDescription)
+    {
+        if ($this->getOcCategoryDescriptions()->contains($ocCategoryDescription)) {
+            $pos = $this->collOcCategoryDescriptions->search($ocCategoryDescription);
+            $this->collOcCategoryDescriptions->remove($pos);
+            if (null === $this->ocCategoryDescriptionsScheduledForDeletion) {
+                $this->ocCategoryDescriptionsScheduledForDeletion = clone $this->collOcCategoryDescriptions;
+                $this->ocCategoryDescriptionsScheduledForDeletion->clear();
+            }
+            $this->ocCategoryDescriptionsScheduledForDeletion[]= clone $ocCategoryDescription;
+            $ocCategoryDescription->setOcCategory(null);
+        }
+
+        return $this;
     }
 
     /**
@@ -1726,8 +2038,14 @@ abstract class OcCategory implements ActiveRecordInterface
     public function clearAllReferences($deep = false)
     {
         if ($deep) {
+            if ($this->collOcCategoryDescriptions) {
+                foreach ($this->collOcCategoryDescriptions as $o) {
+                    $o->clearAllReferences($deep);
+                }
+            }
         } // if ($deep)
 
+        $this->collOcCategoryDescriptions = null;
     }
 
     /**

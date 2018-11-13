@@ -52,12 +52,14 @@ class ControllerProductCategory extends Controller {
 		} else {
 			$limit = $this->config->get('theme_' . $this->config->get('config_theme') . '_product_limit');
 		}
+		$limit = 12; // scard
 
 		$data['breadcrumbs'] = array();
 
 		$data['breadcrumbs'][] = array(
 			'text' => $this->language->get('text_home'),
-			'href' => $this->url->link('common/home')
+			//'href' => $this->url->link('common/home')
+			'href'=>'/'
 		);
 
 		if (isset($this->request->get['path'])) {
@@ -91,9 +93,10 @@ class ControllerProductCategory extends Controller {
 				$category_info = $this->model_catalog_category->getCategory($path_id);
 
 				if ($category_info) {
+					$s_seo_path = $this->model_catalog_category->getCategorySeoLink( $path, 'category' );
 					$data['breadcrumbs'][] = array(
 						'text' => $category_info['name'],
-						'href' => $this->url->link('product/category', 'path=' . $path . $url)
+						'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $path . $url):$s_seo_path
 					);
 				}
 			}
@@ -113,9 +116,12 @@ class ControllerProductCategory extends Controller {
 			$data['text_compare'] = sprintf($this->language->get('text_compare'), (isset($this->session->data['compare']) ? count($this->session->data['compare']) : 0));
 
 			// Set the last category breadcrumb
+
+			$s_seo_path = $this->model_catalog_category->getCategorySeoLink( $this->request->get['path'], 'category' );
 			$data['breadcrumbs'][] = array(
 				'text' => $category_info['name'],
-				'href' => $this->url->link('product/category', 'path=' . $this->request->get['path'])
+				//'href' => $this->url->link('product/category', 'path=' . $this->request->get['path']),
+				'href' => $s_seo_path==''?$this->url->link('product/category', 'path=' . $path . $url):$s_seo_path
 			);
 
 			if ($category_info['image']) {
@@ -211,17 +217,18 @@ class ControllerProductCategory extends Controller {
 					'product_id'  => $result['product_id'],
 					'thumb'       => $image,
 					'name'        => $result['name'],
-// 'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '...',
 
-'description' => utf8_substr(
-	trim(
-		strip_tags(
-			html_entity_decode(
-				$result['description'], ENT_QUOTES, 'UTF-8'
-				)
-			)
-		), 0, 142
-	) . '...',
+					// 'description' => utf8_substr(trim(strip_tags(html_entity_decode($result['description'], ENT_QUOTES, 'UTF-8'))), 0, $this->config->get('theme_' . $this->config->get('config_theme') . '_product_description_length')) . '...',
+
+					'description' => utf8_substr(
+						trim(
+							strip_tags(
+								html_entity_decode(
+									$result['description'], ENT_QUOTES, 'UTF-8'
+									)
+								)
+							), 0, 142
+						) . '...',
 
 					'small_description' => $result['small_description'],				
 					'packing' => $this->getOption(10, $result['product_id']),
@@ -233,9 +240,23 @@ class ControllerProductCategory extends Controller {
 					'rating'      => $result['rating'],
 					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
+
+				//SEO link for product
+				$s_seo_href= $this->model_catalog_product->getProductSeoLink( $result['product_id'], "product" );
+				end($data['products']);
+				$key = key( $data['products'] );
+				reset( $data['products'] );
+				//var_dump($key); die();
+				if( $s_seo_href ){
+					$data['products'][$key]['href'] = "/" . $s_seo_href;
+				} else {
+					$data['products'][$key]['href'] = $this->url->link( 'product/product', '&product_id=' . $result['product_id'] );
+				}
+				//SEO link for product
+
 			}
 
-// var_dump( $data['products'] ); die();
+
 
 			$url = '';
 
@@ -361,10 +382,13 @@ class ControllerProductCategory extends Controller {
 			$data['products_count'] = $product_total;
 			$data['products_start'] = ($page - 1) * $limit + 1;
 			$data['products_finish'] = ($page + 1 ) * $limit;
-			// var_dump( $pagination ); die();
+			
+			//var_dump( $pagination ); die();
+			
+			// Строка типа такой: 'Показано с 49 по 52 из 52 (всего 5 страниц)' 
 			$data['results'] = sprintf($this->language->get('text_pagination'), ($product_total) ? (($page - 1) * $limit) + 1 : 0, ((($page - 1) * $limit) > ($product_total - $limit)) ? $product_total : ((($page - 1) * $limit) + $limit), $product_total, ceil($product_total / $limit));
+			// var_dump( $data['results'] ); die();
 
-			// http://googlewebmastercentral.blogspot.com/2011/09/pagination-with-relnext-and-relprev.html
 			if ($page == 1) {
 			    $this->document->addLink($this->url->link('product/category', 'path=' . $category_info['category_id']), 'canonical');
 			} else {
@@ -393,7 +417,10 @@ class ControllerProductCategory extends Controller {
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
 
+			$data['products'] = array_slice($data['products'], ($page-1) * $limit, $limit ) ;
+
 			$this->response->setOutput($this->load->view('product/category', $data));
+
 		} else {
 			$url = '';
 

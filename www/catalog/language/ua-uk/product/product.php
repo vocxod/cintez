@@ -43,6 +43,7 @@ $_['entry_captcha'] = 'Введіть код, зазначений на карт
 // Tabs
 $_['tab_description'] = 'Опис';
 $_['tab_attribute'] = 'Характеристики';
+$_['tab_documents'] = 'Документы';
 $_['tab_review'] = 'Відгуків (%s)';
 $_['button_continue'] = 'Відправити відгук';
 

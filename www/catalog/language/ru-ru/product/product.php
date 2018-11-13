@@ -45,6 +45,7 @@ $_['entry_captcha']                           = 'Введите код, указ
 $_['tab_description']                       = 'Описание';
 $_['tab_attribute']                           = 'Характеристики';
 $_['tab_review']                              = 'Отзывов (%s)';
+$_['tab_documents']            = 'Документы';
 $_['button_continue']                      = 'Отправить отзыв';
 
 // Error

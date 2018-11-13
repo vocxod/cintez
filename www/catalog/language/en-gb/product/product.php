@@ -44,6 +44,7 @@ $_['entry_bad']                = 'Bad';
 $_['tab_description']          = 'Description';
 $_['tab_attribute']            = 'Specification';
 $_['tab_review']               = 'Reviews (%s)';
+$_['tab_documents']            = 'Documents';
 
 // Error
 $_['error_name']               = 'Warning: Review Name must be between 3 and 25 characters!';

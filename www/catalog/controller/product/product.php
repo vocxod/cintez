@@ -2,6 +2,106 @@
 class ControllerProductProduct extends Controller {
 	private $error = array();
 
+	public function review2(  ) {
+		
+		$data = [];
+
+		if (isset($this->request->get['product_id'])) {
+			$i_product_id = $this->request->get['product_id'];
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			$this->response->setOutput($this->load->view('error/not_found', $data));
+			return;
+		}
+
+		if (isset($this->request->get['doctype'])) {
+			$s_doc_type= $this->request->get['doctype'];
+
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			// $this->response->setOutput($this->load->view('error/not_found', [] ) );
+			$this->response->setOutput('<h1>Отсутствует тип документа!</h1>');
+			return;
+		}
+
+		$this->load->language('product/product');
+		$this->load->model('catalog/review');
+
+		$this->load->model('catalog/product');
+		$this->load->model('account/customer_group');
+		if($this->customer->isLogged()) {
+		    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+		    $data['user_id'] = $this->customer->isLogged();
+		    $data['group_id'] = $this->customer->getGroupId();
+			$data['usergroup'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+		    
+			if( $data['usergroup']['name'] == 'Дилер' ){
+    			$data['documents'] = $this->model_catalog_product->getDocuments( $i_product_id );
+    			if(count($data['documents'])>0){
+    				// находим документ по типу s_doc_type
+    				// var_dump( $data['documents'] ); die();
+    				$s_downloadfile = '';
+    				foreach ($data['documents'] as $a_item) {
+    					if( $a_item['mask'] == $i_product_id . '_' . $s_doc_type . '.pdf' ){
+    						$s_downloadfile = $a_item['filename'];
+    					}
+    				}
+    				// echo getcwd() . "\n";
+    				if( !file_exists( getcwd() . "/../" . "storage/download/" . $s_downloadfile ) ){
+    					$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+						$this->response->setOutput( '<h1>Документ не обнаружен!</h1>' );
+						return;
+    				}
+    				//var_dump( $s_downloadfile ); die();
+
+					$file = "product.pdf";
+
+					// die("File not found");
+					// Force the download
+					header("Content-Disposition: attachment; filename=" . basename($file) . " ");
+					header("Content-Length: " . filesize( getcwd() . "/../" . "storage/download/" . $s_downloadfile ));
+					header("Content-Type: application/octet-stream;");
+					readfile( getcwd() . "/../" . "storage/download/" . $s_downloadfile );			    				
+    			} else {
+					$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+					$this->response->setOutput( '<h1>Запрашиваемый документ не найден</h1>' );
+					return;
+    			}
+
+			}
+		} else {
+			$this->response->addHeader($this->request->server['SERVER_PROTOCOL'] . ' 404 Not Found');
+			$this->response->setOutput( '<h1>Документация доступна только зарегистрированным пользователям</h1>' );
+			return;
+		}
+/*
+		$data['reviews'] = array();
+		$review_total = $this->model_catalog_review->getTotalReviewsByProductId($this->request->get['product_id']);
+		$results = $this->model_catalog_review->getReviewsByProductId($this->request->get['product_id'], ($page - 1) * 5, 5);
+		foreach ($results as $result) {
+			$data['reviews'][] = array(
+				'author'     => $result['author'],
+				'text'       => nl2br($result['text']),
+				'rating'     => (int)$result['rating'],
+				'date_added' => date($this->language->get('date_format_short'), strtotime($result['date_added']))
+			);
+		}
+
+		$pagination = new Pagination();
+		$pagination->total = $review_total;
+		$pagination->page = $page;
+		$pagination->limit = 5;
+		$pagination->url = $this->url->link('product/product/review', 'product_id=' . $this->request->get['product_id'] . '&page={page}');
+
+		$data['pagination'] = $pagination->render();
+
+		$data['results'] = sprintf($this->language->get('text_pagination'), ($review_total) ? (($page - 1) * 5) + 1 : 0, ((($page - 1) * 5) > ($review_total - 5)) ? $review_total : ((($page - 1) * 5) + 5), $review_total, ceil($review_total / 5));
+
+		$this->response->setOutput($this->load->view('product/review', $data));
+*/
+	}
+
 	public function index() {
 		$this->load->language('product/product');
 
@@ -240,7 +340,122 @@ class ControllerProductProduct extends Controller {
 			$data['model'] = $product_info['model'];
 			$data['reward'] = $product_info['reward'];
 			$data['points'] = $product_info['points'];
-			$data['description'] = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+			$s_page = html_entity_decode($product_info['description'], ENT_QUOTES, 'UTF-8');
+			
+			/* анализируем хвост описания */
+			/*
+			$s_pattern = '|<!-- /url/(.*) -->(.*)<!-- /url/ -->|Uis';		
+			$a_out = [];
+			$s_part = '';
+			if( preg_match_all($s_pattern, $s_page, $a_out)){
+				foreach ($a_out[1] as $key => $s_tag) {
+					$s_replace_pattern = "|<!-- /url/" . $s_tag . " -->(.*)<!-- /url/ -->|Uis";
+					// формируем ссылки из тегов	
+					$a_part = explode(";", $a_out[2][$key]);
+					$s_new_url = '';
+					foreach ($a_part as $s_source) {
+						//echo $s_source . "<br/>";
+						$s_slug = $this->model_catalog_product->slugify( $s_source );
+						$s_new_url .= '<a href="/'.$s_tag.'/' . $s_slug . '">' . $s_source . '&nbsp;</a>';
+						if( $s_slug != ""){
+							$i_result = $this->model_catalog_product->upsert_seo_list( 
+								[
+									'prefix'=>$s_tag, 
+									'tag'=>$s_slug, 
+									'product_id'=>$this->request->get['product_id'],
+									'language_id' => 4,
+									'lang_prefix'=>$s_tag, //@todo need to russian 
+									'lang_tag'	=> $s_source,
+								] 
+							);
+						}
+
+					}
+					$s_page = preg_replace($s_replace_pattern, $s_new_url, $s_page);
+				}
+			}
+			*/
+
+			// вторая версия изменения
+			/*
+			<!-- start -->
+<!-- /section_1/sfera -->сфера<!-- /section_1/ -->
+<!-- /section_2/primenemiya -->применения<!-- /section_2/ -->:
+<!-- /section_3/mojka -->мойка<!-- /section_3/ -->
+<!-- /section_4/sanitarnyh -->санитарных<!-- /section_4/ -->
+<!-- /section_5/kabinik -->кабинок<!-- /section_5/ --> 
+<!-- /prefix_1/sip -->(SIP)<!-- /prefix_1/ -->, а также:
+<!-- /prefix_2/bistro -->быстрая<!-- /prefix_1/ -->
+<!-- /prefix_3/ -->нежно<!-- /prefix_1/ --> 
+<!-- /tags_1/ -->
+lorem; ipsum; dolor; sit; atmet; blabla; bla;
+<!-- /tags_1/ -->
+<!-- /start/ -->
+			*/
+			//echo $s_page;
+
+			// нарезаем на секции
+			$s_pattern = '|<!-- start -->(.*)<!-- /start/ -->|Uis';
+			$a_part = [];
+			if( preg_match_all($s_pattern, $s_page, $a_part)){
+				foreach ($a_part[1] as $i_part_key=>$s_part){
+					$a_section = [];
+					$a_prefix = [];
+					$a_tags	=	[]; 
+					$s_pattern = "|<!-- /section_(\d*)/(.*) -->(.*)<!-- /section_(\d*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка секций
+						foreach ($a_out[2] as $i_key => $s_slug){
+							$a_section[] = [ "slug"=>$s_slug, "name"=>$a_out[3][ $i_key ]];
+						}
+					}
+					$s_pattern = "|<!-- /prefix_(\d*)/(.*) -->(.*)<!-- /prefix_(\d*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка префиксов
+						foreach ($a_out[2] as $i_key => $s_slug){
+							$a_prefix[] = [ "slug"=>$s_slug, "name"=>$a_out[3][ $i_key ]];
+						}
+					}
+					$s_pattern = "|<!-- /tags_(\d*)/ -->(.*)<!-- /tags_(.*)/ -->|Uis";
+					$a_out = [];
+					if( preg_match_all($s_pattern, $s_part, $a_out)){
+						// обработка тегов
+						$a_tags = explode(";", $a_out[2][0] );
+					}
+					// var_dump( $a_section, $a_prefix, $a_tags );
+					$s_result = '';
+					$s_url = '';
+					foreach ($a_section as $a_item) {
+						if( $a_item['slug'] != ''){
+							$s_url .= $a_item['slug'] . "/";
+						} else {
+							$s_url .= $this->slugify( $a_item['name'] ) . "/";
+						}
+					}
+					foreach ($a_prefix as $a_item) {
+						if( $a_item['slug'] != ''){
+							$s_url .= $a_item['slug'] . "-";
+						} else {
+							$s_url .= $this->slugify( $a_item['name'] ) . "-";
+						}
+					}
+
+					foreach ($a_tags as $s_tag){
+						$s_tag_slug = $this->slugify( $s_tag );
+						$s_result .= "<a href='" . $s_url . $s_tag_slug . "' >" . $s_tag . "</a>&nbsp;";
+					}
+					$s_page .= $s_result . "<hr/>";
+				}
+			}
+
+			$s_page = preg_replace("|<!-- start -->(.*)<!-- /start/ -->|", "", $s_page);
+		
+			//die();
+			$data['description'] = $s_page;
+
+			/* */
 
 			if ($product_info['quantity'] <= 0) {
 				$data['stock'] = $product_info['stock_status'];
@@ -445,7 +660,31 @@ class ControllerProductProduct extends Controller {
 			$data['content_bottom'] = $this->load->controller('common/content_bottom');
 			$data['footer'] = $this->load->controller('common/footer');
 			$data['header'] = $this->load->controller('common/header');
-//var_dump($data['breadcrumbs']); die();
+
+			$data['documents'] = 0;
+
+			$this->load->model('account/customer_group');
+			if($this->customer->isLogged()) {
+			    // echo "Customer is logged in and his ID is " . $this->customer->isLogged();
+			    $data['user_id'] = $this->customer->isLogged();
+			    $data['group_id'] = $this->customer->getGroupId();
+				$data['usergroup'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
+			    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
+			    
+			    //var_dump( $data['usergroup']['name'] ); die();
+			    //var_dump( get_class_methods($this->customer) );
+    			if( $data['usergroup']['name'] == 'Дилер' ){
+	    			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
+    			}
+			} else {
+				$data['user_id'] = 0;
+				$data['group_id'] = 0;
+				$data['group_name'] = "";
+				$data['username'] = "";		
+			}
+
+
+			// var_dump($data['documents']); die();
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';
@@ -659,4 +898,11 @@ class ControllerProductProduct extends Controller {
 		$this->response->addHeader('Content-Type: application/json');
 		$this->response->setOutput(json_encode($json));
 	}
+
+	function slugify($string) {
+	    $string = transliterator_transliterate("Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();", $string);
+    	$string = preg_replace('/[-\s]+/', '-', $string);
+    	return trim($string, '-');
+	}
+
 }

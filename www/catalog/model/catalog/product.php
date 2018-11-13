@@ -1,5 +1,37 @@
 <?php
 class ModelCatalogProduct extends Model {
+
+	public function getDownload($download_id) {
+		$s_sql_select = "SELECT d.filename, d.mask FROM `" . DB_PREFIX . "download` AS d WHERE d.download_id = '" . (int)$download_id . "'";
+		$query = $this->db->query( $s_sql_select );
+		return $query->row;
+	}
+
+	/*
+	вернуть массив документов товара для пользователя 
+	*/
+	public function getDocuments( $product_id = 0 ){
+		$s_sql_select = "SELECT * FROM oc_download WHERE filename LIKE '" . $product_id . "_%' ";
+		// echo $s_sql_select ; 
+		$query = $this->db->query( $s_sql_select );
+		return $query->rows;
+	}
+
+	public function getAllDocuments($i_offset, $i_limit){
+		$s_sql_select = "SELECT a.*, dd.name AS name, ad.name AS attribute_name FROM oc_download AS a LEFT JOIN oc_download_description AS dd ON a.download_id=dd.download_id LEFT JOIN oc_attribute_description AS ad ON a.attribute_id=ad.attribute_id WHERE a.filename IS NOT NULL AND dd.language_id=4 AND ad.language_id=4 LIMIT " . $i_offset . ", " . $i_limit;
+		// echo $s_sql_select ; die(); 
+		$query = $this->db->query( $s_sql_select );
+		return $query->rows;
+	}
+
+	public function getTotalDocuments( ){
+		$s_sql_select = "SELECT count(*) as all_docs FROM oc_download ";
+		// echo $s_sql_select ; 
+		$query = $this->db->query( $s_sql_select );
+		//var_dump( $query->row['all_docs'] ); die();
+		return $query->row['all_docs'];
+	}
+
 	public function updateViewed($product_id) {
 		$this->db->query("UPDATE " . DB_PREFIX . "product SET viewed = (viewed + 1) WHERE product_id = '" . (int)$product_id . "'");
 	}
@@ -302,6 +334,8 @@ class ModelCatalogProduct extends Model {
 			}
 		}
 
+		// $data['filter_tag'] = "dezinnfekciya";
+
 		if (!empty($data['filter_name']) || !empty($data['filter_tag'])) {
 			$sql .= " AND (";
 
@@ -405,6 +439,8 @@ class ModelCatalogProduct extends Model {
 		// echo $sql; die("<br/>\n\nshow SQL");
 		// пока так, жестко впаиваем признание веса товара в категории
 				// @TODO внести вес в построение SQL выражения выше
+		// echo( $sql ); die();
+
 		$sql = "SELECT p.product_id, 
 
 		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
@@ -596,6 +632,8 @@ class ModelCatalogProduct extends Model {
 		// echo $sql; die("<br/>\n\nshow SQL");
 		// пока так, жестко впаиваем признание веса товара в категории
 				// @TODO внести вес в построение SQL выражения выше
+		//var_dump( $sql ); die();
+
 		$sql = "SELECT p.product_id, 
 
 		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
@@ -625,7 +663,7 @@ class ModelCatalogProduct extends Model {
 						GROUP BY p.product_id 
 							ORDER BY weight DESC,  p.sort_order ASC, LCASE(pd.name) ASC 
 								LIMIT 0,50";
-		// echo $sql; die();
+		//echo $sql; die();
 
 		$query = $this->db->query($sql);
 
@@ -740,13 +778,21 @@ class ModelCatalogProduct extends Model {
 		return $product_data;
 	}
 
-	public function getBestSellerProducts($limit) {
+	public function getBestSellerProducts($limit, $a_without=[] ) {
 		$product_data = $this->cache->get('product.bestseller.' . (int)$this->config->get('config_language_id') . '.' . (int)$this->config->get('config_store_id') . '.' . $this->config->get('config_customer_group_id') . '.' . (int)$limit);
 
 		if (!$product_data) {
 			$product_data = array();
 
-			$query = $this->db->query("SELECT op.product_id, SUM(op.quantity) AS total FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `" . DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "' GROUP BY op.product_id ORDER BY total DESC LIMIT " . (int)$limit);
+			$s_deselect = '';
+			if( count($a_without) > 0 ){
+				$s_deselect = ' AND p.product_id NOT IN (' . implode(",", $a_without ) . ')';
+				//var_dump( $s_deselect ); 
+			}
+
+			$s_sql_select = "SELECT op.product_id, SUM(op.quantity) AS total FROM " . DB_PREFIX . "order_product op LEFT JOIN `" . DB_PREFIX . "order` o ON (op.order_id = o.order_id) LEFT JOIN `" . DB_PREFIX . "product` p ON (op.product_id = p.product_id) LEFT JOIN " . DB_PREFIX . "product_to_store p2s ON (p.product_id = p2s.product_id) WHERE o.order_status_id > '0' AND p.status = '1' AND p.date_available <= NOW() AND p2s.store_id = '" . (int)$this->config->get('config_store_id') . "'  " . $s_deselect . " GROUP BY op.product_id ORDER BY total DESC LIMIT " . (int)$limit;
+			// var_dump( $s_sql_select ); die();
+			$query = $this->db->query( $s_sql_select );
 
 			foreach ($query->rows as $result) {
 				$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
@@ -987,5 +1033,192 @@ class ModelCatalogProduct extends Model {
 		} else {
 			return 0;
 		}
+	}
+
+	public function slugify( $s_data ){
+		$s_result = '';
+		$s_result = transliterator_transliterate("Any-Latin; NFD; [:Nonspacing Mark:] Remove; NFC; [:Punctuation:] Remove; Lower();", $s_data);
+    	$s_result = preg_replace('/[-\s]+/', '-', $s_result);
+    	return trim($s_result, '-');
+	}
+
+	public function getTagTotalProducts( $a_filter ){
+		$s_sql_select = "SELECT COUNT(*) all_items FROM oc_seo_super_product WHERE seo_super_id=" . $a_filter['filter_seo_super_id'];
+		//echo $s_sql_select . "\n";
+		$query = $this->db->query( $s_sql_select );
+		$a_result = $query->row;
+		//var_dump( $a_result ); die();
+		return $a_result['all_items'];
+	}
+
+	public function getTagProducts( $a_filter ){
+		$s_sql_select = "";
+		// store_id
+		// language_id
+		$s_and_seo_super = ''; 
+		if( array_key_exists('filter_seo_super_id', $a_filter) ){
+			$s_and_seo_super = "AND p2c.seo_super_id = " . $a_filter['filter_seo_super_id'];
+ 		}
+		$sql = "SELECT 
+		p.product_id, 
+		(SELECT AVG(rating) AS total FROM oc_review r1 WHERE r1.product_id = p.product_id AND r1.status = '1' GROUP BY r1.product_id) AS rating, 
+		(SELECT price FROM oc_product_discount pd2 WHERE pd2.product_id = p.product_id AND pd2.customer_group_id = '1' AND pd2.quantity = '1' AND ((pd2.date_start = '0000-00-00' OR pd2.date_start < NOW()) AND (pd2.date_end = '0000-00-00' OR pd2.date_end > NOW())) ORDER BY pd2.priority ASC, pd2.price ASC LIMIT 1) AS discount, (SELECT price FROM oc_product_special ps WHERE ps.product_id = p.product_id AND ps.customer_group_id = '1' AND ((ps.date_start = '0000-00-00' OR ps.date_start < NOW()) AND (ps.date_end = '0000-00-00' OR ps.date_end > NOW())) ORDER BY ps.priority ASC, ps.price ASC LIMIT 1) AS special 
+		FROM oc_seo_super_product p2c 
+			LEFT JOIN oc_product p ON (p2c.product_id = p.product_id) 
+			LEFT JOIN oc_product_description pd ON (p.product_id = pd.product_id) 
+			LEFT JOIN oc_product_to_store p2s ON (p.product_id = p2s.product_id)
+				WHERE pd.language_id = '4' 
+					AND p.status = '1' 
+					AND p.date_available <= NOW() 
+					AND p2s.store_id = '0'
+					" . $s_and_seo_super . "  
+					GROUP BY p.product_id 
+						ORDER BY p.sort_order ASC, LCASE(pd.name) ASC 
+							LIMIT 0,12";
+		$query = $this->db->query($sql);
+		foreach ($query->rows as $result) {
+			$product_data[$result['product_id']] = $this->getProduct($result['product_id']);
+		}
+		return $product_data;
+	}
+
+	public function getTagCategory($i_tag_id){
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE seo_super_id=" . $i_tag_id;
+		$query = $this->db->query( $s_sql_select );
+		$a_result = $query->row;
+		return $a_result;
+	}
+
+	public function getTagCategories($i_tag_id){
+		$a_result = [];
+		return $a_result;
+	}
+
+	// upsert_seo_list
+	/*
+mysql> DESCRIBE oc_seo_super;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| seo_super_id | int(11)      | NO   | PRI | NULL    | auto_increment |
+| prefix       | varchar(255) | YES  |     | NULL    |                |
+| tag          | varchar(255) | YES  |     | NULL    |                |
+| h1_page      | varchar(255) | YES  |     | NULL    |                |
+| description  | varchar(255) | YES  |     | NULL    |                |
+| keyword      | varchar(255) | YES  |     | NULL    |                |
+| enabled      | int(11)      | YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+mysql> DESCRIBE oc_seo_super_product;
++----------------------+---------+------+-----+---------+----------------+
+| Field                | Type    | Null | Key | Default | Extra          |
++----------------------+---------+------+-----+---------+----------------+
+| seo_super_product_id | int(11) | NO   | PRI | NULL    | auto_increment |
+| seo_super_id         | int(11) | YES  |     | NULL    |                |
+| product_id           | int(11) | YES  |     | NULL    |                |
++----------------------+---------+------+-----+---------+----------------+
+	@param a_data
+	a_data['prefix']
+	a_data['tag'] //это же слугифи
+	a_data['product_id']
+	*/
+	public function upsert_seo_list( $a_data ){
+		// убеждаемся в наличии нужного списка
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE prefix='" . $a_data['prefix'] . "' AND tag='" . $a_data['tag'] . "' AND enabled=1 ";
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if($a_row == null){
+			$s_sql_insert = "INSERT INTO oc_seo_super (prefix, tag, h1_page, description, keyword, enabled) VALUES ('".$a_data['prefix']."', '".$a_data['tag']."', 'h1_page', 'description1', 'keyword1', 1)";
+			$i_result = $this->db->query( $s_sql_insert );
+			$i_seo_super = $this->db->getLastId();
+			//var_dump( $i_result );
+		} else {
+			$i_seo_super = $a_row['seo_super_id'];
+		}
+
+		$s_sql_select = "SELECT * FROM oc_seo_super_description WHERE seo_super_id='" . $i_seo_super . "' AND language_id='". $a_data['language_id'] . "' ";
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if( $a_row == null ){
+			$s_sql_insert = "INSERT INTO oc_seo_super_description (language_id, prefix, tag, seo_super_id) VALUES ('" . $a_data['language_id'] . "', '". $a_data['lang_prefix'] ."', '". $a_data['lang_tag'] . "', '". $i_seo_super ."' )";
+		} else {
+			$i_seo_super_description_id = $a_row["seo_super_description_id"];
+			$s_sql_insert = "UPDATE oc_seo_super_description SET prefix='" . $a_data['lang_prefix'] . "', tag='" . $a_data['lang_tag'] . "' WHERE seo_super_id='" . $i_seo_super . "' AND seo_super_description_id='" . $i_seo_super_description_id . "'";
+		}
+		// echo $s_sql_insert . "<br/>"; //die();
+		$query = $this->db->query( $s_sql_insert );
+/*
+		$s_sql_delete = "DELETE FROM oc_seo_super_product WHERE product_id='" . $a_data['product_id'] . "' AND " ;
+		$this->db->query( $s_sql_delete );
+*/
+//		echo($i_seo_super."<br/>"); //die();
+
+		$s_sql_select = "SELECT * FROM oc_seo_super_product WHERE seo_super_id='" . $i_seo_super . "' AND product_id='" . $a_data['product_id'] . "' ";
+		// echo $s_sql_select ; die();
+		$query = $this->db->query( $s_sql_select );
+		$a_row = $query->row;
+		if( $a_row==null ){
+			$s_sql_insert = "INSERT INTO oc_seo_super_product (seo_super_id, product_id) VALUES ($i_seo_super, " . $a_data['product_id'] . " ) ";
+			$this->db->query( $s_sql_insert );
+		} else {
+
+		}
+		//var_dump( $a_rows );
+	}
+
+	/*
+	выдать всю правильную информацию для СЕО
+	*/
+	public function getSeoData( $a_data, $i_language_id ){
+		$i_seo_super_id = $a_data['filter_seo_super_id'];
+		$s_sql_select = "SELECT * FROM oc_seo_super_description WHERE seo_super_id='" . $i_seo_super_id . "' AND language_id='" . $i_language_id . "'";
+		$query = $this->db->query( $s_sql_select );
+		$row = $query->row;
+		//var_dump($row); die();
+		return $row;
+	}
+
+	/*
+	вернуть все префиксы
+	*/
+	public function getPrefixes(){
+		$s_sql_select = "SELECT DISTINCT(a.prefix) FROM oc_seo_super AS a ";;
+		$query = $this->db->query( $s_sql_select );
+		$rows = $query->rows;
+		return $rows;
+	}
+
+	/*
+вернуть все нужные данные для построение настоящего урла
+	*/
+	public function getSeoSuperUrls( $parts ){
+		$s_sql_select = "SELECT * FROM oc_seo_super WHERE prefix='".$parts[0]."' AND tag='".$parts[1]."' ";
+		$query = $this->db->query( $s_sql_select );
+		$row = $query->row;
+		return $row;
+	}
+
+	public function getProductSeoLink( $i_product_id, $s_place, $i_language_id=4, $i_store_id=0 ){
+		
+		$s_result = '';
+
+		if($s_place == "tag"){
+			$s_sql_select = "SELECT * FROM oc_seo_url WHERE `query` = 'product_id=" . $i_product_id . "' AND store_id='".$i_store_id."' AND language_id='".$i_language_id."' ";
+			$query = $this->db->query( $s_sql_select );
+			$row = $query->row;
+			if( $row ){
+				$s_result = $row['keyword'];
+			}
+		}
+		
+		if($s_place == "product"){
+			$s_sql_select = "SELECT * FROM oc_seo_url WHERE `query` = 'product_id=" . $i_product_id . "' AND store_id='".$i_store_id."' AND language_id='".$i_language_id."' ";
+			$query = $this->db->query( $s_sql_select );
+			$row = $query->row;
+			if( $row ){
+				$s_result = $row['keyword'];
+			}
+		}
+
+		return $s_result;
 	}
 }

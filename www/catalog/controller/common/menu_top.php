@@ -17,26 +17,30 @@ class ControllerCommonMenuTop extends Controller {
 		switch ($this->session->data['current_zone']['zone_id']) {
 			// SPB
 			case '2785':
-				$sLocatPhone = '+7 812 318-47-17';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;
 			// MSK
 			case '2761':
 				$sLocatPhone = '+7 495 665-02-53';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;
 			// NSK
 			case '2768':
 				$sLocatPhone = '+7 383 363-09-88';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;
 			// RnD
 			case '2778':
 				$sLocatPhone = '+7 863 201-43-44';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;
 			// Kursk
 			case '2755':
 				$sLocatPhone = '+7 471 244-60-18';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;			
 			default:
-				$sLocatPhone = '+7 812 318-47-17';
+				$sLocatPhone = '+7 812 416-47-17';
 				break;
 		}
 
@@ -57,20 +61,20 @@ class ControllerCommonMenuTop extends Controller {
 				['tel'	=> 0, 'class'=>'menu-space menu-bold disabled', 'title'=>'ДЕЗКАЛЬКУЛЯТОР' , 'awesome' => 'fa fa-calculator', 'img' => '', 'href' => 'index.php?route=information/dezcalc', 'target'=>'_blank', 'active' => false, 'route' => 'information/dezcalc'], 
 
 			];
-
+// index.php?route=product/category&path=1606
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'index.php?route=product/category&path=10', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
-				
-				['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
-
-				['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'index.php?route=information/dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
-				
-				['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
-				
-				['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'index.php?route=information/neoitems', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
-				
-				['class'=>'menu-bold ', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'index.php?route=information/contact', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
-				//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
+['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
+//index.php?route=information/about
+['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
+// index.php?route=information/dealers
+['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
+// index.php?route=information/articlelist
+['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
+// index.php?route=information/neoitems
+['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'news', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
+// index.php?route=information/contact
+['class'=>'menu-bold ', 'title'=>'ОБРАТНАЯ СВЯЗЬ', 'href' => 'feedback', 'target'=>'_blank', 'active' => true, 'route' => 'information/contact'],
+//['title'=>'TITLE_25', 'href' => '#3', 'target'=>'_blank', 'active' => false], 
 			];
 			$data['apply_menu_list'] = [ 
 				["name"=>"товарная группа 1", "href"=>"index.php"],
@@ -90,7 +94,7 @@ class ControllerCommonMenuTop extends Controller {
 			];
 
 			$data['down_line']= [ 
-				['class'=>'menu-bold ', 'title'=>'PRODUCTS', 'href' => 'index.php?route=product/category&path=10', 'target'=>'_self', 'active' => true, 'route' => ''],
+				['class'=>'menu-bold ', 'title'=>'PRODUCTS', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => ''],
 				
 				['class'=>'menu-bold ', 'title'=>'ABOUT', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 				
