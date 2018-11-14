@@ -20,21 +20,36 @@ class Sitemap {
 
 		$s_url = '';
 
-		$a_products = OcProductQuery::create()
+		/**/
+		$a_products = OcCategoryQuery::create()
 		->filterByStatus(1)
 		->find();
-		foreach( $a_products as $a_product ){
 
+		foreach( $a_products as $a_product ){
 			$a_seo = OcSeoUrlQuery::create()
-			->filterByQuery( "product_id=" . $a_product->getProductId() )
+			->filterByQuery( "category_id=" . $a_product->getCategoryId() )
 			->filterByLanguageId(4)
 			->findOne();
 			if( $a_seo != null){
 				$s_url .= '<url><loc>https://www.specsintez.com/' . $a_seo->getKeyword() . '</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>';
 			}
-
 		}
-		
+		/**/
+		$a_products = OcProductQuery::create()
+		->filterByStatus(1)
+		->find();
+
+		foreach( $a_products as $a_product ){
+			$a_seo = OcSeoUrlQuery::create()
+			->filterByQuery( "product_id=" . $a_product->getProductId() )
+			->filterByLanguageId(4)
+			->findOne();
+			if( $a_seo != null){
+				$s_url .= '<url><loc>https://www.specsintez.com/' . $a_seo->getKeyword() . '</loc><changefreq>weekly</changefreq><priority>1.0</priority></url>';
+			}
+		}
+		/**/
+	
 		$s_result = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . $s_url . '</urlset>';
 
 		header("Content-Type: text/xml");
