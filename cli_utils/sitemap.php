@@ -7,7 +7,7 @@ require('generated-conf/config.php');
 
 class Sitemap {
 
-	public $s_xml = '<urlset>
+	public $s_xml = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
 	<url>
 	<loc>https://www.specsintez.com/каталог</loc>
 	<changefreq>weekly</changefreq>
@@ -35,7 +35,7 @@ class Sitemap {
 
 		}
 		
-		$s_result = '<urlset>' . $s_url . '</urlset>';
+		$s_result = '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">' . $s_url . '</urlset>';
 
 		header("Content-Type: text/xml");
 		header("Expires: Thu, 19 Feb 1998 13:24:18 GMT");
