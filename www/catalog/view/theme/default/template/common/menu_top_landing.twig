@@ -1,0 +1,191 @@
+{#{ dump("menu_top_landing") }#}
+
+<style type="text/css">
+  .navbar-inverse.nav-upper {
+    height: 50px;
+  }
+  .navbar-inverse.nav-upper ul {
+    float: right;
+    display: table;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li {
+    display: table-cell;
+    font-size: 14px;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li > a {
+    color: #111;
+  }
+  .navbar-inverse.nav-upper .navbar-upper > li > a:hover {
+    color: rgb(54,154,56);
+  }
+
+  .navbar-inverse .navbar-nav > li > a:hover, 
+  .navbar-inverse .navbar-nav > li > a:focus {
+      color: rgb(54,154,56);
+      /*font-weight: bold;*/
+      background-color: transparent;
+  }
+
+  @media (min-width: 768px) {
+    .navbar.navbar-lower .navbar-nav {
+      margin-left: 330px;
+    }
+  }
+
+  .navbar-logo {
+    outline: 0px dashed red;
+    background-image: url('/image/catalog/logo-325x160.png');
+    width: 345px;
+    height: 120px;
+    {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
+      width: 359px;
+      background-position: 33px -20px;
+    {% else %}
+      background-position: 19px -20px;
+    {% endif %}
+    {% if route == "information/dealers" or route == "product/category" or route == "product/product" %}
+      background-position: 0px -20px;
+    {% endif %}
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    z-index: 1049;
+  }
+  
+  .navbar-inverse {
+      background-color: rgb(240,244,245);
+      background-image: linear-gradient(to bottom, rgb(240,244,245) 0%, rgb(240,244,245) 100%);
+      color: #111;
+      border: 0px solid green;
+      font-size: 18px;
+  }
+
+  .up_line {
+    color: #111;
+  }
+  .navhover:hover {
+    color: rgb(54,154,56);
+  }
+
+/* Large desktops and laptops */
+@media (min-width: 1200px) {
+
+}
+
+/* Landscape tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+}
+
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+
+}
+
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+
+}
+
+@media (min-width: 480px) and (max-width: 766px) {
+  #menu2 > .navbar-logo {
+    left:74px;
+    top:12px;
+    outline: 0px dashed green;
+  }
+  .row-menu-2{
+    display: none;
+  }
+  .navbar-logo {
+    background-size: 90%;
+    background-position: 17px -35px;
+  }
+}
+
+/* Portrait phones and smaller */
+@media (max-width: 479px) {
+  .row-menu-2{
+    display: none;
+  }
+  .up_menu_span {
+    display: none;
+  }
+
+  .navbar-logo {
+    outline: 0px dashed red;
+    background-image: url('/image/catalog/logo-300x160.png');
+    width: 345px;
+    height: 120px;
+    
+    {% if route == "information/vacancy" or route == "information/productselection" or route == "information/newslist" or route == "information/articlelist" %}
+      width: 359px;
+      background-position: 33px -20px;
+    {% else %}
+      background-position: 19px -20px;
+    {% endif %}
+
+    {% if route == "information/dealers" or route == "product/category" or route == "product/product" %}
+      background-position: 0px -20px;
+    {% endif %}
+    
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 5px;
+    left: 0px;
+    z-index: 1049;
+
+    background-position: 14px -25px;
+    background-size: 85%;
+
+  }   
+
+
+}
+
+/* search rows */
+.show-form {
+  display: none;
+}
+.search-form-div {
+  margin-top:2px;
+}
+.search-form-div > input {
+  width: 100%
+}
+
+</style>
+
+
+<div class="row" >
+  <div class="container show-form" id="search_form">
+    <div class="col-md-10 search-form-div">
+      <input type="text" id="search_field">
+    </div>
+    <div class="col-md-2 search-form-div">
+      <input style="width: 100%" type="submit" class="btn btn-warning"  id="search_baton" value="Найти">
+    </div>
+  </div>
+</div>
+
+
+<div class="container" style="margin-bottom:20px;">
+  <div class="row" >  
+    <div id="menu2" class="col-md-4" style="outline:0px dashed red;">
+        <a href="index.php">
+        <img src="/image/catalog/logo-325x160.png" alt="SpecSintez" title="SpecSintez" />
+        </a>
+    </div>
+    <div class="col-md-8" style="outline:0px dashed blue;">
+        <p style="padding-top:47px; color:#000080; font-style:italic;  font-size:36px; font-weight:bold; text-align:center; font-family: Arial, Helvetica, sans-serif;  ">Триосепт&nbsp;&ndash;&nbsp;Эндо<br/>
+
+        <span style="color:#000; font-size:24px; font-style:italic; text-align:center; font-family: Arial, Helvetica, sans-serif;  ">Дезинфектант для объектов ветнадзора.</span>
+
+        </p>
+    </div>
+  </div>
+</div>
+
+
+
+

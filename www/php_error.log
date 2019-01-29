@@ -1,0 +1,43 @@
+[25-Jan-2019 07:00:33 UTC] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'api_id' in 'where clause'<br />Error No: 1054<br />DELETE FROM oc_cart WHERE (api_id > '0' OR customer_id = '0') AND date_added < DATE_SUB(NOW(), INTERVAL 1 HOUR) in /var/www/html/vkartel/www/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/vkartel/www/system/library/db.php(45): DB\MySQLi->query('DELETE FROM oc_...')
+#1 /var/www/html/vkartel/www/system/library/cart/cart.php(15): DB->query('DELETE FROM oc_...')
+#2 /var/www/html/vkartel/www/catalog/controller/startup/startup.php(224): Cart\Cart->__construct(Object(Registry))
+#3 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupStartup->index()
+#4 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#5 /var/www/html/vkartel/www/system/engine/router.php(46): Router->execute(Object(Action))
+#6 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#7 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#8 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#9 {main}
+  thrown in /var/www/html/vkartel/www/system/library/db/mysqli.php on line 40
+[25-Jan-2019 07:09:45 UTC] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'status' in 'where clause'<br />Error No: 1054<br />SELECT * FROM `oc_event` WHERE `trigger` LIKE 'catalog/%' AND status = '1' ORDER BY `sort_order` ASC in /var/www/html/vkartel/www/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/vkartel/www/system/library/db.php(45): DB\MySQLi->query('SELECT * FROM `...')
+#1 /var/www/html/vkartel/www/catalog/model/setting/event.php(4): DB->query('SELECT * FROM `...')
+#2 /var/www/html/vkartel/www/system/engine/loader.php(248): ModelSettingEvent->getEvents()
+#3 /var/www/html/vkartel/www/system/engine/proxy.php(47): Loader->{closure}(Array, Array)
+#4 /var/www/html/vkartel/www/catalog/controller/startup/event.php(7): Proxy->__call('getEvents', Array)
+#5 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupEvent->index()
+#6 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#7 /var/www/html/vkartel/www/system/engine/router.php(46): Router->execute(Object(Action))
+#8 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#9 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#10 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#11 {main}
+  thrown in /var/www/html/vkartel/www/system/library/db/mysqli.php on line 40
+[25-Jan-2019 07:10:37 UTC] PHP Fatal error:  Uncaught Exception: Error: Unknown column 'sort_order' in 'order clause'<br />Error No: 1054<br />SELECT * FROM `oc_event` WHERE `trigger` LIKE 'catalog/%' AND status = '1' ORDER BY `sort_order` ASC in /var/www/html/vkartel/www/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/vkartel/www/system/library/db.php(45): DB\MySQLi->query('SELECT * FROM `...')
+#1 /var/www/html/vkartel/www/catalog/model/setting/event.php(4): DB->query('SELECT * FROM `...')
+#2 /var/www/html/vkartel/www/system/engine/loader.php(248): ModelSettingEvent->getEvents()
+#3 /var/www/html/vkartel/www/system/engine/proxy.php(47): Loader->{closure}(Array, Array)
+#4 /var/www/html/vkartel/www/catalog/controller/startup/event.php(7): Proxy->__call('getEvents', Array)
+#5 /var/www/html/vkartel/www/system/engine/action.php(79): ControllerStartupEvent->index()
+#6 /var/www/html/vkartel/www/system/engine/router.php(67): Action->execute(Object(Registry))
+#7 /var/www/html/vkartel/www/system/engine/router.php(46): Router->execute(Object(Action))
+#8 /var/www/html/vkartel/www/system/framework.php(171): Router->dispatch(Object(Action), Object(Action))
+#9 /var/www/html/vkartel/www/system/startup.php(104): require_once('/var/www/html/v...')
+#10 /var/www/html/vkartel/www/index.php(19): start('catalog')
+#11 {main}
+  thrown in /var/www/html/vkartel/www/system/library/db/mysqli.php on line 40

@@ -1,0 +1,6 @@
+catalog/
+vendor/
+composer.lock
+*.txt
+*.swp
+
