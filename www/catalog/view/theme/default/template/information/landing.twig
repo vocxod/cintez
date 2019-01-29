@@ -69,7 +69,20 @@
     </div>
 </div>
 
-
+<script type="text/javascript">
+var ZCallbackWidgetLinkId  = 'c8aa3be281f400d7e85aa0952bf620de';
+var ZCallbackWidgetDomain  = 'my.zadarma.com';
+(function(){
+    var lt = document.createElement('script');
+    lt.type ='text/javascript';
+    lt.charset = 'utf-8';
+    lt.async = true;
+    lt.src = 'https://' + ZCallbackWidgetDomain + '/callbackWidget/js/main.min.js';
+    var sc = document.getElementsByTagName('script')[0];
+    if (sc) sc.parentNode.insertBefore(lt, sc);
+    else document.documentElement.firstChild.appendChild(lt);
+})();
+</script>
 
 {{ footer }}
 
