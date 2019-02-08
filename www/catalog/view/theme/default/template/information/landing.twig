@@ -9,12 +9,26 @@
         </div>
 
         <div class="col-md-6" style="text-align:center;">
-<img src="/image/catalog/landing/bigimage_right.png" alt="" title="" style="width:60%;"/>         
 
-<a href="https://www.specsintez.com/%D1%82%D1%80%D0%B8%D0%BE%D1%81%D0%B5%D0%BF%D1%82-%D1%8D%D0%BD%D0%B4%D0%BE-%D0%B2%D0%B5%D1%82" target="_blank" 
-style="position:fixed; z-index:10000;left:1095px; top:630px;" >
-    <img src="/image/catalog/landing/go_to_product.png" alt="" title=""/>
+<div class="col-md-12" style="text-align:center;">
+<img src="/image/catalog/landing/bigimage_right.png" alt="" title="" style="width:60%;"/>         
+</div>
+
+<div class="col-md-12" style="text-align:center;">
+
+{#
+<a href="https://www.specsintez.com/%D1%82%D1%80%D0%B8%D0%BE%D1%81%D0%B5%D0%BF%D1%82-%D1%8D%D0%BD%D0%B4%D0%BE-%D0%B2%D0%B5%D1%82?utm_campaign=piteronly&utm_replace=newphone" 
+target="_blank" 
+style="z-index:10000;font-size:16px; font-family: sans-serif; font-weight:bold; position: fixed; right: 91px; bottom: 40px; padding: 10px; background: rgb(54,154,56); color: #fff; width: 10%;" 
+class="btn btn-success" name="button_order" onclick="dataLayer.push({'event': 'button-order-click'});"  >
+#}
+<a href="https://www.specsintez.com/promo/triosept-endo#order_form" 
+style="z-index:10000;font-size:16px; font-family: sans-serif; font-weight:bold; position: fixed; right: 91px; bottom: 40px; padding: 10px; background: rgb(54,154,56); color: #fff; width: 10%;" 
+class="btn btn-success" name="button_order" onclick="console.log('press order'); document.getElementById('offer_name').focus(); document.getElementById('offer_name').select(); "  >
+ЗАКАЗАТЬ
 </a>
+</div>
+
         </div>
 
         {# <img src="/image/catalog/landing/bigimage.png" alt="" title=""/> #}
@@ -160,7 +174,57 @@ style="position:fixed; z-index:10000;left:1095px; top:630px;" >
         </div>
     </div>
     #}
+    <div class="row">
+        <div class="col-md-12" style="test-align:center"> 
+            <p style="font-family: Arial, Helvetica, sans-serif; text-align:center; color: rgb(54,154,56); font-size:36px; font-weight: normal; margin-top:40px;">
+           ЗАПРОСИТЬ КОММЕРЧЕСКОЕ ПРЕДЛОЖЕНИЕ 
+            </p>
+{% if send_form != "" %}
+<div style="text-align:center;font-family: Arial, Helvetica, sans-serif; color:#010101; font-size:18px; font-weight: normal;" class="alert alert-success">
+{{ send_form }}
 </div>
+{% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4"> 
+	</div>
+        <div class="col-md-4">
+		<a href="#order_form" id="order_form"></a>
+		<form name="offer_request" method="POST" enctype="multipart/form-data" action="https://www.specsintez.com/promo/triosept-endo#order_form">
+<p class="nonrequired">
+<input style="display:inline; width:95%; font-family: Arial, Helvetica, sans-serif; color:#010101; font-size:18px; font-weight: normal;" class="form-control" name="offer_name" type="text" placeholder="Имя" id="offer_name" value="{{offer_name}}"/>
+</p>
+		
+<p class="required">
+<input style="display:inline; width:95%; font-family: Arial, Helvetica, sans-serif;color:#010101; font-size:18px; font-weight: normal;" class="form-control"  name="offer_phone" 
+type="tel" placeholder="Тел. формат: (123) 123-4567" required id="offer_phone" value="{{offer_phone}}" />
+</p>
+{#[\+]\d{2}[\(]\d{2}[\)]\d{4}[\-]\d{4}#}
+{# ^\+?\d{0,13} #}
+
+<p class="nonrequired">
+<textarea style="display:inline; width:95%; font-family: Arial, Helvetica, sans-serif; color:#010101; font-size:18px; font-weight: normal;" class="form-control" rows="5" name="offer_comment" placeholder="Комментарий" id="offer_comment">{{ offer_comment}}</textarea>
+</p>
+
+<p style="text-align:center;">	
+<input name="offer_submit" style="font-family: Arial, Helvetica, sans-serif; font-size:20px; font-weight: normal;" class="btn btn-success" type="submit" value="Отправить"/>
+</p>
+
+		</form> 
+	</div>
+        <div class="col-md-4"> 
+	</div>
+    </div>
+
+</div>
+
+<script type="text/javascript">
+jQuery(function($){
+$("#offer_phone").mask("(999) 999-9999");
+});
+</script>
 
 {#
 <script type="text/javascript">
@@ -180,6 +244,7 @@ var ZCallbackWidgetDomain  = 'my.zadarma.com';
 #}
 
 {# to Alex phone number #}
+{#
 <script type="text/javascript">
 var ZCallbackWidgetLinkId  = '055aab26e05459268df5cf64d40327b4';
 var ZCallbackWidgetDomain  = 'my.zadarma.com';
@@ -194,8 +259,7 @@ var ZCallbackWidgetDomain  = 'my.zadarma.com';
     else document.documentElement.firstChild.appendChild(lt);
 })();
 </script>
+#}
 
-
-
-{{ footer }}
+{{ footer_landing }}
 

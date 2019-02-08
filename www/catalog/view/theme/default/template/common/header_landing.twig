@@ -10,7 +10,7 @@
 {#<meta name="robots" content="noindex,follow" />#}
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<title>{{ title }}</title>
+<title>{#{ title }#}Триосепт - Эндо</title>
 
 <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
 <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon"/>
@@ -27,6 +27,13 @@
 <meta name="keywords" content="{{ keywords }}" />
 {% endif %}
 
+<script>
+  dataLayer = [{
+    'pageCategory': 'signup',
+    'visitorType': 'high-value'
+  }];
+</script>
+
 <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
 new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
@@ -36,6 +43,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <!-- End Google Tag Manager -->
 
 <script src="catalog/view/javascript/jquery/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script src="catalog/view/javascript/jquery/jquery.maskedinput.min.js" type="text/javascript"></script>
 
 <link href="catalog/view/javascript/bootstrap/css/bootstrap.css" rel="stylesheet" media="screen" />
 
@@ -114,8 +122,24 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 }
 </style>
 
+<style>
+    .required:before { content:" *"; color:red; }
+    .nonrequired:before { content:" *"; color:rgba(255,255,255,0); }
+/*
+input:focus {
+  background: rgb(54,155,56);
+  outline: 1px solid rgb(54,154,56);  /* убрать рамку */
+}
+*/
+</style>
+
 </head>
 <body>
+
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-MQCHS9D"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
     
 {{ menu }}
 <nav class="navbar navbar-default hidden-xs " role="navigation" style="height:18px; margin-bottom:0px; background:rgb(54,154,56);color:#FEFAEA;margin-top:0px; margin:0; padding:0;min-height: 30px; ">

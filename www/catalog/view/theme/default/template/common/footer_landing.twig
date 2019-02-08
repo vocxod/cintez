@@ -1,0 +1,585 @@
+</div>{# костыль - найти утерянный открывающий див! #}
+<footer id="footerid"  style="background:rgb(240,244,245);color:#111; margin-top:20px; ">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <img src="/image/catalog/logo-325x160.png" alt="" title="" style="width:325px; height:160px;"/>
+      </div>
+
+{% if lang == 'ru' %}
+
+      <div class="col-md-2">
+        <h3>МЕНЮ</h3>
+        <ul class="footer-list">
+          <li><a href="/katalog">Продукция</a></li>
+          <li><a href="/about{#index.php?route=information/about#}">О компании</a></li>
+          <li><a href="/dealers{#index.php?route=information/dealers"#}">Дилерам</a></li>
+          <li><a href="{#index.php?route=information/information&information_id=9#}">Прайс-лист</a></li>
+          <li><a href="/news{#index.php?route=information/newslist#}">Новости</a></li>
+          <li><a href="/yamap">Контакты</a></li>
+          <li><a href="#{#index.php?route=information/productselection#}">Подбор продукта</a></li>
+          <li><a href="#{#index.php?route=information/dezcalc#}">Дезкалькулятор</a></li>
+          {% if user_id > 0 %}
+          <li><a href="index.php?route=account/account">Личный кабинет</a></li>
+          {% endif %}
+        </ul>
+      </div>
+
+      {# Курск #}
+      {% if current_zone.zone_id == 2755 %}
+      <div class="col-md-3">
+        <h3>КОНТАКТЫ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+74712446018"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 18</a> </li>
+          <li><a href="tel:+74712446019"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 19</a> </li>
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li>
+            <a href="mailto:V.Shukin@specsintez.com">
+              <i class="fa fa-envelope"></i>&nbsp;V.Shukin@specsintez.com
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>305018, г. Курск</li>
+          <li>
+            <a href="/yamap">Элеваторный переулок, д.14</a>
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# петербург #}
+      {% if current_zone.zone_id == 2785 %}
+      <div class="col-md-3">
+        <h3>КОНТАКТЫ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+78124544717"> <i class="fa fa-phone"></i>&nbsp;  +7 812 454 47 17</a> </li>
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 8:30 до 17:30</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li>
+            <a href="mailto:mail@specsintez.com">
+              <i class="fa fa-envelope"></i>&nbsp;mail@specsintez.com
+            </a>
+          </li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>195030, Санкт-Петербург </li>
+          <li>
+            <a href="/yamap">Потапова ул. дом 2</a>
+          </li>
+          <li>&nbsp;</li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="" target="_blank" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>    
+      </div>
+      {% endif %}
+
+      {# МОСКВА #}
+      {% if current_zone.zone_id == 2761 %}
+      <div class="col-md-3">
+        <h3>КОНТАКТЫ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+74956650253"> <i class="fa fa-phone"></i>&nbsp; +7 495 665 02 53</a> </li>
+          
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:dir-msk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;dir-msk@specsintez.com</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>27576, Москва </li>
+          <li>
+            <a href="/yamap">ул. Новгородская, д.1</a>
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Novosibirsk #}
+      {% if current_zone.zone_id == 2768 %}
+      <div class="col-md-3">
+        <h3>КОНТАКТЫ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+73833630988"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 09 88</a> </li>
+          <li><a href="tel:+73833631088"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 10 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:opt-nsk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;opt-nsk@specsintez.com</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>630117, г. Новосибирск </li>
+          <li>
+            <a href="/yamap">ул. Арбузова 1/1 к. 14, оф. 222/5</a>
+          </li>
+          <li> (со стороны улицы Иванова)</li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Ростов на Донц #}
+      {% if current_zone.zone_id == 2778 %}
+      <div class="col-md-3">
+        <h3>КОНТАКТЫ</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+78632014344"> <i class="fa fa-phone"></i>&nbsp; +7 863 201 43 44</a> </li>
+          <li><a href="tel:+79287770288"> <i class="fa fa-phone"></i>&nbsp; +7 928 777 02 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:rostov@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;rostov@specsintez.com </a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>АДРЕС</h3>
+        <ul class="footer-list">
+          <li>344091, г. Ростов-на-Дону</li>
+          <li>
+            <a href="/yamap">ул. Пескова, дом № 1/2/169а</a>
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+{% endif %}
+
+{% if lang == 'en' %}
+
+      <div class="col-md-2">
+        <h3>MENU</h3>
+        <ul class="footer-list">
+          <li><a href="katalog">Products</a></li>
+          <li><a href="index.php?route=information/about">About</a></li>
+          <li><a href="index.php?route=information/dealers">Dealers</a></li>
+          <li><a href="index.php?route=information/information&information_id=9">Price list</a></li>
+          <li><a href="index.php?route=information/newslist">News</a></li>
+          <li><a href="/yamap">Contacts</a></li>
+          <li><a href="index.php?route=information/productselection">Product selection</a></li>
+          <li><a href="index.php?route=information/dezcalc">Dez calculator</a></li>
+        </ul>
+      </div>
+      {# Курск #}
+      {% if current_zone.zone_id == 2755 %}
+      <div class="col-md-3">
+        <h3>CONTACTS</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+74712446018"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 18</a> </li>
+          <li><a href="tel:+74712446019"> <i class="fa fa-phone"></i>&nbsp; +7 471 244 60 19</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:V.Shukin@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;V.Shukin@specsintez.com</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>305018, г. Курск</li>
+          <li>
+            <a href="/yamap">Элеваторный переулок, д.14</a>
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Мы в соцсетях</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# петербург #}
+      {% if current_zone.zone_id == 2785 %}
+      <div class="col-md-3">
+        <h3>CONTACTS</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+78124544717"> <i class="fa fa-phone"></i>&nbsp;+7 812 454-47-17</a> </li>
+          <li>&nbsp;</li>
+          <li>Every day </li>
+          <li>From 9:00 to 18:00</li>
+          <li>&nbsp;</li>
+          <li>Email</li>
+          <li><a href="mailto:mail@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;mail@specsintez.com</a></li>
+
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>43, Liter "K", Industrialnij prospekt </li>
+          <li>
+            <a href="/yamap">St. Peterburg,  Russia, 195279</a>
+
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Social</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>          
+        </ul>
+      </div>
+      {% endif %}
+
+      {# МОСКВА #}
+      {% if current_zone.zone_id == 2761 %}
+      <div class="col-md-3">
+        <h3>CONTACTS</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+74956650253"> <i class="fa fa-phone"></i>&nbsp; +7 495 665 02 53</a> </li>
+          
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li>
+            <a href="mailto:dir-msk@specsintez.com">
+              <i class="fa fa-envelope"></i>&nbsp;dir-msk@specsintez.com
+            </a>
+          </li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>27576, Москва </li>
+          <li>
+            <a href="/yamap">ул. Новгородская, д.1</a></li>
+                  <li>&nbsp;</li>
+          <li class="hidden xs">Social</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Novosibirsk #}
+      {% if current_zone.zone_id == 2768 %}
+      <div class="col-md-3">
+        <h3>CONTACTS</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+73833630988"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 09 88</a> </li>
+          <li><a href="tel:+73833631088"> <i class="fa fa-phone"></i>&nbsp; +7 383 363 10 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:opt-nsk@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;opt-nsk@specsintez.com</a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>630117, г. Новосибирск </li>
+          <li>
+            <a href="/yamap">ул. Арбузова 1/1 к. 14, оф. 222/5</a>
+          </li>
+          <li> (со стороны улицы Иванова)</li>
+        
+          <li>&nbsp;</li>
+          <li class="hidden xs">Social</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>
+        </ul>      
+      </div>
+      {% endif %}
+
+      {# Ростов на Донц #}
+      {% if current_zone.zone_id == 2778 %}
+      <div class="col-md-3">
+        <h3>CONTACTS</h3>
+        <ul class="footer-list">
+          <li><a href="tel:+78632014344"> <i class="fa fa-phone"></i>&nbsp; +7 863 201 43 44</a> </li>
+          <li><a href="tel:+79287770288"> <i class="fa fa-phone"></i>&nbsp; +7 928 777 02 88</a> </li>
+
+          <li>&nbsp;</li>
+          <li>Прием заказов в рабочие дни</li>
+          <li>с 9:00 до 18:00</li>
+          <li>&nbsp;</li>
+          <li>Электронная почта</li>
+          <li><a href="mailto:rostov@specsintez.com"><i class="fa fa-envelope"></i>&nbsp;rostov@specsintez.com </a></li>
+        </ul>
+      </div>
+      <div class="col-md-3">
+        <h3>ADDRESS</h3>
+        <ul class="footer-list">
+          <li>344091, г. Ростов-на-Дону</li>
+          <li>
+            <a href="/yamap">ул. Пескова, дом № 1/2/169а</a>
+          </li>
+          <li>&nbsp;</li>
+          <li class="hidden xs">Social</li>
+          <li class="hidden xs">
+            <a class="not-active" href="https://vk.com/specsintez"><i class="fa fa-vk"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-twitter"></i></a>
+            <a class="not-active" href="#"><i class="fa fa-facebook"></i></a>
+          </li>          
+        </ul>      
+      </div>
+      {% endif %}
+
+{% endif %}
+
+
+</footer>
+</div>
+
+<div class="col-lg-12">
+  <div class="container">
+    <div class="row">
+
+      <div style="clear:both;color:#7c7c7c;">
+
+<script>
+	var content = {
+		moscow: "MOSCOW AD NUMBER",
+		spb: 	"SPburg phone number",
+		russia: "For other user places"
+	};
+</script>
+
+	<p id="id_phone_content">
+
+	</p>
+
+      <p>
+
+      Обращаем ваше внимание, что сайт specsintez.com носит исключительно информационный характер и ни при каких условиях не является публичной офёртой, определяемой положениями Статьи 437 (2) Гражданского кодекса Российской Федерации. 
+      Для получения подробной информации, пожалуйста, обращайтесь к менеджерам по продажам. Внешний вид и фасовка товаров могут отличаться от представленных на сайте.
+      </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="col-lg-12">
+&nbsp;
+</div>
+
+</div>
+  
+{% for script in scripts %}
+<script src="{{ script }}" type="text/javascript"></script>
+{% endfor %}
+
+<script type="text/javascript" src="catalog/view/bower_components/bootstrap-treeview/dist/bootstrap-treeview.min.js"></script>
+
+<script type="text/javascript">
+
+$( document ).ready(function() {
+
+  // set disabled links
+  $('.not-active').css('color', '#AAAAAA');
+  //$('.not-active').css('color', '#AAAAAA');
+
+  jQuery(document).on('click', '.mega-dropdown', function(e) {
+    e.stopPropagation()
+  })
+
+  $("#product_button").on( 'mouseover', function(){
+    var iMaxHeight = '550px';
+    if( $("#id3").css('height') != iMaxHeight ){
+      $("#id3").css('height', '0px');
+      $("#id3").css('overflow', 'hidden');
+      $("#id3").animate({height: iMaxHeight}, 'fast');
+    }
+    return false;
+  });
+
+  $("#id22 li>a").not("#product_button").on( 'mouseover', function(){
+    $("#id3").animate({height: "0px"}, 'fast');
+    return false;
+  });
+
+  $( "#ulid3" )
+  .on( "mouseenter", function() {
+    //console.log("mouseenter ulid3");
+  })
+  .on( "mouseleave", function() {
+    $("#id3").animate({height: "0px"}, 'fast');
+    //console.log("mouseleave ulid3");
+  });
+/*  
+  $( ".product-thumb" )
+  .on( "mouseenter", function(event) {
+    sBigId = '#' + $(this).attr('data');
+    // $( sBigId ).show( "fast" );
+    $(sBigId).css('display', 'block');
+    $(sBigId).css('opacity', 1);
+  });
+*/
+  $( ".big-product" )
+  .on( "mouseleave", function(event) {
+    sBigId = '#' + $(this).attr('data');
+    $(sBigId).css('opacity', 0)
+    $(sBigId).css('display', 'none')
+    /*$( sBigId ).hide();*/
+  })
+  ;
+
+  $(".drapdawn").hover(            
+    function() {
+      $('.drapdawn-menu', this).not('.in .drapdawn-menu').stop(true,true).slideDown("500");
+      $(this).toggleClass('open');        
+    },
+    function() {
+      $('.drapdawn-menu', this).not('.in .drapdawn-menu').stop(true,true).slideUp("500");
+      $(this).toggleClass('open');       
+    }
+  );
+
+  $('.panel-menu-item').on( "mouseover", function(){
+    $(this).css('background', 'rgb(54,154,56)')
+    $(this).css('color', '#FEFAEA')
+    dataid = $(this).attr('data')
+    if( dataid == 94 )  $('#menu_' + dataid).css('background-position', '0px    0px')
+    if( dataid == 87 )  $('#menu_' + dataid).css('background-position', '-30px  0px')
+    if( dataid == 54 )  $('#menu_' + dataid).css('background-position', '-61px  0px')
+    if( dataid == 10 )  $('#menu_' + dataid).css('background-position', '-93px  0px')
+    if( dataid == 131 ) $('#menu_' + dataid).css('background-position', '-125px  0px') 
+    if( dataid == 72 )  $('#menu_' + dataid).css('background-position', '-157px 0px')
+    if( dataid == 117 ) $('#menu_' + dataid).css('background-position', '-190px 0px')
+    if( dataid == 150 ) $('#menu_' + dataid).css('background-position', '-220px 0px') 
+    if( dataid == 168 ) $('#menu_' + dataid).css('background-position', '-317px 0px')
+    if( dataid == 113 ) $('#menu_' + dataid).css('background-position', '-283px 0px')          
+    $('#panel_link_' + dataid).css('color', 'white');
+  }) 
+  $('.panel-menu-item').on( "mouseout", function(){
+    $(this).css('background', '#FFFFFF')
+    $(this).css('color', '#111')
+    
+    if( dataid == 94 )  $('#menu_' + dataid).css('background-position', '0px    -30px')
+    if( dataid == 87 )  $('#menu_' + dataid).css('background-position', '-30px  -30px')
+    if( dataid == 54 )  $('#menu_' + dataid).css('background-position', '-61px  -30px')
+    if( dataid == 10 )  $('#menu_' + dataid).css('background-position', '-93px  -30px')
+    if( dataid == 131 ) $('#menu_' + dataid).css('background-position', '-125px -30px')
+    if( dataid == 72 )  $('#menu_' + dataid).css('background-position', '-157px -30px')
+    if( dataid == 117 ) $('#menu_' + dataid).css('background-position', '-190px -30px')
+    if( dataid == 150 ) $('#menu_' + dataid).css('background-position', '-220px -30px') 
+    if( dataid == 168 ) $('#menu_' + dataid).css('background-position', '-317px -30px')
+    if( dataid == 113 ) $('#menu_' + dataid).css('background-position', '-283px -30px') 
+    $('#panel_link_' + dataid).css('color', '#111');
+  })
+  $('.panel-menu-item').on( "click", function(){
+    dataid = $(this).attr('data');
+    if( $(this).attr('data-seo') != '' ){
+      location = $(this).attr('data-seo');
+    } else {
+      location = "index.php?route=product/category&path=" + dataid;  
+    }
+    
+  })
+});
+</script>
+
+{#
+<script type="text/javascript" src="//consultsystems.ru/script/2942/"></script>
+#}
+
+<!-- Yandex.Metrika counter -->
+<script type="text/javascript">
+(function (d, w, c) {
+    (w[c] = w[c] || []).push(function() {
+        try {
+            w.yaCounter24257986 = new Ya.Metrika({id:24257986,
+                    clickmap:true,
+                    trackLinks:true,
+                    accurateTrackBounce:true});
+        } catch(e) { }
+    });
+
+    var n = d.getElementsByTagName("script")[0],
+        s = d.createElement("script"),
+        f = function () { n.parentNode.insertBefore(s, n); };
+    s.type = "text/javascript";
+    s.async = true;
+    s.src = (d.location.protocol == "https:" ? "https:" : "http:") + "//mc.yandex.ru/metrika/watch.js";
+
+    if (w.opera == "[object Opera]") {
+        d.addEventListener("DOMContentLoaded", f, false);
+    } else { f(); }
+})(document, window, "yandex_metrika_callbacks");
+</script>
+<noscript><div><img src="//mc.yandex.ru/watch/24257986" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
+
+</body></html>
+
