@@ -56,7 +56,7 @@ class ControllerInformationLanding extends Controller {
         $data['column_right'] = $this->load->controller('common/column_right');
         $data['content_top'] = $this->load->controller('common/content_top');
         $data['content_bottom'] = $this->load->controller('common/content_bottom');
-        $data['footer'] = $this->load->controller('common/footer');
+        $data['footer_landing'] = $this->load->controller('common/footer_landing');
         $data['header'] = $this->load->controller('common/header_landing');
 	// забираем поля формы 
    	if(isset($this->request->post['offer_name']) && $this->request->post['offer_name'] != "" ){
