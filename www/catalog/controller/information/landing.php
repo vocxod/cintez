@@ -82,10 +82,12 @@ class ControllerInformationLanding extends Controller {
 <body><div><p>' . "<strong>Поступил новый запрос от:</strong> " . $data["offer_name"] . "\r\n <br/><strong>Телефон:</strong> " . $data["offer_phone"] . "\r\n<br/><strong>Комментарий пользователя:</strong> " . $data["offer_comment"] . '</p></div></body></html>';
 
 // Для отправки HTML-письма должен быть установлен заголовок Content-type
-$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers = "From: SpecSintez <mail@specsintez.com>." . "\r\n";
+$headers .= "Reply-To: mail.specsintez.com". "\r\n";
+$headers  .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
 
-		mail("lazarlong@yandex.ru", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос SPECSINTEZ.COM", $s_message, $headers  );
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, Mail <mail@specsintez.com>, Reklama <reklama@specsintez.com>, Vet2 <vet2@specsintez.com> ", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос с лендинга", $s_message, $headers  );
 		$data["offer_name"] = "";
 		$data["offer_phone"] = "";
 		$data["offer_comment"] = "";

@@ -611,7 +611,17 @@
         </div>
       </div>
 
+
       <div class="row" id="product_description_and_preorder">
+
+	{% if preorder_success %}
+        <div class="col-sm-12">
+		<div class="alert alert-success">
+{{ preorder_success }}
+		</div>
+	</div>
+	{% endif %}
+
         <div class="col-sm-12">
           {# Описание*Характеристики/Отзывы #}
           <ul class="nav nav-tabs">

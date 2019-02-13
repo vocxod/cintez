@@ -686,7 +686,7 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 
 			// var_dump($data['documents']); die();
 			$data['preorder_token'] = md5( mt_rand(0, 65536) );
-			$data['preorder_success'] = '.';
+			$data['preorder_success'] = '';
 			if($_POST){
 				/*
 					array(6) 
@@ -749,7 +749,7 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 
 
 			    } else {
-				$data['preorder_success'] = 'Размещение предварительного заказа на данный товар сейчас невозможно.';
+				$data['preorder_success'] = 'Размещение предварительного заказа на данный товар сейчас невозможно.<br/>Ошибка данных.';
 			    } 
 			}
 			$this->response->setOutput($this->load->view('product/product', $data));
