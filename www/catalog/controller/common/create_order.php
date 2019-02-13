@@ -27,6 +27,11 @@ class ControllerCommonCreateOrder extends Controller {
 			$this->response->setOutput(json_encode($json));
 			return;
 		}
+		if( isset( $this->request->get['order_product_name'] )){
+			$json['data']['product_name'] = $this->request->get['order_product_name'];
+		} else {
+			$json['data']['product_name'] = $this->request->get['order_product_id'];
+		}
 		$data = [];
 		(string)$data['invoice_prefix'] = "SITE_";
 		(int)$data['store_id'] = 0;
@@ -99,6 +104,18 @@ class ControllerCommonCreateOrder extends Controller {
 
 		$iOrderId = $this->model_checkout_order->addOrder( $data );
 		$json['order_id'] = $iOrderId;
+
+		$s_message = '
+<html><head><title>Новый заказ товара</title></head>
+<body><div><p>' . "<strong>Поступил новый запрос товара:</strong> " . $iOrderId . "\r\n <br/><strong>Телефон покупателя:</strong> " . $data["telephone"] . "\r\n<br/><strong>Дата и время:</strong> " . date( "Y-m-d H:i:s" , time() ) . '</p><p><a href="https://www.specsintez.com/index.php?route=product/product&product_id=' . $json['data']['product_id'] . '">Ccылка на запрошенный товар: ' . $json['data']['product_name'] . '</a></p></div></body></html>';
+
+// Для отправки HTML-письма должен быть установлен заголовок Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
+
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>", date("Y-m-d H:i:s", time() ) . ": новый заказ на сайте specsintez.com ", $s_message, $headers  );
+
+
 		/*
 $order_id, $order_status_id, $comment = '', $notify = false, $override = false
 		*/

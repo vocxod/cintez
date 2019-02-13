@@ -3,7 +3,7 @@
 class ControllerInformationLanding extends Controller {
 	public function index() {
 
-        // die("landing");
+        
 
         $this->load->language('information/onenews');
 
@@ -32,7 +32,7 @@ class ControllerInformationLanding extends Controller {
         // file_put_contents('fname.txt', ( $data['is_new']['description'] ) ); 
 
         /* @todo fix it */
-        $this->document->setTitle('Триосепт Эндр');
+        $this->document->setTitle('Триосепт Эндо');
         $this->document->setDescription('Триосепт Эндо');
         $this->document->setKeywords('триосепт эндо,');
         $data['breadcrumbs'][] = array(
@@ -56,9 +56,42 @@ class ControllerInformationLanding extends Controller {
         $data['column_right'] = $this->load->controller('common/column_right');
         $data['content_top'] = $this->load->controller('common/content_top');
         $data['content_bottom'] = $this->load->controller('common/content_bottom');
-        $data['footer'] = $this->load->controller('common/footer');
+        $data['footer_landing'] = $this->load->controller('common/footer_landing');
         $data['header'] = $this->load->controller('common/header_landing');
-        // забираем новости
+	// забираем поля формы 
+   	if(isset($this->request->post['offer_name']) && $this->request->post['offer_name'] != "" ){
+		$data["offer_name"] = $this->request->post['offer_name']; 
+	} else {
+		$data["offer_name"] = ""; 
+	}	
+	if(isset($this->request->post['offer_phone']) && $this->request->post['offer_phone'] != "" ){
+		$data["offer_phone"] = $this->request->post['offer_phone']; 
+	} else {
+		$data["offer_phone"] = ""; 
+	}	
+	if(isset($this->request->post['offer_comment']) && $this->request->post['offer_comment'] != "" ){
+		$data["offer_comment"] = $this->request->post['offer_comment']; 
+	} else {
+		$data["offer_comment"] = ""; 
+	}		
+	;
+	if (isset($this->request->post['offer_submit'])) {
+		$data["send_form"] = "<p class=''>Ваше сообщение успешно отправлено.</p>";
+		$s_message = '
+<html><head><title>Новый запрос предложения</title></head>
+<body><div><p>' . "<strong>Поступил новый запрос от:</strong> " . $data["offer_name"] . "\r\n <br/><strong>Телефон:</strong> " . $data["offer_phone"] . "\r\n<br/><strong>Комментарий пользователя:</strong> " . $data["offer_comment"] . '</p></div></body></html>';
+
+// Для отправки HTML-письма должен быть установлен заголовок Content-type
+$headers  = 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
+
+		mail("lazarlong@yandex.ru", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос SPECSINTEZ.COM", $s_message, $headers  );
+		$data["offer_name"] = "";
+		$data["offer_phone"] = "";
+		$data["offer_comment"] = "";
+	} else {
+		$data["send_form"] = ""; // "<p>Заполните поля формы и нажмите кнопку Отправить</p>";
+	}
         //var_dump( $information_id );
         // $data['topnews'] = $this->load->controller('common/topnews', ['news'=>8, 'without'=>$information_id] );
         // новости забираем

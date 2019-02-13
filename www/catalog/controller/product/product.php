@@ -685,6 +685,73 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 
 
 			// var_dump($data['documents']); die();
+			$data['preorder_token'] = md5( mt_rand(0, 65536) );
+			$data['preorder_success'] = '.';
+			if($_POST){
+				/*
+					array(6) 
+			            { 
+					["preorder_token"]=> string(32) "3b0d4794b8ffc47ee0a61cdaaada3224" 
+					["preorder_name"]=> string(1) "w" 
+					["preorder_phone"]=> string(1) "e" 
+					["preorder_text"]=> string(1) "r" 
+					["g-recaptcha-response"]=> string(334) "03AF6jDqW11kOGNbFIJAC0JhpTSZlTY4ibrEqA6UsKkQhw9SHGCF-ns1SSgVI4kO8DPgbKM32IBptlW6x253p1jyU2iWlrw1Hy2k-04uRoigSX5sbYk6ibsnZG_r3ev4iKbzks9uWSA0nCxb5KuyXYATIgmTXYuYMsO6ULGWs7r5SOTZ2o67qxLXa1ENMPffovlK8p9Jg31CjtRJUod7ZRgMOFSZ6IdYwggjgsMrabbBl8gOw6g_acNL3mG5nufzAdN4kA9DFec0PSF6mFPI6Nnv-mkN-Cc7Jt1hbfg4cAv_5iilXzS4DBPDM-_VRI2tMC4u5LdaRcPhJd" 
+					["preorder_submit"]=> string(0) "" 
+			
+			            } 
+				 */
+				// check captcha data
+				$s_url = 'https://www.google.com/recaptcha/api/siteverify';
+				$s_secret = '6LfQiDkUAAAAAGdg5kC_vNfGHp6jdHS2o9TKfW6w';
+				$s_response = $_POST['g-recaptcha-response'];
+				//$ch = curl_init( $surl );
+
+			    $postdata = http_build_query( ["secret"=>$s_secret, "response"=>$s_response] );
+			    $opts = ['http' =>
+				[
+				    'method'  => 'POST',
+				    'header'  => 'Content-type: application/x-www-form-urlencoded',
+				    'content' => $postdata
+				]
+			    ];
+			    $context  = stream_context_create($opts);
+			    $result = file_get_contents('https://www.google.com/recaptcha/api/siteverify', false, $context);
+			    $check = json_decode($result, true);
+			    //var_dump( $check ); die();
+/* 
+{ 
+["success"]=> bool(true) 
+["challenge_ts"]=> string(20) "2019-02-11T08:20:01Z" 
+["hostname"]=> string(18) "www.specsintez.com" }				
+*/
+			    if( array_key_exists('success', $check) && $check['success']){
+				$data['preorder_success'] = 'Спасибо за размещение предварительного заказа. Наш сотрудник свяжется c Вами в ближайшее время.';
+				$s_message = '
+<html><head><title>Предварительный заказ товара</title></head>
+<body>
+<div>
+<p><strong>Поступил предварительный заказ товара</strong> :<a href="https://www.specsintez.com/index.php?route=product/product&product_id=' . $_POST['preorder_product_id'] . '">' . $_POST['preorder_product_name'] . '</a></p>
+<p><strong>Покупатель:</strong> &nbsp;' . $_POST['preorder_name'] . '</p>
+<p><strong>Телефон покупателя:</strong> ' . $_POST['preorder_phone'] . '</p>
+<p><strong>Cообщение покупателя:</strong> &nbsp;' . $_POST['preorder_text'] . '</p>
+<p><strong>Дата и время обращения:</strong> ' . date( "Y-m-d H:i:s" , time() + 3600 * 3 ) . '</p>
+<p>Это письмо отправлено из формы предварительного заказа на сайте и отвечать на него <b>не надо</b>.</p>
+</div>
+</body></html>';
+// var_dump( $s_message ); die();
+		// Для отправки HTML-письма должен быть установлен заголовок Content-type
+		$headers = "From: SpecSintez <mail@specsintez.com>.\r\n";
+		$headers .= "Reply-To: no-reply@specsintez.com";
+		$headers .= 'MIME-Version: 1.0' . "\r\n";
+		$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
+
+				mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>", date("Y-m-d H:i:s", time()+3600*3 ) . ": Предзаказ на сайте specsintez.com ", $s_message, $headers  );
+
+
+			    } else {
+				$data['preorder_success'] = 'Размещение предварительного заказа на данный товар сейчас невозможно.';
+			    } 
+			}
 			$this->response->setOutput($this->load->view('product/product', $data));
 		} else {
 			$url = '';
