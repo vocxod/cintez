@@ -135,7 +135,7 @@
             <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
             {% endif %}
             {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}</a></li>
+            <li><a href="#tab-review" data-toggle="tab">Предзаказ</a></li>
             {% endif %}
           </ul>
           <div class="tab-content" style="outline:1px dashed magenta;">
@@ -162,10 +162,10 @@
             </div>
             {% endif %}
             {% if review_status  %}
-            <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">
+            <div class="tab-pane" id="tab-review" style="outline:1px dashed #121212;">
               <form class="form-horizontal" id="form-review">
                 <div id="review"></div>
-                <h2>{{ text_write }}</h2>
+                <h2>:{{ text_write }}</h2>
                 {% if review_guest %}
                 <div class="form-group required">
                   <div class="col-sm-12">
@@ -732,13 +732,19 @@
               <input type="hidden" name="product_id" value="{{ product_id }}" />
               
               <br />
+
+{#
               <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#my_order_dialog">{{ button_cart }}</button>
+#}
+
 {#
 <a class="btn btn-info  btn-block" href="index.php?route=information/dezcalc&product_id={{ product_id }}">
 В ДезКалькулятор
 </a>
 #}
             </div>
+<br/>
+<a  class="btn btn-success btn-lg btn-block" href="#tab-review" data-toggle="tab">Предзаказ</a><br/>
 
             {% if minimum > 1 %}
               <div class="alert alert-info"><i class="fa fa-info-circle"></i> {{ text_minimum }}</div>
@@ -767,7 +773,19 @@
         </div>
       </div>
 
-      <div class="row">
+{#
+     {% if preorder_success %}
+      <div class="row" id="product_description_and_preorder">
+        <div class="col-sm-12">
+		<p class="alert alert-warning">">
+		{{ preorder_success }}
+		</p>
+	</div>
+      </div> 
+     {% endif %
+#}
+
+      <div class="row" id="product_description_and_preorder">
         <div class="col-sm-12">
           {# Описание*Характеристики/Отзывы #}
           <ul class="nav nav-tabs">
@@ -781,7 +799,7 @@
             {% endif %}
 
             {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">{{ tab_review }}&nbsp;&nbsp;&nbsp;</a></li>
+            <li><a href="#tab-review" data-toggle="tab">Предзаказ&nbsp;&nbsp;&nbsp;</a></li>
             {% endif %}
           </ul>
 
@@ -802,7 +820,7 @@
                   <td>{{ attribute.name }}</td>
                   <td>{{ attribute.text }}</td>
                 </tr>
-                {% endfor %}
+        Вы забыли поставить галочку!        {Вы забыли поставить галочку!% endfor %}
                   </tbody>
                 {% endfor %}
               </table>
@@ -810,11 +828,11 @@
             {% endif %}
 
 {##}
-          {% if documents %}
+        Вы забыли поставить галочку!  {% if documents %}
             <div class="tab-pane" id="tab-documents">
 <p>
   Вы можете просмотреть и/или скачать сопроводительную документацию к продукту.
-</p>
+<Вы забыли поставить галочкуВы забыли поставить галочкуВы забыли поставить галочку!!!/p>
 <script type="text/javascript">
   function download_doc( doc_id ){
     console.log( doc_id );
@@ -827,51 +845,64 @@
 </ul>
             </div>
             {% endif %}
-{##}
+{# живая вкладка "отзывов" как основа формы предзаказа  #}
 
             {% if review_status  %}
-            <div class="tab-pane" id="tab-review" style="outline:1px dashed red;">
-              <form class="form-horizontal" id="form-review">
-                <div id="review"></div>
-                <h2>{{ text_write }}</h2>
-                {% if review_guest %}
+            <div class="tab-pane" id="tab-review" style="outline:0px dashed #121212;">
+              <form class="form-horizontal" id="form-review" method="POST">
+		<input type="hidden" name="preorder_token" value="{{preorder_token}}"/>
+                <input type="hidden" name="preorder_product_id" value="{{product_id}}"/>
+		<input type="hidden" name="preorder_product_name" value="{{ heading_title }}"/>
+
+		<h2>Предказ</h2>
+
                 <div class="form-group required">
-                  <div class="col-sm-12">
+                  <div class="col-sm-6 col-xs-12">
                     <label class="control-label" for="input-name">{{ entry_name }}</label>
-                    <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="form-control" />
+                    <input type="text" name="preorder_name" value="{{ customer_name }}" id="input-name" class="form-control" />
+                  </div>
+                 <div class="col-sm-6 col-xs-12">
+                    <label class="control-label" for="input-phone">Телефон:</label>
+                    <input type="text" name="preorder_phone" value="{{ customer_phone }}" id="input-phone" class="form-control" />
                   </div>
                 </div>
-                <div class="form-group required">
+
+                 <div class="form-group required">
                   <div class="col-sm-12">
-                    <label class="control-label" for="input-review">{{ entry_review }}</label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block">{{ text_note }}</div>
+                    <label class="control-label" for="input-review">Комментарий к предзаказу:</label>
+                    <textarea name="preorder_text" rows="5" id="input-review" class="form-control"></textarea>
+                    <div class="help-block">{#{ text_note }#}</div>
                   </div>
                 </div>
-                <div class="form-group required">
+                 <div class="form-group required">
                   <div class="col-sm-12">
-                    <label class="control-label">{{ entry_rating }}</label>
-                    &nbsp;&nbsp;&nbsp; {{ entry_bad }}&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;{{ entry_good }}</div>
+ 
+			<div class="g-recaptcha" data-sitekey="6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq"></div>
+      
+                  </div>
                 </div>
-                {{ captcha }}
+ 
+
                 <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
+                  <div class="pull-center">
+<script>
+$("form#form-review").submit(function(event) {
+
+   var recaptcha = $("#g-recaptcha-response").val();
+   if (recaptcha === "") {
+      event.preventDefault();
+      alert("Вы забыли поставить галочку!");
+   }
+});
+</script>
+
+<button type="submit" name="preorder_submit" id="button-predorder" data-loading-text="{{ text_loading }}" 
+class="btn btn-success btn-lg" style="width:302px;">
+		Отправить предзаказ
+		    </button>
                   </div>
                 </div>
-                {% else %}
-                {{ text_login }}
-                {% endif %}
+
               </form>
             </div>
             {% endif %}
@@ -1073,7 +1104,9 @@ $('#review').delegate('.pagination a', 'click', function(e) {
 
 $('#review').load('index.php?route=product/product/review&product_id={{ product_id }}');
 
-$('#button-review').on('click', function() {
+$('#button-predorder').on('click', function() {
+	console.log("pred order");
+/*
 	$.ajax({
 		url: 'index.php?route=product/product/write&product_id={{ product_id }}',
 		type: 'post',
@@ -1101,6 +1134,7 @@ $('#button-review').on('click', function() {
 			}
 		}
 	});
+*/
 });
 
 $(document).ready(function() {

@@ -85,7 +85,7 @@ class ControllerInformationLanding extends Controller {
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
 
-		mail("lazarlong@yandex.ru", date("Y-m-d H:i:s", time() ) . " Запрос SPECSINTEZ.COM", $s_message, $headers  );
+		mail("lazarlong@yandex.ru", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос SPECSINTEZ.COM", $s_message, $headers  );
 		$data["offer_name"] = "";
 		$data["offer_phone"] = "";
 		$data["offer_comment"] = "";
