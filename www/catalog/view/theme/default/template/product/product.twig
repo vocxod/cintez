@@ -127,88 +127,6 @@
               {% endif %}
             </ul>
           {% endif %}
-          {# описане/характеристики/отзывы #}
-          {#
-          <ul class="nav nav-tabs">
-            <li class="active"><a href="#tab-description" data-toggle="tab">{{ tab_description }}</a></li>
-            {% if attribute_groups %}
-            <li><a href="#tab-specification" data-toggle="tab">{{ tab_attribute }}</a></li>
-            {% endif %}
-            {% if review_status %}
-            <li><a href="#tab-review" data-toggle="tab">Предзаказ</a></li>
-            {% endif %}
-          </ul>
-          <div class="tab-content" style="outline:1px dashed magenta;">
-            <div class="tab-pane active" id="tab-description">{{ description }}</div>
-            {% if attribute_groups %}
-            <div class="tab-pane" id="tab-specification">
-              <table class="table table-bordered">
-                {% for attribute_group in attribute_groups %}
-                <thead>
-                  <tr>
-                    <td colspan="2"><strong>{{ attribute_group.name }}</strong></td>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for attribute in attribute_group.attribute %}
-                <tr>
-                  <td>{{ attribute.name }}</td>
-                  <td>{{ attribute.text }}</td>
-                </tr>
-                {% endfor %}
-                  </tbody>
-                {% endfor %}
-              </table>
-            </div>
-            {% endif %}
-            {% if review_status  %}
-            <div class="tab-pane" id="tab-review" style="outline:1px dashed #121212;">
-              <form class="form-horizontal" id="form-review">
-                <div id="review"></div>
-                <h2>:{{ text_write }}</h2>
-                {% if review_guest %}
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-name">{{ entry_name }}</label>
-                    <input type="text" name="name" value="{{ customer_name }}" id="input-name" class="form-control" />
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label" for="input-review">{{ entry_review }}</label>
-                    <textarea name="text" rows="5" id="input-review" class="form-control"></textarea>
-                    <div class="help-block">{{ text_note }}</div>
-                  </div>
-                </div>
-                <div class="form-group required">
-                  <div class="col-sm-12">
-                    <label class="control-label">{{ entry_rating }}</label>
-                    &nbsp;&nbsp;&nbsp; {{ entry_bad }}&nbsp;
-                    <input type="radio" name="rating" value="1" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="2" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="3" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="4" />
-                    &nbsp;
-                    <input type="radio" name="rating" value="5" />
-                    &nbsp;{{ entry_good }}</div>
-                </div>
-                {{ captcha }}
-                <div class="buttons clearfix">
-                  <div class="pull-right">
-                    <button type="button" id="button-review" data-loading-text="{{ text_loading }}" class="btn btn-primary">{{ button_continue }}</button>
-                  </div>
-                </div>
-                {% else %}
-                {{ text_login }}
-                {% endif %}
-              </form>
-            </div>
-            {% endif %}
-          </div>
-          #}
         </div>
         {# расчеты ширины колонки #}
         {% if column_left or column_right %}
@@ -507,15 +425,7 @@
               {% endif %}
             </div>
             <div class="col-sm-6">
-        {# наименование, опции, цена товара #}
-        {# <div class="{{ class }}" style="outline:1px dashed blue;"> #}
-          
-          {# кнопки в закладки и сравнение
-          <div class="btn-group">
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_wishlist }}" onclick="wishlist.add('{{ product_id }}');"><i class="fa fa-heart"></i></button>
-            <button type="button" data-toggle="tooltip" class="btn btn-default" title="{{ button_compare }}" onclick="compare.add('{{ product_id }}');"><i class="fa fa-exchange"></i></button>
-          </div>
-          #}
+
           <h1>{{ heading_title }}</h1>
           {% if attribute_groups %}
             {% for attribute_group in attribute_groups %}
@@ -527,47 +437,6 @@
             {% endfor %}
           {% endif %}
 
-          {# цена/спецЦена/бонусныеБ
-          <ul class="list-unstyled">
-            {% if manufacturer %}
-            <li>{{ text_manufacturer }} <a href="{{ manufacturers }}">{{ manufacturer }}</a></li>
-            {% endif %}
-            <li>{{ text_model }} {{ model }}</li>
-            {% if reward %}
-            <li>{{ text_reward }} {{ reward }}</li>
-            {% endif %}
-            <li>{{ text_stock }} {{ stock }}</li>
-          </ul>
-          
-          {% if price %}
-          <ul class="list-unstyled">
-            {% if not special %}
-            <li>
-              <h2>{{ price }}</h2>
-            </li>
-            {% else %}
-            <li><span style="text-decoration: line-through;">{{ price }}</span></li>
-            <li>
-              <h2>{{ special }}</h2>
-            </li>
-            {% endif %}
-            {% if tax %}
-            <li>{{ text_tax }} {{ tax }}</li>
-            {% endif %}
-            {% if points %}
-            <li>{{ text_points }} {{ points }}</li>
-            {% endif %}
-            {% if discounts %}
-            <li>
-              <hr>
-            </li>
-            {% for discount in discounts %}
-            <li>{{ discount.quantity }}{{ text_discount }}{{ discount.price }}</li>
-            {% endfor %}
-            {% endif %}
-          </ul>
-          {% endif %}
-          #}
           {# нижняя часть 3-ей колонки с данными по товару #}          
           <div id="product"> 
           {% if options %}
@@ -717,31 +586,10 @@
             </div>
             {% endif %}
 
-            {# микроформа заказа #}
-            {#
-            <div class="form-group">
-              <label class="control-label" for="input-quantity">{{ entry_qty }}</label>
-              <input type="text" name="quantity" value="{{ minimum }}" size="2" id="input-quantity" class="form-control" />
-              <input type="hidden" name="product_id" value="{{ product_id }}" />
-              <br />
-              <button type="button" id="button-cart" data-loading-text="{{ text_loading }}" class="btn btn-primary btn-lg btn-block">{{ button_cart }}</button>
-            </div>
-            #}
             
             <div class="form-group">
-              <input type="hidden" name="product_id" value="{{ product_id }}" />
-              
+              <input type="hidden" name="product_id" value="{{ product_id }}" />             
               <br />
-
-{#
-              <button type="button" id="button-order" data-loading-text="{{ text_loading }}" class="btn btn-success btn-lg btn-block" data-toggle="modal" data-target="#my_order_dialog">{{ button_cart }}</button>
-#}
-
-{#
-<a class="btn btn-info  btn-block" href="index.php?route=information/dezcalc&product_id={{ product_id }}">
-В ДезКалькулятор
-</a>
-#}
             </div>
 <br/>
 <a  class="btn btn-success btn-lg btn-block" href="#tab-review" data-toggle="tab">Предзаказ</a><br/>
@@ -752,38 +600,16 @@
 
           {% if review_status %}
           <div class="rating">
-            {# звездочки рейтинга и возможность оценки #} 
             <p>{% for i in 1..5 %}
               {% if rating < i %}<span class="fa fa-stack"><i class="fa fa-star-o fa-stack-1x"></i></span>{% else %}<span class="fa fa-stack"><i class="fa fa-star fa-stack-1x"></i><i class="fa fa-star-o fa-stack-1x"></i></span>{% endif %}
               {% endfor %} <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ reviews }}</a> / <a href="" onclick="$('a[href=\'#tab-review\']').trigger('click'); return false;">{{ text_write }}</a>
             </p>
-            
-            {#
-            <hr>
-            <!-- AddThis Button BEGIN -->
-            <div class="addthis_toolbox addthis_default_style" data-url="{{ share }}"><a class="addthis_button_facebook_like" fb:like:layout="button_count"></a> <a class="addthis_button_tweet"></a> <a class="addthis_button_pinterest_pinit"></a> <a class="addthis_counter addthis_pill_style"></a></div>
-            <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-515eeaf54693130e"></script> 
-            <!-- AddThis Button END -->
-            #} 
+             
           </div>
           {% endif %} 
-        {# </div> #}
-              {##}
             </div>
         </div>
       </div>
-
-{#
-     {% if preorder_success %}
-      <div class="row" id="product_description_and_preorder">
-        <div class="col-sm-12">
-		<p class="alert alert-warning">">
-		{{ preorder_success }}
-		</p>
-	</div>
-      </div> 
-     {% endif %
-#}
 
       <div class="row" id="product_description_and_preorder">
         <div class="col-sm-12">
@@ -809,26 +635,25 @@
             <div class="tab-pane" id="tab-specification">
               <table class="table table-bordered">
                 {% for attribute_group in attribute_groups %}
-                <thead>
-                  <tr>
-                    <td colspan="2"><strong>{{ attribute_group.name }}</strong></td>
-                  </tr>
-                </thead>
-                <tbody>
-                {% for attribute in attribute_group.attribute %}
-                <tr>
-                  <td>{{ attribute.name }}</td>
-                  <td>{{ attribute.text }}</td>
-                </tr>
-        Вы забыли поставить галочку!        {Вы забыли поставить галочку!% endfor %}
-                  </tbody>
+                    <thead>
+                      <tr>
+                        <td colspan="2"><strong>{{ attribute_group.name }}</strong></td>
+                      </tr>
+                    </thead>
+                    <tbody>
+                        {% for attribute in attribute_group.attribute %}
+                            <tr>
+                            <td>{{ attribute.name }}</td>
+                            <td>{{ attribute.text }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
                 {% endfor %}
               </table>
             </div>
-            {% endif %}
+{% endif %}
 
-{##}
-        Вы забыли поставить галочку!  {% if documents %}
+{% if documents %}
             <div class="tab-pane" id="tab-documents">
 <p>
   Вы можете просмотреть и/или скачать сопроводительную документацию к продукту.
@@ -1106,35 +931,6 @@ $('#review').load('index.php?route=product/product/review&product_id={{ product_
 
 $('#button-predorder').on('click', function() {
 	console.log("pred order");
-/*
-	$.ajax({
-		url: 'index.php?route=product/product/write&product_id={{ product_id }}',
-		type: 'post',
-		dataType: 'json',
-		data: $("#form-review").serialize(),
-		beforeSend: function() {
-			$('#button-review').button('loading');
-		},
-		complete: function() {
-			$('#button-review').button('reset');
-		},
-		success: function(json) {
-			$('.alert-dismissible').remove();
-
-			if (json['error']) {
-				$('#review').after('<div class="alert alert-danger alert-dismissible"><i class="fa fa-exclamation-circle"></i> ' + json['error'] + '</div>');
-			}
-
-			if (json['success']) {
-				$('#review').after('<div class="alert alert-success alert-dismissible"><i class="fa fa-check-circle"></i> ' + json['success'] + '</div>');
-
-				$('input[name=\'name\']').val('');
-				$('textarea[name=\'text\']').val('');
-				$('input[name=\'rating\']:checked').prop('checked', false);
-			}
-		}
-	});
-*/
 });
 
 $(document).ready(function() {
