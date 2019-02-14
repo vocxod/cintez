@@ -738,14 +738,12 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 <p>Это письмо отправлено из формы предварительного заказа на сайте и отвечать на него <b>не надо</b>.</p>
 </div>
 </body></html>';
-// var_dump( $s_message ); die();
 		// Для отправки HTML-письма должен быть установлен заголовок Content-type
 		$headers = "From: SpecSintez <mail@specsintez.com>.\r\n";
 		$headers .= "Reply-To: no-reply@specsintez.com";
 		$headers .= 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
-
-				mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>", date("Y-m-d H:i:s", time()+3600*3 ) . ": Предзаказ на сайте specsintez.com ", $s_message, $headers  );
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>", date("Y-m-d H:i:s", time()+3600*3 ) . ": Предзаказ на сайте specsintez.com ", $s_message, $headers  );
 
 
 			    } else {

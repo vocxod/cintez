@@ -45,18 +45,61 @@ class ControllerInformationDealers extends Controller {
 		$data['hint'] = '';
 		/* start SEND MEFFAGE */
 		if (($this->request->server['REQUEST_METHOD'] == 'POST') && $this->validate()) {
+			//echo "post and valid";
 			$sMyName = $this->request->post['myname'];
 			$sMyPhone = $this->request->post['myphone'];
 			$sMyMessage = $this->request->post['mymessage'];
 			$sCaptcha = $this->request->post['g-recaptcha-response'];
 			$data['hint'] = $this->language->get('text_send_success'); // . $sMyName . $sMyPhone . $sMyMessage;
 			$this->load->model('catalog/review');
-/*
-INSERT INTO oc_review ( `product_id`, `customer_id`, `author`, `text`, `rating`, `status`, `date_added` ) VALUES (  997,  1, "обратная связь", "сообщение из формы обратной связи ", 5, 0, "2017-11-20 09:00:00" )
-*/
 			$aReviewData = ['customer_id' => 1, 'author' => $sMyName, 'text' => $sMyPhone . " \n<br>" . $sMyMessage, 'name' => $sMyName, 'rating' => 5, 'status' => 0, 'date_added' => date( "Y-m-d H:i:s",  time()) ];
 			$this->model_catalog_review->addReview(997, $aReviewData);
+			/* add captcha check and send mail  */
+			switch($this->request->post['department']){ 
+			case 0:
+			    $s_department = 'любой';
+			    break;
+			case 1:
+			    $s_department = 'Промышленный отдел';
+			    break;
+			case 2:
+			    $s_department = 'Сельскохозяйственный отдел';
+			    break;
+			case 3:
+			    $s_department = 'Медицинский отдел';
+			    break;
+
+			default:
+			    $s_department = 'любой';
+			    // break;	
+			}
+$s_message = '
+<html><head><title>Заявка со страницы ДИЛЕР</title></head>
+<body>
+<div>
+<p><strong>Поступил запрос от пользователя</strong>: ' . $sMyName . '</p>
+<p><strong>Телефон для контакта:</strong> ' . $sMyPhone . '</p>
+<p><strong>Cообщение:</strong> &nbsp;' . $sMyMessage . '</p>
+<p><strong>Дата и время обращения:</strong> ' . date( "Y-m-d H:i:s" , time() + 3600 * 3 ) . '</p>
+<p><strong>Вниманию отдела компании:</strong>&nbsp;' . $s_department . '</p>
+<p>Это письмо отправлено со страницы ДИЛЕР и отвечать на него <b>не надо</b>.</p>
+<p>Данные о запросе дублируются в архиве сайта, доступ к ним возможен из панели администратора.</p>
+</div>
+</body></html>';
+// Для отправки HTML-письма должен быть установлен заголовок Content-type
+$headers = "From: SpecSintez <mail@specsintez.com>.\r\n";
+$headers .= "Reply-To: no-reply@specsintez.com";
+$headers .= 'MIME-Version: 1.0' . "\r\n";
+$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
+mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, SpecSintez <mail@specsintez.com>", date("Y-m-d H:i:s", time()+3600*3 ) . ": дилерский запрос ", $s_message, $headers  );
+			$s_error_message = '';;
+
 		}
+		if (($this->request->server['REQUEST_METHOD'] == 'POST') && !$this->validate()) {
+			//echo "post and not valid";
+			$s_error_message = "Ошибка отправки сообщения";
+		}
+		//echo "check<br/>";
 		/* end SEND MESSAGE */
 		
 		$this->document->setTitle( $this->language->get('heading_title') );

@@ -77,6 +77,15 @@
         <div class="row">
           
           <h4 class="h4-info"><span class="green-uline">Начать сотрудничество </span></h4>
+
+{% if s_error_message != ''  %}
+          <div class="col-sm-12">
+<div class="alert alert-warning">
+{{ s_error_message }}
+</div>
+</div> 
+{% endif %}
+
           <div class="col-sm-6">
             <p>
               Если Вы желаете обратиться к нашей компании с предложением о сотрудничестве, заполните расположенную ниже форму, и мы оперативно свяжемся с Вами. Также, чтобы стать нашим дилером, необходимо иметь статус юридического лица, желательно наличие наработанных контактов по Вашему региону. 
@@ -139,7 +148,7 @@
               </select>
           </div>
 
-          {#<div class="g-recaptcha" data-sitekey="6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq"></div>#}
+          <div class="g-recaptcha" data-sitekey="6LfQiDkUAAAAANi3OjJ4mIRvPe3gv04PouEmd6hq"></div>
 
           <p class="block-center text-center block-center">
 <script type="text/javascript">
