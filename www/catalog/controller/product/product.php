@@ -37,7 +37,11 @@ class ControllerProductProduct extends Controller {
 		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
 		    
 			if( $data['usergroup']['name'] == 'Дилер' ){
+
     			$data['documents'] = $this->model_catalog_product->getDocuments( $i_product_id );
+    			
+    			//var_dump( $data['documents']); die();
+
     			if(count($data['documents'])>0){
     				// находим документ по типу s_doc_type
     				// var_dump( $data['documents'] ); die();

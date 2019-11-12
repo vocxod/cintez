@@ -665,23 +665,24 @@
             </div>
 {% endif %}
 
-{% if documents %}
-            <div class="tab-pane" id="tab-documents">
-<p>
+{% if not documents %}
+  {#{ dump( document ) }#}
+  <div class="tab-pane" id="tab-documents">
+  <p>
   Вы можете просмотреть и/или скачать сопроводительную документацию к продукту.
-<Вы забыли поставить галочкуВы забыли поставить галочкуВы забыли поставить галочку!!!/p>
-<script type="text/javascript">
+  <Вы забыли поставить галочкуВы забыли поставить галочкуВы забыли поставить галочку!!!/p>
+  <script type="text/javascript">
   function download_doc( doc_id ){
-    console.log( doc_id );
+  console.log( doc_id );
   }
-</script>
-<ul class="download-file-list" style="">
+  </script>
+  <ul class="download-file-list" style="">
   <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=instruction"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;</i>Инструкция</a></li>
   <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=declaration"><i class="fa fa-file-pdf-o" aria-hidden="true">&nbsp;</i>Декларация</a></li>
   <li><a href="index.php?route=product/product/review2&path=1606&product_id={{product_id}}&doctype=svid"><i class="fa fa-file-pdf-o" aria-hidden="true"></i>&nbsp;Свидетельство</a></li>
-</ul>
-            </div>
-            {% endif %}
+  </ul>
+  </div>
+{% endif %}
 {# живая вкладка "отзывов" как основа формы предзаказа  #}
 
             {% if review_status  %}
