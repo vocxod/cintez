@@ -116,7 +116,7 @@ class ControllerInformationYamap extends Controller {
 				break;
 			case '2761':
 			//MSK
-				$data['center_map'] = '55.889278, 37.578821';
+				$data['center_map'] = '55.957201, 37.570136'; // '55.956701, 37.570436'; // '55.889278, 37.578821';
 				break;
 			case '2778':
 			// RnD
