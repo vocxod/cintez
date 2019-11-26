@@ -665,8 +665,8 @@
             </div>
 {% endif %}
 
+{#
 {% if not documents %}
-  {#{ dump( document ) }#}
   <div class="tab-pane" id="tab-documents">
   <p>
   Вы можете просмотреть и/или скачать сопроводительную документацию к продукту.
@@ -683,9 +683,10 @@
   </ul>
   </div>
 {% endif %}
-{# живая вкладка "отзывов" как основа формы предзаказа  #}
+#}
 
-            {% if review_status  %}
+{# живая вкладка "отзывов" как основа формы предзаказа  #}
+{# % if review_status or 1==1  % #}
             <div class="tab-pane" id="tab-review" style="outline:0px dashed #121212;">
               <form class="form-horizontal" id="form-review" method="POST">
 		<input type="hidden" name="preorder_token" value="{{preorder_token}}"/>
@@ -749,7 +750,7 @@ class="btn btn-success btn-lg" style="width:302px;">
     </div> 
   </div>
 </div>
-{% endif %}
+{# % endif % #}
 
 <script type="text/javascript"><!--
 $('select[name=\'recurring_id\'], input[name="quantity"]').change(function(){
