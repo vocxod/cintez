@@ -1,9 +1,81 @@
 {{ text_signup }}
-
+{% if text_companyname %}
+Наимвенование компании: {{ text_companyname }}
+{% endif %}
+{% if text_region_id %}
+Код региона: {{ text_region_id }}
+{% endif %}
+{% if text_industry_id %}
+{% if text_industry_id == 14 %}Отрасль: Медицина {%endif %} 
+{% if text_industry_id == 15 %}Отрасль: Ветеринария, Пищевая промышленность {%endif %} 
+{% if text_industry_id == 16 %}Отрасль: Тяжелая промышленность, Транспорт {%endif %} 
+{% endif %}
 {{ text_firstname }} {{ firstname }}
 {{ text_lastname }} {{ lastname }}
 {% if customer_group %}
 {{ text_customer_group }} {{ customer_group }}
+Вставьте ссылку в браузер и активируйте пользователя, при необходимости: https://specsintez.com/index.php?route=account/approve&token=1234567
 {% endif %}
 {{ text_email }} {{ email }}
 {{ text_telephone }} {{ telephone }}
+
+
+{#
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/1999/REC-html401-19991224/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{{ title }}</title>
+<style>
+	div p {
+		margin-top: 0px; margin-bottom: 20px;
+		padding-left: 10px;
+		outline: 1ps dashed green;
+	}
+</style>
+</head>
+<body style="font-family: Arial, Helvetica, sans-serif; font-size: 12px; color: #000000;">
+<div style="width: 680px;">
+<div>
+
+{{ text_signup }}
+
+:
+{% if text_companyname %}
+{{ text_companyname }}
+{% endif %}
+:
+
+:
+{% if text_region_id %}
+{{ text_region_id }}
+{% endif %}
+:
+
+:
+{% if text_industry_id %}
+{{ text_industry_id }}
+{% endif %}
+:
+
+{{ text_firstname }} {{ firstname }}
+
+{{ text_lastname }} {{ lastname }}
+
+{% if customer_group %}
+{{ text_customer_group }} {{ customer_group }}
+<br>\n
+<a href="#" target="_blank">Активировать</a> аккаунт по клику.
+{% endif %}
+
+{{ text_email }} {{ email }}
+
+{{ text_telephone }} {{ telephone }}
+
+
+  </div>
+</div>
+</body>
+</html>
+#}
+

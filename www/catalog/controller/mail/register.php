@@ -47,6 +47,9 @@ class ControllerMailRegister extends Controller {
 	public function alert(&$route, &$args, &$output) {
 		// Send to main admin email if new account email is enabled
 		if (in_array('account', (array)$this->config->get('config_mail_alert'))) {
+
+			//var_dump( $args[0] ) ; die();
+		
 			$this->load->language('mail/register');
 			
 			$data['text_signup'] = $this->language->get('text_signup');
@@ -55,6 +58,11 @@ class ControllerMailRegister extends Controller {
 			$data['text_customer_group'] = $this->language->get('text_customer_group');
 			$data['text_email'] = $this->language->get('text_email');
 			$data['text_telephone'] = $this->language->get('text_telephone');
+
+			$data["text_companyname"] = $args[0]["companyname"];
+			$data["text_industry_id"] = $args[0]["industry_id"];
+			$data["text_region_id"] = $args[0]["region_id"];
+
 			
 			$data['firstname'] = $args[0]['firstname'];
 			$data['lastname'] = $args[0]['lastname'];
