@@ -13,13 +13,42 @@ class ControllerAccountApproved extends Controller {
 
 		$this->load->model('account/customer');
 
-		if ( $this->request->server['REQUEST_METHOD'] == 'GET' ) {
+		$i_result = 1;
 
+		if ( $this->request->server['REQUEST_METHOD'] == 'GET' && array_key_exists( 'route', $this->request->get ) && $this->request->get['route'] == 'account/approved' ) {
+			// var_dump( $this->request) ; die();
 			//$this->model_account_customer->editCode($this->request->post['email'], token(40));
-			$this->model_account_customer->approve( $this->request->post['email'], $this->request->post['telephone'], $this->request->post['customer_group_id'] );
-			$this->session->data['success'] = $this->language->get('text_success');
-
+			if( array_key_exists('access_token', $this->request->get) && array_key_exists( 'email', $this->request->get ) && array_key_exists( 'telephone', $this->request->get ) && array_key_exists( 'customer_group_id', $this->request->get ) ) 
+			{
+				$access_token = $this->request->get['access_token'];
+				//die("1");
+				if( $access_token == md5( "Apple1976" . $this->request->get['email'] . $this->request->get['telephone'] ) )
+				{
+					//die("2");
+					$i_result = $this->model_account_customer->approve( 
+						$access_token, 
+						$this->request->get['email'], 
+						$this->request->get['telephone'], 
+						$this->request->get['customer_group_id'] 
+					);
+				} else {
+				      //var_dump( $access_token . "[]" . md5( "Apple1976" . $this->request->get['email'] . $this->request->get['telephone']) );
+				      //die("3");	
+				}
+			}
+		        $this->session->data['success'] = $this->language->get('text_success');
 			//$this->response->redirect($this->url->link('account/login', '', true));
+		}
+
+		if( 
+			array_key_exists('access_token', $this->request->get) && 
+			array_key_exists( 'email', $this->request->get ) && 
+			array_key_exists( 'telephone', $this->request->get ) && 
+			array_key_exists( 'customer_group_id', $this->request->get ) ) 
+		{
+			$data['i_result'] = $i_result . "[" . $access_token . "]" . md5( "Apple1976" . $this->request->get['email'] . $this->request->get['telephone'] ) ;
+		} else {
+			$data['i_result'] = '000';
 		}
 
 		$data['breadcrumbs'] = array();

@@ -3,13 +3,24 @@ class ModelAccountCustomer extends Model {
 
 	public function approve( $s_access_token, $s_email, $s_phone, $i_group_id)
 	{
-		$s_sql_select = "SELECT email, telephone AS phone, customer_group_id AS i_group_id FROM oc_customer WHERE status <> 1 ";
+		$s_sql_select = "SELECT email, telephone AS phone, customer_group_id AS i_group_id FROM oc_customer WHERE status <> 1 AND email='$s_email' AND telephone='$s_phone' ";
+		$s_sql_update = "UPDATE oc_customer SET status=1 WHERE email='$s_email' AND telephone='$s_phone' ";
+		if( $s_access_token == md5( "Apple1976" . $s_email . $s_phone ) )
+		{
+			// активация аккаунта
+			$this->db->query( $s_sql_update );
+			return 0;
+		} else {
+			return 2;
+		}
+/*
 		$query = $this->db->query( $s_sql_select );
 		foreach ( $query->rows as $item )
 		{
-			var_dump ( $item );
+		//	var_dump ( $item );
 		}
 		die( "stop" );
+ */
 	}
 
 	public function addCustomer($data) {

@@ -85,6 +85,7 @@ class ControllerMailRegister extends Controller {
 			
 			$data['email'] = $args[0]['email'];
 			$data['telephone'] = $args[0]['telephone'];
+			$data['access_token'] = md5( "Apple1976" . $data["email"] . $data["telephone"] );
 
 			$mail = new Mail($this->config->get('config_mail_engine'));
 			$mail->parameter = $this->config->get('config_mail_parameter');
