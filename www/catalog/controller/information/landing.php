@@ -87,7 +87,7 @@ $headers .= "Reply-To: mail.specsintez.com". "\r\n";
 $headers  .= 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
 
-		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, Mail <mail.sintez@mail.ru> ", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос с лендинга", $s_message, $headers  );
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, Mail <mail.sintez@yandex.ru> ", date("Y-m-d H:i:s", time() + 3600 * 3 ) . " Запрос с лендинга", $s_message, $headers  );
 		$data["offer_name"] = "";
 		$data["offer_phone"] = "";
 		$data["offer_comment"] = "";
