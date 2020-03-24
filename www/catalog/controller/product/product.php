@@ -736,7 +736,11 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 <div>
 <p><strong>Поступил предварительный заказ товара</strong> :<a href="https://www.specsintez.com/index.php?route=product/product&product_id=' . $_POST['preorder_product_id'] . '">' . $_POST['preorder_product_name'] . '</a></p>
 <p><strong>Покупатель:</strong> &nbsp;' . $_POST['preorder_name'] . '</p>
+<p><strong>Организация покупателя:</strong> ' . $_POST['preorder_business'] . '</p>
+<p><strong>Город:</strong> ' . $_POST['preorder_city'] . '</p>
+<p><strong>Страна:</strong> ' . $_POST['preorder_country'] . '</p>
 <p><strong>Телефон покупателя:</strong> ' . $_POST['preorder_phone'] . '</p>
+<p><strong>email покупателя:</strong> ' . $_POST['preorder_email'] . '</p>
 <p><strong>Cообщение покупателя:</strong> &nbsp;' . $_POST['preorder_text'] . '</p>
 <p><strong>Дата и время обращения:</strong> ' . date( "Y-m-d H:i:s" , time() + 3600 * 3 ) . '</p>
 <p>Это письмо отправлено из формы предварительного заказа на сайте и отвечать на него <b>не надо</b>.</p>
@@ -747,7 +751,7 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 		$headers .= "Reply-To: no-reply@specsintez.com";
 		$headers .= 'MIME-Version: 1.0' . "\r\n";
 		$headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
-		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>", date("Y-m-d H:i:s", time()+3600*3 ) . ": Предзаказ на сайте specsintez.com ", $s_message, $headers  );
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, SpecSintez <mail.sintez@mail.ru> ", date("Y-m-d H:i:s", time()+3600*3 ) . ": Предзаказ на сайте specsintez.com ", $s_message, $headers  );
 
 
 			    } else {
