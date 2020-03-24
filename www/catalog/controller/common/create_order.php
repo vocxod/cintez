@@ -113,7 +113,7 @@ class ControllerCommonCreateOrder extends Controller {
 $headers  = 'MIME-Version: 1.0' . "\r\n";
 $headers .= 'Content-type: text/html; charset=utf8' . "\r\n";
 
-		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, SpecSintez <mail.sintez@yandex.ru>", date("Y-m-d H:i:s", time() ) . ": новый заказ на сайте specsintez.com ", $s_message, $headers  );
+		mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, SpecSintez <spec.sintez@gmail.com>", date("Y-m-d H:i:s", time() ) . ": новый заказ на сайте specsintez.com ", $s_message, $headers  );
 
 
 		/*
