@@ -112,7 +112,11 @@
                       <div class="fill" style="background-color:#fff;">
                           <div class="inner-content">
                               <div class="carousel-img">
-                                <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" />
+
+				{% if banner.link %}<a href="{{ banner.link }}"><img src="{{ banner.image }}" alt="{{ banner.title }}" class="img img-responsive" /></a>{% else %}<img src="{{ banner.image }}" alt="{{ banner.title }}" class="img img-responsive" />{% endif %}
+
+{#                                <img src="{{ banner.image }}" alt="white-sofa" class="img img-responsive" /> #}
+
                               </div>
                               {#
                               <div class="carousel-desc">

@@ -1,0 +1,36 @@
+﻿[WEB domru]
+Connect=ws="http://5.17.143.202:10280/erp";
+ID=fa98ce19-168e-47a7-a1b9-82d3e027ec25
+OrderInList=16640
+Folder=/
+OrderInTree=-1
+External=0
+UseProxy=0
+App=Auto
+WA=1
+Version=8.3
+WSA=1
+[WEB maxkom]
+Connect=ws="http://81.222.248.62:10280/erp";
+ID=64ac4ccc-09d4-4783-84f5-ad49ed6d58e6
+OrderInList=16896
+Folder=/
+OrderInTree=-1
+External=0
+ClientConnectionSpeed=Normal
+UseProxy=0
+App=Auto
+WA=1
+Version=8.3
+WSA=1
+[ERP server1c]
+Connect=Srvr="server1c:2541";Ref="erp";
+ID=a555d4dc-b7c6-4ec0-b7fb-0e5881a49a60
+OrderInList=16384
+Folder=/
+OrderInTree=256
+External=0
+ClientConnectionSpeed=Normal
+App=Auto
+WA=1
+Version=8.3
