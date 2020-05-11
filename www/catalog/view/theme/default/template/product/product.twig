@@ -122,7 +122,10 @@
               {% endif %}
               {% if images %}
               {% for image in images %}
-              <li class="image-additional"><a class="thumbnail" style="list-style-type:none;border:none;" href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" /></a></li>
+                  <li style="float:left;" class="image-additional">
+                      <a class="thumbnail" style="list-style-type:none;border:none;" href="{{ image.popup }}" title="{{ heading_title }}"> <img src="{{ image.thumb }}" title="{{ heading_title }}" alt="{{ heading_title }}" />
+                      </a>
+                  </li>
               {% endfor %}
               {% endif %}
             </ul>
