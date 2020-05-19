@@ -1,0 +1,227 @@
+<div class="row" id="list_of_products" style="outline:0px dashed magenta;">
+  {#
+  {% for product in products %}    
+  <div class="col-lg-4 col-sm-6 col-xs-12" style="outline:1px dashed red; height:360px; margin-bottom:12px;">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Porro recusandae amet dignissimos numquam pariatur consequuntur, neque aut incidunt libero eaque assumenda possimus dolorem iste repellat ipsam minus saepe sit nobis.
+  </div>
+  {% endfor %}
+  #}
+  {% for product in products %}
+    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 inner_product_block" style="">
+      <div class="inner_product_item" style="">
+        <a href="{{ product.href }}">
+          <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+        </a>
+
+        <div class="caption">
+        <h4 class="product-caption inner_product_title">
+          <a href="{{ product.href }}">{{ product.name[0:48] }}</a></h4>
+          {#<a class="run_link" href="{{ product.href }}"></a>#}
+
+        <div class="inner_product_description">
+          <span class="">{{ product.description }}</span>
+        </div>  
+
+        </div>
+
+
+
+      </div>
+    </div>
+    {#
+    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 " style="outline:1px dashed green; height:360px; margin-bottom:12px;">
+      <div style="">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque rerum dolore quaerat vero voluptates non? Dicta ducimus hic quidem magnam, laudantium, vero iusto officiis culpa a sed fuga ullam nostrum.
+      </div>
+    </div>
+    #}
+    {#
+    <div class="col-lg-4 col-md-4 col-sm-8 col-xs-12 " style="outline:1px dashed green; height:360px; margin-bottom:12px;">
+      <div style="">
+      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque rerum dolore quaerat vero voluptates non? Dicta ducimus hic quidem magnam, laudantium, vero iusto officiis culpa a sed fuga ullam nostrum.
+      </div>
+    </div>
+    #}
+
+    <!--
+    <div class="col-xs-12 col-sm-6 col-md-6 col-lg-4" style="outline:1px solid #ccc; height:440px; margin-bottom:12px; overflow:hidden;">
+      <div style="margin-top:10px;">
+          <div class="image product-tile-image-background">
+            <a href="{{ product.href }}">
+              <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+            </a>
+          </div>
+          
+          <div>
+            <div class="caption">
+              <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name[0:48] }}</a></h4>
+              <a class="run_link" href="{{ product.href }}">
+                
+                <div class="">
+                  <div class="">
+                    <span class="">{{ product.description }}</span>
+                  </div>  
+                  {#
+                  <div class="">
+                    <span style="font-weight:bold">{{ product_packing }}</span>
+                    <span class="">{{ product.packing }}</span>
+                  </div> 
+                  #}
+                  
+                  {#
+                  <div class="">
+                    <span style="font-weight:bold">{{ product_ingridient }}</span>
+                    <span class="">{{ product.ingridient }}</span>
+                  </div>
+                  #}
+
+                </div>
+              </a>
+              {# цены и кнопки на товаре скрываем #}
+              {# @TODO - показыватьуголок для спец предложений #}
+              {% if product.price == 100500 %}                
+              <p class="price"> {% if not product.special %}
+                {#{ product.price }#}
+                {% else %} <span class="price-new">{#{ product.special }#}</span> 
+                  <span class="price-old">{#{ product.price }#}</span> {% endif %}
+                {% if product.tax %} <span class="price-tax">{#{ text_tax }#} 
+                  {#{ product.tax }#}</span> {% endif %} 
+              </p>
+              {% endif %}
+
+              {% if product.rating == 100500 %} {# подавим несуществующим условием #}
+              <div class="rating"> {% for i in 1..5 %}
+                {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                {% endfor %} </div>
+              {% endif %} </div>
+            {# кнопки действий #}
+            <div class="button-group">
+            </div>
+          </div>
+      </div>
+    </div>
+  -->
+  {% endfor %}
+
+
+<!--
+  {% for product in products %}
+  
+    {% set num_column = loop.index0 % 3 %}
+    {% set num_row = loop.index0 // 3 %}
+
+    <div class="big-product product-layout col-lg-4 big-col-{{ num_column }} big-row-{{ num_row }}" id="big_{{ product.product_id }}" data="big_{{ product.product_id }}" >
+        <div style="margin-top:10px;">
+            <div class="image product-tile-image-background">
+              <a href="{{ product.href }}">
+                <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+              </a>
+            </div>
+            
+            <div>
+              <div class="caption">
+                <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name[0:48] }}</a></h4>
+                <a class="run_link" href="{{ product.href }}">
+                  
+                  <div class="">
+                    <div class="">
+                      <span class="">{{ product.description }}</span>
+                    </div>  
+                    {#
+                    <div class="">
+                      <span style="font-weight:bold">{{ product_packing }}</span>
+                      <span class="">{{ product.packing }}</span>
+                    </div> 
+                    #}
+                    
+                    {#
+                    <div class="">
+                      <span style="font-weight:bold">{{ product_ingridient }}</span>
+                      <span class="">{{ product.ingridient }}</span>
+                    </div>
+                    #}
+
+                  </div>
+                </a>
+                {# цены и кнопки на товаре скрываем #}
+                {# @TODO - показыватьуголок для спец предложений #}
+                {% if product.price == 100500 %}                
+                <p class="price"> {% if not product.special %}
+                  {#{ product.price }#}
+                  {% else %} <span class="price-new">{#{ product.special }#}</span> 
+                    <span class="price-old">{#{ product.price }#}</span> {% endif %}
+                  {% if product.tax %} <span class="price-tax">{#{ text_tax }#} 
+                    {#{ product.tax }#}</span> {% endif %} 
+                </p>
+                {% endif %}
+
+                {% if product.rating == 100500 %} {# подавим несуществующим условием #}
+                <div class="rating"> {% for i in 1..5 %}
+                  {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+                  {% endfor %} </div>
+                {% endif %} </div>
+              {# кнопки действий #}
+              <div class="button-group">
+              </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="product-layout product-list col-xs-12" style="margin-top:10px;">
+
+      <div class="product-thumb run_card" id="small-thumb-{{ product.product_id }}" 
+      data="big_{{ product.product_id }}">
+        
+        <div class="image product-tile-image-background">
+          <a href="{{ product.href }}">
+            <img src="{{ product.thumb }}" alt="{{ product.name }}" title="{{ product.name }}" class="img-responsive" />
+          </a>
+        </div>
+        
+        <div>
+          <div class="caption">
+            <h4 class="product-caption"><a href="{{ product.href }}">{{ product.name }}</a></h4>
+            <a class="run_link" href="{{ product.href }}">
+              <div class="run_bottom">
+                <div class="run_string">
+                  <span class="runlineone">{{ product.description }}</span>
+                </div>  
+                
+                {#
+                <div class="run_packing">
+                  <span style="font-weight:bold">{{ product_packing }}</span>
+                  <span class="run_packing_content">{{ product.packing }}</span>
+                </div> 
+                <div class="run_ingridient">
+                  <span style="font-weight:bold">{{ product_ingridient }}</span>
+                  <span class="run_ingridient_content">{{ product.ingridient }}</span>
+                </div>
+                #}
+
+              </div>
+            </a>
+
+            {% if product.price == 100500 %}                
+            <p class="price"> {% if not product.special %}
+              {#{ product.price }#}
+              {% else %} <span class="price-new">{#{ product.special }#}</span> 
+                <span class="price-old">{#{ product.price }#}</span> {% endif %}
+              {% if product.tax %} <span class="price-tax">{#{ text_tax }#} 
+                {#{ product.tax }#}</span> {% endif %} 
+            </p>
+            {% endif %}
+
+            {% if product.rating == 100500 %} {# подавим несуществующим условием #}
+            <div class="rating"> {% for i in 1..5 %}
+              {% if product.rating < i %} <span class="fa fa-stack"><i class="fa fa-star-o fa-stack-2x"></i></span> {% else %} <span class="fa fa-stack"><i class="fa fa-star fa-stack-2x"></i><i class="fa fa-star-o fa-stack-2x"></i></span>{% endif %}
+              {% endfor %} </div>
+            {% endif %} </div>
+          {# кнопки действий #}
+          <div class="button-group">
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %} 
+-->
+</div>
