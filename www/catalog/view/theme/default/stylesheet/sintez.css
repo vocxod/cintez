@@ -3028,7 +3028,7 @@ div.#content.col-md-6 {
 .inner_product_block {
   outline:0px 
   dashed red; 
-  height:420px; 
+  height:432px; 
   margin-bottom:12px; 
   overflow:hidden; 
 }
@@ -3039,6 +3039,11 @@ div.#content.col-md-6 {
 .inner_product_item:hover {
   border: 2px solid #aaa; 
 }
+
+.inner_product_image {
+  margin: 0 auto;
+}
+
 .inner_product_title {
   padding-left: 12px;
   padding-right: 12px;
