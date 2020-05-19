@@ -3,6 +3,9 @@
 storage/download
 
 
+/www/image
+www/image
+
 .htaccess
 /www/.htaccess
 www/.htaccess
