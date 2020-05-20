@@ -3037,7 +3037,7 @@ div.#content.col-md-6 {
   border: 1px solid #ccc; 
 }
 .inner_product_item:hover {
-  /* border: 2px solid #aaa;  */
+  border: 2px solid #aaa;  
 }
 
 .inner_product_image {
