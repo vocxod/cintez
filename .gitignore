@@ -6,6 +6,8 @@ storage/download
 /www/image
 www/image
 
+/www/fname.json
+
 .htaccess
 /www/.htaccess
 www/.htaccess

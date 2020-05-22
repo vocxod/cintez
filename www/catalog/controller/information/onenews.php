@@ -50,12 +50,13 @@ class ControllerInformationOnenews extends Controller {
 		}
 		/* */
 		$data['is_new'] = $aResult;
-		// file_put_contents('fname.txt', ( $data['is_new']['description'] ) ); 
+		
+		//file_put_contents('fname.json', json_encode( $aResult)  ); 
 
 		if ( $aResult ) {
 			/* @todo fix it */
-			$this->document->setTitle('meta_title');
-			$this->document->setDescription('meta_description');
+			$this->document->setTitle( $aResult['title'] );
+			$this->document->setDescription(  $aResult['description'] );
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
 				'text' => "Новости", //$this->language->get('heading_title'),
