@@ -56,7 +56,7 @@ class ControllerInformationOnenews extends Controller {
 		if ( $aResult ) {
 			/* @todo fix it */
 			$this->document->setTitle( $aResult['title'] );
-			$this->document->setDescription(  $aResult['description'] );
+			$this->document->setDescription( '' );
 			$this->document->setKeywords('meta_keyword');
 			$data['breadcrumbs'][] = array(
 				'text' => "Новости", //$this->language->get('heading_title'),
