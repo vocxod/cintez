@@ -81,7 +81,7 @@ class ControllerInformationOnenews extends Controller {
 			$data['header'] = $this->load->controller('common/header');
 			// забираем новости
 			//var_dump( $information_id );
-			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>8, 'without'=>$information_id] );
+			$data['topnews'] = $this->load->controller('common/topnews', ['news'=>5, 'without'=>$information_id] );
 			// новости забираем
 			// ренднрим страницу данными на шаблоне
 			$aResult = $this->load->view('information/onenews', $data);
