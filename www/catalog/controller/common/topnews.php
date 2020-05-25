@@ -18,6 +18,7 @@ class ControllerCommonTopnews extends Controller {
 
 		$aTopArticles = $this->model_catalog_information->getTopNews( 0, $iLimit, $i_without_news_id );
 		/* get first image for each news */
+		// var_dump( $aTopArticles );  die();
 		$aResult = [];
 		foreach ($aTopArticles as $key => $value) {
 			$aData = [];
@@ -31,10 +32,10 @@ class ControllerCommonTopnews extends Controller {
 
 					if( $key2 == 'description'){
 						if( preg_match_all("/<img[^>]+\>/i", html_entity_decode( $value2 ), $aOut) ){
-							$aData[ 'image' ] = $aOut[0][0];//первая картинка 	
+							// $aData[ 'image' ] = $aOut[0][0];//первая картинка 	
 						}
 					}
-
+					$aData[ 'image' ] =  ( $value['foreground_image'] ); //die();
 					$aData[$key2] = html_entity_decode( $content );
 				}
 				$aResult[] = $aData;
