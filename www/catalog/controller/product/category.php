@@ -372,6 +372,9 @@ class ControllerProductCategory extends Controller {
 				$url .= '&limit=' . $this->request->get['limit'];
 			}
 
+			// 
+			if( $category_id=1606){ $product_total=52; }
+
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
 			$pagination->page = $page;
@@ -382,6 +385,9 @@ class ControllerProductCategory extends Controller {
 			$data['products_count'] = $product_total;
 			$data['products_start'] = ($page - 1) * $limit + 1;
 			$data['products_finish'] = ($page + 1 ) * $limit;
+
+			//if( $category_id == 1606 ) { $limit=50 };
+			// var_dump( $pagination->render() ); die();
 			
 			//var_dump( $pagination ); die();
 			
