@@ -83,11 +83,15 @@
       var div = document.createElement('div');
       div.className = "radio radio-primary";
       div.innerHTML = '<input type="radio" name="where_1" id="where_1_' + element.category_id + '" value="' + element.category_id + '"><label for="where_1_'+ element.category_id +'">'+ element.name +' </label>';
-      if( index%2 == 1){
-        oddParent_1.appendChild( div );
-      } else {
-        evenParent_1.appendChild( div );
+      
+      if( element.category_id != 1606 ){
+        if( index%2 == 1 ){
+          oddParent_1.appendChild( div );
+        } else {
+          evenParent_1.appendChild( div );
+        }  
       }
+      
     }
 
     function createTwo( element, index, array ){
