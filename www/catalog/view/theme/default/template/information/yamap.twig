@@ -43,7 +43,7 @@
                 Склад:<br/>
                 195279, г. Санкт-Петербург, Индустриальный пр-кт, дом № 43, литер "Л"<br/>
                 
-                <i class="fa fa-exclamation-triangle" aria-hidden="true" style="font-size:24px; color:rgb(54,154,56);"></i>
+                <i class="fa fa-exclamation-triangle" aria-hidden="true" style="font-size:24px; color:rgb(0, 150, 69);"></i>
                 Подъезд под погрузку осуществляется с<br>
                 правой стороны здания.<br>
                 <b>Оформление документов производится внутри здания</b> 
@@ -851,7 +851,7 @@ KURSK
         {% if current_zone != 2785 %}
         {# все города кроме СПб#}
         MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="background:rgb(54,154,56);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+            '<div style="background:rgb(0, 150, 69);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
         ),
         myPlacemark = new ymaps.Placemark(myMap.getCenter(), {
 
@@ -875,7 +875,7 @@ KURSK
 
         {% else %}
         MyIconContentLayout = ymaps.templateLayoutFactory.createClass(
-            '<div style="background:rgb(54,154,56);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
+            '<div style="background:rgb(0, 150, 69);color: #FFFFFF; font-weight: bold;">$[properties.iconContent]</div>'
         ),
         myPlacemark = new ymaps.Placemark( [ {{office_map }} ], {
 
