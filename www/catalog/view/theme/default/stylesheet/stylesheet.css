@@ -750,4 +750,9 @@ h2.price {
     background-color: #df5c39;
 }
 
-
+/* 	 */
+.btn-success {
+    color: #fff;
+    background-color: rgb(0, 150, 69);
+    border-color: rgb(0, 150, 69);
+}

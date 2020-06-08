@@ -5,7 +5,7 @@ body {
 }
 
 .dropdown-zone {
-  background: rgb(54,154,56);
+  background: rgb(0, 150, 69);
   border:none;
   border-radius: 0px;
   box-shadow: 0 0px 0px rgb(0, 0, 0);
@@ -19,7 +19,7 @@ body {
     border:none;
     border-radius: 0px;
     box-shadow: 0 0px 0px rgb(0, 0, 0);
-    background: rgb(54,154,56);
+    background: rgb(0, 150, 69);
     color:#FEFAEA;
 }
 .langreen {
@@ -35,13 +35,13 @@ body {
 .navbar-inverse .navbar-nav > .open > a:hover, 
 .navbar-inverse .navbar-nav > .open > a:focus {
     color: #FEFAEA;
-    background-color: rgb(54,154,56);
+    background-color: rgb(0, 150, 69);
 }
 
 #menu2 > .navbar-inverse .navbar-nav > .open > a, 
 #menu2 > .navbar-inverse .navbar-nav > .open > a:hover, 
 #menu2 > .navbar-inverse .navbar-nav > .open > a:focus {
-    color: rgb(54,154,56) !important;
+    color: rgb(0, 150, 69) !important;
     font-weight: bold;
     background: rgb(240,244,245);
 }
@@ -91,7 +91,7 @@ body {
 .nav > li > a:hover, .nav > li > a:focus {
     text-decoration: none;
     color: #111 !important;
-    background-color: rgb(54,154,56);
+    background-color: rgb(0, 150, 69);
 }
 
 .mega-dropdown { position: static !important; }
@@ -114,10 +114,10 @@ a.zone-select {
   outline: 0px dashed green;
 }
 .navbar-inverse .navbar-nav > li > a.menu-selected {
-  color:rgb(54,154,56);
+  color:rgb(0, 150, 69);
 }
 .navbar-inverse.nav-upper .navbar-upper > li > a.menu-selected {
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
 }
 
 #id3 {
@@ -137,7 +137,7 @@ a.zone-select {
 }
 
 .panel_menu:hover {
-  background: rgb(54,154,56);
+  background: rgb(0, 150, 69);
   color: #111;
 }
 
@@ -177,14 +177,14 @@ a.zone-select {
 }
 
 .footer-list > li > a:hover {
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
 }
 
 /* modules */
 .module_title {
   font=size:24px; 
   font-weight: bold; 
-  border-bottom: 2px solid rgb(54,154,56);"
+  border-bottom: 2px solid rgb(0, 150, 69);"
 }
 
 /* featured image */
@@ -248,7 +248,7 @@ text-decoration: none;
 color:#444;
 }
 a.run_link:hover {
-  color:rgb(54,154,56);
+  color:rgb(0, 150, 69);
   text-decoration: none;
 }
 /* популярноые в 1 колонке справа и слева  вертикально, а не в ряд */
@@ -373,7 +373,7 @@ width:auto;
 
 /* страница товара */
 #button-cart {
-  background: rgb(54,154,56);
+  background: rgb(0, 150, 69);
 }
 
 
@@ -460,7 +460,7 @@ https://bootsnipp.com/snippets/g07VM
 }
 
 .mega-dropdown-menu .dropdown-header {
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
   font-size: 18px;
   font-weight: bold;
 }
@@ -475,7 +475,7 @@ https://bootsnipp.com/snippets/g07VM
 
 .open {
   /*outline: 2px solid green;*/
-  background-color: rgb(54,154,56) !important;
+  background-color: rgb(0, 150, 69) !important;
 }
 
 .carousel-control {
@@ -519,11 +519,11 @@ https://bootsnipp.com/snippets/g07VM
 }
 
 a {
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
 }
 
 a:hover, a:focus {
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
     text-decoration: underline;
 }
 .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover, .nav-tabs > li.active > a:focus {
@@ -550,7 +550,7 @@ a:hover, a:focus {
     color: #111;
 }
 .breadcrumb a:hover{
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
     text-decoration: none;
 }
 
@@ -590,8 +590,8 @@ body {
 .list-group-item.active, .list-group-item.active:hover, .list-group-item.active:focus {
     z-index: 2;
     color: #fff;
-    background-color: rgb(54,154,56);
-    border-color: rgb(54,154,56);
+    background-color: rgb(0, 150, 69);
+    border-color: rgb(0, 150, 69);
 }
 
 .category-list {
@@ -636,20 +636,20 @@ body {
     color: #111;
 }
 #id1.navbar-inverse.nav-upper .navbar-upper > li > a.selected-item {
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
 }
 #id1.navbar-inverse.nav-upper .navbar-upper > li > a:hover,
 #id1.navbar-inverse.nav-upper .navbar-upper > li > a:focus {
     background: none;
-    color: rgb(54,154,56) !important;
+    color: rgb(0, 150, 69) !important;
 }
 
 #id22.nav.navbar-nav > li > a.selected-item {
-    color: rgb(54,154,56);
+    color: rgb(0, 150, 69);
 }
 #id22.nav.navbar-nav > li > a:hover,
 #id22.nav.navbar-nav > li > a:focus {
-    color: rgb(54,154,56) !important;
+    color: rgb(0, 150, 69) !important;
 }
 
 .hidemenu {
@@ -671,11 +671,11 @@ body {
 }
 .panel-menu-item a:hover {
   color: #FEFAEA;
-  background: rgb(54,154,56);
+  background: rgb(0, 150, 69);
   text-decoration: none;
 }
 .bg_green {
-  background: rgb(54,154,56);
+  background: rgb(0, 150, 69);
 }
 /* добавить класс для сдвига меню */
 .active-panel-menu {
@@ -885,7 +885,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 .product-caption > a:hover{
   font-size: 18px;
   font-family: Arial, Helvetica, sans-serif;
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
 }
 
 /* для улучшенного вида карточки товара */
@@ -939,7 +939,7 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
     padding: 6px 12px;
     margin-left: -1px;
     line-height: 1.42857143;
-    color: rgb(54, 154, 56); /* #337ab7; */
+    color: rgb(0, 150, 69); /* #337ab7; */
     text-decoration: none;
     background-color: #fff;
     border: 1px solid #ddd;
@@ -949,15 +949,15 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
     z-index: 2;
     color: #fff;
     cursor: default;
-    background-color: rgb(54, 154, 56); /* #337ab7; */
-    border-color: rgb(54, 154, 56); /* #337ab7; */
+    background-color: rgb(0, 150, 69); /* #337ab7; */
+    border-color: rgb(0, 150, 69); /* #337ab7; */
 }
 
 .pagination > li > a:hover, .pagination > li > span:hover, .pagination > li > a:focus, .pagination > li > span:focus {
     z-index: 3;
-    color: rgb(54, 154, 56); /* #23527c;*/
+    color: rgb(0, 150, 69); /* #23527c;*/
     background-color: #fff; /* #eee; */
-    border-color: rgb(54, 154, 56); /* #ddd; */
+    border-color: rgb(0, 150, 69); /* #ddd; */
 }
 
 /* фон под картинкой */
@@ -1055,14 +1055,14 @@ background: url('/image/catalog/categories/all-icons-for-categories.png') -2px -
 .fform-group input[type="checkbox"] + .btn-group > label.btn-success,
 .fform-group input[type="radio"] + .btn-group > label.btn-success{
   color: #fff;
-  background-color: #5cb85c;
-  border-color: #4cae4c;
+  background-color: rgb(0, 150, 69);
+  border-color: rgb(0, 150, 69);
   border: none;
 }
 .fform-group input[type="checkbox"] + .btn-group > label.btn-info,
 .fform-group input[type="radio"] + .btn-group > label.btn-info{
   color: #fff;
-  background-color: #5bc0de;
+  background-color: rgb(0, 150, 69);
   border-color: #46b8da;
   border: none;
 }
@@ -1204,7 +1204,7 @@ a.up_line:hover, a.up_line:focus{
   font-size: 24px;
   font-weight: bold;
   font-style: italic;
-  border-bottom: 5px solid rgb(54,154,56);
+  border-bottom: 5px solid rgb(0, 150, 69);
   margin-top: 20px;
   
 }
@@ -1215,7 +1215,7 @@ a.up_line:hover, a.up_line:focus{
 .boss-underline {
   font-size: 24px;
   font-weight: bold;
-  border-bottom: 5px solid rgb(54,154,56);
+  border-bottom: 5px solid rgb(0, 150, 69);
   /*width: 250px;*/
 }
 .phonemail {
@@ -1242,7 +1242,7 @@ a.up_line:hover, a.up_line:focus{
 
 /* dealer page */
 .green-uline {
-  border-bottom: 5px solid rgb(54,154,56);
+  border-bottom: 5px solid rgb(0, 150, 69);
 }
 .sub-title {
   font-size: 22px;
@@ -1349,7 +1349,7 @@ p {
     width: 0;
     bottom: 0px;
     position: absolute;
-    background: rgb(54,154,56);
+    background: rgb(0, 150, 69);
     transition: 0.2s ease all;
     -moz-transition: 0.2s ease all;
     -webkit-transition: 0.2s ease all;
@@ -1370,10 +1370,10 @@ p {
 }
 .txt24 {
   font-size: 24px;
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
 }
 .grin {
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
 }
 #mapcontent > h4 {
   font-weight: bold;
@@ -1392,8 +1392,8 @@ p {
   background: url('/image/catalog/pages/productselection/green-wings.png') center bottom no-repeat;
 }
 .checkbox-success input[type="checkbox"]:checked + label::before {
-    background-color: #5cb85c;
-    border-color: #5cb85c; }
+    background-color: rgb(0, 150, 69);
+    border-color: rgb(0, 150, 69); }
 .checkbox-success input[type="checkbox"]:checked + label::after {
     color: #fff; }
 .light-bg-green{
@@ -1478,7 +1478,7 @@ p {
 }
 /*
 .active {
-  color: rgb(54,154,56) !important;
+  color: rgb(0, 150, 69) !important;
   font-weight: bold;
 }
 */
@@ -1518,7 +1518,7 @@ p {
 .miga-dropdown-menu > li ul > li > a:hover,
 .miga-dropdown-menu > li ul > li > a:focus {
   text-decoration: none;
-  color:rgb(54,154,56);
+  color:rgb(0, 150, 69);
 }
 .miga-dropdown-menu .dropdown-header {
   font-size: 18px;
@@ -1532,7 +1532,7 @@ p {
 
 .miga-dropdown-menu .dropdown-header > a:hover,
 .miga-dropdown-menu .dropdown-header > a:focus {
-  color: rgb(54,154,56);
+  color: rgb(0, 150, 69);
 }
 
 #id3>.drapdawn-menu.miga-dropdown-menu{
@@ -1559,7 +1559,7 @@ p {
 }
 #id_12.sidebar li a.active{
     background-color:#c0c0c0;
-    border-left:15px solid rgb(54,154,56); 
+    border-left:15px solid rgb(0, 150, 69); 
     transition: all 0.5s  ease-in-out
 }
 #id_12.sidebar li a:hover{
@@ -2778,7 +2778,7 @@ left:15px;
 
 
 /* пищев пром */
-/* rgb(54,154,56) */
+/* rgb(0, 150, 69) */
 /************ боковые отступы для уровней (финиш)**************/
 
 
@@ -2845,7 +2845,7 @@ left:15px;
 .gsc-control-cse.gsc-control-cse-ru {
   padding: 0 !important;
   margin: 0 !important;
-  background: rgb(54,154,56) !important;
+  background: rgb(0, 150, 69) !important;
   border: none !important;
 }
 
@@ -2952,7 +2952,7 @@ a.disabled {
 .gsc-clear-button {
   background: red;
   display: none;
-  /*outline: 1px solid rgb(54,154,56);*/
+  /*outline: 1px solid rgb(0, 150, 69);*/
 }
 .gsc-search-box {
   margin-bottom: 0px !important;
