@@ -15,6 +15,7 @@ class ControllerProductCategory extends Controller {
 	}
 
 	public function index() {
+
 		$this->load->language('product/category');
 		$this->load->model('catalog/category');
 		$this->load->model('catalog/product');
@@ -82,6 +83,10 @@ class ControllerProductCategory extends Controller {
 			$parts = explode('_', (string)$this->request->get['path']);
 
 			$category_id = (int)array_pop($parts);
+
+			//$category_id = 1606;
+
+			//var_dump( $category_id ); die();
 
 			foreach ($parts as $path_id) {
 				if (!$path) {
@@ -182,6 +187,8 @@ class ControllerProductCategory extends Controller {
 
 			$results = $this->model_catalog_product->getProducts($filter_data);
 
+			//var_dump( $filter_data, $product_total, count($results) ); die();
+
 			foreach ($results as $result) {
 				if ($result['image']) {
 					$image = $this->model_tool_image->resize($result['image'], $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_width'), $this->config->get('theme_' . $this->config->get('config_theme') . '_image_product_height'));
@@ -238,7 +245,7 @@ class ControllerProductCategory extends Controller {
 					'tax'         => $tax,
 					'minimum'     => $result['minimum'] > 0 ? $result['minimum'] : 1,
 					'rating'      => $result['rating'],
-					'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
+'href'        => $this->url->link('product/product', 'path=' . $this->request->get['path'] . '&product_id=' . $result['product_id'] . $url)
 				);
 
 				//SEO link for product
@@ -373,7 +380,7 @@ class ControllerProductCategory extends Controller {
 			}
 
 			// 
-			if( $category_id=1606){ $product_total=52; }
+			//if( $category_id=1606){ $product_total=127; }
 
 			$pagination = new Pagination();
 			$pagination->total = $product_total;
