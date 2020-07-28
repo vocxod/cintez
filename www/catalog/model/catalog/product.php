@@ -466,7 +466,9 @@ class ModelCatalogProduct extends Model {
 					AND p2c.category_id = '$iCategoryId' 
 						GROUP BY p.product_id 
 							ORDER BY weight DESC,  p.sort_order ASC, LCASE(pd.name) ASC 
-								LIMIT 0,50";
+								LIMIT 0, 98";
+
+		//echo( $sql );
 
 		$query = $this->db->query($sql);
 
