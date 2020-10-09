@@ -82,6 +82,7 @@ h2 {
 .sigmapad {
 	padding: 0 1px 1px 0 !important;
 	margin: 0 !important;
+	width:95%;
 }
 
 .sigmano {
@@ -99,8 +100,8 @@ h2 {
 }
 .sigma-home {
 	padding: 0px;
-	padding-top: 50px;
-	padding-bottom: 50px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 	background: url(../images/tm-sigma-00.jpg) no-repeat center center fixed; 
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
