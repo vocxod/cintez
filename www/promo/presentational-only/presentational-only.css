@@ -123,7 +123,7 @@ blockquote cite {
 }
 
 #more-content {
-  display: none;
+  /* display: none; */
 }
 
 /* Media Queries */
@@ -184,4 +184,9 @@ blockquote cite {
   html, body, .container {
     height: auto;
   }
+
+  .promo-image {
+    width:400px;
+  }
+
 }
