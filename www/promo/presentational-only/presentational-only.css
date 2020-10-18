@@ -20,6 +20,11 @@ body {
   color: #ffffff;
 }
 
+a {
+  color: #111;
+}
+
+/*
 h1 {
   color: #efecec;
   text-transform: uppercase;
@@ -28,11 +33,140 @@ h1 {
   font-weight: 400;
   margin-top: 20px;
 }
+*/
 
-a {
-  color: #ffffff;
+#container {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+  background-color: #fff;
+  opacity: 0.5;
+  margin-top: 240px;
+  color: #111;
+}
+#container > div.col-left {
+  width: 30%;
+  height: 280px;
+  outline: 0px dashed green;
+  color: #111;
+  text-align: center;
+}
+#container > div.col-left img{ 
+margin: 0 auto;
+}
+#container > div.col-left p{ 
+  font-size: 24px;
+  font-weight: 400;
 }
 
+#container > div.col-center {
+  width: 30%;
+  height: 240px;
+  outline: 0px dashed blue;
+  color: #111;
+}
+#container > div.col-right {
+  width: 35%;
+  height: 240px;
+  text-align: center;
+  outline: 0px dashed red;
+}
+
+#container > div.col-right .p1 {
+  margin-top: 80px;
+  font-size: 24px;
+  color: #000;
+  font-weight: bold;
+}
+#container > div.col-right .p2 {
+  margin-top: 60px;
+  font-size: 24px;
+  color: #000;
+  font-weight: bold;
+}
+
+
+#container2 {
+  display: flex;                  /* establish flex container */
+  flex-direction: row;            /* default value; can be omitted */
+  flex-wrap: nowrap;              /* default value; can be omitted */
+  justify-content: space-between; /* switched from default (flex-start, see below) */
+  /*background-color: #fff;
+  opacity: 0.5;*/
+  margin-top: 120px;
+  color: #111;
+}
+#container2 > div.col-left2 {
+  width: 30%;
+  outline: : 1px dashed green;
+  color: #111;
+  text-align: center;
+}
+
+.black_form{
+  padding: 1rem;
+  color: #FEFEFE;
+  margin: 0 auto;
+  width: 50%;
+  background: #111;
+  opacity: 0.75;
+}
+.label{
+  font-size: 16px;
+} 
+.input {
+  margin-top: 8px;
+  width: 80%;
+}
+
+#container2 > div.col-center2 {
+  width: 30%;
+  height: 240px;
+  outline: : 1px dashed green;
+  color: #111;
+  text-align: right;
+}
+#container2 > div.col-right2 {
+  text-align: left;
+  width: 35%;
+  height: 240px;
+  outline: : 1px dashed green;
+  color: #111;
+}
+
+#container2 > div.col-center2 img {
+  width: 25%;
+}
+#container2 > div.col-right2 img{
+  width: 75%;
+}
+
+.row_header {
+
+  margin-top:240px;
+  outline: 1px dasged green;
+  height: 240px;
+  overflow: hidden;
+  background: #CECECE;
+  opacity: 0.5;
+}
+
+.col-left {
+float: left;
+margin:0;  
+width: 75%;
+outline: 1px dashed red;
+color: #111;
+}
+
+.col-left {
+  float: left;
+margin-right:0;  
+width: 30%;
+outline: 1px dashed blue;
+}
+/*
 p {
   margin: 0 0 15px 0;
 }
@@ -61,15 +195,17 @@ blockquote cite {
   color: #cccccc;
   text-transform: uppercase;
 }
-
+*/
 /* Layout */
 
 .navbar {
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  /* background-color: rgba(0, 0, 0, 0.6); */
   height: 40px;
   z-index: 9999;
   position: fixed;
+  /**/
+  bottom: 8px;
 }
 
   .inner {
@@ -80,7 +216,7 @@ blockquote cite {
 
 .navbar a {
   display: inline-block;
-  border: 1px solid #fff;
+  /* border: 1px solid #fff; */
   font-size: 14px;
   line-height: 24px;
   border-radius: 3px;
