@@ -69,7 +69,7 @@ class ControllerCommonMenuTop extends Controller {
 // index.php?route=information/dealers
 ['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
 // index.php?route=information/articlelist
-['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
+// ['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 // index.php?route=information/neoitems
 ['class'=>'menu-bold ', 'title'=>'НОВОСТИ', 'href' => 'news', 'target'=>'_blank', 'active' => true, 'route' => 'information/neoitems'], 			
 // index.php?route=information/contact
