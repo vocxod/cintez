@@ -1,3 +1,12 @@
+<?php
+
+header('Access-Control-Allow-Origin: *');
+
+header('Access-Control-Allow-Methods: GET, POST');
+
+header("Access-Control-Allow-Headers: X-Requested-With");
+
+?>
 
 <!doctype html>
 <html lang="en">
@@ -67,22 +76,16 @@
 
 
 <!--Grid column-->
-  <div class="container-fluid pt-2">
-
+    <div class="container-fluid pt-2">
     <div class="row">
 
-      <div id="images" class="col-md-6 col-lg-8 col-xl-8  text-right d-none d-sm-block d-sm-none d-md-block">
-
-        <img class="img-fluid" src="images/preparats_33.png" style="max-height: 82% !important;"> 
-
-        <p class="text-left ml-5 mb-5">
-          <a href="#">Перейти на сайт производителя</a>
-        </p>
-
+      <div id="images" class="col-md-6 col-lg-8 text-right d-none d-sm-block d-sm-none d-md-block">
+        <img class="img-fluid" src="images/preparats_33.png"> 
       </div>
 
-      <div class="col-md-6 col-lg-4 col-xl-4">
+      <div class="col-md-6 col-lg-4 ">
         
+
         <div class="text-light p-4 rounded opacity-black-70" style="margin: 0 auto;">
         <form id="promo_request" onsubmit="do_submit(); return false;">
 
@@ -123,17 +126,11 @@
   </div>
 <!--Grid column-->
 
-
-
       </main>
 
       <footer class="mastfoot mt-auto pb-4">
         <div class="inner text-left">
-<!--
-          <p>
-            <a class="text-white text-uppercase big-font pl-4" href="https://specsitez.com/" target="_blank" style="text-decoration: underline;" >перейти на сайт производителя</a>
-          </p>
--->
+          <p><a class="text-dark text-uppercase big-font pl-4" href="https://specsitez.com/" target="_blank" style="text-decoration: underline;" >перейти на сайт производителя</a></p>
         </div>
 <!--
         <div class="inner text-center">
@@ -168,11 +165,16 @@
       var queryString = "?p1="+Name+"&p2="+Phone+"&p3="+Email;
       var destinationUrl = "https://script.google.com/macros/s/AKfycbzIOYgUL1cjN0gUyQO0K1-Z4B1WeV_CKJjx4vDTcEtR-NM1nao/exec";
       var s_url = destinationUrl + queryString;
+      var flickerAPI = "https://api.flickr.com/services/feeds/photos_public.gne?jsoncallback=?";      
       var queryOptions =  { tags: "mount rainier", tagmode: "any", format: "json" };
 
 
       $.ajax({
         method: 'GET',
+        /*
+        url: flickerAPI, 
+        data: queryOptions,
+        */
         url: destinationUrl,
         data: { "p1": Name, "p2": Phone, "p3": Email },
 
