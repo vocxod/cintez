@@ -67,19 +67,22 @@
 
 
 <!--Grid column-->
-    <div class="container-fluid pt-2">
+ <div class="container-fluid pt-2">
+
     <div class="row">
 
       <div id="images" class="col-md-6 col-lg-8 col-xl-8  text-right d-none d-sm-block d-sm-none d-md-block">
+
         <img class="img-fluid" src="images/preparats_33.png" style="max-height: 82% !important;"> 
-        <p class="text-left ml-5">
+
+        <p class="text-left ml-5 mb-5">
           <a href="#">Перейти на сайт производителя</a>
         </p>
+
       </div>
 
       <div class="col-md-6 col-lg-4 col-xl-4">
         
-
         <div class="text-light p-4 rounded opacity-black-70" style="margin: 0 auto;">
         <form id="promo_request" onsubmit="do_submit(); return false;">
 
@@ -116,11 +119,6 @@
       </div>
 
     </div>
-
-    <div class="row">
-      <p class="ml-5 text-dark text-left">&copy; 2004-2020 НПО "Спецсинтез"</p>
-    </div>
-
 
   </div>
 <!--Grid column-->

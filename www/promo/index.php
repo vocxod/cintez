@@ -130,7 +130,7 @@ header("Access-Control-Allow-Headers: X-Requested-With");
 
       <footer class="mastfoot mt-auto pb-4">
         <div class="inner text-left">
-          <p><a class="text-dark text-uppercase big-font pl-4" href="https://specsitez.com/" target="_blank" style="text-decoration: underline;" >перейти на сайт производителя</a></p>
+          <p><a class="text-dark text-uppercase big-font pl-4" href="https://specsitez.com/" target="_blank" style="text-decoration: underline; font-weight:bold;" >перейти на сайт производителя</a></p>
         </div>
 <!--
         <div class="inner text-center">

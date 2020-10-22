@@ -1,0 +1,18 @@
+[12-Oct-2020 10:21:06 UTC] PHP Fatal error:  Uncaught Exception: Error: Access denied for user 'specsintez3'@'localhost' (using password: YES)<br />Error No: 1045 in /var/www/html/specsintez.idev/www/system/library/db/mysqli.php:10
+Stack trace:
+#0 /var/www/html/specsintez.idev/www/system/library/db.php(31): DB\MySQLi->__construct('localhost', 'specsintez3', 'r75sc13', 'specsintez3', '3306')
+#1 /var/www/html/specsintez.idev/www/system/framework.php(82): DB->__construct('mysqli', 'localhost', 'specsintez3', 'r75sc13', 'specsintez3', '3306')
+#2 /var/www/html/specsintez.idev/www/system/startup.php(104): require_once('/var/www/html/s...')
+#3 /var/www/html/specsintez.idev/www/index.php(19): start('catalog')
+#4 {main}
+  thrown in /var/www/html/specsintez.idev/www/system/library/db/mysqli.php on line 10
+[12-Oct-2020 10:25:08 UTC] PHP Fatal error:  Uncaught Exception: Error: Table 'specsintez.oc_session' doesn't exist<br />Error No: 1146<br />SELECT `data` FROM `oc_session` WHERE session_id = '24664c3040be3d4c954ebcb960' AND expire > 1602498308 in /var/www/html/specsintez.idev/www/system/library/db/mysqli.php:40
+Stack trace:
+#0 /var/www/html/specsintez.idev/www/system/library/db.php(45): DB\MySQLi->query('SELECT `data` F...')
+#1 /var/www/html/specsintez.idev/www/system/library/session/db.php(21): DB->query('SELECT `data` F...')
+#2 /var/www/html/specsintez.idev/www/system/library/session.php(72): Session\DB->read('24664c3040be3d4...')
+#3 /var/www/html/specsintez.idev/www/system/framework.php(108): Session->start('24664c3040be3d4...')
+#4 /var/www/html/specsintez.idev/www/system/startup.php(104): require_once('/var/www/html/s...')
+#5 /var/www/html/specsintez.idev/www/index.php(19): start('catalog')
+#6 {main}
+  thrown in /var/www/html/specsintez.idev/www/system/library/db/mysqli.php on line 40
