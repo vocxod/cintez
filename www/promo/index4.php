@@ -67,7 +67,7 @@
 
 
 <!--Grid column-->
-  <div class="container-fluid pt-2">
+ <div class="container-fluid pt-2">
 
     <div class="row">
 
