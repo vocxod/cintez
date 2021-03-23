@@ -490,6 +490,7 @@
                     {% if option_value.image %} <img src="{{ option_value.image }}" alt="{{ option_value.name }} {% if option_value.price %} {{ option_value.price_prefix }} {{ option_value.price }} {% endif %}" class="img-thumbnail" style="border:none;" /> {% endif %}
                     <br/>
                     {{ option_value.name | replace ({ "шт": "шт.<br/>" }) }}
+                    {{ option_value.name | replace ({ "с распылителем": "<br/>с распылителем" }) }}
                     {% if option_value.price %}
                     ({{ option_value.price_prefix }}{{ option_value.price }})
                     {% endif %} </label>
