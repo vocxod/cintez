@@ -67,7 +67,7 @@ class ControllerCommonMenuTop extends Controller {
 //index.php?route=information/about
 ['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 // index.php?route=information/dealers
-['class'=>'menu-bold ', 'title'=>'ДИЛЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
+['class'=>'menu-bold ', 'title'=>'ПАРТНЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
 // index.php?route=information/articlelist
 // ['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 // index.php?route=information/neoitems
@@ -136,7 +136,7 @@ class ControllerCommonMenuTop extends Controller {
 					'Средства для ручной мойки посуды',
 					'Пятновыводители',
 					'Автокосметика',
-					'Дилерам', 
+					'Партнерам', 
 				] ],
 			['header' => 'Агропромышленный комплекс', 
 				[ 
