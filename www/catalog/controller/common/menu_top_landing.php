@@ -66,8 +66,8 @@ class ControllerCommonMenuTopLanding extends Controller {
 ['class'=>'menu-bold ', 'title'=>'ПРОДУКЦИЯ', 'href' => 'katalog', 'target'=>'_self', 'active' => true, 'route' => 'product/category'],
 //index.php?route=information/about
 ['class'=>'menu-bold ', 'title'=>'О КОМПАНИИ', 'href' => 'about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
-// index.php?route=information/dealers
-['class'=>'menu-bold ', 'title'=>'ПАРТНЕРАМ', 'href' => 'dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
+// index.php?route=information/partners
+['class'=>'menu-bold ', 'title'=>'ПАРТНЕРАМ', 'href' => 'partners', 'target'=>'_blank', 'active' => true, 'route' => 'information/partners'],
 // index.php?route=information/articlelist
 ['class'=>'menu-bold ', 'title'=>'ПУБЛИКАЦИИ', 'href' => 'publications', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 // index.php?route=information/neoitems
@@ -98,7 +98,7 @@ class ControllerCommonMenuTopLanding extends Controller {
 				
 				['class'=>'menu-bold ', 'title'=>'ABOUT', 'href' => 'index.php?route=information/about', 'target'=>'_self', 'active' => true, 'route' => 'information/about'],
 				
-				['class'=>'menu-bold ', 'title'=>'DEALERS', 'href' => 'index.php?route=information/dealers', 'target'=>'_blank', 'active' => true, 'route' => 'information/dealers'],
+				['class'=>'menu-bold ', 'title'=>'PARTNERS', 'href' => 'index.php?route=information/partners', 'target'=>'_blank', 'active' => true, 'route' => 'information/partners'],
 				
 				['class'=>'menu-bold ', 'title'=>'ARTICLES', 'href' => 'index.php?route=information/articlelist', 'target'=>'_blank', 'active' => true, 'route' => 'information/articlelist'],
 				
