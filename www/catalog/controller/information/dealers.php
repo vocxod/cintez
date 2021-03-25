@@ -74,7 +74,7 @@ class ControllerInformationDealers extends Controller {
 			    // break;	
 			}
 $s_message = '
-<html><head><title>Заявка со страницы ДИЛЕР</title></head>
+<html><head><title>Заявка со страницы ПАРТНЕР</title></head>
 <body>
 <div>
 <p><strong>Поступил запрос от пользователя</strong>: ' . $sMyName . '</p>
@@ -82,7 +82,7 @@ $s_message = '
 <p><strong>Cообщение:</strong> &nbsp;' . $sMyMessage . '</p>
 <p><strong>Дата и время обращения:</strong> ' . date( "Y-m-d H:i:s" , time() + 3600 * 3 ) . '</p>
 <p><strong>Вниманию отдела компании:</strong>&nbsp;' . $s_department . '</p>
-<p>Это письмо отправлено со страницы ДИЛЕР и отвечать на него <b>не надо</b>.</p>
+<p>Это письмо отправлено со страницы ПАРТНЕР и отвечать на него <b>не надо</b>.</p>
 <p>Данные о запросе дублируются в архиве сайта, доступ к ним возможен из панели администратора.</p>
 </div>
 </body></html>';
@@ -109,7 +109,7 @@ mail("Alexey <lazarlong@yandex.ru>, Sergey <scanner85@yandex.ru>, SpecSintez <ma
 		$this->document->setKeywords( $this->language->get('text_keywords') );
 
 		$data['breadcrumbs'][] = array(
-			'text' => $this->language->get('heading_title'),
+			'text' => 'Партнерам',
 			'href' => $this->url->link('information/dealers')
 		);
 
