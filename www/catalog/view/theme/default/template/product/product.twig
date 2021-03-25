@@ -496,6 +496,7 @@
                     {% else %}
                         {{ option_value.name | replace ({ "шт": "шт.<br/>" }) }}  
                     {% endif %}
+                    {{ option_value.name | replace ({ "[br]": "<br/>" }) }}
                     {% if option_value.price %}
                     ({{ option_value.price_prefix }}{{ option_value.price }})
                     {% endif %} </label>
