@@ -14,21 +14,31 @@
 
   <div id="id_10" class="sidebar left">
     <ul id="id_1010" class="list-sidebar bg-defoult">
-
     {% for category in category_tree %}
+        {% if (category.name != null) %}
         {{ 
           catmenu.menuItem( 
-          category.category_id, 
-          category.cat_path, 
-          category.name, 
-          category.children, 
-          "0", 
-          category.class, 
-          category.count ) 
+            category.category_id, 
+            category.cat_path, 
+            category.name, 
+            category.children, 
+            "0", 
+            category.class, 
+            category.count
+          ) 
         }}
+        {% endif %}
     {% endfor %}  
 
     </ul>
+    {# debug mode #}
+    {#
+    <ul id="id_2020" class="list-sidebar bg-defoult">
+    {% for category in category_tree %}
+        {{ dump(category) }}
+    {% endfor %} 
+    </ul>
+    #}
   </div>
 </div>
 

@@ -95,3 +95,6 @@ www/image/cache/*
 
 # IDE Project files
 /.idea
+/*.sql
+/*.sql.gz
+/*.xcf
