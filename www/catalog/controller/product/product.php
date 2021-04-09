@@ -36,7 +36,7 @@ class ControllerProductProduct extends Controller {
 			$data['usergroup'] = $this->model_account_customer_group->getCustomerGroup( $this->customer->getGroupId() );
 		    $data['username'] = $this->customer->getFirstName() . " " . $this->customer->getLastName();
 		    
-			if( $data['usergroup']['name'] == 'Дилер' ){
+			if( $data['usergroup']['name'] == 'Партнер' ){
 
     			$data['documents'] = $this->model_catalog_product->getDocuments( $i_product_id );
     			
@@ -677,7 +677,7 @@ lorem; ipsum; dolor; sit; atmet; blabla; bla;
 			    
 			    //var_dump( $data['usergroup']['name'] ); die();
 			    //var_dump( get_class_methods($this->customer) );
-    			if( $data['usergroup']['name'] == 'Дилер' ){
+    			if( $data['usergroup']['name'] == 'Партнер' ){
 	    			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
     			}
 			} else {

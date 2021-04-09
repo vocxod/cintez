@@ -535,7 +535,7 @@ class ControllerDezcalcHome extends Controller {
 			    
 			    //var_dump( $data['usergroup']['name'] ); die();
 			    //var_dump( get_class_methods($this->customer) );
-    			if( $data['usergroup']['name'] == 'Дилер' ){
+    			if( $data['usergroup']['name'] == 'Партнер' ){
 	    			$data['documents'] = $this->model_catalog_product->getDocuments( $this->request->get['product_id'] );
     			}
 			} else {
