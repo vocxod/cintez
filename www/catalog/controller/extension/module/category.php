@@ -26,6 +26,7 @@ class ControllerExtensionModuleCategory extends Controller {
 		$this->load->model('catalog/product');
 
 		$this->load->model('catalog/category');
+
 		$data['filters'] = $this->model_catalog_category->getAllFilters($i_root_id);
 
 		$data['categories'] = array();
@@ -61,7 +62,8 @@ class ControllerExtensionModuleCategory extends Controller {
 				'name'        => $category['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
 				# 'name'        => "*" . $category['name'] . "*",
 				'children'    => $children_data,
-				'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
+				#'href'        => $this->url->link('product/category', 'path=' . $category['category_id']),
+				'href'        => $this->url->link('product/category', 'path=' . $this->model_catalog_category->getCatPath( $category['category_id'] ) ),
 				'top'		  => $category['top'],
 				'image'		  => $category['image'],
 				'class'		  => $category['class'] 
@@ -75,6 +77,7 @@ class ControllerExtensionModuleCategory extends Controller {
 		//$aCategoryTree2 = $this->load->controller('common/category_tree/tree_type2', ['category_id' => 0]);
 		//$data['category_tree2'] = $aCategoryTree2['tree'];
 		// var_dump($data['category_tree2']); die();
+		file_put_contents('category_data.json', json_encode($data) );
 		return $this->load->view('extension/module/category', $data);
 	}
 }

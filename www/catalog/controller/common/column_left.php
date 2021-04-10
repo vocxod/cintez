@@ -53,7 +53,7 @@ class ControllerCommonColumnLeft extends Controller {
 
 			if (isset($part[0]) && $this->config->get('module_' . $part[0] . '_status')) {
 				
-				syslog(LOG_DEBUG, json_encode([ 'MODULE aData:', $aData] ) );
+				# syslog(LOG_DEBUG, json_encode([ 'MODULE aData:', $aData] ) );
 
 				$i_root_id = 0;
 
@@ -63,7 +63,8 @@ class ControllerCommonColumnLeft extends Controller {
 					}
 				}
 
-				syslog(LOG_DEBUG, json_encode([ 'MODULE root_category_id:', $i_root_id] ) );
+				# $i_root_id = 0;
+				# syslog(LOG_DEBUG, json_encode([ 'MODULE root_category_id:', $i_root_id] ) );
 
 				if(isset($part[0]) && $part[0] == 'category'){
 					
@@ -84,7 +85,7 @@ class ControllerCommonColumnLeft extends Controller {
 								
 				$setting_info = $this->model_setting_module->getModule($part[1]);
 
-				syslog(LOG_DEBUG, json_encode([ 'MODULE', $part[0], $setting_info]) );
+				# syslog(LOG_DEBUG, json_encode([ 'MODULE', $part[0], $setting_info]) );
 
 				if ($setting_info && $setting_info['status']) {
 					$output = $this->load->controller('extension/module/' . $part[0], $setting_info);

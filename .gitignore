@@ -98,3 +98,5 @@ www/image/cache/*
 /*.sql
 /*.sql.gz
 /*.xcf
+category_data.json
+www/131_cat.json
