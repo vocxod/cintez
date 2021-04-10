@@ -178,6 +178,18 @@ class ControllerCommonMenuTop extends Controller {
 			}
     	}
     	$data['route'] = $sRoute;
+
+
+    	# select main category list
+    	$a_root_categories = [];
+    	$s_sql_query = "select c.category_id, cd.name from oc_category as c left join oc_category_description as cd on c.category_id=cd.category_id where c.status=1 and c.parent_id=0 order by c.sort_order";
+    	$query = $this->db->query($s_sql_query);
+    	foreach ($query->rows as $result) {
+    		$a_root_categories[] = ['path'=>$result['category_id'], 'name' =>$result['name'] ];
+    	}
+    	$data['root_categories'] = $a_root_categories;
+
+
 		//var_dump( $data['down_line'] ); //die();
 		return $this->load->view('common/menu_top', $data);
 	}

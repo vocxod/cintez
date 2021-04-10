@@ -257,11 +257,22 @@
                 <ul id="id22" class="nav navbar-nav">
                   {% for item in down_line %}
                       {% if loop.index == 1 %}
-
+{#
                           <li>
 <a data-target="id3" id="product_button" class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
                           </li>
+#}
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Каталог <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            {% for root_cat in root_categories %}
+              <li><a href="index.php?route=product/category&path={{ root_cat.path }}">{{ root_cat.name }}</a></li>
+            {% endfor %}
 
+            {# <li role="separator" class="divider"></li> #}
+
+          </ul>
+        </li>
                       {% else %}
                           <li>
                             <a class="{{item.class}} menu-space" href="{{ item.href }}">{{ item.title}}</a>
