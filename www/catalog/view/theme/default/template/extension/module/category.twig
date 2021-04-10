@@ -1,3 +1,22 @@
+<div class="list-group">
+  {% for category in categories %}
+  {% if category.category_id == category_id %} 
+  <a href="{{ category.href }}" class="list-group-item active">{{ category.name }}</a> 
+  {% if category.children %}
+  {% for child in category.children %}
+  {% if child.category_id == child_id %}
+  <a href="{{ child.href }}" class="list-group-item active">&nbsp;&nbsp;&nbsp;- {{ child.name }}</a> 
+  {% else %} 
+  <a href="{{ child.href }}" class="list-group-item">&nbsp;&nbsp;&nbsp;- {{ child.name }}</a>
+  {% endif %}
+  {% endfor %}
+  {% endif %}
+  {% else %} <a href="{{ category.href }}" class="list-group-item">{{ category.name }}</a>
+  {% endif %}
+  {% endfor %}
+</div>
+
+{#
 <div id="sidebar_10" class="list-group category-list">
   {% if lang == 'ru' %}
       <h3 class="text-left column-head" style="background: url('/image/catalog/categories/header-decorator.png') -1590px -10px; width:291px; overflow:hidden;">{{ where_use }}
@@ -31,6 +50,8 @@
     {% endfor %}  
 
     </ul>
+#}  
+
     {# debug mode #}
     {#
     <ul id="id_2020" class="list-sidebar bg-defoult">
@@ -39,7 +60,11 @@
     {% endfor %} 
     </ul>
     #}
+
+{#
+
   </div>
+}
 </div>
 
 
@@ -71,5 +96,8 @@ $(document).ready(function(){
 
 });
 </script>
+#}
+
+
 
 
