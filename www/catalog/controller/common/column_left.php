@@ -46,18 +46,45 @@ class ControllerCommonColumnLeft extends Controller {
 		$modules = $this->model_design_layout->getLayoutModules($layout_id, 'column_left');
 
 		foreach ($modules as $module) {
+
+			// file_put_contents('modules.json', json_encode($module), FILE_APPEND );
+
 			$part = explode('.', $module['code']);
 
 			if (isset($part[0]) && $this->config->get('module_' . $part[0] . '_status')) {
-				$module_data = $this->load->controller('extension/module/' . $part[0]);
+				
+				syslog(LOG_DEBUG, json_encode([ 'MODULE aData:', $aData] ) );
 
+				$i_root_id = 0;
+
+				foreach ($aData as $key => $value) {
+					if( array_key_exists('root_category_id', $value) ){
+						$i_root_id = intval($value['root_category_id']);
+					}
+				}
+
+				syslog(LOG_DEBUG, json_encode([ 'MODULE root_category_id:', $i_root_id] ) );
+
+				if(isset($part[0]) && $part[0] == 'category'){
+					
+					$module_data = $this->load->controller('extension/module/' . $part[0], $i_root_id );
+					
+					// var_dump($aData); die();
+
+				} else {
+					$module_data = $this->load->controller('extension/module/' . $part[0]);
+				}
+				
 				if ($module_data) {
 					$data['modules'][] = $module_data;
 				}
 			}
 
 			if (isset($part[1])) {
+								
 				$setting_info = $this->model_setting_module->getModule($part[1]);
+
+				syslog(LOG_DEBUG, json_encode([ 'MODULE', $part[0], $setting_info]) );
 
 				if ($setting_info && $setting_info['status']) {
 					$output = $this->load->controller('extension/module/' . $part[0], $setting_info);

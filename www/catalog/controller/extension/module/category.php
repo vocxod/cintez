@@ -1,6 +1,6 @@
 <?php
 class ControllerExtensionModuleCategory extends Controller {
-	public function index() {
+	public function index($i_root_id=0) {
 		$this->load->language('extension/module/category');
 
 		if (isset($this->request->get['path'])) {
@@ -26,11 +26,11 @@ class ControllerExtensionModuleCategory extends Controller {
 		$this->load->model('catalog/product');
 
 		$this->load->model('catalog/category');
-		$data['filters'] = $this->model_catalog_category->getAllFilters(0);
+		$data['filters'] = $this->model_catalog_category->getAllFilters($i_root_id);
 
 		$data['categories'] = array();
 
-		$categories = $this->model_catalog_category->getCategories(0);
+		$categories = $this->model_catalog_category->getCategories($i_root_id);
 
 		foreach ($categories as $category) {
 			$children_data = array();
@@ -69,7 +69,7 @@ class ControllerExtensionModuleCategory extends Controller {
 		}
 
 		$data['lang'] = $this->language->get('code');
-		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => 0]);
+		$aCategoryTree = $this->load->controller('common/category_tree', ['category_id' => $i_root_id]);
 		$data['category_tree'] = $aCategoryTree['tree'];
 
 		//$aCategoryTree2 = $this->load->controller('common/category_tree/tree_type2', ['category_id' => 0]);

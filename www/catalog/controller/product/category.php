@@ -422,6 +422,11 @@ class ControllerProductCategory extends Controller {
 			$data['continue'] = $this->url->link('common/home');
 			
 			//scard
+			
+			$data['filters'][] = ['root_category_id'=>$category_id]; 
+
+			//file_put_contents('category_filters.json', json_encode($data['filters']) );
+
 			$data['column_left'] = $this->load->controller('common/column_left', $data['filters'] );
 
 			$data['column_right'] = $this->load->controller('common/column_right');
