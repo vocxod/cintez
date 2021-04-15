@@ -93,7 +93,7 @@ class ControllerExtensionModuleCategory extends Controller {
 				'href' => '',
 				'top' => $a_category['top'],
 				'image' => $a_category['image'],
-				'class' => '', # 'background-color:rgb(0, 150, 69);'
+				'class' => '', # 'background-color:rgb(0, 150, 69);' # make this item is selected and place to top on category block
 			);
 		}
 
