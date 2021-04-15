@@ -6,7 +6,7 @@ $_['text_product']      = 'Товары';
 $_['product_packing']='Упаковка:';
 $_['product_ingridient']='Состав:';
 
-$_['text_error']        = '<img src="/image/catalog/green-arrow-png-1.png">Выберите категорию интересующих вас товаров в кателоге слева!';
+$_['text_error']        = '<img src="/image/catalog/green-arrow-png-1.png"/>Выберите категорию интересующих вас товаров в каталоге слева!';
 $_['text_empty']        = 'В данной категории нет товаров.';
 $_['text_quantity']     = 'Количество:';
 $_['text_manufacturer'] = 'Производитель:';
