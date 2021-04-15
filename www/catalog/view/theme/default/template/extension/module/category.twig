@@ -20,7 +20,7 @@
         {% endif %}
 
     {% else %} 
-        <a href="{{ category.href }}" class="list-group-item plinkleft">{{ category.name }}</a>
+        <a href="{{ category.href }}" class="list-group-item plinkleft {{category.class}}" style="{{category.style}}">{{ category.name }}</a>
     {% endif %}
 
   {% endfor %}

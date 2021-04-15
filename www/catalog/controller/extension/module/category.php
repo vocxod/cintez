@@ -35,20 +35,31 @@ class ControllerExtensionModuleCategory extends Controller {
 
 		foreach ($categories as $category) {
 			$children_data = array();
+			
+			# var_dump($category['category_id']);
 
 			if ($category['category_id'] == $data['category_id']) {
+				
 				$children = $this->model_catalog_category->getCategories($category['category_id']);
 
-				foreach($children as $child) {
-					$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
+				if ( count($children) > 0 ){
+					foreach($children as $child) {
+						$filter_data = array('filter_category_id' => $child['category_id'], 'filter_sub_category' => true);
 
-					$children_data[] = array(
-						'category_id' => $child['category_id'],
-						'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
-						# 'name' => '#' . $child['name'] . '#',
-						'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
-					);
+						$children_data[] = array(
+							'category_id' => $child['category_id'],
+							'name' => $child['name'] . ($this->config->get('config_product_count') ? ' (' . $this->model_catalog_product->getTotalProducts($filter_data) . ')' : ''),
+							# 'name' => '#' . $child['name'] . '#',
+							'href' => $this->url->link('product/category', 'path=' . $category['category_id'] . '_' . $child['category_id'])
+						);
+					}					
+				} else {
+					# code...
+					# var_dump( count($category), count($parts) );
+					# $children = $this->model_catalog_category->getCategories($category['category_id']);
 				}
+
+
 			}
 
 			$filter_data = array(
@@ -79,22 +90,40 @@ class ControllerExtensionModuleCategory extends Controller {
 		//$data['category_tree2'] = $aCategoryTree2['tree'];
 		// var_dump($data['category_tree2']); die();
 
-		#file_put_contents('category_data.json', json_encode([$parts, $data['categories']]) );
+		file_put_contents('json_decode(json)', json_encode([$parts, $data['categories']] ) );
 
 		# category without chields
 		if( count($data['categories']) == 0 ){
-			$a_category = $this->model_catalog_category->getCategory( $parts[ count($parts)-1 ] );
-			# file_put_contents('category_data.json', json_encode($a_category) );	
-			$data['categories'][] = array(
-				'category_id' => $parts[ count($parts)-1 ],
-				'cat_path' => '',
-				'name' => $a_category['name'],
-				'children' => null,
-				'href' => '',
-				'top' => $a_category['top'],
-				'image' => $a_category['image'],
-				'class' => '', # 'background-color:rgb(0, 150, 69);' # make this item is selected and place to top on category block
-			);
+			$a_categories = $this->model_catalog_category->getCategories( $parts[1] );
+			file_put_contents('category_data.json', json_encode($a_categories) );	
+			foreach ($a_categories as $key => $category) {
+				if( count($parts)==3 && $parts[2]==$category['category_id']) {
+					$data['categories'][] = array(
+						'category_id' => $category['category_id'],
+						'cat_path' => '',
+						'name' => $category['name'],
+						'children' => null,
+						'href' => $this->url->link('product/category', 'path=' . $this->model_catalog_category->getCatPath( $category['category_id'] ) ),
+						'top' => $category['top'],
+						'image' => $category['image'],
+						'class' => ' active_active', # 'background-color:rgb(0, 150, 69);' # make this item is selected and place to top on category block
+						'style' => 'background-color: rgb(0,150,69); color:#FEFEFE;',
+					);
+				} else {
+					$data['categories'][] = array(
+						'category_id' => $category['category_id'],
+						'cat_path' => '',
+						'name' => $category['name'],
+						'children' => null,
+						'href' => $this->url->link('product/category', 'path=' . $this->model_catalog_category->getCatPath( $category['category_id'] ) ),
+						'top' => $category['top'],
+						'image' => $category['image'],
+						'class' => '', # 'background-color:rgb(0, 150, 69);' # make this item is selected and place to top on category block
+						'style' => '',
+					);
+				}
+			}
+
 		}
 
 

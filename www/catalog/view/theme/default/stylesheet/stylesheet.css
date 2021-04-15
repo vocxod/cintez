@@ -756,3 +756,8 @@ h2.price {
     background-color: rgb(0, 150, 69);
     border-color: rgb(0, 150, 69);
 }
+
+/* style for menu active_active*/
+.active_active {
+	background-color: rgb(0,150,69);
+}
