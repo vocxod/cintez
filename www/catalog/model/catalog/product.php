@@ -279,7 +279,7 @@ class ModelCatalogProduct extends Model {
 	// выводим советуемые товары 
 	public function getFeaturedProduct( $iLimit ){
 		$sSqlSelect = "SELECT p.product_id FROM " . DB_PREFIX .
-		"product AS p WHERE p.ean=1 LIMIT " . $iLimit;
+		"product AS p WHERE p.ean=1 ORDER BY p.sort_order LIMIT " . $iLimit;
 		//var_dump( $sSqlSelect ); die();
 		$query = $this->db->query( $sSqlSelect );
 		return $query->rows;
