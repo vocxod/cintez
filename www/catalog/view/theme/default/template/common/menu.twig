@@ -8,11 +8,12 @@
             <i class="fa fa-bars" style="color:#FEFAEA;"></i>
           </button>
 
+{#
           <button type="button" class="btn btn-navbar navbar-toggle pull-left" data-toggle="collapse" data-target=".navbar-ex2-collapse">
             <i class="fa fa-map-marker" style="color:#FEFAEA;"></i>
             <span style="color:#FEFAEA;">{{ current_zone.name }}</span>
           </button>
-
+#}
 
         </div>
 
@@ -30,9 +31,12 @@
             <input type="hidden" name="code" value=""/>
 
             <ul class="nav navbar-nav">
+{#
               <li class="dropdown line-item-one">
                 <a onclick="changeZone('SP');" href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2782" id="s2782">Санкт-Петербург</a>
               </li>
+#}
+
 {#
               <li class="dropdown line-item-one">
                 <a onclick="changeZone('NV');" href="#" class="dropdown-toggle dropdown-item" data-toggle="dropdown" data="2768" id="s2768">Новосибирск</a>
@@ -66,6 +70,52 @@
 {#Каталог продукции#} {{ text_our_production }}
             </li>
 
+
+<li class="dropdown line-item-one" id="main_1_1">
+  Учреждения здравохранения
+  <ul>
+  <li class="dropdown line-item-one" id="main_2_1">
+      Дезинфекция поверхностей
+      <ul>
+        <li class="dropdown line-item-one"  id="main_3_1">
+          Текущая и генеральная уборки
+        </li>
+        <li class="dropdown line-item-one"  id="main_3_2">
+          Дезинфекция белья
+        </li>
+        <li class="dropdown line-item-one"  id="main_3_3">
+          Дезинфекция посуды
+{#
+          <ul>
+            <li class="dropdown line-item-one"  id="main_4_1">4-1</li>
+            <li class="dropdown line-item-one"  id="main_4_1">4-2</li>
+            <li class="dropdown line-item-one"  id="main_4_1">4-3</li>
+            <li class="dropdown line-item-one"  id="main_4_1">4-4</li>
+          </ul>
+#}
+        </li>
+        <li class="dropdown line-item-one"  id="main_3_3">
+          Экспресс - дезинфекция поверхностей
+        </li>
+      </ul>
+  </li>
+
+<li class="dropdown line-item-one" id="main_2_2">
+Обработка изделий медицинского назначения
+</li>
+
+<li class="dropdown line-item-one" id="main_2_2">
+Обработка кожных покровов
+</li>
+
+<li class="dropdown line-item-one" id="main_2_2">
+Обработка эндоскопов
+</li>  
+
+  </ul>
+</li>
+
+
             {% for category in categories %}
             
                 {% if category.children %}
@@ -84,9 +134,15 @@
                           <ul class="list-unstyled">
 
                             {% for child in children %}
+                                {% if child.children %}
                                 <li>
-                                      <a class="children-item" href="{{ child.href }}">{{ child.name }}</a>
+                                      <a class="children-item w-child" href="{{ child.href }}">{{ child.name }}</a>
                                 </li>
+                                {% else %}
+                                <li>
+                                      <a class="children-item wo-child" href="{{ child.href }}">{{ child.name }}</a>
+                                </li>
+                              {% endif %}
                             {% endfor %}
 
                           </ul>
