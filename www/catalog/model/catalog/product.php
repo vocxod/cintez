@@ -1,6 +1,14 @@
 <?php
 class ModelCatalogProduct extends Model {
 
+
+	public function getProductPath($i_product_id){
+		$s_sql_select = "SELECT a.category_id, a.product_id, c.name  FROM oc_product_to_category AS a LEFT JOIN oc_category AS b ON a.category_id=b.category_id  LEFT JOIN oc_category_description AS c ON b.category_id=c.category_id  where a.product_id='" . $i_product_id . "' AND b.parent_id>0 AND language_id='4' ORDER BY a.category_id LIMIT 3";
+		$query = $this->db->query( $s_sql_select );
+		return $query->rows;
+	}
+
+
 	public function getDownload($download_id) {
 		$s_sql_select = "SELECT d.filename, d.mask FROM `" . DB_PREFIX . "download` AS d WHERE d.download_id = '" . (int)$download_id . "' ORDER BY d.mask ";
 		$query = $this->db->query( $s_sql_select );
