@@ -181,24 +181,19 @@ class ControllerProductProduct extends Controller {
 
 		if (isset($this->request->get['route']) && $this->request->get['route'] == 'product/product' ) {
 			// get full path for this product
+			/*
 			$a_product_path = $this->model_catalog_product->getProductPath($product_id);
 			$s_path = '';
-			// var_dump($a_product_path); die();
 			foreach ($a_product_path as $key => $value) {
-
-				//if( $key==0)
-				{
-					$s_path = $s_path . $value['category_id'];
-					// 
-					$data['breadcrumbs'][] = array(
-						'text' => $value['name'],
-						'href' => $this->url->link('product/category&path=' . $s_path),
-					);
-					$s_path = $s_path . "_";					
-				}
-
-
+				$s_path = $s_path . $value['category_id'];
+				// 
+				$data['breadcrumbs'][] = array(
+					'text' => $value['name'],
+					'href' => $this->url->link('product/category&path=' . $s_path),
+				);
+				$s_path = $s_path . "_";					
 			}
+			*/
 		}
 
 		if (isset($this->request->get['manufacturer_id'])) {
