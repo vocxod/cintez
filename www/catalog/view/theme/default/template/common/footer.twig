@@ -610,15 +610,16 @@ $( document ).ready(function() {
           data: defaultData
         });
 
-        function collapseNode(nodeId) {
-          $('#treeview').treeview('collapseNode', [nodeId]);
-          alert("collapse " + nodeId);
-        }
-
-        function expandNode(nodeId) {
-          $('#treeview').treeview('expandNode', [nodeId]);
-          alert("expand " + nodeId);
-        }
+        var initSelectableTree = function() {
+          return $('#treeview2').treeview({
+            data: defaultData,
+            multiSelect: false,
+            onNodeSelected: function(event, node) {
+             window.location.href = node.href;
+            }
+          });
+        };
+        var $selectableTree = initSelectableTree();
 
 });
 
