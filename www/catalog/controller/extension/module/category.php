@@ -90,12 +90,17 @@ class ControllerExtensionModuleCategory extends Controller {
 		//$data['category_tree2'] = $aCategoryTree2['tree'];
 		// var_dump($data['category_tree2']); die();
 
-		file_put_contents('json_decode(json)', json_encode([$parts, $data['categories']] ) );
+		// file_put_contents('json_decode(json)', json_encode([$parts, $data['categories']] ) );
 
 		# category without chields
 		if( count($data['categories']) == 0 ){
-			$a_categories = $this->model_catalog_category->getCategories( $parts[1] );
-			file_put_contents('category_data.json', json_encode($a_categories) );	
+			if( is_array($parts) && array_key_exists(1, $parts) ){
+				$a_categories = $this->model_catalog_category->getCategories( $parts[1] );
+			} else {
+				$a_categories = [];
+			}
+			
+			// file_put_contents('category_data.json', json_encode($a_categories) );	
 			foreach ($a_categories as $key => $category) {
 				if( count($parts)==3 && $parts[2]==$category['category_id']) {
 					$data['categories'][] = array(

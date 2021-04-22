@@ -63,54 +63,19 @@
         </div>
 
         <div class="collapse navbar-collapse navbar-ex1-collapse">
-          
+
+            <div id="treeview2" class=""></div>
+
+
+
+{#          
           <ul id="ul-category" class="nav navbar-nav">
             
             <li style="text-align:center; font-weight:bold; font-size:16px; background: #FEFAEA;">
-{#Каталог продукции#} {{ text_our_production }}
+              {{ text_our_production }}
             </li>
 
-{#
-<li class="dropdown line-item-one" id="main_1_1">
-  Учреждения здравохранения
-  <ul>
-  <li class="dropdown line-item-one" id="main_2_1">
-      Дезинфекция поверхностей
-      <ul>
-        <li class="dropdown line-item-one"  id="main_3_1">
-          Текущая и генеральная уборки
-        </li>
-        <li class="dropdown line-item-one"  id="main_3_2">
-          Дезинфекция белья
-        </li>
-        <li class="dropdown line-item-one"  id="main_3_3">
-          Дезинфекция посуды
-        </li>
-        <li class="dropdown line-item-one"  id="main_3_3">
-          Экспресс - дезинфекция поверхностей
-        </li>
-      </ul>
-  </li>
-
-<li class="dropdown line-item-one" id="main_2_2">
-Обработка изделий медицинского назначения
-</li>
-
-<li class="dropdown line-item-one" id="main_2_2">
-Обработка кожных покровов
-</li>
-
-<li class="dropdown line-item-one" id="main_2_2">
-Обработка эндоскопов
-</li>  
-
-  </ul>
-</li>
-#}
-
             {% for category in categories %}
-
-                {#{ dump(category) }#}
 
                 {% if category.children %}
                 <li class="dropdown line-item-one">
@@ -155,6 +120,7 @@
 
             {% endfor %}
           </ul>
+#}          
         </div>
 
       </nav>
