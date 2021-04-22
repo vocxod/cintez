@@ -70,7 +70,7 @@
 {#Каталог продукции#} {{ text_our_production }}
             </li>
 
-
+{#
 <li class="dropdown line-item-one" id="main_1_1">
   Учреждения здравохранения
   <ul>
@@ -85,14 +85,6 @@
         </li>
         <li class="dropdown line-item-one"  id="main_3_3">
           Дезинфекция посуды
-{#
-          <ul>
-            <li class="dropdown line-item-one"  id="main_4_1">4-1</li>
-            <li class="dropdown line-item-one"  id="main_4_1">4-2</li>
-            <li class="dropdown line-item-one"  id="main_4_1">4-3</li>
-            <li class="dropdown line-item-one"  id="main_4_1">4-4</li>
-          </ul>
-#}
         </li>
         <li class="dropdown line-item-one"  id="main_3_3">
           Экспресс - дезинфекция поверхностей
@@ -114,10 +106,12 @@
 
   </ul>
 </li>
-
+#}
 
             {% for category in categories %}
-            
+
+                {{ dump(category) }}            
+
                 {% if category.children %}
                 <li class="dropdown line-item-one">
                   
